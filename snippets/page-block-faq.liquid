@@ -1,0 +1,12 @@
+<div class="accordion {% if forloop.index == 1 %}accordion--open{% endif %}">
+<h4 class="accordion__title">
+{{ block.settings.title }}
+  <i class="accordion__icon">
+    <div class="line-01"></div>
+    <div class="line-02"></div>
+  </i>
+</h4>
+<div class="accordion__content" id="{{forloop.index}}" {% if forloop.index == 1 %}style="display: block;"{% endif %}>
+   {{ block.settings.text }}
+ </div>
+</div>

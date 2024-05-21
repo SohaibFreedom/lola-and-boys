@@ -1,0 +1,41 @@
+<section class="ugc-form-bg" id="apply-now">
+  <div class="ugc-form-wrapper">
+    <div class="ugc-image">
+      <img src="{{ section.settings.image | img_url:'master' }}">
+    </div>
+    <div class="form-ugc">
+      <h2 class="forms-heading-ugc">{{ section.settings.heading }}</h2>
+      <script type="text/javascript" src="https://form.jotform.com/jsform/240636705329054"></script>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "UGC program form",
+  "class": "UGC program form",
+
+  "settings": [
+         {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "400 x 300px recommended"
+        },
+     {
+      "type": "text",
+      "id": "heading",
+      "label": "heading"
+    }
+
+  ],
+
+  "presets": [
+    {
+      "name": "UGC program form",
+      "category": "form"
+
+    }
+  ]
+}
+{% endschema %}

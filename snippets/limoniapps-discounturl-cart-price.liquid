@@ -1,0 +1,55 @@
+{% comment %}
+V1.8 - November 16 2017 - 
+This liquid snippet is used by Discount URL, an app by Limoni Apps
+Do not remove this snippet
+{% endcomment %}
+
+
+{% assign discounturl_line_priceruletitle_match = 0 %}
+{% assign discounturl_line_priceruletitle_match_price = 0 %}
+{% assign discounturl_line_priceruletitle_match_quantity = 0 %}
+
+{% if discounturl_cart_allowmultiple == 0 %}
+  {% comment %}Check which variants in the cart the promotion applies to{% endcomment %}
+  {% for item in cart.items %}
+	  {% assign discounturl_cart_variantid_array = discounturl_cart_variantids | split: ',' %}
+	  {% for variant in discounturl_cart_variantid_array %}
+		{% assign variant_id = variant | plus: 0 %}
+		{% if variant_id == item.variant_id %}
+		    {% include 'limoniapps-discounturl-cart-readattributes' %}
+			{% assign discounturl_line_priceruletitle_match = 1 %}
+	  		{% assign discounturl_line_priceruletitle_match_quantity = discounturl_line_priceruletitle_match_quantity | plus: item.quantity %}
+			{% assign discounturl_line_priceruletitle_match_price = discounturl_line_priceruletitle_match_price | plus: discounturl_lineitem_original_lineprice %}            
+		{% endif %}
+	  {% endfor %}	 
+  {% endfor %}
+{% elsif discounturl_cart_allowmultiple == 1 %}
+  {% comment %}Check if a product in the cart unlocks this discount because it has the same promotion token as the one we have at cart level{% endcomment %}
+  {% for item in cart.items %}
+    {% for cartItemProp in item.properties %}
+      {% if cartItemProp.first == 'limoniapps-discounturl' %}
+        {% assign discountcodeinfo = cartItemProp.last | split: '||' %}
+        {% assign discountcodeinfo_property_size = discountcodeinfo | size %}
+        {% if discountcodeinfo_property_size > 3 %}
+          {% if discounturl_cart_pricerule == discountcodeinfo[3] %}
+			{% assign discounturl_line_priceruletitle_match = 0 %}
+            {% break %}
+          {% endif %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+    {% if discounturl_line_priceruletitle_match == 1 %}
+	  {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% comment %}Calculate cart savings and prices{% endcomment %}
+{% if discounturl_cart_allocationmethod == 'across' and discounturl_line_priceruletitle_match == 1 %}
+    {% comment %}Calculate the money amount of the discount{% endcomment %}
+    {% if discounturl_cart_valuetype == 'percentage' %}
+        {% assign discounturl_cart_discountamount_cart = discounturl_cart_value | times: discounturl_cart_price | divided_by: 100 %}     
+    {% elsif discounturl_cart_valuetype == 'amount' %} 
+        {% assign discounturl_cart_discountamount_cart = discounturl_cart_value | times: 100.0 %}
+    {% endif %}
+{% endif %}

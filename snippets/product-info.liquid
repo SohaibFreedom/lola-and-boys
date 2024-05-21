@@ -1,0 +1,50 @@
+{% include 'wh_calculate_discount' with product, hide_method: 'break' %}
+<div class="product-details">
+  <span class="title" itemprop="name">{{ product.title }}</span>
+
+
+<!-- Yotpo Star Rating on Category Pages | Snippets > product-info.liquid -->
+          <a href="{{ product.url }}">
+            <div style="text-align: center">
+              <div class="yotpo bottomLine" data-product-id="{{ product.id }}" id= "yotpo-category-stars" style="display:inline-block; padding-top:5px"></div>
+            </div>
+          </a>
+          <style>
+            #yotpo-category-stars .text-m{padding-left:5px;}
+            .yotpo .pull-center {padding-top: 8px;}
+          </style>
+<!-- End of Yotpo -->
+  
+  {% comment %}
+  {% if settings.enable_shopify_collection_badges and settings.enable_shopify_review_comments %}
+    <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+  {% endif %}
+  {% endcomment %}
+  {% if settings.display_vendor %}
+    <span itemprop="brand" class="brand">{{ product.vendor }}</span>
+  {% endif %}
+
+  {% if collection_handles contains 'coming-soon' %}
+    <span class="modal_price">{{ 'collections.general.coming_soon' | t }}</span>
+  {% else %}
+    <span class="test1 price {% if wh_compare_at_price_max > wh_price %}sale{% endif %}">
+      {% if product.available %}
+        {% if product.price_varies and wh_price_min > 0 %}
+          <small><em>{{ 'products.general.from' | t }}</em></small>
+        {% endif %}
+          {% if wh_price_min > 0 %}
+            <span class="prodcut-money">{{ wh_price_min | money }}</span>
+          {% else %}
+            {{ settings.free_price_text }}
+          {% endif %}
+      {% else %}
+        <span class="sold_out">{{ 'products.product.sold_out' | t }}</span>
+      {% endif %}
+      {% if wh_compare_at_price_max > wh_price %}
+        <span class="was_price">
+          <span class="prodcut-money">{{ wh_compare_at_price_max | money }}</span>
+        </span>
+      {% endif %}
+    </span>
+  {% endif %}
+</div>

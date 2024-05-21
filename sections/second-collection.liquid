@@ -1,0 +1,80 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+{% style %}
+.no-scroll {
+  overflow: hidden;
+}
+{% endstyle %}
+
+{% render 'shogun-products', content: collection %}
+{{collection.metafields.shogun.above}}
+{% comment %}
+  The contents of the collection.liquid template can be found in /sections/collection-template.liquid
+{% endcomment %}
+
+<div class="container">
+  
+    <div class="inner-look-book-main image-nine" >
+        <div class="inner-look-book-sec">
+          <div class="inner-look-book-box">
+            <a href="{{ collection.image.src |img_url:'master' }}" class="look-book-overlay look-book-similar open-lightbox">
+               <img src="{{ collection.image.src |img_url:'master' }}" class="look-book-img"> 			
+            </a>
+          </div>
+           <div class="inner-look-book-box">
+             <a href="{{ collection.description |img_url:'master' }}" id="modal_src" class="look-book-overlay open-lightbox">
+               {{ collection.description }}        
+             </a>
+           </div>
+        </div>
+      </div>
+    <div class="inner-look-book-product-sec image-eleven" >
+      <h2>Shop This Look</h2>	
+      <div class="inner-look-book-product">        
+        {% for product in collection.products %}
+        {% assign image = product.featured_media.preview_image %}
+        <div class="look-book-product">
+          <a href="{{product.url}}" class="look-book-overlay">
+            <img class="look-book-img" src="{{ image | img_url: 'medium' }}" alt="{{ product.title }}">
+            {% include 'quick-shop-button' %}
+          </a>
+          <a href="{{product.url}}" class="look-book-product-info">
+            <span class="product-title">{{product.title}}</span>
+          </a>
+          <div class="quick-mobile-view">
+            {% include 'quick-shop-button' %}
+          </div>
+          {% comment %}
+          <div class="button">                 
+            <a href="#modal" id="productInfoAnchor" product-handle="{{ product.handle }}" product-price="{{ product.price | money }}" >Quick Add</a>                  
+          </div>
+          {% endcomment %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  
+  <div class="look-book-btn-other-style">                 
+       <a class="lola-and-btn" href="/pages/look-book">View Other Styles</a>                  
+   </div>
+  
+</div>
+{{collection.metafields.shogun.below}}
+<script>
+  $(document).ready(function (){
+  	var images = jQuery('#modal_src img').attr('src');
+	console.log(images);
+	$('#modal_src').attr('href', images);
+  });
+</script>
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": []
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

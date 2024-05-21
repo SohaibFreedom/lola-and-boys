@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="{{ locale }}" dir="{{ direction }}" class="{{ checkout_html_classes }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0"
+    >
+    <meta name="referrer" content="origin">
+
+    <title>{{ page_title }}</title>
+
+    {{ content_for_header }}
+
+    {{ checkout_stylesheets }}
+    {{ checkout_scripts }}
+    {{ 'checkout.scss' | asset_url | stylesheet_tag }}
+
+    {% render 'shogun-head' %}
+    <style>
+            span.internation_shipping_txt {
+          display: inline;
+          padding-left: 35px !important;
+          color: #000 !important;
+          font-size: 14px;
+          position: absolute;
+          right: 20px;
+
+      		visibility: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    {{ skip_to_content_link }}
+
+    <header class="banner" data-header role="banner">
+      <div class="wrap">
+        {{ content_for_logo }}
+      </div>
+    </header>
+
+    <div class="banner-logo">
+      <div class="wrap">
+        <a class="logo logo--left" href="https://lolaandtheboys.com/"
+          ><img
+            alt="lolaandtheboys"
+            class="logo__image logo__image--small"
+            src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/lola-logo-stars-03_410x_29152246-6d45-46fd-bd86-72bf20a2ab94.png?v=1636779260"
+        ></a>
+      </div>
+    </div>
+
+    {{ order_summary_toggle }}
+    <div class="content" data-content>
+      <div class="wrap">
+        <div class="main">
+          <header class="main__header" role="banner">
+            {{ content_for_logo }}
+            {{ breadcrumb }}
+            {{ alternative_payment_methods }}
+          </header>
+          <main class="main__content" role="main">
+            {{ content_for_layout }}
+          </main>
+          <footer class="main__footer" role="contentinfo">
+            {{ content_for_footer }}
+          </footer>
+        </div>
+        <aside class="sidebar" role="complementary">
+          <div class="sidebar__header">
+            {{ content_for_logo }}
+          </div>
+          <div class="sidebar__content">
+            {{ content_for_order_summary }}
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    {{ tracking_code }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+          // Append text to the span element
+        $('label[for="checkout_id_delivery-shipping"] span').append("<span class='internation_shipping_txt'>*Duties & Taxes Included*</span>");
+
+        // Function to toggle visibility based on selected option
+        function toggleShippingText() {
+          var selectedOption = $('#checkout_shipping_address_country').val();
+          $('.internation_shipping_txt').css('visibility', selectedOption !== "United States" ? 'visible' : 'hidden');
+        }
+
+        // Call toggleShippingText initially
+        toggleShippingText();
+
+        // Bind change event handler
+        $('#checkout_shipping_address_country').change(toggleShippingText);
+
+      var $sectionContentParent = $('.section__content').find('.map').parent();
+      $('.cart-complete-extra').hide();
+
+      $sectionContentParent.parent().find('.content-box__row').css('border-top', 'none');
+      $sectionContentParent.hide();
+
+      const createAccountTitle = 'Create an Account';
+      const createAccountText = '';
+
+      const freeReturnsTitle = 'Free Returns';
+      const freeReturnsText = '<p>Not happy with your order? Not to worry! We offer a free returns process. Simply log in to your account area or contact us to find out how to take advantage of this.</p>';
+
+      const cancelorderTitle = 'Cancel your order';
+      const cancelorderText = '<p>Changed your mind or picked the wrong size? We are unable to amend your order but you can cancel your order within 15 minutes. A refund will be requested and will appear back in your bank account within 2-5 working days.</p>';
+
+      const dutiesPaid = ('false' === 'true');
+
+      $('form').on('submit', function () {
+          if ($('#checkout_shipping_address_address1').is(':focus')) {
+              return false;
+          }
+      });
+
+      $(document).ready(function () {
+          /* Hide subscription email opt in*/
+          $('*[data-buyer-accepts-marketing]').hide();
+          /* Check for Tracking Number and re-write the URL based on the delivery service */
+          $('#checkout_shipping_address_city').prop('maxLength', 50);
+
+          $('#checkout_billing_address_city').prop('maxLength', 50);
+
+          if ($('.tracking-info__number').length) {
+              if ($('.tracking-info__number a').attr('href').indexOf('google.com') !== -1) {
+                  var label = $('.tracking-info__number strong').html() + '';
+                  var url = $('.tracking-info__number a').attr('href').replace('http://www.google.com/search?q=', '');
+
+                  if (label.toLowerCase().indexOf('dpd') !== -1) {
+                      url = 'http://www.dpd.co.uk/apps/tracking/?reference=' + url + '#results';
+                  }
+
+                  $('.tracking-info__number a').prop('href', url);
+              }
+          }
+
+          var permDomain = 'www.gymshark.com';
+          if ($('.section.section--shipping-method .content-box.blank-slate p').length) {
+              var obj = $('.section.section--shipping-method .content-box.blank-slate p').eq(0).html().trim();
+
+              // Checks if the shipping method paragraph contains the text 'There are no shipping methods available'
+              if (obj.substring(0, 39) === 'There are no shipping methods available' || obj.substring(0, 26) == 'We do not offer shipping to') {
+                  // checks if the '.store-links' div already exists, otherwise append the code to the document
+                  if (!$('.section.section--shipping-method .content-box.blank-slate .store-links').length) {
+                      if (permDomain.indexOf('row') === -1) {
+                          var url = 'Head over to our {{ row_link }} store and you will be able to place your order there.'.replace('\{\{ row_link \}\}', '<a href="//row.gymshark.com" class="row-link">Rest of World</a>');
+
+                          $('#checkout_remember_me').parent().parent().parent().parent().before('<div class="country-not-listed field">' + url + '</div>');
+                          $('.section.section--shipping-method .content-box.blank-slate p').eq(0).html('Sorry, we don&#39;t ship to your location.');
+                          $('.section.section--shipping-method .content-box.blank-slate').append('<div class="store-links"><br><p>' + url + '</p></div>');
+                      }
+                  }
+              }
+          }
+
+          if ($('.section.section--shipping-address').length) {
+              if (permDomain.indexOf('row') === -1) {
+                  if (!$('.country-not-listed').length) {
+                      var url = 'Don&#39;t see your country listed, head over to our {{ row_link }} store'.replace('\{\{ row_link \}\}', '<a href="//row.gymshark.com" class="row-link">Rest of World</a>');
+                      var newItemHTML = $('.country-not-listed').html();
+                      $secondLast = $('.fieldset').find('div:last-child').prev();
+                      $('<div class="field row-message" ">' + url + '</div>').insertAfter($secondLast[0]);
+                      $('.country-not-listed').hide();
+                  }
+              }
+          }
+          // When clicking the "ROW" link, drop the cookie to prevent GeoIP redirection
+          $(document).on('click', '.row-link', function (e) {
+              e.preventDefault();
+              var $this = $(this);
+
+              $.cookie('countryRedirectGS','http:' + $this.attr('href'), { domain: '.gymshark.com', expires: 90, path:'/' });
+              window.location = $this.attr('href');
+          });
+
+          // Disable auto formatting on telephone number
+          var $shippingBillingPhone = $('#checkout_shipping_address_phone, #checkout_billing_address_phone');
+          $shippingBillingPhone.attr('data-phone-formatter', 'false').removeAttr('data-phone-formatter');
+          $shippingBillingPhone.attr('data-country-select', '').removeAttr('data-country-select');
+          $shippingBillingPhone.attr('data-phone-formatter-country-select', '').removeAttr('data-phone-formatter-country-select');
+          $shippingBillingPhone.attr('data-phone-formatter-country-code', '').removeAttr('data-phone-formatter-country-code');
+
+          /* Check for Taiwan / Hualien City and show error message */
+          $(document).on('change', '#checkout_shipping_address_country', function () {
+              TaiwanHualienCityCheck();
+          });
+
+          TaiwanHualienCityCheck();
+
+          /* Check for 7 character minimum on phone field */
+          $('div[data-step="contact_information"] button[type="submit"]').click(function () {
+            if ($('input#checkout_id_delivery-shipping').is(':checked')) {
+      console.log('ship select');
+
+
+              var isValid = true;
+              var telNo = sanitizeTelNo($('#checkout_shipping_address_phone').val());
+
+              if ((!validatePhoneNumber(telNo)) || (telNo.length > 0 && telNo.length < 7)) {
+                  isValid = false;
+                  showInvalidPhoneMessage();
+              } else {
+                  $('#checkout_shipping_address_phone').val(telNo);
+              }
+
+              return isValid;
+               }
+          });
+
+          $('div[data-step="payment_method"] button[type="submit"]').click(function () {
+              var isValid = true;
+              var telNo = sanitizeTelNo($('#checkout_billing_address_phone').val());
+              var useBillingAddress = $('#checkout_different_billing_address_true').attr("aria-expanded");
+
+              if(useBillingAddress === 'true') {
+                  if ((!validatePhoneNumber(telNo)) || (telNo.length > 0 && telNo.length < 7)) {
+                      isValid = false;
+                      showInvalidBillPhoneMessage();
+                  } else {
+                      $('#checkout_billing_address_phone').val(telNo);
+                  }
+              }
+              return isValid;
+          });
+
+          $(document).on('click', '#continue_to_shipping_method_button', function (e) {
+              e.preventDefault();
+          });
+
+          function validatePhoneNumber(phone) {
+              if (/^[\+]?[0-9#() ]{1,6}?[- ]?[0-9# ]{9,15}$/.test(phone)) {
+                  return true;
+              }
+              return false;
+          }
+
+          function showInvalidPhoneMessage() {
+              var $shippingPhoneParent = $('#checkout_shipping_address_phone').parent();
+              $shippingPhoneParent.find('.field__message--error').remove();
+              $shippingPhoneParent.removeClass('field--error');
+
+              if (!$shippingPhoneParent.hasClass('field--error')) {
+                  $shippingPhoneParent.addClass('field--error').append('<p class="field__message field__message--error">Minimum 10 digits, numbers only.</p>');
+              }
+          }
+
+          function showInvalidBillPhoneMessage() {
+              var $billingPhoneParent = $('#checkout_billing_address_phone').parent();
+              $billingPhoneParent.find('.field__message--error').remove();
+              $billingPhoneParent.removeClass('field--error');
+
+              if (!$billingPhoneParent.hasClass('field--error')) {
+                  $billingPhoneParent.addClass('field--error').append('<p class="field__message field__message--error">Minimum 10 digits, numbers only.</p>');
+              }
+          }
+
+          function sanitizeTelNo(str) {
+              str = str.split('.').join('');
+
+              return str;
+          }
+
+          function TaiwanHualienCityCheck() {
+              var country = $('#checkout_shipping_address_country').val();
+
+              if (country === 'Taiwan') {
+                  if (!$('.taiwan-country-error').length) {
+                      $('#checkout_shipping_address_city').parent().after('<p class="taiwan-country-error field__message field__message--error">Please note: We cannot ship to Hualien City</p>');
+                      $('.taiwan-country-error').show();
+                  }
+              } else {
+                  $('.taiwan-country-error').remove();
+              }
+          }
+
+          /* Set max length to the first name & last name fields */
+          $('#checkout_shipping_address_first_name, #checkout_billing_address_first_name, #checkout_shipping_address_last_name, #checkout_billing_address_last_name').attr('maxlength', 32);
+
+
+
+          var txt = $('#NextDayDeliveryText').html();
+          $('#NextDayDeliveryText').remove();
+
+          if ($.trim($('.breadcrumb').find('.breadcrumb__item--current').text()) === 'Shipping method') {
+              $('.step__sections').append('<div id="NextDayDeliveryText" style="text-align:left">' + txt + '</div>');
+          }
+
+          var $breadcrumb = $('.breadcrumb');
+          $breadcrumb.append('<li class="breadcrumb__item breadcrumb__item--blank">Complete</li>');
+
+          $breadcrumb.children().each(function (index) {
+              var $this = $(this);
+              var $breadcrumbLink = $this.find('.breadcrumb__link');
+              if ($breadcrumbLink.length) {
+                  $breadcrumbLink.addClass('checkout-process-' + parseInt(index + 1));
+                  switch ($.trim($breadcrumbLink.text())) {
+                      case 'Customer information':
+                          $breadcrumbLink.text('Details');
+                          break;
+                      case 'Shipping method':
+                          $breadcrumbLink.text('Shipping');
+                          break;
+                      case 'Payment method':
+                          $breadcrumbLink.text('Payment');
+                          break;
+                  }
+                  $breadcrumbLink.prepend('<span>' + parseInt(index + 1) + '</span>');
+
+              } else {
+                  $this.addClass('checkout-process-' + parseInt(index + 1));
+                  switch ($.trim($this.text())) {
+                      case 'Customer information':
+                          $this.text('Details');
+                          break;
+                      case 'Shipping method':
+                          $this.text('Shipping M');
+                          break;
+                      case 'Payment method':
+                          $this.text('Payment');
+                          break;
+                  }
+                  $this.prepend('<span>' + parseInt(index + 1) + '</span>');
+              }
+          });
+
+          $('.cart-help').clone().insertAfter('.order-summary__section--total-lines').addClass('order-summary__section');
+          $('.cart-help:not(.order-summary__section)').css('display', 'none');
+
+          var $completeItem = $('.breadcrumb li').last().prev();
+          var $completeItemFinal = $('.breadcrumb li').last();
+          var $breadcrumbListLink = $('.breadcrumb li a');
+          if ($completeItem.hasClass('breadcrumb__item--completed')) {
+              $completeItemFinal.addClass('breadcrumb__item--completed').addClass('breadcrumb__item--finalcheck');
+              $breadcrumbListLink.attr('href', '/');
+              $breadcrumbListLink.css('cursor', 'default');
+          }
+
+          if ($completeItemFinal.last().hasClass('breadcrumb__item--completed')) {
+              $('.cart-complete-extra').show();
+          }
+
+          const $orderSummary = $('.order-summary__sections');
+          if (dutiesPaid && $orderSummary.length) {
+              $orderSummary.append('<div class="order-summary__emphasis" style="color:#717171"><b>All duties for this order are paid.</b></div>');
+          }
+
+          var $policyListItem = $('.policy-list__item');
+          var $breadcrumb = $('.breadcrumb');
+          var $recommendedItems = $('.recommended-items');
+
+          if ($policyListItem.length) {
+              $policyListItem.css('text-transform', 'capitalize');
+
+              $($policyListItem).each(function() {
+                  const $anchorLink = $(this.children);
+                  $anchorLink.attr('target', '_blank');
+
+                  $anchorLink.removeAttr('aria-haspopup');
+                  $anchorLink.removeAttr('data-modal');
+
+                  switch ($anchorLink.text()) {
+                      case 'Refund policy':
+                          $anchorLink.attr('href', window.location.origin + '/pages/terms-and-conditions');
+                          break;
+                      case 'Privacy policy':
+                          $anchorLink.text('Privacy Notice');
+                          $anchorLink.attr('href', window.location.origin + '/pages/privacy-policy');
+                          break;
+                      case 'Terms of service':
+                          $anchorLink.attr('href', window.location.origin + '/policies/terms-of-service');
+                          break;
+                      default:
+                          break;
+                  }
+              });
+          }
+
+          if ($(window).width() < 1001) {
+              $breadcrumb.addClass('desktop');
+              $breadcrumb.clone().insertBefore('.order-summary-toggle .wrap').addClass('mobile');
+          }
+
+          $('.social-share').clone().insertAfter('.os-header__title').addClass('cloned');
+          $recommendedItems.hide();
+      });
+
+      // Get client hours and minutes relative to UTC
+      var now = new Date();
+      var hours = now.getUTCHours(); // Returns the hour (from 0-23)
+      var minutes = now.getUTCMinutes(); // Returns the minutes (from 0-59)
+      // Convert cutoff time into hours and minuntes relative to UTC
+      var cutoffTime = parseInt('') * 1000;
+      var cutOffDate = new Date(cutoffTime);
+      var cutOffHours = cutOffDate.getUTCHours(); // Returns the hour (from 0-23)
+      var cutOffMinutes = cutOffDate.getUTCMinutes(); // Returns the minutes (from 0-59)
+      // if the current hour is after the cutoff hour or the hours are equal but the current minute is after the cutoff minute
+      // Hide the next day shipping row.
+      if (hours > cutOffHours || (hours == cutOffHours && minutes > cutOffMinutes)) {
+          var nextDayShippingMethod = 'shopify-Express%20Next%20Day!-6.00';
+          $('div[data-shipping-method="' + nextDayShippingMethod + '"]').closest('.content-box__row').hide();
+      }
+    </script>
+    <!-- Yotpo Loyalty Checkout Dropdown -->
+    <script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/2ekobqDGE1XYCSw8QszMEw" async></script>
+    <div class="yotpo-widget-instance" data-yotpo-instance-id="310926"></div>
+    <!-- END Yotpo Loyalty Checkout -->
+
+    <script type="text/javascript">
+      usi_installed = 0; USI_installCode = function() { if (usi_installed == 0) { usi_installed = 1; var USI_headID = document.getElementsByTagName("head")[0]; var USI_installID = document.createElement('script'); USI_installID.type = 'text/javascript'; USI_installID.src = 'https://www.upsellit.com/active/lolaandtheboys.jsp'; USI_headID.appendChild(USI_installID); } }; if (typeof(document.readyState) != "undefined" && document.readyState === "complete") { USI_installCode(); } else if (window.addEventListener){ window.addEventListener('load', USI_installCode, true); } else if (window.attachEvent) { window.attachEvent('onload', USI_installCode); } else { USI_installCode(); } setTimeout("USI_installCode()", 10000);
+    </script>
+  </body>
+</html>

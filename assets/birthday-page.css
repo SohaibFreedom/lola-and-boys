@@ -1,0 +1,269 @@
+/* New birthday- page */
+.birthday-properties {
+  max-width: 1000px;
+  margin: 5rem auto;
+}
+.birthday-properties ul {
+  padding: 0 !important;
+}
+#shopify-section-template--15368236499046__custom_image_text_DfBEtY {
+  margin-bottom: 0 !important;
+}
+.birthday-properties .featured-link--half {
+  background: rgb(246 210 255 / 50%) !important;
+}
+.birthday-properties .collection_title {
+  font-size: 25px;
+}
+
+.birthday-properties .featured-link--half .info.text-align--left {
+  text-align: center;
+  width: 100% !important;
+}
+.birthday-properties .description li {
+  list-style-position: inside;
+}
+.birthday-properties .description,
+.cele-new-banner .description {
+  padding: 2rem 0;
+}
+
+.birthday-properties .featured-link--half .button {
+  background: #000;
+  color: #fff;
+  width: 55%;
+  height: 60px;
+  font-size: 18px;
+  letter-spacing: 3px !important;
+}
+
+.birthday-properties .featured-link--section:after {
+  content: "";
+  height: 1px;
+  width: 67%;
+  position: absolute;
+  background: #5f5f5f;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 90%;
+}
+.birthday-properties .featured-link--section {
+  position: relative;
+}
+.birthday-properties h4 {
+  padding-bottom: 0 !important;
+  font-size: 16px;
+  margin-bottom: 0 !important;
+}
+
+.cele-new-banner .button {
+  background: #000 !important;
+  color: #fff !important;
+  display: block !important;
+  width: 100%;
+  max-width: max-content;
+  padding: 16px 30px !important;
+  margin: 0 auto;
+  font-size: 17px !important;
+  letter-spacing: 3px !important;
+}
+
+.reviews-container .container {
+  display: flex;
+  align-items: start;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  background-color: #f6d2ff;
+  gap: 20px;
+}
+.banner-article-img img {
+  height: 100%;
+
+  transform: translateY(-50%);
+  object-fit: cover;
+}
+.form-header {
+  font-size: 2em;
+  color: #000 !important;
+}
+.form-header-group {
+  border: 0 !important;
+}
+.blue-banner-btn .button {
+  background: #007db3 !important;
+  color: #fff;
+  border: 0;
+  border-radius: 0;
+  display: inline-block;
+}
+.reviews-container .container .review {
+  width: 32%;
+}
+.birthday-first .button {
+  background: #ec147c;
+  color: #fff;
+  border: 0;
+  border-radius: 0;
+  display: inline-block;
+  margin-left: 22px;
+}
+.form-buttons-wrapper {
+  border: 0 !important;
+}
+.featured-link--half .featured-link--wrap {
+  height: 800px !important;
+}
+.form-all .submit-button {
+  background: #000 !important;
+  color: #fff !important;
+  display: block !important;
+  width: 100%;
+
+  padding: 16px 30px !important;
+  margin: 0 auto;
+  font-size: 17px !important;
+  letter-spacing: 2px !important;
+}
+.form-all input[type="text"],
+.form-all input[type="email"],
+.form-all textarea {
+  border: 0 !important;
+  border-bottom: 1px solid #000 !important;
+  background: transparent;
+  border-radius: 0 !important;
+}
+.form-all .form-radio + label {
+  padding-left: 42px !important;
+  font-weight: 500 !important;
+  text-transform: capitalize;
+}
+li.form-line:not(.form-line-column) .form-input-wide[data-layout="half"] {
+  width: 100% !important;
+}
+.form-all .form-radio + label:after,
+.form-all .form-radio + span:after {
+  background-color: #ec147c !important;
+  top: 5px;
+  left: 5px;
+}
+.form-all .form-checkbox + label:before,
+.form-all .form-checkbox + span:before,
+.form-all .form-radio + label:before,
+.form-all .form-radio + span:before {
+  background-color: #f6d2ff;
+  width: 25px !important;
+  height: 25px !important;
+  border-color: #5e5e5e !important;
+}
+.liquid-with-img .content-col {
+  background: #f6d2ff;
+}
+
+.form-all {
+  background: transparent !important;
+  border: none !important;
+}
+.form-line-column .form-label {
+  margin-bottom: 5px !important;
+}
+.faq-new-template h1 {
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+.featured_collections .featured-link--half a[href] img {
+  height: 800px;
+  object-fit: cover;
+}
+.accordion-container {
+  flex-basis: 100% !important;
+}
+.featured-link--half img {
+  height: 800px;
+  object-fit: cover;
+}
+.reviews-container {
+  background-color: #f6d2ff;
+  padding: 4rem 0 0;
+}
+.form-all .form-label {
+  display: none !important;
+}
+.form-all *::placeholder {
+  color: #3c3c3c !important;
+  font-weight: 400;
+}
+.review {
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+.form-all .form-radio + label {
+  color: #3c3c3c !important;
+  font-weight: 400;
+}
+.stars {
+  font-size: 26px;
+  color: #ec147c;
+}
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin-top: 10px;
+  font-family: inherit;
+  margin: 1rem 0;
+}
+div#shopify-section-template--15119900377190__chicago_celebrations_3F73Wq {
+  display: none;
+}
+
+.description {
+  font-size: 16px;
+  margin-top: 10px;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .reviews-container {
+    flex-direction: column;
+  }
+  .private-celebrations-button {
+    font-size: 16px !important;
+    letter-spacing: 3px !important;
+  }
+  .cele-new-banner .button {
+    padding: 16px 17px !important;
+
+    font-size: 14px !important;
+    letter-spacing: 3px !important;
+  }
+  .reviews-container .container .review {
+    width: 100%;
+  }
+  .banner-article-img img {
+    transform: none !important;
+  }
+  div#shopify-section-template--15119900377190__chicago_celebrations_3F73Wq {
+    display: block;
+  }
+  div#shopify-section-template--15119900377190__4554d133-7b06-424f-9e27-9a8d237e32e3
+    .banner-article-img {
+    display: none !important;
+  }
+  .featured-link--half .featured-link--wrap {
+    height: 500px !important;
+  }
+
+  .featured-link--half img {
+    height: 500px;
+  }
+  .reviews-container .container {
+    grid-template-columns: 1fr !important;
+  }
+  .featured_collections .featured-link--half a[href] img {
+    height: 500px;
+  }
+}

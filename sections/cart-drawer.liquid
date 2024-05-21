@@ -1,0 +1,298 @@
+{% comment %}
+  <div id="offcanvas-right" class="c-offcanvas c-offcanvas--right" aria-hidden="true">
+      <div class="c-cart c-drawer">
+          <div class="c-drawer__header">
+              <h3 class="c-drawer__title">Shopping Cart</h3>
+              <span class="c-offcanvas__close c-drawer__close" aria-label="Close Menu" aria-hidden="true">
+                  <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                      <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                          <g id="cart-slide-in-CL--subscription" transform="translate(-339.000000, -20.000000)" fill="#000" fill-rule="nonzero">
+                              <g id="noun_X_1099163_3d3d38" transform="translate(339.000000, 20.000000)">
+                                  <path d="M6.97148103,8 L0.213013231,1.2415322 C-0.0710044102,0.957514526 -0.0710044102,0.497030907 0.213013231,0.213013231 C0.497030907,-0.0710044102 0.957514526,-0.0710044102 1.2415322,0.213013231 L8,6.97148103 L14.7584678,0.213013231 C15.0424855,-0.0710044102 15.5029691,-0.0710044102 15.7869868,0.213013231 C16.0710044,0.497030907 16.0710044,0.957514526 15.7869868,1.2415322 L9.02851897,8 L15.7869868,14.7584678 C16.0710044,15.0424855 16.0710044,15.5029691 15.7869868,15.7869868 C15.5029691,16.0710044 15.0424855,16.0710044 14.7584678,15.7869868 L8,9.02851897 L1.2415322,15.7869868 C0.957514526,16.0710044 0.497030907,16.0710044 0.213013231,15.7869868 C-0.0710044102,15.5029691 -0.0710044102,15.0424855 0.213013231,14.7584678 L6.97148103,8 Z" id="Path"></path>
+                              </g>
+                          </g>
+                      </g>
+                  </svg>
+              </span>
+          </div>
+
+          <form action="/cart" class="addtocart-form" novalidate method="post">
+              <span data-cart-render=""></span>
+              <div id="" class="c-drawer__body" data-cart-view="data-cart-view" rules="all">
+                <div class="cart__productList-main">
+                  <div class="c-cart__productList">
+                      <div rv-each-item="cart.items" class="c-cart__product" rv-variant-id="item.variant_id" product-variant-id="item.variant_id" rv-data-random="item.random">
+                          <div class="c-cart__row c-drawer__item">
+                              <div class="c-cart__itemImageBox c-drawer__itemImg">
+                                  <img rv-src="item.image" rv-alt="item.variant_title">
+                              </div>
+                              <div class="c-cart__itemInfoBox c-drawer__itemDesc">
+                                  <h2 rv-html="item.product_title | cname" class="c-cart__itemName c-drawer__itemName"></h2>
+                                  <span class="c-cart__itemRemove" rv-data-id="item.key" product-data-id="item.key" rv-data-cart-remove-id="item.key" >
+                                      <svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                          <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+                                          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                              <g id="cart-slide-in-CL--subscription" transform="translate(-343.000000, -225.000000)" fill="#3D3D38" fill-rule="nonzero">
+                                                  <g id="the-good-sample" transform="translate(30.000000, 225.000000)">
+                                                      <g id="noun_X_1099163_3d3d38-Copy" transform="translate(313.000000, 0.000000)">
+                                                          <path d="M5.22861077,6 L0.159759923,0.931149151 C-0.0532533077,0.718135894 -0.0532533077,0.37277318 0.159759923,0.159759923 C0.37277318,-0.0532533077 0.718135894,-0.0532533077 0.931149151,0.159759923 L6,5.22861077 L11.0688508,0.159759923 C11.2818641,-0.0532533077 11.6272268,-0.0532533077 11.8402401,0.159759923 C12.0532533,0.37277318 12.0532533,0.718135894 11.8402401,0.931149151 L6.77138923,6 L11.8402401,11.0688508 C12.0532533,11.2818641 12.0532533,11.6272268 11.8402401,11.8402401 C11.6272268,12.0532533 11.2818641,12.0532533 11.0688508,11.8402401 L6,6.77138923 L0.931149151,11.8402401 C0.718135894,12.0532533 0.37277318,12.0532533 0.159759923,11.8402401 C-0.0532533077,11.6272268 -0.0532533077,11.2818641 0.159759923,11.0688508 L5.22861077,6 Z" id="Path"></path>
+                                                      </g>
+                                                  </g>
+                                              </g>
+                                          </g>
+                                      </svg>
+                                  </span>
+                                  <div rv-each-discount="item.discounts" rv-hide="item.discounts | empty" class="c-cart__itemDiscountBox">
+                                      <span rv-text="discount.title" class="c-cart__itemDiscount"></span>
+                                  </div>
+                                  <div class="c-cart__itemLowerBox" rv-if="item.final_line_price">
+                                      <div class="c-cart__itemPriceBox c-drawer__itemPrice">
+                                          <span class="c-cart__itemPrice" rv-html="item.final_line_price | money Currency.currentCurrency" class="c-cart__itemPrice">
+                                          </span>
+
+                                      </div>
+                                      <div class="c-cart__itemQuantityBox ajaxcart__qty">
+                                          <a href="#" rv-data-cart-update="index | plus 1" rv-data-cart-quantity="item.quantity | minus 1" class="ajaxcart__qty-adjust ajaxcart__qty--minus js-minus-product icon-fallback-text">
+                                              <span class="c-drawer__minus">
+                                                  <svg width="10" height="2" xmlns="http://www.w3.org/2000/svg"><path d="M12.612 0H1.478C1.264 0 .8.308.8.925c0 .616.464.924.678.924h11.134c.214 0 .678-.308.678-.924 0-.617-.464-.925-.678-.925z" fill-rule="nonzero"/></svg>
+                                              </span>
+                                          </a>
+                                          <span rv-text="item.quantity" class="ajaxcart__qty-num"></span>
+                                          <a href="#" rv-data-cart-update="index | plus 1" rv-data-cart-quantity="item.quantity | plus 1" class="ajaxcart__qty-adjust ajaxcart__qty--plus icon-fallback-text">
+                                              <span class="c-drawer__plus">
+                                                  <svg width="11" height="13" xmlns="http://www.w3.org/2000/svg"><path d="M11.485 5.163H6.974V.65c0-.205-.28-.651-.838-.651C5.578 0 5.3.446 5.3.651v4.512H.788c-.206 0-.652.279-.652.837 0 .558.446.837.652.837h4.511v4.512c0 .205.28.651.837.651.558 0 .838-.446.838-.651V6.837h4.511c.206 0 .651-.279.651-.837 0-.558-.445-.837-.65-.837z" fill-rule="nonzero"/></svg>
+                                              </span>
+                                          </a>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+
+
+
+                  <div rv-show="cart.item_count | lt 1" class="c-cart__emptyText">
+                      <span>You have no items in your shopping bag.</span>
+
+                  </div>
+
+                <div class="drawer__subTotal-all">
+
+                  <div class="c-drawer__subTotal">
+                      <div class="c-drawer__subTotalRight">
+                          <div rv-show="cart.item_count | gt 0" class="c-cart__footerPriceBox">
+                              <div class="c-cart__subtotal c-drawer__subTotalTitle"></div>
+                              <p class="c-cart__subtotal c-drawer__subTotalTitle">Subtotal: <span class="c-cart__total c-drawer__subTotalPrice" rv-data-total-price="cart.total_price | money_without_currency" rv-html="cart.items_subtotal_price | money Currency.currentCurrency" class="c-cart__itemPrice">
+                              </span></p>
+                            {% comment %}
+                              <p class="py-2 charges-p mb-0">All Tax are included</p>
+                              <p class="pb-2 free-shipping-p mb-0">Free Shipping</p>
+                              <div class="row shipping-badges py-2">
+                                  <div class="col-12 m-auto text-right">
+                                      <img class="img-fluid badges-img w-100" src="{{ settings.badges_img | img_url: 'original' }}" atl="Trust badges">
+                                  </div>
+                              </div>
+                            {% endcomment %}
+                          </div>
+
+                      </div>
+                  </div>
+
+                  <div class="c-drawer__subTotal">
+                      <div class="c-drawer__subTotalRight">
+                          <div class="cartCanvas__buttons testclass" rv-show="cart.item_count | gt 0">
+                            <a href="/cart">SHOPPING BAG</a>
+                              <button class="c-checkoutBtn" type="submit" name="checkout" value="Check Out">Checkout</button>
+                          </div>
+                      </div>
+                  </div>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
+  <script src="{{ 'rivets-cart.js' | asset_url }}"></script>
+  <script src="{{ 'offcanvas.js' | asset_url }}"></script>
+  <script>
+    // ---------------------------------------------------------------------------
+      // Money format handler
+      // ---------------------------------------------------------------------------
+      Shopify.money_format = "${{amount}}";
+      Shopify.formatMoney = function(cents, format) {
+        if (typeof cents == 'string') { cents = cents.replace('.',''); }
+        var value = '';
+        var placeholderRegex = /\{\{\s*(\w+)\s*\}\}/;
+        var formatString = (format || this.money_format);
+
+        function defaultOption(opt, def) {
+           return (typeof opt == 'undefined' ? def : opt);
+        }
+
+        function formatWithDelimiters(number, precision, thousands, decimal) {
+          precision = defaultOption(precision, 2);
+          thousands = defaultOption(thousands, ',');
+          decimal   = defaultOption(decimal, '.');
+
+          if (isNaN(number) || number == null) { return 0; }
+
+          number = (number/100.0).toFixed(precision);
+
+          var parts   = number.split('.'),
+              dollars = parts[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1' + thousands),
+              cents   = parts[1] ? (decimal + parts[1]) : '';
+
+          return dollars + cents;
+        }
+
+        switch(formatString.match(placeholderRegex)[1]) {
+          case 'amount':
+            value = formatWithDelimiters(cents, 2);
+            break;
+          case 'amount_no_decimals':
+            value = formatWithDelimiters(cents, 0);
+            break;
+          case 'amount_with_comma_separator':
+            value = formatWithDelimiters(cents, 2, '.', ',');
+            break;
+          case 'amount_no_decimals_with_comma_separator':
+            value = formatWithDelimiters(cents, 0, '.', ',');
+            break;
+        }
+
+        return formatString.replace(placeholderRegex, value);
+      }
+
+    var cartDrawer = $(".js-cartCanvas").offcanvas({
+          showOverlay: true
+    });
+    // Shopify Object To JavaScript Global Object
+    var cartJSON = {{ cart | json }}, AddToCartClicked = false;
+
+    // Initializing CartJS
+    jQuery(function() {
+      CartJS.init(cartJSON , {
+        "dataAPI": true,
+        "requestBodyClass": "loading",
+        "moneyFormat": "{{ shop.money_format }}",
+        "moneyWithCurrencyFormat": "{{ shop.money_with_currency_format }}"
+      });
+
+      rivets.bind($("[rv-value], #CartCount"), CartJS);
+
+    });
+
+    jQuery(document).on('cart.requestComplete', function(event, cart) {
+        cartJSON = cart;
+          $(cartJSON.items).each(function(i, item){
+              console.log(item)
+              item['random'] = 4500;
+          })
+          console.log(cartJSON.items)
+        cartDrawer.offcanvas('open');
+
+        jQuery("#cart-subtotal").text(rivets.formatters.money(cart.total_price, 'Currency.currentCurrency'))
+
+    });
+
+    jQuery('.cart_container').click(function(){
+    	$('#offcanvas-right').addClass('cart-drawer-open');
+      $('body').addClass('cart-drawer-overlay');
+    });
+    jQuery('.c-drawer__close').click(function (){
+        $('.c-offcanvas--right').removeClass('cart-drawer-open')
+        $('body').removeClass('cart-drawer-overlay');
+      });
+
+
+    const $menu = $('#offcanvas-right');
+    $(document).mouseup(e => {
+     if (!$menu.is(e.target) // if the target of the click isn't the container...
+     && $menu.has(e.target).length === 0) // ... nor a descendant of the container
+     {
+       $('.c-offcanvas--right').removeClass('cart-drawer-open')
+       $('body').removeClass('cart-drawer-overlay');
+    }
+   });
+
+
+  function addItem(form_id) {
+
+    	var data = $('#'+form_id).serialize().split("&");
+      console.log(data);
+      var obj={};
+      for(var key in data)
+      {
+  //         console.log(data[key]);
+         obj[data[key].split("=")[0]] = data[key].split("=")[1];
+      }
+
+      console.log(obj);
+
+
+         $.ajax({
+            type: 'POST',
+            url: '/cart/add.js',
+            dataType: 'json',
+            data: $('#'+form_id).serialize(),
+            success: function (cart) {
+              console.log($('#'+form_id).serialize());
+              console.log(cart);
+              $('#offcanvas-right').addClass('cart-drawer-open');
+              $('body').addClass('cart-drawer-overlay');
+              $.ajax({
+                type: 'GET',
+                url: '/cart.js',
+                dataType: 'json',
+                success: function(cartdata){
+                  setTimeout(function () {
+                  console.log(cartdata)
+                  $('.cart_count').html('MY BAG '+cartdata.item_count);
+                  },500)
+                  }
+  //               CartJS.render(null, cart);
+  //               cartDrawer.offcanvas('open');
+              });
+
+            },
+           error: function (xhr, status, error) {
+             console.log($('#'+form_id).serialize())
+             console.log('error',error);
+             console.log(xhr.responseJSON.description);
+           }
+         });
+
+  }
+
+  //  function quntityCLose(){
+  //   setTimeout(function(){
+  //     if($(".c-cart__productList").find(".c-cart__product").length > 0) {
+  //       console.log("open");
+  //     }else{
+  //        $('.c-offcanvas--right').removeClass('cart-drawer-open')
+  //        $('body').removeClass('cart-drawer-overlay');
+  //      }
+  //   }, 1000)
+  // }
+
+
+
+
+
+
+
+  </script>
+{% endcomment %}
+{% schema %}
+{
+  "name": "Section name",
+  "settings": []
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

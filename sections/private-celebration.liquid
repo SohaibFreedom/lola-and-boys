@@ -1,0 +1,98 @@
+<!-- private-celebrations.liquid -->
+{% schema %}
+{
+  "name": "Private Celebrations",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+
+    },
+    {
+      "type": "color",
+      "id": "container_color",
+      "label": "Container Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Private Celebrations"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Interested in having Unicorn World all to yourself? You can curate a special event and rent the entire space."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "INQUIRE NOW"
+    },
+     {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": " Private Celebrations",
+      "category": "Custom",
+      "settings": {
+
+        "container_color": "#ffffff",
+        "heading": "Private Celebrations",
+        "description": "Interested in having Unicorn World all to yourself? You can curate a special event and rent the entire space.",
+        "button_text": "INQUIRE NOW"
+      }
+    }
+  ]
+}
+{% endschema %}
+
+<div class="private-celebrations-container">
+  <div class="private-celebrations-content">
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.description }}</p>
+    <a href="{{ section.settings.link }}" class="private-celebrations-button">{{ section.settings.button_text }}</a>
+  </div>
+</div>
+
+{% style %}
+      .private-celebrations-container {
+        background-image: url('{{ section.settings.background_image | img_url: 'master' }}');
+        background-size: cover;
+        padding: 5rem 0;
+      }
+    .private-celebrations-content p {
+        width: 80%;
+        margin: 0 auto 1rem;
+        font-size: 19px;
+    }
+      .private-celebrations-content {
+        background-color: {{ section.settings.container_color }};
+       padding: 2rem 0;
+        text-align: center;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+   .private-celebrations-button {
+      background: #000;
+      color: #fff !important;
+      padding: 16px 30px;
+      display: inline-block;
+     margin-top:1rem;
+      font-size: 18px;
+      letter-spacing: 3px !important;
+  }
+     .private-celebrations-button:hover {
+      color: #fff!important;
+
+  }
+{% endstyle %}

@@ -1,0 +1,26 @@
+<div class="full-width-img">
+	<div class="full-width-img-inner desktop-img-about">
+      	{{ section.settings.image | img_url: '2048x' | img_tag }}
+	</div>
+  	<div class="full-width-img-inner mobile-img-about">
+      	{{ section.settings.image1 | img_url: '2048x' | img_tag }}
+	</div>
+</div>
+
+{% schema %}
+  {
+    "name": "About Member Image",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"    
+      },
+	  {
+        "type": "image_picker",
+        "id": "image1",
+        "label": "Image"    
+      }
+	]	
+  }
+{% endschema %}

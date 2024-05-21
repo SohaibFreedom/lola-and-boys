@@ -1,0 +1,25 @@
+{% comment %}
+V1.8 - November 16 2017 - 
+This liquid snippet is used by Discount URL, an app by Limoni Apps
+Do not remove this snippet
+{% endcomment %}
+
+{% assign currentQuantity = item.quantity %}
+{% assign lineNumber = forloop.index %}
+{% assign minusQuantity = currentQuantity | minus: 1 %}
+{% if minusQuantity < 0 %}
+	{% assign minusQuantity = 0 %}
+{% endif %}
+{% assign plusQuantity = currentQuantity | plus: 1 %}
+{% assign controlKey = 'limoniapps-discounturl-quantity-' | append: item.key %}
+
+<label for="{{controlKey}}" class="limoniapps-discounturl-cart-quantity-label">{{ 'cart.label.quantity' | t }}</label>
+<div class="limoniapps-discounturl-cart-quantity">
+  <input name="{{controlKey}}" type="text" pattern="[0-9]*" value="{{ currentQuantity }}" min="0" data-line="{{ lineNumber }}" class="limoniapps-discounturl-cart-quantity-input" aria-live="polite" onchange="onLimoniAppsDiscountURLCartQuantityChanged({{lineNumber}}, this.value)" onkeyup="onLimoniAppsDiscountURLCartQuantityKeyup(event, {{lineNumber}})" >
+  <a type="button" class="limoniapps-discounturl-cart-quantity-adjust limoniapps-discounturl-cart-quantity-adjust-minus" aria-label="Reduce item quantity by one" href="/cart/change?line={{lineNumber}}&quantity={{minusQuantity}}">
+	<svg aria-hidden="true" focusable="false" role="presentation" viewBox="0 0 22 3" class="limoniapps-discounturl-cart-quantity-icon limoniapps-discounturl-cart-quantity-icon-minus"><path fill="#000" d="M21.5.5v2H.5v-2z" fill-rule="evenodd"></path></svg>
+  </a>
+  <a type="button" class="limoniapps-discounturl-cart-quantity-adjust limoniapps-discounturl-cart-quantity-adjust-plus" aria-label="Increase item quantity by one" href="/cart/change?line={{lineNumber}}&quantity={{plusQuantity}}">
+	<svg aria-hidden="true" focusable="false" role="presentation" viewBox="0 0 22 21" class="limoniapps-discounturl-cart-quantity-icon limoniapps-discounturl-cart-quantity-icon-minus"><path d="M12 11.5h9.5v-2H12V0h-2v9.5H.5v2H10V21h2v-9.5z" fill="#000" fill-rule="evenodd"></path></svg>
+  </a>
+</div>

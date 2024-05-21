@@ -1,0 +1,41 @@
+{% comment %}
+V1.8 - November 16 2017 - 
+This liquid snippet is used to test the cart functionality offered by Discount URL, an app from Limoni Apps
+Do not remove this snippet
+{% endcomment %}
+
+<h2>Discount URL Cart Test Data</h2>
+<div>
+  <b>Total</b>
+  <ul>
+    <li>Total discount: {{discounturl_cart_discountamount_total}}</li>
+  </ul>
+</div>
+<div>
+  <b>Cart level</b>
+  <ul>
+    <li>Show savings?: {{discounturl_cart_showsavings}}</li>
+    <li>Savings visible: {{discounturl_cart_savings_visible}}</li>
+    <li>Original price: {{discounturl_cart_original_price}}</li>
+    <li>Total price: {{discounturl_cart_price}}</li>
+    <li>Cart level discount: {{discounturl_cart_discountamount_cart}}</li>
+  </ul>
+</div>
+<div>
+  <b>Product level</b>
+  <ul>
+    <li>Show savings?: {{discounturl_lineitem_showsavings}}</li>
+    <li>Savings visible: {{discounturl_lineitem_savings_visible}}</li>
+    <li>Discount amount: {{discounturl_lineitem_discountamount}}</li>
+    <li>Savings label: {{discounturl_lineitem_savingslabel}}</li>
+    <li>Price: {{discounturl_lineitem_price}}</li>
+    <li>Original price: {{discounturl_lineitem_original_price}}</li>
+  </ul>
+</div>
+<div>
+  <b>Line item level</b>
+  <ul>
+    <li>Line price: {{discounturl_lineitem_price_line}}</li>
+    <li>Original line price: {{discounturl_lineitem_original_lineprice}}</li>
+  </ul>
+</div>

@@ -1,0 +1,418 @@
+<style>
+      .imgtext-col img {
+          width: 100%;
+          max-width: 300px !important;
+          margin: 0 0 4rem !important;
+      }
+    body.page-chicago-celebrations .container.main.content {
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 0 !important;
+  }
+      .founderTxtImg .collection_title {
+          font-size: 30px;
+          letter-spacing: 0 !important;
+          text-transform: capitalize;
+      }
+
+      @media only screen and (max-width: 768px) {
+    .page-founder .container {
+        width: 100% !important;
+        padding: 20px !important;
+    }
+    .founderTxtImg .collection_title {
+        font-size: 20px !important;
+    }
+    }
+    .banner-article-img {
+      display: flex;
+      position: relative;
+      height: calc(100vw / 16 * 5.0417);
+      overflow: hidden;
+      max-height: 550px;
+    }
+    .featured-link--half .button {
+      border-radius: 20px;
+    }
+    .banner-article-img img {
+      width: 100%;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .banner-article-img .banner-article-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .banner-article-text p {
+      color: #fff;
+      font-size: 18px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-family: Proxima Nova Rg!important;
+      text-align: center;
+      margin: 0;
+    }
+    .banner-article-text h2 {
+      color: #fff;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-family: Proxima Nova Rg!important;
+      text-align: center;
+      margin: 0;
+    }
+
+    @media only screen and (max-width: 768px) {
+      .banner-article-img {
+        height: auto;
+        max-height: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .banner-article-img .banner-article-text {
+        position: unset;
+        transform: none;
+        padding: 1rem 0;
+      }
+      .banner-article-img img {
+        width: 100%;
+        position: unset;
+        transform: none;
+      }
+      .banner-article-text h2 {
+        color: #000;
+        font-size: 34px;
+      }
+      .banner-article-text p {
+        color: #000;
+      }
+    }
+</style>
+
+{% comment %}
+  ** Image with text (half and half view) - homepage partial **
+  - Draggable section
+  - Uses blocks
+{% endcomment %}
+{% if section.settings['article-image'] != blank %}
+  <div>
+    <div class="banner-article-img">
+      {% if section.settings['article-image'] != blank or section.settings['article-title'] != blank %}
+        {{ section.settings['article-image'] | image_url: width: 1920 | image_tag }}
+      {% endif %}
+      {% if section.settings['article-title'] != blank or section.settings['article-con'] != blank %}
+        <div class="banner-article-text">
+          {% if section.settings['article-con'] != blank %}
+            <p>{{ section.settings['article-con'] }}</p>
+          {% endif %}
+          {% if section.settings['article-title'] != blank %}
+            <h2>{{ section.settings['article-title'] }}</h2>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+{% if section.settings.frontpage_grid_style == 'standard' %}
+  <div class="container">
+{% endif %}
+<div class="featured_collections clearfix across-{{section.settings.featured_links_per_row}} image-align--{{ section.settings.frontpage_image_position }}">
+  {% if section.blocks.size > 0 %}
+    {% for block in section.blocks %}
+      <section
+        class="featured-link--section featured-link--image section-{{ forloop.index }} {{ section.settings.sectionClass }}"
+        {{ block.shopify_attributes }}
+      >
+        <div class="featured-link--half featured-link--image featured-link--margin">
+          <div class="featured-link--wrap">
+            <a
+              {% if block.settings.link != blank %}
+                href="{{ block.settings.link }}"
+              {% endif %}
+            >
+              {% if block.settings.image %}
+                <img
+                  height="auto"
+                  width="100%"
+                  src="{{ block.settings.image | img_url: '100x' }}"
+                  alt="{% if block.settings.image.alt != blank %}{{ block.settings.image.alt | escape }}{% else %}{{ block.settings.title | escape }}{% endif %}"
+                  class="lazyload full-width-image {{ settings.image_loading_style }}"
+                  data-sizes="auto"
+                  data-src="{{ block.settings.image | img_url: '1600x' }}"
+                  data-srcset="
+                    {{ block.settings.image | img_url: '400x' }} 400w,
+                    {{ block.settings.image | img_url: '500x' }} 500w,
+                    {{ block.settings.image | img_url: '600x' }} 600w,
+                    {{ block.settings.image | img_url: '700x' }} 700w,
+                    {{ block.settings.image | img_url: '800x' }} 800w,
+                    {{ block.settings.image | img_url: '900x' }} 900w,
+                    {{ block.settings.image | img_url: '1200x' }} 1200w,
+                    {{ block.settings.image | img_url: '1600x' }} 1600w
+                  "
+                >
+              {% else %}
+                {% capture i %}{% cycle "1", "2", "3", "4", "5", "6" %}{% endcapture %}
+                {{ 'collection-' | append: i | placeholder_svg_tag: 'placeholder-svg placeholder-svg--promotions' }}
+              {% endif %}
+            </a>
+          </div>
+        </div>
+        <div
+          class="featured-link--half {{ block.settings.Class }}"
+          {% if block.settings.colorbg %}
+            style="background-color:{{ block.settings.colorbg }}"
+          {% endif %}
+        >
+          <div class="info text-align--{{section.settings.frontpage_text_align}}">
+            {% if block.settings.textimg %}
+              <div class="imgtext-col"><img src="{{ block.settings.textimg | img_url : 'master'}}"></div>
+            {% endif %}
+            <a
+              {% if block.settings.link != blank %}
+                href="{{ block.settings.link }}"
+              {% endif %}
+              class="collection_title"
+            >
+              {{ block.settings.title }}
+            </a>
+            {% if block.settings.text != blank %}
+              <div class="description">{{ block.settings.text }}</div>
+            {% endif %}
+            {% if block.settings.button_label != blank %}
+              <a
+                {% if block.settings.link != blank %}
+                  href="{{ block.settings.link }}"
+                {% endif %}
+                class="button"
+              >
+                {{ block.settings.button_label }}
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      </section>
+    {% endfor %}
+  {% endif %}
+</div>
+{% if section.settings.frontpage_grid_style == 'standard' %}
+  </div>
+{% endif %}
+
+<style>
+  {% if section.settings.frontpage_grid_style == 'standard' and section.settings.featured_links_per_row == '1' %}
+    .featured-link--section {
+      margin-bottom: 3%;
+    }
+    @media only screen and (max-width: 480px) {
+      .featured-link--section {
+        margin-bottom: 10%;
+      }
+    }
+    .featured-link--half {
+      width: 45%;
+    }
+    .featured-link--margin {
+      {% if section.settings.frontpage_image_position == 'right' %}
+        margin-left: 3%;
+      {% else %}
+        margin-left: 0%;
+        margin-right: 3%;
+      {% endif %}
+    }
+    .featured-link--section:nth-child(even) .featured-link--margin {
+      {% if section.settings.frontpage_image_position == 'right' %}
+        margin-left: 0%;
+        margin-right: 3%;
+      {% else %}
+        margin-left: 3%;
+        margin-right: 0%;
+      {% endif %}
+    }
+  {% elsif section.settings.frontpage_grid_style == 'standard' and section.settings.featured_links_per_row == '2' %}
+    @media only screen and (max-width: 480px) {
+      .featured-link--section {
+        margin-bottom: 10%;
+      }
+    }
+    .featured-link--margin {
+      margin-right: 0%;
+      margin-left: 0%;
+    }
+    .featured-link--section:nth-child(even) .featured-link--margin {
+      margin-left: 0%;
+      margin-right: 0%;
+    }
+  {% endif %}
+</style>
+
+{% schema %}
+{
+  "name": "Chiigo Clelbration",
+  "class": "Custom_img_text_section",
+  "max_blocks": 16,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Banner"
+    },
+    {
+      "type": "image_picker",
+      "id": "article-image",
+      "label": "Banner Image"
+    },
+    {
+      "type": "text",
+      "id": "article-title",
+      "label": "Banner Heading"
+    },
+    {
+      "type": "text",
+      "id": "article-con",
+      "label": "Banner Content"
+    },
+    {
+      "type": "text",
+      "id": "sectionClass",
+      "label": "Section Class"
+    },
+    {
+      "type": "select",
+      "id": "featured_links_per_row",
+      "label": "Images per row",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "frontpage_text_align",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "frontpage_image_position",
+      "label": "First image position",
+      "info": "Subsequent images will appear staggered",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "frontpage_grid_style",
+      "label": "Grid style",
+      "options": [
+        {
+          "value": "standard",
+          "label": "Standard"
+        },
+        {
+          "value": "full_width",
+          "label": "Full width"
+        }
+      ],
+      "default": "full_width"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image with text",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+           {
+          "type": "color",
+          "id": "colorbg",
+          "label": "bg Color"
+        },
+            {
+          "type": "image_picker",
+          "id": "textimg",
+          "label": "second col Image"
+        },
+        {
+          "type": "text",
+          "id": "Class",
+          "label": "Class"
+        },
+        {
+          "type": "liquid",
+          "id": "title",
+          "label": "Heading",
+          "default": "Your headline"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Promotion description appears here.</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "View all"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Button link"
+        }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Chiigo Clelbration",
+    "category": "Image",
+    "settings": {
+      "featured_links_per_row": "1",
+      "frontpage_text_align": "left"
+    },
+    "blocks": [
+      {
+        "type": "image"
+      },
+      {
+        "type": "image"
+      }
+    ]
+  }]
+}
+{% endschema %}

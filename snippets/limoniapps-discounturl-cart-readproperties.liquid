@@ -1,0 +1,33 @@
+{% comment %}
+V1.8 - November 16 2017 - 
+This liquid snippet is used by Discount URL, an app by Limoni Apps
+Do not remove this snippet
+{% endcomment %}
+
+{% assign property_size = item.properties | size %}
+{% if property_size > 0 %}
+  {% for p in item.properties %}
+    {% if p.first == 'limoniapps-discounturl' %}
+	  
+      {% assign discountcodeinfo = p.last | split: '||' %}
+  	  {% assign discountcodeinfo_property_size = discountcodeinfo | size %}
+	  {% if discountcodeinfo_property_size == 11 %}
+		  {% comment %}Set variables{% endcomment %}
+          {% assign discounturl_lineitem_savingslabel = discountcodeinfo[0] %}
+          {% assign discounturl_lineitem_valuetype = discountcodeinfo[1] %}
+          {% assign discounturl_lineitem_value = discountcodeinfo[2] | plus: 0 %}
+          {% assign discounturl_lineitem_pricerule = discountcodeinfo[3] | plus: 0 %}
+          {% assign discounturl_lineitem_showsavings = discountcodeinfo[4] | plus: 0 %}
+          {% assign discounturl_lineitem_original_price = discountcodeinfo[5] | plus: 0.0 | times: 100 %}
+		  {% assign discounturl_lineitem_original_lineprice = discounturl_lineitem_original_price | times: item.quantity %}
+          {% assign discounturl_lineitem_allocationmethod = discountcodeinfo[6] %}
+          {% assign discounturl_lineitem_allowmultiple = discountcodeinfo[7] | plus: 0 %}
+          {% assign discounturl_lineitem_discountcode = discountcodeinfo[8] %}
+          {% assign discounturl_lineitem_roundtocents = discountcodeinfo[10] | plus: 0 %}
+		  {% assign discounturl_lineitem_properties_ok = 1 %}	
+
+	      {% break %}
+	  {% endif %}
+ 	{% endif %}
+  {% endfor %}
+{% endif %}

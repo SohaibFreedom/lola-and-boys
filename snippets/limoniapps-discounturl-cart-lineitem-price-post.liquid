@@ -1,0 +1,35 @@
+{% comment %}
+V1.8 - November 16 2017 - 
+This liquid snippet is used by Discount URL, an app by Limoni Apps
+Do not remove this snippet
+{% endcomment %}
+
+{% if discounturl_lineitem_discountamount > 0 %}
+  {% comment %}Round the discount amount down to the correct number of cents{% endcomment%}		  
+  {% if discounturl_lineitem_roundtocents > -1 %}
+    {% assign discounturl_price_beforerounding = discounturl_lineitem_original_price | minus: discounturl_lineitem_discountamount | floor %} 
+    {% if discounturl_price_beforerounding > 0 %}
+      {% assign discounturl_price_beforerounding_integral = discounturl_price_beforerounding | divided_by: 100 | floor | times: 100 %}
+      {% assign discounturl_price_beforerounding_cents = discounturl_price_beforerounding | minus: discounturl_price_beforerounding_integral | floor %}	
+      {% assign discounturl_price_beforerounding_cents_delta = discounturl_lineitem_roundtocents | minus: discounturl_price_beforerounding_cents %}
+      {% assign discounturl_lineitem_discountamount = discounturl_lineitem_discountamount | minus: discounturl_price_beforerounding_cents_delta %}
+    {% endif %}
+  {% endif %}
+
+  {% comment %}Round the percentage{% endcomment %}
+  {% assign discounturl_lineitem_discountpercentage = discounturl_lineitem_discountpercentage | plus: 0 | round %}   
+
+  {% comment %}Calculate line item savings and price{% endcomment %}    
+  {% assign discounturl_lineitem_price = discounturl_lineitem_original_price | minus: discounturl_lineitem_discountamount %} 
+  {% assign discounturl_lineitem_discountamount_line = discounturl_lineitem_discountamount | times: item.quantity %}   
+  {% assign discounturl_lineitem_price_line = discounturl_lineitem_price | times: item.quantity %} 
+
+  {% comment %}Build item level savings labels{% endcomment %}
+  {% assign discounturl_amount_label = discounturl_lineitem_discountamount | money %}
+  {% assign discounturl_percentage_label = discounturl_lineitem_discountpercentage | append: '%' %} 
+  {% assign discounturl_lineitem_savingslabel = discounturl_lineitem_savingslabel | replace: '[[PERCENTAGE]]', discounturl_percentage_label %}
+  {% assign discounturl_lineitem_savingslabel = discounturl_lineitem_savingslabel | replace: '[[AMOUNT]]', discounturl_amount_label  %}    
+
+  {% comment %}Add line discount to total discount{% endcomment %}
+  {% assign discounturl_discountamount_total = discounturl_discountamount_total | plus: discounturl_discountamount_line %}  
+{% endif %}	

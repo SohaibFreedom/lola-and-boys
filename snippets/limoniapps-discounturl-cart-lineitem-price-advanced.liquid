@@ -1,0 +1,22 @@
+{% include 'wh_calculate_discount' with item, hide_method: 'break' %}
+{% comment %}
+V1.8 - November 16 2017 - 
+This liquid snippet is used by Discount URL, an app by Limoni Apps
+Do not remove this snippet
+{% endcomment %}
+
+{% comment %}Calculate discount amount and percentage{% endcomment %}	
+{% if discounturl_lineitem_allocationmethod == 'each' %}      
+    {% assign discounturl_lineitem_discountpercentage = 0 %}
+    {% if discounturl_lineitem_valuetype == 'percentage' %}
+    	{% assign discounturl_lineitem_discountpercentage = discounturl_lineitem_value %}
+        {% assign discounturl_lineitem_discountamount = discounturl_lineitem_originalprice | times: discounturl_lineitem_discountpercentage | divided_by: 100 %}     	    
+    {% elsif discounturl_lineitem_valuetype == 'amount' %} 
+        {% assign discounturl_lineitem_discountamount = discounturl_lineitem_value | plus: 0 | times: 100 %}
+        {% if wh_price == 0 %}
+           {% assign discounturl_lineitem_discountpercentage = 0 %}
+        {% else %}
+           {% assign discounturl_lineitem_discountpercentage = discounturl_lineitem_discountamount | divided_by: discounturl_lineitem_originalprice | times: 100 %}
+        {% endif %}
+    {% endif %}
+{% endif %}

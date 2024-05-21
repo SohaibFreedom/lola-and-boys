@@ -1,0 +1,32 @@
+<div class="trans-title">
+	<div class="main-container">
+		<div class="row">
+			<div class="wi-100">
+				<div class="trans-title-main">
+					<div class="trans-title-inner">
+						<h2>{{ section.settings.title }}</h2>
+						<h5>{{ section.settings.description }}</h5>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% schema %}
+  {
+    "name": "Trans Title Section",
+    "settings": [
+		{
+          "id": "title",
+          "type": "text",
+          "label": "Title"
+        },
+		{
+          "id": "description",
+          "type": "text",
+          "label": "Description"
+        }
+	]
+  }
+{% endschema %}

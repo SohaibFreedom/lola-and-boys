@@ -1,0 +1,28 @@
+{% comment %}
+V1.8 - November 16 2017 - 
+This liquid snippet is used by Discount URL, an app by Limoni Apps
+Do not remove this snippet
+{% endcomment %}
+
+{% comment %}Check which variants in the cart the promotion applies to{% endcomment %}
+{% if discounturl_cart_allocationmethod == 'each' %}   
+  {% assign discounturl_cart_variantid_array = discounturl_cart_variantids | split: ',' %}
+  {% for variant in discounturl_cart_variantid_array %}
+    {% assign variant_id = variant | plus: 0 %}
+    {% if variant_id == item.variant_id %}
+      {% comment %}Calculate the money amount of the discount{% endcomment %}          
+      {% assign discounturl_lineitem_discountpercentage = 0 %}
+      {% if discounturl_lineitem_valuetype == 'percentage' %}
+          {% assign discounturl_lineitem_discountpercentage = discounturl_lineitem_value %}
+          {% assign discounturl_lineitem_discountamount = discounturl_lineitem_original_price | times: discounturl_lineitem_discountpercentage | divided_by: 100 %}  
+      {% elsif discounturl_lineitem_valuetype == 'amount' %} 
+          {% assign discounturl_lineitem_discountamount = discounturl_lineitem_value | plus: 0 | times: 100 %}
+          {% if discounturl_lineitem_original_price == 0 %}
+             {% assign discounturl_lineitem_discountpercentage = 0 %}
+          {% else %}
+             {% assign discounturl_lineitem_discountpercentage = discounturl_lineitem_discountamount | divided_by: discounturl_lineitem_original_price | times: 100 %}
+          {% endif %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}	
+{% endif %}

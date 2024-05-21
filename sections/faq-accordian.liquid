@@ -1,0 +1,418 @@
+<style>
+                                /* CSS for Tabs and Accordions */
+
+                            .faq-section {
+                            display: flex;
+                            gap: 3rem;
+                        }
+            .faq-new-template h1 {
+              text-align: center;
+              margin-bottom: 5rem;
+              font-size: 36px;
+          }
+          .faq-new-template .light {
+              color: #00000094 !important;
+          }
+                           .faq-new-template {
+
+                              padding: 2rem 0 4rem;
+                          }
+                              .tab-links {
+                                flex-basis: 20%;
+                              }
+                    .tab-button.active {
+                      background: #000;
+                      color: #fff;
+
+                  }
+              .tab-button:hover {
+                  color: #fff !important;
+              }
+              .accordion-button:hover {
+                background: transparent !important;
+                color: #000 !important;
+                border: none !important;
+                box-shadow: none !important;
+                border-bottom: 1px solid #ddd !important;
+            }
+                      .tab-button {
+                          display: block;
+                          padding: 10px;
+                            height: 55px;
+                          width: 100%;
+                          text-align: center;
+                          background: transparent;
+                          color: #000;
+                        font-family: inherit;
+              font-weight: bold;
+                          border: 1px solid;
+
+                      }
+                     .tab-links {
+                        flex-basis: 20%;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 1rem;
+                    }
+
+                              .accordion-container {
+                                flex-basis: 70%;
+                                display: none; /* Initially hide all containers */
+                              }
+
+                              .accordion-item {
+                                margin-bottom: 10px;
+                              }
+
+                          .accordion-button {
+                    width: 100%;
+                    padding: 10px;
+                     justify-content: space-between;
+                    border: none;
+                    background: transparent;
+                    color: #000;
+                    font-family: inherit;
+                    text-transform: capitalize;
+                    font-size: 20px;
+                    height: auto !important;
+                    min-height: auto;
+                            text-align:left !important;
+                    letter-spacing: 0px;
+                    font-weight: 500;
+
+                    padding-bottom: 20px;
+                    border-bottom: 1px solid #ddd;
+                }
+      .faq-new-template .container {
+        padding: 0 3rem;
+    }
+                              .accordion-content {
+                                display: none;
+                                padding: 10px;
+
+                              }
+          @media only screen and (max-width: 768px) {
+        .faq-section {
+            display: flex;
+            gap: 3rem;
+            flex-direction: column;
+        }
+        .faq-new-template h1 {
+
+            margin-bottom: 2rem;
+            font-size: 24px;
+        }
+        .faq-new-template .container {
+            width: 100% !important;
+            padding: 0 30px !important;
+        }
+        span.toggle-sign {
+            margin-left: 12px;
+        }
+            .accordion-button {
+
+          text-align: left;
+          font-size: 16px;
+          line-height: 1.9;
+          padding-bottom: 14px;
+      }
+        }
+        @media only screen and (min-width: 768px) {
+            .faq-new-template .container {
+        width: 100% !important;
+    }
+        }
+    @media only screen and (max-width:1024px) and (min-width:768px) {
+        .accordion-button {
+
+          font-size: 18px;
+          line-height:1.7;
+      }
+
+  }
+</style>
+<div class="faq-new-template">
+  <div class="container">
+    <h1>{{ section.settings.heading }}</h1>
+
+    <div class="faq-section">
+      <!-- Tab Links -->
+      {% if section.settings.show_tabs %}
+        <div class="tab-links">
+          <button class="tab-button active" data-target="#shipping">Shipping</button>
+          <!-- 'active' class added to first tab -->
+          <button class="tab-button" data-target="#returns">Returns</button>
+          <button class="tab-button" data-target="#order-support">Order Support</button>
+          <button class="tab-button" data-target="#refer-earn">Refer & Earn</button>
+          <button class="tab-button" data-target="#discount-rewards">Discount & Rewards</button>
+
+          <!-- Add more tabs as needed -->
+        </div>
+      {% endif %}
+      <!-- Accordions for Shipping -->
+      <div id="shipping" class="accordion-container" style="display: block;">
+        <!-- Initially visible -->
+        <!-- Your shipping accordion items here -->
+        {% for block in section.blocks %}
+          {% if block.type == 'shipping' %}
+            <div class="accordion-item">
+              <button class="accordion-button">
+                {{ block.settings.title }}
+                <span class="toggle-sign">+</span>
+              </button>
+
+              <div class="accordion-content">{{ block.settings.description }}</div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <!-- Accordions for Returns -->
+      <div id="returns" class="accordion-container" style="display: none;">
+        <!-- Initially hidden -->
+        <!-- Your returns accordion items here -->
+        {% for block in section.blocks %}
+          {% if block.type == 'returns' %}
+            <div class="accordion-item">
+              <button class="accordion-button">
+                {{ block.settings.title }}
+                <span class="toggle-sign">+</span>
+              </button>
+
+              <div class="accordion-content">{{ block.settings.description }}</div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <!-- Accordions for store credits -->
+      <div id="order-support" class="accordion-container" style="display: none;">
+        <!-- Initially hidden -->
+        <!-- Your returns accordion items here -->
+        {% for block in section.blocks %}
+          {% if block.type == 'order-support' %}
+            <div class="accordion-item">
+              <button class="accordion-button">
+                {{ block.settings.title }}
+                <span class="toggle-sign">+</span>
+              </button>
+
+              <div class="accordion-content">{{ block.settings.description }}</div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <!-- Accordions for store credits -->
+      <div id="refer-earn" class="accordion-container" style="display: none;">
+        <!-- Initially hidden -->
+        <!-- Your returns accordion items here -->
+        {% for block in section.blocks %}
+          {% if block.type == 'refer-earn' %}
+            <div class="accordion-item">
+              <button class="accordion-button">
+                {{ block.settings.title }}
+                <span class="toggle-sign">+</span>
+              </button>
+
+              <div class="accordion-content">{{ block.settings.description }}</div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <!-- Accordions for store credits -->
+      <div id="discount-rewards" class="accordion-container" style="display: none;">
+        <!-- Initially hidden -->
+        <!-- Your returns accordion items here -->
+        {% for block in section.blocks %}
+          {% if block.type == 'discount-rewards' %}
+            <div class="accordion-item">
+              <button class="accordion-button">
+                {{ block.settings.title }}
+                <span class="toggle-sign">+</span>
+              </button>
+
+              <div class="accordion-content">{{ block.settings.description }}</div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <!-- Add more accordion containers as needed for other tabs -->
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const tabs = document.querySelectorAll('.tab-button');
+    const accordionContainers = document.querySelectorAll('.accordion-container');
+
+    function toggleAccordionContent() {
+      const content = this.nextElementSibling;
+      const sign = this.querySelector('.toggle-sign');
+
+      // Check if the accordion content is currently displayed
+      const isOpen = content.style.display === 'block';
+
+      // Toggle display of the content
+      content.style.display = isOpen ? 'none' : 'block';
+
+      // Toggle the sign
+      sign.textContent = isOpen ? '+' : '-';
+    }
+
+    function activateTab() {
+      let target = this.getAttribute('data-target');
+
+      // Remove 'active' class from all tabs
+      tabs.forEach(tab => {
+        tab.classList.remove('active');
+      });
+      // Add 'active' class to the clicked tab
+      this.classList.add('active');
+
+      // Hide all accordion containers
+      accordionContainers.forEach(container => {
+        container.style.display = 'none';
+      });
+
+      // Show the selected accordion container
+      document.querySelector(target).style.display = 'block';
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', activateTab);
+    });
+
+    document.querySelectorAll('.accordion-button').forEach(button => {
+      button.addEventListener('click', toggleAccordionContent);
+    });
+
+    // Activate the first tab by default
+    tabs[0].click();
+  });
+</script>
+
+{% schema %}
+{
+  "name": "FAQ Tabs",
+  "settings": [
+     {
+          "type": "liquid",
+          "id": "heading",
+          "label": "heading"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_tabs",
+          "label": "show tabs",
+          "default": true
+        }
+
+  ],
+  "blocks": [
+    {
+      "type": "shipping",
+      "name": "Shipping FAQ",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Answer"
+        }
+      ]
+    },
+    {
+      "type": "returns",
+      "name": "Returns FAQ",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Answer"
+        }
+      ]
+    },
+        {
+      "type": "order-support",
+      "name": "Order Support",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Answer"
+        }
+      ]
+    },
+            {
+      "type": "refer-earn",
+      "name": "refer-earn",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Answer"
+        }
+      ]
+    },
+             {
+      "type": "discount-rewards",
+      "name": "Discount Rewards",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Answer"
+        }
+      ]
+    }
+
+  ],
+  "presets": [
+    {
+      "name": "FAQ Tabs",
+      "category": "Custom",
+      "settings": {
+
+      },
+      "blocks": [
+        {
+          "type": "shipping"
+
+        },
+        {
+          "type": "returns"
+
+        }
+
+      ]
+    }
+  ]
+}
+{% endschema %}

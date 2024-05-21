@@ -1,0 +1,59 @@
+            {% include 'wh_calculate_discount' with product, hide_method: 'break' %}
+{% comment %}
+V1.8 - November 16 2017 - 
+This liquid snippet is used by Discount URL, an app from Limoni Apps
+This snippet should be included at the bottom of your theme's layout liquid file
+Do not remove this snippet
+{% endcomment %}
+
+<script>
+  window.limoniapps_discounturl_liquid = {
+    MoneyFormat: "{{shop.money_with_currency_format | replace: '"', "'"}}",
+    Customer: null,
+    Cart: {{ cart | json }},
+    Product: null,
+    ProductVariants: null
+  }
+  
+  {% if customer %}
+  window.limoniapps_discounturl_liquid.Customer = {
+    Id: {{ customer.id }},
+    Email: "{{ customer.email }}",
+    Tags: {{ customer.tags | json }},
+    FirstName: "{{ customer.first_name }}",
+    LastName: "{{ customer.last_name }}"
+  };
+  {% endif %}
+    
+  {% if product %}
+    if (window.limoniapps_discounturl_liquid.Product === null) window.limoniapps_discounturl_liquid.Product = {};
+    window.limoniapps_discounturl_liquid.Product.Id = {{ product.id }};
+    window.limoniapps_discounturl_liquid.Product.VariantId = {{ product.first_available_variant.id }};
+    
+    if (window.limoniapps_discounturl_liquid.ProductVariants === null) window.limoniapps_discounturl_liquid.ProductVariants = [];
+    {% for variant in product.variants limit: 20 %}
+     {% include 'wh_variant' with variant %}
+  		{% comment %}Add inventory quantity if it is tracked{% endcomment %}
+  		{% assign inventory_quantity = variant.inventory_quantity %}
+        {% if variant.inventory_management == nil %}
+        	{% assign inventory_quantity = 'null' %}
+        {% endif %}
+     	
+        {% comment %}Add compare at price if available (if not, default to price){% endcomment %}
+  		{% assign compare_at_or_product_price = wh_v_compare_at_price %}
+   		{% if compare_at_or_product_price == nil %}
+   			{% assign compare_at_or_product_price = wh_v_price %}
+   		{% endif %}
+          
+        {% comment %}Add to array{% endcomment %}
+  		var variantInfo_{{ forloop.index }} = { VariantId: {{variant.id}}, Price: {{ wh_v_price }}, CompareAtPrice: {{ compare_at_or_product_price }}, Inventory: {{ inventory_quantity }} };
+  		window.limoniapps_discounturl_liquid.ProductVariants.push(variantInfo_{{ forloop.index }});                                                               
+  	{% endfor %}
+  {% endif %}   
+        
+  {% if variant %}
+  	if (window.limoniapps_discounturl_liquid.Product === null) window.limoniapps_discounturl_liquid.Product = {};
+  	window.limoniapps_discounturl_liquid.Product.VariantId = {{ variant.id }};    
+  {% endif %}   
+</script>
+          

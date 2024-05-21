@@ -1,0 +1,102 @@
+.blog-main-wrapper {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 2rem;
+}
+ul.social-link-list-sidebar {
+  margin: 2rem 0;
+}
+.article-custom-wrapper-main li {
+  list-style: inherit !important;
+}
+.article-custom-wrapper-main {
+  padding-right: 2rem;
+  border-right: 1px solid #dddddd;
+}
+.social-platfrom {
+  font-weight: 400 !important;
+  font-family: Karla, sans-serif;
+  font-size: 12px;
+}
+.blog_inner_post_date {
+  font-size: 13px;
+  color: #7a7a7a !important;
+}
+.social-link-list-sidebar {
+  display: grid;
+  grid-template-columns: 1fr 1fr !important;
+  row-gap: 3px;
+  column-gap: 10px;
+}
+ul.social-link-list-sidebar {
+  padding: 0 !important;
+}
+ul.social-link-list-sidebar li {
+  border: 1px solid #e1e1e1;
+  margin-bottom: 10px;
+  padding: 9px;
+}
+.article-grid-wrapper-main {
+  padding-right: 2rem;
+  border-right: 1px solid #dddddd;
+}
+.article-grid-wrapper-main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+ul.social-link-list-sidebar svg {
+  width: 20px !important;
+  height: 20px;
+}
+.blog_sidebar_heading {
+  width: 100% !important;
+  display: block;
+  text-align: left !important;
+  padding: 5px 10px !important;
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+.article-card-content {
+  padding: 0 1rem;
+}
+.article-card-item {
+  box-shadow: 0 0.25rem 0.5625rem -0.0625rem #00000008,
+    0 0.275rem 1.25rem -0.0625rem #0000000d !important;
+}
+.side-bar-articles-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 14px;
+  margin-bottom: 2rem;
+}
+.article-card-title {
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: 5px;
+}
+.article-card__excerpt {
+  color: #767676;
+  font-size: 14px;
+}
+.blog_sidebar_content,
+.blog_sidebar a {
+  color: #000 !important;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+@media only screen and (max-width: 768px) {
+  .blog-main-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .article-grid-wrapper-main {
+    grid-template-columns: 1fr;
+    padding: 0 !important;
+    border: none !important;
+  }
+  body.blog-alternate #shopify-section-blog-template-2 {
+    margin-top: 0 !important;
+  }
+}

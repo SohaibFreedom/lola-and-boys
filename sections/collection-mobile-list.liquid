@@ -1,0 +1,113 @@
+<div class="collection_list_section" style="background: {{ section.settings.bg_color }};">
+  <ul class="collection_list">
+    {%- for block in section.blocks -%}
+    	{%- if block.type == 'collection_list' -%}
+    		{%- if block.settings.linktext != blank and block.settings.collection_link != blank -%}
+    		<li><a href="{{ block.settings.collection_link }}">{{ block.settings.linktext }}</a></li>
+    		{%- endif -%}
+    	{%- endif -%}
+    {%- endfor -%}
+  </ul>
+</div>
+
+<style>
+  @media(min-width: 768px){
+    .collection_list_section_wrapper{
+    	display:none;
+    }
+  }
+  
+  @media(max-width: 767px){
+    ul.collection_list {
+      margin: 0 auto;
+      padding: 0;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+    }
+    ul.collection_list li{
+      margin: 0;
+      max-width: 50%;
+      width: 100%;
+      padding: 12px;
+      text-align: center;
+      border-right: 2px solid #eaeaea;
+      border-bottom: 2px solid #eaeaea;
+      border-color: {{ section.settings.border_color }};
+    }
+    ul.collection_list li:nth-child(2n+2){
+    	border-right: 0px;
+    }
+    ul.collection_list li:nth-last-of-type(2), ul.collection_list li:nth-last-of-type(1) {
+      border-bottom: 0px;
+    }
+    ul.collection_list li a{
+      display: inline-block;
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: capitalize;
+      color: {{ section.settings.text_color }};
+    }
+    .slideshow-section + .collection_list_section_wrapper {
+      margin-top: -39px;
+    }
+  }
+  
+  
+</style>
+
+{% schema %}
+  {
+    "name": "Collection List Mobile",
+	"class": "collection_list_section_wrapper",
+    "settings": [
+		{
+          "type" : "color",
+          "id" : "bg_color",
+          "label" : "Section Background Color"
+        },
+		{
+          "type" : "color",
+          "id" : "text_color",
+          "label" : "Text Color"
+        },
+		{
+          "type" : "color",
+          "id" : "border_color",
+          "label" : "Border Color"
+        }
+	],
+    "blocks":[
+      {
+        "type" : "collection_list",
+        "name" : "Collection List",
+        "settings" : [
+          {
+			"type" : "url",
+            "id" : "collection_link",
+            "label" : "Collection Link"
+          },
+          {
+			"type" : "text",
+            "id" : "linktext",
+            "label" : "Title"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection List Mobile",
+        "category": "Collection List Mobile"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

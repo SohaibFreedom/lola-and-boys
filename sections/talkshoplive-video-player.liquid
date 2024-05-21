@@ -1,0 +1,241 @@
+<style>
+    .tsl_data_container {
+        max-width: 95%;
+        min-width: 250px;
+        margin: 0 auto;
+        overflow: auto;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        width: 100%;
+    }
+    @media only screen and (max-width: 600px) {
+        .tsl_title_wrapper {
+            padding: 0 15px;
+        }
+    }
+</style>
+
+<div >
+    <div class='tsl_data_container'>
+        <{{section.settings.tsl_text_style}} class='tsl_title_wrapper' style='text-align: {{section.settings.tsl_text_align}}' >{{ section.settings.tsl_section_header }}</{{section.settings.tsl_text_style}}>
+      <div class='tsl-container'
+           data-view='{{ section.settings.tsl_data_view }}'
+           data-type='{{ section.settings.tsl_data_type }}'
+
+              {% if section.settings.tsl_data_type == "channel" %}
+                  data-modus='{{ section.settings.tsl_channel_code }}'
+              {% endif %}
+              {% unless product.title == "channel" %}
+                  data-modus='{{ section.settings.tsl_show_code }}'
+              {% endunless %}
+
+              {% if section.settings.tsl_eventId != "" %}
+                  data-eventid='{{ section.settings.tsl_eventid}}'
+              {% endif %}
+
+              {% if section.settings.tsl_data_accesscode != blank %}
+                  data-accesscode='{{ section.settings.tsl_data_accesscode}}'
+              {% endif %}
+
+              {% if section.settings.tsl_border_width == true %}
+                  data-style-border-width='1'
+              {% elsif section.settings.tsl_border_width == false%}
+                  data-style-border-width='0'
+              {% endif%}
+
+              {% if section.settings.tsl_rounded_corners == true %}
+                  data-style-border-radius='1'
+              {% elsif section.settings.tsl_rounded_corners == false%}
+                  data-style-border-radius='0'
+              {% endif %}
+
+           data-style-border-color='{{section.settings.tsl_border_color}}'
+
+           data-style-theme='{{ section.settings.tsl_theme_style}}'
+      >
+      </div>
+    </div>
+</div>
+
+
+{% schema %}
+{
+"name": "TalkShopLive Player",
+"class": "index-section index-section--featured-product",
+"settings": [
+{
+"type": "header",
+"content": "Embed Settings"
+},
+{
+"type": "select",
+"id": "tsl_data_type",
+"label": "Embed Type",
+"default": "channel",
+"options": [
+{
+"label": "Channel",
+"value": "channel"
+},
+{
+"label": "Show",
+"value": "show"
+}
+]},
+{
+"type": "select",
+"id": "tsl_data_view",
+"label": "Embed View",
+"default": "products",
+"options": [
+{
+"label": "Condensed",
+"value": "default"
+},
+{
+"label": "Chat",
+"value": "chat"
+},
+{
+"label": "Products",
+"value": "products"
+}
+]
+},
+{
+"type": "checkbox",
+"id": "tsl_border_width",
+"label": "Include border ",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "tsl_rounded_corners",
+"label": "Rounded border corners",
+"default": true
+},
+{
+"type": "color",
+"id": "tsl_border_color",
+"label": "Border Color",
+"default": "#D9D9D9"
+},
+{
+"type": "select",
+"id": "tsl_theme_style",
+"label": "Embed Theme Style",
+"default": "light",
+"options": [
+{
+"label": "Light",
+"value": "light"
+},
+{
+"label": "Dark",
+"value": "dark"
+}
+]
+},
+{
+"type": "header",
+"content": "Header Settings"
+},
+{
+"type": "text",
+"id": "tsl_section_header",
+"default" : "Live Shopping",
+"label": "Section Header"
+},
+{
+"type": "select",
+"id": "tsl_text_style",
+"label": "Section Header Text Style",
+"default": "h1",
+"options": [
+{
+"label": "H1",
+"value": "h1"
+},
+{
+"label": "H2",
+"value": "h2"
+},
+{
+"label": "H3",
+"value": "h3"
+},
+{
+"label": "H4",
+"value": "h4"
+},
+{
+"label": "H5",
+"value": "h5"
+},
+{
+"label": "Normal",
+"value": "p"
+}
+]
+},
+{
+"type": "select",
+"id": "tsl_text_align",
+"label": "Section Header Align",
+"default": "center",
+"options": [
+{
+"label": "Center",
+"value": "center"
+},
+{
+"label": "Left",
+"value": "left"
+},
+{
+"label": "Right",
+"value": "right"
+}
+]
+},
+{
+"type": "header",
+"content": "Channel Settings"
+},
+{
+"type": "text",
+"id": "tsl_channel_code",
+"label": "Channel Code",
+"default" : "lolatheboys",
+"info": "Your channel code : lolatheboys"
+},
+{
+"type": "header",
+"content": "Show Settings"
+},
+{
+"type": "text",
+"id": "tsl_show_code",
+"label": "Show Key",
+"info": "Required if Embed Type is Show"
+},
+{
+"type": "text",
+"id": "tsl_eventid",
+"label": "Stream Id",
+"info": "Optional"
+},
+{
+"type": "text",
+"id": "tsl_data_accesscode",
+"label": "Private Access Code",
+"info": "Optional"
+}
+],
+"presets": [
+{
+"name": "TalkShopLive Player"
+}
+]
+}
+{% endschema %}

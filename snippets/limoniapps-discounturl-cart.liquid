@@ -1,0 +1,47 @@
+{% comment %}
+V1.8 - November 16 2017 - 
+This liquid snippet is used by Discount URL, an app by Limoni Apps
+This snippet should be included in the cart page before the { for item in cart.items } loop
+Do not remove this snippet
+{% endcomment %}
+
+{% comment %}Default values{% endcomment %}
+{% assign discounturl_cart_discountamount_cart = 0.0 %}
+{% assign discounturl_cart_discountpercentage = 0.0 %}
+{% assign discounturl_cart_savingslabel = '' %}
+{% assign discounturl_cart_eligibleproducts_price = 0 %}
+{% assign discounturl_cart_original_price = cart.total_price %}
+
+{% comment %}If multiple rules are not allowed check for 'each' rule on cart level{% endcomment %}
+{% assign discounturl_cart_attributes_ok = 0 %}
+{% include 'limoniapps-discounturl-cart-readattributes' %}
+
+{% comment %}Calculate cart savings and prices{% endcomment %}
+{% if discounturl_cart_attributes_ok == 1 %}
+  {% assign discounturl_cart_eligibleproducts_price = discounturl_cart_price %}
+  {% include 'limoniapps-discounturl-cart-price' %}
+{% endif %}
+
+{% comment %}Add the discount to the total cart discount{% endcomment %}
+{% assign discounturl_cart_discountamount_total = discounturl_cart_discountamount_total | plus: discounturl_cart_discountamount_cart %}
+
+{% if discounturl_cart_showsavings == 1 %}
+    {% comment %}Calculate the percentage the amount represents of the total cart value{% endcomment %}
+    {% if discounturl_cart_price == 0 %}
+        {% assign discounturl_cart_percentage_cart = 0 %}
+    {% else %}
+        {% assign discounturl_cart_percentage_cart = discounturl_cart_discountamount_total | times: 100.0 | divided_by: discounturl_cart_original_price %}
+    {% endif %}	
+	{% comment %}Build cart level savings labels{% endcomment %}
+    {% assign discounturl_discount_cartlevel_amount_label = discounturl_cart_discountamount_total | money %}
+    {% assign discounturl_discount_cartlevel_percentage_label = discounturl_cart_percentage_cart | round | append: '%' %} 
+    {% assign discounturl_cart_savingslabel = discounturl_cart_savingslabel | replace: '[[PERCENTAGE]]', discounturl_discount_cartlevel_percentage_label %}
+    {% assign discounturl_cart_savingslabel = discounturl_cart_savingslabel | replace: '[[AMOUNT]]', discounturl_discount_cartlevel_amount_label %}   
+{% endif %}
+
+{% comment %}Decide if a label should be shown at cart level{% endcomment %}
+{% if discounturl_cart_showsavings == 1 and discounturl_cart_discountamount_total > 0 %}
+	{% assign discounturl_cart_savings_visible = true %}
+{% else %}
+    {% assign discounturl_cart_savings_visible = false %}
+{% endif %}

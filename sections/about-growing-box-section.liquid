@@ -1,0 +1,46 @@
+<div class="about-form-section growing-box-content">
+	<div class="main-container">
+		<div class="row">
+			<div class="wi-100">
+				<div class="about-form-box">
+					<div class="about-form-box-inner">
+						<h3>{{ section.settings.title }}</h3>
+						<p>{{ section.settings.description }}</p>
+						<div class="button">
+                          	
+							<a href="{{ section.settings.btn_link }}" class="lola-and-btn">{{ section.settings.btn_title }}</a>
+                          	
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% schema %}
+  {
+    "name": "About Growing Box Section",
+    "settings": [
+		{
+          "id": "title",
+          "type": "text",
+          "label": "Title"
+        },
+		{
+          "id": "description",
+          "type": "text",
+          "label": "Description"
+        },
+		{
+          "id": "btn_link",
+          "type": "text",
+          "label": "Button Link"
+        },
+		{
+          "id": "btn_title",
+          "type": "text",
+          "label": "Button Title"
+        }
+	]
+  }
+{% endschema %}

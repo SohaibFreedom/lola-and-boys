@@ -1,0 +1,42 @@
+<div class="about-page-listing">
+	<div class="about-listing-inner">
+		<div class="row">
+			<div class="wi-100">
+				<div class="trans-title-main">
+					<div class="trans-title-inner">
+						<h2>500 + BRANDS</h2>
+						<h5>...AND CARRY OVER 500 BRANDS SUCH AS:</h5>
+					</div>
+				</div>
+			</div>
+			<div class="wi-100">
+				{%- for collection in collections -%}
+              
+              		{% if collection.handle == 'best-sellers' or collection.handle == 'holiday-selections' or collection.handle == 'spring-2021' or collection.handle == 'fall-20' or collection.handle == 'unicorn-collection' or collection.handle == 'mommy-me' or collection.handle == 'boys-lounge-wear-set' %}
+                  
+                
+                        <div class="about-listing">
+                          <h4>{{ collection.title }}</h4>
+
+                          <a href="{{ collection.url }}">
+                            View Full List
+                          </a>
+                          <ul>
+                            {% for product in collection.products %}
+                            <li><a href="{{ product.url }}"> {{ product.title }}</a> </li>
+                            {% endfor %}
+                          </ul>
+                        </div>
+              		{% endif %}
+				{%- endfor -%}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% schema %}
+  {
+    "name": "Page listing Section",
+    "settings": []
+  }
+{% endschema %}

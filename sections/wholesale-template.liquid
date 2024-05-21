@@ -1,0 +1,117 @@
+{% include 'shogun-products', content: page %}
+<a name="pagecontent" id="pagecontent"></a>
+
+<div class="sixteen columns page clearfix">
+  <h1>
+    {{ page.title }}
+  </h1>
+  <div class="feature_divider"></div>
+
+  <div>
+    {% include 'page-multi-column', content: page.content %}
+    <!-- /templates/page.wholesale.liquid -->
+
+
+<div class="rte">
+{{ page.content }}
+</div>
+
+    {% form 'customer' %}
+<div class="sixteen columns page clearfix">
+  <div class="eight columns alpha">
+    <label for="customerBusiessName">Business Name</label>
+    <input type="text"
+      name="customer[name]"
+      id="customerBusinessName"
+      autocorrect="off"
+      autocapitalize="off"
+      autocomplete="text"
+      placeholder="Business Name"
+      required="required"     >
+  </div>
+  <div class="eight columns alpha">
+    <label for="customerResaleCertificate">Resale Certificate</label>
+    <input type="file"
+      name="customer[certificate]"
+      id="customerCertificate"
+      required="required"    
+      accept="image/*, .jpg"     
+      style="border:#ccc 1px solid; width:100%; padding:9px 5px"  >
+  </div>
+</div>
+<div class="sixteen columns page clearfix">    
+  <div class="eight columns alpha">
+    <label for="customerStorePhoto">Store Front Photos</label>
+    <input type="file"
+      name="customer[StorePhotos]"
+      id="customerStorePhotos"
+      required="required"
+      accept="image/*, .jpg"     
+      style="border:#ccc 1px solid; width:100%; padding:9px 5px"  >
+  </div>  
+    
+  <div class="eight columns alpha">
+    <label for="customerBusinessEin">Business EIN</label>
+    <input type="text"
+      name="customer[BusinessEin]"
+      id="customerBusinessEin"
+      required="required"     
+      placeholder="Business EIN">
+  </div>
+</div>
+<div class="sixteen columns page clearfix">    
+  <div class="eight columns alpha">
+    <label for="customerName">Name</label>
+    <input type="text"
+      name="customer[Name]"
+      id="customerName"
+      required="required"     
+      placeholder="Name">
+  </div> 
+  <div class="eight columns alpha">
+    <label for="customerEmail">Email</label>
+    <input type="email"
+      name="customer[Email]"
+      id="customerEmail"
+      required="required"     
+      placeholder="Email">
+  </div>
+</div>
+<div class="sixteen columns page clearfix">    
+  <div class="sixteen columns alpha">
+    <label for="customerPhone">Phone Number</label>
+    <input type="text"
+      name="customer[Phone]"
+      id="customerContatct"
+      required="required"     
+      placeholder="Phone Number">
+  </div>
+</div>  
+<div class="sixteen columns page clearfix">
+    <label for="customerMessage">Message</label>
+    <textarea name="customer[Message]" id="customerMessage" placeholder="Message" required="required"></textarea>
+  </div>  
+    
+<div class="sixteen columns page clearfix">    
+
+  <input type="submit" value="Send Message" />
+</div>
+{% endform %}
+
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Wholesale",
+	"class": "wholesale-section",
+    "settings": []
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

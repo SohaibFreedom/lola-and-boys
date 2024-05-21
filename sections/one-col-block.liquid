@@ -1,0 +1,118 @@
+{{ 'catalogue.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="catalogue-template-custom"
+  style="background: url('{{ section.settings.bg_image | img_url: 'master' }}') no-repeat center center; background-size: cover; padding-top: {{ section.settings.padding_top }}"
+>
+  <div class="one-column-section">
+    {% for block in section.blocks %}
+      {% if block.type == 'one_col_block' %}
+        <!-- One Column Block -->
+        <div class="one-col-block">
+          {% if block.settings.show_plus %}
+            <div
+              class="toggle-wrapper"
+              style="top:{{ block.settings.top_onecol }}; left:{{ block.settings.left_onecol }};"
+            >
+              <div class="toggleButton icon plus">+</div>
+              <div
+                class="details-lookbook hidden"
+                style="{% if block.settings.detail_top %}top:{{ block.settings.detail_top }};{% endif %}{% if block.settings.detail_bottom %} bottom:{{ block.settings.detail_bottom }};{% endif %} {% if block.settings.detail_left %}left:{{ block.settings.detail_left }};{% endif %} "
+              >
+                <span class="close-button">×</span>
+                <img src="{{ section.settings.bg_image | img_url:'400x400'}}">
+                <h2>{{ block.settings.title_onecol }}</h2>
+                <p>{{ block.settings.price_onecol }}</p>
+                <a href="{{ block.settings.link_onecol }}" class="viewDetails">View Details</a>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "One Column Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image",
+      "info": "Upload an image to use as the background"
+    },
+    {
+      "type": "text",
+      "id": "padding_top",
+      "label": "Padding Top"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "one_col_block",
+      "name": "One Column Block",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_plus",
+          "label": "Show Plus Icon",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "title_onecol",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "price_onecol",
+          "label": "Price"
+        },
+        {
+          "type": "url",
+          "id": "link_onecol",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "top_onecol",
+          "label": "Top Position"
+        },
+        {
+          "type": "text",
+          "id": "left_onecol",
+          "label": "Left Position"
+        },
+         {
+     "type": "header",
+     "content": "Detail bar"
+    },
+              {
+          "type": "text",
+          "id": "detail_top",
+          "label": "Top Position"
+        },
+        {
+          "type": "text",
+          "id": "detail_left",
+          "label": "Left Position"
+        },
+              {
+          "type": "text",
+          "id": "detail_bottom",
+          "label": "bottom Position"
+        }
+
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "One Column Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

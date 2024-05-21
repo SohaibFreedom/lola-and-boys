@@ -1,0 +1,101 @@
+<style>
+      .liquid-with-img {
+      display: flex;
+      align-items: stretch;
+    }
+
+    .liquid-with-img .background-image-col {
+      flex-basis: 50%;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .liquid-with-img .content-col {
+      flex-basis: 50%;
+      padding: 20px;
+    }
+    @media (max-width: 768px) {
+        .custom-section.liquid-with-img {
+      flex-direction: column;
+  }
+    .liquid-with-img .background-image-col {
+      height: 500px !important;
+      flex-basis: auto !important;
+  }
+    }
+</style>
+
+{% if section.settings.image_position == 'left' %}
+  <div class="custom-section liquid-with-img" id="{{ section.settings.custom_id }}">
+    <div
+      class="background-image-col"
+      style="background-image: url('{{ section.settings.background_image | img_url:"master" }}');"
+    ></div>
+    <div class="content-col">
+      {{ section.settings.liquid_content }}
+    </div>
+  </div>
+{% else %}
+  <div class="custom-section liquid-with-img" id="{{ section.settings.custom_id }}">
+    <div class="content-col">
+      {{ section.settings.liquid_content }}
+    </div>
+    <div
+      class="background-image-col"
+      style="background-image: url('{{ section.settings.background_image | img_url:"master" }}');"
+    ></div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "image with liquid",
+  "settings": [
+    {
+      "id": "background_image",
+      "type": "image_picker",
+      "label": "Background Image"
+    },
+       {
+      "id": "custom_id",
+      "type": "text",
+      "label": "Custom Id"
+    },
+    {
+      "id": "image_position",
+      "type": "select",
+      "label": "Image Position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "id": "liquid_content",
+      "type": "liquid",
+      "label": "Liquid Content"
+
+    },
+      {
+      "id": "heading_top",
+      "type": "text",
+      "label": "Heading"
+
+    }
+  ],
+    "presets": [
+    {
+      "name": "image with liquid",
+      "category": "Custom"
+
+    }
+  ]
+}
+{% endschema %}

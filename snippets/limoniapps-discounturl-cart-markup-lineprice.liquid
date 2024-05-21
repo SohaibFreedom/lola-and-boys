@@ -1,0 +1,17 @@
+{% comment %}
+V1.8 - November 16 2017 - 
+This liquid snippet is used by Discount URL, an app from Limoni Apps
+This snippet should be included in the cart page to display the line price
+Example: '20€ (strikethrough: 30€)'
+Do not remove this snippet
+{% endcomment %}
+
+<span class="limoniapps-discounturl-lineprice-compareat-before">
+  <s>{{ discounturl_lineitem_original_lineprice | money }}</s>&nbsp;
+</span>
+<span class="limoniapps-discounturl-lineprice">
+  {{ discounturl_lineitem_price_line | ceil | money }}
+</span>
+<span class="limoniapps-discounturl-lineprice-compareat-after">
+  &nbsp;<s>{{ discounturl_lineitem_original_lineprice | money }}</s>
+</span>

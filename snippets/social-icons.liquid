@@ -1,0 +1,56 @@
+<ul class="social_icons">
+  {% if settings.twitter_link != '' %}
+    <li><a href="{{ settings.twitter_link }}" title="{{ shop.name }} on Twitter" rel="me" target="_blank" class="icon-twitter"></a></li>
+  {% endif %}
+
+  {% if settings.facebook_link != '' %}
+    <li><a href="{{ settings.facebook_link }}" title="{{ shop.name }} on Facebook" rel="me" target="_blank" class="icon-facebook"></a></li>
+  {% endif %}
+
+  {% if settings.google_link != '' %}
+    <li><a href="{{ settings.google_link }}" title="{{ shop.name }} on Google+" rel="publisher" target="_blank" class="icon-gplus"></a></li>
+  {% endif %}
+
+  {% if settings.youtube_link != '' %}
+    <li><a href="{{ settings.youtube_link }}" title="{{ shop.name }} on YouTube" rel="me" target="_blank" class="icon-youtube"></a></li>
+  {% endif %}
+
+  {% if settings.vimeo_link != '' %}
+    <li><a href="{{ settings.vimeo_link }}" title="{{ shop.name }} on Vimeo" rel="me" target="_blank" class="icon-vimeo"></a></li>
+  {% endif %}
+
+  {% if settings.pinterest_link != '' %}
+    <li><a href="{{ settings.pinterest_link }}" title="{{ shop.name }} on Pinterest" rel="me" target="_blank" class="icon-pinterest"></a></li>
+  {% endif %}
+
+  {% if settings.tumblr_link != '' %}
+    <li><a href="{{ settings.tumblr_link }}" title="{{ shop.name }} on Tumblr" rel="me" target="_blank" class="icon-tumblr"></a></li>
+  {% endif %}
+
+  {% if settings.instagram_link != '' %}
+    <li><a href="{{ settings.instagram_link }}" title="{{ shop.name }} on Instagram" rel="me" target="_blank" class="icon-instagram"></a></li>
+  {% endif %}
+
+  {% if settings.snapchat_link != '' %}
+    <li><a href="{{ settings.snapchat_link }}" title="{{ shop.name }} on Snapchat" rel="me" target="_blank" class="icon-snapchat"></a></li>
+  {% endif %}
+
+  {% if settings.houzz_link != '' %}
+    <li><a href="{{ settings.houzz_link }}" title="{{ shop.name }} on Houzz" rel="me" target="_blank" class="icon-houzz"></a></li>
+  {% endif %}
+
+  {% if settings.linkedin_link != '' %}
+    <li><a href="{{ settings.linkedin_link }}" title="{{ shop.name }} on LinkedIn" rel="me" target="_blank" class="icon-linkedin"></a></li>
+  {% endif %}
+
+  {% if settings.email_link != '' %}
+    <li><a href="mailto:{{ settings.email_link }}" title="Email {{ shop.name }}" target="_blank" class="icon-mail"></a></li>
+  {% endif %}
+
+  {% if settings.tiktok_link != '' %}
+    <li><a href="{{ settings.tiktok_link }}" title="{{ shop.name }} On TikTok" target="_blank" class="icon-tiktok">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="22" fill="#fff"><path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"></path></svg>
+    </a></li>
+  {% endif %}
+  
+</ul>

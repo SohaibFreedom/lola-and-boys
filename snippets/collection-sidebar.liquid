@@ -1,0 +1,207 @@
+<div class="sidebar four columns toggle-all--true"> 
+  	<div class="sidebar-wrap"> 
+  		<div class="sidebar-block"> 
+  			<h4 class="toggle">Collections<span class="right icon-down-arrow"></span></h4>  
+        {% if collection.handle == 'womens' or collection.handle == 'womens-nightwear' or collection.handle == 'womens-maxi' or collection.handle == 'womens-dresses' or collection.handle == 'womens-midi' or collection.handle == 'womans-tees' or collection.handle == 'womens-tops' or collection.handle == 'womens-outerwear' or collection.handle == 'parkas' or collection.handle == 'womens-parkas-furs' or collection.handle == 'womens-jackets-bombers' or collection.handle == 'womens-sweaters-sweatshirts' %}
+                {% for link in linklists.main-menu.links %}
+       			        {% if link.url == '/collections/womens' %}
+                      {% if link.links != blank %}
+            					<div class="toggle_list">
+                        {% for child_link in link.links %}  
+            		          <h2 id="side-sub-nav-1" class="h5 u-margin-b--none"><a href= "{{ child_link.url }}">{{ child_link.title }}</a></h2>
+                            {% if child_link.links != blank %}
+                              <ul class="toggle_list">
+                                <li> <a href= "{{ child_link.url }}">{{ child_link.title }}</a></li>
+                                  {% for grandchild_link in child_link.links %}  
+                                    <li><a href= "{{ grandchild_link.url }}">{{ grandchild_link.title }}</a></li>
+                                  {% endfor %}
+                              </ul>
+                            {% endif %}  
+                        {% endfor %}
+                      </div>
+                      {% endif %}   
+                    {% endif %}
+                {% endfor %}
+  			{% endif %}
+
+        {% if collection.handle == 'boys' or collection.handle == 'boys-fall-collection' or collection.handle == 'boys-shoes-sneakers' or collection.handle == 'boys-swimwear' or collection.handle == 'boys-tops' or collection.handle == 'boys-button-ups' or collection.handle == 'boys-shorts' or collection.handle == 'boys-pants' or collection.handle == 'boys-outerwear' or collection.handle == 'boys-jackets-bombers' or collection.handle == 'parkas' or collection.handle == 'boys-outerwear-denim' or collection.handle == 'boys-bottoms' or collection.handle == 'boys-sweaters-sweatshirts'  or collection.handle == 'boys-bottoms-denim' %}
+
+          {% for link in linklists.main-menu.links %}
+               {% if link.url == '/collections/boys' %}
+                {% if link.links != blank %}
+                  <div class="toggle_list">
+                      {% for child_link in link.links %}  
+                    
+                      <h2 id="side-sub-nav-1" class="h5 u-margin-b--none"><a href= "{{ child_link.url }}">{{ child_link.title }}</a></h2>
+                      {% if child_link.links != blank %}
+                        <ul class="toggle_list">
+                          <li> <a href= "{{ child_link.url }}">{{ child_link.title }}</a></li>
+                        {% for grandchild_link in child_link.links %}  
+                          <li><a href= "{{ grandchild_link.url }}">{{ grandchild_link.title }}</a></li>
+                        {% endfor %}
+                        </ul>
+                      {% endif %}  
+                      {% endfor %}
+                  </div>
+                {% endif %}   
+              {% endif %}
+          {% endfor %}
+      {% endif %}
+
+  {% if collection.handle == 'sale' or collection.handle == 'clearance' or collection.handle == 'womans-sale' or collection.handle == 'boys-sale' or collection.handle == 'girls-sale'  %}
+    {% for link in linklists.main-menu.links %}
+        {% if link.url == '/collections/sale' %}
+          {% if link.links != blank %}
+            <div class="toggle_list">
+              {% for child_link in link.links %}  
+              <h2 id="side-sub-nav-1" class="h5 u-margin-b--none"><a href= "{{ child_link.url }}">{{ child_link.title }}</a></h2>
+              {% if child_link.links != blank %}
+                <ul class="toggle_list">
+                  <li> <a href= "{{ child_link.url }}">{{ child_link.title }}</a></li>
+                {% for grandchild_link in child_link.links %}  
+                  <li><a href= "{{ grandchild_link.url }}">{{ grandchild_link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              {% endif %}  
+              {% endfor %}
+            </div>
+             {% endif %}   
+        {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% if collection.handle == 'new-arrivals' or collection.handle == 'spring-21' or collection.handle == 'holiday-selections' or collection.handle == 'preorder-new-arrivals' or collection.handle == 'fall-20'  %}
+    {% for link in linklists.main-menu.links %}
+       {% if link.url == '/collections/preorder-new-arrivals' %}
+      {% if link.links != blank %}
+       <div class="toggle_list">
+       {% for child_link in link.links %}  
+        <h2 id="side-sub-nav-1" class="h5 u-margin-b--none"><a href= "{{ child_link.url }}">{{ child_link.title }}</a></h2>
+          {% if child_link.links != blank %}
+            <ul class="toggle_list">
+              <li> <a href= "{{ child_link.url }}">{{ child_link.title }}</a></li>
+            {% for grandchild_link in child_link.links %}  
+              <li><a href= "{{ grandchild_link.url }}">{{ grandchild_link.title }}</a></li>
+            {% endfor %}
+              </ul>
+          {% endif %}  
+          {% endfor %}
+        </div>
+         {% endif %}   
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+
+  {% if collection.handle == 'girls' or collection.handle == 'girls-shoes' or collection.handle == 'girls-nightwear' or collection.handle == 'girls-swimwear' or collection.handle == 'carebears' or collection.handle == 'girls-tops' or collection.handle == 'girls-tees' or collection.handle == 'girls-tanks' or collection.handle == 'girls-bottoms' or collection.handle == 'girls-denim' or collection.handle == 'girls-skirts' or collection.handle == 'girls-outerwear' or collection.handle == 'girls-jackets-bombers' or collection.handle == 'parkas-furs' or collection.handle == 'girls-outerwear-denim' or collection.handle == 'girls-sweaters-sweatshirts' or collection.handle == 'girls-dresses' or collection.handle == 'girls-midi' or collection.handle == 'girls-mixi'  %}
+    {% for link in linklists.main-menu.links %}
+         {% if link.url == '/collections/girls' %}
+          {% if link.links != blank %}
+              <div class="toggle_list">
+              {% for child_link in link.links %}  
+              <h2 id="side-sub-nav-1" class="h5 u-margin-b--none"><a href= "{{ child_link.url }}">{{ child_link.title }}</a></h2>
+              {% if child_link.links != blank %}
+                <ul class="toggle_list">
+                  <li> <a href= "{{ child_link.url }}">{{ child_link.title }}</a></li>
+                {% for grandchild_link in child_link.links %}  
+                  <li><a href= "{{ grandchild_link.url }}">{{ grandchild_link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              {% endif %}  
+              {% endfor %}
+          </div>
+       {% endif %}   
+    {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% if collection.handle == 'preteen' %}
+    {% for link in linklists.main-menu.links %}
+         {% if link.url == '/collections/preteen' %}
+      {% if link.links != blank %}
+        <div class="toggle_list">
+          {% for child_link in link.links %}  
+          <h2 id="side-sub-nav-1" class="h5 u-margin-b--none"><a href= "{{ child_link.url }}">{{ child_link.title }}</a></h2>
+          {% if child_link.links != blank %}
+            <ul class="toggle_list">
+              <li> <a href= "{{ child_link.url }}">{{ child_link.title }}</a></li>
+            {% for grandchild_link in child_link.links %}  
+              <li><a href= "{{ grandchild_link.url }}">{{ grandchild_link.title }}</a></li>
+            {% endfor %}
+            </ul>
+          {% endif %}  
+          {% endfor %}
+        </div>
+         {% endif %}   
+    {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% if collection.handle == 'accessories' or collection.handle == 'must-have-masks' or collection.handle == 'backpacks' or collection.handle == 'sunglasses' or collection.handle == 'hair-accessories' or collection.handle == 'handbags' or collection.handle == 'jewelry' or collection.handle == 'girls-shoes' or collection.handle == 'boys-shoes-sneakers' %}
+   {% for link in linklists.main-menu.links %}
+         {% if link.url == '/collections/accessories' %}
+        {% if link.links != blank %}
+        <div class="toggle_list">
+            {% for child_link in link.links %}  
+            <h2 id="side-sub-nav-1" class="h5 u-margin-b--none"><a href= "{{ child_link.url }}">{{ child_link.title }}</a></h2>
+            {% if child_link.links != blank %}
+              <ul class="toggle_list">
+                <li> <a href= "{{ child_link.url }}">{{ child_link.title }}</a></li>
+              {% for grandchild_link in child_link.links %}  
+                <li><a href= "{{ grandchild_link.url }}">{{ grandchild_link.title }}</a></li>
+              {% endfor %}
+              </ul>
+            {% endif %}  
+            {% endfor %}
+        </div>
+       {% endif %}   
+    {% endif %}
+  {% endfor %}
+  {% endif %}
+
+  {% if collection.handle == 'spring-2021' %}
+    {% for link in linklists.main-menu.links %}
+         {% if link.url == '/collections/spring-2021' %}
+    {% if link.links != blank %}
+      <div class="toggle_list">
+        {% for child_link in link.links %}  
+        <h2 id="side-sub-nav-1" class="h5 u-margin-b--none"><a href= "{{ child_link.url }}">{{ child_link.title }}</a></h2>
+        {% if child_link.links != blank %}
+          <ul class="toggle_list">
+            <li> <a href= "{{ child_link.url }}">{{ child_link.title }}</a></li>
+          {% for grandchild_link in child_link.links %}  
+            <li><a href= "{{ grandchild_link.url }}">{{ grandchild_link.title }}</a></li>
+          {% endfor %}
+            </ul>
+        {% endif %}  
+        {% endfor %}
+      </div>
+       {% endif %}   
+    {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% if collection.handle == 'all' %}
+        {% for link in linklists.main-menu.links %}
+             {% if link.url == '/collections/all' %}
+          {% if link.links != blank %}
+            <div class="toggle_list">
+            {% for child_link in link.links %}  
+            <h2 id="side-sub-nav-1" class="h5 u-margin-b--none"><a href= "{{ child_link.url }}">{{ child_link.title }}</a></h2>
+            {% if child_link.links != blank %}
+              <ul class="toggle_list">
+                <li> <a href= "{{ child_link.url }}">{{ child_link.title }}</a></li>
+              {% for grandchild_link in child_link.links %}  
+                <li><a href= "{{ grandchild_link.url }}">{{ grandchild_link.title }}</a></li>
+              {% endfor %}
+                </ul>
+            {% endif %}  
+            {% endfor %}
+          </div>
+           {% endif %}   
+        {% endif %}
+        {% endfor %}
+      {% endif %}
+  		</div>
+  	</div>
+  </div>

@@ -1,0 +1,75 @@
+
+<div class="container">
+  <a href="{{ section.settings.sale_link }}" class="">
+  <div class="sale-content">
+    {% comment %}
+    <h4 class="title center">{{ section.settings.title | escape }}</h4>
+    <p class="">{{ section.settings.description | escape }}</p>
+    <h3 class="">{{ section.settings.title_sale | escape }}</h3>
+    {% endcomment %}
+    <img class="desktop"  src="{{ section.settings.image | img_url: 'master' }}"/>
+    <img class="mobile"  src="{{ section.settings.mobile_image | img_url: 'master' }}"/>
+  </div>
+ </a>
+  <a href="{{ section.settings.button_link }}" class="lola-and-btn">{{ section.settings.button_text }}</a>
+</div>
+
+  
+  
+{% schema %}
+  {
+    "name": "Sale OFF",
+    "class": "sale-off-section",
+    "settings": [
+	   {
+          "type" : "url",
+          "id" : "sale_link",
+          "label" : "Sale Link"
+      },	
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Sale OFF"
+      },
+	  {
+        "type": "text",
+        "id": "description",
+        "label": "Description",
+        "default": "Sale OFF"
+      },
+	  {
+        "type": "text",
+        "id": "title_sale",
+        "label": "Title Sale",
+        "default": "Sale OFF"
+      },
+	  {
+          "type" : "url",
+          "id" : "button_link",
+          "label" : "Button Link"
+      },
+      {
+          "type" : "text",
+          "id" : "button_text",
+          "label" : "Button Text"
+      },
+	  {
+          "type" : "image_picker",
+          "id" : "image",
+          "label" : "Banner Image (Desktop)"
+      },
+	  {
+          "type" : "image_picker",
+          "id" : "mobile_image",
+          "label" : "Banner Image (Mobile)"
+      }
+    ],
+      "presets": [
+    {
+      "name": "Sale OFF",
+      "category": "Offer"
+    }
+  ]
+  }
+{% endschema %}

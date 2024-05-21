@@ -1,0 +1,49 @@
+<script>
+   const preorderCustom = {
+       render: function(){
+           this.initSelectors()
+           this.handleEvents()
+       },
+       initSelectors: function(){
+           window.GloboPreorderParams = window.GloboPreorderParams || {};
+           window.GloboPreorderParams.selectors = window.GloboPreorderParams.selectors || {};
+           window.GloboPreorderParams.selectors.productPositionLimitMessage = ".gPositionLimitMessage";
+           window.GloboPreorderParams.selectors.productPositionMessage = ".product_cart_btns";
+           window.GloboPreorderParams.selectors.productVariantActivator += ", .swatch_options label";
+           window.GloboPreorderParams.selectors.productAddToCartBtn = ['[type="submit"].bold_clone', ".add_to_cart"];
+        
+           window.GloboPreorderParams.advancedSettings = window.GloboPreorderParams.advancedSettings || {};
+           //window.GloboPreorderParams.advancedSettings.isDuplicateBtn = false;
+       },
+       handleEvents: function(){
+           document.addEventListener('globo.preorder.show.preorder', e => {
+               const form = e.detail.form;
+               const preorderBtn = form.find('.gPreorderBtn')
+               if(preorderBtn.hasClass('bold_clone') && !preorderBtn.hasClass('bold_hidden') && !preorderBtn.hasClass('gPreorderHidden')){
+                   form.addClass('gPreorderShowing')
+                   preorderBtn.click(function(e){
+                       e.preventDefault()
+                       form.find('.gPreorderHidden').trigger('click')
+                   })
+               }else{
+                   form.removeClass('gPreorderShowing')
+               }
+           })
+
+           document.addEventListener('globo.preorder.show.addtocart', e => {
+              const form = e.detail.form;
+              form.removeClass('gPreorderShowing')
+           })
+           document.addEventListener('globo.preorder.show.naMessage', e => {
+               const form = e.detail.form;
+               form.addClass('gPreorderShowing')
+           })
+       }
+   }
+   preorderCustom.render()
+</script>
+<style>
+  .gPreorderShowing .add_to_cart:not(.gPreorderBtn, .gPreorderNAMessage){
+      display: none !important;
+  }
+</style>

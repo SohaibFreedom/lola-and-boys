@@ -1,0 +1,290 @@
+{% comment %}
+  The contents of the blog.liquid template can be found in /sections/blog-template-2.liquid
+{% endcomment %}
+
+{% comment %}
+  ** Main blog page - default view **
+  - Template section
+  - Uses blocks
+{% endcomment %}
+{{ 'section-main-blog.css' | asset_url | stylesheet_tag }}
+{% if section.settings.image != null %}
+  <header class="banner center page_banner dark-overlay-{{ section.settings.image_darken }} blog-first-temp">
+    <img src="{{ section.settings.image | img_url: master }}">
+    {% if current_tags %}
+      <div class="caption captionOverlay--true live_theme">
+        <h1 class="headline">{{ current_tags }}</h1>
+      </div>
+    {% else %}
+      <div class="caption captionOverlay--true">
+        <h1 class="headline">{{ blog.title }}</h1>
+        <p class="subtitle">{{ section.settings.subtitle }}</p>
+      </div>
+    {% endif %}
+  </header>
+{% endif %}
+<a name="pagecontent" id="pagecontent"></a>
+
+<div class="container main content">
+  {% paginate blog.articles by section.settings.blog_posts_per_page %}
+    <div class="blog-header testtest clearfix">
+      {% unless section.settings.image != null %}
+        <div class="bolg-page-title-main">
+          {% if current_tags %}
+            <h1 class="blog-title blog-tags--true ">
+              <a
+                href="/blogs/{{ blog.handle }}/tagged/{{ current_tags | handleize }}"
+                title="{{ blog.title | escape }}"
+              >
+                {{- current_tags -}}
+              </a>
+            </h1>
+          {% else %}
+            <h1 class="blog-title float-none center blog-title-main">
+              {{ blog.title }}
+            </h1>
+            <h1 class="blog-title float-none center mt-4 blog-title-sub">{{ 'Our Blog' }}</h1>
+          {% endif %}
+        </div>
+      {% endunless %}
+    </div>
+
+    {% comment %}Check to see if sidebar should be enabled{% endcomment %}
+    {% if section.blocks.size > 0 %}
+      {% assign sidebar = true %}
+    {% else %}
+      {% assign sidebar = false %}
+    {% endif %}
+
+    <div class="blog-main-wrapper">
+      <div class="article-grid-wrapper-main">
+        {% for article in blog.articles %}
+          {% if article.image %}
+            <div class="article-card-item">
+              <a href="{{ article.url }}" title="{{ article.title | escape }}">
+                <img
+                  src="{{ article.image | img_url: '700x' }}"
+                  class="lazyload {{ settings.image_loading_style }}"
+                  alt="{% if article.image.alt != blank %}{{ article.image.alt }}{% else %}{{ article.title | escape }}{% endif %}"
+                  style="max-width: {{- article.image.width -}}px"
+                  data-sizes="auto"
+                  data-src="{{ article.image | img_url: '700x' }}"
+                  data-srcset="
+                    {{ article.image | img_url: '300x' }} 300w,
+                    {{ article.image | img_url: '400x' }} 400w,
+                    {{ article.image | img_url: '500x' }} 500w,
+                    {{ article.image | img_url: '600x' }} 600w,
+                    {{ article.image | img_url: '700x' }} 700w
+                  "
+                >
+                <div class="article-card-content">
+                  <p class="article-card-title">{{ article.title }}</p>
+                  <p class="article-card__excerpt rte-width">
+                    {%- if article.excerpt.size > 0 -%}
+                      {{ article.excerpt | strip_html | truncatewords: 20 }}
+                    {%- else -%}
+                      {{ article.content | strip_html | truncatewords: 20 }}
+                    {%- endif -%}
+                  </p>
+                </div>
+              </a>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      {% render 'blog-sidebar' %}
+    </div>
+    <br class="clear">
+    <div class="pagination-blog">
+      <div class="sixteen columns">
+        {% include 'pagination' %}
+      </div>
+    </div>
+  {% endpaginate %}
+</div>
+
+{% schema %}
+{
+  "name": "Blog",
+  "class": "blog-section",
+  "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Banner image",
+        "info": "1600 x 600px recommended"
+      },
+      {
+        "type": "checkbox",
+        "id": "image_darken",
+        "label": "Darken banner image",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subheading",
+        "default": "Subheading"
+      },
+      {
+        "type": "range",
+        "id": "blog_posts_per_row",
+        "label": "Blog posts per row",
+        "min": 1,
+        "max": 3,
+        "step": 1,
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "blog_posts_per_page",
+        "label": "Blog posts per page",
+        "min": 1,
+        "max": 50,
+        "step": 1,
+        "default": 12
+      },
+      {
+       "type": "checkbox",
+       "id": "blog_tags",
+       "label": "Show blog post tags"
+      },
+      {
+       "type": "checkbox",
+       "id": "blog_author",
+       "label": "Show author"
+      },
+
+      {
+       "type": "checkbox",
+       "id": "blog_date",
+       "label": "Show date",
+       "default": true
+      },
+      {
+       "type": "checkbox",
+       "id": "blog_comment_count",
+       "label": "Show comment count",
+       "default": true
+      },
+      {
+       "type": "checkbox",
+       "id": "read_more_link",
+       "label": "Show continue reading link for blog post excerpts",
+       "default": true
+      },
+      {
+       "type": "header",
+       "content": "Sidebar"
+      },
+      {
+        "type": "paragraph",
+        "content": "Create a sidebar by adding content blocks."
+      },
+      {
+        "type": "checkbox",
+        "id": "toggle",
+        "label": "Toggle sidebar content",
+        "default": false
+      }
+  ],
+  "blocks": [
+    {
+      "type": "post_tags",
+      "name": "Blog post tags",
+      "limit": 1
+    },
+    {
+      "type": "menu",
+      "name": "Menu",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "custom_menu_linklist",
+          "label": "Menu"
+        }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "name": "Newsletter sign up form",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "newsletter_title",
+          "label": "Heading",
+          "default": "Subscribe"
+        },
+        {
+          "type": "richtext",
+          "id": "newsletter_text",
+          "label": "Subheading",
+          "default": "<p>Sign up to get the latest on sales, new releases and more …</p>"
+        }
+      ]
+    },
+    {
+      "type": "page",
+      "name": "Page",
+      "settings": [
+        {
+          "type": "page",
+          "id": "content_page",
+          "label": "Page"
+        }
+      ]
+    },
+    {
+      "type": "recent_posts",
+      "name": "Recent blog posts",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "blog_post_count",
+          "label": "Display blog posts",
+          "options": [
+            {
+              "value": "2",
+              "label": "2"
+            },
+            {
+              "value": "5",
+              "label": "5"
+            },
+            {
+              "value": "10",
+              "label": "10"
+            }
+          ],
+          "default": "10"
+        }
+      ]
+    },
+    {
+      "type": "search",
+      "name": "Search form",
+      "limit": 1
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Text area can be used for details about blog authors or general information.</p>"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

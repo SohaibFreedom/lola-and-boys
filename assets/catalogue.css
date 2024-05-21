@@ -1,0 +1,125 @@
+.one_col_background {
+  position: relative;
+}
+.one_col_background .plus-icon {
+  position: absolute;
+  top: 10px; /* Adjust the position as needed */
+  right: 10px; /* Adjust the position as needed */
+  font-size: 24px; /* Adjust the size as needed */
+  cursor: pointer;
+}
+.viewDetails {
+  text-decoration: underline;
+}
+.details-lookbook img {
+  width: 150px;
+  height: 150px;
+  display: none;
+  object-fit: cover;
+  object-position: top;
+}
+.details-lookbook p {
+  margin-bottom: 5px !important;
+}
+.details-lookbook h2 {
+  margin: 0 !important;
+  font-size: 14px;
+  letter-spacing: 0 !important;
+  margin-bottom: 8px !important;
+}
+.details-lookbook .close-button {
+  position: absolute;
+  right: 20px;
+  font-size: 22px;
+  top: 12px;
+  visibility: hidden;
+  opacity: 0;
+}
+.icon {
+  cursor: pointer;
+  font-size: 24px;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  color: #fff;
+  line-height: 50px;
+  transition: transform 0.3s ease;
+}
+.toggle-wrapper {
+  position: absolute;
+}
+.toggleButton.cross {
+  transform: rotate(45deg);
+}
+
+.details-lookbook.hidden {
+  display: none;
+}
+
+.details-lookbook.visible {
+  display: block;
+}
+.two-cols-background {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px; /* Adjust the gap between columns if needed */
+  margin: 10px 0;
+}
+.details-lookbook {
+  background: #fff;
+  padding: 10px 30px !important;
+  text-align: center;
+}
+
+.two-col-item {
+  flex: 1;
+  position: relative;
+  padding: 20px;
+  padding-top: 61% !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .two-cols-background {
+    flex-direction: column;
+  }
+  .details-lookbook .close-button {
+    visibility: visible;
+    opacity: 1;
+  }
+  .details-lookbook {
+    position: fixed;
+    background: #fff;
+    bottom: 0;
+    z-index: 99;
+    width: 100%;
+    left: 0;
+    padding: 20px 0 !important;
+  }
+  .details-lookbook img {
+    display: block;
+    text-align: center;
+    margin: 0 auto 12px;
+  }
+  .viewDetails {
+    background: #000;
+    color: #fff !important;
+    padding: 8px 16px;
+    text-decoration: none;
+    margin-top: 8px;
+    display: inline-block;
+    font-size: 13px !important;
+  }
+  .two-col-item {
+    margin-bottom: 0; /* Add space between stacked columns on mobile */
+  }
+  .two-col-item {
+    padding-top: 132% !important;
+  }
+}
+@media (min-width: 769px) {
+  .details-lookbook {
+    position: absolute;
+    width: 250px;
+  }
+}

@@ -1,0 +1,173 @@
+<style>
+	.container.main.content {
+	    width: 100%;
+	    max-width: 100%;
+        padding: 0;
+	}
+</style>
+<div class="size-page-section shipping-page-main">
+  <div class="main-container">
+    <div class="row">
+      <div class="wi-25 wi-100">
+          <div class="contact-page-coustmer">
+            <div class="contact-page-box-title">
+                <h4>CUSTOMER CARE</h4>
+            </div>
+            <div class="contact-page-box-content">
+                <div class="contact-menu-list">
+                     <ul>
+                      {% for link in linklists.contact-us.links %}
+                        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                      {% endfor %}
+                     </ul>
+                </div>
+            </div>
+        </div>
+        <div class="contact-page-coustmer">
+            <div class="contact-page-box-content">
+                <div class="contact-menu-list">
+                     {% if section.settings.supporttitle != blank %}<p><b>{{section.settings.supporttitle}}</b><br><a href="{{section.settings.live_support_link}}">{{section.settings.chattitle}}</a></p>{% endif %}
+                     {% if section.settings.phonenumber != blank %}<p><b>BY PHONE</b><br>{{section.settings.phonetitle}}: <a href="tel:{{section.settings.phonenumber}}">{{section.settings.phonenumber}}</a></p>{% endif %}
+                     {% if section.settings.contactemail != blank %}<p><b>{{section.settings.emailtitle}}</b><br><a href="mailto:{{section.settings.contactemail}}">{{section.settings.contactemail}}</a></p>{% endif %}
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="wi-75 wi-100">
+        <div class="contact-page-coustmer">
+            <div class="contact-page-box-title">
+              <h4></h4>
+          </div>
+          <div class="contact-page-box-content">
+            {%- if section.blocks.size > 0 -%}
+            <div class="accordion-section">
+              <div class="wrap">
+                <div class="row">
+                  <div class="col">
+                    <div id="accordion" class="accordion-container">
+                        {%- for block in section.blocks -%}
+                      {% case block.type %}
+                            {% when 'question'%}
+                              {% include 'page-block-faq' %}
+                          {% endcase %}
+                       {%- endfor -%}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "FAQ page",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "page_title_enable",
+        "label": "Show page title"
+      },
+      {
+        "type": "checkbox",
+        "id": "page_content_enable",
+        "label": "Show page content"
+      },
+	  {
+        "type": "text",
+        "id": "supporttitle",
+        "label": "Support Title"
+     },
+  	 {
+        "type": "text",
+        "id": "chattitle",
+        "label": "Chat Title"
+     },
+ 	 {
+        "type": "url",
+        "id": "live_support_link",
+        "label": "Live Chat link"
+     },
+ 	 {
+        "type": "text",
+        "id": "phonetitle",
+        "label": "Phone Title"
+     },
+ 	 {
+        "type": "text",
+        "id": "phonenumber",
+        "label": "Phone Number"
+     },
+ 	 {
+        "type": "text",
+        "id": "emailtitle",
+        "label": "Email Title"
+     },
+	 {
+        "type": "text",
+        "id": "contactemail",
+        "label": "Email"
+     }
+    ],
+    "blocks": [
+      {
+        "type": "rich-text",
+        "name": "Rich text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Rich text"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Use this section for any descriptive text you need to fill out your pages or to add introductory headings between other blocks.</p>"
+          },
+          {
+            "type": "select",
+            "id": "align_text",
+            "label": "Text alignment",
+            "default": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Centered"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "question",
+        "name": "Question",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Question",
+            "default": "Frequently asked question"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

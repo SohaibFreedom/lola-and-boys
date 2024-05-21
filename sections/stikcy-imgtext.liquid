@@ -1,0 +1,127 @@
+<style>
+   .scroll-filler {
+     height: 8vh;
+   }
+
+   .item:after {
+     content: "";
+     display: block;
+     height: 100vh;
+     margin-bottom: -100vh;
+   }
+
+  .scroll-reveal-section .item {
+     position: relative;
+
+   }
+
+   .item:last-of-type:after {
+     display: none;
+   }
+
+   .item:last-of-type {
+     margin-bottom: 0;
+     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.05), transparent 50px),
+                       linear-gradient(to top, rgba(0, 0, 0, 0.05), transparent 50px);
+   }
+
+   .item .image-holder {
+     position: sticky;
+     top: 0;
+     float: left;
+     overflow: hidden;
+     width: 50%;
+     height: 100vh;
+   }
+
+   .item .image-holder img {
+     position: relative;
+     height: 100%;
+     width: auto;
+     left: 50%;
+     transform: translateX(-50%);
+   }
+
+   .item .text-holder {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     width: 50%;
+     min-height: 120vh;
+
+     padding: 1em;
+   }
+</style>
+
+<div class="scroll-filler"></div>
+
+<div class="scroll-reveal-section">
+  <!-- BEGIN Reveal panel section -->
+
+  {% for block in section.blocks %}
+    <div class="item">
+      <div class="image-holder">
+        <img src="{{ block.settings.image | img_url:"master" }}">
+      </div>
+
+      <div class="text-holder">
+        <h1>{{ block.settings.title }}</h1>
+        <p>
+          {{ block.settings.subtitle }}
+        </p>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<!-- END Reveal panel section -->
+
+<div class="scroll-filler"></div>
+
+{% schema %}
+{
+  "name": "Scroll textImg",
+  "settings": [
+
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image with text",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "Class",
+          "label": "Class"
+        },
+        {
+          "type": "liquid",
+          "id": "title",
+          "label": "Heading"
+        },
+        {
+          "type": "liquid",
+          "id": "subtitle",
+          "label": "Subtitle"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scroll textImg"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

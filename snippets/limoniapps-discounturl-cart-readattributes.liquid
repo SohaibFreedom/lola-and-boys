@@ -1,0 +1,70 @@
+{% comment %}
+V1.8 - November 16 2017 - 
+This liquid snippet is used by Discount URL, an app by Limoni Apps
+Do not remove this snippet
+{% endcomment %}
+
+{% for a in cart.attributes %}
+    {% if a.first == 'limoniapps-discounturl' %}
+      {% assign discountcode_attribute = a.last | split: '||' %}
+      {% assign discountcode_attribute_size = discountcode_attribute | size %}
+ 
+      {% if discountcode_attribute_size > 13 %}
+        {% comment %}Set variables{% endcomment %}
+        {% assign discounturl_cart_savingslabel = discountcode_attribute[0] %}
+        {% assign discounturl_cart_valuetype = discountcode_attribute[1] %}
+		{% assign discounturl_cart_value = discountcode_attribute[2] | plus: 0.0 %}
+		{% assign discounturl_cart_allocationmethod = discountcode_attribute[3] %}
+		{% assign discounturl_cart_pricerule = discountcode_attribute[4] %}
+      	{% assign discounturl_cart_showsavings = discountcode_attribute[5] | plus: 0 %}      
+		{% assign discounturl_cart_allowmultiple = discountcode_attribute[6] | plus: 0 %}
+		{% assign discounturl_cart_variantids = discountcode_attribute[9] %}
+		{% assign discounturl_cart_line_savingslabel = discountcode_attribute[10] %}  
+		{% assign discounturl_cart_line_showsavings = discountcode_attribute[11] | plus: 0 %}
+	    {% assign discounturl_cart_line_original_price = 0 %}
+		{% assign discounturl_cart_line_original_prices = discountcode_attribute[12] %}
+		{% assign discounturl_cart_line_roundtocents = discountcode_attribute[13]| plus: 0 %}
+		   		
+		{% assign discounturl_cart_attributes_ok = 1 %}
+
+		{% if discounturl_cart_allowmultiple == 0 %}
+		  {% comment %}Check if promotion applies to this variant{% endcomment %}
+		  {% assign discounturl_cart_promotion_applies = 0 %}
+          {% assign discounturl_cart_variantid_array = discounturl_cart_variantids | split: ',' %}
+          {% for variant in discounturl_cart_variantid_array %}
+             {% assign variant_id = variant | plus: 0 %}
+             {% if variant_id == item.variant_id %}
+				{% assign discounturl_cart_promotion_applies = 1 %}
+				{% assign pricesforvariant = discounturl_cart_line_original_prices | split: '_' %}
+				{% for priceforvariant in pricesforvariant %}
+					{% assign pricesforvariantelements = priceforvariant | split: ':' %}
+					{% assign pricesforvariantelements_size = pricesforvariantelements | size %}
+					{% assign pricesforvariantelements_variant = pricesforvariantelements.first | plus: 0 %}
+					{% assign pricesforvariantelements_price = pricesforvariantelements.last | plus: 0 | times: 100 %}
+					{% if pricesforvariantelements_size == 2 and pricesforvariantelements_variant == variant_id %}
+						{% assign discounturl_cart_line_original_price = pricesforvariantelements_price %}
+						{% break %}
+					{% endif %}
+				{% endfor %}
+				{% break %}
+		     {% endif %}
+		  {% endfor %}
+
+		  {% if discounturl_cart_promotion_applies == 1 %}
+            {% comment %}Copy variables to line level if multiple not allowed{% endcomment %}
+            {% assign discounturl_lineitem_savingslabel = discounturl_cart_line_savingslabel %}
+            {% assign discounturl_lineitem_valuetype = discounturl_cart_valuetype %}
+            {% assign discounturl_lineitem_value = discounturl_cart_value %}
+            {% assign discounturl_lineitem_pricerule = discounturl_cart_pricerule %}
+            {% assign discounturl_lineitem_showsavings = discounturl_cart_line_showsavings %}
+            {% assign discounturl_lineitem_original_price = discounturl_cart_line_original_price %}
+            {% assign discounturl_lineitem_original_lineprice = discounturl_lineitem_original_price | times: item.quantity %}
+            {% assign discounturl_lineitem_allocationmethod = discounturl_cart_allocationmethod %}
+            {% assign discounturl_lineitem_allowmultiple = discounturl_cart_allowmultiple %}
+            {% assign discounturl_lineitem_discountcode = '' %}
+            {% assign discounturl_lineitem_roundtocents = discounturl_cart_line_roundtocents %}  
+          {% endif %}
+        {% endif %}
+	  {% endif %}
+	{% endif %}
+{% endfor %}

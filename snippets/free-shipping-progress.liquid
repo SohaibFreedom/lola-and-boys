@@ -1,0 +1,69 @@
+{% liquid
+  assign savedby = cart.items | where: "vendor", "SavedBy" | first
+  assign totalPrice = cart.total_price | minus: savedby.final_price
+%}
+<div class="free-shipping-progress">
+  {% assign free_shipping_threshold = 150.00 %}
+  {% assign progress_percentage = totalPrice
+    | times: 100
+    | divided_by: free_shipping_threshold
+    | divided_by: 100
+    | round: 2
+  %}
+
+  {% assign remaining_percentage = 100 | minus: progress_percentage %}
+  {% assign remaining_amount = remaining_percentage | times: free_shipping_threshold | divided_by: 100 %}
+  <div class="progress-bg-bar">
+    <div class="progress-bar" style="width: {{ progress_percentage | at_most: 100 }}%;"></div>
+  </div>
+
+  {% if progress_percentage >= 100 %}
+    <div class="progress-msg free-shipping-msg"><p>Congratulations! You qualify for free shipping!</p></div>
+  {% else %}
+    <div class="progress-msg ">
+      <p>Spend ${{ remaining_amount | round: 2 }} to unlock FREE shipping!</p>
+    </div>
+  {% endif %}
+</div>
+
+<style>
+              .free-shipping-progress {
+                margin-top: 20px; /* Adjust as needed */
+            }
+           .progress-bar {
+              display: block !important;
+          }
+      .free-shipping-progress {
+          display: flex;
+          flex-direction: column-reverse;
+          gap: 7px;
+      }
+      .progress-msg {
+        text-align: center;
+    }
+    .progress-msg p {
+      margin-bottom: 5px !important;
+  }
+      .free-shipping-progress {
+        margin-top: 10px !important;
+        margin-bottom: 2rem;
+        padding: 0 25px !important;
+    }
+
+       .free-shipping-msg {
+
+         font-size:15px;
+       }
+          .progress-bg-bar {
+            background: #007db342;
+            border-radius: 33px;
+        }
+        .progress-bar {
+            border-radius: 33px;
+        }
+
+        .progress-bar {
+            height: 12px;
+            background-color: #007db3;
+        }
+</style>

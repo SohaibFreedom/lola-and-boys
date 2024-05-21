@@ -1,0 +1,221 @@
+<section class="two-cols-background">
+  <!-- Left Background Section -->
+  <div
+    class="left-background two-col-item"
+    style="background: url('{{ section.settings.bg_image_left | img_url: 'master' }}') no-repeat center center; background-size: cover; padding-top: {{ section.settings.padding_top_left }};"
+  >
+    {% for block in section.blocks %}
+      {% if block.type == 'left_col_block' %}
+        <!-- Left Column Block -->
+        <div class="left-col-block">
+          {% if block.settings.show_plus_left %}
+            <div class="toggle-wrapper" style="top:{{ block.settings.top_left }}; left:{{ block.settings.left_left }};">
+              <div class="toggleButton icon plus">+</div>
+              <div
+                class="details-lookbook hidden"
+                style="{% if block.settings.detail_top %}top:{{ block.settings.detail_top }};{% endif %}{% if block.settings.detail_bottom %} bottom:{{ block.settings.detail_bottom }};{% endif %} {% if block.settings.detail_left %}left:{{ block.settings.detail_left }};{% endif %}   {% if block.settings.detail_right %}right:{{ block.settings.detail_right }};{% endif %}"
+              >
+                <span class="close-button">×</span>
+                <img src="{{ section.settings.bg_image_left | img_url:'400x400'}}">
+                <h2>{{ block.settings.title_left }}</h2>
+                <p>{{ block.settings.price_left }}</p>
+                <a href="{{ block.settings.link_left }}" class="viewDetails">View Details</a>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <!-- Right Background Section -->
+  <div
+    class="right-background two-col-item"
+    style="background: url('{{ section.settings.bg_image_right | img_url: 'master' }}') no-repeat center center; background-size: cover; padding-top: {{ section.settings.padding_top_right }};"
+  >
+    {% for block in section.blocks %}
+      {% if block.type == 'right_col_block' %}
+        <!-- Right Column Block -->
+        <div class="right-col-block">
+          {% if block.settings.show_plus_right %}
+            <div
+              class="toggle-wrapper"
+              style="top:{{ block.settings.top_right }}; left:{{ block.settings.left_right }};"
+            >
+              <div class="toggleButton icon plus">+</div>
+              <div
+                class="details-lookbook hidden"
+                style="{% if block.settings.detail_top %}top:{{ block.settings.detail_top }};{% endif %}{% if block.settings.detail_bottom %} bottom:{{ block.settings.detail_bottom }};{% endif %} {% if block.settings.detail_left %}left:{{ block.settings.detail_left }};{% endif %}   {% if block.settings.detail_right %}right:{{ block.settings.detail_right }};{% endif %}"
+              >
+                <span class="close-button">×</span>
+                <img src="{{ section.settings.bg_image_right | img_url:'400x400'}}">
+                <h2>{{ block.settings.title_right }}</h2>
+                <p>{{ block.settings.price_right }}</p>
+                <a href="{{ block.settings.link_right }}" class="viewDetails">View Details</a>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "two col block",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image_left",
+      "label": "Background Image (Left)"
+    },
+    {
+      "type": "text",
+      "id": "padding_top_left",
+      "label": "Padding Top (Left)"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_right",
+      "label": "Background Image (Right)"
+    },
+    {
+      "type": "text",
+      "id": "padding_top_right",
+      "label": "Padding Top (Right)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "left_col_block",
+      "name": "Left Column Block",
+       "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_plus_left",
+          "label": "Show Plus Icon",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "title_left",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "price_left",
+          "label": "Price"
+        },
+        {
+          "type": "url",
+          "id": "link_left",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "top_left",
+          "label": "Top Position"
+        },
+        {
+          "type": "text",
+          "id": "left_left",
+          "label": "Left Position"
+        },
+           {
+     "type": "header",
+     "content": "Detail bar"
+    },
+              {
+          "type": "text",
+          "id": "detail_top",
+          "label": "Top Position"
+        },
+        {
+          "type": "text",
+          "id": "detail_left",
+          "label": "Left Position"
+        },
+          {
+          "type": "text",
+          "id": "detail_right",
+          "label": "Right Position"
+        },
+              {
+          "type": "text",
+          "id": "detail_bottom",
+          "label": "bottom Position"
+        }
+      ]
+    },
+    {
+      "type": "right_col_block",
+      "name": "Right Column Block",
+       "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_plus_right",
+          "label": "Show Plus Icon",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "title_right",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "price_right",
+          "label": "Price"
+        },
+        {
+          "type": "url",
+          "id": "link_right",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "top_right",
+          "label": "Top Position"
+        },
+        {
+          "type": "text",
+          "id": "left_right",
+          "label": "Left Position"
+        },
+           {
+     "type": "header",
+     "content": "Detail bar"
+    },
+              {
+          "type": "text",
+          "id": "detail_top",
+          "label": "Top Position"
+        },
+        {
+          "type": "text",
+          "id": "detail_left",
+          "label": "Left Position"
+        },
+          {
+          "type": "text",
+          "id": "detail_right",
+          "label": "Right Position"
+        },
+              {
+          "type": "text",
+          "id": "detail_bottom",
+          "label": "bottom Position"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "two col block",
+      "category": "Custom"
+    }
+  ]
+
+}
+{% endschema %}

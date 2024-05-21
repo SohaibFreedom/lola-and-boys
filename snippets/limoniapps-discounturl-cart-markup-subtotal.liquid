@@ -1,0 +1,17 @@
+{% comment %}
+V1.8 - November 16 2017 - 
+This liquid snippet is used by Discount URL, an app from Limoni Apps
+This snippet should be included in the cart page to display the subtotal
+Example: '100€ (strikethrough: 150€)'
+Do not remove this snippet
+{% endcomment %}
+
+<span class="limoniapps-discounturl-subtotal-before">
+  <s>{{ discounturl_cart_original_price | money }}</s>&nbsp;
+</span>
+<span class="limoniapps-discounturl-subtotal">
+  {{ discounturl_cart_price | minus: discounturl_cart_discountamount_cart | ceil | money }}
+</span>
+<span class="limoniapps-discounturl-subtotal-after">
+  &nbsp;<s>{{ discounturl_cart_original_price | money }}</s>
+</span>

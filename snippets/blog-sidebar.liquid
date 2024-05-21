@@ -1,0 +1,44 @@
+<div class=" blog_sidebar">
+  <span class="blog_sidebar_heading heading-2">LATEST POST</span>
+  <div class="articles-section-sidebar">
+    {% for article in blog.articles reversed limit: 4 %}
+      <a href="{{article.url}}" title="Read {{article.title}}">
+        <div class="side-bar-articles-wrapper">
+          <div class="sidebar-article-thumbnail">
+            <img
+              src="{{ article.image | img_url: '120x' }}"
+              alt="{% if article.image.alt != blank %}{{ article.image.alt }}{% else %}{{ article.title | escape }}{% endif %}"
+              data-src="{{ article.image | img_url: '2048x', format: 'pjpg' }}"
+              class="lazyload {{ settings.image_loading_style }}"
+              style="max-width: {{- article.image.width -}}px"
+              data-sizes="auto"
+              data-srcset="
+                {{ article.image | img_url: '480x', format: 'pjpg' }} 480w,
+                {{ article.image | img_url: '765x', format: 'pjpg' }} 765w,
+                {{ article.image | img_url: '1400x', format: 'pjpg' }} 1400w,
+                {{ article.image | img_url: '2048x', format: 'pjpg' }} 2048w
+              "
+            >
+          </div>
+          <div class="article-content">
+            <span class="blog_inner_post_titles">{{ article.title | truncatewords: 8 }}</span>
+            <p class="blog_inner_post_date">{{ article.published_at | date: ' %b %d, %y' }}</p>
+          </div>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+
+  <div id="sidebar-newsletter">
+    <a href="https://lolaandtheboys.com/collections/spring-blow-out-sale" target="_blank"><img
+      src="https://lolaandtheboys.com/cdn/shop/files/SALE_65_OFF_mob.jpg?v=1694730672"
+      alt="news-letter-banner" width="100%" height="auto"
+    >
+      </a>
+  </div>
+
+  <div class="social-link-sidebar">
+ {% render 'social-articles' %}
+  </div>
+</div>
+

@@ -1,0 +1,73 @@
+{% schema %}
+{
+  "name": "Custom Image banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text Overlay",
+      "default": "Your default text here"
+    }
+  ],
+   "presets": [
+    {
+      "name": "Custom Multi-banner"
+    }
+  ]
+}
+{% endschema %}
+
+{% if section.settings.image %}
+  <div class="custom-section-banner" style="background-image: url('{{ section.settings.image | img_url: '1024x' }}');">
+    <div class="text-overlay">
+      {{ section.settings.text }}
+    </div>
+  </div>
+{% endif %}
+
+<style>
+            .custom-section-banner {
+            position: relative;
+            text-align: center;
+            background-size: cover;
+            background-position: center center;
+            height: 800px; /* You can adjust this value */
+          }
+        .custom-section-banner:before {
+          content: "";
+          background: #000;
+          width: 100% !important;
+          height: 100% !important;
+          z-index: 2;
+          position: absolute;
+          top: 0;
+          left: 0;
+          opacity: .4;
+      }
+
+          .custom-section-banner {
+            max-width: 1000px;
+             position: relative;
+            margin: 2rem auto;
+        }
+
+   .text-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      font-size: 36px;
+      z-index: 4;
+      font-style: italic;
+      line-height: 1.5;
+      font-family: "Noto Serif Display", serif;
+      font-weight: bold;
+      width: 60% !important;
+  }
+</style>

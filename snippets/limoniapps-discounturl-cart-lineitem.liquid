@@ -1,0 +1,42 @@
+{% comment %}
+V1.8 - November 16 2017 - 
+This liquid snippet is used by Discount URL, an app by Limoni Apps
+This snippet should be included in the cart page in the { for item in cart.items } loop
+Do not remove this snippet
+{% endcomment %}
+
+{% comment %}Default values{% endcomment %}
+{% assign discounturl_show_savings_lineitemlevel = 0 %}
+{% assign discounturl_lineitem_discountamount = 0.0 %}
+{% assign discounturl_lineitem_price = item.price %}
+{% assign discounturl_lineitem_price_line = item.line_price %}
+{% assign discounturl_lineitem_original_price = item.price %}
+{% assign discounturl_lineitem_original_lineprice = item.line_price %}
+
+{% comment %}If multiple rules are not allowed check for 'each' rule on cart level{% endcomment %}
+{% assign discounturl_lineitem_properties_ok = 0 %}
+{% include 'limoniapps-discounturl-cart-readattributes' %}
+
+{% comment %}Check for 'each' rules on item level{% endcomment %}
+{% include 'limoniapps-discounturl-cart-readproperties' %}
+
+{% comment %}Calculate line item savings and prices{% endcomment %}
+{% if discounturl_lineitem_properties_ok == 1 %}
+	{% include 'limoniapps-discounturl-cart-lineitem-price-advanced' %}
+{% else %}
+    {% include 'limoniapps-discounturl-cart-lineitem-price-standard' %}
+{% endif %}
+{% include 'limoniapps-discounturl-cart-lineitem-price-post' %}
+
+{% comment %}Calculate total cart price taking into account the effective compare at{% endcomment %}
+{% assign discounturl_cart_original_price = discounturl_cart_original_price | plus: discounturl_lineitem_original_lineprice %}
+{% assign discounturl_cart_price = discounturl_cart_price | plus: discounturl_lineitem_price_line %}
+{% assign discounturl_cart_discountamount_line = discounturl_lineitem_original_lineprice | minus: discounturl_lineitem_price_line %}
+{% assign discounturl_cart_discountamount_total = discounturl_cart_discountamount_total | plus: discounturl_cart_discountamount_line %}
+
+{% comment %}Decide if a label should be shown at line level{% endcomment %}
+{% if discounturl_lineitem_showsavings == 1 and discounturl_lineitem_discountamount > 0 %}
+	{% assign discounturl_lineitem_savings_visible = true %}
+{% else %}
+    {% assign discounturl_lineitem_savings_visible = false %}
+{% endif %}

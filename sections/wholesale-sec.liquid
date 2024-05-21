@@ -1,0 +1,212 @@
+{% comment %}
+  The contents of the page.contact.liquid template can be found in /sections/wholesale-template.liquid
+
+
+{% section 'wholesale-template' %}
+{% endcomment %}
+
+<div class="container">
+  {% assign textposition = section.settings.contact_text_position %} 
+  {% if section.settings.contact_heading != blank %}
+    <h2 class="title center">{{ section.settings.contact_heading }}</h2>
+    <div class="feature_divider"></div> 
+  {% endif %}
+  <div class="custom-text">
+    <p>Lola + The Boys works with a diverse community of some of the greatest retailers in the world to help get our trendy apparel, accessories and shoes into the hands of trendy children and parents alike.
+      <br><br>
+
+If you’re interested in joining us as an authorized Lola + The Boys retailer, the first step is to fill out our quick form below. For your application to be considered, at a minimum you must have a business license issued by your local government and a retail store front—and, of course, a passion for our brand.
+  </div>
+    <div class="contact-form_position--{{ textposition }}">
+      <div class="{% unless textposition == 'center' %}seven{% else %}ten offset-by-three{% endunless %} columns {% if section.settings.contact_text_alignment == "center" %}center{% elsif section.settings.contact_text_alignment == "right" %}align_right{% endif %}">
+        {% if section.settings.contact_subheading != blank %}
+          <h3>{{ section.settings.contact_subheading }}</h3>
+        {% endif %}
+        {% if section.settings.contact_content != blank %}
+          {{ section.settings.contact_content }}
+        {% endif %}
+      </div>
+    </div>
+    <div class="{% unless textposition == 'center' %}eight {% if textposition == 'left' %}offset-by-one{% endif %}{% else %}ten offset-by-three{% endunless %} columns omega">
+      {% form 'contact' %}
+        {% if form.posted_successfully? %}
+          <p class="quote">{{ 'contact.form.post_success' | t }}</p>
+        {% endif %}
+
+        {% if form.errors %}
+          <p class="quote">{{ 'general.forms.post_error' | t }}</p>
+
+         {% assign message = 'contact.form.message' | t %}
+          <ul class="center">
+            {% for field in form.errors %}
+              {% if field == 'form' %}
+                <li>
+                  {{ form.errors.messages[field] }}
+                </li>
+              {% else %}
+                <li>
+                  {% assign field_name = field | replace: 'body', message %}
+                  {{ 'general.forms.post_field_error_html' | t: field: field_name, error: form.errors.messages[field] }}
+                </li>
+              {% endif %}
+            {% endfor %}
+           </ul>
+        {% endif %}
+
+        <div class="Form__Item">
+            <label class="Form__FloatingLabel">Business Name <span class="red">*</span></label>
+            <input type="text" class="Form__Input" name="contact[business-name]" aria-label="{{ 'contact.form.name' | t }}" placeholder="Business Name" required {% if customer %}value="{{ customer.name }}"{% endif %}>
+          
+          </div>
+
+<!--           <div class="Form__Item">
+             <label class="Form__FloatingLabel">Resale certificate</label>
+            <input type="file" class="Form__Input" name="contact[Resale-Certificate]" aria-label="{{ 'contact.form.email' | t }}" placeholder="Resell Certificate"  {% if customer %}value="{{ customer.email }}"{% endif %}>
+           
+          </div> -->
+        
+ 
+           <div class="Form__Item">
+              <label class="Form__FloatingLabel">Store Front Photos </label>
+            <input type="file" class="Form__Input" name="contact[Store-Front-Photos]" aria-label="{{ 'contact.form.email' | t }}" placeholder="Store Front Photos"  {% if customer %}value="{{ customer.email }}"{% endif %}>
+           
+          </div>
+          
+   <div class="Form__Item">
+     <label class="Form__FloatingLabel">Business EIN <span class="red">*</span></label>
+            <input type="text" class="Form__Input" name="contact[Business-EIN]" aria-label="Business EIN" placeholder="Business EIN" required {% if customer %}value="{{ customer.email }}"{% endif %}>
+            
+          </div>
+
+         <div class="Form__Item">
+          {% assign name_attr = 'contact.form.name' | handle %}
+          <label for="contactFormName">{{ 'contact.form.name' | t }} <span class="red">*</span></label>
+          <input type="text" id="contactFormName" name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.name' | t }}" autocapitalize="words" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.name }}{% endif %}" required="required">
+         </div>
+      
+         <div class="Form__Item">
+          <label for="contactFormEmail">Email <span class="red">*</span></label>
+          <input type="email" id="contactFormEmail" name="contact[email]" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" required="required">
+         </div>
+      
+      
+             <div class="Form__Item">  
+
+          {% assign name_attr = 'contact.form.phone' | t | handle %}
+          <label for="contactFormPhone" class="">{{ 'contact.form.phone' | t }} <span class="red">*</span></label>
+          <input type="tel" id="contactFormPhone" name="contact[{{ name_attr }}]" required placeholder="{{ 'contact.form.phone' | t }}" pattern="[0-9\-]*" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+      </div>
+          
+       <div class="Form__Item_msg">
+        <label for="contactFormMessage">Your Message <span class="red">*</span></label>
+        <textarea rows="5" id="contactFormMessage" name="contact[body]" placeholder="Your Message" required="required">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+</div>
+        <input type="submit" class="submit action_button" value="{{ 'contact.form.send' | t }}" />
+      {% endform %}
+    </div>
+ </div>
+
+{% schema %}
+
+{
+  "name": "Wholesale form",
+  "class": "wholesale-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "contact_heading",
+      "label": "Heading",
+      "default": "Contact form"
+    },
+    {
+      "type": "text",
+      "id": "contact_subheading",
+      "label": "Subheading",
+      "default": "Subheading"
+    },
+    {
+      "type": "richtext",
+      "id": "contact_content",
+      "label": "Text",
+      "default": "<p>Contact form description.</p>"
+    },
+    {
+      "type": "select",
+      "id": "contact_text_position",
+      "label": "Text position",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "contact_text_alignment",
+      "label": "Text alignment",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }        
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Wholesale form",
+      "category": "Social"
+    }
+  ]
+}
+
+{% endschema %}
+<style>
+  div#shopify-section-wholesale-sec .eight.offset-by-one.columns.omega {
+    width: 100%;
+    padding-left: 0;
+}
+  .Form__Item {
+
+    margin-top: 15px;
+}
+.Form__Item {
+    width: 49%;
+    float: left;
+    padding: 15px;
+  min-height: 130px;
+}
+  @media only screen and (max-width: 767px){
+  .Form__Item {
+    width: 100%;
+     float: none; 
+        min-height: 0;
+    padding: 1px;
+   
+}
+    .page-wholesale h2.title.center {
+    margin-top: 50px;
+}
+
+    
+  }
+</style>

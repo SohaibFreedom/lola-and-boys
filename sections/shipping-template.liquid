@@ -1,0 +1,250 @@
+<style>
+  .sh_main table, .sh_main tr, .sh_main td, .sh_main th {
+    border: none !important;
+  }
+  .sh_main {
+    max-width: 768px;
+    margin: auto;
+  }
+  .sh_main-body {}
+  .sh_main-child {}
+  .sh_main-tr {}
+  .sh_main-tr-bck {
+    background-color: #9D08F7;
+    color: #fff;
+  }
+  .sh_main-child table {
+    margin-top: 4px;
+    margin-bottom: 14px;
+  }
+  .sh_main-child th {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 10px;
+    line-height: normal;
+    background: none;
+    text-transform: uppercase;
+  }
+  .sh_main-child td{
+    font-size: 12px;
+    font-weight: 400;
+    padding: 10px;
+    line-height: normal;
+    background: none;
+  }
+  .sh_main_h2 {
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .sh_main_h4 {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .sh_main_h4 span {
+    font-weight: 400;
+    letter-spacing: 0px;
+    font-family: Karla,Arial,sans-serif !important;
+    text-transform: capitalize;
+  }
+  .sh_main-p1 {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .sh_main-p2 {
+    font-size: 10px;
+    font-weight: 400;
+  }
+  .sh_main-p2> a {
+    text-decoration: underline;
+    font-weight: 400;
+  }
+  .sh_main-margin-1 {
+    margin-top: 22px;
+    margin-bottom: 15px;
+  }
+  .sh_main-margin-2 {
+    margin-top: 0;
+    margin-bottom: 14px;
+  }
+  .sh_main-margin-3 {
+    margin-top: 18px;
+    margin-bottom: 0px;
+  }
+  .sh_main-margin-4 {
+    margin: 0;
+  }
+  .sh_main-margin-5 {
+    margin-top: 18px;
+    margin-bottom: 0px;
+  }
+  .sh_main_a {
+    display: flex;
+    background: #000;
+    color: #fff;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+    justify-content: center;
+  }
+  .sh_main_a:hover {
+    color: #fff;
+  }
+</style>
+<div class="sh_main">
+  <div>
+    <h1 class="sh_main_h2 sh_main-margin-1">{{ section.settings.head_text }}</h1>
+    <p class="sh_main-p1 sh_main-margin-2">{{ section.settings.head_info }}</p>
+    {% if block.settings.head_html != blank %}<p class="sh_main-p2 sh_main-margin-4"><sup>*</sup>{{ section.settings.head_html }}</p>{% endif %}
+  </div>
+  {% for block in section.blocks %}
+    <div class="sh_main-body">
+    {% if block.type == 'info_title' %}
+      <div>
+        <h2 class="sh_main_h4 sh_main-margin-3">{{ block.settings.info_main_title }}</h2>
+      </div>
+    {% endif %}
+    {% if block.type == 'info' %}
+      <div class="sh_main-child">
+        <h3 class="sh_main_h4 sh_main-margin-5">{{ block.settings.txt_1 }}<span> {{ block.settings.txt_2 }}</span></h3>
+        <table>
+          <tr class="sh_main-tr sh_main-tr-bck">
+            <th>{{ block.settings.txt_3 }}</th>
+            <th>{{ block.settings.txt_4 }}</th>
+          </tr>
+          <tr>
+            <th>{{ block.settings.txt_5 }}</th>
+            <td>{{ block.settings.txt_6 }}</td>
+          </tr>
+          <tr>
+            <th>{{ block.settings.txt_7 }}</th>
+            <td>{{ block.settings.txt_8 }}</td>
+          </tr>
+          <tr>
+            <th>{{ block.settings.txt_9 }}</th>
+            <td>{{ block.settings.txt_10 }}</td>
+          </tr>
+        </table>
+      </div>
+    {% endif %}
+        {% if block.type == 'button' %}
+      <div>
+        <a href="{{ block.settings.link }}" class="sh_main_a">{{ block.settings.link_txt }}</a>
+      </div>
+    {% endif %}
+    </div>
+  {% endfor %}
+</div>
+{% schema %}
+  {
+    "name": "Shipping Template",
+    "settings": [
+      {
+        "type": "text",
+        "id": "head_text",
+        "label": "Add Heading"
+      },
+      {
+        "type": "text",
+        "id": "head_info",
+        "label": "Add Information"
+      },
+      {
+        "type": "html",
+        "id": "head_html",
+        "label": "Add Required"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "info_title",
+        "name": "Info Title",
+        "settings": [
+          {
+            "type": "text",
+            "id": "info_main_title",
+            "label": "Add Main Title"
+          }
+        ]
+      },
+      {
+        "type": "info",
+        "name": "Info",
+        "settings": [
+          {
+            "type": "text",
+            "id": "txt_1",
+            "label": "Add Info tile"
+          },
+          {
+            "type": "text",
+            "id": "txt_2",
+            "label": "Add Details"
+          },
+          {
+            "type": "text",
+            "id": "txt_3",
+            "label": "Add Option Title"
+          },
+          {
+            "type": "text",
+            "id": "txt_4",
+            "label": "Add Details Title"
+          },
+          {
+            "type": "text",
+            "id": "txt_5",
+            "label": "Add Option 1"
+          },
+          {
+            "type": "text",
+            "id": "txt_6",
+            "label": "Add datils 1"
+          },
+          {
+            "type": "text",
+            "id": "txt_7",
+            "label": "Add Option 2"
+          },
+          {
+            "type": "text",
+            "id": "txt_8",
+            "label": "Add datils 2"
+          },
+          {
+            "type": "text",
+            "id": "txt_9",
+            "label": "Add Option 3"
+          },
+          {
+            "type": "text",
+            "id": "txt_10",
+            "label": "Add datils 3"
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "name": "Button",
+        "settings": [
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Add Link"
+          },
+          {
+            "type": "text",
+            "id": "link_txt",
+            "label": "Add Text"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Shipping Template"
+      }
+    ]
+  }
+{% endschema %}

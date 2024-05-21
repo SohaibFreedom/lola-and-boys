@@ -1,0 +1,97 @@
+<div class="application-section-main">
+	<div class="main-container">
+		<div class="row align-items-center">
+			<div class="wi-50 wi-100">
+				<div class="application-section-img">
+                  	{{ section.settings.image | img_url: '2048x' | img_tag }}
+				</div>
+			</div>
+			<div class="wi-50 wi-100">
+				<div class="application-section-content">
+					<div class="application-content-text">
+						<h3>{{ section.settings.title }}</h3>
+						<p>{{ section.settings.description }}</p>
+						<ul>
+							<li><a href="{{ section.settings.img_link1 }}">{{ section.settings.image1 | img_url: '2048x' | img_tag }}</a></li>
+							<li><a href="{{ section.settings.img_link2 }}">{{ section.settings.image2 | img_url: '2048x' | img_tag }}</a></li>
+							<li><a href="{{ section.settings.img_link3 }}">{{ section.settings.image3 | img_url: '2048x' | img_tag }}</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="application-section-content">
+					<div class="application-content-text">
+						<h3>{{ section.settings.title1 }}</h3>
+						<p>{{ section.settings.description1 }}</p>
+						<div class="social-icon-listing">
+                          	{% include 'social-icons' %}
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% schema %}
+  {
+    "name": "About Application Section",
+    "settings": [
+		{
+          "type": "image_picker",
+          "id": "image",
+          "label": "Appication Image"    
+        },
+		{
+          "id": "title",
+          "type": "text",
+          "label": "Title"
+        },
+		{
+          "id": "description",
+          "type": "text",
+          "label": "Description"
+        },
+		{
+          "id": "img_link1",
+          "type": "text",
+          "label": "iphone Link"
+        },
+		{
+          "type": "image_picker",
+          "id": "image1",
+          "label": "iphone Image"    
+        },
+		{
+          "id": "img_link2",
+          "type": "text",
+          "label": "ipad Link"
+        },
+		{
+          "type": "image_picker",
+          "id": "image2",
+          "label": "ipad Image"    
+        },
+		{
+          "id": "img_link3",
+          "type": "text",
+          "label": "android Link"
+        },
+		{
+          "type": "image_picker",
+          "id": "image3",
+          "label": "android Image"    
+        },
+		{
+          "id": "title1",
+          "type": "text",
+          "label": "Title1"
+        },
+		{
+          "id": "description1",
+          "type": "text",
+          "label": "Description1"
+        }
+	]
+  }
+{% endschema %}

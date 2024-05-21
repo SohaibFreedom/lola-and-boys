@@ -1,0 +1,188 @@
+<style>
+.help-secnter-section{
+	padding-top: 50px;
+}
+.help-center-heading-content{
+	text-align: center;
+	margin-bottom: 110px;
+}
+.help-center-heading{
+	font-size: 104px;
+	font-weight: 700;
+	line-height: 1;
+	color: #000;
+	margin-top: 0;
+	margin-bottom: 36px;
+}
+.help-center-heading-content p{
+	font-size: 24px;
+	font-weight: 500;
+	line-height: 1.5;
+	color: #000;
+	margin: 0;
+}
+.account-list{
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+}
+.account-list-img img{
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+  height: 100%;
+  object-fit: cover;
+}
+.account-list li{
+  padding: 0 15px;
+  margin-bottom: 48px;
+}
+.account-list li a{
+  transition: all 0.3s ease-in-out;
+  display: inline-block;
+  vertical-align: top;
+}
+.account-list li a:hover{
+  background-color: #FAFAFA;
+  box-shadow: 0px 10px 30px #c0c0c0;
+}
+.account-list-img{
+  height: 290px;
+  display: block;
+  overflow: hidden;
+}
+.help-menu_text{
+	font-size: 21px;
+	font-weight: 400;
+	line-height: 1.5;
+	display: inline-block;
+	vertical-align: top;
+	width: 100%;
+	text-align: center;
+	padding: 10px 0 18px;
+	color:  #000;
+    font-family: Karla,sans-serif;
+}
+.help-secnter-section .help-navigation{
+  max-width: 922px;
+  margin: 0 auto;
+}
+@media only screen and (max-width: 1199px){
+	.help-center-heading{
+		font-size: 80px;
+		margin-bottom: 30px;
+	}
+	.help-center-heading-content{
+		margin-bottom: 80px;
+	}
+  .help-secnter-section{
+    padding-top: 30px;
+  }
+}
+@media only screen and (max-width: 991px){
+	.help-center-heading{
+		font-size: 60px;
+		margin-bottom: 15px;
+	}
+	.help-center-heading-content{
+		margin-bottom: 60px;
+	}
+  .account-list li{
+     margin-bottom: 30px;
+  }
+}
+@media only screen and (max-width: 798px){
+  .account-list{
+    grid-template-columns: repeat(1,1fr)
+  }
+  .account-list li a{
+    display: block;
+    margin: 0 auto;
+  }
+  .help-center-heading-content p{
+    font-size: 20px;
+  }
+  .account-list li{
+    margin-bottom: 20px;
+  }
+  .help-menu_text{
+    font-size: 22px;
+  }
+  .account-list-img{
+    height: auto;
+  }
+@media only screen and (max-width: 575px){
+  .help-secnter-section{
+    padding-top: 0;
+  }
+  .help-center-heading{
+    font-size: 42px;
+  }
+  .help-center-heading-content p{
+    font-size: 18px;
+  }
+  .help-center-heading-content{
+    margin-bottom: 40px;
+  }
+  .help-menu_text{
+    font-size: 20px;
+  }
+}
+</style>
+
+<section class="help-secnter-section">
+	<div class="container">
+		<div class="help-center-heading-content">
+			<h2 class="help-center-heading">{{ section.settings.heading_text }}</h2>
+			<p>{{ section.settings.heading_content }}</p>
+		</div>
+		<div class="help-center-text-images">
+			<nav role="navigation" class='help-navigation'>
+                <ul class="account-list">
+                  {%- for link in section.settings.menu.links -%}
+                    <li>
+                      <a href="{{ link.url }}" {% if link.active %}aria-current="page" class="active" {% endif %}>
+                      <span class="account-list-img">
+                        {% assign title_img = link.title | handleize | append: '.jpg' | file_img_url: '' %}
+                      {% if title_img %}
+                        <img src="{{ title_img }}">
+                        {% endif %}
+                      {% assign title_img = '' %}
+                      </span>  
+                        <span class='help-menu_text'>{{ link.title }}</span>
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+            </nav>
+		</div>
+	</div>
+</section>
+{% schema %}
+  {
+    "name": "Help Center",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading_text",
+        "label": "Heading TExt"
+      },
+      {
+        "type": "textarea",
+        "id": "heading_content",
+        "label": "Text"
+      },
+      {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Menu"
+      }
+    ],
+    "presets":[
+      {
+        "name": "Help Center"
+      }
+    ]
+  }
+{% endschema %}

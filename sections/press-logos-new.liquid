@@ -1,0 +1,101 @@
+{% schema %}
+{
+    "name": "Press Logos",
+    "settings": [
+         {
+                    "id": "heading",
+                    "type": "text",
+                    "label": "Heading"
+                }
+    ],
+    "blocks": [
+        {
+            "type": "logo",
+            "name": "Logo",
+            "settings": [
+                {
+                    "id": "image",
+                    "type": "image_picker",
+                    "label": "Logo Image",
+                    "info": "Upload the logo image here."
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Press Logos",
+            "category": "Custom"
+        }
+    ]
+}
+{% endschema %}
+
+<style>
+                    .custom-press-logos .press-logo-item img {
+                      max-width: 100%;
+                      height: auto;
+                  }
+
+              .custom-press-logos {
+                  display: grid;
+                  grid-template-columns: repeat(4, 1fr);
+                  justify-content: center;
+                  align-items: center;
+                  column-gap: 5rem;
+                  row-gap: 1rem;
+              }
+              .pres-logos-heading h1 {
+                text-align: center;
+            }
+                  .custom-press-logos .press-logo-item {
+                    text-align: center;
+
+                }
+
+            @media only screen and (max-width: 767px) {
+            .custom-press-logos {
+            grid-template-columns: repeat(2, 1fr);
+            padding-bottom: 4rem;
+        }
+                  .PR-logos-banner .featured-link--half .info {
+    	padding: 10px;
+    }
+    .PR-logos-banner .collection_title {
+        font-size: 15px;
+    }
+
+          }
+
+      @media only screen and (max-width:767px) and (min-width:480px){
+
+        .custom-press-logos {
+            grid-template-columns: repeat(3, 1fr);
+            padding-bottom: 4rem;
+        }
+
+
+      }
+          @media only screen and (max-width:1024px) and (min-width:768px) {
+              .custom-press-logos {
+            grid-template-columns: repeat(3, 1fr);
+            padding-bottom: 4rem;
+        }
+  .Custom_img_text_section {
+      margin-bottom: 3rem;
+  }
+
+  }
+</style>
+<div class="container">
+  <div class="pres-logos-heading">
+    <h1>{{ section.settings.heading }}</h1>
+  </div>
+  <div class="custom-press-logos">
+    {% for block in section.blocks %}
+      <div class="press-logo-item">
+        <img src="{{ block.settings.image | img_url: 'master' }}">
+      </div>
+    {% endfor %}
+  </div>
+</div>

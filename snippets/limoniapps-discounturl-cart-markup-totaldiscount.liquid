@@ -1,0 +1,10 @@
+{% comment %}
+V1.8 - November 16 2017 - 
+This liquid snippet is used by Discount URL, an app from Limoni Apps
+This snippet should be included in the cart page to display the total discount at cart level
+Do not remove this snippet
+{% endcomment %}
+
+<span class="limoniapps-discounturl-totaldiscount">
+  {{ discounturl_cart_discountamount_total | money }}
+</span>

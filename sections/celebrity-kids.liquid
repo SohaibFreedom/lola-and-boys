@@ -1,0 +1,161 @@
+{% schema %}
+{
+  "name": "Celebrity kids section",
+  "settings": [
+     {
+        "type": "text",
+        "id": "padding",
+        "label": "Padding (e.g., 10px or 2rem)"
+      },
+    {
+      "type": "text",
+      "id": "celeb-name",
+      "label": "Celeb Name"
+    },
+    {
+          "type": "image_picker",
+          "id": "celeb-image",
+          "label": "Celeb Image"
+        }
+    ,
+    {
+      "type": "text",
+      "id": "outfit-heading",
+      "label": "Outfit Heading"
+    },
+          {
+      "type": "text",
+      "id": "celeb-description",
+      "label": "Celeb description"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Outfit",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+         {
+      "type": "text",
+      "id": "image-text",
+      "label": "Outfit image text"
+    },
+          {
+          "type": "url",
+          "id": "prodlink",
+          "label": "Product link"
+        }
+      ]
+    }
+  ],
+   "presets": [
+    {
+      "name": "Celebrity kids section"
+
+    }
+  ]
+}
+{% endschema %}
+<div class="container celeb-kids-con">
+  <h2 class="celeb-name">
+    {{ section.settings['celeb-name'] }}
+  </h2>
+  <div style="padding: {{ section.settings.padding }} 0" class="celeb-kid-container">
+    <div class="celeb-kid-item">
+      <img src="{{ section.settings.celeb-image | img_url: 'master' }}" alt="celeb image">
+    </div>
+    <div class="celeb-kid-item">
+      <p class="celeb-description">
+        {{ section.settings['celeb-description'] }}
+      </p>
+      <div class="celeb-outfit-heading">
+        {{ section.settings['outfit-heading'] }}
+      </div>
+      <div class="celeb-outfit-container">
+        {% for block in section.blocks %}
+          <div class="celeb-outfit">
+            <a href="{{ block.settings.prodlink }}">
+              <img src="{{ block.settings.image | img_url: 'master' }}" alt="outfit">
+              <p>{{ block.settings['image-text'] }}</p>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+                .celeb-kid-container {
+                  display: grid;
+                  grid-template-columns: repeat(2, 1fr);
+                  align-items: start !important;
+                  gap: 3rem !important;
+              }
+        .celeb-kids-con {
+          padding: 0 20px !important;
+      }
+
+              .celeb-description {
+                font-size: 20px;
+            }
+                .celeb-outfit-container{
+                    display: grid;
+                  grid-template-columns: repeat(3, 1fr);
+                  gap: 10px;
+                }
+                .celeb-kid-container img{
+                  width:100%;
+                }
+                    .celeb-outfit-heading{
+                      margin-bottom:20px;
+                        font-size: 20px;
+                      margin-top:80px;
+                    }
+                    .celeb-outfit img {
+                    width: 100%;
+                    aspect-ratio: 3 / 3;
+                }
+      @media only screen and (max-width:800px) and (min-width:600px){
+
+       .celeb-kids-con {
+          width:100% !important;
+      }
+              .celeb-kid-container {
+
+                  grid-template-columns: repeat(2, 1fr) !important;
+
+              }
+               .celeb-outfit-container {
+
+              grid-template-columns: 1fr 1fr 1fr !important;
+              gap: 2rem !important;
+          }
+                  .celeb-description, .celeb-outfit-heading {
+            font-size: 14px !important;
+        }
+  .celeb-outfit-heading {
+
+      margin-top: 1rem;
+  }
+
+    }
+                @media (max-width: 600px) {
+                  .celeb-kid-container {
+                    grid-template-columns: 1fr;
+                    gap:1rem !important;
+                  }
+                  .celeb-description, .celeb-outfit-heading {
+            font-size: 18px !important;
+
+        }
+                  .celeb-outfit-container {
+
+              grid-template-columns: 1fr 1fr !important;
+              gap: 2rem !important;
+          }
+                }
+</style>

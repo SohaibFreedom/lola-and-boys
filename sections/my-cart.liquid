@@ -1,0 +1,329 @@
+{% liquid
+  assign savedby = cart.items | where: "vendor", "SavedBy" | first
+  assign totalPrice = cart.total_price | minus: savedby.final_price
+  assign cartCount = cart.item_count
+  if savedby
+  assign cartCount = cartCount | minus: 1
+  endif
+%}
+
+<div id="offcanvas-right" class="c-offcanvas c-offcanvas--right" aria-hidden="true">
+  <div class="c-cart c-drawer">
+    <div data-ajax-cart-section="">
+      <div class="c-drawer__header">
+        <h3 class="c-drawer__title">Shopping cart</h3>
+        <span class="c-offcanvas__close c-drawer__close" aria-label="Close Menu" aria-hidden="true">
+          <svg
+            width="16px"
+            height="16px"
+            viewBox="0 0 16 16"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+          >
+            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="cart-slide-in-CL--subscription" transform="translate(-339.000000, -20.000000)" fill="#000" fill-rule="nonzero">
+                <g id="noun_X_1099163_3d3d38" transform="translate(339.000000, 20.000000)">
+                  <path d="M6.97148103,8 L0.213013231,1.2415322 C-0.0710044102,0.957514526 -0.0710044102,0.497030907 0.213013231,0.213013231 C0.497030907,-0.0710044102 0.957514526,-0.0710044102 1.2415322,0.213013231 L8,6.97148103 L14.7584678,0.213013231 C15.0424855,-0.0710044102 15.5029691,-0.0710044102 15.7869868,0.213013231 C16.0710044,0.497030907 16.0710044,0.957514526 15.7869868,1.2415322 L9.02851897,8 L15.7869868,14.7584678 C16.0710044,15.0424855 16.0710044,15.5029691 15.7869868,15.7869868 C15.5029691,16.0710044 15.0424855,16.0710044 14.7584678,15.7869868 L8,9.02851897 L1.2415322,15.7869868 C0.957514526,16.0710044 0.497030907,16.0710044 0.213013231,15.7869868 C-0.0710044102,15.5029691 -0.0710044102,15.0424855 0.213013231,14.7584678 L6.97148103,8 Z" id="Path"></path>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </span>
+      </div>
+
+      <div id="" class="c-drawer__body" data-cart-view="data-cart-view" rules="all">
+        {% render 'free-shipping-progress' %}
+        <div class="cart__productList-main">
+          {% if cartCount != 0 %}
+            <div class="c-cart__productList">
+              {% assign total_saving = 0 %}
+              {% for item in cart.items %}
+                {% if item.vendor == 'SavedBy' %}
+                  {% continue %}
+                {% endif %}
+                {% include 'wh_calculate_discount' with item.product %}
+                {% include 'wh_variant' with item.variant %}
+                {% assign wh_line_price = wh_v_price | minus: 0 | times: item.quantity %}
+                {% assign saving = wh_v_compare_at_price | minus: wh_line_price %}
+                {% assign total_saving = saving | plus: total_saving %}
+                {% if wh_v_compare_at_price > wh_v_price %}
+                {% endif %}
+                <div class="c-cart__product" id="{{total_saving}} cardDrawerID {{saving}}">
+                  <div class="c-cart__row c-drawer__item">
+                    <div class="c-cart__itemImageBox c-drawer__itemImg">
+                      <img src="{{ item | img_url: 'master' }}" alt="{{ item.title | escape }}">
+                    </div>
+                    <div class="c-cart__itemInfoBox c-drawer__itemDesc">
+                      <h2 class="c-cart__itemName c-drawer__itemName">
+                        <a href="{{ item.url }}">{{ item.title }}</a>
+                      </h2>
+                      <a href="{{ routes.cart_change_url }}?id={{ item.key }}&quantity=0" class="c-cart__itemRemove">
+                        <span class="c-cart__itemRemove">
+                          <svg
+                            viewBox="0 0 12 12"
+                            version="1.1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                          >
+                            <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                              <g id="cart-slide-in-CL--subscription" transform="translate(-343.000000, -225.000000)" fill="#3D3D38" fill-rule="nonzero">
+                                <g id="the-good-sample" transform="translate(30.000000, 225.000000)">
+                                  <g id="noun_X_1099163_3d3d38-Copy" transform="translate(313.000000, 0.000000)">
+                                    <path d="M5.22861077,6 L0.159759923,0.931149151 C-0.0532533077,0.718135894 -0.0532533077,0.37277318 0.159759923,0.159759923 C0.37277318,-0.0532533077 0.718135894,-0.0532533077 0.931149151,0.159759923 L6,5.22861077 L11.0688508,0.159759923 C11.2818641,-0.0532533077 11.6272268,-0.0532533077 11.8402401,0.159759923 C12.0532533,0.37277318 12.0532533,0.718135894 11.8402401,0.931149151 L6.77138923,6 L11.8402401,11.0688508 C12.0532533,11.2818641 12.0532533,11.6272268 11.8402401,11.8402401 C11.6272268,12.0532533 11.2818641,12.0532533 11.0688508,11.8402401 L6,6.77138923 L0.931149151,11.8402401 C0.718135894,12.0532533 0.37277318,12.0532533 0.159759923,11.8402401 C-0.0532533077,11.6272268 -0.0532533077,11.2818641 0.159759923,11.0688508 L5.22861077,6 Z" id="Path"></path>
+                                  </g>
+                                </g>
+                              </g>
+                            </g>
+                          </svg>
+                        </span>
+                      </a>
+                      <p>
+                        {% comment %} {% endcomment %}
+                        {% for p in item.properties %}
+                          {%- if p.first contains 'Gift' -%}{%- continue -%}{%- endif -%}
+                          {%- if p.first.first == '_' -%}{%- continue -%}{%- endif -%}
+                          {% unless p.last == blank %}
+                            {% if p.last contains '/uploads/' %}
+                              <div>
+                                {% unless p.first contains '_is_preorder' %}{{ p.first }}:{% endunless %}
+                                <a class="lightbox" href="{{ p.last }}">{{ 'cart.general.uploaded_file' | t }}</a>
+                              </div>
+                            {% else %}
+                              <div>
+                                {% unless p.first contains '_is_preorder' %}{{ p.first }}:{% endunless %}
+                                {{ p.last }}
+                              </div>
+                            {% endif %}
+                          {% endunless %}
+                        {% endfor %}
+                      </p>
+                      <div class="c-cart__itemLowerBox">
+                        {% comment %}
+                          <p class="modal_price">
+                                {% if wh_v_price > 0 %}
+                                  <span class="">
+                                  {% if customer.tags.size > 0 %}
+                                  <span class="saso-cart-item-price" data-key="{{item.key}}">{{ wh_v_price | money }}</span>
+                                  {% else %}
+                                  <span class="saso-cart-item-price" data-key="{{item.key}}"><span class="Bold-theme-hook-DO-NOT-DELETE bold_cart_item_price" style="display:none !important;"></span>{{ wh_v_price | money }}</span>
+                                  {% endif %}
+                                  </span>
+                                {% endif %}
+
+                                {% if wh_v_price < wh_v_compare_at_price %}
+                                  <span class="product-money was_price">{{ wh_v_compare_at_price | money }}</span>
+                                {% endif %}
+                              </p>
+                          <span class="saso-cart-item-price" data-key="{{item.key}}"><span class="Bold-theme-hook-DO-NOT-DELETE bold_cart_item_price" style="display:none !important;"></span>{{ wh_v_price | money }}</span>
+                        {% endcomment %}
+
+                        <div class="c-cart__itemPriceBox c-drawer__itemPrice">
+                          {% if wh_v_compare_at_price > item.price %}
+                            <span
+                              class="c-cart__itemPrice c-cart__itemdiscountedprice"
+                              style="text-decoration: line-through;"
+                              rv-html="item.final_line_price | money Currency.currentCurrency"
+                              class="c-cart__itemPrice"
+                            >
+                              {{ wh_v_compare_at_price | money }}
+                            </span>
+
+                            <span
+                              class="c-cart__itemPrice"
+                              rv-html="item.discounted_line_price | money Currency.currentCurrency"
+                              class="c-cart__itemPrice"
+                            >
+                              {{ item.discounted_price | money }}
+                            </span>
+
+                          {% elsif item.original_price > item.discounted_price %}
+                            <span
+                              class="c-cart__itemPrice c-cart__itemdiscountedprice"
+                              style="text-decoration: line-through;"
+                              rv-html="item.final_line_price | money Currency.currentCurrency"
+                              class="c-cart__itemPrice"
+                            >
+                              {{ item.original_price | money }}
+                            </span>
+
+                            <span
+                              class="c-cart__itemPrice"
+                              rv-html="item.discounted_line_price | money Currency.currentCurrency"
+                              class="c-cart__itemPrice"
+                            >
+                              {{ item.discounted_price | money }}
+                            </span>
+
+                          {% else %}
+                            <span
+                              class="c-cart__itemPrice"
+                              rv-html="item.discounted_line_price | money Currency.currentCurrency"
+                              class="c-cart__itemPrice"
+                            >
+                              {{ item.original_price | money }}
+                            </span>
+                          {% endif %}
+                        </div>
+                        <div class="c-cart__itemQuantityBox ajaxcart__qty">
+                          <a
+                            href="{{ routes.cart_change_url }}?id={{ item.key }}&quantity={{ item.quantity | minus: 1 }}"
+                            class="ajaxcart__qty-adjust ajaxcart__qty--minus js-minus-product icon-fallback-text"
+                          >
+                            <span class="c-drawer__minus">
+                              <svg width="10" height="2" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.612 0H1.478C1.264 0 .8.308.8.925c0 .616.464.924.678.924h11.134c.214 0 .678-.308.678-.924 0-.617-.464-.925-.678-.925z" fill-rule="nonzero"/>
+                              </svg>
+                            </span>
+                          </a>
+                          <span class="ajaxcart__qty-num"
+                            ><input
+                              type="number"
+                              value="{{ item.quantity }}"
+                              data-ajax-cart-quantity-input="{{ item.key }}"
+                              class=""
+                          ></span>
+                          <a
+                            href="{{ routes.cart_change_url }}?id={{ item.key }}&quantity={{ item.quantity | plus: 1 }}"
+                            class="ajaxcart__qty-adjust ajaxcart__qty--minus js-minus-product icon-fallback-text"
+                          >
+                            <span class="c-drawer__plus">
+                              <svg width="11" height="13" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11.485 5.163H6.974V.65c0-.205-.28-.651-.838-.651C5.578 0 5.3.446 5.3.651v4.512H.788c-.206 0-.652.279-.652.837 0 .558.446.837.652.837h4.511v4.512c0 .205.28.651.837.651.558 0 .838-.446.838-.651V6.837h4.511c.206 0 .651-.279.651-.837 0-.558-.445-.837-.65-.837z" fill-rule="nonzero"/>
+                              </svg>
+                            </span>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="cart-drawer-error" data-ajax-cart-messages="{{ item.key }}"></div>
+                    </div>
+                    {% comment %}
+                      <div>Total: <strong>{{ total_saving | money }}</strong></div>
+                    {% endcomment %}
+                  </div>
+                </div>
+              {% endfor %}
+              <div class="drawer__subTotal-all">
+                <div class="c-drawer__subTotal">
+                  <div class="c-drawer__subTotalRight">
+                    <div class="c-cart__footerPriceBox">
+                      <div class="c-cart__subtotal c-drawer__subTotalTitle"></div>
+                      <p class="c-cart__subtotal c-drawer__subTotalTitle">
+                        Total:
+                        <span class="saso-cart-original-total"
+                          ><span
+                            class="Bold-theme-hook-DO-NOT-DELETE bold_cart_total"
+                            style="display: none !important"
+                          ></span
+                          ><span class="wh-original-cart-total"
+                            ><span class="ak-upsell-original-price c-cart__total hlooo c-drawer__subTotalPrice c-cart__itemPrice">
+                              {{- totalPrice | money_with_currency -}}
+                            </span></span
+                          ></span
+                        >
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                {% render 'info_button' %}
+                <div class="c-drawer__subTotal">
+                  <div class="c-drawer__subTotalRight">
+                    <savedby-widget side-cart style="display: flex;"></savedby-widget>
+                    <div class="cartCanvas__buttons">
+                      <a href="/cart">Go To Cart</a>
+                      <a href="/checkout" class="checkout-btn-drawer">Begin Checkout</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% include 'cross-sell' %}
+          {% else %}
+            <div class="c-cart__emptyText">
+              <span>You have no items in your shopping bag.</span>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    jQuery(document).ready(function (){
+      jQuery('.cart_container').click(function(){
+          $('#offcanvas-right').addClass('cart-drawer-open');
+          $('body').addClass('cart-drawer-overlay');
+      });
+      jQuery('.liquid_ajax_cart').click(function(){
+        setTimeout(function() {
+          if($(".varinat-error").find(".js-ajax-cart-message--error").length > 0) {
+            console.log("out of stock");
+          }else{
+              console.log("available");
+              $('#offcanvas-right').addClass('cart-drawer-open');
+              $('body').addClass('cart-drawer-overlay');
+           }
+
+         }, 2500);
+      });
+      jQuery(document).on("click",".c-offcanvas__close", function(){
+        $('.c-offcanvas--right').removeClass('cart-drawer-open')
+        $('body').removeClass('cart-drawer-overlay');
+      });
+
+      const $menu = $('#offcanvas-right');
+      const $cartContainer = $('.icon-cart');
+       const $cartCount = $('.cart_count');
+
+      const closeMenu = () => {
+        $('.c-offcanvas--right').removeClass('cart-drawer-open');
+        $('body').removeClass('cart-drawer-overlay');
+      };
+
+  $(document).on('click', e => {
+    if (!$menu.is(e.target)
+        && !$cartContainer.is(e.target)
+        && !$cartCount.is(e.target)
+        && !$('#offcanvas-right').find(e.target).length) {
+      closeMenu();
+    }
+  });
+
+      function quntityCLose(){
+        setTimeout(function(){
+          if($(".c-cart__productList").find(".c-cart__product").length > 0) {
+            console.log("open");
+          }else{
+             $('.c-offcanvas--right').removeClass('cart-drawer-open')
+             $('body').removeClass('cart-drawer-overlay');
+           }
+        }, 1000)
+      }
+      jQuery(document).on("click", ".ajaxcart__qty-adjust",function (){
+        quntityCLose();
+      });
+      jQuery(document).on("click", ".c-cart__itemRemove",function (){
+        quntityCLose();
+      });
+    });
+    window.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        $('.c-offcanvas--right').removeClass('cart-drawer-open')
+      	$('body').removeClass('cart-drawer-overlay');
+      }
+    })
+</script>
+{% schema %}
+{
+  "name": "Section name",
+  "settings": []
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

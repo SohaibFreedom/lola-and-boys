@@ -1,0 +1,96 @@
+{% schema %}
+{
+  "name": "Custom Number Section",
+
+  "blocks": [
+    {
+      "type": "number_block",
+      "name": "Number Block",
+      "settings": [
+          {
+          "type": "text",
+          "id": "class",
+          "label": "Class"
+        },
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Number",
+          "default": "01"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "If you love what you do, it won’t feel like work."
+        },
+        {
+          "type": "liquid",
+          "id": "description",
+          "label": "Description",
+          "default": "When you're deeply invested in your work, every challenge becomes an opportunity for growth and creativity, making the journey towards your dreams an exciting adventure."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Number Section"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="custom-number-section">
+  {% for block in section.blocks %}
+    <div class="number-block {{ block.settings.class }}">
+      <div class="block-number">
+        {{ block.settings.number }}
+      </div>
+      <div class="heading-wrapper">
+        <div class="block-heading">
+          {{ block.settings.heading }}
+        </div>
+        <div class="block-description">
+          {{ block.settings.description }}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<style>
+      .custom-number-section {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    .number-block {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: end;
+    }
+    .block-heading {
+        font-size: 26px;
+    	    margin-bottom: 1rem;
+        font-weight: bold;
+        line-height: 1.5;
+    }
+  .number-block:first-child {
+      border-top: 1px solid;
+  }
+    .heading-wrapper {
+        width: 60%;
+        text-align: center;
+    }
+    .block-number {
+        font-family: "Noto Serif Display", serif;
+        font-size: 80px;
+          line-height: 1.0;
+        font-weight: bold;
+    }
+    .number-block {
+        border-bottom: 1px solid;
+        padding-bottom: 4rem;
+        padding-top: 4rem;
+    }
+</style>

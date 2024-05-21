@@ -1,0 +1,137 @@
+/* V1.8 - November 16 2017 - 
+This css asset is used by Discount URL, an app by Limoni Apps.
+It should be included at the bottom of the head of the theme's layout liquid file.
+Do not remove this snippet */
+.limoniapps-discounturl-cart-savingslabel {
+  color: green;
+  font-weight: 600;
+}
+
+.limoniapps-discounturl-lineitem-savingslabel {
+  color: green;
+  font-weight: 600;
+}
+
+.limoniapps-discounturl-productprice-compareat-before {
+  display: none;
+}
+
+.limoniapps-discounturl-productprice {
+  color: green;
+  font-weight: 600;
+}
+
+.limoniapps-discounturl-productprice-compareat-after {
+  display: inner-block;
+}
+
+.limoniapps-discounturl-lineprice-compareat-before {
+  display: none;
+}
+
+.limoniapps-discounturl-lineprice {
+  color: green;
+  font-weight: 600;
+}
+
+.limoniapps-discounturl-lineprice-compareat-after {
+  display: none;
+}
+
+.limoniapps-discounturl-subtotal-before {
+  display: inner-block;
+  font-weight: 300;
+  color: darkgrey;
+}
+
+.limoniapps-discounturl-subtotal {
+  color: green;
+  font-weight: 600;
+}
+
+.limoniapps-discounturl-subtotal-after {
+  display: none;
+}
+
+.limoniapps-discounturl-totaldiscount {
+  font-weight: 300;
+}
+
+.limoniapps-discounturl-cart-quantity {
+  position: relative;
+  max-width: 120px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.limoniapps-discounturl-cart-quantity-label {
+  font-size: 0.7em;
+  font-weight: 700;
+  color: #666;
+  text-transform: uppercase;
+  margin-bottom: 13px;
+  max-width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  display: block;
+  cursor: pointer;
+}
+
+.limoniapps-discounturl-cart-quantity-input {
+  width: 100%;
+  padding-left: 30px;
+  padding-right: 30px;
+  text-align: center;
+  background-color: #f4f4f4;
+  border: 0;
+  max-width: 100%;
+  font-size: 17px;
+  font-family: "Source Sans Pro","HelveticaNeue","Helvetica Neue",sans-serif;
+  color: #666;
+  line-height: 1.375;
+  border-radius: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.limoniapps-discounturl-cart-quantity-adjust {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  text-align: center;
+  width: 30px;
+  padding: 0;
+  background: none;
+  border-style: solid;
+  border-color: #e7e7e7;
+  border-width: 0;
+  transition: background-color 0.03s ease-in;
+  color: #666;
+  line-height: 50px;
+  height: 50px;
+  margin: 0;
+}
+
+.limoniapps-discounturl-cart-quantity-adjust-minus {
+  left: 0;
+  border-right-width: 1px;
+}
+
+.limoniapps-discounturl-cart-quantity-adjust-plus {
+  right: 0;
+  border-left-width: 1px;
+}
+
+.limoniapps-discounturl-cart-quantity-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 8px;
+  height: 8px;
+  fill: #666;
+}
+
+@media only screen and (min-width: 750px) {
+.limoniapps-discounturl-cart-quantity-label {
+  display: none !important;
+}
+}

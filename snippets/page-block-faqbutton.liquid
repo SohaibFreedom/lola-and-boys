@@ -1,0 +1,8 @@
+{% if block.settings.button_label != blank and block.settings.button_link != blank %}
+<div class="faq-button-row">
+  <a href="{{ block.settings.button_link }}"
+    class="btn {% if block.settings.button_style == 'secondary' %} btn--tertiary{% endif %}">
+    {{ block.settings.button_label }}
+  </a>
+</div>
+{% endif %}

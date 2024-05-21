@@ -1,0 +1,233 @@
+<div style="max-width:1200px;margin:auto">    
+<div        
+        data-display='{{section.settings.tsl_layout_type}}'
+        data-channel='{{section.settings.tsl_channel_code}}'
+        {% if section.settings.tsl_follow_button == true %}
+            data-follow-button='1'
+        {% elsif section.settings.tsl_border == false %}
+            data-follow-button='0'
+        {% endif %}
+        {% if section.settings.tsl_follow_button_count == true %}
+            data-follow-count='1'
+        {% elsif section.settings.tsl_border == false %}
+            data-follow-count='0'
+        {% endif %}
+        data-limits='{{section.settings.tsl_feed_limit}}'
+        data-preview-aspect='{{section.settings.tsl_preview_aspect}}'
+        data-preview-image="default"
+        data-section-header='{{section.settings.tsl_section_header}}'
+        data-section-header-text-style='{{section.settings.tsl_text_style}}'
+        data-section-header-text-align='{{section.settings.tsl_text_align}}'
+        {% if section.settings.tsl_border == true %}
+            data-style-border='1'
+        {% elsif section.settings.tsl_border == false %}
+            data-style-border='0'
+        {% endif %}
+        data-style-border-color='{{section.settings.tsl_border_color}}'
+        {% if section.settings.tsl_border_radius == true %}
+            data-style-border-radius='1'
+        {% elsif section.settings.tsl_border_radius == false %}
+            data-style-border-radius='0'
+        {% endif %}
+        {% if section.settings.tsl_view_more_button == true %}
+            data-view-all-button="1"
+        {% elsif section.settings.tsl_view_more_button == false %}
+            data-view-all-button="0"
+        {% endif%}
+        class="tsl-channel-feed">
+</div>
+</div>
+
+{% schema %}
+{
+"name": "TalkShopLive Feed",
+"class": "index-section index-section--featured-product",
+"settings": [
+{
+"type": "header",
+"content": "Header Settings"
+},
+{
+"type": "text",
+"id": "tsl_section_header",
+"default" : "Live Shopping",
+"label": "Section Header"
+},
+{
+"type": "select",
+"id": "tsl_text_style",
+"label": "Section Header Text Style",
+"default": "h1",
+"options": [
+{
+"label": "H1",
+"value": "h1"
+},
+{
+"label": "H2",
+"value": "h2"
+},
+{
+"label": "H3",
+"value": "h3"
+},
+{
+"label": "H4",
+"value": "h4"
+},
+{
+"label": "H5",
+"value": "h5"
+},
+{
+"label": "Normal",
+"value": "p"
+}
+]
+},
+{
+"type": "select",
+"id": "tsl_text_align",
+"label": "Section Header Align",
+"default": "space-between",
+"options": [
+{
+"label": "Center",
+"value": "center"
+},
+{
+"label": "Left",
+"value": "flex-start"
+},
+{
+"label": "Right",
+"value": "flex-end"
+},
+{
+"label": "Space Between",
+"value": "space-between"
+}
+]
+},
+{
+"type": "header",
+"content": "Feed Settings"
+},
+{
+"type": "text",
+"id": "tsl_channel_code",
+"label": "Channel Code",
+"default" : "lolatheboys",
+"info": "Your channel code : lolatheboys"
+},
+{
+"type": "select",
+"id": "tsl_layout_type",
+"label": "Feed Type",
+"default": "carousel",
+"options": [
+{
+"label": "Grid",
+"value": "grid"
+},
+{
+"label": "Carousel",
+"value": "carousel"
+}
+]
+},
+{
+"type": "select",
+"id": "tsl_feed_limit",
+"label": "Display Limit",
+"default": "default",
+"options": [
+{
+"label": "Max",
+"value": "default"
+},
+{
+"label": "3",
+"value": "3"
+},
+{
+"label": "5",
+"value": "5"
+},
+{
+"label": "10",
+"value": "10"
+}]
+},
+
+{
+"type": "header",
+"content": "Card Settings"
+},
+{
+"type": "select",
+"id": "tsl_preview_aspect",
+"label": "Preview Type",
+"default": "landscape",
+"options": [
+{
+"label": "Landscape",
+"value": "landscape"
+},
+{
+"label": "Portrait",
+"value": "portrait"
+}
+]},
+{
+"type": "checkbox",
+"id": "tsl_border",
+"label": "Include border ",
+"default": false
+},
+{
+"type": "checkbox",
+"id": "tsl_border_radius",
+"label": "Include border radius ",
+"default": true
+},
+{
+"type": "color",
+"id": "tsl_border_color",
+"label": "Border Color",
+"default": "#ffffff"
+},
+{
+"type": "header",
+"content": "Follow Button Settings"
+},
+{
+"type": "checkbox",
+"id": "tsl_follow_button",
+"label": "Include follow button",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "tsl_follow_button_count",
+"label": "Show follower count",
+"default": true
+},
+{
+"type": "header",
+"content": "View More Settings"
+},
+{
+"type": "checkbox",
+"id": "tsl_view_more_button",
+"label": "Show view more",
+"default": true
+}
+],
+"presets": [
+{
+"name": "TalkShopLive Feed"
+}
+]
+}
+{% endschema %}
