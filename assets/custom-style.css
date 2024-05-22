@@ -6,8 +6,8 @@
   background-position: top center;
   height: auto !important;
 }
-div#giftbox-root {
-    display: none !important;
+.salepify-free-gift-box {
+  display: none !important;
 }
 .search-template-section .product_info {
   text-align: center;
