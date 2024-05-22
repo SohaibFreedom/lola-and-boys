@@ -6,7 +6,7 @@
 
 {% comment %}Mobile navigation{% endcomment %}
 
-{% render 'slider-announce' %}
+{% render 'custom-announce' %}
 
 {% liquid
   assign savedby = cart.items | where: "vendor", "SavedBy" | first
