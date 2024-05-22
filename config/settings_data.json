@@ -5569,6 +5569,12 @@
         "disabled": false,
         "settings": {
         }
+      },
+      "7280966411886983154": {
+        "type": "shopify:\/\/apps\/monk\/blocks\/app-embed\/e949adb6-87ca-4b97-8f31-0e51bf507f2d",
+        "disabled": false,
+        "settings": {
+        }
       }
     }
   }
