@@ -6,7 +6,8 @@
   background-position: top center;
   height: auto !important;
 }
-.salepify-free-gift-box {
+.salepify-free-gift-box,
+.salepify-free-gift-modal-wrapper {
   display: none !important;
 }
 .search-template-section .product_info {
