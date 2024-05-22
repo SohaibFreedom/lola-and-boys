@@ -5570,10 +5570,11 @@
         "settings": {
         }
       },
-      "8035815586522894503": {
-        "type": "shopify:\/\/apps\/salepify\/blocks\/free-gift.embed\/f616e94d-36ae-45cb-9d98-57804196c7a7",
+      "10605408327587305396": {
+        "type": "shopify:\/\/apps\/eg-auto-add-to-cart\/blocks\/app-embed\/0f7d4f74-1e89-4820-aec4-6564d7e535d2",
         "disabled": false,
         "settings": {
+          "version": "v3"
         }
       }
     }
