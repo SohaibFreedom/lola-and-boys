@@ -1090,7 +1090,7 @@ html
     border-right: 0 !important;
   }
   #header .top_bar .icon-search {
-    right: 137px;
+    right: 77% !important;
     top: 16px;
   }
   .forms-heading-ugc {
@@ -1138,9 +1138,10 @@ html
     letter-spacing: 1px;
   }
   #header .top_bar a.mobile_logo {
-    margin: 0 !important;
+    margin: 0 auto !important;
     width: max-content;
-    left: 58px;
+    left: 0 !important;
+    right: 0;
   }
   #header .top_bar a.fa.fa-heart-o {
     right: 72px !important;
@@ -1566,8 +1567,9 @@ html
     grid-template-columns: 1fr 1fr;
     gap: 15px;
   }
-    .announcement-bar .announcement-bar-text, span#countdown {
-    font-size:11px !important;
+  .announcement-bar .announcement-bar-text,
+  span#countdown {
+    font-size: 11px !important;
   }
   .founder-imgbanenr:after {
     content: none;
