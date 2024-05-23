@@ -1567,8 +1567,8 @@ html
     grid-template-columns: 1fr 1fr;
     gap: 15px;
   }
-  .announcement-bar .announcement-bar-text,
-  span#countdown {
+  .annoucment-bar-top .announcement-bar .announcement-bar-text,
+  .annoucment-bar-top span#countdown {
     font-size: 11px !important;
   }
   .founder-imgbanenr:after {
