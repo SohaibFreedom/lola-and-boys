@@ -60,7 +60,7 @@
                   {% assign total_saving = saving | plus: total_saving %}
                 {% endif %}
 
-                <div class="section clearfix cart_content_row {{- item.product.title }}" data-id="{{ item.product.id }}">
+                <div class="section clearfix cart_content_row {{- item.product.handle }}" data-id="{{ item.product.id }}">
                   <div class="three columns alpha cart_content_img">
                     <a href="{{ item.url }}" title="{{ item.title | escape }}" class="cart_page_image">
                       <img
