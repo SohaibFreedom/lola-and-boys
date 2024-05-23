@@ -1566,6 +1566,9 @@ html
     grid-template-columns: 1fr 1fr;
     gap: 15px;
   }
+    .announcement-bar .announcement-bar-text, span#countdown {
+    font-size:11px !important;
+  }
   .founder-imgbanenr:after {
     content: none;
   }
