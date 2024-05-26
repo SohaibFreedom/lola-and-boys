@@ -3909,11 +3909,11 @@
         ],
         "settings": {
           "show_announcement_bar": true,
-          "show_countdown": false,
+          "show_countdown": true,
           "bck_clr": "#faddff",
           "Annouce_url": "https:\/\/lolaandtheboys.com\/collections\/memorial-day",
           "txt_clr": "#000000",
-          "text": "<b>Spend $200 and get a FREE Tote Bag! While supplies last!\n<\/b>",
+          "text": "<b>The Memorial Day Sale Ends TODAY! Last Chance for 25-70% Off Site Wide\n<\/b>",
           "phone_number": "",
           "top_bar_menu": "help",
           "cart_icon": "cart",
