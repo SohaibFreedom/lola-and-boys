@@ -3909,7 +3909,7 @@
         ],
         "settings": {
           "show_announcement_bar": true,
-          "show_countdown": false,
+          "show_countdown": true,
           "bck_clr": "#faddff",
           "Annouce_url": "https:\/\/lolaandtheboys.com\/collections\/memorial-day",
           "txt_clr": "#000000",
