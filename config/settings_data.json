@@ -3908,12 +3908,12 @@
           "23ee518c-ddd9-496f-825e-6d407e57a3a9"
         ],
         "settings": {
-          "show_announcement_bar": false,
-          "show_countdown": true,
+          "show_announcement_bar": true,
+          "show_countdown": false,
           "bck_clr": "#faddff",
           "Annouce_url": "https:\/\/lolaandtheboys.com\/collections\/memorial-day",
           "txt_clr": "#000000",
-          "text": "<b> EXTENDED : TODAY ONLY Last Chance for 25-70% Off Site Wide\n<\/b>",
+          "text": "<b> Spend $200 and get a FREE Tote Bag! While supplies last!\n<\/b>",
           "phone_number": "",
           "top_bar_menu": "help",
           "cart_icon": "cart",
