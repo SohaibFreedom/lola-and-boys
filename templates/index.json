@@ -5,6 +5,7 @@
       "blocks": {
         "image_U3EW4E": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify:\/\/shop_images\/MEMORIAL_DAY_HP.jpg",
             "image_mobile": "shopify:\/\/shop_images\/Lola_Camp_Collection_HP_mob_1.jpg",
