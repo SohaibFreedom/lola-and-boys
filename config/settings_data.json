@@ -3908,7 +3908,7 @@
           "23ee518c-ddd9-496f-825e-6d407e57a3a9"
         ],
         "settings": {
-          "show_announcement_bar": true,
+          "show_announcement_bar": false,
           "show_countdown": true,
           "bck_clr": "#faddff",
           "Annouce_url": "https:\/\/lolaandtheboys.com\/collections\/memorial-day",
