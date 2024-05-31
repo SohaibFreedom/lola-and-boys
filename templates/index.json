@@ -3,28 +3,6 @@
     "slideshow_nB6m8V": {
       "type": "slideshow",
       "blocks": {
-        "image_U3EW4E": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/2_b107562f-de5b-48ec-85a4-23ebe40ddf97.png",
-            "image_mobile": "shopify:\/\/shop_images\/25__Sale_Mobile_Banner.png",
-            "mp4": "",
-            "mobilevideo": "",
-            "pretext": "",
-            "title": "",
-            "subtitle": "",
-            "text_position": "center",
-            "text_align": "center",
-            "caption_background": false,
-            "caption_background_transparency": false,
-            "button1": "",
-            "button1_link": "https:\/\/lolaandtheboys.com\/collections\/summer-sale",
-            "button1_highlight": false,
-            "button2": "",
-            "button2_link": "",
-            "button2_highlight": false
-          }
-        },
         "image_zPL6aM": {
           "type": "image",
           "settings": {
@@ -41,6 +19,28 @@
             "caption_background_transparency": false,
             "button1": "",
             "button1_link": "https:\/\/lolaandtheboys.com\/collections\/summer",
+            "button1_highlight": false,
+            "button2": "",
+            "button2_link": "",
+            "button2_highlight": false
+          }
+        },
+        "image_U3EW4E": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/2_b107562f-de5b-48ec-85a4-23ebe40ddf97.png",
+            "image_mobile": "shopify:\/\/shop_images\/25__Sale_Mobile_Banner.png",
+            "mp4": "",
+            "mobilevideo": "",
+            "pretext": "",
+            "title": "",
+            "subtitle": "",
+            "text_position": "center",
+            "text_align": "center",
+            "caption_background": false,
+            "caption_background_transparency": false,
+            "button1": "",
+            "button1_link": "https:\/\/lolaandtheboys.com\/collections\/summer-sale",
             "button1_highlight": false,
             "button2": "",
             "button2_link": "",
@@ -157,8 +157,8 @@
         }
       },
       "block_order": [
-        "image_U3EW4E",
         "image_zPL6aM",
+        "image_U3EW4E",
         "image_9rViCJ",
         "image_KD9mi6",
         "image_V87qeG",
