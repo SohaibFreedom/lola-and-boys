@@ -6,6 +6,9 @@
   background-position: top center;
   height: auto !important;
 }
+div#birthday-wrapper .label {
+    color: #000 !important;
+}
 .yotpo-product-points-c {
     margin: 1rem 0 .5rem;
 }
