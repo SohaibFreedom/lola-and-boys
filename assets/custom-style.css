@@ -6,6 +6,9 @@
   background-position: top center;
   height: auto !important;
 }
+.yotpo-product-points-c {
+    margin: 1rem 0 .5rem;
+}
 .yotpo.yotpo-main-widget {
     width: 100% !important;
     max-width: 1400px !important;
