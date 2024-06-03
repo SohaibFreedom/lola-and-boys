@@ -6,6 +6,12 @@
   background-position: top center;
   height: auto !important;
 }
+.yotpo.yotpo-main-widget {
+    width: 100% !important;
+    max-width: 1400px !important;
+    margin: 2rem auto;
+    padding: 0 20px;
+}
 .c-drawer .cart__productList-main {
     height: calc(120vh - 265px) !important;
 }
