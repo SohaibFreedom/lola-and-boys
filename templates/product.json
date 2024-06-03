@@ -1,1 +1,80 @@
-{"sections":{"shogun-helper":{"type":"shogun-helper","settings":{}},"shogun-above":{"type":"shogun-above","settings":{}},"main":{"type":"product-template","settings":{"gallery_arrows":true,"activate_zoom":false,"enable_product_lightbox":true,"activate_autoplay":false,"slideshow_animation":"slide","product_images_position":"left","product_thumbs":true,"thumbnail_position":"left-thumbnails","product_breadcrumb":true,"display_vendor":true,"display_sku":false,"display_savings":true,"display_collections":false,"display_type":false,"display_tags":false,"display_social_buttons":false,"product_description_position":"bottom","display_related_products":true,"related_products_style":"slider","related_products_limit":20,"products_per":5,"display_recently_viewed":false,"rv_title":"Recently Viewed Items","rv_products_style":"slider","rv_max_display":12,"rv_per":5,"toggle":false}},"shogun-below":{"type":"shogun-below","settings":{}},"shogun-optimizer":{"type":"shogun-optimizer","settings":{}}},"order":["shogun-helper","shogun-above","main","shogun-below","shogun-optimizer"]}
+{
+  "sections": {
+    "shogun-helper": {
+      "type": "shogun-helper",
+      "settings": {
+      }
+    },
+    "shogun-above": {
+      "type": "shogun-above",
+      "settings": {
+      }
+    },
+    "main": {
+      "type": "product-template",
+      "settings": {
+        "gallery_arrows": true,
+        "activate_zoom": false,
+        "enable_product_lightbox": true,
+        "activate_autoplay": false,
+        "slideshow_animation": "slide",
+        "product_images_position": "left",
+        "product_thumbs": true,
+        "thumbnail_position": "left-thumbnails",
+        "product_breadcrumb": true,
+        "display_vendor": true,
+        "display_sku": false,
+        "display_savings": true,
+        "display_collections": false,
+        "display_type": false,
+        "display_tags": false,
+        "display_social_buttons": false,
+        "product_description_position": "bottom",
+        "display_related_products": true,
+        "related_products_style": "slider",
+        "related_products_limit": 20,
+        "products_per": 5,
+        "display_recently_viewed": false,
+        "rv_title": "Recently Viewed Items",
+        "rv_products_style": "slider",
+        "rv_max_display": 12,
+        "rv_per": 5,
+        "toggle": false
+      }
+    },
+    "shogun-below": {
+      "type": "shogun-below",
+      "settings": {
+      }
+    },
+    "shogun-optimizer": {
+      "type": "shogun-optimizer",
+      "settings": {
+      }
+    },
+    "17174489357573d6b9": {
+      "type": "apps",
+      "blocks": {
+        "yotpo_product_reviews_ugc_reviews_MbrNNx": {
+          "type": "shopify:\/\/apps\/yotpo-product-reviews-ugc\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "yotpo_product_reviews_ugc_reviews_MbrNNx"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "shogun-helper",
+    "shogun-above",
+    "main",
+    "shogun-below",
+    "shogun-optimizer",
+    "17174489357573d6b9"
+  ]
+}
