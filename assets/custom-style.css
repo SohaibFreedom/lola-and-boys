@@ -988,6 +988,9 @@ div#accessiblembilenav * {
     font-size: 14px !important;
     font-weight: 600 !important;
 }
+  div#accessiblembilenav *:hover {
+    background:#fff !important;
+}
 .gm-menu-installed .gm-menu.gm-menu-11315 .gm-item.gm-level-0.gm-active > .gm-target, .gm-menu-installed .gm-menu.gm-menu-11315 .gm-item.gm-level-0:hover > .gm-target {
     background: #fff !important;
 }
