@@ -995,7 +995,7 @@ div#accessiblembilenav * {
     background:#fff !important;
 }
   
- div#accessiblembilenav .gm-menu.gm-menu-11315 .gm-item.gm-level-0.gm-active > .gm-target,  div#accessiblembilenav .gm-menu.gm-menu-11315 .gm-item.gm-level-0:hover > .gm-target {
+.gm-menu-installed .gm-menu.gm-menu-11315 .gm-item.gm-level-0.gm-active > .gm-target, .gm-menu-installed .gm-menu.gm-menu-11315 .gm-item.gm-level-0:hover > .gm-target {
     background-color: #fff !important;
 }
   .custom-multi-column.ugc-steps-col .flex-container {
