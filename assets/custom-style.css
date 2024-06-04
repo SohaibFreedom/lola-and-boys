@@ -979,6 +979,18 @@ html
   }
 }
 @media only screen and (max-width: 768px) {
+
+  div#accessiblembilenav {
+    background: #fff !important;
+}
+div#accessiblembilenav * {
+    color: #000 !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+}
+.gm-menu-installed .gm-menu.gm-menu-11315 .gm-item.gm-level-0.gm-active > .gm-target, .gm-menu-installed .gm-menu.gm-menu-11315 .gm-item.gm-level-0:hover > .gm-target {
+    background: #fff !important;
+}
   .custom-multi-column.ugc-steps-col .flex-container {
     gap: 3rem !important;
   }
