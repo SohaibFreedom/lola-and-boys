@@ -70,6 +70,7 @@
         },
         "image_KD9mi6": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify:\/\/shop_images\/Lola_Camp_Collection_1.jpg",
             "image_mobile": "shopify:\/\/shop_images\/Camp_Mob_1.jpg",
