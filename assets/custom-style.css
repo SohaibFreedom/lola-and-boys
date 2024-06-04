@@ -995,7 +995,7 @@ div#accessiblembilenav * {
     background:#fff !important;
 }
   
-.gm-menu-installed .gm-menu.gm-menu-11315 .gm-item.gm-level-0.gm-active > .gm-target, .gm-menu-installed .gm-menu.gm-menu-11315 .gm-item.gm-level-0:hover > .gm-target {
+ul#mobile_menu .gm-menu-installed .gm-menu.gm-menu-11315 .gm-item.gm-level-0.gm-active > .gm-target,ul#mobile_menu .gm-menu-installed .gm-menu.gm-menu-11315 .gm-item.gm-level-0:hover > .gm-target {
     background-color: #fff !important;
 }
   .custom-multi-column.ugc-steps-col .flex-container {
