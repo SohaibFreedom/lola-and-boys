@@ -983,6 +983,9 @@ html
   div#accessiblembilenav {
     background: #fff !important;
 }
+  div#accessiblembilenav .login-signup-mobile-c:hover * {
+    background:#000 !important;
+  } 
 div#accessiblembilenav * {
     color: #000 !important;
     font-size: 14px !important;
