@@ -5575,6 +5575,12 @@
         "disabled": false,
         "settings": {
         }
+      },
+      "6305591592379254261": {
+        "type": "shopify:\/\/apps\/pixoo-taboola-pixel\/blocks\/pixoo_embed\/d4575259-9a7f-46b5-bb21-03a4fc3b4b59",
+        "disabled": false,
+        "settings": {
+        }
       }
     }
   }
