@@ -58,7 +58,7 @@
         {% if section.settings.show_cart %}
       <div class="cart_container">
 {% if customer.tags.size > 0 %}
-        <a href="/cart" class="{% if section.settings.cart_icon == "cart" %}icon-cart{% else %}icon-bag{% endif %} mini_cart" title="{{ 'layout.general.cart' | t | escape }}" data-no-instant> <span class="cart_count">{{ cartCount }}</span></a>
+        <a href="javascript:void();" class="{% if section.settings.cart_icon == "cart" %}icon-cart{% else %}icon-bag{% endif %} mini_cart" title="{{ 'layout.general.cart' | t | escape }}" data-no-instant> <span class="cart_count">{{ cartCount }}</span></a>
 {% else %}
         <a class="{% if section.settings.cart_icon == "cart" %}icon-cart{% else %}icon-bag{% endif %} mini_cart dropdown_link" title="{{ 'layout.general.cart' | t | escape }}" data-no-instant> <span class="cart_count" data-ajax-cart-bind-state="cart.item_count">{{ cartCount }}</span></a>
 {% endif %}
@@ -253,7 +253,7 @@
                 {% if section.settings.show_cart %}
         <div class="cart_container">
 {% if customer.tags.size > 0 %}
-          <a href="/cart" class="{% if section.settings.cart_icon == "cart" %}icon-cart{% else %}icon-bag{% endif %} mini_cart" data-no-instant>
+          <a href="javascript:void();" class="{% if section.settings.cart_icon == "cart" %}icon-cart{% else %}icon-bag{% endif %} mini_cart" data-no-instant>
 {% else %}
           <a  class="{% if section.settings.cart_icon == "cart" %}icon-cart{% else %}icon-bag{% endif %}  dropdown_link" data-no-instant>
 {% endif %}
