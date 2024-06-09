@@ -3909,11 +3909,11 @@
         ],
         "settings": {
           "show_announcement_bar": true,
-          "show_countdown": false,
+          "show_countdown": true,
           "bck_clr": "#faddff",
           "Annouce_url": "",
           "txt_clr": "#000000",
-          "text": "<b> While Supplies Last! Spend $200 and get a Free Tote Bag!\n<\/b>",
+          "text": "<b> Children’s day flash sale take 25% off site wide! Code automatically applied at checkout.\n<\/b>",
           "phone_number": "",
           "top_bar_menu": "help",
           "cart_icon": "cart",
