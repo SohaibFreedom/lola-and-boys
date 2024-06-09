@@ -1603,7 +1603,9 @@ html .gm-menu-installed .gm-menu.gm-menu-11315 .gm-item.gm-level-0.gm-active > .
   }
   .annoucment-bar-top .announcement-bar .announcement-bar-text,
   .annoucment-bar-top span#countdown {
-    font-size: 11px !important;
+    font-size: 13px !important;
+    line-height: 1.5;
+    padding: 0 20px;
   }
   .founder-imgbanenr:after {
     content: none;
