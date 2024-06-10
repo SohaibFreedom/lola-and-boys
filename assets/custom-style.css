@@ -1,3 +1,19 @@
+.heading-cart-empty {
+    font-size: 24px;
+    margin: 2rem 0 1rem !important;
+    display: block;
+}
+.empty-cart-d-btn {
+    font-size: 18px;
+    text-transform: uppercase;
+    border: 1px solid #000;
+    padding: 12px 20px;
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+}
+
 .search-template-section div#gf-products img {
   width: 100% !important;
   max-height: 360px;
