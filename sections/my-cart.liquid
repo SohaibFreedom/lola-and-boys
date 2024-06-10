@@ -240,8 +240,13 @@
             </div>
             {% include 'cross-sell' %}
           {% else %}
-            <div class="c-cart__emptyText">
-              <span>You have no items in your shopping bag.</span>
+                <div class="c-cart__emptyText">
+              <div class="empty-cart-drawer-wrapper">
+                  <span class="heading-cart-empty">OOPS...</span>
+                 <p>You have no items in your bag.</p>
+                <a class="empty-cart-d-btn" href="https://lolaandtheboys.com/collections/best-sellers">Shop Bestsellers</a>
+              </div>
+             
             </div>
           {% endif %}
         </div>
