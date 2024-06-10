@@ -30,7 +30,7 @@
         "one_col_block_jEAMRt"
       ],
       "settings": {
-        "bg_image": "shopify:\/\/shop_images\/1_2.jpg",
+        "bg_image": "shopify:\/\/shop_images\/Banner_image.jpg",
         "padding_top": "70%"
       }
     },
@@ -169,9 +169,9 @@
         "right_col_block_F7qFhC"
       ],
       "settings": {
-        "bg_image_left": "shopify:\/\/shop_images\/0006_LOLA_09022023_0292.png",
+        "bg_image_left": "shopify:\/\/shop_images\/Shot_8_0017_50190896-67b1-4ab4-94b2-9cca0916fd3e.jpg",
         "padding_top_left": "",
-        "bg_image_right": "shopify:\/\/shop_images\/0008_LOLA_09022023_0096.png",
+        "bg_image_right": "shopify:\/\/shop_images\/024A3521.jpg",
         "padding_top_right": ""
       }
     },
@@ -262,9 +262,18 @@
         "right_col_block_RwGEPn"
       ],
       "settings": {
-        "bg_image_left": "shopify:\/\/shop_images\/0009_LOLA_09022023_0036.png",
+        "bg_image_left": "shopify:\/\/shop_images\/024A3662.jpg",
         "padding_top_left": "",
-        "bg_image_right": "shopify:\/\/shop_images\/0011_LOLA_THEBOYS_10052022_111253.png",
+        "bg_image_right": "shopify:\/\/shop_images\/024A2890_1.jpg",
+        "padding_top_right": ""
+      }
+    },
+    "two_col_block_zYkker": {
+      "type": "two-col-block",
+      "settings": {
+        "bg_image_left": "shopify:\/\/shop_images\/024A4942.jpg",
+        "padding_top_left": "",
+        "bg_image_right": "shopify:\/\/shop_images\/Shot_1_0105.jpg",
         "padding_top_right": ""
       }
     },
@@ -320,7 +329,7 @@
         "one_col_block_TGKGwA"
       ],
       "settings": {
-        "bg_image": "shopify:\/\/shop_images\/0015_583A9271_4bf769ce-a9d7-440c-a9d1-5c38db46e4cb.png",
+        "bg_image": "shopify:\/\/shop_images\/5U8A5571.jpg",
         "padding_top": "70%"
       }
     },
@@ -411,9 +420,9 @@
         "right_col_block_hfUJBH"
       ],
       "settings": {
-        "bg_image_left": "shopify:\/\/shop_images\/0016_0W1A7860.png",
+        "bg_image_left": "shopify:\/\/shop_images\/DSC03322.jpg",
         "padding_top_left": "",
-        "bg_image_right": "shopify:\/\/shop_images\/0013_IMG_2842.png",
+        "bg_image_right": "shopify:\/\/shop_images\/DSC03490.jpg",
         "padding_top_right": ""
       }
     },
@@ -472,160 +481,10 @@
         "right_col_block_TzXE98"
       ],
       "settings": {
-        "bg_image_left": "shopify:\/\/shop_images\/0014_IMG_1814.png",
+        "bg_image_left": "shopify:\/\/shop_images\/DSC09132_03b27d94-5c39-4441-9356-8c1d4fd8d512.jpg",
         "padding_top_left": "",
-        "bg_image_right": "shopify:\/\/shop_images\/0017_0W1A7527.png",
+        "bg_image_right": "shopify:\/\/shop_images\/DSC09224_034abbc4-cfee-4d4c-aa81-cfee9676510d.jpg",
         "padding_top_right": ""
-      }
-    },
-    "two_col_block_k99c7K": {
-      "type": "two-col-block",
-      "blocks": {
-        "left_col_block_L4YwJe": {
-          "type": "left_col_block",
-          "settings": {
-            "show_plus_left": true,
-            "title_left": "MIA PINK FRINGE DRESS",
-            "price_left": "$64",
-            "link_left": "shopify:\/\/products\/mia-pink-fringe-dress",
-            "top_left": "30%",
-            "left_left": "60%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "",
-            "detail_bottom": ""
-          }
-        },
-        "left_col_block_tK6mdz": {
-          "type": "left_col_block",
-          "settings": {
-            "show_plus_left": true,
-            "title_left": "WHITE MIA FRINGE DRESS",
-            "price_left": "$64",
-            "link_left": "shopify:\/\/products\/show-white-fringe-dress",
-            "top_left": "40%",
-            "left_left": "30%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "",
-            "detail_bottom": ""
-          }
-        },
-        "left_col_block_wxx3jx": {
-          "type": "left_col_block",
-          "settings": {
-            "show_plus_left": true,
-            "title_left": "METALLIC KNOTTED HEADBANDS",
-            "price_left": "$20",
-            "link_left": "shopify:\/\/products\/metallic-knotted-headbands",
-            "top_left": "5%",
-            "left_left": "37%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "",
-            "detail_bottom": ""
-          }
-        },
-        "left_col_block_LHEQXy": {
-          "type": "left_col_block",
-          "settings": {
-            "show_plus_left": true,
-            "title_left": "SILVER CRYSTAL COWGIRL BOOTS",
-            "price_left": "$98",
-            "link_left": "shopify:\/\/products\/silver-crystal-cowgirl-boots",
-            "top_left": "84%",
-            "left_left": "24%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "",
-            "detail_bottom": "100%"
-          }
-        },
-        "left_col_block_NPdKYB": {
-          "type": "left_col_block",
-          "settings": {
-            "show_plus_left": true,
-            "title_left": "RAINBOW SPARKLE COWGIRL BOOTS",
-            "price_left": "$68",
-            "link_left": "shopify:\/\/products\/rainbow-sparkle-cowgirl-boots",
-            "top_left": "80%",
-            "left_left": "65%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "",
-            "detail_bottom": "100%"
-          }
-        },
-        "right_col_block_BfRckK": {
-          "type": "right_col_block",
-          "settings": {
-            "show_plus_right": true,
-            "title_right": "BUBBLE GUM SHIMMER SEQUIN DRESS",
-            "price_right": "$74",
-            "link_right": "shopify:\/\/products\/bubble-gum-shimmer-sequin-dress",
-            "top_right": "48%",
-            "left_right": "40%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "",
-            "detail_bottom": ""
-          }
-        }
-      },
-      "block_order": [
-        "left_col_block_L4YwJe",
-        "left_col_block_tK6mdz",
-        "left_col_block_wxx3jx",
-        "left_col_block_LHEQXy",
-        "left_col_block_NPdKYB",
-        "right_col_block_BfRckK"
-      ],
-      "settings": {
-        "bg_image_left": "shopify:\/\/shop_images\/0019_0W1A7011.png",
-        "padding_top_left": "",
-        "bg_image_right": "shopify:\/\/shop_images\/0018_0W1A7429.png",
-        "padding_top_right": ""
-      }
-    },
-    "one_col_block_JFpWdN": {
-      "type": "one-col-block",
-      "blocks": {
-        "one_col_block_DW9rXt": {
-          "type": "one_col_block",
-          "settings": {
-            "show_plus": true,
-            "title_onecol": "CRYSTAL PEARL HEADBAND",
-            "price_onecol": "$28",
-            "link_onecol": "shopify:\/\/products\/crystal-diamond-headband",
-            "top_onecol": "3%",
-            "left_onecol": "40%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_bottom": ""
-          }
-        },
-        "one_col_block_h4WfNk": {
-          "type": "one_col_block",
-          "settings": {
-            "show_plus": true,
-            "title_onecol": "SHINING STAR FEATHER TUTU DRESS",
-            "price_onecol": "$54",
-            "link_onecol": "shopify:\/\/products\/shining-star-feather-tutu-dress",
-            "top_onecol": "42%",
-            "left_onecol": "40%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_bottom": ""
-          }
-        }
-      },
-      "block_order": [
-        "one_col_block_DW9rXt",
-        "one_col_block_h4WfNk"
-      ],
-      "settings": {
-        "bg_image": "shopify:\/\/shop_images\/0003_LOLA_09022023_0337_b4846133-35b7-44d2-9fa4-47de25b72dd5.png",
-        "padding_top": "70%"
       }
     },
     "two_col_block_QitAVg": {
@@ -763,9 +622,9 @@
         "right_col_block_CLtij4"
       ],
       "settings": {
-        "bg_image_left": "shopify:\/\/shop_images\/0010_Layer-2.png",
+        "bg_image_left": "shopify:\/\/shop_images\/024A3191.jpg",
         "padding_top_left": "",
-        "bg_image_right": "shopify:\/\/shop_images\/0012_LATB_01152024_00913.png",
+        "bg_image_right": "shopify:\/\/shop_images\/IMG_7056.jpg",
         "padding_top_right": ""
       }
     },
@@ -824,24 +683,47 @@
         "right_col_block_Fr9yFp"
       ],
       "settings": {
-        "bg_image_left": "shopify:\/\/shop_images\/0002_LTB_01142023_143716.png",
+        "bg_image_left": "shopify:\/\/shop_images\/024A4259.jpg",
         "padding_top_left": "",
-        "bg_image_right": "shopify:\/\/shop_images\/0000_PASTELBOUNCE-43-_1.png",
+        "bg_image_right": "shopify:\/\/shop_images\/Shot_9_0128.jpg",
         "padding_top_right": ""
       }
     },
-    "one_col_block_BWiedE": {
+    "two_col_block_WFhifb": {
+      "type": "two-col-block",
+      "settings": {
+        "bg_image_left": "shopify:\/\/shop_images\/024A3720.jpg",
+        "padding_top_left": "",
+        "bg_image_right": "shopify:\/\/shop_images\/024A4476.jpg",
+        "padding_top_right": ""
+      }
+    },
+    "one_col_block_JFpWdN": {
       "type": "one-col-block",
       "blocks": {
-        "one_col_block_U33z7w": {
+        "one_col_block_DW9rXt": {
           "type": "one_col_block",
           "settings": {
             "show_plus": true,
-            "title_onecol": "CUPCAKE DREAM DRESS",
-            "price_onecol": "$78",
-            "link_onecol": "shopify:\/\/products\/cupcake-dream-dress",
-            "top_onecol": "40%",
-            "left_onecol": "45%",
+            "title_onecol": "CRYSTAL PEARL HEADBAND",
+            "price_onecol": "$28",
+            "link_onecol": "shopify:\/\/products\/crystal-diamond-headband",
+            "top_onecol": "3%",
+            "left_onecol": "40%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": ""
+          }
+        },
+        "one_col_block_h4WfNk": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "SHINING STAR FEATHER TUTU DRESS",
+            "price_onecol": "$54",
+            "link_onecol": "shopify:\/\/products\/shining-star-feather-tutu-dress",
+            "top_onecol": "42%",
+            "left_onecol": "40%",
             "detail_top": "",
             "detail_left": "",
             "detail_bottom": ""
@@ -849,10 +731,11 @@
         }
       },
       "block_order": [
-        "one_col_block_U33z7w"
+        "one_col_block_DW9rXt",
+        "one_col_block_h4WfNk"
       ],
       "settings": {
-        "bg_image": "shopify:\/\/shop_images\/0000_WEB_LOLA_HOLIDAY_10282022113495.png",
+        "bg_image": "shopify:\/\/shop_images\/5U8A6116.jpg",
         "padding_top": "70%"
       }
     }
@@ -862,13 +745,13 @@
     "one_col_block_36EFcU",
     "two_col_block_Tzqd8b",
     "two_col_block_TEiqXP",
+    "two_col_block_zYkker",
     "one_col_block_q4Bzrw",
     "two_col_block_mQCgDj",
     "two_col_block_AyT7B9",
-    "two_col_block_k99c7K",
-    "one_col_block_JFpWdN",
     "two_col_block_QitAVg",
     "two_col_block_njPjat",
-    "one_col_block_BWiedE"
+    "two_col_block_WFhifb",
+    "one_col_block_JFpWdN"
   ]
 }
