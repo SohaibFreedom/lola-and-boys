@@ -5,6 +5,7 @@
       "blocks": {
         "image_KD9mi6": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify:\/\/shop_images\/HOMEPAGE_BANNER_DESKTOP_44ed3565-1474-4d58-bee6-ef941223d1b2.jpg",
             "image_mobile": "shopify:\/\/shop_images\/HOMEPAGE_MOBILE.jpg",
