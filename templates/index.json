@@ -3,6 +3,28 @@
     "slideshow_nB6m8V": {
       "type": "slideshow",
       "blocks": {
+        "image_U3EW4E": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/SUMMER_Sale_up_to_70_OFF_HP.jpg",
+            "image_mobile": "shopify:\/\/shop_images\/SUMMER_Sale_up_to_70_OFF_HP_Mob_b5e49d37-e8c2-4d3c-8726-aeb32cfafa3f.jpg",
+            "mp4": "",
+            "mobilevideo": "",
+            "pretext": "",
+            "title": "",
+            "subtitle": "",
+            "text_position": "center",
+            "text_align": "center",
+            "caption_background": false,
+            "caption_background_transparency": false,
+            "button1": "",
+            "button1_link": "https:\/\/lolaandtheboys.com\/collections\/summer-sale",
+            "button1_highlight": false,
+            "button2": "",
+            "button2_link": "",
+            "button2_highlight": false
+          }
+        },
         "image_zPL6aM": {
           "type": "image",
           "settings": {
@@ -42,28 +64,6 @@
             "caption_background_transparency": false,
             "button1": "",
             "button1_link": "https:\/\/lolaandtheboys.com\/collections\/flash-sale",
-            "button1_highlight": false,
-            "button2": "",
-            "button2_link": "",
-            "button2_highlight": false
-          }
-        },
-        "image_U3EW4E": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/SUMMER_Sale_up_to_70_OFF_HP.jpg",
-            "image_mobile": "shopify:\/\/shop_images\/SUMMER_Sale_up_to_70_OFF_HP_Mob_b5e49d37-e8c2-4d3c-8726-aeb32cfafa3f.jpg",
-            "mp4": "",
-            "mobilevideo": "",
-            "pretext": "",
-            "title": "",
-            "subtitle": "",
-            "text_position": "center",
-            "text_align": "center",
-            "caption_background": false,
-            "caption_background_transparency": false,
-            "button1": "",
-            "button1_link": "https:\/\/lolaandtheboys.com\/collections\/summer-sale",
             "button1_highlight": false,
             "button2": "",
             "button2_link": "",
@@ -158,9 +158,9 @@
         }
       },
       "block_order": [
+        "image_U3EW4E",
         "image_zPL6aM",
         "image_KD9mi6",
-        "image_U3EW4E",
         "image_9rViCJ",
         "image_V87qeG",
         "image_QccNLz",
@@ -387,8 +387,8 @@
           "type": "image",
           "settings": {
             "image": "shopify:\/\/shop_images\/024A4590.jpg",
-            "link": "shopify:\/\/collections\/spring-2025",
-            "title": "SPRING",
+            "link": "shopify:\/\/collections\/summer",
+            "title": "Summer",
             "text": "",
             "button_label": "shop now",
             "button_link": "shopify:\/\/collections\/valentines-day"
