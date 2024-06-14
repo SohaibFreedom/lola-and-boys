@@ -1011,6 +1011,13 @@ html
 }
 @media only screen and (max-width: 768px) {
 
+    .featured-promotions-section .feature_grid-collection .featured-promotions .feature-section .button {
+    margin-top: 5px !important;
+    background: transparent !important;
+    color: #000 !important;
+    border: 0 !important;
+}
+
   div#accessiblembilenav {
     background: #fff !important;
 }
