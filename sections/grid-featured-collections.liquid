@@ -27,7 +27,7 @@
   <div class="container promotions-grid-{{ featured_promos_grid }} feature_grid-collection ">
     <div class="title-collections">
       <h2 class="title">{{ section.settings.maintitle }}</h2>
-      <p><a href="" class="lola-and-btn"></a></p>
+      <p><a href="{{ block.settings.button_link }}" class="lola-and-btn"></a></p>
     </div>
     <div
       class="js-featured-promotions featured-promotions promo-per-row-{{ featured_promos_per_row }} clearfix"
@@ -38,6 +38,9 @@
           class="feature-section section-{{ forloop.index }} promo-{{ forloop.index }} title-overlay-{{ title_on_image }} {% if section.settings.featured_links_animation != blank %}promo-animation--true{% endif %}"
           {{ block.shopify_attributes }}
         >
+             <a class="collection-info__caption " href="{{ block.settings.link }}" itemprop="url" tabindex="0">
+            <span class="title">{{ block.settings.title1 }}</span></a
+          >
           <div class="feature-inner feature-style--{{ section.settings.feature_style }} ">
             {% if block.settings.image != null %}
               <img
@@ -94,7 +97,7 @@
           </div>
           {% if block.settings.button_label != blank %}
             <div class="button">
-              <a href="{{ block.settings.button_link }}" class="lola-and-btn">{{ block.settings.button_label }}</a>
+              <a href="{{ block.settings.link }}" class="lola-and-btn">{{ block.settings.button_label }}</a>
             </div>
           {% endif %}
           {% if title_on_image == blank %}
@@ -108,9 +111,7 @@
               </a>
             {% endif %}
           {% endif %}
-          <a class="collection-info__caption " href="{{ block.settings.link }}" itemprop="url" tabindex="0">
-            <span class="title">{{ block.settings.title1 }}</span></a
-          >
+       
         </figure>
       {% endfor %}
     </div>
