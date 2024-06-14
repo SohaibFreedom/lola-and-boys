@@ -3,7 +3,7 @@
     "custom_liquid_EDMjVh": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<div class=\"lookbooks_header\">\n<ul>\n  <li><a  href=\"https:\/\/lolaandtheboys.com\/pages\/lookbooks\">All Lookbooks<\/a><\/li>\n<li><a class=\"active\" href=\"https:\/\/lolaandtheboys.com\/pages\/summer-looks\">Summer looks\n<\/a><\/li>\n\n  <li><a  href=\"https:\/\/lolaandtheboys.com\/pages\/spring-2024\">Spring 2024<\/a><\/li>\n  <li><a href=\"https:\/\/lolaandtheboys.com\/pages\/holiday-lookbook\">Holidays<\/a><\/li>\n  <li><a  href=\"https:\/\/lolaandtheboys.com\/pages\/birthday-lookbook\">Birthdays<\/a><\/li>\n  <li><a href=\"https:\/\/lolaandtheboys.com\/pages\/fall-lookbook\">Fall 2023<\/a><\/li>\n <li><a href=\"https:\/\/lolaandtheboys.com\/pages\/warner-brothers-lookbook\">Warner brothers<\/a><\/li>\n <li><a  href=\"https:\/\/lolaandtheboys.com\/pages\/valentine-lookbook\">Valentines<\/a><\/li>\n\n<\/ul>\n<\/div>",
+        "custom_liquid": "<div class=\"lookbooks_header\">\n<ul>\n  <li><a  href=\"https:\/\/lolaandtheboys.com\/pages\/lookbooks\">All Lookbooks<\/a><\/li>\n  <li><a  href=\"https:\/\/lolaandtheboys.com\/pages\/spring-2024\">Spring 2024<\/a><\/li>\n  <li><a href=\"https:\/\/lolaandtheboys.com\/pages\/holiday-lookbook\">Holidays<\/a><\/li>\n  <li><a class=\"active\" href=\"https:\/\/lolaandtheboys.com\/pages\/birthday-lookbook\">Birthdays<\/a><\/li>\n  <li><a href=\"https:\/\/lolaandtheboys.com\/pages\/fall-lookbook\">Fall 2023<\/a><\/li>\n <li><a href=\"https:\/\/lolaandtheboys.com\/pages\/warner-brothers-lookbook\">Warner brothers<\/a><\/li>\n <li><a  href=\"https:\/\/lolaandtheboys.com\/pages\/valentine-lookbook\">Valentines<\/a><\/li>\n\n<\/ul>\n<\/div>",
         "padding_top": 0,
         "padding_bottom": 0
       }
@@ -14,12 +14,348 @@
         "one_col_block_jEAMRt": {
           "type": "one_col_block",
           "settings": {
-            "show_plus": false,
-            "title_onecol": "wer",
-            "price_onecol": "$23",
-            "link_onecol": "",
-            "top_onecol": "20%",
+            "show_plus": true,
+            "title_onecol": "RAINBOW BUCKET HAT REVERSIBLE",
+            "price_onecol": "$32",
+            "link_onecol": "shopify:\/\/products\/rainbow-bucket-hat-reversible-teal-light-pink",
+            "top_onecol": "11%",
             "left_onecol": "20%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": ""
+          }
+        },
+        "one_col_block_hjp4kp": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "DREAMSICLE DRESS",
+            "price_onecol": "$48",
+            "link_onecol": "shopify:\/\/products\/dream-ice-cream-dress",
+            "top_onecol": "36%",
+            "left_onecol": "20%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": ""
+          }
+        },
+        "one_col_block_nacVHL": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "SMILEY PEARL CHAIN CHOKER",
+            "price_onecol": "$16",
+            "link_onecol": "shopify:\/\/products\/smiley-pearl-chain-choker",
+            "top_onecol": "27%",
+            "left_onecol": "20%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": ""
+          }
+        },
+        "one_col_block_nCNark": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "BEADED PEARL SUNGLASSES",
+            "price_onecol": "$32",
+            "link_onecol": "shopify:\/\/products\/hand-beaded-sunglasses",
+            "top_onecol": "16%",
+            "left_onecol": "19%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": ""
+          }
+        },
+        "one_col_block_WKUMwa": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "HAPPY FEET HIGH TOP SNEAKERS",
+            "price_onecol": "$62",
+            "link_onecol": "shopify:\/\/products\/happy-feet-high-top-sneakers",
+            "top_onecol": "91%",
+            "left_onecol": "15%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": "100%"
+          }
+        },
+        "one_col_block_9dTqnW": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "3D BUNNY SOCKS",
+            "price_onecol": "$7",
+            "link_onecol": "shopify:\/\/products\/bunny-socks",
+            "top_onecol": "82%",
+            "left_onecol": "14%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": "100%"
+          }
+        },
+        "one_col_block_HywVgU": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "METALLIC KNOTTED HEADBANDS",
+            "price_onecol": "$20",
+            "link_onecol": "shopify:\/\/products\/metallic-knotted-headbands",
+            "top_onecol": "25%",
+            "left_onecol": "38%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": ""
+          }
+        },
+        "one_col_block_WBAxjd": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "INFINITY GEM SLEEVE TOP",
+            "price_onecol": "$46",
+            "link_onecol": "shopify:\/\/products\/copy-of-adore-you-ruffle-gem-top",
+            "top_onecol": "45%",
+            "left_onecol": "38%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": ""
+          }
+        },
+        "one_col_block_DyJAFa": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "SUNSET CRYSTAL SKORT",
+            "price_onecol": "$78",
+            "link_onecol": "shopify:\/\/products\/sunset-crystal-skort",
+            "top_onecol": "60%",
+            "left_onecol": "38%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": ""
+          }
+        },
+        "one_col_block_3WkxEM": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "GOLD SPARKLE BALLET FLAT",
+            "price_onecol": "$68",
+            "link_onecol": "shopify:\/\/products\/gold-sparkle-ballet-flats",
+            "top_onecol": "91%",
+            "left_onecol": "39%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": "100%"
+          }
+        },
+        "one_col_block_nTnU4G": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "3D UNICORN SOCKS",
+            "price_onecol": "$12",
+            "link_onecol": "shopify:\/\/products\/3d-unicorn-sock",
+            "top_onecol": "85%",
+            "left_onecol": "35%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": "100%"
+          }
+        },
+        "one_col_block_VFW6xb": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "SEQUIN SUMMER STRIPE DRESS",
+            "price_onecol": "$64",
+            "link_onecol": "shopify:\/\/products\/sequin-summer-stripe-tank-dress-1",
+            "top_onecol": "60%",
+            "left_onecol": "58%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": ""
+          }
+        },
+        "one_col_block_LeWqFT": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "GUMMY BEAR PEARL NECKLACE",
+            "price_onecol": "$24",
+            "link_onecol": "shopify:\/\/products\/gummy-bear-pearl-necklace",
+            "top_onecol": "38%",
+            "left_onecol": "60%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": ""
+          }
+        },
+        "one_col_block_URi3cX": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "CRYSTAL WING SUNGLASSES",
+            "price_onecol": "$32",
+            "link_onecol": "shopify:\/\/products\/white-crystal-wing-sunglasses",
+            "top_onecol": "29%",
+            "left_onecol": "57%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": ""
+          }
+        },
+        "one_col_block_jXJCKt": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "CRYSTAL EVIL EYE CROPPED DENIM",
+            "price_onecol": "$78",
+            "link_onecol": "shopify:\/\/products\/crystal-evil-eye-cropped-denim",
+            "top_onecol": "42%",
+            "left_onecol": "55%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": ""
+          }
+        },
+        "one_col_block_YT7m6q": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "GUMBALL BEADED COIN PURSE",
+            "price_onecol": "$16",
+            "link_onecol": "shopify:\/\/products\/gumball-beaded-coin-purse",
+            "top_onecol": "69%",
+            "left_onecol": "50%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": ""
+          }
+        },
+        "one_col_block_tRUwgp": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "DIAMONDS AND PEARLS WHITE SNEAKERS",
+            "price_onecol": "$58",
+            "link_onecol": "shopify:\/\/products\/diamonds-and-pearls-white-sneakers",
+            "top_onecol": "90%",
+            "left_onecol": "48%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": "100%"
+          }
+        },
+        "one_col_block_8gTLYJ": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "SUPER FUN CRYSTAL SOCKS",
+            "price_onecol": "$19",
+            "link_onecol": "shopify:\/\/products\/super",
+            "top_onecol": "83%",
+            "left_onecol": "63%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": "100%"
+          }
+        },
+        "one_col_block_ijnxGF": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "METALLIC KNOTTED HEADBANDS",
+            "price_onecol": "$20",
+            "link_onecol": "shopify:\/\/products\/metallic-knotted-headbands",
+            "top_onecol": "24%",
+            "left_onecol": "78%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": ""
+          }
+        },
+        "one_col_block_hgrz69": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "GEMS LOVE T-SHIRT",
+            "price_onecol": "$36",
+            "link_onecol": "shopify:\/\/products\/gems-love-t-shirt",
+            "top_onecol": "46%",
+            "left_onecol": "80%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": ""
+          }
+        },
+        "one_col_block_ntpgGh": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "LAVENDER METALLIC SKIRT",
+            "price_onecol": "$52",
+            "link_onecol": "shopify:\/\/products\/lavender-metallic-skirt",
+            "top_onecol": "57%",
+            "left_onecol": "80%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": ""
+          }
+        },
+        "one_col_block_MRgaqA": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "SMILEY PEARL CHAIN CHOKER",
+            "price_onecol": "$10",
+            "link_onecol": "shopify:\/\/products\/smiley-pearl-chain-choker",
+            "top_onecol": "37%",
+            "left_onecol": "80%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": ""
+          }
+        },
+        "one_col_block_7a6tVi": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "HOT PINK SPARKLE BALLET FLAT",
+            "price_onecol": "$68",
+            "link_onecol": "shopify:\/\/products\/ballet-flats",
+            "top_onecol": "91%",
+            "left_onecol": "72%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": "100%"
+          }
+        },
+        "one_col_block_fLpifx": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "GEM ATHLETIC SOCKS",
+            "price_onecol": "$12",
+            "link_onecol": "shopify:\/\/products\/gem-athletic-socks",
+            "top_onecol": "86%",
+            "left_onecol": "74%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": "100%"
+          }
+        },
+        "one_col_block_xfh3B8": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "PRETTY IN PINK SEQUIN BOMBER",
+            "price_onecol": "$88",
+            "link_onecol": "shopify:\/\/products\/pretty-in-pink-sequin-bomber",
+            "top_onecol": "47%",
+            "left_onecol": "72%",
             "detail_top": "",
             "detail_left": "",
             "detail_bottom": ""
@@ -27,7 +363,31 @@
         }
       },
       "block_order": [
-        "one_col_block_jEAMRt"
+        "one_col_block_jEAMRt",
+        "one_col_block_hjp4kp",
+        "one_col_block_nacVHL",
+        "one_col_block_nCNark",
+        "one_col_block_WKUMwa",
+        "one_col_block_9dTqnW",
+        "one_col_block_HywVgU",
+        "one_col_block_WBAxjd",
+        "one_col_block_DyJAFa",
+        "one_col_block_3WkxEM",
+        "one_col_block_nTnU4G",
+        "one_col_block_VFW6xb",
+        "one_col_block_LeWqFT",
+        "one_col_block_URi3cX",
+        "one_col_block_jXJCKt",
+        "one_col_block_YT7m6q",
+        "one_col_block_tRUwgp",
+        "one_col_block_8gTLYJ",
+        "one_col_block_ijnxGF",
+        "one_col_block_hgrz69",
+        "one_col_block_ntpgGh",
+        "one_col_block_MRgaqA",
+        "one_col_block_7a6tVi",
+        "one_col_block_fLpifx",
+        "one_col_block_xfh3B8"
       ],
       "settings": {
         "bg_image": "shopify:\/\/shop_images\/Banner_image.jpg",
@@ -41,11 +401,11 @@
           "type": "left_col_block",
           "settings": {
             "show_plus_left": true,
-            "title_left": "CRYSTAL PRINCESS TIARAS",
-            "price_left": "$20",
-            "link_left": "shopify:\/\/products\/tiaras",
-            "top_left": "10%",
-            "left_left": "50%",
+            "title_left": "CRYSTAL STUDDED KNOT HEADBAND",
+            "price_left": "$24",
+            "link_left": "shopify:\/\/products\/crystal-knot-headband-1",
+            "top_left": "3%",
+            "left_left": "43%",
             "detail_top": "",
             "detail_left": "",
             "detail_right": "",
@@ -56,10 +416,10 @@
           "type": "left_col_block",
           "settings": {
             "show_plus_left": true,
-            "title_left": "BIRTHDAY GIRL HOODIE",
-            "price_left": "$48",
-            "link_left": "shopify:\/\/products\/birthday-girl-hoodie",
-            "top_left": "40%",
+            "title_left": "BE YOU DOODLE TANK DRESS",
+            "price_left": "$56",
+            "link_left": "shopify:\/\/products\/be-you-doodle-tank-dress",
+            "top_left": "48%",
             "left_left": "45%",
             "detail_top": "",
             "detail_left": "",
@@ -71,11 +431,11 @@
           "type": "left_col_block",
           "settings": {
             "show_plus_left": true,
-            "title_left": "METALLIC KNOTTED HEADBANDS",
-            "price_left": "$20",
-            "link_left": "shopify:\/\/products\/metallic-knotted-headbands",
-            "top_left": "23%",
-            "left_left": "35%",
+            "title_left": "SMILEY RAINBOW BRACELETS (3 PACK)",
+            "price_left": "$24",
+            "link_left": "shopify:\/\/products\/smiley-bracelets",
+            "top_left": "19%",
+            "left_left": "20%",
             "detail_top": "",
             "detail_left": "",
             "detail_right": "",
@@ -86,58 +446,28 @@
           "type": "left_col_block",
           "settings": {
             "show_plus_left": true,
-            "title_left": "MARGOT SEQUIN VELOUR DRESS",
-            "price_left": "$68",
-            "link_left": "shopify:\/\/products\/margot-sequin-velour-dress",
-            "top_left": "45%",
-            "left_left": "15%",
+            "title_left": "GUMMY BEAR PEARL NECKLACE",
+            "price_left": "$24",
+            "link_left": "shopify:\/\/products\/gummy-bear-pearl-necklace",
+            "top_left": "29%",
+            "left_left": "39%",
             "detail_top": "",
             "detail_left": "",
             "detail_right": "",
             "detail_bottom": ""
-          }
-        },
-        "left_col_block_thY6WX": {
-          "type": "left_col_block",
-          "settings": {
-            "show_plus_left": true,
-            "title_left": "SUNSET STARS TULLE DRESS",
-            "price_left": "$52",
-            "link_left": "shopify:\/\/products\/sunset-stars-tulle-dress",
-            "top_left": "53%",
-            "left_left": "70%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "20%",
-            "detail_bottom": ""
-          }
-        },
-        "left_col_block_jGrTbG": {
-          "type": "left_col_block",
-          "settings": {
-            "show_plus_left": true,
-            "title_left": "SPIN AND DREAM SPARKLE MIDI SKIRT",
-            "price_left": "$54",
-            "link_left": "shopify:\/\/products\/spin-and-dream-sparkle-midi-skirt",
-            "top_left": "80%",
-            "left_left": "35%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "",
-            "detail_bottom": "100%"
           }
         },
         "right_col_block_pzzVjB": {
           "type": "right_col_block",
           "settings": {
             "show_plus_right": true,
-            "title_right": "CRYSTAL GEM BIRTHDAY GIRL SET",
-            "price_right": "$68",
-            "link_right": "shopify:\/\/products\/crystal-gem-birthday-girl-set",
-            "top_right": "38%",
-            "left_right": "40%",
+            "title_right": "PAILLETTE RAINBOW MAGIC DRESS",
+            "price_right": "$58",
+            "link_right": "shopify:\/\/products\/paillette-rainbow-dress",
+            "top_right": "43%",
+            "left_right": "6%",
             "detail_top": "",
-            "detail_left": "",
+            "detail_left": "100%",
             "detail_right": "",
             "detail_bottom": ""
           }
@@ -146,11 +476,56 @@
           "type": "right_col_block",
           "settings": {
             "show_plus_right": true,
-            "title_right": "CRYSTAL PRINCESS TIARAS",
-            "price_right": "$20",
-            "link_right": "shopify:\/\/products\/tiaras",
-            "top_right": "2%",
+            "title_right": "RAINBOW RUFFLE DREAM DRESS",
+            "price_right": "$68",
+            "link_right": "shopify:\/\/products\/rainbow-ruffle-dream-dress-1",
+            "top_right": "50%",
+            "left_right": "44%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": ""
+          }
+        },
+        "right_col_block_Y879nG": {
+          "type": "right_col_block",
+          "settings": {
+            "show_plus_right": true,
+            "title_right": "BEADED HEART PURSE",
+            "price_right": "$36",
+            "link_right": "shopify:\/\/products\/beaded-heart-purse",
+            "top_right": "60%",
             "left_right": "40%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": ""
+          }
+        },
+        "right_col_block_cCiBy7": {
+          "type": "right_col_block",
+          "settings": {
+            "show_plus_right": true,
+            "title_right": "WHITE RAINBOW TIER DRESS",
+            "price_right": "$56",
+            "link_right": "shopify:\/\/products\/white-rainbow-tiers-dress",
+            "top_right": "50%",
+            "left_right": "75%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "100%",
+            "detail_bottom": ""
+          }
+        },
+        "right_col_block_nxAUMP": {
+          "type": "right_col_block",
+          "settings": {
+            "show_plus_right": true,
+            "title_right": "SMILEY RAINBOW BRACELETS (3 PACK)",
+            "price_right": "$24",
+            "link_right": "shopify:\/\/products\/smiley-bracelets",
+            "top_right": "48%",
+            "left_right": "62%",
             "detail_top": "",
             "detail_left": "",
             "detail_right": "",
@@ -163,10 +538,11 @@
         "left_col_block_Wxpybi",
         "left_col_block_HhmpTY",
         "left_col_block_FgFkBD",
-        "left_col_block_thY6WX",
-        "left_col_block_jGrTbG",
         "right_col_block_pzzVjB",
-        "right_col_block_F7qFhC"
+        "right_col_block_F7qFhC",
+        "right_col_block_Y879nG",
+        "right_col_block_cCiBy7",
+        "right_col_block_nxAUMP"
       ],
       "settings": {
         "bg_image_left": "shopify:\/\/shop_images\/Shot_8_0017_50190896-67b1-4ab4-94b2-9cca0916fd3e.jpg",
@@ -182,11 +558,11 @@
           "type": "left_col_block",
           "settings": {
             "show_plus_left": true,
-            "title_left": "ADORE YOU RUFFLE GEM TOP",
-            "price_left": "$46",
-            "link_left": "shopify:\/\/products\/adore-you-ruffle-gem-top",
-            "top_left": "45%",
-            "left_left": "48%",
+            "title_left": "SHINY SUGAR FLASH SWIMSUIT",
+            "price_left": "$42",
+            "link_left": "shopify:\/\/products\/shiny-sugar-flash-swimsuit",
+            "top_left": "53%",
+            "left_left": "18%",
             "detail_top": "",
             "detail_left": "",
             "detail_right": "",
@@ -197,69 +573,229 @@
           "type": "left_col_block",
           "settings": {
             "show_plus_left": true,
-            "title_left": "SPARKLE STARRY TUTU",
-            "price_left": "$48",
-            "link_left": "shopify:\/\/products\/sparkle-starry-tutu",
-            "top_left": "78%",
-            "left_left": "50%",
+            "title_left": "GLITTER RAINBOW SLIDES",
+            "price_left": "$42",
+            "link_left": "shopify:\/\/products\/glitter-rainbow-slides",
+            "top_left": "85%",
+            "left_left": "31%",
             "detail_top": "",
             "detail_left": "",
             "detail_right": "",
             "detail_bottom": "100%"
           }
         },
-        "right_col_block_ajwzcq": {
-          "type": "right_col_block",
+        "left_col_block_r7rU4K": {
+          "type": "left_col_block",
           "settings": {
-            "show_plus_right": true,
-            "title_right": "Super Star Party Dress",
-            "price_right": "$56",
-            "link_right": "shopify:\/\/products\/super-star-party-dress",
-            "top_right": "25%",
-            "left_right": "27%",
+            "show_plus_left": true,
+            "title_left": "CRYSTAL STAR SUNGLASSES",
+            "price_left": "$34",
+            "link_left": "shopify:\/\/products\/star-crystal-sunglasses",
+            "top_left": "38%",
+            "left_left": "50%",
             "detail_top": "",
             "detail_left": "",
             "detail_right": "",
             "detail_bottom": ""
           }
         },
-        "right_col_block_rxbLtV": {
-          "type": "right_col_block",
+        "left_col_block_GHUeYk": {
+          "type": "left_col_block",
           "settings": {
-            "show_plus_right": true,
-            "title_right": "STARDUST BOOTS",
-            "price_right": "$60",
-            "link_right": "shopify:\/\/products\/glitter-combat-boots",
-            "top_right": "81%",
-            "left_right": "6%",
+            "show_plus_left": true,
+            "title_left": "SMILEY RAINBOW BRACELETS (3 PACK)",
+            "price_left": "$24",
+            "link_left": "shopify:\/\/products\/smiley-bracelets",
+            "top_left": "66%",
+            "left_left": "14%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": ""
+          }
+        },
+        "left_col_block_6mJmjF": {
+          "type": "left_col_block",
+          "settings": {
+            "show_plus_left": true,
+            "title_left": "PAILETTE SPARKLE ROSE SWIMSUIT",
+            "price_left": "$54",
+            "link_left": "shopify:\/\/products\/paillette-metalic-swimsuit",
+            "top_left": "52%",
+            "left_left": "46%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": ""
+          }
+        },
+        "left_col_block_V4Da4V": {
+          "type": "left_col_block",
+          "settings": {
+            "show_plus_left": true,
+            "title_left": "GLITTER RAINBOW SLIDES",
+            "price_left": "$42",
+            "link_left": "shopify:\/\/products\/glitter-rainbow-slides",
+            "top_left": "77%",
+            "left_left": "40%",
             "detail_top": "",
             "detail_left": "",
             "detail_right": "",
             "detail_bottom": "100%"
           }
         },
-        "right_col_block_RwGEPn": {
+        "left_col_block_KFBqm6": {
+          "type": "left_col_block",
+          "settings": {
+            "show_plus_left": true,
+            "title_left": "GLITTER RAINBOW SLIDES",
+            "price_left": "$42",
+            "link_left": "shopify:\/\/products\/glitter-rainbow-slides",
+            "top_left": "84%",
+            "left_left": "62%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "100%",
+            "detail_bottom": "100%"
+          }
+        },
+        "left_col_block_xL837Q": {
+          "type": "left_col_block",
+          "settings": {
+            "show_plus_left": true,
+            "title_left": "SMILEY RAINBOW BRACELETS (3 PACK)",
+            "price_left": "$24",
+            "link_left": "shopify:\/\/products\/smiley-bracelets",
+            "top_left": "53%",
+            "left_left": "33%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": ""
+          }
+        },
+        "left_col_block_mGKWKC": {
+          "type": "left_col_block",
+          "settings": {
+            "show_plus_left": true,
+            "title_left": "SMILEY RAINBOW BRACELETS (3 PACK)",
+            "price_left": "$24",
+            "link_left": "shopify:\/\/products\/smiley-bracelets",
+            "top_left": "66%",
+            "left_left": "78%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "100%",
+            "detail_bottom": ""
+          }
+        },
+        "left_col_block_6nbnqV": {
+          "type": "left_col_block",
+          "settings": {
+            "show_plus_left": true,
+            "title_left": "RAINBOW EVIL EYE SWIMSUIT",
+            "price_left": "$42",
+            "link_left": "shopify:\/\/products\/rainbow-evil-eye-swimsuit",
+            "top_left": "48%",
+            "left_left": "70%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": ""
+          }
+        },
+        "left_col_block_MTb6yD": {
+          "type": "left_col_block",
+          "settings": {
+            "show_plus_left": true,
+            "title_left": "SPARKLE BUTTERFLY SUNGLASSES",
+            "price_left": "$38",
+            "link_left": "shopify:\/\/products\/sparkle-butterfly-sunglasses",
+            "top_left": "40%",
+            "left_left": "70%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": ""
+          }
+        },
+        "right_col_block_NXnLXb": {
           "type": "right_col_block",
           "settings": {
             "show_plus_right": true,
-            "title_right": "BEAR SOCKS",
-            "price_right": "$15",
-            "link_right": "shopify:\/\/products\/bear-socks",
-            "top_right": "78%",
-            "left_right": "69%",
+            "title_right": "MERMAID QUEEN SWIMSUIT",
+            "price_right": "$34",
+            "link_right": "shopify:\/\/products\/mermaid-queen-swimsuit",
+            "top_right": "58%",
+            "left_right": "36%",
             "detail_top": "",
             "detail_left": "",
-            "detail_right": "20%",
-            "detail_bottom": "100%"
+            "detail_right": "",
+            "detail_bottom": ""
+          }
+        },
+        "right_col_block_DVtNTD": {
+          "type": "right_col_block",
+          "settings": {
+            "show_plus_right": true,
+            "title_right": "IRIDESCENT SHIMMER SEQUIN SKIRT",
+            "price_right": "$54",
+            "link_right": "shopify:\/\/products\/iridescent-shimmer-sequin-skirt",
+            "top_right": "70%",
+            "left_right": "20%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": ""
+          }
+        },
+        "right_col_block_EqrWAC": {
+          "type": "right_col_block",
+          "settings": {
+            "show_plus_right": true,
+            "title_right": "IRIDESCENT SHIMMER SEQUIN SKIRT",
+            "price_right": "$54",
+            "link_right": "shopify:\/\/products\/iridescent-shimmer-sequin-skirt",
+            "top_right": "60%",
+            "left_right": "62%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": ""
+          }
+        },
+        "right_col_block_nmF6VC": {
+          "type": "right_col_block",
+          "settings": {
+            "show_plus_right": true,
+            "title_right": "CRYSTAL BOW T-SHIRT",
+            "price_right": "$36",
+            "link_right": "shopify:\/\/products\/crystal-bow-tshirt",
+            "top_right": "36%",
+            "left_right": "65%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": ""
           }
         }
       },
       "block_order": [
         "left_col_block_UwXKhr",
         "left_col_block_ymdXq8",
-        "right_col_block_ajwzcq",
-        "right_col_block_rxbLtV",
-        "right_col_block_RwGEPn"
+        "left_col_block_r7rU4K",
+        "left_col_block_GHUeYk",
+        "left_col_block_6mJmjF",
+        "left_col_block_V4Da4V",
+        "left_col_block_KFBqm6",
+        "left_col_block_xL837Q",
+        "left_col_block_mGKWKC",
+        "left_col_block_6nbnqV",
+        "left_col_block_MTb6yD",
+        "right_col_block_NXnLXb",
+        "right_col_block_DVtNTD",
+        "right_col_block_EqrWAC",
+        "right_col_block_nmF6VC"
       ],
       "settings": {
         "bg_image_left": "shopify:\/\/shop_images\/024A3662.jpg",
@@ -270,6 +806,90 @@
     },
     "two_col_block_zYkker": {
       "type": "two-col-block",
+      "blocks": {
+        "left_col_block_AfnUYj": {
+          "type": "left_col_block",
+          "settings": {
+            "show_plus_left": true,
+            "title_left": "MILLIONS OF HEARTS RAINBOW TANK SET",
+            "price_left": "$64",
+            "link_left": "shopify:\/\/products\/rainbow-hearts-short-set",
+            "top_left": "40%",
+            "left_left": "45%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": ""
+          }
+        },
+        "right_col_block_gd9gnA": {
+          "type": "right_col_block",
+          "settings": {
+            "show_plus_right": true,
+            "title_right": "RAINBOW FLASH SWIMSUIT",
+            "price_right": "$42",
+            "link_right": "shopify:\/\/products\/rainbow-flash-swimsuit",
+            "top_right": "42%",
+            "left_right": "50%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": ""
+          }
+        },
+        "right_col_block_646H3n": {
+          "type": "right_col_block",
+          "settings": {
+            "show_plus_right": true,
+            "title_right": "SMILEY RAINBOW BRACELETS (3 PACK)",
+            "price_right": "$24",
+            "link_right": "shopify:\/\/products\/smiley-bracelets",
+            "top_right": "70%",
+            "left_right": "23%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": ""
+          }
+        },
+        "right_col_block_CKrjNU": {
+          "type": "right_col_block",
+          "settings": {
+            "show_plus_right": true,
+            "title_right": "SMILEY BUCKET HAT",
+            "price_right": "$32",
+            "link_right": "shopify:\/\/products\/smiley-bucket-hat",
+            "top_right": "3%",
+            "left_right": "62%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": ""
+          }
+        },
+        "right_col_block_FezzYC": {
+          "type": "right_col_block",
+          "settings": {
+            "show_plus_right": true,
+            "title_right": "GUMMY BEAR PEARL NECKLACE",
+            "price_right": "$24",
+            "link_right": "shopify:\/\/products\/gummy-bear-pearl-necklace",
+            "top_right": "21%",
+            "left_right": "46%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": ""
+          }
+        }
+      },
+      "block_order": [
+        "left_col_block_AfnUYj",
+        "right_col_block_gd9gnA",
+        "right_col_block_646H3n",
+        "right_col_block_CKrjNU",
+        "right_col_block_FezzYC"
+      ],
       "settings": {
         "bg_image_left": "shopify:\/\/shop_images\/024A4942.jpg",
         "padding_top_left": "",
@@ -284,11 +904,11 @@
           "type": "one_col_block",
           "settings": {
             "show_plus": true,
-            "title_onecol": "CRYSTAL PRINCESS TIARAS",
-            "price_onecol": "$20",
-            "link_onecol": "shopify:\/\/products\/tiaras",
-            "top_onecol": "5%",
-            "left_onecol": "41%",
+            "title_onecol": "ROSE MAGIC PAILLETTE DRESS",
+            "price_onecol": "$58",
+            "link_onecol": "shopify:\/\/products\/rose-magic-paillette-dress",
+            "top_onecol": "33%",
+            "left_onecol": "35%",
             "detail_top": "",
             "detail_left": "",
             "detail_bottom": ""
@@ -298,11 +918,11 @@
           "type": "one_col_block",
           "settings": {
             "show_plus": true,
-            "title_onecol": "BIRTHDAY GIRL GEM T-SHIRT",
-            "price_onecol": "$36",
-            "link_onecol": "shopify:\/\/products\/birthday-girl-gem-t-shirt",
-            "top_onecol": "40%",
-            "left_onecol": "40%",
+            "title_onecol": "CRYSTAL WING SUNGLASSES",
+            "price_onecol": "$32",
+            "link_onecol": "shopify:\/\/products\/purple-crystal-wing-sunglasses",
+            "top_onecol": "20%",
+            "left_onecol": "37%",
             "detail_top": "",
             "detail_left": "",
             "detail_bottom": ""
@@ -312,11 +932,25 @@
           "type": "one_col_block",
           "settings": {
             "show_plus": true,
-            "title_onecol": "COTTON CANDY MAXI TUTU",
-            "price_onecol": "$58",
-            "link_onecol": "shopify:\/\/products\/cotton-candy-maxi-tutu",
-            "top_onecol": "75%",
-            "left_onecol": "45%",
+            "title_onecol": "JOLIE BOW SHIMMER DRESS",
+            "price_onecol": "$68",
+            "link_onecol": "shopify:\/\/products\/jolie-bow-shimmer-dress",
+            "top_onecol": "35%",
+            "left_onecol": "68%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": ""
+          }
+        },
+        "one_col_block_cchy7W": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "CRYSTAL ENCRUSTED HEART SUNNIES",
+            "price_onecol": "$38",
+            "link_onecol": "shopify:\/\/products\/crystal-encrusted-heart-sunnies",
+            "top_onecol": "16%",
+            "left_onecol": "65%",
             "detail_top": "",
             "detail_left": "",
             "detail_bottom": ""
@@ -326,7 +960,8 @@
       "block_order": [
         "one_col_block_edzUQM",
         "one_col_block_hPMhLh",
-        "one_col_block_TGKGwA"
+        "one_col_block_TGKGwA",
+        "one_col_block_cchy7W"
       ],
       "settings": {
         "bg_image": "shopify:\/\/shop_images\/5U8A5571.jpg",
@@ -340,10 +975,10 @@
           "type": "left_col_block",
           "settings": {
             "show_plus_left": true,
-            "title_left": "CRYSTAL PRINCESS TIARAS",
-            "price_left": "$20",
-            "link_left": "shopify:\/\/products\/tiaras",
-            "top_left": "0%",
+            "title_left": "PAILLETTE METALLIC SKORT",
+            "price_left": "$52",
+            "link_left": "shopify:\/\/products\/paillette-metalic-short",
+            "top_left": "73%",
             "left_left": "45%",
             "detail_top": "",
             "detail_left": "",
@@ -355,11 +990,11 @@
           "type": "left_col_block",
           "settings": {
             "show_plus_left": true,
-            "title_left": "COTTON CANDY MAXI TUTU",
-            "price_left": "$58",
-            "link_left": "shopify:\/\/products\/cotton-candy-maxi-tutu",
-            "top_left": "40%",
-            "left_left": "40%",
+            "title_left": "PINK EMOJI TANK",
+            "price_left": "$34",
+            "link_left": "shopify:\/\/products\/pink-emoji-tank",
+            "top_left": "60%",
+            "left_left": "45%",
             "detail_top": "",
             "detail_left": "",
             "detail_right": "",
@@ -370,11 +1005,11 @@
           "type": "left_col_block",
           "settings": {
             "show_plus_left": true,
-            "title_left": "Birthday Girl Gem Ruffle Shirt",
-            "price_left": "$36",
-            "link_left": "shopify:\/\/products\/birthday-girl-gem-ruffle-shirt",
-            "top_left": "20%",
-            "left_left": "60%",
+            "title_left": "CANDY PEARL KNOT HEADBAND",
+            "price_left": "$29",
+            "link_left": "shopify:\/\/products\/candy-beaded-knot-headband",
+            "top_left": "40%",
+            "left_left": "58%",
             "detail_top": "",
             "detail_left": "",
             "detail_right": "",
@@ -385,26 +1020,71 @@
           "type": "left_col_block",
           "settings": {
             "show_plus_left": true,
-            "title_left": "SILVER CRYSTAL COWGIRL BOOTS",
-            "price_left": "$98",
-            "link_left": "shopify:\/\/products\/silver-crystal-cowgirl-boots",
-            "top_left": "82%",
-            "left_left": "40%",
+            "title_left": "PAILLETTE METALLIC SKORT",
+            "price_left": "$52",
+            "link_left": "shopify:\/\/products\/paillette-metalic-short",
+            "top_left": "70%",
+            "left_left": "60%",
             "detail_top": "",
             "detail_left": "",
             "detail_right": "",
             "detail_bottom": "100%"
           }
         },
+        "left_col_block_HUre8M": {
+          "type": "left_col_block",
+          "settings": {
+            "show_plus_left": true,
+            "title_left": "ROLLER RUFFLE T-SHIRT",
+            "price_left": "$36",
+            "link_left": "shopify:\/\/products\/roller-ruffle-t-shirt",
+            "top_left": "57%",
+            "left_left": "58%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": ""
+          }
+        },
         "right_col_block_hfUJBH": {
           "type": "right_col_block",
           "settings": {
             "show_plus_right": true,
-            "title_right": "BIRTHDAY CAKE SEQUIN DRESS",
-            "price_right": "$64",
-            "link_right": "shopify:\/\/products\/birthday-cake-sequin-dress",
-            "top_right": "50%",
-            "left_right": "40%",
+            "title_right": "CANDY PEARL KNOT HEADBAND",
+            "price_right": "$29",
+            "link_right": "shopify:\/\/products\/candy-beaded-knot-headband",
+            "top_right": "18%",
+            "left_right": "34%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": ""
+          }
+        },
+        "right_col_block_mpjt8q": {
+          "type": "right_col_block",
+          "settings": {
+            "show_plus_right": true,
+            "title_right": "PAILLETTE METALLIC SKORT",
+            "price_right": "$52",
+            "link_right": "shopify:\/\/products\/paillette-metalic-short",
+            "top_right": "78%",
+            "left_right": "37%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": "100%"
+          }
+        },
+        "right_col_block_pHNVYb": {
+          "type": "right_col_block",
+          "settings": {
+            "show_plus_right": true,
+            "title_right": "ROLLER RUFFLE T-SHIRT",
+            "price_right": "$36",
+            "link_right": "shopify:\/\/products\/roller-ruffle-t-shirt",
+            "top_right": "56%",
+            "left_right": "33%",
             "detail_top": "",
             "detail_left": "",
             "detail_right": "",
@@ -417,7 +1097,10 @@
         "left_col_block_iiw7PF",
         "left_col_block_kcetNF",
         "left_col_block_KaBRBy",
-        "right_col_block_hfUJBH"
+        "left_col_block_HUre8M",
+        "right_col_block_hfUJBH",
+        "right_col_block_mpjt8q",
+        "right_col_block_pHNVYb"
       ],
       "settings": {
         "bg_image_left": "shopify:\/\/shop_images\/DSC03322.jpg",
@@ -433,26 +1116,11 @@
           "type": "left_col_block",
           "settings": {
             "show_plus_left": true,
-            "title_left": "GOLDIE STAR DRESS",
-            "price_left": "$56",
+            "title_left": "NEON SEQUIN RUFFLE DRESS",
+            "price_left": "$74",
             "link_left": "shopify:\/\/products\/goldie-star-dress-1",
-            "top_left": "50%",
-            "left_left": "50%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "",
-            "detail_bottom": ""
-          }
-        },
-        "right_col_block_JkqKjm": {
-          "type": "right_col_block",
-          "settings": {
-            "show_plus_right": true,
-            "title_right": "COTTON CANDY DREAM TULLE DRESS",
-            "price_right": "$54",
-            "link_right": "shopify:\/\/products\/cotton-candy-dream-tulle-dress",
-            "top_right": "40%",
-            "left_right": "40%",
+            "top_left": "20%",
+            "left_left": "54%",
             "detail_top": "",
             "detail_left": "",
             "detail_right": "",
@@ -463,21 +1131,20 @@
           "type": "right_col_block",
           "settings": {
             "show_plus_right": true,
-            "title_right": "SILVER CRYSTAL COWGIRL BOOTS",
-            "price_right": "$98",
-            "link_right": "shopify:\/\/products\/silver-crystal-cowgirl-boots",
-            "top_right": "84%",
-            "left_right": "34%",
+            "title_right": "NEON SEQUIN RUFFLE DRESS",
+            "price_right": "$74",
+            "link_right": "shopify:\/\/products\/neon-sequin-ruffle-dress",
+            "top_right": "44%",
+            "left_right": "67%",
             "detail_top": "",
             "detail_left": "",
-            "detail_right": "",
+            "detail_right": "100%",
             "detail_bottom": "100%"
           }
         }
       },
       "block_order": [
         "left_col_block_rTVyqA",
-        "right_col_block_JkqKjm",
         "right_col_block_TzXE98"
       ],
       "settings": {
@@ -494,25 +1161,10 @@
           "type": "left_col_block",
           "settings": {
             "show_plus_left": true,
-            "title_left": "CRYSTAL PRINCESS TIARAS",
-            "price_left": "$20",
-            "link_left": "shopify:\/\/products\/tiaras",
-            "top_left": "23%",
-            "left_left": "20%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "",
-            "detail_bottom": ""
-          }
-        },
-        "left_col_block_4R7DGk": {
-          "type": "left_col_block",
-          "settings": {
-            "show_plus_left": true,
-            "title_left": "SUNSHINE GIGI DRESS",
-            "price_left": "$40",
-            "link_left": "shopify:\/\/products\/gigi-dress-1",
-            "top_left": "40%",
+            "title_left": "RAINBOW RUFFLE DREAM DRESS",
+            "price_left": "$68",
+            "link_left": "shopify:\/\/products\/rainbow-ruffle-dream-dress-1",
+            "top_left": "53%",
             "left_left": "50%",
             "detail_top": "",
             "detail_left": "",
@@ -520,89 +1172,14 @@
             "detail_bottom": ""
           }
         },
-        "left_col_block_LhqqNP": {
-          "type": "left_col_block",
-          "settings": {
-            "show_plus_left": true,
-            "title_left": "SKY GIGI DRESS",
-            "price_left": "$58",
-            "link_left": "shopify:\/\/products\/gigi-dress-2",
-            "top_left": "40%",
-            "left_left": "75%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "20%",
-            "detail_bottom": ""
-          }
-        },
-        "left_col_block_Ht6WeV": {
-          "type": "left_col_block",
-          "settings": {
-            "show_plus_left": true,
-            "title_left": "BUBBLE GUM PINK GIGI DRESS",
-            "price_left": "$58",
-            "link_left": "shopify:\/\/products\/copy-of-gigi-dress",
-            "top_left": "40%",
-            "left_left": "20%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "",
-            "detail_bottom": ""
-          }
-        },
-        "left_col_block_c6rVUy": {
-          "type": "left_col_block",
-          "settings": {
-            "show_plus_left": true,
-            "title_left": "STARDUST BOOTS",
-            "price_left": "$60",
-            "link_left": "shopify:\/\/products\/glitter-combat-boots",
-            "top_left": "78%",
-            "left_left": "14%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "",
-            "detail_bottom": "100%"
-          }
-        },
-        "left_col_block_mfhMgU": {
-          "type": "left_col_block",
-          "settings": {
-            "show_plus_left": true,
-            "title_left": "BEAR SOCKS",
-            "price_left": "$15",
-            "link_left": "shopify:\/\/products\/bear-socks",
-            "top_left": "62%",
-            "left_left": "16%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "",
-            "detail_bottom": ""
-          }
-        },
-        "left_col_block_3jbHJR": {
-          "type": "left_col_block",
-          "settings": {
-            "show_plus_left": true,
-            "title_left": "OMBRE RAINBOW CHARM BOOTS",
-            "price_left": "$76",
-            "link_left": "shopify:\/\/products\/ombre-glitter-pastel-boots",
-            "top_left": "77%",
-            "left_left": "55%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "",
-            "detail_bottom": "100%"
-          }
-        },
         "right_col_block_CLtij4": {
           "type": "right_col_block",
           "settings": {
             "show_plus_right": true,
-            "title_right": "OMBRE BRIGHT PARTY DRESS",
-            "price_right": "$78",
-            "link_right": "shopify:\/\/products\/ombre-bright-party-dress",
-            "top_right": "45%",
+            "title_right": "CRYSTAL VACAY MODE SWIMSUIT",
+            "price_right": "$52",
+            "link_right": "shopify:\/\/products\/crystal-vacay-mode-swimsuit",
+            "top_right": "38%",
             "left_right": "40%",
             "detail_top": "",
             "detail_left": "",
@@ -613,12 +1190,6 @@
       },
       "block_order": [
         "left_col_block_nLLLUY",
-        "left_col_block_4R7DGk",
-        "left_col_block_LhqqNP",
-        "left_col_block_Ht6WeV",
-        "left_col_block_c6rVUy",
-        "left_col_block_mfhMgU",
-        "left_col_block_3jbHJR",
         "right_col_block_CLtij4"
       ],
       "settings": {
@@ -635,11 +1206,11 @@
           "type": "left_col_block",
           "settings": {
             "show_plus_left": true,
-            "title_left": "PASTEL RAINBOW WAVE SHORT SET",
-            "price_left": "$68",
-            "link_left": "shopify:\/\/products\/copy-of-rainbow-wave-short-set",
+            "title_left": "PINK RUFFLE SLEEVE TEE",
+            "price_left": "$36",
+            "link_left": "shopify:\/\/products\/pink-ruffle-sleeve-tee",
             "top_left": "40%",
-            "left_left": "40%",
+            "left_left": "30%",
             "detail_top": "",
             "detail_left": "",
             "detail_right": "",
@@ -650,25 +1221,70 @@
           "type": "left_col_block",
           "settings": {
             "show_plus_left": true,
-            "title_left": "MINI FAUX PURSE WITH SCARF",
-            "price_left": "$42",
-            "link_left": "shopify:\/\/products\/copy-of-mini-faux-croc-purse-with-horse",
-            "top_left": "42%",
-            "left_left": "67%",
+            "title_left": "SEQUIN CHERRY TUTU",
+            "price_left": "$35",
+            "link_left": "shopify:\/\/products\/sequin-cherry-tutu",
+            "top_left": "60%",
+            "left_left": "35%",
             "detail_top": "",
             "detail_left": "",
             "detail_right": "10%",
             "detail_bottom": ""
           }
         },
-        "right_col_block_Fr9yFp": {
+        "left_col_block_pXcKhF": {
+          "type": "left_col_block",
+          "settings": {
+            "show_plus_left": true,
+            "title_left": "GLITTER RAINBOW SLIDES",
+            "price_left": "$42",
+            "link_left": "shopify:\/\/products\/glitter-rainbow-slides",
+            "top_left": "93%",
+            "left_left": "60%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": "100%"
+          }
+        },
+        "left_col_block_3Xdf3D": {
+          "type": "left_col_block",
+          "settings": {
+            "show_plus_left": true,
+            "title_left": "HAILEY BOW SET",
+            "price_left": "$58",
+            "link_left": "shopify:\/\/products\/bow-tank-shorts-set",
+            "top_left": "54%",
+            "left_left": "60%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": ""
+          }
+        },
+        "left_col_block_GQcWXy": {
+          "type": "left_col_block",
+          "settings": {
+            "show_plus_left": true,
+            "title_left": "GLITTER RAINBOW SLIDES",
+            "price_left": "$42",
+            "link_left": "shopify:\/\/products\/glitter-rainbow-slides",
+            "top_left": "93%",
+            "left_left": "30%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": "100%"
+          }
+        },
+        "right_col_block_3QR6U9": {
           "type": "right_col_block",
           "settings": {
             "show_plus_right": true,
-            "title_right": "PASTEL STARS DRESS",
-            "price_right": "$52",
-            "link_right": "shopify:\/\/products\/pastel-stars-dress",
-            "top_right": "60%",
+            "title_right": "HEART GEM BIKINI",
+            "price_right": "$48",
+            "link_right": "shopify:\/\/products\/heart-gem-bikini",
+            "top_right": "45%",
             "left_right": "50%",
             "detail_top": "",
             "detail_left": "",
@@ -680,7 +1296,10 @@
       "block_order": [
         "left_col_block_aVMmec",
         "left_col_block_igtUHf",
-        "right_col_block_Fr9yFp"
+        "left_col_block_pXcKhF",
+        "left_col_block_3Xdf3D",
+        "left_col_block_GQcWXy",
+        "right_col_block_3QR6U9"
       ],
       "settings": {
         "bg_image_left": "shopify:\/\/shop_images\/024A4259.jpg",
@@ -691,6 +1310,154 @@
     },
     "two_col_block_WFhifb": {
       "type": "two-col-block",
+      "blocks": {
+        "left_col_block_AgBnAk": {
+          "type": "left_col_block",
+          "settings": {
+            "show_plus_left": true,
+            "title_left": "GLITTER RAINBOW SLIDES",
+            "price_left": "$42",
+            "link_left": "shopify:\/\/products\/glitter-rainbow-slides",
+            "top_left": "25%",
+            "left_left": "15%",
+            "detail_top": "",
+            "detail_left": "100%",
+            "detail_right": "",
+            "detail_bottom": ""
+          }
+        },
+        "left_col_block_8yxQMQ": {
+          "type": "left_col_block",
+          "settings": {
+            "show_plus_left": true,
+            "title_left": "CRYSTAL STAR SUNGLASSES",
+            "price_left": "$34",
+            "link_left": "shopify:\/\/products\/star-crystal-sunglasses",
+            "top_left": "15%",
+            "left_left": "35%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": ""
+          }
+        },
+        "left_col_block_4FG6VX": {
+          "type": "left_col_block",
+          "settings": {
+            "show_plus_left": true,
+            "title_left": "PAILETTE SPARKLE ROSE SWIMSUIT",
+            "price_left": "$54",
+            "link_left": "shopify:\/\/products\/paillette-metalic-swimsuit",
+            "top_left": "75%",
+            "left_left": "44%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": "100%"
+          }
+        },
+        "right_col_block_hcaCdV": {
+          "type": "right_col_block",
+          "settings": {
+            "show_plus_right": true,
+            "title_right": "CRYSTAL BOW T-SHIRT",
+            "price_right": "$36",
+            "link_right": "shopify:\/\/products\/crystal-bow-tshirt",
+            "top_right": "40%",
+            "left_right": "20%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": ""
+          }
+        },
+        "right_col_block_xqF6QE": {
+          "type": "right_col_block",
+          "settings": {
+            "show_plus_right": true,
+            "title_right": "ROCKSTAR STUDDED DENIM SHORTS",
+            "price_right": "$42",
+            "link_right": "shopify:\/\/products\/studded-denim-shorts-1",
+            "top_right": "55%",
+            "left_right": "20%",
+            "detail_top": "",
+            "detail_left": "100%",
+            "detail_right": "",
+            "detail_bottom": ""
+          }
+        },
+        "right_col_block_G7TKwW": {
+          "type": "right_col_block",
+          "settings": {
+            "show_plus_right": true,
+            "title_right": "CRYSTAL BRIDGET BALLET FLAT",
+            "price_right": "$48",
+            "link_right": "shopify:\/\/products\/crystal-brooch-ballet-flat",
+            "top_right": "92%",
+            "left_right": "21%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": "100%"
+          }
+        },
+        "right_col_block_VJUprc": {
+          "type": "right_col_block",
+          "settings": {
+            "show_plus_right": true,
+            "title_right": "CRYSTAL BRIDGET BALLET FLAT",
+            "price_right": "$48",
+            "link_right": "shopify:\/\/products\/crystal-brooch-ballet-flat",
+            "top_right": "93%",
+            "left_right": "55%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "100%",
+            "detail_bottom": "100%"
+          }
+        },
+        "right_col_block_qqp6B9": {
+          "type": "right_col_block",
+          "settings": {
+            "show_plus_right": true,
+            "title_right": "WHITE RAINBOW GEMS TANK DRESS",
+            "price_right": "$68",
+            "link_right": "shopify:\/\/products\/white-rainbow-gems-tank-dress",
+            "top_right": "50%",
+            "left_right": "56%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": ""
+          }
+        },
+        "right_col_block_MwRcxU": {
+          "type": "right_col_block",
+          "settings": {
+            "show_plus_right": true,
+            "title_right": "WATERCOLOR SPARKLE COCO PURSE",
+            "price_right": "$38",
+            "link_right": "shopify:\/\/products\/watercolor-sparkle-coco-purse",
+            "top_right": "63%",
+            "left_right": "56%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": ""
+          }
+        }
+      },
+      "block_order": [
+        "left_col_block_AgBnAk",
+        "left_col_block_8yxQMQ",
+        "left_col_block_4FG6VX",
+        "right_col_block_hcaCdV",
+        "right_col_block_xqF6QE",
+        "right_col_block_G7TKwW",
+        "right_col_block_VJUprc",
+        "right_col_block_qqp6B9",
+        "right_col_block_MwRcxU"
+      ],
       "settings": {
         "bg_image_left": "shopify:\/\/shop_images\/024A3720.jpg",
         "padding_top_left": "",
@@ -705,11 +1472,11 @@
           "type": "one_col_block",
           "settings": {
             "show_plus": true,
-            "title_onecol": "CRYSTAL PEARL HEADBAND",
-            "price_onecol": "$28",
-            "link_onecol": "shopify:\/\/products\/crystal-diamond-headband",
-            "top_onecol": "3%",
-            "left_onecol": "40%",
+            "title_onecol": "PINK CRYSTAL VACAY MODE SWIMSUIT",
+            "price_onecol": "$52",
+            "link_onecol": "shopify:\/\/products\/pink-crystal-vacay-mode-swimsuit",
+            "top_onecol": "70%",
+            "left_onecol": "45%",
             "detail_top": "",
             "detail_left": "",
             "detail_bottom": ""
@@ -719,10 +1486,10 @@
           "type": "one_col_block",
           "settings": {
             "show_plus": true,
-            "title_onecol": "SHINING STAR FEATHER TUTU DRESS",
-            "price_onecol": "$54",
-            "link_onecol": "shopify:\/\/products\/shining-star-feather-tutu-dress",
-            "top_onecol": "42%",
+            "title_onecol": "BEE LOVE SUNGLASSES",
+            "price_onecol": "$28",
+            "link_onecol": "shopify:\/\/products\/bee-love-sunglasses",
+            "top_onecol": "24%",
             "left_onecol": "40%",
             "detail_top": "",
             "detail_left": "",
