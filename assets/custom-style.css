@@ -13,7 +13,22 @@
     margin: 0 auto;
     margin-top: 1.5rem;
 }
+.content-main .feature_grid-collection .button, .feature_grid-collection .button:hover {
+    margin-top: 5px !important;
+    background: transparent !important;
+    color: #000 !important;
+    border: 0 !important;
+}
 
+.content-main .feature_grid-collection .collection-info__caption .title {
+    font-size: 21px !important;
+    letter-spacing: 2px;
+}
+.content-main .feature_grid-collection .button a {
+    color: #000 !important;
+    letter-spacing: 1px;
+    font-size: 14px;
+}
 .search-template-section div#gf-products img {
   width: 100% !important;
   max-height: 360px;
