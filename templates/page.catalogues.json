@@ -1,1 +1,110 @@
-{"sections":{"featured_promotions_PBEtyQ":{"type":"featured-promotions","blocks":{"image_rmqifN":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Shot_38_0009.jpg","link":"shopify:\/\/pages\/spring-2024","title":"Spring LookBook","text":"","button_label":"View Lookbook","button_link":"shopify:\/\/pages\/spring-2024"}},"image_abwkXV":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/0014_L_TB_HOLIDAY_11082023_0618.png","link":"shopify:\/\/pages\/holiday-lookbook","title":"Holidays LookBook","text":"","button_label":"View Lookbook","button_link":"shopify:\/\/pages\/warner-brothers-lookbook"}},"image_Fz39Qc":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/0015_583A9271.png","link":"shopify:\/\/pages\/birthday-lookbook","title":"Birthday lookbook","text":"","button_label":"View Lookbook","button_link":"shopify:\/\/pages\/warner-brothers-lookbook"}},"image_pxbJyY":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/LOLA_08122023_2V2A9476_cf20ffad-3450-4d1e-af1c-1b6fd9655393.png","link":"shopify:\/\/pages\/fall-lookbook","title":"Fall 23 LookBook","text":"","button_label":"View Lookbook","button_link":"shopify:\/\/pages\/fall-lookbook"}},"image_zVFciw":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/LATB_DC_10102023_1288.png","link":"shopify:\/\/pages\/warner-brothers-lookbook","title":"Warner Brothers LookBook","text":"","button_label":"View Lookbook","button_link":"shopify:\/\/pages\/warner-brothers-lookbook"}},"image_ikgQmY":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/LATB_01152024_00829.png","link":"shopify:\/\/pages\/valentine-lookbook","title":"Valentines Day LookBook","text":"","button_label":"View Lookbook","button_link":"shopify:\/\/pages\/valentine-lookbook"}}},"block_order":["image_rmqifN","image_abwkXV","image_Fz39Qc","image_pxbJyY","image_zVFciw","image_ikgQmY"],"custom_css":[".featured-promotions {margin: 3rem 0;}",".feature-section .title {font-size: 15px; letter-spacing: 1px;}","@media only screen and (max-width: 768px) {.featured-promotions {margin: 0; }}"],"settings":{"featured_promos_per_row":3,"featured_promos_grid":"full_width","featured_links_animation":"fadeInDown","feature_style":"square","promo_text_on_image_enabled":true}}},"order":["featured_promotions_PBEtyQ"]}
+{
+  "sections": {
+    "featured_promotions_PBEtyQ": {
+      "type": "featured-promotions",
+      "blocks": {
+        "image_rmqifN": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/024A3521.webp",
+            "link": "shopify:\/\/pages\/summer-looks",
+            "title": "Summer LookBook",
+            "text": "",
+            "button_label": "View Lookbook",
+            "button_link": "shopify:\/\/pages\/spring-2024"
+          }
+        },
+        "image_gLqkLM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Shot_38_0009.jpg",
+            "link": "shopify:\/\/pages\/spring-2024",
+            "title": "Spring LookBook",
+            "text": "",
+            "button_label": "View Lookbook",
+            "button_link": "shopify:\/\/pages\/spring-2024"
+          }
+        },
+        "image_abwkXV": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/0014_L_TB_HOLIDAY_11082023_0618.png",
+            "link": "shopify:\/\/pages\/holiday-lookbook",
+            "title": "Holidays LookBook",
+            "text": "",
+            "button_label": "View Lookbook",
+            "button_link": "shopify:\/\/pages\/warner-brothers-lookbook"
+          }
+        },
+        "image_Fz39Qc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/0015_583A9271.png",
+            "link": "shopify:\/\/pages\/birthday-lookbook",
+            "title": "Birthday lookbook",
+            "text": "",
+            "button_label": "View Lookbook",
+            "button_link": "shopify:\/\/pages\/warner-brothers-lookbook"
+          }
+        },
+        "image_pxbJyY": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/LOLA_08122023_2V2A9476_cf20ffad-3450-4d1e-af1c-1b6fd9655393.png",
+            "link": "shopify:\/\/pages\/fall-lookbook",
+            "title": "Fall 23 LookBook",
+            "text": "",
+            "button_label": "View Lookbook",
+            "button_link": "shopify:\/\/pages\/fall-lookbook"
+          }
+        },
+        "image_zVFciw": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/LATB_DC_10102023_1288.png",
+            "link": "shopify:\/\/pages\/warner-brothers-lookbook",
+            "title": "Warner Brothers LookBook",
+            "text": "",
+            "button_label": "View Lookbook",
+            "button_link": "shopify:\/\/pages\/warner-brothers-lookbook"
+          }
+        },
+        "image_ikgQmY": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/LATB_01152024_00829.png",
+            "link": "shopify:\/\/pages\/valentine-lookbook",
+            "title": "Valentines Day LookBook",
+            "text": "",
+            "button_label": "View Lookbook",
+            "button_link": "shopify:\/\/pages\/valentine-lookbook"
+          }
+        }
+      },
+      "block_order": [
+        "image_rmqifN",
+        "image_gLqkLM",
+        "image_abwkXV",
+        "image_Fz39Qc",
+        "image_pxbJyY",
+        "image_zVFciw",
+        "image_ikgQmY"
+      ],
+      "custom_css": [
+        ".featured-promotions {margin: 3rem 0;}",
+        ".feature-section .title {font-size: 15px; letter-spacing: 1px;}",
+        "@media only screen and (max-width: 768px) {.featured-promotions {margin: 0; }}"
+      ],
+      "settings": {
+        "featured_promos_per_row": 3,
+        "featured_promos_grid": "full_width",
+        "featured_links_animation": "fadeInDown",
+        "feature_style": "square",
+        "promo_text_on_image_enabled": true
+      }
+    }
+  },
+  "order": [
+    "featured_promotions_PBEtyQ"
+  ]
+}
