@@ -1,3 +1,12 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "sections": {
     "slideshow_nB6m8V": {
@@ -407,8 +416,8 @@
         "image_FjkpWA": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/ARCHIVE_SALE_2.jpg",
-            "link": "shopify:\/\/collections\/archivesale",
+            "image": "shopify:\/\/shop_images\/archive_sale__1__720.jpg",
+            "link": "shopify:\/\/collections\/summer-sale",
             "title": "Archive Sale",
             "text": "",
             "button_label": "shop now",
@@ -448,7 +457,7 @@
         "title": "Sale",
         "description": "Youre favorite style are up to",
         "title_sale": "65% OFF!",
-        "button_link": "https:\/\/lolaandtheboys.com\/collections\/spring-blow-out-sale",
+        "button_link": "https:\/\/lolaandtheboys.com\/collections\/summer-sale",
         "button_text": "SHOP THE SALE",
         "image": "shopify:\/\/shop_images\/SALE_65_OFF.jpg",
         "mobile_image": "shopify:\/\/shop_images\/SALE_65_OFF_mob.jpg"
