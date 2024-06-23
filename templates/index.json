@@ -100,6 +100,7 @@
         },
         "image_V87qeG": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image_mobile": "shopify:\/\/shop_images\/Lola_Archive_Sale_mob.jpg",
             "mp4": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/7b5bec7e2af54dc18e64f247abd18a71.mp4",
