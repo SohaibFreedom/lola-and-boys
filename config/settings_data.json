@@ -1,3 +1,12 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "presets": {
     "Portland": {
@@ -3909,11 +3918,11 @@
         ],
         "settings": {
           "show_announcement_bar": true,
-          "show_countdown": false,
+          "show_countdown": true,
           "bck_clr": "#faddff",
-          "Annouce_url": "",
+          "Annouce_url": "https:\/\/lolaandtheboys.com\/collections\/flash-sale",
           "txt_clr": "#000000",
-          "text": "<b> Spend $200 and get a FREE Tote Bag! While supplies last!\n<\/b>",
+          "text": "<b>🎉 25% OFF Flash Sale! 24 Hours Only! Shop Now! ⌛\n<\/b>",
           "phone_number": "",
           "top_bar_menu": "help",
           "cart_icon": "cart",
