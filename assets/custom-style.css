@@ -1867,3 +1867,15 @@ html .gm-menu-installed .gm-menu.gm-menu-11315 .gm-item.gm-level-0.gm-active > .
 .press-page-button .rich-text__buttons .button--primary,.press-page-button .rich-text__buttons .button--primary:hover{
 color:#fff;
 }
+
+
+
+
+@media screen and (max-width: 769px) {
+   
+	.homepage-slideshow.homepage-slideshow-mobile .flickity-page-dots .dot {
+    width: 12px !important;
+    height: 12px !important;
+}
+	
+}
