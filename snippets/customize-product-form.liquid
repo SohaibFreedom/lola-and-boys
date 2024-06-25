@@ -450,13 +450,24 @@ function FrontconvertToPng() {
     ctx.drawImage(sourceImage, sourcePosX, sourcePosY, sourceWidth, sourceHeight);
 
     // Draw patches on the canvas
-    patches.forEach(function (patch) {
+  patches.forEach(function (patch) {
         var patchRect = patch.getBoundingClientRect();
         var patchDivRect = patch.parentElement.getBoundingClientRect();
         var patchPosX = patchDivRect.left - imageDivRect.left;
         var patchPosY = patchDivRect.top - imageDivRect.top;
-        var patchWidth = patch.getAttribute('height');
+      var isMobile = window.innerWidth <= 768;
+       if (isMobile) {
+       var patcnaturalwidth = patch.getAttribute('height');
+        var patchnaturalHeight = patch.getAttribute('width');
+       var patchWidth = patcnaturalwidth / 2;
+        var patchHeight = patchnaturalHeight / 2;
+         console.log(patchWidth)
+       }else{
+         var patchWidth = patch.getAttribute('height');
         var patchHeight = patch.getAttribute('width');
+         console.log(patchWidth)
+       }
+  
 
         // Calculate dimensions and position based on object-fit: contain
         var patchAspectRatio = patch.naturalWidth / patch.naturalHeight;
