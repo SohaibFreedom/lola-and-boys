@@ -84,8 +84,8 @@ $(document).ready(function() {
 
     // Add click event listener to the neverMindBtn button
     neverMindBtn.click(function() {
-        // Reload the page
-        location.reload();
+    $('.all-sidebar-cross-alert').removeClass('all-sidebar-cross-alert-visble');
+    $('.patches-customization-container-overly').css('display', 'none');
     });
     clearneverMindBtn.click(function() {
         // Reload the page
@@ -126,8 +126,9 @@ $(document).ready(function() {
 });
   $('.all-sidebar-cross-exit-button').click(function() {
     // Remove the class from any element that has it
-    $('.all-sidebar-cross-alert').removeClass('all-sidebar-cross-alert-visble');
-    $('.patches-customization-container-overly').css('display', 'none');
+    // $('.all-sidebar-cross-alert').removeClass('all-sidebar-cross-alert-visble');
+    // $('.patches-customization-container-overly').css('display', 'none');
+     location.reload();
 
 });
 $('#patches-back-button').click(function() {
