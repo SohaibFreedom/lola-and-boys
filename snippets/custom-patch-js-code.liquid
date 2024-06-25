@@ -96,11 +96,18 @@ $(document).ready(function() {
 
 </script>
 <script>
-  $('.variants-continue-btn').click(function() {
-  // Add the class to the clicked element
-    $('.variants-selected-sidebar').addClass('variants-continue-btn-invisible');
-    $('.patches-editor-wrapper').css('display', 'block');
+$('.variants-continue-btn').click(function() {
+    // Check if the class .size_variants_active exists in any .size_variants_circle elements
+    if ($('.size_variants_circle').hasClass('size_variants_active')) {
+        // Add the class to the clicked element
+        $('.variants-selected-sidebar').addClass('variants-continue-btn-invisible');
+        $('.patches-editor-wrapper').css('display', 'block');
+    } else {
+        // Show the error div
+        $('.size_variants_errors').css('display', 'block');
+    }
 });
+
   $('.patches-back-button').click(function() {
     // Remove the class from any element that has it
     $('.variants-selected-sidebar').removeClass('variants-continue-btn-invisible');
