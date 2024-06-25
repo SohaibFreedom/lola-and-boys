@@ -11,7 +11,7 @@
   <div class="c-cart c-drawer">
     <div data-ajax-cart-section="">
       <div class="c-drawer__header">
-        <h3 class="c-drawer__title">My bag</h3>
+        <h3 class="c-drawer__title">Shopping cart</h3>
         <span class="c-offcanvas__close c-drawer__close" aria-label="Close Menu" aria-hidden="true">
           <svg
             width="16px"
@@ -41,6 +41,9 @@
               {% for item in cart.items %}
                 {% if item.vendor == 'SavedBy' %}
                   {% continue %}
+           {% endif %}
+                 {% if item.properties._parent_variant %}
+                  {% continue %}
                 {% endif %}
                 {% include 'wh_calculate_discount' with item.product %}
                 {% include 'wh_variant' with item.variant %}
@@ -52,12 +55,40 @@
                 <div class="c-cart__product" id="{{total_saving}} cardDrawerID {{saving}}">
                   <div class="c-cart__row c-drawer__item">
                     <div class="c-cart__itemImageBox c-drawer__itemImg">
-                      <img src="{{ item | img_url: 'master' }}" alt="{{ item.title | escape }}">
+                      {% if item.properties._customized_image_url_front %}
+                        <img src="{{ item.properties._customized_image_url_front }}" alt="{{ item.title | escape }}">
+                        <img src="{{ item.properties._customized_image_url_back }}" alt="{{ item.title | escape }}">
+                      {% else %}
+                        <img src="{{ item | img_url: 'master' }}" alt="{{ item.title | escape }}">
+                      {% endif %}
                     </div>
                     <div class="c-cart__itemInfoBox c-drawer__itemDesc">
                       <h2 class="c-cart__itemName c-drawer__itemName">
                         <a href="{{ item.url }}">{{ item.title }}</a>
                       </h2>
+                 {% if item.properties._customized_image_url_front %}
+                        <div class="deleteButton" data-customized-timestamp="{{ item.properties._Timestamp }}">
+                          <svg
+                            viewBox="0 0 12 12"
+                            version="1.1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                          >
+                            <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                              <g id="cart-slide-in-CL--subscription" transform="translate(-343.000000, -225.000000)" fill="#3D3D38" fill-rule="nonzero">
+                                <g id="the-good-sample" transform="translate(30.000000, 225.000000)">
+                                  <g id="noun_X_1099163_3d3d38-Copy" transform="translate(313.000000, 0.000000)">
+                                    <path d="M5.22861077,6 L0.159759923,0.931149151 C-0.0532533077,0.718135894 -0.0532533077,0.37277318 0.159759923,0.159759923 C0.37277318,-0.0532533077 0.718135894,-0.0532533077 0.931149151,0.159759923 L6,5.22861077 L11.0688508,0.159759923 C11.2818641,-0.0532533077 11.6272268,-0.0532533077 11.8402401,0.159759923 C12.0532533,0.37277318 12.0532533,0.718135894 11.8402401,0.931149151 L6.77138923,6 L11.8402401,11.0688508 C12.0532533,11.2818641 12.0532533,11.6272268 11.8402401,11.8402401 C11.6272268,12.0532533 11.2818641,12.0532533 11.0688508,11.8402401 L6,6.77138923 L0.931149151,11.8402401 C0.718135894,12.0532533 0.37277318,12.0532533 0.159759923,11.8402401 C-0.0532533077,11.6272268 -0.0532533077,11.2818641 0.159759923,11.0688508 L5.22861077,6 Z" id="Path"></path>
+                                  </g>
+                                </g>
+                              </g>
+                            </g>
+                          </svg>
+                    </div>
+          
+                 
+                      {% else %}
                       <a href="{{ routes.cart_change_url }}?id={{ item.key }}&quantity=0" class="c-cart__itemRemove">
                         <span class="c-cart__itemRemove">
                           <svg
@@ -79,6 +110,9 @@
                           </svg>
                         </span>
                       </a>
+                    {% endif %}
+                      {% unless item.properties._customized_image_url_front %}
+                        
                       <p>
                         {% comment %} {% endcomment %}
                         {% for p in item.properties %}
@@ -99,6 +133,7 @@
                           {% endunless %}
                         {% endfor %}
                       </p>
+                        {% endunless %}
                       <div class="c-cart__itemLowerBox">
                         {% comment %}
                           <p class="modal_price">
@@ -120,6 +155,18 @@
                         {% endcomment %}
 
                         <div class="c-cart__itemPriceBox c-drawer__itemPrice">
+                          {% if item.properties._customized_image_url_front %}
+                          
+                           <span
+                              class="c-cart__itemPrice"
+                              rv-html="item.discounted_line_price | money Currency.currentCurrency"
+                              class="c-cart__itemPrice"
+                            >
+                                 {{ item.properties._patches_price  }}
+                            </span>
+                            {% else %}
+
+                          {{ totalPriceObject | money }}
                           {% if wh_v_compare_at_price > item.price %}
                             <span
                               class="c-cart__itemPrice c-cart__itemdiscountedprice"
@@ -165,7 +212,9 @@
                               {{ item.original_price | money }}
                             </span>
                           {% endif %}
+                                                    {% endif %}
                         </div>
+                        {% unless item.properties._customized_image_url_front %} 
                         <div class="c-cart__itemQuantityBox ajaxcart__qty">
                           <a
                             href="{{ routes.cart_change_url }}?id={{ item.key }}&quantity={{ item.quantity | minus: 1 }}"
@@ -195,6 +244,7 @@
                             </span>
                           </a>
                         </div>
+                                  {% endunless %}
                       </div>
                       <div class="cart-drawer-error" data-ajax-cart-messages="{{ item.key }}"></div>
                     </div>
@@ -240,13 +290,8 @@
             </div>
             {% include 'cross-sell' %}
           {% else %}
-                <div class="c-cart__emptyText">
-              <div class="empty-cart-drawer-wrapper">
-                  <span class="heading-cart-empty">OOPS...</span>
-                 <p>You have no items in your bag.</p>
-                <a class="empty-cart-d-btn" href="https://lolaandtheboys.com/collections/best-sellers">Shop Bestsellers</a>
-              </div>
-             
+            <div class="c-cart__emptyText">
+              <span>You have no items in your shopping bag.</span>
             </div>
           {% endif %}
         </div>
@@ -254,7 +299,7 @@
     </div>
   </div>
 </div>
-
+{% render 'customize-cart-drwar-code' %}
 <script>
     jQuery(document).ready(function (){
       jQuery('.cart_container').click(function(){
