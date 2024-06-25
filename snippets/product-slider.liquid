@@ -55,7 +55,8 @@
       {% endif %}
 
     {% endif %}
-
+{% unless product.tags contains "patch" %}
+  
     {% if product.id != skip_product.id %}
       {% assign feature_image = product.featured_image %}
       <div class="gallery-cell thumbnail visible-{{ visible_products }}">
@@ -104,5 +105,6 @@
         {% include 'collection-swatch' %}
       </div>
     {% endif %}
+  {% endunless %}
   {% endfor %}
 </div>
