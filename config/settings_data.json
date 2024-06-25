@@ -3922,7 +3922,7 @@
           "bck_clr": "#faddff",
           "Annouce_url": "",
           "txt_clr": "#000000",
-          "text": "<b> Spend $200 and get a FREE Tote Bag! While supplies last!\n<\/b>",
+          "text": "Spend $200 and get a <b>FREE<\/b> Tote Bag! <b>While supplies last!<\/b>",
           "phone_number": "",
           "top_bar_menu": "help",
           "cart_icon": "cart",
