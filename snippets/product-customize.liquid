@@ -545,12 +545,6 @@
   }
 </style>
 <style>
-  .size_variants_errors{
-    padding: 0 30px;
-    color: red;
-    margin-top: 3rem;
-    display:none;
-  }
   .dragpatchDiv{
     opacity:0;
 }
@@ -882,6 +876,7 @@
     }
     .patches-customization-wrapper{
           flex-direction: column;
+          height: fit-content !important;
     }
     .patches-customization-container{
           width: 100%;
@@ -901,7 +896,23 @@
     }
     #patches-customization-offcanvas-menu{
     width: 100%;
-    height: 500vh;
+    height: 500px;
+    }
+    .patches {
+          height: 200px !important;
+    }
+    .tidy-patches-header{
+      padding: 10px 30px !important;
+    }
+    .tidy-patches-content {
+          padding: 10px 0px;
+    }
+    .selected-patch-for-customization {
+    width: 30px;
+    height: 30px;
+    }
+    .tidy-patches-adjustment-wrapper {
+    height: 160px !important;
     }
     .add-patches-info {
       display: none;
@@ -1110,7 +1121,6 @@
      </div>
       
       </div>
-      <div class="size_variants_errors"><span >*Please Select Size First</span></div>
       <div class="variant-selector-sidebar-foter">
         <div class="patches-customization-form-buttons">
           <div class="complete-overly-wrapper"></div>
