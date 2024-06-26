@@ -1,5 +1,13 @@
 {% assign variant = product.selected_or_first_available_variant %}
 <style>
+  .size_variants_errors{
+    display:none;
+    padding:30px;
+  }
+  .size_variants_errors > span{
+    font-size: 20px;
+    color: red;
+  }
   .customize-button{
     display: flex;
     align-items: center;
@@ -1121,6 +1129,7 @@
      </div>
       
       </div>
+      <div class="size_variants_errors"><span>Please select size first</span></div>
       <div class="variant-selector-sidebar-foter">
         <div class="patches-customization-form-buttons">
           <div class="complete-overly-wrapper"></div>
