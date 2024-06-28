@@ -3,6 +3,10 @@
     margin: 2rem 0 1rem !important;
     display: block;
 }
+div#shopify-section-template--15691087216742__main .container .sixteen.columns {
+    width: 100% !important;
+    float: none;
+}
 .empty-cart-d-btn {
     font-size: 18px;
     text-transform: uppercase;
