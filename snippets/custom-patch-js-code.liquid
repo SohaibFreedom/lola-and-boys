@@ -70,6 +70,8 @@ $(document).ready(function() {
         $('#shopify-block-yotpo_product_reviews_ugc_reviews_MbrNNx').hide();
         $('.footer').hide();
         $('.annoucment-bar-top').hide();
+        $('#header').hide();
+        $('#some-id').hide();
 
         // Show the product customization div
         $('.product-customization').show();
@@ -97,12 +99,32 @@ $(document).ready(function() {
 </script>
 <script>
 $('.variants-continue-btn').click(function() {
+   $('.patches-tidy-editor-btn').css('display', 'block');
     // Check if the class .size_variants_active exists in any .size_variants_circle elements
     if ($('.size_variants_circle').hasClass('size_variants_active')) {
         // Add the class to the clicked element
         $('.variants-selected-sidebar').addClass('variants-continue-btn-invisible');
         $('.patches-editor-wrapper').css('display', 'block');
+        if (window.matchMedia("(max-width: 769px)").matches) {
+            $('.patches-tidy-editor-btn').css('visibility', 'visible');
+        } else {
+            $('.patches-tidy-editor-btn').css('visibility', 'hidden');
+        }
          $('.size_variants_errors').css('display', 'none');
+      
+            if (window.matchMedia("(max-width: 768px)").matches){
+        $('.only-mobile').css('display', 'none'); 
+    }
+      if (window.matchMedia("(max-width: 769px)").matches) {
+            $('.patches-tidy-editor-btn').css('visibility', 'visible');
+        } else {
+            $('.patches-tidy-editor-btn').css('visibility', 'hidden');
+        }
+           if (window.matchMedia("(max-width: 768px)").matches){
+        $('.only-mobile-colors-wrapper').css('display', 'block');  
+    }else{
+       $('.only-mobile-colors-wrapper').css('display', 'none');  
+}
     } else {
         // Show the error div
         $('.size_variants_errors').css('display', 'block');
@@ -110,8 +132,15 @@ $('.variants-continue-btn').click(function() {
 });
 
   $('.patches-back-button').click(function() {
+      $('.patches-tidy-editor-btn').css('display', 'none');
     // Remove the class from any element that has it
     $('.variants-selected-sidebar').removeClass('variants-continue-btn-invisible');
+            if (window.matchMedia("(max-width: 768px)").matches){
+        $('.only-mobile').css('display', 'block'); 
+    }else{
+    $('.only-mobile').css('display', 'none'); 
+}
+    $('.only-mobile-colors-wrapper').css('display', 'none');
 
 });
  $('.close-variant-selector-editor').click(function() {
@@ -1400,6 +1429,7 @@ function dropPatchbydraggingBack(patchElement, x, y, height,width) {
 }
 // Add event listener to the container of patch elements
 document.querySelector('.patches').addEventListener('dragstart', function (event) {
+  console.log('drags Started');
   const patch = event.target.closest('.patch');
   if (!patch) return; // If the event target isn't a patch, ignore it
 
@@ -1536,125 +1566,71 @@ BackcenterBox.addEventListener('drop', function (event) {
 });
 
 
-  function updatePosition(patchId, x, y, width, height) {
-    if (document.getElementById('Front-Area').style.visibility === 'visible') {
-      console.log('updata at front')
-        // Update the position of the corresponding patch div
-        var patchDiv = document.getElementById(patchId);
-    
-        // Check if the event is a touch event
+function updatePosition(patchId, x, y, width, height) {
+    const frontArea = document.getElementById('Front-Area');
+    const backArea = document.getElementById('Back-area');
+  let patchDiv = document.getElementById(patchId);
+patchDiv.classList.remove('patch-');
+
+    let isFrontAreaVisible = frontArea.style.visibility === 'visible';
+    let isBackAreaVisible = backArea.style.visibility === 'visible';
+
+    if (isFrontAreaVisible || isBackAreaVisible) {
+        // Determine if event is a touch event
         if (event.type.startsWith('touch')) {
-            // Access touch coordinates
-            var touch = event.touches[0];
+            let touch = event.touches[0];
             x = touch.clientX;
             y = touch.clientY;
         }
-    
+
+        // Update the position of the patch
         patchDiv.style.top = (y - height / 2) + 'px';
         patchDiv.style.left = (x - width / 2) + 'px';
-        var patchIndex = patches.findIndex(patch => patch.id === patchId);
+
+        // Update the patch position in the patches array
+        let patchIndex = patches.findIndex(patch => patch.id === patchId);
         if (patchIndex !== -1) {
-            // Update the position of the corresponding patch div
-            var patchDiv = document.getElementById(patchId);
-    
-            // Check if the event is a touch event
-            if (event.type.startsWith('touch')) {
-                // Access touch coordinates
-                var touch = event.touches[0];
-                x = touch.clientX;
-                y = touch.clientY;
-            }
-    
-            patchDiv.style.top = (y - height / 2) + 'px';
-            patchDiv.style.left = (x - width / 2) + 'px';
-    
-            // Update the position in the patches array
             patches[patchIndex].x = x;
             patches[patchIndex].y = y;
-    
-            // Check for overlap or zero gap
-            var containerRect = document.querySelector('.patches-container').getBoundingClientRect();
-            var patchRect = patchDiv.getBoundingClientRect();
-        
-            // if (
-            //     patchRect.right > containerRect.right ||
-            //     patchRect.bottom > containerRect.bottom ||
-            //     patchRect.left < containerRect.left ||
-            //     patchRect.top < containerRect.top
-            // ) {
-            //     // If there's overlap or zero gap, change border color to red
-            //     document.querySelector('.centerBox').style.borderColor = 'red';
-            //     // Return the patch to its original position within the container
-              
-            //     patchDiv.style.top = '50px';
-            //     patchDiv.style.left = '50px';
-            // } else {
-            //     // Otherwise, revert border color to default
-            //     document.querySelector('.centerBox').style.borderColor = '#ff000000'; // or whatever your default color is
-            // }
+
+            // Get the container and patch bounding rectangles
+            let containerRect = isFrontAreaVisible ?
+                document.querySelector('.patches-container').getBoundingClientRect() :
+                document.querySelector('.patches-containerr').getBoundingClientRect();
+
+            let patchRect = patchDiv.getBoundingClientRect();
+
+            // Check for overlap with other patches
+            let isOverlapping = checkOverlapWithPatches(patchRect, '.patch-');
+
+            // Display or hide the error message based on overlap
+            let errorMessage = document.querySelector('.overlapping-error');
+            if (isOverlapping) {
+              console.log('overlapping');
+                 errorMessage.style.visibility = 'visible';
+            } else {
+                errorMessage.style.visibility = 'hidden';
+            }
+          patchDiv.classList.add('patch-');
         }
-  }
-    else if (document.getElementById('Back-area').style.visibility === 'visible') {
-       console.log('updata at back')
-    
-    // Update the position of the corresponding patch div
-    var patchDiv = document.getElementById(patchId);
-
-    // Check if the event is a touch event
-    if (event.type.startsWith('touch')) {
-        // Access touch coordinates
-        var touch = event.touches[0];
-        x = touch.clientX;
-        y = touch.clientY;
     }
-
-    patchDiv.style.top = (y - height / 2) + 'px';
-    patchDiv.style.left = (x - width / 2) + 'px';
-    var patchIndex = patches.findIndex(patch => patch.id === patchId);
-    if (patchIndex !== -1) {
-        // Update the position of the corresponding patch div
-        var patchDiv = document.getElementById(patchId);
-
-        // Check if the event is a touch event
-        if (event.type.startsWith('touch')) {
-            // Access touch coordinates
-            var touch = event.touches[0];
-            x = touch.clientX;
-            y = touch.clientY;
-        }
-
-        patchDiv.style.top = (y - height / 2) + 'px';
-        patchDiv.style.left = (x - width / 2) + 'px';
-
-        // Update the position in the patches array
-        patches[patchIndex].x = x;
-        patches[patchIndex].y = y;
-
-        // Check for overlap or zero gap
-        var containerRect = document.querySelector('.patches-containerr').getBoundingClientRect();
-        var patchRect = patchDiv.getBoundingClientRect();
-        console.log('containerRect',containerRect)
-        console.log('patchRect',patchRect)
-        // if (
-        //     patchRect.right > containerRect.right ||
-        //     patchRect.bottom > containerRect.bottom ||
-        //     patchRect.left < containerRect.left ||
-        //     patchRect.top < containerRect.top
-        // ) {
-        //     // If there's overlap or zero gap, change border color to red
-        //     document.querySelector('.BackcenterBox').style.borderColor = 'red';
-        //     // Return the patch to its original position within the container
-        //     console.log(document.querySelector('.BackcenterBox'))
-          
-        //     patchDiv.style.top = '50px';
-        //     patchDiv.style.left = '50px';
-        // } else {
-        //     // Otherwise, revert border color to default
-        //     document.querySelector('.BackcenterBox').style.borderColor = '#ff000000'; // or whatever your default color is
-        // }
-    }
-  } 
 }
+
+function checkOverlapWithPatches(patchRect, patchClass) {
+    let patches = document.querySelectorAll(patchClass);
+    for (let i = 0; i < patches.length; i++) {
+        let otherPatchRect = patches[i].getBoundingClientRect();
+        if (patchRect.left < otherPatchRect.right &&
+            patchRect.right > otherPatchRect.left &&
+            patchRect.top < otherPatchRect.bottom &&
+            patchRect.bottom > otherPatchRect.top) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
 
 
 // centerBox.addEventListener('mousedown', function (event) {
@@ -2115,6 +2091,13 @@ BackcenterBox.addEventListener('mouseup', function (event) {
     $('.patches-customization-editor').addClass('patches-customization-editor-active');
     $('.patches-customization-editor').css('display', 'block');
     $('.patches-editor-wrapper').css('display', 'none');
+    $('.only-mobile-colors-wrapper').css('display', 'none');
+    
+    if (window.matchMedia("(max-width: 768px)").matches){
+       $('.only-mobile-tdy-header').css('display', 'block');
+    }else{
+       $('.only-mobile-tdy-header').css('display', 'none');  
+}
 
       if (document.getElementById('Front-Area').style.visibility === 'visible') {
           $('.back-tdiy-patches-btn').removeClass('tdiy-patches-btn-active')
@@ -2181,12 +2164,66 @@ BackcenterBox.addEventListener('mouseup', function (event) {
         $('.patches-customization-editor').css('right', '0');
     }, 100);
 });
+$(document).on('click', '.patches-tidy-editor-btn', function(event) {
+    const patchElement = $(event.target).closest('.patch-');
+  patchElement.toggleClass('patch-open-editor');
+    
+    $('.patches-customization-editor').addClass('patches-customization-editor-active');
+    $('.patches-customization-editor').css('display', 'block');
+    $('.patches-editor-wrapper').css('display', 'none');
+    $('.only-mobile-colors-wrapper').css('display', 'none');
+    $('.only-mobile-tdy-header').css('display', 'block');
 
+      if (document.getElementById('Front-Area').style.visibility === 'visible') {
+          $('.back-tdiy-patches-btn').removeClass('tdiy-patches-btn-active')
+        $('.front-tdiy-patches-btn').addClass('tdiy-patches-btn-active')
+        $('.select-patches-for-back').removeClass('select-patches-active')
+        $('.select-patches-for-front').addClass('select-patches-active')
+       
+    } else if (document.getElementById('Back-area').style.visibility === 'visible') {
+        $('.front-tdiy-patches-btn').removeClass('tdiy-patches-btn-active')
+        $('.back-tdiy-patches-btn').addClass('tdiy-patches-btn-active')
+        $('.select-patches-for-front').removeClass('select-patches-active')
+        $('.select-patches-for-back').addClass('select-patches-active')
+     
+     }
+
+    setTimeout(function() {
+        $('.patches-customization-editor').css('right', '0');
+    }, 100);
+});
 
     // Click event listener for closing the editor
     $('.close-patches-customization-editor').click(function() {
         $('.patches-customization-editor').removeClass('patches-customization-editor-active');
       $('.patches-editor-wrapper').css('display', 'block');
+      $('.only-mobile-tdy-header').css('display', 'none');
+       if (window.matchMedia("(max-width: 768px)").matches){
+        $('.only-mobile-colors-wrapper').css('display', 'block');  
+    }else{
+       $('.only-mobile-colors-wrapper').css('display', 'none');  
+}
+        setTimeout(function() {
+            $('.patches-customization-editor').css({
+                'right': '-2400px'
+            });
+            setTimeout(function() {
+                $('.patches-customization-editor').css({
+                    'display': 'none'
+                });
+            }, 900);
+        }, 100);
+    });
+
+     $('.tidy-patches-apply-changes-btn').click(function() {
+        $('.patches-customization-editor').removeClass('patches-customization-editor-active');
+      $('.patches-editor-wrapper').css('display', 'block');
+      $('.only-mobile-tdy-header').css('display', 'none');
+       if (window.matchMedia("(max-width: 768px)").matches){
+        $('.only-mobile-colors-wrapper').css('display', 'block');  
+    }else{
+       $('.only-mobile-colors-wrapper').css('display', 'none');  
+}
         setTimeout(function() {
             $('.patches-customization-editor').css({
                 'right': '-2400px'
@@ -2701,30 +2738,38 @@ if (window.matchMedia("(max-width: 700px)").matches) {
             switch (direction) {
                 case 'top':
                     top -= increment;
+                 checkPatchOverlapping();
                     break;
                 case 'left':
                     right += increment;
+                 checkPatchOverlapping();
                     break;
                 case 'right':
                     right -= increment;
+                 checkPatchOverlapping();
                     break;
                 case 'bottom':
                     top += increment;
+                 checkPatchOverlapping();
                     break;
             }
         } else {
             switch (direction) {
                 case 'top':
                     top -= increment;
+                checkPatchOverlapping();
                     break;
                 case 'left':
                     left -= increment;
+                  checkPatchOverlapping();
                     break;
                 case 'right':
                     left += increment;
+                  checkPatchOverlapping();
                     break;
                 case 'bottom':
                     top += increment;
+                  checkPatchOverlapping();
                     break;
             }
         }
@@ -2739,8 +2784,45 @@ if (window.matchMedia("(max-width: 700px)").matches) {
         }
     });
 }
+function checkPatchOverlapping() {
+    console.log('checking overlapping');
+    let errorMessage = document.querySelector('.overlapping-error'); // Assuming the error message has a class 'overlapping-error'
+    const patchDivs = document.querySelectorAll('.patch-action');
+    
+    patchDivs.forEach(patchDiv => {
+        patchDiv.classList.remove('patch-');
+        let patchRect = patchDiv.getBoundingClientRect();
+        let patches = document.querySelectorAll('.patch-');
+        console.log('patchRect.left', patchRect.left);
+        
+        let isOverlapping = false;
+        
+        for (let i = 0; i < patches.length; i++) {
+            let otherPatchRect = patches[i].getBoundingClientRect();
+            if (patchRect.left < otherPatchRect.right &&
+                patchRect.right > otherPatchRect.left &&
+                patchRect.top < otherPatchRect.bottom &&
+                patchRect.bottom > otherPatchRect.top) {
+                console.log('overlappingggg');
+                isOverlapping = true;
+                break;
+            }
+        }
 
-    function deleteAlignment() {
+        if (isOverlapping) {
+            errorMessage.style.visibility = 'visible';
+        } else {
+            console.log('hidden it');
+            errorMessage.style.visibility = 'hidden';
+        }
+
+        patchDiv.classList.add('patch-');
+    });
+
+    return false;
+}
+
+  function deleteAlignment() {
     console.log('delete')
     const patchesContainer = document.querySelector('.patches-container');
     const patchesBackContainer = document.querySelector('.patches-containerr');
@@ -2791,6 +2873,7 @@ if (window.matchMedia("(max-width: 700px)").matches) {
 // }
   function centerPatches() {
     deleteAlignment();
+     
     let container;
     let patches;
 
@@ -2841,6 +2924,7 @@ if (window.matchMedia("(max-width: 700px)").matches) {
     } else {
         console.log("Container or patches not found.");
     }
+       checkPatchOverlapping();
 }
 
 
