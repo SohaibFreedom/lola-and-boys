@@ -1735,7 +1735,7 @@ console.log(dragPatch1);
   console.log('dragPatch1',dragPatch1)
       dragPatch1.classList.remove('patch-');
       let patchRect = dragPatch1.getBoundingClientRect();
-            let isOverlapping = checkOverlapWithPatches(patchRect, '.patch-');
+            let isOverlapping = checkOverlapWithPatches(patchRect, '.centerBox > .patches-container > .patch-');
 
             // Display or hide the error message based on overlap
             let errorMessage = document.querySelector('.overlapping-error');
