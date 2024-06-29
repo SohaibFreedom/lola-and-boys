@@ -1882,8 +1882,20 @@ BackcenterBox.addEventListener('touchmove', function (event) {
     }
    console.log('nunder');
     if (event.touches.length === 1 && dragPatch1) {
-      console.log('under');
-       console.log('dragPatch1',dragPatch)
+       dragPatch1.classList.remove('patch-');
+      let patchRect = dragPatch1.getBoundingClientRect();
+            let isOverlapping = checkOverlapWithPatches(patchRect, '.patch-');
+
+            // Display or hide the error message based on overlap
+            let errorMessage = document.querySelector('.overlapping-error');
+            if (isOverlapping) {
+              console.log('overlapping');
+                 errorMessage.style.visibility = 'visible';
+            } else {
+                errorMessage.style.visibility = 'hidden';
+            }
+         dragPatch1.classList.add('patch-');
+      
         const touch = event.touches[0];
         const rect = BackcenterBox.getBoundingClientRect();
         const mouseX = touch.clientX - rect.left;
