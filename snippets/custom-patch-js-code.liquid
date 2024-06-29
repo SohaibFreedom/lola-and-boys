@@ -2845,7 +2845,7 @@ function checkPatchOverlapping() {
        console.log('back area overlapping');
         patchDivs = document.querySelectorAll('.BackcenterBox > .patches-containerr > .patch-action');
     } 
-    
+    console.log(patchDivs)
     patchDivs.forEach(patchDiv => {
         patchDiv.classList.remove('patch-');
         let patchRect = patchDiv.getBoundingClientRect();
