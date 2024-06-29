@@ -1730,6 +1730,7 @@ centerBox.addEventListener('touchstart', function (event) {
 
 centerBox.addEventListener('touchmove', function (event) {
     // Check for overlap with other patches
+      let patchRect = dragPatch1.getBoundingClientRect();
             let isOverlapping = checkOverlapWithPatches(patchRect, '.patch-');
 
             // Display or hide the error message based on overlap
