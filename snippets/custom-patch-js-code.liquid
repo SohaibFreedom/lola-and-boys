@@ -1729,20 +1729,22 @@ centerBox.addEventListener('touchstart', function (event) {
 });
 
 centerBox.addEventListener('touchmove', function (event) {
-    // Check for overlap with other patches
-  console.log('dragPatch1',dragPatch1)
-      let patchRect = dragPatch1.getBoundingClientRect();
-            let isOverlapping = checkOverlapWithPatches(patchRect, '.patch-');
+  //   // Check for overlap with other patches
+  // console.log('dragPatch1',dragPatch1)
+  //     let patchRect = dragPatch1.getBoundingClientRect();
+  //           let isOverlapping = checkOverlapWithPatches(patchRect, '.patch-');
 
-            // Display or hide the error message based on overlap
-            let errorMessage = document.querySelector('.overlapping-error');
-            if (isOverlapping) {
-              console.log('overlapping');
-                 errorMessage.style.visibility = 'visible';
-            } else {
-                errorMessage.style.visibility = 'hidden';
-            }
+  //           // Display or hide the error message based on overlap
+  //           let errorMessage = document.querySelector('.overlapping-error');
+  //           if (isOverlapping) {
+  //             console.log('overlapping');
+  //                errorMessage.style.visibility = 'visible';
+  //           } else {
+  //               errorMessage.style.visibility = 'hidden';
+  //           }
     if (event.touches.length === 1 && dragPatch1) {
+      console.log('dragPatch1',dragPatch1)
+      console.log('inner')
         const touch = event.touches[0];
         const rect = centerBox.getBoundingClientRect();
         const mouseX = touch.clientX - rect.left;
