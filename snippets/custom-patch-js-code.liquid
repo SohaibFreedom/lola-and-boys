@@ -1725,16 +1725,7 @@ centerBox.addEventListener('touchstart', function (event) {
             event.stopPropagation();
         }
     }
-    let isOverlapping = checkOverlapWithPatches(patchRect, '.patch-');
-
-            // Display or hide the error message based on overlap
-            let errorMessage = document.querySelector('.overlapping-error');
-            if (isOverlapping) {
-              console.log('overlapping');
-                 errorMessage.style.visibility = 'visible';
-            } else {
-                errorMessage.style.visibility = 'hidden';
-            }
+   
 });
 
 centerBox.addEventListener('touchmove', function (event) {
