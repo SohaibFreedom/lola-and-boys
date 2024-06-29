@@ -1869,7 +1869,17 @@ BackcenterBox.addEventListener('touchstart', function (event) {
 });
 
 BackcenterBox.addEventListener('touchmove', function (event) {
-  console.log(event);
+ let touchedElement = event.target;
+
+    // Traverse up the DOM tree to find the div element with the specific class or attribute
+    while (touchedElement && !touchedElement.classList.contains('patch-')) {
+        touchedElement = touchedElement.parentElement;
+    }
+
+    if (touchedElement && touchedElement.classList.contains('patch-')) {
+        var dragpatch1 = touchedElement;
+        console.log('Touched element saved in dragpatch1:', dragpatch1);
+    }
    console.log('nunder');
     if (event.touches.length === 1 && dragPatch1) {
       console.log('under');
