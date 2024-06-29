@@ -2515,8 +2515,8 @@ function alignDiagonalRight() {
 
     sortedPatches.forEach((patch, index) => {
               if (window.matchMedia("(max-width: 700px)").matches) {
-        const rightValue = index === 0 ? 0 : index * (25 + gapValue);
-        patch.style.top = index === 0 ? '0' : `${index * (25 + gapValue) }px`;
+        const rightValue = index === 0 ? 0 : index * (30 + gapValue);
+        patch.style.top = index === 0 ? '0' : `${index * (30 + gapValue) }px`;
         patch.style.right = `${rightValue}px`;
         patch.style.left = 'auto'; // Reset left property
 }else{
