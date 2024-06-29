@@ -2492,7 +2492,7 @@ function alignDiagonalLeft() {
         
         if (window.matchMedia("(max-width: 700px)").matches) {
               const leftValue = index === 0 ? '0px' : `${index * (30 + gapValue) }px`;
-        patch.style.top = index === 0 ? '0' : `${index * (25 + gapValue) }px`;
+        patch.style.top = index === 0 ? '0' : `${index * (30 + gapValue) }px`;
         patch.style.left = leftValue;
         }
         else {
