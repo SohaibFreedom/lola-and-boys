@@ -1869,7 +1869,9 @@ BackcenterBox.addEventListener('touchstart', function (event) {
 });
 
 BackcenterBox.addEventListener('touchmove', function (event) {
+   console.log('not under');
     if (event.touches.length === 1 && dragPatch1) {
+      console.log('under');
        console.log('dragPatch1',dragPatch1)
         const touch = event.touches[0];
         const rect = BackcenterBox.getBoundingClientRect();
