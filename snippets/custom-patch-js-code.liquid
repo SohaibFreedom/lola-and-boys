@@ -2840,11 +2840,9 @@ function checkPatchOverlapping() {
 
     if (document.getElementById('Front-Area').style.visibility === 'visible') {
         patchDivs = document.querySelectorAll('.centerBox > .patches-container > .patch-action');
-    } else if (document.getElementById('Back-area').style.visibility === 'visible') {
-        patchDivs = document.querySelectorAll('.BackcenterBox > .patches-containerr > .patch-action');
     } else {
-        patchDivs = document.querySelectorAll('.patch-action');
-    }
+        patchDivs = document.querySelectorAll('.BackcenterBox > .patches-containerr > .patch-action');
+    } 
     
     patchDivs.forEach(patchDiv => {
         patchDiv.classList.remove('patch-');
