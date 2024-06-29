@@ -1728,6 +1728,17 @@ centerBox.addEventListener('touchstart', function (event) {
 });
 
 centerBox.addEventListener('touchmove', function (event) {
+    // Check for overlap with other patches
+            let isOverlapping = checkOverlapWithPatches(patchRect, '.patch-');
+
+            // Display or hide the error message based on overlap
+            let errorMessage = document.querySelector('.overlapping-error');
+            if (isOverlapping) {
+              console.log('overlapping');
+                 errorMessage.style.visibility = 'visible';
+            } else {
+                errorMessage.style.visibility = 'hidden';
+            }
     if (event.touches.length === 1 && dragPatch1) {
         const touch = event.touches[0];
         const rect = centerBox.getBoundingClientRect();
@@ -1757,18 +1768,7 @@ centerBox.addEventListener('touchmove', function (event) {
 centerBox.addEventListener('touchend', function (event) {
     // Reset dragPatch1
     dragPatch1 = null;
-
-    // Check for overlap with other patches
-            let isOverlapping = checkOverlapWithPatches(patchRect, '.patch-');
-
-            // Display or hide the error message based on overlap
-            let errorMessage = document.querySelector('.overlapping-error');
-            if (isOverlapping) {
-              console.log('overlapping');
-                 errorMessage.style.visibility = 'visible';
-            } else {
-                errorMessage.style.visibility = 'hidden';
-            }
+  
 });
 
 // BackcenterBox.addEventListener('mousedown', function (event) {
