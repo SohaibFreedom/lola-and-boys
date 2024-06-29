@@ -1870,6 +1870,7 @@ BackcenterBox.addEventListener('touchstart', function (event) {
 
 BackcenterBox.addEventListener('touchmove', function (event) {
     if (event.touches.length === 1 && dragPatch1) {
+       console.log('dragPatch1',dragPatch1)
         const touch = event.touches[0];
         const rect = BackcenterBox.getBoundingClientRect();
         const mouseX = touch.clientX - rect.left;
