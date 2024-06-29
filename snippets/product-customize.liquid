@@ -1,23 +1,7 @@
 {% assign variant = product.selected_or_first_available_variant %}
 <style>
-  .main__patches__wrapp{
-    overflow: hidden;
-    height: calc(100vh - 140px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  .main__patches__wrapper{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
   .scrollbox{
-    overflow-y: scroll;
-    -webkit-box-flex: 1;
-    -webkit-flex-grow: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    margin: 0;
-    padding: 0;
+    overflow:auto;
   }
   .scrollboxInner{
     
@@ -304,12 +288,16 @@
     background: #ffe2e8;
     }
     .patches{
-    height: auto;
-    overflow: auto;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    padding:20px 0;
     gap: 10px;
+    justify-content: center;
+    width: 90%;
+    height: 70vh;
+    overflow: hidden;
+    overflow-y: scroll;
+    margin: 0 auto;
     }
     .tidy-patches-adjustment-wrapper{
     height: 60vh;
@@ -1461,7 +1449,7 @@
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="30" height="30"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
     </div>
   </div>
-    <div class="main__patches__wrapp">
+    <div class="main__patches__wrapper">
       <div class="main__patches__wrapper">
     <div class="add-patches-info">
     <span class="add-patches-info-title">Add Patches</span>
