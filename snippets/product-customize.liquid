@@ -1,5 +1,15 @@
 {% assign variant = product.selected_or_first_available_variant %}
 <style>
+  .main__patches__wrapper{
+    overflow: hidden;
+    height: calc(100vh - 140px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .main__patches__wrapper{
+        height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
   .scrollbox{
     overflow:auto;
   }
@@ -290,14 +300,13 @@
     .patches{
     display: flex;
     flex-wrap: wrap;
-    padding:20px 0;
+    padding: 20px 0;
     gap: 10px;
     justify-content: center;
     width: 90%;
-    height: 70vh;
+    height: unset;
     overflow: hidden;
-    overflow-y: scroll;
-    margin: 0 auto;
+    margin: auto;
     }
     .tidy-patches-adjustment-wrapper{
     height: 60vh;
