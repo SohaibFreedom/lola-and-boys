@@ -1728,6 +1728,7 @@ centerBox.addEventListener('touchstart', function (event) {
 });
 
 centerBox.addEventListener('touchmove', function (event) {
+   console.log('touch MOVE')
     if (event.touches.length === 1 && dragPatch1) {
         const touch = event.touches[0];
         const rect = centerBox.getBoundingClientRect();
@@ -1787,7 +1788,7 @@ centerBox.addEventListener('touchend', function (event) {
     //     });
 
 BackcenterBox.addEventListener('touchstart', function (event) {
-    console.log('touch Start')
+    console.log('bACK touch Start')
     if (event.touches.length === 1) {
         const touch = event.touches[0];
         const rect = BackcenterBox.getBoundingClientRect();
@@ -1818,6 +1819,7 @@ BackcenterBox.addEventListener('touchstart', function (event) {
 });
 
 BackcenterBox.addEventListener('touchmove', function (event) {
+  console.log('bACK touch MOVE')
     if (event.touches.length === 1 && dragPatch1) {
         const touch = event.touches[0];
         const rect = BackcenterBox.getBoundingClientRect();
