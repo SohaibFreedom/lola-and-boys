@@ -2839,8 +2839,10 @@ function checkPatchOverlapping() {
     let patchDivs;
 
     if (document.getElementById('Front-Area').style.visibility === 'visible') {
+      console.log('front area overlapping');
         patchDivs = document.querySelectorAll('.centerBox > .patches-container > .patch-action');
     } else {
+       console.log('back area overlapping');
         patchDivs = document.querySelectorAll('.BackcenterBox > .patches-containerr > .patch-action');
     } 
     
