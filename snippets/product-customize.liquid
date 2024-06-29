@@ -1,5 +1,11 @@
 {% assign variant = product.selected_or_first_available_variant %}
 <style>
+  .scrollbox{
+    overflow:auto;
+  }
+  .scrollboxInner{
+    
+  }
   .onlymobile-screen{
     display:none;
   }
@@ -1443,7 +1449,8 @@
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="30" height="30"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
     </div>
   </div>
-  <div class="add-patches-info">
+    <div>
+      <div class="add-patches-info">
     <span class="add-patches-info-title">Add Patches</span>
     <span class="add-patches-info-desc">Click or drag a patch to add it to your item</span>
   </div>
@@ -1461,11 +1468,13 @@
 
     <div class="custom-patches-sort-btn">Filter & Sort</div>
   </div>
-      <div class="scrollbox">
+  <div class="scrollbox">
         <div class="scrollboxInner">
           <div class="patches"></div>
         </div>
-      </div>
+      </div> 
+    </div>
+ 
       
 
    
