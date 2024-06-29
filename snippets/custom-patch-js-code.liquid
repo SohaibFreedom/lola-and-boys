@@ -1733,6 +1733,7 @@ centerBox.addEventListener('touchmove', function (event) {
     if (event.touches.length === 1 && dragPatch1) {
          // Check for overlap with other patches
   console.log('dragPatch1',dragPatch1)
+      dragPatch1.classList.remove('patch-');
       let patchRect = dragPatch1.getBoundingClientRect();
             let isOverlapping = checkOverlapWithPatches(patchRect, '.patch-');
 
@@ -1744,6 +1745,7 @@ centerBox.addEventListener('touchmove', function (event) {
             } else {
                 errorMessage.style.visibility = 'hidden';
             }
+         dragPatch1.classList.add('patch-');
         const touch = event.touches[0];
         const rect = centerBox.getBoundingClientRect();
         const mouseX = touch.clientX - rect.left;
