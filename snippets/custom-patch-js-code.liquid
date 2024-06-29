@@ -104,12 +104,13 @@ $('.variants-continue-btn').click(function() {
     if ($('.size_variants_circle').hasClass('size_variants_active')) {
         // Add the class to the clicked element
         $('.variants-selected-sidebar').addClass('variants-continue-btn-invisible');
-        $('.patches-editor-wrapper').css('display', 'block');
+        
         if (window.matchMedia("(max-width: 769px)").matches) {
             $('.patches-tidy-editor-btn').css('visibility', 'visible');
             $('.patches-editor-wrapper').css('display', 'flex');
         } else {
             $('.patches-tidy-editor-btn').css('visibility', 'hidden');
+          $('.patches-editor-wrapper').css('display', 'block');
         }
          $('.size_variants_errors').css('display', 'none');
       
