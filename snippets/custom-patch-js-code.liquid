@@ -1301,7 +1301,7 @@ patchDiv.style.height = (width / 2 + 5) + 'px';
            
             event.preventDefault();
             event.dataTransfer.setData('text/plain', patch1.querySelector('img').src);
-            dragPatch = patch1;
+            dragPatch1 = patch1;
 
             BackcenterBox.addEventListener('mousemove', mousemoveHandlerBack);
         });
@@ -1869,11 +1869,10 @@ BackcenterBox.addEventListener('touchstart', function (event) {
 });
 
 BackcenterBox.addEventListener('touchmove', function (event) {
-   console.log('not under');
-  console.log(dragPatch)
-    if (event.touches.length === 1 && dragPatch) {
+   console.log('nunder');
+    if (event.touches.length === 1 && dragPatch1) {
       console.log('under');
-       console.log('dragPatch1',dragPatch)
+       console.log('dragPatch1',dragPatch1)
         const touch = event.touches[0];
         const rect = BackcenterBox.getBoundingClientRect();
         const mouseX = touch.clientX - rect.left;
