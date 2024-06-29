@@ -1621,6 +1621,7 @@ patchDiv.classList.remove('patch-');
 }
 
 function checkOverlapWithPatches(patchRect, patchClass) {
+  console.log('enter function');
     let patches = document.querySelectorAll(patchClass);
     for (let i = 0; i < patches.length; i++) {
         let otherPatchRect = patches[i].getBoundingClientRect();
