@@ -2448,9 +2448,9 @@ function alignHorizontal() {
         let leftPosition;
         
         if (window.matchMedia("(max-width: 700px)").matches) {
-            leftPosition = index * (27 + gapValue);
+            leftPosition = index * (30 + gapValue);
         } else {
-            leftPosition = index * (27 + gapValue);
+            leftPosition = index * (50 + gapValue);
         }
         
         // Set the position styles for each patch
@@ -2470,7 +2470,7 @@ function alignVertical() {
           let topPosition;
         
         if (window.matchMedia("(max-width: 700px)").matches) {
-            topPosition = index * (25 + gapValue);
+            topPosition = index * (30 + gapValue);
         }
         else {
             topPosition = index * (50 + gapValue);
@@ -2491,7 +2491,7 @@ function alignDiagonalLeft() {
       
         
         if (window.matchMedia("(max-width: 700px)").matches) {
-              const leftValue = index === 0 ? '0px' : `${index * (25 + gapValue) }px`;
+              const leftValue = index === 0 ? '0px' : `${index * (30 + gapValue) }px`;
         patch.style.top = index === 0 ? '0' : `${index * (25 + gapValue) }px`;
         patch.style.left = leftValue;
         }
