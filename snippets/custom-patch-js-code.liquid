@@ -2836,13 +2836,15 @@ if (window.matchMedia("(max-width: 700px)").matches) {
 function checkPatchOverlapping() {
     console.log('checking overlapping');
     let errorMessage = document.querySelector('.overlapping-error'); 
-   //  const patchDivs;
-   // if (document.getElementById('Front-Area').style.visibility === 'visible') {
-   //      patchDivs = document.querySelector('.centerBox > .patches-container > .patch-action');
-   //  } else if (document.getElementById('Back-area').style.visibility === 'visible') {
-   //     patchDivs = document.querySelector('.BackcenterBox > .patches-containerr > .patch-action');
-   //  }
-   const patchDivs = document.querySelectorAll('.patch-action');
+    let patchDivs;
+
+    if (document.getElementById('Front-Area').style.visibility === 'visible') {
+        patchDivs = document.querySelectorAll('.centerBox > .patches-container > .patch-action');
+    } else if (document.getElementById('Back-area').style.visibility === 'visible') {
+        patchDivs = document.querySelectorAll('.BackcenterBox > .patches-containerr > .patch-action');
+    } else {
+        patchDivs = document.querySelectorAll('.patch-action');
+    }
     
     patchDivs.forEach(patchDiv => {
         patchDiv.classList.remove('patch-');
@@ -2876,6 +2878,7 @@ function checkPatchOverlapping() {
 
     return false;
 }
+
 
   function deleteAlignment() {
     console.log('delete')
