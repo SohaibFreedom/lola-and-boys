@@ -964,6 +964,30 @@
 <!-- media queries -->
 <style>
   @media screen and (max-width: 768px) {
+        #patches-customization-offcanvas-menu{
+        width: 100%;
+        height: calc(100% - 100vw);
+        min-height: 50vw;
+        position: absolute;
+        bottom: 0;
+    }
+    .patches-editor-wrapper {
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    flex-direction: column;
+    }
+    .main__patches__wrapp{
+    position: relative;
+    height: calc(100% - 49px);
+    }
+    .main__patches__wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
     .patches-customization-wrapper{
       height:fit-content;
     }
@@ -1037,15 +1061,8 @@
     .patches-customization-btns-wrapper {
       bottom: 10px;
     }
-    #patches-customization-offcanvas-menu{
-        width: 100%;
-        height: calc(100% - 100vw);
-        min-height: 50vw;
-    }
-    .main__patches__wrapp {
-        height: calc(100% - 100vw);
-       min-height: 94vw;
-    }
+
+
     .tidy-patches-header{
       padding: 20px !important;
     }
