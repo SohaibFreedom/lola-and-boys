@@ -533,6 +533,11 @@ function FrontconvertToPng() {
  const loader = document.querySelector('.loader-cart');
  const spanDiv = document.querySelector('.span-content');
 addCartItemButton.addEventListener('click', async function (event) {
+  if ($('.overlapping-error').css('visibility') === 'visible') {
+    $('.overlapping-correction-error').css('visibility', 'visible');
+  }else{
+    
+  
   console.log('added')
     loader.style.display='block';
     spanDiv.style.display='none';
@@ -631,6 +636,7 @@ addCartItemButton.addEventListener('click', async function (event) {
             // Handle error
         }
     }, 10000);
+    }
 });
 
 //  function loadCartSection(response) {
