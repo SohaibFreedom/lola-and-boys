@@ -1301,13 +1301,13 @@ patchDiv.style.height = (width / 2 + 5) + 'px';
            
             event.preventDefault();
             event.dataTransfer.setData('text/plain', patch1.querySelector('img').src);
-            dragPatch1 = patch1;
+            dragPatch = patch1;
 
             BackcenterBox.addEventListener('mousemove', mousemoveHandlerBack);
         });
 
         patch1.addEventListener('click', function () {
-            dragPatch1 = patch1;
+            dragPatch = patch1;
             var patchSrc = patch1.querySelector('img').src;
             updatePosition(patch1.id);
             BackcenterBox.removeEventListener('mousemove', mousemoveHandlerBack);
@@ -1730,10 +1730,10 @@ centerBox.addEventListener('touchstart', function (event) {
 
 centerBox.addEventListener('touchmove', function (event) {
 
-    if (event.touches.length === 1 && dragPatch1) {
+    if (event.touches.length === 1 && dragPatch) {
          // Check for overlap with other patches
-  console.log('dragPatch1',dragPatch1)
-      dragPatch1.classList.remove('patch-');
+  console.log('dragPatch1',dragPatch)
+      dragPatch.classList.remove('patch-');
       let patchRect = dragPatch1.getBoundingClientRect();
             let isOverlapping = checkOverlapWithPatches(patchRect, '.patch-');
 
