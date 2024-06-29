@@ -1227,7 +1227,7 @@ patchDiv.style.height = (width / 2 + 15) + 'px';
             centerBox.removeEventListener('mousemove', mousemoveHandler);
 
         });
-       checkPatchOverlapping();
+       checkPatchallOverlapping();
     });
 
 
@@ -2884,6 +2884,44 @@ function checkPatchOverlapping() {
     return false;
 }
 
+function checkPatchallOverlapping() {
+    console.log('checkPatchallOverlapping()');
+    let errorMessage = document.querySelector('.overlapping-error'); 
+    let patchDivs;
+  
+    let patches = document.querySelectorAll('.patch-');
+    let isOverlapping = false;
+
+    for (let i = 0; i < patches.length; i++) {
+        let patchRect = patches[i].getBoundingClientRect();
+
+        for (let j = i + 1; j < patches.length; j++) {
+            let otherPatchRect = patches[j].getBoundingClientRect();
+
+            if (patchRect.left < otherPatchRect.right &&
+                patchRect.right > otherPatchRect.left &&
+                patchRect.top < otherPatchRect.bottom &&
+                patchRect.bottom > otherPatchRect.top) {
+                console.log('overlappingggg');
+                isOverlapping = true;
+                break;
+            }
+        }
+
+        if (isOverlapping) {
+            break;
+        }
+    }
+
+    if (isOverlapping) {
+        errorMessage.style.visibility = 'visible';
+    } else {
+        console.log('hidden it');
+        errorMessage.style.visibility = 'hidden';
+    }
+
+    return false;
+}
 
   function deleteAlignment() {
     console.log('delete')
