@@ -1759,65 +1759,32 @@ centerBox.addEventListener('touchend', function (event) {
     dragPatch1 = null;
 });
 
-// BackcenterBox.addEventListener('mousedown', function (event) {
-//     const rect = BackcenterBox.getBoundingClientRect();
-//     const mouseX = event.clientX - rect.left;
-//     const mouseY = event.clientY - rect.top;
 
-//     // console.log("Mouse X:", mouseX, "Mouse Y:", mouseY);
-
-//     // Check if there's an existing patch at the clicked position
-//     let existingPatchIndex = patches.findIndex(patch => {
-
-//         return mouseX >= patch.x - patch.width / 2 &&
-//             mouseX <= patch.x + patch.width / 2 &&
-//             mouseY >= patch.y - patch.height / 2 &&
-//             mouseY <= patch.y + patch.height / 2;
-//     });
-
-//     // console.log("Existing patch index:", existingPatchIndex);
-
-//     if (existingPatchIndex !== -1) {
-//         // Existing patch found, set it as the dragPatch
-//         dragPatch = patches[existingPatchIndex].patchDiv;
-
-//         // Calculate offset for smoother dragging
-//         offsetX = mouseX - patches[existingPatchIndex].x;
-//         offsetY = mouseY - patches[existingPatchIndex].y;
-
-//         // Prevent further propagation of the event
-//         event.stopPropagation();
-//         //   console.log('found');
-//     } else {
-//         //  console.log('not found');
-//     }
-// });
-
-    BackcenterBox.addEventListener('mousedown', function (event) {
-            const rect = centerBox.getBoundingClientRect();
-            const mouseX = event.clientX - rect.left;
-            const mouseY = event.clientY - rect.top;
+    // BackcenterBox.addEventListener('mousedown', function (event) {
+    //         const rect = centerBox.getBoundingClientRect();
+    //         const mouseX = event.clientX - rect.left;
+    //         const mouseY = event.clientY - rect.top;
         
-            // Check if there's an existing patch at the clicked position
-            let existingPatchIndex = patches.findIndex(patch => {
-                return mouseX >= patch.x &&
-                    mouseX <= patch.x + patch.width &&
-                    mouseY >= patch.y &&
-                    mouseY <= patch.y + patch.height;
-            });
+    //         // Check if there's an existing patch at the clicked position
+    //         let existingPatchIndex = patches.findIndex(patch => {
+    //             return mouseX >= patch.x &&
+    //                 mouseX <= patch.x + patch.width &&
+    //                 mouseY >= patch.y &&
+    //                 mouseY <= patch.y + patch.height;
+    //         });
         
-            if (existingPatchIndex !== -1) {
-                // Existing patch found, set it as the dragPatch
-                dragPatch = patches[existingPatchIndex];
+    //         if (existingPatchIndex !== -1) {
+    //             // Existing patch found, set it as the dragPatch
+    //             dragPatch = patches[existingPatchIndex];
         
-                // Calculate offset for smoother dragging
-                offsetX = mouseX - patches[existingPatchIndex].x;
-                offsetY = mouseY - patches[existingPatchIndex].y;
+    //             // Calculate offset for smoother dragging
+    //             offsetX = mouseX - patches[existingPatchIndex].x;
+    //             offsetY = mouseY - patches[existingPatchIndex].y;
         
-                // Prevent further propagation of the event
-                event.stopPropagation();
-            }
-        });
+    //             // Prevent further propagation of the event
+    //             event.stopPropagation();
+    //         }
+    //     });
 
 BackcenterBox.addEventListener('touchstart', function (event) {
     console.log('touch Start')
