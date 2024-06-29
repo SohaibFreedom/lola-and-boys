@@ -1307,7 +1307,7 @@ patchDiv.style.height = (width / 2 + 5) + 'px';
         });
 
         patch1.addEventListener('click', function () {
-            dragPatch = patch1;
+            dragPatch1 = patch1;
             var patchSrc = patch1.querySelector('img').src;
             updatePosition(patch1.id);
             BackcenterBox.removeEventListener('mousemove', mousemoveHandlerBack);
@@ -1730,10 +1730,10 @@ centerBox.addEventListener('touchstart', function (event) {
 
 centerBox.addEventListener('touchmove', function (event) {
 
-    if (event.touches.length === 1 && dragPatch) {
+    if (event.touches.length === 1 && dragPatch1) {
          // Check for overlap with other patches
-  console.log('dragPatch1',dragPatch)
-      dragPatch.classList.remove('patch-');
+  console.log('dragPatch1',dragPatch1)
+      dragPatch1.classList.remove('patch-');
       let patchRect = dragPatch1.getBoundingClientRect();
             let isOverlapping = checkOverlapWithPatches(patchRect, '.patch-');
 
@@ -1870,9 +1870,9 @@ BackcenterBox.addEventListener('touchstart', function (event) {
 
 BackcenterBox.addEventListener('touchmove', function (event) {
    console.log('not under');
-    if (event.touches.length === 1 && dragPatch1) {
+    if (event.touches.length === 1 && dragPatch) {
       console.log('under');
-       console.log('dragPatch1',dragPatch1)
+       console.log('dragPatch1',dragPatch)
         const touch = event.touches[0];
         const rect = BackcenterBox.getBoundingClientRect();
         const mouseX = touch.clientX - rect.left;
