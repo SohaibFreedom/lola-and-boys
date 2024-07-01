@@ -1503,7 +1503,7 @@ BackcenterBox.addEventListener('dragover', function (event) {
     event.preventDefault();
 });
 centerBox.addEventListener('drop', function (event) {
-  console.log('drop');
+  
     event.preventDefault();
     if (dragPatch) {
         const patchImg = dragPatch.querySelector('img');
@@ -1572,6 +1572,7 @@ BackcenterBox.addEventListener('drop', function (event) {
 
 
 function updatePosition(patchId, x, y, width, height) {
+  console.log('updating');
     const frontArea = document.getElementById('Front-Area');
     const backArea = document.getElementById('Back-area');
   let patchDiv = document.getElementById(patchId);
