@@ -8,6 +8,9 @@
   justify-content: space-between;
   align-items: center;
 }
+.instagrid-css-link-c .fs-timeline-detail {
+  z-index: 999999999;
+}
 #back-to-top {
   display: none !important;
 }
