@@ -1622,6 +1622,20 @@ patchDiv.classList.remove('patch-');
 
 function checkOverlapWithPatches(patchRect, patchClass) {
   console.log('enter function');
+
+  if (document.getElementById('Front-Area').style.visibility === 'visible') {
+      console.log('front area overlapping');
+        backPatches = document.querySelectorAll('.BackcenterBox > .patches-containerr > .patch-action');
+      backPatches.forEach(patch => {
+  patch.style.display = 'none';
+});
+        patchDivs = document.querySelectorAll('.centerBox > .patches-container > .patch-action');
+    } else {
+       console.log('back area overlapping');
+      
+        patchDivs = document.querySelectorAll('.BackcenterBox > .patches-containerr > .patch-action');
+    }
+  
     let patches = document.querySelectorAll(patchClass);
     for (let i = 0; i < patches.length; i++) {
         let otherPatchRect = patches[i].getBoundingClientRect();
