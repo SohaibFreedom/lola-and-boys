@@ -1,9 +1,9 @@
 {% liquid
-  assign savedby = cart.items | where: "vendor", "SavedBy" | first
+  assign savedby = cart.items | where: 'vendor', 'SavedBy' | first
   assign totalPrice = cart.total_price | minus: savedby.final_price
   assign cartCount = cart.item_count
   if savedby
-  assign cartCount = cartCount | minus: 1
+    assign cartCount = cartCount | minus: 1
   endif
 %}
 
@@ -11,7 +11,7 @@
   <div class="c-cart c-drawer">
     <div data-ajax-cart-section="">
       <div class="c-drawer__header">
-        <h3 class="c-drawer__title">Shopping cart</h3>
+        <h3 class="c-drawer__title">My bag</h3>
         <span class="c-offcanvas__close c-drawer__close" aria-label="Close Menu" aria-hidden="true">
           <svg
             width="16px"
@@ -33,7 +33,6 @@
       </div>
 
       <div id="" class="c-drawer__body" data-cart-view="data-cart-view" rules="all">
-        
         <div class="cart__productList-main">
           {% if cartCount != 0 %}
             <div class="c-cart__productList">
@@ -41,8 +40,8 @@
               {% for item in cart.items %}
                 {% if item.vendor == 'SavedBy' %}
                   {% continue %}
-           {% endif %}
-                 {% if item.properties._parent_variant %}
+                {% endif %}
+                {% if item.properties._parent_variant %}
                   {% continue %}
                 {% endif %}
                 {% include 'wh_calculate_discount' with item.product %}
@@ -66,7 +65,7 @@
                       <h2 class="c-cart__itemName c-drawer__itemName">
                         <a href="{{ item.url }}">{{ item.title }}</a>
                       </h2>
-                 {% if item.properties._customized_image_url_front %}
+                      {% if item.properties._customized_image_url_front %}
                         <div class="deleteButton" data-customized-timestamp="{{ item.properties._Timestamp }}">
                           <svg
                             viewBox="0 0 12 12"
@@ -85,55 +84,53 @@
                               </g>
                             </g>
                           </svg>
-                    </div>
-          
-                 
+                        </div>
+
                       {% else %}
-                      <a href="{{ routes.cart_change_url }}?id={{ item.key }}&quantity=0" class="c-cart__itemRemove">
-                        <span class="c-cart__itemRemove">
-                          <svg
-                            viewBox="0 0 12 12"
-                            version="1.1"
-                            xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink"
-                          >
-                            <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
-                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                              <g id="cart-slide-in-CL--subscription" transform="translate(-343.000000, -225.000000)" fill="#3D3D38" fill-rule="nonzero">
-                                <g id="the-good-sample" transform="translate(30.000000, 225.000000)">
-                                  <g id="noun_X_1099163_3d3d38-Copy" transform="translate(313.000000, 0.000000)">
-                                    <path d="M5.22861077,6 L0.159759923,0.931149151 C-0.0532533077,0.718135894 -0.0532533077,0.37277318 0.159759923,0.159759923 C0.37277318,-0.0532533077 0.718135894,-0.0532533077 0.931149151,0.159759923 L6,5.22861077 L11.0688508,0.159759923 C11.2818641,-0.0532533077 11.6272268,-0.0532533077 11.8402401,0.159759923 C12.0532533,0.37277318 12.0532533,0.718135894 11.8402401,0.931149151 L6.77138923,6 L11.8402401,11.0688508 C12.0532533,11.2818641 12.0532533,11.6272268 11.8402401,11.8402401 C11.6272268,12.0532533 11.2818641,12.0532533 11.0688508,11.8402401 L6,6.77138923 L0.931149151,11.8402401 C0.718135894,12.0532533 0.37277318,12.0532533 0.159759923,11.8402401 C-0.0532533077,11.6272268 -0.0532533077,11.2818641 0.159759923,11.0688508 L5.22861077,6 Z" id="Path"></path>
+                        <a href="{{ routes.cart_change_url }}?id={{ item.key }}&quantity=0" class="c-cart__itemRemove">
+                          <span class="c-cart__itemRemove">
+                            <svg
+                              viewBox="0 0 12 12"
+                              version="1.1"
+                              xmlns="http://www.w3.org/2000/svg"
+                              xmlns:xlink="http://www.w3.org/1999/xlink"
+                            >
+                              <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+                              <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="cart-slide-in-CL--subscription" transform="translate(-343.000000, -225.000000)" fill="#3D3D38" fill-rule="nonzero">
+                                  <g id="the-good-sample" transform="translate(30.000000, 225.000000)">
+                                    <g id="noun_X_1099163_3d3d38-Copy" transform="translate(313.000000, 0.000000)">
+                                      <path d="M5.22861077,6 L0.159759923,0.931149151 C-0.0532533077,0.718135894 -0.0532533077,0.37277318 0.159759923,0.159759923 C0.37277318,-0.0532533077 0.718135894,-0.0532533077 0.931149151,0.159759923 L6,5.22861077 L11.0688508,0.159759923 C11.2818641,-0.0532533077 11.6272268,-0.0532533077 11.8402401,0.159759923 C12.0532533,0.37277318 12.0532533,0.718135894 11.8402401,0.931149151 L6.77138923,6 L11.8402401,11.0688508 C12.0532533,11.2818641 12.0532533,11.6272268 11.8402401,11.8402401 C11.6272268,12.0532533 11.2818641,12.0532533 11.0688508,11.8402401 L6,6.77138923 L0.931149151,11.8402401 C0.718135894,12.0532533 0.37277318,12.0532533 0.159759923,11.8402401 C-0.0532533077,11.6272268 -0.0532533077,11.2818641 0.159759923,11.0688508 L5.22861077,6 Z" id="Path"></path>
+                                    </g>
                                   </g>
                                 </g>
                               </g>
-                            </g>
-                          </svg>
-                        </span>
-                      </a>
-                    {% endif %}
+                            </svg>
+                          </span>
+                        </a>
+                      {% endif %}
                       {% unless item.properties._customized_image_url_front %}
-                        
-                      <p>
-                        {% comment %} {% endcomment %}
-                        {% for p in item.properties %}
-                          {%- if p.first contains 'Gift' -%}{%- continue -%}{%- endif -%}
-                          {%- if p.first.first == '_' -%}{%- continue -%}{%- endif -%}
-                          {% unless p.last == blank %}
-                            {% if p.last contains '/uploads/' %}
-                              <div>
-                                {% unless p.first contains '_is_preorder' %}{{ p.first }}:{% endunless %}
-                                <a class="lightbox" href="{{ p.last }}">{{ 'cart.general.uploaded_file' | t }}</a>
-                              </div>
-                            {% else %}
-                              <div>
-                                {% unless p.first contains '_is_preorder' %}{{ p.first }}:{% endunless %}
-                                {{ p.last }}
-                              </div>
-                            {% endif %}
-                          {% endunless %}
-                        {% endfor %}
-                      </p>
-                        {% endunless %}
+                        <p>
+                          {% comment %} {% endcomment %}
+                          {% for p in item.properties %}
+                            {%- if p.first contains 'Gift' -%}{%- continue -%}{%- endif -%}
+                            {%- if p.first.first == '_' -%}{%- continue -%}{%- endif -%}
+                            {% unless p.last == blank %}
+                              {% if p.last contains '/uploads/' %}
+                                <div>
+                                  {% unless p.first contains '_is_preorder' %}{{ p.first }}:{% endunless %}
+                                  <a class="lightbox" href="{{ p.last }}">{{ 'cart.general.uploaded_file' | t }}</a>
+                                </div>
+                              {% else %}
+                                <div>
+                                  {% unless p.first contains '_is_preorder' %}{{ p.first }}:{% endunless %}
+                                  {{ p.last }}
+                                </div>
+                              {% endif %}
+                            {% endunless %}
+                          {% endfor %}
+                        </p>
+                      {% endunless %}
                       <div class="c-cart__itemLowerBox">
                         {% comment %}
                           <p class="modal_price">
@@ -156,95 +153,93 @@
 
                         <div class="c-cart__itemPriceBox c-drawer__itemPrice">
                           {% if item.properties._customized_image_url_front %}
-                          
-                           <span
-                              class="c-cart__itemPrice"
-                              rv-html="item.discounted_line_price | money Currency.currentCurrency"
-                              class="c-cart__itemPrice"
-                            >
-                                 {{ item.properties._patches_price  }}
-                            </span>
-                            {% else %}
-
-                          {{ totalPriceObject | money }}
-                          {% if wh_v_compare_at_price > item.price %}
-                            <span
-                              class="c-cart__itemPrice c-cart__itemdiscountedprice"
-                              style="text-decoration: line-through;"
-                              rv-html="item.final_line_price | money Currency.currentCurrency"
-                              class="c-cart__itemPrice"
-                            >
-                              {{ wh_v_compare_at_price | money }}
-                            </span>
-
                             <span
                               class="c-cart__itemPrice"
                               rv-html="item.discounted_line_price | money Currency.currentCurrency"
                               class="c-cart__itemPrice"
                             >
-                              {{ item.discounted_price | money }}
+                              {{ item.properties._patches_price }}
                             </span>
-
-                          {% elsif item.original_price > item.discounted_price %}
-                            <span
-                              class="c-cart__itemPrice c-cart__itemdiscountedprice"
-                              style="text-decoration: line-through;"
-                              rv-html="item.final_line_price | money Currency.currentCurrency"
-                              class="c-cart__itemPrice"
-                            >
-                              {{ item.original_price | money }}
-                            </span>
-
-                            <span
-                              class="c-cart__itemPrice"
-                              rv-html="item.discounted_line_price | money Currency.currentCurrency"
-                              class="c-cart__itemPrice"
-                            >
-                              {{ item.discounted_price | money }}
-                            </span>
-
                           {% else %}
-                            <span
-                              class="c-cart__itemPrice"
-                              rv-html="item.discounted_line_price | money Currency.currentCurrency"
-                              class="c-cart__itemPrice"
-                            >
-                              {{ item.original_price | money }}
-                            </span>
+                            {{ totalPriceObject | money }}
+                            {% if wh_v_compare_at_price > item.price %}
+                              <span
+                                class="c-cart__itemPrice c-cart__itemdiscountedprice"
+                                style="text-decoration: line-through;"
+                                rv-html="item.final_line_price | money Currency.currentCurrency"
+                                class="c-cart__itemPrice"
+                              >
+                                {{ wh_v_compare_at_price | money }}
+                              </span>
+
+                              <span
+                                class="c-cart__itemPrice"
+                                rv-html="item.discounted_line_price | money Currency.currentCurrency"
+                                class="c-cart__itemPrice"
+                              >
+                                {{ item.discounted_price | money }}
+                              </span>
+
+                            {% elsif item.original_price > item.discounted_price %}
+                              <span
+                                class="c-cart__itemPrice c-cart__itemdiscountedprice"
+                                style="text-decoration: line-through;"
+                                rv-html="item.final_line_price | money Currency.currentCurrency"
+                                class="c-cart__itemPrice"
+                              >
+                                {{ item.original_price | money }}
+                              </span>
+
+                              <span
+                                class="c-cart__itemPrice"
+                                rv-html="item.discounted_line_price | money Currency.currentCurrency"
+                                class="c-cart__itemPrice"
+                              >
+                                {{ item.discounted_price | money }}
+                              </span>
+
+                            {% else %}
+                              <span
+                                class="c-cart__itemPrice"
+                                rv-html="item.discounted_line_price | money Currency.currentCurrency"
+                                class="c-cart__itemPrice"
+                              >
+                                {{ item.original_price | money }}
+                              </span>
+                            {% endif %}
                           {% endif %}
-                                                    {% endif %}
                         </div>
-                        {% unless item.properties._customized_image_url_front %} 
-                        <div class="c-cart__itemQuantityBox ajaxcart__qty">
-                          <a
-                            href="{{ routes.cart_change_url }}?id={{ item.key }}&quantity={{ item.quantity | minus: 1 }}"
-                            class="ajaxcart__qty-adjust ajaxcart__qty--minus js-minus-product icon-fallback-text"
-                          >
-                            <span class="c-drawer__minus">
-                              <svg width="10" height="2" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12.612 0H1.478C1.264 0 .8.308.8.925c0 .616.464.924.678.924h11.134c.214 0 .678-.308.678-.924 0-.617-.464-.925-.678-.925z" fill-rule="nonzero"/>
-                              </svg>
-                            </span>
-                          </a>
-                          <span class="ajaxcart__qty-num"
-                            ><input
-                              type="number"
-                              value="{{ item.quantity }}"
-                              data-ajax-cart-quantity-input="{{ item.key }}"
-                              class=""
-                          ></span>
-                          <a
-                            href="{{ routes.cart_change_url }}?id={{ item.key }}&quantity={{ item.quantity | plus: 1 }}"
-                            class="ajaxcart__qty-adjust ajaxcart__qty--minus js-minus-product icon-fallback-text"
-                          >
-                            <span class="c-drawer__plus">
-                              <svg width="11" height="13" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M11.485 5.163H6.974V.65c0-.205-.28-.651-.838-.651C5.578 0 5.3.446 5.3.651v4.512H.788c-.206 0-.652.279-.652.837 0 .558.446.837.652.837h4.511v4.512c0 .205.28.651.837.651.558 0 .838-.446.838-.651V6.837h4.511c.206 0 .651-.279.651-.837 0-.558-.445-.837-.65-.837z" fill-rule="nonzero"/>
-                              </svg>
-                            </span>
-                          </a>
-                        </div>
-                                  {% endunless %}
+                        {% unless item.properties._customized_image_url_front %}
+                          <div class="c-cart__itemQuantityBox ajaxcart__qty">
+                            <a
+                              href="{{ routes.cart_change_url }}?id={{ item.key }}&quantity={{ item.quantity | minus: 1 }}"
+                              class="ajaxcart__qty-adjust ajaxcart__qty--minus js-minus-product icon-fallback-text"
+                            >
+                              <span class="c-drawer__minus">
+                                <svg width="10" height="2" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M12.612 0H1.478C1.264 0 .8.308.8.925c0 .616.464.924.678.924h11.134c.214 0 .678-.308.678-.924 0-.617-.464-.925-.678-.925z" fill-rule="nonzero"/>
+                                </svg>
+                              </span>
+                            </a>
+                            <span class="ajaxcart__qty-num"
+                              ><input
+                                type="number"
+                                value="{{ item.quantity }}"
+                                data-ajax-cart-quantity-input="{{ item.key }}"
+                                class=""
+                            ></span>
+                            <a
+                              href="{{ routes.cart_change_url }}?id={{ item.key }}&quantity={{ item.quantity | plus: 1 }}"
+                              class="ajaxcart__qty-adjust ajaxcart__qty--minus js-minus-product icon-fallback-text"
+                            >
+                              <span class="c-drawer__plus">
+                                <svg width="11" height="13" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M11.485 5.163H6.974V.65c0-.205-.28-.651-.838-.651C5.578 0 5.3.446 5.3.651v4.512H.788c-.206 0-.652.279-.652.837 0 .558.446.837.652.837h4.511v4.512c0 .205.28.651.837.651.558 0 .838-.446.838-.651V6.837h4.511c.206 0 .651-.279.651-.837 0-.558-.445-.837-.65-.837z" fill-rule="nonzero"/>
+                                </svg>
+                              </span>
+                            </a>
+                          </div>
+                        {% endunless %}
                       </div>
                       <div class="cart-drawer-error" data-ajax-cart-messages="{{ item.key }}"></div>
                     </div>
