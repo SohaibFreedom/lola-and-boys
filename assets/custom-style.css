@@ -8,6 +8,9 @@
   justify-content: space-between;
   align-items: center;
 }
+#back-to-top {
+  display: none !important;
+}
 .instagrid-css-link-c {
   padding: 2rem 0;
 }
