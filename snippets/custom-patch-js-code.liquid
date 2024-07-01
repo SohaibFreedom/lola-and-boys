@@ -2075,6 +2075,12 @@ BackcenterBox.addEventListener('mouseup', function (event) {
         $('#showBackBtnn').addClass('patches-customization-btn-active');
         $('#Front-Area').addClass('image-hidden').css('visibility', 'hidden');
         $('#Back-area').removeClass('image-hidden').css('visibility', 'visible');
+        const backPatches = document.querySelectorAll('.BackcenterBox > .patches-containerr > .patch-action');
+
+backPatches.forEach(patch => {
+  patch.style.display = 'block';
+});
+
       }
     }
     $('#showFrontBtn').click(showBackOrFront);
