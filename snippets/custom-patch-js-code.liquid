@@ -1503,6 +1503,7 @@ BackcenterBox.addEventListener('dragover', function (event) {
     event.preventDefault();
 });
 centerBox.addEventListener('drop', function (event) {
+  console.log('drop');
     event.preventDefault();
     if (dragPatch) {
         const patchImg = dragPatch.querySelector('img');
