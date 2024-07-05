@@ -1,7 +1,9 @@
 {% assign variant = product.selected_or_first_available_variant %}
 
 <script>
+   console.log('no new button exist')
   if (document.querySelector('.customize-button')) {
+    console.log('yes new button exist')
     document.querySelector('#zakeke-product-button-custom').style.display = 'none';
 }
 
