@@ -1188,7 +1188,7 @@ function FrontconvertToPng() {
 function addPatchToCenterBox(patchSrc, patchId, height, width) {
     var patchDiv = document.createElement('div');
     patchDiv.setAttribute('v-id', patchId);
-    patchDiv.classList.add('patch-');
+    patchDiv.classList.add('patch-','patch-action');
     patchDiv.style.position = 'absolute';
     patchDiv.style.top = '50%';
     patchDiv.style.left = '50%';
@@ -1274,7 +1274,7 @@ patchDiv.style.height = (width / 2 + 15) + 'px';
 
     var patchDiv = document.createElement('div');
     patchDiv.setAttribute('v-id', patchId);
-    patchDiv.classList.add('patch-');
+    patchDiv.classList.add('patch-','patch-action');
     patchDiv.style.position = 'absolute';
     patchDiv.style.top = '50%';
     patchDiv.style.left = '50%';
@@ -1394,7 +1394,7 @@ function dropPatchbydraggingBack(patchElement, x, y, height,width) {
     var vId = patchElement.getAttribute('v-id');
     var patchDiv = document.createElement('div');
     patchDiv.setAttribute('v-id', vId);
-    patchDiv.classList.add('patch-');
+    patchDiv.classList.add('patch-','patch-action');
     patchDiv.style.position = 'absolute';
     patchDiv.style.top = y + 'px';
     patchDiv.style.left = x + 'px';
