@@ -2,11 +2,7 @@
 
 <script>
    console.log('no new button exist')
-  console.log('outer ,updateSliderValue()' )
-  if (document.querySelector('.customize-button')) {
-    console.log('yes new button exist')
-    document.querySelector('#zakeke-product-button-custom').style.display = 'none';
-}
+
 
     var slider = document.getElementById("myRange");
     var output = document.getElementById("demo");
@@ -16,7 +12,6 @@
     output.innerHTML = slider.value;
 
    function updateSliderValue() {
-     console.log('underr ,updateSliderValue() ')
     let patchesContainer;
     let patchActions;
 
