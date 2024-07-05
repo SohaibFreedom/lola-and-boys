@@ -1343,7 +1343,7 @@ function dropPatchbydraggingFront(patchElement, x, y,height,width) {
     var vId = patchElement.getAttribute('v-id');
     var patchDiv = document.createElement('div');
     patchDiv.setAttribute('v-id', vId);
-    patchDiv.classList.add('patch- ');
+    patchDiv.classList.add('patch-','patch-action');
     patchDiv.style.position = 'absolute';
     patchDiv.style.top = y + 'px';
     patchDiv.style.left = x + 'px';
