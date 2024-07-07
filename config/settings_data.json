@@ -3918,11 +3918,11 @@
         ],
         "settings": {
           "show_announcement_bar": true,
-          "show_countdown": false,
+          "show_countdown": true,
           "bck_clr": "#faddff",
           "Annouce_url": "",
           "txt_clr": "#000000",
-          "text": "Spend $200 and get a <b>FREE<\/b> Tote Bag! <b>While supplies last!<\/b>",
+          "text": "<b>4th of July Weekend Sale ENDS TONIGHT! Last Chance for 25-70% Off Site Wide<\/b>",
           "phone_number": "",
           "top_bar_menu": "help",
           "cart_icon": "cart",
