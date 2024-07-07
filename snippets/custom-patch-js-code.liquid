@@ -2181,9 +2181,9 @@ backPatches.forEach(patch => {
     // Event delegation for dynamically created .patch- elements
  $(document).on('click', '.patch-', function(event) {
     const patchElement = $(event.target).closest('.patch-');
- patchElement.toggleClass('patch-open-editor patch-action');
-    // $('.patch-').removeClass('patch-action'); // Remove the class from all elements
-    // $(this).addClass('patch-action');
+ patchElement.toggleClass('patch-open-editor');
+     $('.patch-').removeClass('patch-action'); // Remove the class from all elements
+     $(this).addClass('patch-action');
     
     $('.patches-customization-editor').addClass('patches-customization-editor-active');
     $('.patches-customization-editor').css('display', 'block');
