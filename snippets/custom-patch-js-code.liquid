@@ -1749,6 +1749,18 @@ centerBox.addEventListener('touchstart', function (event) {
 });
 
 centerBox.addEventListener('touchmove', function (event) {
+    let touchedElement = event.target;
+ 
+     // Traverse up the DOM tree to find the div element with the specific class or attribute
+     while (touchedElement && !touchedElement.classList.contains('patch-')) {
+         touchedElement = touchedElement.parentElement;
+     }
+ 
+     if (touchedElement && touchedElement.classList.contains('patch-')) {
+         var dragPatch1 = touchedElement;
+         console.log('Touched element saved in dragpatch1:', dragPatch1);
+     }
+    console.log('nunder');
 console.log(dragPatch1);
     if (event.touches.length === 1 && dragPatch1) {
          // Check for overlap with other patches
