@@ -1,5 +1,13 @@
 {% assign variant = product.selected_or_first_available_variant %}
+<script>
+  $(document).ready(function(){
+  $('.patch-').on('click', function() {
+    $('.patch-').removeClass('patch-action'); // Remove the class from all elements
+    $(this).addClass('patch-action'); // Add the class to the clicked element
+  });
+});
 
+</script>
 <script>
    console.log('no new button exist')
 
