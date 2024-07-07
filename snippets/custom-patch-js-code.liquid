@@ -2,6 +2,7 @@
 <script>
   $(document).ready(function(){
   $('.patch-').on('click', function() {
+    console.log('yes i clicked on patch-')
     $('.patch-').removeClass('patch-action'); // Remove the class from all elements
     $(this).addClass('patch-action'); // Add the class to the clicked element
   });
