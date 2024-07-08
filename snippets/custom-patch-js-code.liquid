@@ -1,15 +1,12 @@
 {% assign variant = product.selected_or_first_available_variant %}
-
 <script>
+ 
+  $('.patch-').on('click', function() {
+    console.log('yes i clicked on patch-')
+    $('.patch-').removeClass('patch-action'); // Remove the class from all elements
+    $(this).addClass('patch-action'); // Add the class to the clicked element
+  });
 
-window.addEventListener('load', () => {
-    const headingDiv = document.querySelector('.product-tile-for-selected');
-   console.log('headingDiv',headingDiv)
-    if (headingDiv) {
-      console.log('product-tile-januuu')
-        headingDiv.textContent = headingDiv.textContent.charAt(0).toUpperCase() + headingDiv.textContent.slice(1).toLowerCase();
-    }
-});
 
 </script>
 <script>
@@ -467,56 +464,42 @@ function closePopup() {
  
  
       
-
-
+ 
        
 function showcolorVariants() {
     console.log('this is color variants', colorVariants);
 
     const variantId = "{{variant.id}}"; // Replace "{{variant.id}}" with your actual variant ID
     
-   colorVariants.forEach(colorVariant => {
-    if (colorVariant.id === variantId) {
-        // Create a new div for each color variant
-        const parentDiv = document.createElement('div');
-        parentDiv.classList.add('parent-variant-wrapper');
-        const newDiv = document.createElement('div');
-        newDiv.style.backgroundColor = colorVariant.Variants;
-        newDiv.classList.add('color-variant');
-    
-        // Add click event listener to each div
-        newDiv.addEventListener('click', () => {
-            // Remove the class from all color-variant divs
-            document.querySelectorAll('.color-variant').forEach((div) => {
-                div.classList.remove('selected-variant');
-            });
-
-            // Add the class to the clicked div
-            newDiv.classList.add('selected-variant');
-           
-            // Set the src attribute of the image with id "Front-image"
-            document.getElementById('Front-image').src = colorVariant.productImg;
-            document.getElementById('Back-image').src = colorVariant.backImg ;
-        });
+    colorVariants.forEach(colorVariant => {
+        if (colorVariant.id === variantId) {
+            // Create a new div for each color variant
+            const parentDiv = document.createElement('div');
+          parentDiv.classList.add('parent-variant-wrapper');
+            const newDiv = document.createElement('div');
+            newDiv.style.backgroundColor = colorVariant.Variants;
+            newDiv.classList.add('color-variant');
         
-        // Append the new div to the div with class "variant-selector-sidebar-btn"
-        parentDiv.appendChild(newDiv)
-        document.querySelector('.variant-selector-sidebar-btn').appendChild(parentDiv);
-    }
-});
+            // Add click event listener to each div
+            newDiv.addEventListener('click', () => {
+                // Remove the class from all color-variant divs
+                document.querySelectorAll('.color-variant').forEach((div) => {
+                    div.classList.remove('selected-variant');
+                });
 
-// Add the .selected-variant class to the first .color-variant div on page reload
-window.addEventListener('load', () => {
-    const firstColorVariant = document.querySelector('.color-variant');
-    if (firstColorVariant) {
-        firstColorVariant.classList.add('selected-variant');
-        // Set the src attribute of the image with id "Front-image" and "Back-image" based on the first color variant
-        const firstColorVariantData = colorVariants.find(colorVariant => colorVariant.id === variantId);
-        document.getElementById('Front-image').src = firstColorVariantData.productImg;
-        document.getElementById('Back-image').src = firstColorVariantData.backImg;
-    }
-});
-
+                // Add the class to the clicked div
+                newDiv.classList.add('selected-variant');
+               
+                // Set the src attribute of the image with id "Front-image"
+                document.getElementById('Front-image').src = colorVariant.productImg;
+                document.getElementById('Back-image').src = colorVariant.backImg ;
+            });
+            
+            // Append the new div to the div with class "variant-selector-sidebar-btn"
+            parentDiv.appendChild(newDiv)
+            document.querySelector('.variant-selector-sidebar-btn').appendChild(parentDiv);
+        }
+    });
 }
 function showSizeVariants() {
     console.log('this is color variants', colorVariants);
