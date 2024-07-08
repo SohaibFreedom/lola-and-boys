@@ -2284,7 +2284,7 @@ BackcenterBox.addEventListener('mouseup', function (event) {
        $('[data-patch-id="' + patchId + '"]').addClass('patch-selected');
         
         // Check if the class was added
-        if ($('#' + patchId).hasClass('patch-selected')) {
+        if ('[data-patch-id="' + patchId + '"]').hasClass('patch-selected')) {
           console.log('Class patch-selected added to element with id ' + patchId);
         } else {
           console.log('Class patch-selected not added to element with id ' + patchId);
