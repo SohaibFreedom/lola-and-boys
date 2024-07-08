@@ -1061,7 +1061,6 @@ function FrontconvertToPng() {
 function addPatchToCenterBox(patchSrc, patchId, height, width) {
     var patchDiv = document.createElement('div');
     patchDiv.setAttribute('v-id', patchId);
-    patchDiv.classList.add('patch-','patch-action');
     patchDiv.style.position = 'absolute';
     patchDiv.style.top = '50%';
     patchDiv.style.left = '50%';
@@ -1122,7 +1121,6 @@ editTidyBtnwrapper.style.visibility = 'visible';
 
     var patchDiv = document.createElement('div');
     patchDiv.setAttribute('v-id', patchId);
-    patchDiv.classList.add('patch-','patch-action');
     patchDiv.style.position = 'absolute';
     patchDiv.style.top = '50%';
     patchDiv.style.left = '50%';
