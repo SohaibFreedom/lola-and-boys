@@ -1288,7 +1288,7 @@ function FrontconvertToPng() {
 function addPatchToCenterBox(patchSrc, patchId, height, width) {
     var patchDiv = document.createElement('div');
     patchDiv.setAttribute('v-id', patchId);
-    // patchDiv.classList.add('patch-','patch-action');
+    patchDiv.classList.add('patch-');
     patchDiv.style.position = 'absolute';
     patchDiv.style.top = '50%';
     patchDiv.style.left = '50%';
@@ -1349,7 +1349,7 @@ editTidyBtnwrapper.style.visibility = 'visible';
 
     var patchDiv = document.createElement('div');
     patchDiv.setAttribute('v-id', patchId);
-    patchDiv.classList.add('patch-','patch-action');
+    patchDiv.classList.add('patch-');
     patchDiv.style.position = 'absolute';
     patchDiv.style.top = '50%';
     patchDiv.style.left = '50%';
@@ -1419,7 +1419,7 @@ function dropPatchbydraggingFront(patchElement, x, y,height,width) {
     var vId = patchElement.getAttribute('v-id');
     var patchDiv = document.createElement('div');
     patchDiv.setAttribute('v-id', vId);
-    patchDiv.classList.add('patch-','patch-action');
+    patchDiv.classList.add('patch-');
     patchDiv.style.position = 'absolute';
     patchDiv.style.top = y + 'px';
     patchDiv.style.left = x + 'px';
@@ -1471,7 +1471,7 @@ function dropPatchbydraggingBack(patchElement, x, y, height,width) {
     var vId = patchElement.getAttribute('v-id');
     var patchDiv = document.createElement('div');
     patchDiv.setAttribute('v-id', vId);
-    patchDiv.classList.add('patch-','patch-action');
+    patchDiv.classList.add('patch-');
     patchDiv.style.position = 'absolute';
     patchDiv.style.top = y + 'px';
     patchDiv.style.left = x + 'px';
