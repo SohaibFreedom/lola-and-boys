@@ -1357,37 +1357,7 @@ editTidyBtnwrapper.style.visibility = 'visible';
 
 
 }
-// Call the function inside a DOMContentLoaded event listener to ensure it's executed after the DOM has been fully loaded
-// document.addEventListener('DOMContentLoaded', function() {
-    // Function to resize patches
-//     function resizePatches() {
-//         var patches = document.querySelectorAll('.patch-');
 
-//         patches.forEach(function(patch) {
-//             var image = patch.querySelector('.patch-image');
-//             if (image) { // Check if image exists
-
-
-//               if (window.matchMedia("(max-width: 700px)").matches) {
-//                                 var originalHeight = image.height;
-//                 var originalWidth = image.width;
-//                 var newHeight = originalHeight / 2;
-//                 var newWidth = originalWidth / 2;
-//    patch.style.height =  originalHeight + 'px';
-//                     patch.style.width = newWidth + 'px';
-// } else {
-//                var originalHeight = image.height;
-//                 var originalWidth = image.width;
-
-//    patch.style.height =  originalHeight + 'px';
-//                     patch.style.width = originalWidth + 'px';
-// }
-
-//             }
-//         });
-//     }
-
-//     window.addEventListener('resize', resizePatches);
    function addPatchToBackcenterBox(patchSrc, patchId,height, width) {
 
     var patchDiv = document.createElement('div');
@@ -1407,7 +1377,8 @@ patchDiv.style.height = (width / 2 + 15) + 'px';
     patchDiv.style.height = height + 'px';
 }
 
-
+   var editTidyBtnwrapper = document.querySelector('.edit-tidy-btn-wrapp');
+editTidyBtnwrapper.style.visibility = 'visible';
     // Generate a unique ID for the patch
     var patchId = 'patch_' + Math.random().toString(36).substr(2, 9);
 
@@ -1480,7 +1451,8 @@ function dropPatchbydraggingFront(patchElement, x, y,height,width) {
     // Add the patch to the patches array with its ID
     patches.push({ id: patchId, imageElement, x, y, width, height });
 
-
+   var editTidyBtnwrapper = document.querySelector('.edit-tidy-btn-wrapp');
+editTidyBtnwrapper.style.visibility = 'visible';
     // Add click event listener to the dynamically created patch
     document.querySelectorAll('.patch-').forEach(patch1 => {
 
@@ -1531,7 +1503,9 @@ function dropPatchbydraggingBack(patchElement, x, y, height,width) {
     // Add the patch to the patches array with its ID
     patches.push({ id: patchId, imageElement, x, y, width, height });
 
-
+   var editTidyBtnwrapper = document.querySelector('.edit-tidy-btn-wrapp');
+editTidyBtnwrapper.style.visibility = 'visible';
+  
     // Add click event listener to the dynamically created patch
     document.querySelectorAll('.patch-').forEach(patch1 => {
 
