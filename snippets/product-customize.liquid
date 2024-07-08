@@ -1,5 +1,8 @@
 {% assign variant = product.selected_or_first_available_variant %}
 <style>
+  .edit-delete-btn{
+        border-bottom: 1px solid #f3f3f3;
+  }
   .overlapping-correction-error{
     visibility: hidden;
     color: red;
@@ -1974,7 +1977,7 @@
         <div class="select-patches select-patches-for-front select-patches-active"></div>
         <div class="select-patches select-patches-for-back"></div>
       </div>
-      <div class="tidy-patches-delete-btn-wrraper">
+      <div class="tidy-patches-delete-btn-wrraper edit-delete-btn">
         <div class="tidy-patches-delete-title alignment-title">Delete Patch</div>
         <div class="tidy-patches-delete-btn">Delete</div>
       </div>
