@@ -2336,6 +2336,26 @@ backPatches.forEach(patch => {
 
         
     });
+      $('.patches-customizations-clear-footer-btns').click(function() {
+        $('.patches-customization-clear-alert-pop-up').removeClass('patches-customization-active');
+        $('.patches-customization-container-overly').css('display', 'none');
+           $('.patches-customization-editor').css('display', 'block');
+      $('.delete-patches-wrapper-sidebar').css('display', 'none');
+      
+    setTimeout(function() {
+    $('.patches-customization-clear-alert-pop-up').css({
+        'right': '-2400px'
+    });
+
+    setTimeout(function() {
+        $('.patches-customization-clear-alert-pop-up').css({
+            'display': 'none'
+        });
+    }, 900); // Adjust the timeout duration as needed
+}, 100);
+
+        
+    });
 });
 
     </script>
