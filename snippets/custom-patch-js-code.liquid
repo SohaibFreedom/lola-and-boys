@@ -2281,7 +2281,7 @@ BackcenterBox.addEventListener('mouseup', function (event) {
   var $clickedPatch = $(this);
         var patchId = $clickedPatch.attr('id'); // Get the id attribute
         console.log("Clicked patch id: " + patchId); // Log the id attribute value
-        $('#' + patchId).addClass('patch-selected');
+       $('[data-patch-id="' + patchId + '"]').addClass('patch-selected');
         
         // Check if the class was added
         if ($('#' + patchId).hasClass('patch-selected')) {
