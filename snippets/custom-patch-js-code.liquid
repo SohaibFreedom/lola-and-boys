@@ -1,15 +1,15 @@
 {% assign variant = product.selected_or_first_available_variant %}
 
-<!-- <script>
- document.addEventListener('DOMContentLoaded', () => {
-    const colorVariants = document.querySelectorAll('.color-variant');
-    if (colorVariants.length > 0) {
-      console.log('yes active hy bhai')
-        colorVariants[0].classList.add('selected-variant');
+<script>
+ window.addEventListener('load', () => {
+    const headingDiv = document.querySelector('.product-tile-for-selected');
+    if (headingDiv) {
+        headingDiv.textContent = headingDiv.textContent.replace(/\b\w/g, char => char.toUpperCase());
     }
 });
 
-</script> -->
+
+</script>
 <script>
    console.log('no new button exist')
 
