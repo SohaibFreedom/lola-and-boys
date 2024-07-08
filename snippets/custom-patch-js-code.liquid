@@ -1316,6 +1316,11 @@ patchDiv.style.height = (width / 2 + 15) + 'px';
     patchDiv.style.height = height + 'px';
 }
 
+
+   var editTidyBtnwrapper = document.querySelector('.edit-tidy-btn-wrapp');
+editTidyBtnwrapper.style.visibility = 'visible';
+
+  
     // Generate a unique ID for the patch
     var patchId = 'patch_' + Math.random().toString(36).substr(2, 9);
 
