@@ -2278,6 +2278,8 @@ BackcenterBox.addEventListener('mouseup', function (event) {
  $(document).on('click', '.patch-', function(event) {
     const patchElement = $(event.target).closest('.patch-');
  patchElement.toggleClass('patch-open-editor');
+   var $clickedPatch = $(this);
+          var patchId = $clickedPatch.data('id');
      $('#' + patchId).addClass('patch-selected');
      $('.patch-').removeClass('patch-action'); // Remove the class from all elements
      $(this).addClass('patch-action');
