@@ -1,13 +1,13 @@
 {% assign variant = product.selected_or_first_available_variant %}
-<script>
+ <script>
     $(document).ready(function() {
       $('.edit-delete-btn').click(function() {
-        $(this).toggleClass('patches-customization-tidy-delte-btn-active');
+        // Remove the class from all elements with the class edit-delete-btn
+        $('.edit-delete-btn').removeClass('patches-customization-tidy-delete-btn-active');
+        
+        // Add the class to the clicked element
+        $(this).addClass('patches-customization-tidy-delete-btn-active');
       });
-
-      // $('.edit-left-btn').click(function() {
-      //   $(this).toggleClass('patches-customization-tidy-delte-btn-active');
-      // });
     });
   </script>
 <script>
