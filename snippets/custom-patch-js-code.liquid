@@ -2319,7 +2319,9 @@ backPatches.forEach(patch => {
     $('.close-customization-clear-alert').click(function() {
         $('.patches-customization-clear-alert-pop-up').removeClass('patches-customization-active');
         $('.patches-customization-container-overly').css('display', 'none');
-           $('.patches-customization-editor-active').css('display', 'block');
+           $('.patches-editor-wrapper').css('display', 'block');
+      $('.delete-patches-wrapper-sidebar').css('display', 'none');
+      
     setTimeout(function() {
     $('.patches-customization-clear-alert-pop-up').css({
         'right': '-2400px'
