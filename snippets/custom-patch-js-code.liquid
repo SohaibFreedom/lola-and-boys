@@ -1,11 +1,7 @@
 {% assign variant = product.selected_or_first_available_variant %}
 <script>
    $(document).on('click', '.tidy-right-btn', function(event) {
-    const patchElement = $(event.target).closest('.patch-');
- patchElement.toggleClass('patch-open-editorrrr');
-     $('.patch-').removeClass('patch-action'); // Remove the class from all elements
-     $(this).addClass('patch-action');
-    
+    console.log('.tidy-right-btn');
     $('.patches-customization-editor').addClass('patches-customization-editor-active');
     $('.patches-customization-editor').css('display', 'block');
     $('.patches-editor-wrapper').css('display', 'none');
