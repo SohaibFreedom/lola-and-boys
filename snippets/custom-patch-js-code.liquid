@@ -1,12 +1,13 @@
 {% assign variant = product.selected_or_first_available_variant %}
-<script>
- 
-  $('.patch-').on('click', function() {
-    console.log('yes i clicked on patch-')
-    $('.patch-').removeClass('patch-action'); // Remove the class from all elements
-    $(this).addClass('patch-action'); // Add the class to the clicked element
-  });
 
+<script>
+ document.addEventListener('DOMContentLoaded', () => {
+    const colorVariants = document.querySelectorAll('.color-variant');
+    if (colorVariants.length > 0) {
+      console.log('yes active hy bhai')
+        colorVariants[0].classList.add('selected-variant');
+    }
+});
 
 </script>
 <script>
@@ -464,12 +465,7 @@ function closePopup() {
  
  
       
- document.addEventListener('DOMContentLoaded', () => {
-    const colorVariants = document.querySelectorAll('.color-variant');
-    if (colorVariants.length > 0) {
-        colorVariants[0].classList.add('selected-variant');
-    }
-});
+
 
        
 function showcolorVariants() {
