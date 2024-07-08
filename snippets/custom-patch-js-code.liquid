@@ -464,7 +464,13 @@ function closePopup() {
  
  
       
- 
+ document.addEventListener('DOMContentLoaded', () => {
+    const colorVariants = document.querySelectorAll('.color-variant');
+    if (colorVariants.length > 0) {
+        colorVariants[0].classList.add('selected-variant');
+    }
+});
+
        
 function showcolorVariants() {
     console.log('this is color variants', colorVariants);
