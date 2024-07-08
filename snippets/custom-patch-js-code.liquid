@@ -2278,7 +2278,7 @@ BackcenterBox.addEventListener('mouseup', function (event) {
  $(document).on('click', '.patch-', function(event) {
     const patchElement = $(event.target).closest('.patch-');
  patchElement.toggleClass('patch-open-editor');
-  var $clickedPatch = $(this);
+ var $clickedPatch = $(this);
         var patchId = $clickedPatch.attr('id'); // Get the id attribute
         console.log("Clicked patch id: " + patchId); // Log the id attribute value
 
@@ -2299,7 +2299,6 @@ BackcenterBox.addEventListener('mouseup', function (event) {
         } else {
           console.log('No element found with data-patch-id ' + patchId);
         }
-      });
      $('.patch-').removeClass('patch-action'); // Remove the class from all elements
      $(this).addClass('patch-action');
     
