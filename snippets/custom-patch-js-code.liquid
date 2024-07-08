@@ -1,13 +1,13 @@
 {% assign variant = product.selected_or_first_available_variant %}
 
 <script>
- window.addEventListener('load', () => {
+
+window.addEventListener('load', () => {
     const headingDiv = document.querySelector('.product-tile-for-selected');
     if (headingDiv) {
-        headingDiv.textContent = headingDiv.textContent.replace(/\b\w/g, char => char.toUpperCase());
+        headingDiv.textContent = headingDiv.textContent.charAt(0).toUpperCase() + headingDiv.textContent.slice(1).toLowerCase();
     }
 });
-
 
 </script>
 <script>
