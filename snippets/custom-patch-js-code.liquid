@@ -2501,7 +2501,7 @@ BackcenterBox.addEventListener('mouseup', function (event) {
             $('.patch-').removeClass('patch-action').removeAttr('order-data');
 
             
-
+            order=1;
             // Set the order for the clicked patch
             $targetPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + order + '</span>');
             $clickedPatch.addClass('patch-action').attr('order-data', order);
