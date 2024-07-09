@@ -2472,7 +2472,13 @@ BackcenterBox.addEventListener('mouseup', function (event) {
 <script>
  $(document).ready(function() {
     // Event delegation for dynamically created .patch- elements
+   var isDragging = false;
  $(document).on('click', '.patch-', function(event) {
+   if (!isDragging) {
+        console.log('Element clicked');
+        // Your click functionality here
+    }
+    isDragging = false; // Reset the flag
     const patchElement = $(event.target).closest('.patch-');
  patchElement.toggleClass('patch-open-editor');
           var $clickedPatch = $(this);
