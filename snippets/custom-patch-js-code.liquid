@@ -2554,7 +2554,9 @@ BackcenterBox.addEventListener('mouseup', function (event) {
  patchElement.toggleClass('patch-open-editor');
           var $clickedPatch = $(this);
        if ($clickedPatch.hasClass('patch-action')) {
-        $clickedPatch.removeClass('patch-action') 
+       
+         $('.selected-patch-for-customization').removeClass('patch-selected').find('.selected-patch-order').remove();
+       $clickedPatch.removeClass('patch-action').removeAttr('order-data'); 
        }else{
           var patchId = $clickedPatch.attr('id'); // Get the id attribute
         console.log("Clicked patch id: " + patchId); // Log the id attribute value
