@@ -2506,16 +2506,8 @@ BackcenterBox.addEventListener('mouseup', function (event) {
             // Set the order for the clicked patch
             $targetPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + order + '</span>');
             $clickedPatch.addClass('patch-action').attr('order-data', order);
-            order++; // Increment the order counter
 
-            // Reorder other patches
-            $('.selected-patch-for-customization-for-front.patch-selected').each(function() {
-                var $patch = $(this);
-                var patchId = $patch.data('patch-id');
-                $patch.find('.selected-patch-order').text(order);
-                $patch.addClass('patch-action').attr('order-data', order);
-                order++;
-            });
+
 
           // Check if the class was added
           if ($targetPatch.hasClass('patch-selected')) {
