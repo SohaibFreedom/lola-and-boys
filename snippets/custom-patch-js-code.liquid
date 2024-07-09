@@ -564,7 +564,8 @@ function openPopup(item) {
             <img src="${item.image}" alt="${item.name}"  class="popup-image" />
             </div>
             <p class="popup-name">${item.patchname || item.alphabetname}</p>
-            <div class="add-patch-pop-up-btn" data-patch-id-popup="${item.image}" data-patch-id-popup="${item.id}"  data-patch-height-popup="${item.height} data-patch-width-popup="${item.width} ">Add Patch</div>
+           <div class="add-patch-pop-up-btn" data-patch-src-popup="${item.image}" data-patch-id-popup="${item.id}" data-patch-height-popup="${item.height}" data-patch-width-popup="${item.width}">Add Patch</div>
+
         </div>
     `;
 
