@@ -1522,6 +1522,25 @@ function addPatchToBackcenterBox(patchSrc, patchId, height, width) {
         patchDiv.style.height = height + 'px';
     }
 
+    // Ensure the patch stays inside the parent container
+    var BackcenterBox = document.querySelector('.BackcenterBox');
+    var containerWidth = BackcenterBox.offsetWidth;
+    var containerHeight = BackcenterBox.offsetHeight;
+
+    // Check if the patch exceeds the container's width
+    if (currentXBack + parseInt(patchDiv.style.width) > containerWidth) {
+        currentXBack = containerWidth - parseInt(patchDiv.style.width);
+    }
+
+    // Check if the patch exceeds the container's height
+    if (currentYBack + parseInt(patchDiv.style.height) > containerHeight) {
+        currentYBack = containerHeight - parseInt(patchDiv.style.height);
+    }
+
+    // Apply the corrected position
+    patchDiv.style.left = currentXBack + 'px';
+    patchDiv.style.top = currentYBack + 'px';
+
     // Make the edit button visible
     var editTidyBtnwrapper = document.querySelector('.edit-tidy-btn-wrapp');
     editTidyBtnwrapper.style.visibility = 'visible';
@@ -1531,7 +1550,6 @@ function addPatchToBackcenterBox(patchSrc, patchId, height, width) {
 
     patchDiv.setAttribute('id', newPatchId);
     patchDiv.innerHTML = `<img src="${patchSrc}" alt="" class="patch-image" width="${width}" height="${height}" crossorigin="anonymous">`;
-    var BackcenterBox = document.querySelector('.BackcenterBox');
     BackcenterBox.querySelector('.patches-containerr').appendChild(patchDiv);
 
     // Add the patch to the patches array with its ID
@@ -1539,7 +1557,7 @@ function addPatchToBackcenterBox(patchSrc, patchId, height, width) {
 
     // Update currentXBack and currentYBack for the next patch
     currentXBack += parseInt(patchDiv.style.width); // Add 10px gap between patches
-    if (currentXBack + parseInt(patchDiv.style.width) > BackcenterBox.offsetWidth) {
+    if (currentXBack + parseInt(patchDiv.style.width) > containerWidth) {
         // Move to the next row if there's no space left in the current row
         currentXBack = 0;
         currentYBack += parseInt(patchDiv.style.height); // Add 10px gap between rows
@@ -1562,6 +1580,7 @@ function addPatchToBackcenterBox(patchSrc, patchId, height, width) {
 
     checkPatchallOverlapping();
 }
+
 
 
 
