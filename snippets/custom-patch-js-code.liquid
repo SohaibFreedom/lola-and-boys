@@ -1401,27 +1401,45 @@ function addPatchToCenterBox(patchSrc, patchId, height, width) {
         patchDiv.style.height = height + 'px';
     }
 
+    // Ensure the patch stays inside the parent container
+    var centerBox = document.querySelector('.centerBox');
+    var containerWidth = centerBox.offsetWidth;
+    var containerHeight = centerBox.offsetHeight;
+
+    // Check if the patch exceeds the container's width
+    if (currentX + parseInt(patchDiv.style.width) > containerWidth) {
+        currentX = containerWidth - parseInt(patchDiv.style.width);
+    }
+
+    // Check if the patch exceeds the container's height
+    if (currentY + parseInt(patchDiv.style.height) > containerHeight) {
+        currentY = containerHeight - parseInt(patchDiv.style.height);
+    }
+
+    // Apply the corrected position
+    patchDiv.style.left = currentX + 'px';
+    patchDiv.style.top = currentY + 'px';
+
     // Make the edit button visible
     var editTidyBtnwrapper = document.querySelector('.edit-tidy-btn-wrapp');
     editTidyBtnwrapper.style.visibility = 'visible';
 
     // Generate a unique ID for the patch
-    var patchId = 'patch_' + Math.random().toString(36).substr(2, 9);
+    var newPatchId = 'patch_' + Math.random().toString(36).substr(2, 9);
 
-    patchDiv.setAttribute('id', patchId);
+    patchDiv.setAttribute('id', newPatchId);
     patchDiv.innerHTML = `<img src="${patchSrc}" alt="" class="patch-image" width="${width}" height="${height}" crossorigin="anonymous">`;
-    var centerBox = document.querySelector('.centerBox');
     centerBox.querySelector('.patches-container').appendChild(patchDiv);
 
     // Add the patch to the patches array with its ID
-    patches.push({ id: patchId, patchSrc, width, height });
+    patches.push({ id: newPatchId, patchSrc, width, height });
 
     // Update currentX and currentY for the next patch
-    currentX += parseInt(patchDiv.style.width) ; // Add 10px gap between patches
-    if (currentX + parseInt(patchDiv.style.width) > centerBox.offsetWidth) {
+    currentX += parseInt(patchDiv.style.width); // Add 10px gap between patches
+    if (currentX + parseInt(patchDiv.style.width) > containerWidth) {
         // Move to the next row if there's no space left in the current row
         currentX = 0;
-        currentY += parseInt(patchDiv.style.height) ; // Add 10px gap between rows
+        currentY += parseInt(patchDiv.style.height); // Add 10px gap between rows
     }
 
     // Add click event listener to the dynamically created patch
@@ -1441,6 +1459,7 @@ function addPatchToCenterBox(patchSrc, patchId, height, width) {
 
     checkPatchallOverlapping();
 }
+
 //    function addPatchToBackcenterBox(patchSrc, patchId,height, width) {
 
 //     var patchDiv = document.createElement('div');
