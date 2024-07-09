@@ -2487,7 +2487,8 @@ BackcenterBox.addEventListener('mouseup', function (event) {
         if ($targetPatch.length) {
           var order = 1; // Initialize order counter
          var orderBack = 1;
-              $('.selected-patch-for-customization').removeClass('patch-selected'); 
+              $('.selected-patch-for-customization').removeClass('patch-selected').find('.selected-patch-order').remove();
+            $clickedPatch.removeAttr('order-data'); 
             $targetPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + order + '</span>');
            $clickedPatch.addClass('patch-action').attr('order-data', order);
            order++;
