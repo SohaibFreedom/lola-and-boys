@@ -2278,27 +2278,27 @@ BackcenterBox.addEventListener('mouseup', function (event) {
  $(document).on('click', '.patch-', function(event) {
     const patchElement = $(event.target).closest('.patch-');
  patchElement.toggleClass('patch-open-editor');
-        //   var $clickedPatch = $(this);
-        // var patchId = $clickedPatch.attr('id'); // Get the id attribute
-        // console.log("Clicked patch id: " + patchId); // Log the id attribute value
+          var $clickedPatch = $(this);
+        var patchId = $clickedPatch.attr('id'); // Get the id attribute
+        console.log("Clicked patch id: " + patchId); // Log the id attribute value
 
-        // // Use the attribute selector to find the element with the matching data-patch-id
-        // var $targetPatch = $('[data-patch-id="' + patchId + '"]');
-        // console.log("Target patch element:", $targetPatch); // Log the selected element
+        // Use the attribute selector to find the element with the matching data-patch-id
+        var $targetPatch = $('[data-patch-id="' + patchId + '"]');
+        console.log("Target patch element:", $targetPatch); // Log the selected element
 
-        // // Check if the target element is found
-        // if ($targetPatch.length) {
-        //   $targetPatch.addClass('patch-selected');
+        // Check if the target element is found
+        if ($targetPatch.length) {
+          $targetPatch.addClass('patch-selected-by-btn');
 
-        //   // Check if the class was added
-        //   if ($targetPatch.hasClass('patch-selected')) {
-        //     console.log('Class patch-selected added to element with data-patch-id ' + patchId);
-        //   } else {
-        //     console.log('Class patch-selected not added to element with data-patch-id ' + patchId);
-        //   }
-        // } else {
-        //   console.log('No element found with data-patch-id ' + patchId);
-        // }
+          // Check if the class was added
+          if ($targetPatch.hasClass('patch-selected')) {
+            console.log('Class patch-selected added to element with data-patch-id ' + patchId);
+          } else {
+            console.log('Class patch-selected not added to element with data-patch-id ' + patchId);
+          }
+        } else {
+          console.log('No element found with data-patch-id ' + patchId);
+        }
      $('.patch-').removeClass('patch-action'); // Remove the class from all elements
      $(this).addClass('patch-action');
     
