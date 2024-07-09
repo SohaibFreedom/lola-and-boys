@@ -1382,11 +1382,11 @@ function addPatchToCenterBox(patchSrc, patchId, height, width) {
     patches.push({ id: patchId, patchSrc, width, height });
 
     // Update currentX and currentY for the next patch
-    currentX += parseInt(patchDiv.style.width) + 10; // Add 10px gap between patches
+    currentX += parseInt(patchDiv.style.width) ; // Add 10px gap between patches
     if (currentX + parseInt(patchDiv.style.width) > centerBox.offsetWidth) {
         // Move to the next row if there's no space left in the current row
         currentX = 0;
-        currentY += parseInt(patchDiv.style.height) + 10; // Add 10px gap between rows
+        currentY += parseInt(patchDiv.style.height) ; // Add 10px gap between rows
     }
 
     // Add click event listener to the dynamically created patch
