@@ -2319,32 +2319,41 @@ BackcenterBox.addEventListener('mouseup', function (event) {
         $('.select-patches-for-back').removeClass('select-patches-active')
         $('.select-patches-for-front').addClass('select-patches-active')
           $('.patches-container .patch-').each(function() {
-        var patchId = $(this).attr('id');
-       var actionPatch = $(this); // Assuming 'this' is a jQuery object
-var patchActionElement = actionPatch.find('.patch-action');
-  console.log('patchActionElement',patchActionElement);
-        
-        // Check if the patch with the same ID already exists in .select-patches
-        if (!$('.select-patches-for-front').find('[data-patch-id="' + patchId + '"]').length) {
-            // Get image source
-            var imageSrc = $(this).find('.patch-image').attr('src');
+         var patchId = $(this).attr('id');
+    var actionPatch = $(this); // Get the clicked element
+    var patchActionElement = actionPatch.find('.patch-action');
+    console.log('patchActionElement', patchActionElement);
 
-            // Create a new div with class .selected-patch-for-customization
-            var selectedPatchDiv = $(`<div class="selected-patch-for-customization selected-patch-for-customization-for-front" id="${patchId}"></div>`);
+    // Check if the patch with the same ID already exists in .select-patches
+    if (!$('.select-patches-for-front').find('[data-patch-id="' + patchId + '"]').length) {
+      // Get image source
+      var imageSrc = $(this).find('.patch-image').attr('src');
 
-            // Create an img element with the same src as the original image
-            var imageElement = $('<img>').attr('src', imageSrc);
+      // Create a new div with class .selected-patch-for-customization
+      var selectedPatchDiv = $(`<div class="selected-patch-for-customization selected-patch-for-customization-for-front" id="${patchId}"></div>`);
 
-            // Append the image to the new div
-            selectedPatchDiv.append(imageElement);
+      // Create an img element with the same src as the original image
+      var imageElement = $('<img>').attr('src', imageSrc);
 
-            // Append the patchId as a data attribute
-            selectedPatchDiv.attr('data-patch-id', patchId);
+      // Append the image to the new div
+      selectedPatchDiv.append(imageElement);
 
-            // Append the new div to .select-patches
-            $('.select-patches-for-front').append(selectedPatchDiv);
-        }
-    });
+      // Append the patchId as a data attribute
+      selectedPatchDiv.attr('data-patch-id', patchId);
+
+      // Append the new div to .select-patches
+      $('.select-patches-for-front').append(selectedPatchDiv);
+    }
+
+    // Check if .patch-action exists within actionPatch
+    var selectedPatchInDOM = $('.select-patches-for-front').find('[data-patch-id="' + patchId + '"]');
+    if (patchActionElement.length) {
+      // .patch-action exists, add .patch-selected-by-btn to the target element
+      selectedPatchInDOM.addClass('patch-selected-by-btn');
+    } else {
+      // .patch-action does not exist, remove .patch-selected-by-btn from the target element
+      selectedPatchInDOM.removeClass('patch-selected-by-btn');
+    }
     } else if (document.getElementById('Back-area').style.visibility === 'visible') {
         $('.front-tdiy-patches-btn').removeClass('tdiy-patches-btn-active')
         $('.back-tdiy-patches-btn').addClass('tdiy-patches-btn-active')
