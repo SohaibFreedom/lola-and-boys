@@ -8,8 +8,12 @@
           var patchHeight = $(this).attr('data-patch-height-popup');
           var patchWidth = $(this).attr('data-patch-width-popup');
 
-          // Call the function with the extracted values
-          addPatchToCenterBox(patchSrc, patchId, patchHeight, patchWidth);
+          if (document.getElementById('Front-Area').style.visibility === 'visible') {
+         addPatchToCenterBox(patchSrc, patchId, patchHeight, patchWidth);
+      } else if (document.getElementById('Back-area').style.visibility === 'visible') {
+          addPatchToBackcenterBox(patchSrc, patchId, patchHeight, patchWidth);
+      }
+
       });
   });
 </script>
