@@ -2543,6 +2543,37 @@ var patchActionElement = actionPatch.find('.patch-action');
     }, 100);
 });
 $(document).on('click', '.patches-tidy-editor-btn', function(event) {
+    var $clickedPatch = $(this);
+          var patchId = $clickedPatch.data('patch-id');
+         console.log('order',order)
+          if (!$clickedPatch.hasClass('patch-selected')) {
+              // If not selected, add order and class
+              $clickedPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + order + '</span>');
+              $('#' + patchId).addClass('patch-action').attr('order-data', order);
+              order++;
+          } else {
+              // If already selected, remove from selection and order
+              $clickedPatch.removeClass('patch-selected').find('.selected-patch-order').remove();
+             $('#' + patchId).removeClass('patch-action').removeAttr('order-data');
+                  // Update orders of other selected patches
+              var currentOrder = 1;
+
+              $('.selected-patch-for-customization-for-front.patch-selected').each(function() {
+                  var $patch = $(this);
+                   var patchId = $patch.data('patch-id');
+                  $patch.find('.selected-patch-order').text(currentOrder);
+                    $('#' + patchId).addClass('patch-action').attr('order-data', currentOrder);
+                  currentOrder++;
+              });
+
+              order--; // Decrement the order counter
+          }
+
+          // Log the target .patch- element to the console
+
+
+          event.stopPropagation(); // Prevent click event from bubbling up
+  
     const patchElement = $(event.target).closest('.patch-');
   patchElement.toggleClass('patch-open-editor');
     
