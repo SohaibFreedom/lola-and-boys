@@ -2498,22 +2498,11 @@ BackcenterBox.addEventListener('mouseup', function (event) {
         if ($targetPatch.length) {
           
             $('.selected-patch-for-customization').removeClass('patch-selected-by-btn'); 
-            $clickedPatch.removeClass('patch-selected').find('.selected-patch-order').remove();
-          $('#' + patchId).removeClass('patch-action').removeAttr('order-data');
-               // Update orders of other selected patches
-           var currentOrder = 1;
-
-           $('.selected-patch-for-customization-for-front.patch-selected').each(function() {
-               var $patch = $(this);
-                var patchId = $patch.data('patch-id');
-               $patch.find('.selected-patch-order').text(currentOrder);
-                 $('#' + patchId).addClass('patch-action').attr('order-data', currentOrder);
-               currentOrder++;
-           });
-
-           order--; // Decrement the order counter
           
-          $targetPatch.addClass('patch-selected-by-btn');
+          
+           $targetPatch.addClass('patch-selected-by-btn').append('<span class="selected-patch-order">' + order + '</span>');
+           $clickedPatch.addClass('patch-action').attr('order-data', order);
+           order++;
 
           // Check if the class was added
           if ($targetPatch.hasClass('patch-selected')) {
