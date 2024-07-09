@@ -2301,6 +2301,7 @@ BackcenterBox.addEventListener('mouseup', function (event) {
         }
      $('.patch-').removeClass('patch-action'); // Remove the class from all elements
      $(this).addClass('patch-action');
+    $targetPatch.removeClass('patch-selected-by-btn');
     
     $('.patches-customization-editor').addClass('patches-customization-editor-active');
     $('.patches-customization-editor').css('display', 'block');
