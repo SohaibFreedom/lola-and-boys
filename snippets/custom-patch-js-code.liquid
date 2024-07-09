@@ -80,7 +80,8 @@
             $('.select-patches-for-front').append(selectedPatchDiv);
         }
     });
-    } else if (document.getElementById('Back-area').style.visibility === 'visible') {
+    } 
+      else if (document.getElementById('Back-area').style.visibility === 'visible') {
         $('.front-tdiy-patches-btn').removeClass('tdiy-patches-btn-active')
         $('.back-tdiy-patches-btn').addClass('tdiy-patches-btn-active')
         $('.select-patches-for-front').removeClass('select-patches-active')
@@ -1384,6 +1385,69 @@ function FrontconvertToPng() {
 
 
 // }
+  function  selectpastchesodertidy(patchSrc,newPatchId);{
+    if (document.getElementById('Front-Area').style.visibility === 'visible') {
+          $('.back-tdiy-patches-btn').removeClass('tdiy-patches-btn-active')
+        $('.front-tdiy-patches-btn').addClass('tdiy-patches-btn-active')
+        $('.select-patches-for-back').removeClass('select-patches-active')
+        $('.select-patches-for-front').addClass('select-patches-active')
+          $('.patches-container .patch-').each(function() {
+        var patchId = newPatchId;
+        
+        // Check if the patch with the same ID already exists in .select-patches
+        if (!$('.select-patches-for-front').find('[data-patch-id="' + patchId + '"]').length) {
+            // Get image source
+            var imageSrc = patchSrc;
+
+            // Create a new div with class .selected-patch-for-customization
+            var selectedPatchDiv = $(`<div class="selected-patch-for-customization selected-patch-for-customization-for-front" id="${patchId}"></div>`);
+
+            // Create an img element with the same src as the original image
+            var imageElement = $('<img>').attr('src', imageSrc);
+
+            // Append the image to the new div
+            selectedPatchDiv.append(imageElement);
+
+            // Append the patchId as a data attribute
+            selectedPatchDiv.attr('data-patch-id', patchId);
+
+            // Append the new div to .select-patches
+            $('.select-patches-for-front').append(selectedPatchDiv);
+        }
+    });
+    } 
+      else if (document.getElementById('Back-area').style.visibility === 'visible') {
+        $('.front-tdiy-patches-btn').removeClass('tdiy-patches-btn-active')
+        $('.back-tdiy-patches-btn').addClass('tdiy-patches-btn-active')
+        $('.select-patches-for-front').removeClass('select-patches-active')
+        $('.select-patches-for-back').addClass('select-patches-active')
+        $('.patches-containerr .patch-').each(function() {
+        var patchId = newPatchId;
+        
+        // Check if the patch with the same ID already exists in .select-patches
+        if (!$('.select-patches-for-back').find('[data-patch-id="' + patchId + '"]').length) {
+            // Get image source
+            var imageSrc = patchSrc;
+
+            // Create a new div with class .selected-patch-for-customization
+            var selectedPatchDiv = $(`<div class="selected-patch-for-customization selected-patch-for-customization-for-back" id="${patchId}"></div>`);
+
+            // Create an img element with the same src as the original image
+            var imageElement = $('<img>').attr('src', imageSrc);
+
+            // Append the image to the new div
+            selectedPatchDiv.append(imageElement);
+
+            // Append the patchId as a data attribute
+            selectedPatchDiv.attr('data-patch-id', patchId);
+
+            // Append the new div to .select-patches
+            $('.select-patches-for-back').append(selectedPatchDiv);
+        }
+    });
+     
+     }
+  }
 let currentX = 0;
 let currentY = 0;
 
@@ -1464,6 +1528,7 @@ function addPatchToCenterBox(patchSrc, patchId, height, width) {
     });
 
     checkPatchallOverlapping();
+   selectpastchesodertidy(patchSrc,newPatchId);
 }
 
 //    function addPatchToBackcenterBox(patchSrc, patchId,height, width) {
@@ -1604,6 +1669,7 @@ function addPatchToBackcenterBox(patchSrc, patchId, height, width) {
     });
 
     checkPatchallOverlapping();
+  selectpastchesodertidy(patchSrc,newPatchId);
 }
 
 
