@@ -10,8 +10,10 @@
 
           if (document.getElementById('Front-Area').style.visibility === 'visible') {
          addPatchToCenterBox(patchSrc, patchId, patchHeight, patchWidth);
+             closePopup();
       } else if (document.getElementById('Back-area').style.visibility === 'visible') {
           addPatchToBackcenterBox(patchSrc, patchId, patchHeight, patchWidth);
+             closePopup();
       }
 
       });
