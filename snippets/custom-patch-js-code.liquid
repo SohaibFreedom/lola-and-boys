@@ -2323,7 +2323,7 @@ BackcenterBox.addEventListener('mouseup', function (event) {
        var actionPatch = $(this); // Assuming 'this' is a jQuery object
 var patchActionElement = actionPatch.find('.patch-action');
   console.log('patchActionElement',patchActionElement);
-            console.log('actionPatch',actionPatch);
+        
         // Check if the patch with the same ID already exists in .select-patches
         if (!$('.select-patches-for-front').find('[data-patch-id="' + patchId + '"]').length) {
             // Get image source
