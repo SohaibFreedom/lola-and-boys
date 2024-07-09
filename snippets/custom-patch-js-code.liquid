@@ -1,6 +1,6 @@
 {% assign variant = product.selected_or_first_available_variant %}
 <script>
-  var isDragging = false;
+  var ismainDragging = false;
 </script>
 <script>
     function closePopup() {
@@ -1447,7 +1447,7 @@ function addPatchToCenterBox(patchSrc, patchId, height, width) {
 
     // Add click event listener to the dynamically created patch
     patchDiv.addEventListener('dragstart', function(event) {
-       isDragging = true;
+       ismainDragging = true;
         event.preventDefault();
         event.dataTransfer.setData('text/plain', patchDiv.querySelector('img').src);
         dragPatch1 = patchDiv;
@@ -2478,11 +2478,11 @@ BackcenterBox.addEventListener('mouseup', function (event) {
     // Event delegation for dynamically created .patch- elements
   
  $(document).on('click', '.patch-', function(event) {
-   if (!isDragging) {
+   if (!ismainDraggingismainDragging) {
         console.log('Element clicked');
         // Your click functionality here
     }
-    isDragging = false; // Reset the flag
+    ismainDragging = false; // Reset the flag
     const patchElement = $(event.target).closest('.patch-');
  patchElement.toggleClass('patch-open-editor');
           var $clickedPatch = $(this);
