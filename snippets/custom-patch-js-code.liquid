@@ -1290,8 +1290,8 @@ function addPatchToCenterBox(patchSrc, patchId, height, width) {
     patchDiv.setAttribute('v-id', patchId);
     patchDiv.classList.add('patch-');
     patchDiv.style.position = 'absolute';
-    patchDiv.style.top = '50%';
-    patchDiv.style.left = '50%';
+    patchDiv.style.top = '0';
+    patchDiv.style.left = '0';
     // patchDiv.style.transform = 'translate(-50%, -50%)';
      if (window.matchMedia("(max-width: 700px)").matches){
       patchDiv.style.width = (height / 2 + 15) + 'px';
