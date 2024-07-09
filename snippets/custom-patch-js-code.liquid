@@ -2319,7 +2319,7 @@ BackcenterBox.addEventListener('mouseup', function (event) {
         $('.select-patches-for-back').removeClass('select-patches-active')
         $('.select-patches-for-front').addClass('select-patches-active')
           $('.patches-container .patch-').each(function() {
-         var patchId = $(this).attr('id');
+        var patchId = $(this).attr('id');
     var actionPatch = $(this); // Get the clicked element
     var patchActionElement = actionPatch.find('.patch-action');
     console.log('patchActionElement', patchActionElement);
@@ -2354,6 +2354,7 @@ BackcenterBox.addEventListener('mouseup', function (event) {
       // .patch-action does not exist, remove .patch-selected-by-btn from the target element
       selectedPatchInDOM.removeClass('patch-selected-by-btn');
     }
+    });
     } else if (document.getElementById('Back-area').style.visibility === 'visible') {
         $('.front-tdiy-patches-btn').removeClass('tdiy-patches-btn-active')
         $('.back-tdiy-patches-btn').addClass('tdiy-patches-btn-active')
