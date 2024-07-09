@@ -2543,6 +2543,7 @@ var patchActionElement = actionPatch.find('.patch-action');
     }, 100);
 });
 $(document).on('click', '.patches-tidy-editor-btn', function(event) {
+  var order =0;
     var $clickedPatch = $(this);
           var patchId = $clickedPatch.data('patch-id');
          console.log('order',order)
