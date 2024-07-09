@@ -2475,7 +2475,7 @@ BackcenterBox.addEventListener('mouseup', function (event) {
    var isDragging =true;
  $(document).on('click', '.patch-', function(event) {
    if (!isDragging) {
-        
+       console.log('Element clicked'); 
 
    
     const patchElement = $(event.target).closest('.patch-');
