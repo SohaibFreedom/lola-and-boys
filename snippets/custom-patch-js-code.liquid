@@ -1,5 +1,8 @@
 {% assign variant = product.selected_or_first_available_variant %}
 <script>
+  var isDragging = false;
+</script>
+<script>
     function closePopup() {
     console.log('close the pop up');
       const popup = document.querySelector('.popup');
@@ -2472,7 +2475,7 @@ BackcenterBox.addEventListener('mouseup', function (event) {
 <script>
  $(document).ready(function() {
     // Event delegation for dynamically created .patch- elements
-   var isDragging = false;
+  
  $(document).on('click', '.patch-', function(event) {
    if (!isDragging) {
         console.log('Element clicked');
