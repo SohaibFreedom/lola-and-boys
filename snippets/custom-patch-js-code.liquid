@@ -2477,7 +2477,7 @@ BackcenterBox.addEventListener('mouseup', function (event) {
    if (!isDragging) {
         
 
-    isDragging = false; // Reset the flag
+   
     const patchElement = $(event.target).closest('.patch-');
  patchElement.toggleClass('patch-open-editor');
           var $clickedPatch = $(this);
@@ -2587,6 +2587,7 @@ var patchActionElement = actionPatch.find('.patch-action');
         $('.patches-customization-editor').css('right', '0');
     }, 100);
          }
+    isDragging = false; // Reset the flag
 });
 $(document).on('click', '.patches-tidy-editor-btn', function(event) {
    if (document.getElementById('Front-Area').style.visibility === 'visible') {
