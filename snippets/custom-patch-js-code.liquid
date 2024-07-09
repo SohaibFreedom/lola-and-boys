@@ -1,5 +1,19 @@
 {% assign variant = product.selected_or_first_available_variant %}
 <script>
+    $(document).ready(function() {
+      $(document).on('click', '.add-patch-pop-up-btn', function() {
+          // Extract data attributes from the clicked element
+          var patchSrc = $(this).attr('data-patch-src-popup');
+          var patchId = $(this).attr('data-patch-id-popup');
+          var patchHeight = $(this).attr('data-patch-height-popup');
+          var patchWidth = $(this).attr('data-patch-width-popup');
+
+          // Call the function with the extracted values
+          addPatchToCenterBox(patchSrc, patchId, patchHeight, patchWidth);
+      });
+  });
+</script>
+<script>
    $(document).on('click', '.edit-left-btn', function(event) {
     console.log('.tidy-right-btn');
     $('.delete-patches-wrapper-sidebar').css('display', 'block');
@@ -550,7 +564,7 @@ function openPopup(item) {
             <img src="${item.image}" alt="${item.name}"  class="popup-image" />
             </div>
             <p class="popup-name">${item.patchname || item.alphabetname}</p>
-            <div class="add-patch-pop-up-btn" data-patch-id-popup="${item.id}"  data-patch-height-popup="${item.height} data-patch-width-popup="${item.width} ">Add Patch</div>
+            <div class="add-patch-pop-up-btn" data-patch-id-popup="${item.image}" data-patch-id-popup="${item.id}"  data-patch-height-popup="${item.height} data-patch-width-popup="${item.width} ">Add Patch</div>
         </div>
     `;
 
