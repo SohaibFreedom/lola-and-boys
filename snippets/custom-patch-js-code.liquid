@@ -1503,11 +1503,11 @@ function addPatchToBackcenterBox(patchSrc, patchId, height, width) {
     patches.push({ id: newPatchId, patchSrc, width, height });
 
     // Update currentXBack and currentYBack for the next patch
-    currentXBack += parseInt(patchDiv.style.width) + 10; // Add 10px gap between patches
+    currentXBack += parseInt(patchDiv.style.width); // Add 10px gap between patches
     if (currentXBack + parseInt(patchDiv.style.width) > BackcenterBox.offsetWidth) {
         // Move to the next row if there's no space left in the current row
         currentXBack = 0;
-        currentYBack += parseInt(patchDiv.style.height) + 10; // Add 10px gap between rows
+        currentYBack += parseInt(patchDiv.style.height); // Add 10px gap between rows
     }
 
     // Add click event listener to the dynamically created patch
