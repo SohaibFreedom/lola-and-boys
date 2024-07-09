@@ -2485,15 +2485,9 @@ BackcenterBox.addEventListener('mouseup', function (event) {
 
         // Check if the target element is found
         if ($targetPatch.length) {
-          var order = 1; // Initialize order counter
-         var orderBack = 1;
-              $('.selected-patch-for-customization').removeClass('patch-selected').find('.selected-patch-order').remove();
-            $clickedPatch.removeAttr('order-data'); 
-            $targetPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + order + '</span>');
-           $clickedPatch.addClass('patch-action').attr('order-data', order);
-           order++;
-        
-         
+          
+            $('.selected-patch-for-customization').removeClass('patch-selected'); 
+          $targetPatch.addClass('patch-selected');
 
           // Check if the class was added
           if ($targetPatch.hasClass('patch-selected')) {
