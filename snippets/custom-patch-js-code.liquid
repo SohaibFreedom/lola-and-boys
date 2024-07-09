@@ -2320,7 +2320,8 @@ BackcenterBox.addEventListener('mouseup', function (event) {
         $('.select-patches-for-front').addClass('select-patches-active')
           $('.patches-container .patch-').each(function() {
         var patchId = $(this).attr('id');
-        
+        var actionPatch =$(this);
+            console.log('actionPatch',actionPatch);
         // Check if the patch with the same ID already exists in .select-patches
         if (!$('.select-patches-for-front').find('[data-patch-id="' + patchId + '"]').length) {
             // Get image source
