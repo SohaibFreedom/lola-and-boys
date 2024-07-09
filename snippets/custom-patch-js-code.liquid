@@ -2330,7 +2330,7 @@ var patchActionElement = actionPatch.find('.patch-action');
             var imageSrc = $(this).find('.patch-image').attr('src');
 
             // Create a new div with class .selected-patch-for-customization
-            var selectedPatchDiv = $(`<div class="selected-patch-for-customization selected-patch-for-customization-for-front patch-selected-by-btn" id="${patchId}"></div>`);
+            var selectedPatchDiv = $(`<div class="selected-patch-for-customization selected-patch-for-customization-for-front" id="${patchId}"></div>`);
 
             // Create an img element with the same src as the original image
             var imageElement = $('<img>').attr('src', imageSrc);
