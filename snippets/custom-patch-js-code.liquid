@@ -2475,9 +2475,8 @@ BackcenterBox.addEventListener('mouseup', function (event) {
    var isDragging =true;
  $(document).on('click', '.patch-', function(event) {
    if (!isDragging) {
-        console.log('Element clicked');
-        // Your click functionality here
-    }
+        
+
     isDragging = false; // Reset the flag
     const patchElement = $(event.target).closest('.patch-');
  patchElement.toggleClass('patch-open-editor');
@@ -2587,6 +2586,7 @@ var patchActionElement = actionPatch.find('.patch-action');
     setTimeout(function() {
         $('.patches-customization-editor').css('right', '0');
     }, 100);
+         }
 });
 $(document).on('click', '.patches-tidy-editor-btn', function(event) {
    if (document.getElementById('Front-Area').style.visibility === 'visible') {
