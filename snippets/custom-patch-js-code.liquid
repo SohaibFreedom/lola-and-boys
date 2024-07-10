@@ -3789,3 +3789,24 @@ function checkPatchallOverlapping() {
     $('.BackcenterBox > .patches-containerr > .patch-').removeClass('patch-action');
   });
 </script>
+<script>
+  const patchesContainer = document.querySelector('.patches-container');
+  const patchesBackContainer = document.querySelector('.patches-containerr');
+  let patchActionCount;
+  const alignHorizontal = document.getElementById('align-horizontal');
+
+  if (document.getElementById('Front-Area').style.visibility === 'visible') {
+      const patches = patchesContainer.querySelectorAll('.patch-action');
+      patchActionCount = patches.length;
+      console.log(patchActionCount);
+  } else {
+      const patches = patchesBackContainer.querySelectorAll('.patch-action');
+      patchActionCount = patches.length;
+      console.log(patchActionCount);
+  }
+
+  if (patchActionCount < 2) {
+      alignHorizontal.classList.add('not-allowed');
+      return; // Exit the function if less than 2 patches have .patch-action
+  }
+</script>
