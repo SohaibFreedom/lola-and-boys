@@ -2935,6 +2935,11 @@ var patchActionElement = actionPatch.find('.patch-action');
 
 
           event.stopPropagation(); // Prevent click event from bubbling up
+          if ($('.edit-btn-patch-selected').hasClass('patch-selected-by-btn')) {
+              $('.tidy-patches-delete-btn-wrraper').show();
+          } else {
+              $('.tidy-patches-delete-btn-wrraper').hide();
+          }
       });
       $(document).on('click', '.selected-patch-for-customization-for-back', function(event) {
           var $clickedPatch = $(this);
@@ -2993,6 +2998,11 @@ var patchActionElement = actionPatch.find('.patch-action');
           // Reset the order counter to 1
           order = 1;
           orderBack = 1;
+            if ($('.edit-btn-patch-selected').hasClass('patch-selected-by-btn')) {
+              $('.tidy-patches-delete-btn-wrraper').show();
+          } else {
+              $('.tidy-patches-delete-btn-wrraper').hide();
+          }
       });
     $(document).on('click', function(event) {
       // Check if the clicked target has the class 'tidy-patches-delete-btn'
