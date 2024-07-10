@@ -2550,8 +2550,8 @@ BackcenterBox.addEventListener('mouseup', function (event) {
     var $clickedPatch = $(this);
     var patchId = $clickedPatch.attr('id');
     var $targetPatch = $('[data-patch-id="' + patchId + '"]');
-    var $targetPatch2 = $('[id="' + patchId + '"]');
-    $targetPatch2.addClass('patch-action')
+    // var $targetPatch2 = $('[id="' + patchId + '"]');
+    // $targetPatch2.addClass('patch-action')
     $targetPatch.addClass('patch-selected-by-btn')
         });
 </script>
