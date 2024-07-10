@@ -3026,7 +3026,7 @@ var patchActionElement = actionPatch.find('.patch-action');
       // Check if the clicked target has the class 'tidy-patches-delete-btn'
       if ($(event.target).hasClass('tidy-patches-delete-btn') && $('.patch-action').length) {
           // Select elements with classes 'patch-action' and 'patch-selected'
-          const elementsToDelete = $('.patch-action, .patch-selected, .patch-selected-by-btn, .tidy-patches-delete-btn');
+          const elementsToDelete = $('.patch-action, .patch-selected, .patch-selected-by-btn, .patch-selected-by-both');
 
           // Remove each of the selected elements
           elementsToDelete.each(function() {
