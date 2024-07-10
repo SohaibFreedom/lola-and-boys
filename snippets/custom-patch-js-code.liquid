@@ -2559,6 +2559,26 @@ BackcenterBox.addEventListener('mouseup', function (event) {
          $('.selected-patch-for-customization').removeClass('patch-selected').find('.selected-patch-order').remove();
          $('.selected-patch-for-customization').removeClass('patch-selected-by-btn');
          $('.patch-').removeClass('patch-action').removeAttr('order-data'); 
+             var patchId = $clickedPatch.attr('id'); // Get the id attribute
+        console.log("Clicked patch id: " + patchId); // Log the id attribute value
+
+        // Use the attribute selector to find the element with the matching data-patch-id
+        var $targetPatch = $('[data-patch-id="' + patchId + '"]');
+        console.log("Target patch element:", $targetPatch); // Log the selected element
+          if (document.getElementById('Front-Area').style.visibility === 'visible') {
+            order=1;
+            // Set the order for the clicked patch
+            $targetPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + order + '</span>');
+            $clickedPatch.addClass('patch-action').attr('order-data', order);
+            order++;
+             }
+      else if (document.getElementById('Back-area').style.visibility === 'visible') {
+             orderBack = 1;
+            // Set the order for the clicked patch
+            $targetPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + orderBack + '</span>');
+            $clickedPatch.addClass('patch-action').attr('order-data', orderBack);
+            orderBack++;
+     }
        }else{
           var patchId = $clickedPatch.attr('id'); // Get the id attribute
         console.log("Clicked patch id: " + patchId); // Log the id attribute value
