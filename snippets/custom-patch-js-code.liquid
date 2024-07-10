@@ -2545,9 +2545,9 @@ BackcenterBox.addEventListener('mouseup', function (event) {
 <!-- Editor-bar-code -->
 <script>
   $(document).on('click', '.edit-btn-patch-selected', function(event) {
-     $('.selected-patch-for-customization').removeClass('patch-selected');
+     $('.selected-patch-for-customization').removeClass('patch-selected').find('.selected-patch-order').remove();
      $('.selected-patch-for-customization').removeClass('patch-selected-by-btn');
-     $('.patch-').removeClass('patch-action')
+     $('.patch-').removeClass('patch-action').removeAttr('order-data');
      var $clickedPatch = $(this);
      var patchId = $clickedPatch.attr('id');
      var $targetPatch = $('[data-patch-id="' + patchId + '"]');
