@@ -6,6 +6,7 @@
   const alignHorizontall = document.getElementById('align-horizontal');
   const alignVerticalall = document.getElementById('align-vertical');
   const aligndiagnolrightall = document.getElementById('align-diagonal-right');
+  const aligndiagnolleftall = document.getElementById('align-diagonal-left');
 
   function checkPatches() {
       let patchActionCount;
@@ -24,16 +25,19 @@
           alignHorizontall.classList.add('not-allowed');
           alignVerticalall.classList.add('not-allowed');
          aligndiagnolrightall.classList.add('not-allowed');
+         aligndiagnolleftall.classList.add('not-allowed');
       } else {
           alignHorizontall.classList.remove('not-allowed');
            alignVerticalall.classList.remove('not-allowed');
            aligndiagnolrightall.classList.remove('not-allowed');
+           aligndiagnolleftall.classList.remove('not-allowed');
       }
   }
 
   alignHorizontall.addEventListener('mouseenter', checkPatches);
   alignVerticalall.addEventListener('mouseenter', checkPatches);
   aligndiagnolrightall.addEventListener('mouseenter', checkPatches);
+  aligndiagnolleftall.addEventListener('mouseenter', checkPatches);
 </script>
 <script>
   var ismainDragging = false;
