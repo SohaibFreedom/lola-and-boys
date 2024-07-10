@@ -1,43 +1,47 @@
 {% assign variant = product.selected_or_first_available_variant %}
 
 <script>
-  const patchesContainerr = document.querySelector('.patches-container');
-  const patchesBackContainerr = document.querySelector('.patches-containerr');
-  const alignHorizontall = document.getElementById('align-horizontal');
-  const alignVerticalall = document.getElementById('align-vertical');
-  const aligndiagnolrightall = document.getElementById('align-diagonal-right');
-  const aligndiagnolleftall = document.getElementById('align-diagonal-left');
+   const patchesContainerr = document.querySelector('.patches-container');
+   const patchesBackContainerr = document.querySelector('.patches-containerr');
+   const alignHorizontall = document.getElementById('align-horizontal');
+   const alignVerticalall = document.getElementById('align-vertical');
+   const aligndiagnolrightall = document.getElementById('align-diagonal-right');
+   const aligndiagnolleftall = document.getElementById('align-diagonal-left');
+   const gap10 = document.getElementById('gap10');
 
-  function checkPatches() {
-      let patchActionCount;
+   function checkPatches() {
+       let patchActionCount;
 
-      if (document.getElementById('Front-Area').style.visibility === 'visible') {
-          const patches = patchesContainerr.querySelectorAll('.patch-action');
-          patchActionCount = patches.length;
-          console.log(patchActionCount);
-      } else {
-          const patches = patchesBackContainerr.querySelectorAll('.patch-action');
-          patchActionCount = patches.length;
-          console.log(patchActionCount);
-      }
+       if (document.getElementById('Front-Area').style.visibility === 'visible') {
+           const patches = patchesContainerr.querySelectorAll('.patch-action');
+           patchActionCount = patches.length;
+           console.log(patchActionCount);
+       } else {
+           const patches = patchesBackContainerr.querySelectorAll('.patch-action');
+           patchActionCount = patches.length;
+           console.log(patchActionCount);
+       }
 
-      if (patchActionCount < 2) {
-          alignHorizontall.classList.add('not-allowed');
-          alignVerticalall.classList.add('not-allowed');
-         aligndiagnolrightall.classList.add('not-allowed');
-         aligndiagnolleftall.classList.add('not-allowed');
-      } else {
-          alignHorizontall.classList.remove('not-allowed');
-           alignVerticalall.classList.remove('not-allowed');
-           aligndiagnolrightall.classList.remove('not-allowed');
-           aligndiagnolleftall.classList.remove('not-allowed');
-      }
-  }
+       if (patchActionCount < 2) {
+           alignHorizontall.classList.add('not-allowed');
+           alignVerticalall.classList.add('not-allowed');
+          aligndiagnolrightall.classList.add('not-allowed');
+          aligndiagnolleftall.classList.add('not-allowed');
+          gap10.classList.add('not-allowed');
+       } else {
+           alignHorizontall.classList.remove('not-allowed');
+            alignVerticalall.classList.remove('not-allowed');
+            aligndiagnolrightall.classList.remove('not-allowed');
+            aligndiagnolleftall.classList.remove('not-allowed');
+            gap10.classList.remove('not-allowed');
+       }
+   }
 
-  alignHorizontall.addEventListener('mouseenter', checkPatches);
-  alignVerticalall.addEventListener('mouseenter', checkPatches);
-  aligndiagnolrightall.addEventListener('mouseenter', checkPatches);
-  aligndiagnolleftall.addEventListener('mouseenter', checkPatches);
+   alignHorizontall.addEventListener('mouseenter', checkPatches);
+   alignVerticalall.addEventListener('mouseenter', checkPatches);
+   aligndiagnolrightall.addEventListener('mouseenter', checkPatches);
+   aligndiagnolleftall.addEventListener('mouseenter', checkPatches);
+  gap10.addEventListener('mouseenter', checkPatches);
 </script>
 <script>
   var ismainDragging = false;
