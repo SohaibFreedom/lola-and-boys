@@ -2573,13 +2573,23 @@ BackcenterBox.addEventListener('mouseup', function (event) {
             $('.patch-').removeClass('patch-action').removeAttr('order-data');
 
             
+         
+
+  if (document.getElementById('Front-Area').style.visibility === 'visible') {
             order=1;
             // Set the order for the clicked patch
             $targetPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + order + '</span>');
             $clickedPatch.addClass('patch-action').attr('order-data', order);
             order++;
-
-
+             }
+      else if (document.getElementById('Back-area').style.visibility === 'visible') {
+             orderBack = 1;
+            // Set the order for the clicked patch
+            $targetPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + order + '</span>');
+            $clickedPatch.addClass('patch-action').attr('order-data', order);
+            orderBack++;
+     }
+          
           // Check if the class was added
           if ($targetPatch.hasClass('patch-selected')) {
             console.log('Class patch-selected added to element with data-patch-id ' + patchId);
