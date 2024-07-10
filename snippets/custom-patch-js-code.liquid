@@ -2918,8 +2918,8 @@ var patchActionElement = actionPatch.find('.patch-action');
           if (!$clickedPatch.hasClass('patch-selected')) {
             if (!$clickedPatch.hasClass('edit-btn-patch-selected')){
                    // If not selected, add order and class
-              $('.selected-patch-for-customization').removeClass('patch-selected-by-btn');
-              $('.patch-').removeClass('patch-action');
+
+
               $clickedPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + order + '</span>');
               var $targetPatch = $('[data-patch-id="' + patchId + '"]');
                $targetPatch.addClass('patch-selected-by-btn')
@@ -2967,8 +2967,7 @@ var patchActionElement = actionPatch.find('.patch-action');
 
               if (!$clickedPatch.hasClass('edit-btn-patch-selected')){
                    // If not selected, add order and class
-              $('.selected-patch-for-customization').removeClass('patch-selected-by-btn');
-              $('.patch-').removeClass('patch-action');
+
               $clickedPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + orderBack + '</span>');
               var $targetPatch = $('[data-patch-id="' + patchId + '"]');
                $targetPatch.addClass('patch-selected-by-btn')
