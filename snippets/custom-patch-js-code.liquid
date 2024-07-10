@@ -2551,6 +2551,7 @@ BackcenterBox.addEventListener('mouseup', function (event) {
      order =1;
      var $clickedPatch = $(this);
      var patchId = $clickedPatch.attr('id');
+       $('#' + patchId).addClass('patch-action');
      var $targetPatch = $('[data-patch-id="' + patchId + '"]');
      $targetPatch.addClass('patch-selected-by-btn')
          });
