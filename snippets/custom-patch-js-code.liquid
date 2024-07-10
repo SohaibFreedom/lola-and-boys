@@ -2580,7 +2580,6 @@ BackcenterBox.addEventListener('mouseup', function (event) {
    if (!ismainDragging) {
         console.log('Element clicked');
         // Your click functionality here
- 
     const patchElement = $(event.target).closest('.patch-');
  patchElement.toggleClass('patch-open-editor');
           var $clickedPatch = $(this);
@@ -2609,7 +2608,8 @@ BackcenterBox.addEventListener('mouseup', function (event) {
             $clickedPatch.addClass('patch-action').attr('order-data', orderBack);
             orderBack++;
      }
-       }else{
+       }
+       else{
           var patchId = $clickedPatch.attr('id'); // Get the id attribute
         console.log("Clicked patch id: " + patchId); // Log the id attribute value
 
@@ -2654,7 +2654,11 @@ BackcenterBox.addEventListener('mouseup', function (event) {
      $(this).addClass('patch-action');
        }
        
-   
+     if ($('.edit-btn-patch-selected').hasClass('patch-selected-by-btn')) {
+              $('.tidy-patches-delete-btn-wrraper').show();
+          } else {
+              $('.tidy-patches-delete-btn-wrraper').hide();
+          }
     // $targetPatch.removeClass('patch-selected-by-btn');
     
     $('.patches-customization-editor').addClass('patches-customization-editor-active');
