@@ -2886,12 +2886,16 @@ var patchActionElement = actionPatch.find('.patch-action');
 
          console.log('order',order)
           if (!$clickedPatch.hasClass('patch-selected')) {
-              // If not selected, add order and class
+            if (!$clickedPatch.hasClass('edit-btn-patch-selected')){
+                   // If not selected, add order and class
               $clickedPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + order + '</span>');
               $('#' + patchId).addClass('patch-action').attr('order-data', order);
               order++;
+            }
+
           } else {
               // If already selected, remove from selection and order
+
               $clickedPatch.removeClass('patch-selected').find('.selected-patch-order').remove();
              $('#' + patchId).removeClass('patch-action').removeAttr('order-data');
                   // Update orders of other selected patches
