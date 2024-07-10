@@ -3138,7 +3138,7 @@ function givingGap() {
 function alignHorizontal() {
  const patches = document.querySelectorAll('.patch-');
     const patchActionCount = Array.from(patches).filter(patch => patch.querySelector('.patch-action')).length;
-
+    console.log(patchActionCount);
     if (patchActionCount < 2) {
         return; // Exit the function if less than 2 patches have .patch-action
     }
