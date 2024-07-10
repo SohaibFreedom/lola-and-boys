@@ -2579,6 +2579,12 @@ BackcenterBox.addEventListener('mouseup', function (event) {
  $(document).on('click', '.patch-', function(event) {
    if (!ismainDragging) {
         console.log('Element clicked');
+       if ($('.edit-btn-patch-selected').hasClass('patch-selected-by-btn')) {
+              $('.tidy-patches-delete-btn-wrraper').show();
+          } else {
+              $('.tidy-patches-delete-btn-wrraper').hide();
+          }
+     
         // Your click functionality here
     const patchElement = $(event.target).closest('.patch-');
  patchElement.toggleClass('patch-open-editor');
@@ -2654,11 +2660,7 @@ BackcenterBox.addEventListener('mouseup', function (event) {
      $(this).addClass('patch-action');
        }
        
-     if ($('.edit-btn-patch-selected').hasClass('patch-selected-by-btn')) {
-              $('.tidy-patches-delete-btn-wrraper').show();
-          } else {
-              $('.tidy-patches-delete-btn-wrraper').hide();
-          }
+   
     // $targetPatch.removeClass('patch-selected-by-btn');
     
     $('.patches-customization-editor').addClass('patches-customization-editor-active');
