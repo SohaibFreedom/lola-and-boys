@@ -50,6 +50,12 @@
 </script>
 <script>
    $(document).on('click', '.edit-left-btn', function(event) {
+          if ($('.edit-btn-patch-selected').hasClass('patch-selected-by-btn')) {
+              $('.tidy-patches-delete-btn-wrraper').show();
+          } else {
+              $('.tidy-patches-delete-btn-wrraper').hide();
+          }
+     
     console.log('.tidy-right-btn');
     $('.delete-patches-wrapper-sidebar').css('display', 'block');
     $('.patches-customization-editor').css('display', 'none');
