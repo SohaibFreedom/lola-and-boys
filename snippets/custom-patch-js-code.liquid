@@ -3136,49 +3136,49 @@ function givingGap() {
 // Function to align patches horizontally
       //before
 function alignHorizontal() {
- 
- 
-  
+
+
+
     const patchesContainer = document.querySelector('.patches-container');
     const patchesBackContainer = document.querySelector('.patches-containerr');
-  let patchActionCount;
-   if (document.getElementById('Front-Area').style.visibility === 'visible') {
-       const patches = patchesContainer.querySelectorAll('.patch-action');
+    let patchActionCount;
+    if (document.getElementById('Front-Area').style.visibility === 'visible') {
+        const patches = patchesContainer.querySelectorAll('.patch-action');
 
-    // Count the number of .patch-action elements
-    patchActionCount = patches.length;
-    console.log(patchActionCount);
-        } else {
-                const patches = patchesBackContainer.querySelectorAll('.patch-action');
+        // Count the number of .patch-action elements
+        patchActionCount = patches.length;
+        console.log(patchActionCount);
+    } else {
+        const patches = patchesBackContainer.querySelectorAll('.patch-action');
 
-    // Count the number of .patch-action elements
-    patchActionCount = patches.length;
-    console.log(patchActionCount);
-        }
-  
+        // Count the number of .patch-action elements
+        patchActionCount = patches.length;
+        console.log(patchActionCount);
+    }
+
     if (patchActionCount < 2) {
         return; // Exit the function if less than 2 patches have .patch-action
     }
     const sortedPatches = sortPatchesByOrder();
-  
+
     patchesContainer.style.flexDirection = 'row';
 
     sortedPatches.forEach((patch, index) => {
         let leftPosition;
-        
+
         if (window.matchMedia("(max-width: 700px)").matches) {
             leftPosition = index * (40 + gapValue);
         } else {
             leftPosition = index * (50 + gapValue);
         }
-        
+
         // Set the position styles for each patch
         patch.style.top = '0';
         patch.style.left = `${leftPosition}px`;
     });
 
     checkPatchesPosition();
-  checkPatchOverlapping();
+    checkPatchOverlapping();
 }
 
   // Function to align patches vertically
