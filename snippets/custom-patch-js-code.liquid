@@ -2550,7 +2550,6 @@ BackcenterBox.addEventListener('mouseup', function (event) {
      $('.patch-').removeClass('patch-action').removeAttr('order-data');
      order =1;
      var $clickedPatch = $(this);
-     $clickedPatch.removeClass('patch-selected').find('.selected-patch-order').remove();
      var patchId = $clickedPatch.attr('id');
      var $targetPatch = $('[data-patch-id="' + patchId + '"]');
      $targetPatch.addClass('patch-selected-by-btn')
