@@ -2918,14 +2918,10 @@ var patchActionElement = actionPatch.find('.patch-action');
           if (!$clickedPatch.hasClass('patch-selected')) {
             if (!$clickedPatch.hasClass('edit-btn-patch-selected')){
                    // If not selected, add order and class
-             if (!$('.selected-patch-for-customization').hasClass('edit-btn-patch-selected')){
-               console.log('yes not existed edit-btn-patch-selected');
-               $('.selected-patch-for-customization ').removeClass('patch-selected-by-btn');
-             }
 
               $clickedPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + order + '</span>');
               var $targetPatch = $('[data-patch-id="' + patchId + '"]');
-               $targetPatch.addClass('patch-selected-by-btn')
+               $targetPatch.addClass('patch-selected-by-both')
               $('#' + patchId).addClass('patch-action').attr('order-data', order);
               order++;
             }
