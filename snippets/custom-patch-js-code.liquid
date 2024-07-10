@@ -56,62 +56,68 @@
   gap25.addEventListener('mouseenter', checkPatches);
 </script>
 <script>
-    const movetop = document.getElementById('move-top');
-    const moveleft = document.getElementById('move-left');
-    const movecenter = document.getElementById('move-center');
-    const moveright = document.getElementById('move-right');
-    const movebottom = document.getElementById('move-bottom');
-    const rangeSlider = document.getElementById('myRange');
-    const decrementButtonNN = document.getElementById('decrementButton');
-    const incrementButtonNN = document.getElementById('incrementButton');
+     const movetop = document.getElementById('move-top');
+     const moveleft = document.getElementById('move-left');
+     const movecenter = document.getElementById('move-center');
+     const moveright = document.getElementById('move-right');
+     const movebottom = document.getElementById('move-bottom');
+     const rangeSlider = document.getElementById('myRange');
+     const decrementButtonNN = document.getElementById('decrementButton');
+     const incrementButtonNN = document.getElementById('incrementButton');
+     const messagefieldNot = document.getElementById('messagefield');
 
 
 
-    function checkPatches1() {
-        let patchActionCount;
+     function checkPatches1() {
+         let patchActionCount;
 
-        if (document.getElementById('Front-Area').style.visibility === 'visible') {
-            const patches = patchesContainerr.querySelectorAll('.patch-action');
-            patchActionCount = patches.length;
-            console.log(patchActionCount);
-        } else {
-            const patches = patchesBackContainerr.querySelectorAll('.patch-action');
-            patchActionCount = patches.length;
-            console.log(patchActionCount);
-        }
+         if (document.getElementById('Front-Area').style.visibility === 'visible') {
+             const patches = patchesContainerr.querySelectorAll('.patch-action');
+             patchActionCount = patches.length;
+             console.log(patchActionCount);
+         } else {
+             const patches = patchesBackContainerr.querySelectorAll('.patch-action');
+             patchActionCount = patches.length;
+             console.log(patchActionCount);
+         }
 
-        if (patchActionCount < 1) {
-            movetop.classList.add('not-allowed');
-            moveleft.classList.add('not-allowed');
-           movecenter.classList.add('not-allowed');
-           moveright.classList.add('not-allowed');
-           movebottom.classList.add('not-allowed');
-          // Disable the slider and change the cursor to not-allowed
-            rangeSlider.disabled = true;
-            decrementButtonNN.disabled = true;
-            incrementButtonNN.disabled = true;
+         if (patchActionCount < 1) {
+             movetop.classList.add('not-allowed');
+             moveleft.classList.add('not-allowed');
+            movecenter.classList.add('not-allowed');
+            moveright.classList.add('not-allowed');
+            movebottom.classList.add('not-allowed');
+           // Disable the slider and change the cursor to not-allowed
+             rangeSlider.disabled = true;
+             decrementButtonNN.disabled = true;
+             incrementButtonNN.disabled = true;
+             messagefieldNot.disabled = true;
+             messagefieldNot.classList.add('not-allowed');
 
-        } else {
-            movetop.classList.remove('not-allowed');
-             moveleft.classList.remove('not-allowed');
-             movecenter.classList.remove('not-allowed');
-             moveright.classList.remove('not-allowed');
-              movebottom.classList.remove('not-allowed');
-          rangeSlider.disabled = false;
-            decrementButtonNN.disabled = false;
-            incrementButtonNN.disabled = false;
+         } else {
+             movetop.classList.remove('not-allowed');
+              moveleft.classList.remove('not-allowed');
+              movecenter.classList.remove('not-allowed');
+              moveright.classList.remove('not-allowed');
+               movebottom.classList.remove('not-allowed');
+           rangeSlider.disabled = false;
+             decrementButtonNN.disabled = false;
+             incrementButtonNN.disabled = false;
+             messagefieldNot.disabled =  false;
+             messagefieldNot.classList.remove('not-allowed');
 
-        }
-    }
+         }
+     }
 
-    movetop.addEventListener('mouseenter', checkPatches1);
-    moveleft.addEventListener('mouseenter', checkPatches1);
-    movecenter.addEventListener('mouseenter', checkPatches1);
-   moveright.addEventListener('mouseenter', checkPatches1);
-   movebottom.addEventListener('mouseenter', checkPatches1);
-    rangeSlider.addEventListener('mouseenter', checkPatches1);
-   decrementButton.addEventListener('mouseenter', checkPatches1);
-  incrementButton.addEventListener('mouseenter', checkPatches1);
+     movetop.addEventListener('mouseenter', checkPatches1);
+     moveleft.addEventListener('mouseenter', checkPatches1);
+     movecenter.addEventListener('mouseenter', checkPatches1);
+    moveright.addEventListener('mouseenter', checkPatches1);
+    movebottom.addEventListener('mouseenter', checkPatches1);
+     rangeSlider.addEventListener('mouseenter', checkPatches1);
+    decrementButton.addEventListener('mouseenter', checkPatches1);
+   incrementButton.addEventListener('mouseenter', checkPatches1);
+  messagefieldNot.addEventListener('mouseenter', checkPatches1);
 </script>
 
 <script>
