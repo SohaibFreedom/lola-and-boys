@@ -2563,14 +2563,14 @@ BackcenterBox.addEventListener('mouseup', function (event) {
 <script>
   $(document).on('click', '.edit-btn-patch-selected', function(event) {
      $('.selected-patch-for-customization').removeClass('patch-selected').find('.selected-patch-order').remove();
-     $('.selected-patch-for-customization').removeClass('patch-selected-by-btn');
+     $('.selected-patch-for-customization').removeClass('patch-selected-by-both');
      $('.patch-').removeClass('patch-action').removeAttr('order-data');
      order =1;
      var $clickedPatch = $(this);
      var patchId = $clickedPatch.attr('id');
        $('#' + patchId).addClass('patch-action');
      var $targetPatch = $('[data-patch-id="' + patchId + '"]');
-     $targetPatch.addClass('patch-selected-by-btn')
+     $targetPatch.addClass('patch-selected-by-both')
           if ($('.edit-btn-patch-selected').hasClass('patch-selected-by-btn')) {
               $('.tidy-patches-delete-btn-wrraper').show();
           } else {
