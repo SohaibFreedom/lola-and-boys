@@ -2920,6 +2920,7 @@ var patchActionElement = actionPatch.find('.patch-action');
                    // If not selected, add order and class
 
              $('.selected-patch-for-customization').removeClass('patch-selected-by-btn');
+             $clickedPatch.removeClass('patch-selected-by-btn');
               $clickedPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + order + '</span>');
               var $targetPatch = $('[data-patch-id="' + patchId + '"]');
                $targetPatch.addClass('patch-selected-by-btn')
