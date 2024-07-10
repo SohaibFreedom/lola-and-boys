@@ -1,5 +1,8 @@
 {% assign variant = product.selected_or_first_available_variant %}
 <style>
+  .slidecontainerrRange{
+    width:60%;
+  }
     input[type="range"]:disabled {
       cursor: not-allowed;
   }
@@ -1848,7 +1851,7 @@
                   <div class="alignment-title">
                     <span>Rotate</span>
                   </div>
-                  <div class="alignment-actions">
+                  <div class="alignment-actions slidecontainerrRange">
                     <div class="slidecontainerr">
                       <input type="range" min="-180" max="180" value="0" class="sliderr" id="myRange">
                       <div class="degree-custom-wrapper">
