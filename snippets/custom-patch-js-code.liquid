@@ -1,5 +1,32 @@
 {% assign variant = product.selected_or_first_available_variant %}
 <script>
+  const patchesContainer = document.querySelector('.patches-container');
+  const patchesBackContainer = document.querySelector('.patches-containerr');
+  const alignHorizontal = document.getElementById('align-horizontal');
+
+  function checkPatches() {
+      let patchActionCount;
+
+      if (document.getElementById('Front-Area').style.visibility === 'visible') {
+          const patches = patchesContainer.querySelectorAll('.patch-action');
+          patchActionCount = patches.length;
+          console.log(patchActionCount);
+      } else {
+          const patches = patchesBackContainer.querySelectorAll('.patch-action');
+          patchActionCount = patches.length;
+          console.log(patchActionCount);
+      }
+
+      if (patchActionCount < 2) {
+          alignHorizontal.classList.add('not-allowed');
+      } else {
+          alignHorizontal.classList.remove('not-allowed');
+      }
+  }
+
+  alignHorizontal.addEventListener('mouseenter', checkPatches);
+</script>
+<script>
   var ismainDragging = false;
   var order = 1; // Initialize order counter
   var orderBack = 1;
@@ -3788,31 +3815,4 @@ function checkPatchallOverlapping() {
       $('.selected-patch-for-customization-for-back').removeClass('patch-selected-by-btn');
     $('.BackcenterBox > .patches-containerr > .patch-').removeClass('patch-action');
   });
-</script>
-<script>
-  const patchesContainer = document.querySelector('.patches-container');
-  const patchesBackContainer = document.querySelector('.patches-containerr');
-  const alignHorizontal = document.getElementById('align-horizontal');
-
-  function checkPatches() {
-      let patchActionCount;
-
-      if (document.getElementById('Front-Area').style.visibility === 'visible') {
-          const patches = patchesContainer.querySelectorAll('.patch-action');
-          patchActionCount = patches.length;
-          console.log(patchActionCount);
-      } else {
-          const patches = patchesBackContainer.querySelectorAll('.patch-action');
-          patchActionCount = patches.length;
-          console.log(patchActionCount);
-      }
-
-      if (patchActionCount < 2) {
-          alignHorizontal.classList.add('not-allowed');
-      } else {
-          alignHorizontal.classList.remove('not-allowed');
-      }
-  }
-
-  alignHorizontal.addEventListener('mouseenter', checkPatches);
 </script>
