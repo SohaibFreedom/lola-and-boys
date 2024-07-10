@@ -18,6 +18,17 @@
   }
 </script>
 <script>
+  $(document).ready(function() {
+
+          // Check if .patch-selected-by-btn class exists within .edit-btn-patch-selected
+          if ($('.edit-btn-patch-selected').hasClass('patch-selected-by-btn')) {
+              $('.edit-delete-btn').show();
+          } else {
+              $('.edit-delete-btn').hide();
+          }
+      });
+</script>
+<script>
       $(document).ready(function() {
         $(document).on('click', '.add-patch-pop-up-btn', function() {
             // Extract data attributes from the clicked element
