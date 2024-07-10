@@ -5,6 +5,7 @@
   const patchesBackContainerr = document.querySelector('.patches-containerr');
   const alignHorizontall = document.getElementById('align-horizontal');
   const alignVerticalall = document.getElementById('align-vertical');
+  const aligndiagnolrightall = document.getElementById('align-diagonal-right');
 
   function checkPatches() {
       let patchActionCount;
@@ -22,14 +23,17 @@
       if (patchActionCount < 2) {
           alignHorizontall.classList.add('not-allowed');
           alignVerticalall.classList.add('not-allowed');
+         aligndiagnolrightall.classList.add('not-allowed');
       } else {
           alignHorizontall.classList.remove('not-allowed');
            alignVerticalall.classList.remove('not-allowed');
+           aligndiagnolrightall.classList.remove('not-allowed');
       }
   }
 
   alignHorizontall.addEventListener('mouseenter', checkPatches);
   alignVerticalall.addEventListener('mouseenter', checkPatches);
+  aligndiagnolrightall.addEventListener('mouseenter', checkPatches);
 </script>
 <script>
   var ismainDragging = false;
