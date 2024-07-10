@@ -2544,6 +2544,18 @@ BackcenterBox.addEventListener('mouseup', function (event) {
 </script>
 <!-- Editor-bar-code -->
 <script>
+  $(document).on('click', '.edit-btn-patch-selected', function(event) {
+    $('.selected-patch-for-customization').removeClass('patch-selected');
+    $('.patch-').removeClass('patch-action')
+    var $clickedPatch = $(this);
+    var patchId = $clickedPatch.attr('id');
+    var $targetPatch = $('[data-patch-id="' + patchId + '"]');
+    var $targetPatch2 = $('[id="' + patchId + '"]');
+    $targetPatch2.addClass('patch-action')
+    $targetPatch.addClass('patch-selected-by-btn')
+        });
+</script>
+<script>
  $(document).ready(function() {
     // Event delegation for dynamically created .patch- elements
   
