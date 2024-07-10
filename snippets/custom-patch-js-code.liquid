@@ -1,30 +1,30 @@
 {% assign variant = product.selected_or_first_available_variant %}
 <script>
-  const patchesContainer = document.querySelector('.patches-container');
-  const patchesBackContainer = document.querySelector('.patches-containerr');
-  const alignHorizontal = document.getElementById('align-horizontal');
+  const patchesContainerr = document.querySelector('.patches-container');
+  const patchesBackContainerr = document.querySelector('.patches-containerr');
+  const alignHorizontall = document.getElementById('align-horizontal');
 
   function checkPatches() {
       let patchActionCount;
 
       if (document.getElementById('Front-Area').style.visibility === 'visible') {
-          const patches = patchesContainer.querySelectorAll('.patch-action');
+          const patches = patchesContainerr.querySelectorAll('.patch-action');
           patchActionCount = patches.length;
           console.log(patchActionCount);
       } else {
-          const patches = patchesBackContainer.querySelectorAll('.patch-action');
+          const patches = patchesBackContainerr.querySelectorAll('.patch-action');
           patchActionCount = patches.length;
           console.log(patchActionCount);
       }
 
       if (patchActionCount < 2) {
-          alignHorizontal.classList.add('not-allowed');
+          alignHorizontall.classList.add('not-allowed');
       } else {
-          alignHorizontal.classList.remove('not-allowed');
+          alignHorizontall.classList.remove('not-allowed');
       }
   }
 
-  alignHorizontal.addEventListener('mouseenter', checkPatches);
+  alignHorizontall.addEventListener('mouseenter', checkPatches);
 </script>
 <script>
   var ismainDragging = false;
