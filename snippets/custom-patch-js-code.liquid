@@ -2857,13 +2857,20 @@ var patchActionElement = actionPatch.find('.patch-action');
 </script>
 <script>
   $(document).ready(function() {
+      $('.edit-left-btn').on('click', function() {
+          $('.delete-patches-wrapper-sidebar .tidy-patches-wrapper .select-patches .selected-patch-for-customization').addClass('edit-btn-patch-selected');
+      });
+  });
+</script>
+<script>
+  $(document).ready(function() {
    // var order = 1; // Initialize order counter
    // var orderBack = 1;
 
       $(document).on('click', '.selected-patch-for-customization-for-front', function(event) {
           var $clickedPatch = $(this);
           var patchId = $clickedPatch.data('patch-id');
-         console.log( patchId);
+
          console.log('order',order)
           if (!$clickedPatch.hasClass('patch-selected')) {
               // If not selected, add order and class
