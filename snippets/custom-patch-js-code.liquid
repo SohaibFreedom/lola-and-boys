@@ -4,6 +4,7 @@
   const patchesContainerr = document.querySelector('.patches-container');
   const patchesBackContainerr = document.querySelector('.patches-containerr');
   const alignHorizontall = document.getElementById('align-horizontal');
+  const alignVerticalall = document.getElementById('align-vertical');
 
   function checkPatches() {
       let patchActionCount;
@@ -26,6 +27,7 @@
   }
 
   alignHorizontall.addEventListener('mouseenter', checkPatches);
+  alignVerticalall.addEventListener('mouseenter', checkPatches);
 </script>
 <script>
   var ismainDragging = false;
