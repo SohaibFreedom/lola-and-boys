@@ -2924,10 +2924,20 @@ var patchActionElement = actionPatch.find('.patch-action');
           var $clickedPatch = $(this);
           var patchId = $clickedPatch.data('patch-id');
           if (!$clickedPatch.hasClass('patch-selected')) {
-              // If not selected, add order and class
+              // // If not selected, add order and class
+              // $clickedPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + orderBack + '</span>');
+              // $('#' + patchId).addClass('patch-action').attr('order-data', orderBack);
+              // orderBack++;
+
+              if (!$clickedPatch.hasClass('edit-btn-patch-selected')){
+                   // If not selected, add order and class
               $clickedPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + orderBack + '</span>');
+              var $targetPatch = $('[data-patch-id="' + patchId + '"]');
+               $targetPatch.addClass('patch-selected-by-btn')
               $('#' + patchId).addClass('patch-action').attr('order-data', orderBack);
               orderBack++;
+            }
+
           } else {
               // If already selected, remove from selection and order
               $clickedPatch.removeClass('patch-selected').find('.selected-patch-order').remove();
