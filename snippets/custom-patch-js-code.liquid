@@ -3136,9 +3136,26 @@ function givingGap() {
 // Function to align patches horizontally
       //before
 function alignHorizontal() {
- const patches = document.querySelectorAll('.patch-');
-    const patchActionCount = Array.from(patches).filter(patch => patch.querySelector('.patch-action')).length;
+ 
+ 
+  
+    const patchesContainer = document.querySelector('.patches-container');
+    const patchesBackContainer = document.querySelector('.patches-containerr');
+  let patchActionCount;
+   if (document.getElementById('Front-Area').style.visibility === 'visible') {
+       const patches = patchesContainer.querySelectorAll('.patch-action');
+
+    // Count the number of .patch-action elements
+    patchActionCount = patches.length;
     console.log(patchActionCount);
+        } else {
+                const patches = patchesBackContainer.querySelectorAll('.patch-action');
+
+    // Count the number of .patch-action elements
+    patchActionCount = patches.length;
+    console.log(patchActionCount);
+        }
+  
     if (patchActionCount < 2) {
         return; // Exit the function if less than 2 patches have .patch-action
     }
