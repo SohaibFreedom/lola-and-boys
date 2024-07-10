@@ -56,10 +56,13 @@
   gap25.addEventListener('mouseenter', checkPatches);
 </script>
 <script>
-  const patchesContainerr = document.querySelector('.patches-container');
+   const patchesContainerr = document.querySelector('.patches-container');
    const patchesBackContainerr = document.querySelector('.patches-containerr');
-   const movebtns = document.querySelectorAll('.tidy-patches-adjustment-btns');
-
+   const movetop = document.getElementById('move-top');
+   const moveleft = document.getElementById('move-left');
+   const movecenter = document.getElementById('move-center');
+   const moveright = document.getElementById('move-right');
+   const movebottom = document.getElementById('move-bottom');
    function checkPatches1() {
        let patchActionCount;
 
@@ -73,19 +76,34 @@
            console.log(patchActionCount);
        }
 
-       movebtns.forEach(btn => {
-           if (patchActionCount < 1) {
-               btn.classList.add('not-allowed');
-           } else {
-               btn.classList.remove('not-allowed');
-           }
-       });
+       if (patchActionCount < 1) {
+           alignHorizontall.classList.add('not-allowed');
+           alignVerticalall.classList.add('not-allowed');
+          aligndiagnolrightall.classList.add('not-allowed');
+          aligndiagnolleftall.classList.add('not-allowed');
+          gap10.classList.add('not-allowed');
+          gap15.classList.add('not-allowed');
+          gap20.classList.add('not-allowed');
+          gap25.classList.add('not-allowed');
+       } else {
+           alignHorizontall.classList.remove('not-allowed');
+            alignVerticalall.classList.remove('not-allowed');
+            aligndiagnolrightall.classList.remove('not-allowed');
+            aligndiagnolleftall.classList.remove('not-allowed');
+            gap10.classList.remove('not-allowed');
+            gap15.classList.remove('not-allowed');
+            gap20.classList.remove('not-allowed');
+            gap25.classList.remove('not-allowed');
+       }
    }
 
-   movebtns.forEach(btn => {
-       btn.addEventListener('mouseenter', checkPatches1);
-   });
+   movetop.addEventListener('mouseenter', checkPatches1);
+   moveleft.addEventListener('mouseenter', checkPatches1);
+   movecenter.addEventListener('mouseenter', checkPatches1);
+  moveright.addEventListener('mouseenter', checkPatches1);
+  movebottom.addEventListener('mouseenter', checkPatches1);
 </script>
+
 <script>
   var ismainDragging = false;
   var order = 1; // Initialize order counter
