@@ -57,30 +57,34 @@
 </script>
 <script>
   const patchesContainerr = document.querySelector('.patches-container');
-  const patchesBackContainerr = document.querySelector('.patches-containerr');
-  const movebtns = document.querySelectorAll('.tidy-patches-adjustment-btns');
+   const patchesBackContainerr = document.querySelector('.patches-containerr');
+   const movebtns = document.querySelectorAll('.tidy-patches-adjustment-btns');
 
-  function checkPatches1() {
-      let patchActionCount;
+   function checkPatches1() {
+       let patchActionCount;
 
-      if (document.getElementById('Front-Area').style.visibility === 'visible') {
-          const patches = patchesContainerr.querySelectorAll('.patch-action');
-          patchActionCount = patches.length;
-          console.log(patchActionCount);
-      } else {
-          const patches = patchesBackContainerr.querySelectorAll('.patch-action');
-          patchActionCount = patches.length;
-          console.log(patchActionCount);
-      }
+       if (document.getElementById('Front-Area').style.visibility === 'visible') {
+           const patches = patchesContainerr.querySelectorAll('.patch-action');
+           patchActionCount = patches.length;
+           console.log(patchActionCount);
+       } else {
+           const patches = patchesBackContainerr.querySelectorAll('.patch-action');
+           patchActionCount = patches.length;
+           console.log(patchActionCount);
+       }
 
-      if (patchActionCount < 1) {
-         movebtns.classList.add('not-allowed');
-      } else {
-          movebtns.classList.remove('not-allowed');
-      }
-  }
+       movebtns.forEach(btn => {
+           if (patchActionCount < 1) {
+               btn.classList.add('not-allowed');
+           } else {
+               btn.classList.remove('not-allowed');
+           }
+       });
+   }
 
-  movebtns.addEventListener('mouseenter', checkPatches1);
+   movebtns.forEach(btn => {
+       btn.addEventListener('mouseenter', checkPatches1);
+   });
 </script>
 <script>
   var ismainDragging = false;
