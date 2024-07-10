@@ -1655,6 +1655,7 @@ function addPatchToBackcenterBox(patchSrc, patchId, height, width) {
 
     // Add click event listener to the dynamically created patch
     patchDiv.addEventListener('dragstart', function(event) {
+        ismainDragging = true;
         event.preventDefault();
         event.dataTransfer.setData('text/plain', patchDiv.querySelector('img').src);
         dragPatch1 = patchDiv;
