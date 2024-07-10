@@ -172,9 +172,9 @@
 <script>
    $(document).on('click', '.edit-left-btn', function(event) {
           if ($('.edit-btn-patch-selected').hasClass('patch-selected-by-both')) {
-              $('.tidy-patches-delete-btn-wrraper').show();
+              $('.delete-patches-wrapper-sidebar > .tidy-patches-delete-btn-wrraper').show();
           } else {
-              $('.tidy-patches-delete-btn-wrraper').hide();
+              $('.delete-patches-wrapper-sidebar > .tidy-patches-delete-btn-wrraper').hide();
           }
      
     console.log('.tidy-right-btn');
@@ -2693,9 +2693,9 @@ BackcenterBox.addEventListener('mouseup', function (event) {
      var $targetPatch = $('[data-patch-id="' + patchId + '"]');
      $targetPatch.addClass('patch-selected-by-both')
           if ($('.edit-btn-patch-selected').hasClass('patch-selected-by-both')) {
-              $('.tidy-patches-delete-btn-wrraper').show();
+              $('.delete-patches-wrapper-sidebar > .tidy-patches-delete-btn-wrraper').show();
           } else {
-              $('.tidy-patches-delete-btn-wrraper').hide();
+              $('.delete-patches-wrapper-sidebar > .tidy-patches-delete-btn-wrraper').hide();
           }
          });
 </script>
@@ -3016,9 +3016,9 @@ var patchActionElement = actionPatch.find('.patch-action');
   $(document).ready(function() {
       $('.edit-left-btn').on('click', function() {
              if ($('.edit-btn-patch-selected').hasClass('patch-selected-by-both')) {
-              $('.tidy-patches-delete-btn-wrraper').show();
+              $('.delete-patches-wrapper-sidebar > .tidy-patches-delete-btn-wrraper').show();
           } else {
-              $('.tidy-patches-delete-btn-wrraper').hide();
+              $('.delete-patches-wrapper-sidebar > .tidy-patches-delete-btn-wrraper').hide();
           }
 
       console.log('edit-btn-patch-selected');
@@ -3074,9 +3074,9 @@ var patchActionElement = actionPatch.find('.patch-action');
 
           event.stopPropagation(); // Prevent click event from bubbling up
           if ($('.edit-btn-patch-selected').hasClass('patch-selected-by-both')) {
-              $('.tidy-patches-delete-btn-wrraper').show();
+              $('.delete-patches-wrapper-sidebar > .tidy-patches-delete-btn-wrraper').show();
           } else {
-              $('.tidy-patches-delete-btn-wrraper').hide();
+              $'.delete-patches-wrapper-sidebar > .tidy-patches-delete-btn-wrraper').hide();
           }
       });
       $(document).on('click', '.selected-patch-for-customization-for-back', function(event) {
@@ -3139,9 +3139,9 @@ var patchActionElement = actionPatch.find('.patch-action');
           order = 1;
           orderBack = 1;
             if ($('.edit-btn-patch-selected').hasClass('patch-selected-by-both')) {
-              $('.tidy-patches-delete-btn-wrraper').show();
+              $('.delete-patches-wrapper-sidebar > .tidy-patches-delete-btn-wrraper').show();
           } else {
-              $('.tidy-patches-delete-btn-wrraper').hide();
+              $('.delete-patches-wrapper-sidebar > .tidy-patches-delete-btn-wrraper').hide();
           }
       });
     $(document).on('click', function(event) {
