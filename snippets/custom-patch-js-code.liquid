@@ -2863,6 +2863,7 @@ var patchActionElement = actionPatch.find('.patch-action');
       $(document).on('click', '.selected-patch-for-customization-for-front', function(event) {
           var $clickedPatch = $(this);
           var patchId = $clickedPatch.data('patch-id');
+         console.log( patchId);
          console.log('order',order)
           if (!$clickedPatch.hasClass('patch-selected')) {
               // If not selected, add order and class
