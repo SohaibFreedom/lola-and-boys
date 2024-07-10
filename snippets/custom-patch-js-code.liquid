@@ -2585,8 +2585,8 @@ BackcenterBox.addEventListener('mouseup', function (event) {
       else if (document.getElementById('Back-area').style.visibility === 'visible') {
              orderBack = 1;
             // Set the order for the clicked patch
-            $targetPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + order + '</span>');
-            $clickedPatch.addClass('patch-action').attr('order-data', order);
+            $targetPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + orderBack + '</span>');
+            $clickedPatch.addClass('patch-action').attr('order-data', orderBack);
             orderBack++;
      }
           
