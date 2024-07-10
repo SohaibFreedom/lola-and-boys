@@ -2972,7 +2972,7 @@ var patchActionElement = actionPatch.find('.patch-action');
 
               $clickedPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + orderBack + '</span>');
               var $targetPatch = $('[data-patch-id="' + patchId + '"]');
-               $targetPatch.addClass('patch-selected-by-btn')
+               $targetPatch.addClass('patch-selected-by-both')
               $('#' + patchId).addClass('patch-action').attr('order-data', orderBack);
               orderBack++;
             }
@@ -2983,7 +2983,8 @@ var patchActionElement = actionPatch.find('.patch-action');
              $('#' + patchId).removeClass('patch-action').removeAttr('order-data');
                   // Update orders of other selected patches
               var currentOrder = 1;
-
+                var $targetPatch = $('[data-patch-id="' + patchId + '"]');
+               $targetPatch.removeClass('patch-selected-by-both')
               $('.selected-patch-for-customization-for-back.patch-selected').each(function() {
                   var $patch = $(this);
                    var patchId = $patch.data('patch-id');
