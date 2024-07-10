@@ -3183,6 +3183,26 @@ function alignHorizontal() {
 
   // Function to align patches vertically
 function alignVertical() {
+   const patchesContainer = document.querySelector('.patches-container');
+    const patchesBackContainer = document.querySelector('.patches-containerr');
+    let patchActionCount;
+    if (document.getElementById('Front-Area').style.visibility === 'visible') {
+        const patches = patchesContainer.querySelectorAll('.patch-action');
+
+        // Count the number of .patch-action elements
+        patchActionCount = patches.length;
+        console.log(patchActionCount);
+    } else {
+        const patches = patchesBackContainer.querySelectorAll('.patch-action');
+
+        // Count the number of .patch-action elements
+        patchActionCount = patches.length;
+        console.log(patchActionCount);
+    }
+
+    if (patchActionCount < 2) {
+        return; // Exit the function if less than 2 patches have .patch-action
+    }
     const sortedPatches = sortPatchesByOrder();
     patchesContainer.style.flexDirection = 'column';
 
@@ -3205,6 +3225,26 @@ function alignVertical() {
 
 // Function to align patches diagonally left
 function alignDiagonalLeft() {
+   const patchesContainer = document.querySelector('.patches-container');
+    const patchesBackContainer = document.querySelector('.patches-containerr');
+    let patchActionCount;
+    if (document.getElementById('Front-Area').style.visibility === 'visible') {
+        const patches = patchesContainer.querySelectorAll('.patch-action');
+
+        // Count the number of .patch-action elements
+        patchActionCount = patches.length;
+        console.log(patchActionCount);
+    } else {
+        const patches = patchesBackContainer.querySelectorAll('.patch-action');
+
+        // Count the number of .patch-action elements
+        patchActionCount = patches.length;
+        console.log(patchActionCount);
+    }
+
+    if (patchActionCount < 2) {
+        return; // Exit the function if less than 2 patches have .patch-action
+    }
     const sortedPatches = sortPatchesByOrder();
     patchesContainer.style.flexDirection = 'row';
 
@@ -3231,6 +3271,26 @@ function alignDiagonalLeft() {
 
 // Function to align patches diagonally right
 function alignDiagonalRight() {
+   const patchesContainer = document.querySelector('.patches-container');
+    const patchesBackContainer = document.querySelector('.patches-containerr');
+    let patchActionCount;
+    if (document.getElementById('Front-Area').style.visibility === 'visible') {
+        const patches = patchesContainer.querySelectorAll('.patch-action');
+
+        // Count the number of .patch-action elements
+        patchActionCount = patches.length;
+        console.log(patchActionCount);
+    } else {
+        const patches = patchesBackContainer.querySelectorAll('.patch-action');
+
+        // Count the number of .patch-action elements
+        patchActionCount = patches.length;
+        console.log(patchActionCount);
+    }
+
+    if (patchActionCount < 2) {
+        return; // Exit the function if less than 2 patches have .patch-action
+    }
     const sortedPatches = sortPatchesByOrder();
     console.log('this is  sorted ',sortedPatches)
     patchesContainer.style.flexDirection = 'row-reverse';
