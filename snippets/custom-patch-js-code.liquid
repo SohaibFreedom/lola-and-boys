@@ -2565,6 +2565,11 @@ BackcenterBox.addEventListener('mouseup', function (event) {
        $('#' + patchId).addClass('patch-action');
      var $targetPatch = $('[data-patch-id="' + patchId + '"]');
      $targetPatch.addClass('patch-selected-by-btn')
+          if ($('.edit-btn-patch-selected').hasClass('patch-selected-by-btn')) {
+              $('.tidy-patches-delete-btn-wrraper').show();
+          } else {
+              $('.tidy-patches-delete-btn-wrraper').hide();
+          }
          });
 </script>
 <script>
