@@ -1,21 +1,5 @@
 {% assign variant = product.selected_or_first_available_variant %}
-<script>
-    // Function to be called on hover
-  function onHover() {
-      console.log("Hovered over the div!");
-      // Add any other functionality you want here
-  }
 
-  // Get the div element
-  const divElement = document.getElementById('align-horizontal');
-
-  // Add event listeners for mouseenter and mouseleave
-  divElement.addEventListener('mouseenter', onHover);
-  divElement.addEventListener('mouseleave', function() {
-      console.log("Mouse left the div!");
-      // Add any other functionality you want here
-  });
-</script>
 <script>
   const patchesContainerr = document.querySelector('.patches-container');
   const patchesBackContainerr = document.querySelector('.patches-containerr');
