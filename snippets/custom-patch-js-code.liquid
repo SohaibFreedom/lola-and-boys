@@ -1640,17 +1640,10 @@ function addPatchToCenterBox(patchSrc, patchId, height, width) {
         currentY = containerHeight - parseInt(patchDiv.style.height);
     }
 
-
- if (window.matchMedia("(max-width: 700px)").matches) {
-        // Apply the corrected position
-  patchDiv.style.left = (currentX + 20) + 'px';
-patchDiv.style.top = (currentY + 20) + 'px';
-
-    } else {
     // Apply the corrected position
     patchDiv.style.left = currentX + 'px';
     patchDiv.style.top = currentY + 'px';
-    }
+
     // Make the edit button visible
     var editTidyBtnwrapper = document.querySelector('.edit-tidy-btn-wrapp');
     editTidyBtnwrapper.style.visibility = 'visible';
