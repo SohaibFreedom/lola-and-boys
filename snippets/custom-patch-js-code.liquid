@@ -3071,7 +3071,8 @@ var patchActionElement = actionPatch.find('.patch-action');
               $clickedPatch.removeClass('patch-selected').find('.selected-patch-order').remove();
             console.log('removing patch action and patch selection');
             console.log(patchId);
-            $('.patch-').removeClass('patch-action');
+             var $targetPatch4 = $('[data-patch-id="' + patchId + '"]');
+               $targetPatch4.removeClass('patch-action').removeAttr('order-data');
              $('#' + patchId).removeClass('patch-action').removeAttr('order-data');
                   // Update orders of other selected patches
               var currentOrder = 1;
