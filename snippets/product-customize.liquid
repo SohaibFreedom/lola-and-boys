@@ -1,5 +1,14 @@
 {% assign variant = product.selected_or_first_available_variant %}
 <style>
+       .clear-btn-only-desktop{
+       display: block !important;
+      }
+  .clear-btn-only-mobile{
+            position: absolute;
+        top: 103px;
+        right: 18px;
+       display:none;
+  }
   .only-mobile-eidt-btn{
     display:none;
     background: white !important;
@@ -1025,6 +1034,12 @@
 <!-- media queries -->
 <style>
     @media screen and (max-width: 768px) {
+      .clear-btn-only-mobile{
+        display: block !important;
+      }
+      .clear-btn-only-desktop{
+       display: none !important;
+      }
       .only-mobile-eidt-btn{
         display: block !important;
       }
@@ -1526,7 +1541,7 @@
         </div>
       </div>
     </div>
-    <div class="patches-clear-btn" id="clear-shirt-Btnn">Clear</div>
+    <div class="patches-clear-btn clear-btn-only-mobile" id="clear-shirt-Btnn">Clear</div>
     <div class="patches-customization-btns-wrapper">
       <div class="patches-customizations-btn-wrapper">
         <div
@@ -1540,7 +1555,7 @@
 
       <div class="tidy-clear-btn-wrapp">
         <div class="patches-tidy-editor-btn onlymobile-screen">Tidy</div>
-        <div class="patches-clear-btn" id="clear-shirt-Btnn">Clear</div>
+        <div class="patches-clear-btn clear-btn-only-desktop" id="clear-shirt-Btnn">Clear</div>
         <div class="edit-delete-btn edit-left-btn only-mobile-eidt-btn">Edit</div>
       </div>
     </div>
