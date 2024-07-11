@@ -3083,24 +3083,23 @@ var patchActionElement = actionPatch.find('.patch-action');
         console.log('Removed .patch-action from .patch-open-editor');
     } else {
         console.log('.patch-open-editor does not have .patch-action');
-        $('#' + patchId).removeClass('patch-action').removeAttr('order-data');
+    }
+               $('#' + patchId).removeClass('patch-action').removeAttr('order-data');
                     // Update orders of other selected patches
                 var currentOrder = 1;
 
                   var $targetPatch = $('[data-patch-id="' + patchId + '"]');
                  $targetPatch.removeClass('patch-selected-by-both')
 
-                $('.selected-patch-for-customization-for-front.patch-selected').each(function() {
-                    var $patch = $(this);
-                     var patchId = $patch.data('patch-id');
-                    $patch.find('.selected-patch-order').text(currentOrder);
-                      $('#' + patchId).addClass('patch-action').attr('order-data', currentOrder);
-                    currentOrder++;
-                });
+                // $('.selected-patch-for-customization-for-front.patch-selected').each(function() {
+                //     var $patch = $(this);
+                //      var patchId = $patch.data('patch-id');
+                //     $patch.find('.selected-patch-order').text(currentOrder);
+                //       $('#' + patchId).addClass('patch-action').attr('order-data', currentOrder);
+                //     currentOrder++;
+                // });
 
                 order--; // Decrement the order counter
-    }
-
             }
 
             // Log the target .patch- element to the console
