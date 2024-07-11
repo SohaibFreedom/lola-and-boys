@@ -3067,7 +3067,7 @@ var patchActionElement = actionPatch.find('.patch-action');
 
           } else {
               // If already selected, remove from selection and order
-
+           console.log('removing patch action and patch selection')
               $clickedPatch.removeClass('patch-selected').find('.selected-patch-order').remove();
             $('.patch-').removeClass('patch-action');
              $('#' + patchId).removeClass('patch-action').removeAttr('order-data');
