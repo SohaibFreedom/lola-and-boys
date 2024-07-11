@@ -1,5 +1,15 @@
 {% assign variant = product.selected_or_first_available_variant %}
-
+<script>
+   function tidyEditbtnfuncion() {
+      if (window.matchMedia("(max-width: 769px)").matches) {
+          $('.patches-tidy-editor-btn').css('visibility', 'visible');
+          $('.only-mobile-edit-btn').css('visibility', 'visible');
+      } else {
+          $('.patches-tidy-editor-btn').css('visibility', 'hidden');
+          $('.only-mobile-edit-btn').css('visibility', 'hidden');
+      }
+  }
+</script>
 <script>
     const patchesContainerr = document.querySelector('.patches-container');
     const patchesBackContainerr = document.querySelector('.patches-containerr');
@@ -469,7 +479,7 @@
           $('.variants-selected-sidebar').addClass('variants-continue-btn-invisible');
 
           if (window.matchMedia("(max-width: 769px)").matches) {
-              $('.patches-tidy-editor-btn').css('visibility', 'visible');
+              // $('.patches-tidy-editor-btn').css('visibility', 'visible');
               $('.patches-editor-wrapper').css('display', 'flex');
           } else {
               $('.patches-tidy-editor-btn').css('visibility', 'hidden');
@@ -481,7 +491,7 @@
           $('.only-mobile').css('display', 'none');
       }
         if (window.matchMedia("(max-width: 769px)").matches) {
-              $('.patches-tidy-editor-btn').css('visibility', 'visible');
+              // $('.patches-tidy-editor-btn').css('visibility', 'visible');
           } else {
               $('.patches-tidy-editor-btn').css('visibility', 'hidden');
           }
