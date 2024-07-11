@@ -2733,6 +2733,7 @@ BackcenterBox.addEventListener('mouseup', function (event) {
        
          $('.selected-patch-for-customization').removeClass('patch-selected').find('.selected-patch-order').remove();
          $('.selected-patch-for-customization').removeClass('patch-selected-by-btn');
+         $('.edit-btn-patch-selected').removeClass('patch-selected-by-both');
          $('.patch-').removeClass('patch-action').removeAttr('order-data'); 
              var patchId = $clickedPatch.attr('id'); // Get the id attribute
         console.log("Clicked patch id: " + patchId); // Log the id attribute value
