@@ -3091,13 +3091,13 @@ var patchActionElement = actionPatch.find('.patch-action');
                   var $targetPatch = $('[data-patch-id="' + patchId + '"]');
                  $targetPatch.removeClass('patch-selected-by-both')
 
-                $('.selected-patch-for-customization-for-front.patch-selected').each(function() {
-                    var $patch = $(this);
-                     var patchId = $patch.data('patch-id');
-                    $patch.find('.selected-patch-order').text(currentOrder);
-                      $('#' + patchId).addClass('patch-action').attr('order-data', currentOrder);
-                    currentOrder++;
-                });
+                // $('.selected-patch-for-customization-for-front.patch-selected').each(function() {
+                //     var $patch = $(this);
+                //      var patchId = $patch.data('patch-id');
+                //     $patch.find('.selected-patch-order').text(currentOrder);
+                //       $('#' + patchId).addClass('patch-action').attr('order-data', currentOrder);
+                //     currentOrder++;
+                // });
 
                 order--; // Decrement the order counter
             }
