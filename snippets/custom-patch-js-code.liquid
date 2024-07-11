@@ -3062,7 +3062,9 @@ var patchActionElement = actionPatch.find('.patch-action');
                 var $targetPatch = $('[data-patch-id="' + patchId + '"]');
                  $targetPatch.addClass('patch-selected-by-both')
                  $targetPatch.removeClass('patch-transparent-border')
+                 $('#' + patchId).removeClass('patch-transparent-border');
                 $('#' + patchId).addClass('patch-action').attr('order-data', order);
+
                 order++;
               }
 
