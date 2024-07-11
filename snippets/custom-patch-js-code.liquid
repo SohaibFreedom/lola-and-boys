@@ -3074,16 +3074,16 @@ var patchActionElement = actionPatch.find('.patch-action');
                 $clickedPatch.removeClass('patch-selected').find('.selected-patch-order').remove();
               console.log('removing patch action and patch selection');
               console.log(patchId);
-  var $patchOpenEditor = $('.patch-open-editor');
+  // var $patchOpenEditor = $('.patch-open-editor');
 
-    // Check if the element has the class .patch-action
-    if ($patchOpenEditor.hasClass('patch-action')) {
-        // Remove the class .patch-action
-        $patchOpenEditor.removeClass('patch-action');
-        console.log('Removed .patch-action from .patch-open-editor');
-    } else {
-        console.log('.patch-open-editor does not have .patch-action');
-    }
+  //   // Check if the element has the class .patch-action
+  //   if ($patchOpenEditor.hasClass('patch-action')) {
+  //       // Remove the class .patch-action
+  //       $patchOpenEditor.removeClass('patch-action');
+  //       console.log('Removed .patch-action from .patch-open-editor');
+  //   } else {
+  //       console.log('.patch-open-editor does not have .patch-action');
+  //   }
 
 
                $('#' + patchId).removeClass('patch-action').removeAttr('order-data');
