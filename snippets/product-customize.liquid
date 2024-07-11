@@ -1,5 +1,15 @@
 {% assign variant = product.selected_or_first_available_variant %}
 <style>
+  .only-mobile-eidt-btn{
+    display:none;
+    background: white !important;
+    box-shadow: 0px 2px 4px rgb(0 0 0 / 5%) !important;
+    font-size: 14px !important;
+    padding: 0 27px !important;
+    border-radius: 26px !important;
+    cursor: pointer !important;
+    border: 1px solid #9900ef00 !important;
+  }
   .slidecontainerrRange{
     width:60%;
   }
@@ -1015,6 +1025,9 @@
 <!-- media queries -->
 <style>
     @media screen and (max-width: 768px) {
+      .only-mobile-eidt-btn{
+        display: none !important;
+      }
       .alignment-actions{
             width: 60% !important;
       }
@@ -1528,7 +1541,7 @@
       <div class="tidy-clear-btn-wrapp">
         <div class="patches-tidy-editor-btn onlymobile-screen">Tidy</div>
 
-        <div class="edit-delete-btn edit-left-btn ">Edit</div>
+        <div class="edit-delete-btn edit-left-btn only-mobile-eidt-btn">Edit</div>
       </div>
     </div>
   </div>
