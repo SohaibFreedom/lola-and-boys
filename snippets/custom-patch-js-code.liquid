@@ -28,6 +28,28 @@
   }
 </script>
 <script>
+  function changefillColors(){
+    console.log('changefillColors');
+      let patchActionCount;
+
+        if (document.getElementById('Front-Area').style.visibility === 'visible') {
+            const patches = patchesContainerr.querySelectorAll('.patch-action');
+            patchActionCount = patches.length;
+            console.log(patchActionCount);
+        } else {
+            const patches = patchesBackContainerr.querySelectorAll('.patch-action');
+            patchActionCount = patches.length;
+            console.log(patchActionCount);
+        }
+
+        if (patchActionCount < 2) {
+            const path = document.querySelector('.custom_fill_path');
+            path.classList.remove('custom_fill');
+        }
+
+  }
+</script>
+<script>
     const patchesContainerr = document.querySelector('.patches-container');
     const patchesBackContainerr = document.querySelector('.patches-containerr');
     const alignHorizontall = document.getElementById('align-horizontal');
@@ -38,7 +60,7 @@
     const gap15 = document.getElementById('gap15');
     const gap20 = document.getElementById('gap20');
     const gap25 = document.getElementById('gap25');
-    const path = document.querySelector('.custom_fill_path');
+
 
 
     function checkPatches() {
@@ -72,9 +94,7 @@
              gap15.classList.remove('not-allowed');
              gap20.classList.remove('not-allowed');
              gap25.classList.remove('not-allowed');
-          console.log('this is path',path);
-          console.log('this is path');
-             path.classList.remove('custom_fill');
+
         }
     }
 
