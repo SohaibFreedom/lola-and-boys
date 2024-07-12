@@ -40,6 +40,7 @@
     const gap25 = document.getElementById('gap25');
     const path = document.querySelector('.custom_fill_path');
 
+
     function checkPatches() {
         let patchActionCount;
 
@@ -71,6 +72,8 @@
              gap15.classList.remove('not-allowed');
              gap20.classList.remove('not-allowed');
              gap25.classList.remove('not-allowed');
+          console.log('this is path',path);
+          console.log('this is path');
              path.classList.remove('custom_fill');
         }
     }
