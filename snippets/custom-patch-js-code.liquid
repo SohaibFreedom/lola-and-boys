@@ -3110,7 +3110,9 @@ var patchActionElement = actionPatch.find('.patch-action');
 <script>
     $(document).ready(function() {
       $('.edit-left-btn').on('click', function() {
-          if ($(this).hasClass('patches-customization-tidy-delete-btn-active')) {
+          const $clickedDiv = $(this);
+
+          if ($clickedDiv.hasClass('patches-customization-tidy-delete-btn-active')) {
               console.log('yes');
           }
 
@@ -3122,6 +3124,10 @@ var patchActionElement = actionPatch.find('.patch-action');
 
           console.log('edit-btn-patch-selected');
           $('.delete-patches-wrapper-sidebar > .tidy-patches-wrraper > .select-patches > .selected-patch-for-customization').addClass('edit-btn-patch-selected');
+
+          if ($('.delete-patches-wrapper-sidebar').css('display') === 'block') {
+              $clickedDiv.removeClass('patches-customization-tidy-delete-btn-active');
+          }
       });
   });
 </script>
