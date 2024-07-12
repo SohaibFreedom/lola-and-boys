@@ -1,6 +1,9 @@
 {% assign variant = product.selected_or_first_available_variant %}
 
 <style>
+  .custom_svg_color{
+     fill: darkgrey !important
+  }
   .custom_fill{
     fill: darkgrey !important
   }
@@ -1865,6 +1868,7 @@
                   <div class="alignment-actions">
                     <div onclick="movePatch('top')" class="tidy-patches-adjustment-btns" id="move-top">
                       <svg
+                        class="change_svg_color custom_svg_color"
                         width="8"
                         height="14"
                         viewBox="0 0 8 14"
