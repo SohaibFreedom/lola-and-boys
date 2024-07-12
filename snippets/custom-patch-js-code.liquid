@@ -385,7 +385,8 @@
             $('.select-patches-for-front').append(selectedPatchDiv);
         }
     });
-    } else if (document.getElementById('Back-area').style.visibility === 'visible') {
+    } 
+      else if (document.getElementById('Back-area').style.visibility === 'visible') {
         $('.front-tdiy-patches-btn').removeClass('tdiy-patches-btn-active')
         $('.back-tdiy-patches-btn').addClass('tdiy-patches-btn-active')
         $('.select-patches-for-front').removeClass('select-patches-active')
@@ -3105,17 +3106,97 @@ var patchActionElement = actionPatch.find('.patch-action');
 </script>
 <script>
   $(document).ready(function() {
-      $('.edit-left-btn').on('click', function() {
-             if ($('.edit-btn-patch-selected').hasClass('patch-selected-by-both')) {
-              $('.delete-patches-wrapper-sidebar > .tidy-patches-delete-btn-wrraper').show();
-          } else {
-              $('.delete-patches-wrapper-sidebar > .tidy-patches-delete-btn-wrraper').hide();
-          }
+    $('.edit-left-btn').on('click', function() {
+        if ($(this).hasClass('patches-customization-tidy-delete-btn-active')) {
+      $('.patches-customization-editor').addClass('patches-customization-editor-active');
+    $('.patches-customization-editor').css('display', 'block');
+    $('.patches-editor-wrapper').css('display', 'none');
+    $('.only-mobile-colors-wrapper').css('display', 'none');
+     $('.delete-patches-wrapper-sidebar').css('display', 'none');
+    
+    if (window.matchMedia("(max-width: 768px)").matches){
+       $('.only-mobile-tdy-header').css('display', 'block');
+    }else{
+       $('.only-mobile-tdy-header').css('display', 'none');  
+}
 
-      console.log('edit-btn-patch-selected');
-          $('.delete-patches-wrapper-sidebar > .tidy-patches-wrraper > .select-patches  > .selected-patch-for-customization').addClass('edit-btn-patch-selected');
-      });
-  });
+      if (document.getElementById('Front-Area').style.visibility === 'visible') {
+          $('.back-tdiy-patches-btn').removeClass('tdiy-patches-btn-active')
+        $('.front-tdiy-patches-btn').addClass('tdiy-patches-btn-active')
+        $('.select-patches-for-back').removeClass('select-patches-active')
+        $('.select-patches-for-front').addClass('select-patches-active')
+          $('.patches-container .patch-').each(function() {
+        var patchId = $(this).attr('id');
+        
+        // Check if the patch with the same ID already exists in .select-patches
+        if (!$('.select-patches-for-front').find('[data-patch-id="' + patchId + '"]').length) {
+            // Get image source
+            var imageSrc = $(this).find('.patch-image').attr('src');
+
+            // Create a new div with class .selected-patch-for-customization
+            var selectedPatchDiv = $(`<div class="selected-patch-for-customization selected-patch-for-customization-for-front" id="${patchId}"></div>`);
+
+            // Create an img element with the same src as the original image
+            var imageElement = $('<img>').attr('src', imageSrc);
+
+            // Append the image to the new div
+            selectedPatchDiv.append(imageElement);
+
+            // Append the patchId as a data attribute
+            selectedPatchDiv.attr('data-patch-id', patchId);
+
+            // Append the new div to .select-patches
+            $('.select-patches-for-front').append(selectedPatchDiv);
+        }
+    });
+    } 
+      else if (document.getElementById('Back-area').style.visibility === 'visible') {
+        $('.front-tdiy-patches-btn').removeClass('tdiy-patches-btn-active')
+        $('.back-tdiy-patches-btn').addClass('tdiy-patches-btn-active')
+        $('.select-patches-for-front').removeClass('select-patches-active')
+        $('.select-patches-for-back').addClass('select-patches-active')
+        $('.patches-containerr .patch-').each(function() {
+        var patchId = $(this).attr('id');
+        
+        // Check if the patch with the same ID already exists in .select-patches
+        if (!$('.select-patches-for-back').find('[data-patch-id="' + patchId + '"]').length) {
+            // Get image source
+            var imageSrc = $(this).find('.patch-image').attr('src');
+
+            // Create a new div with class .selected-patch-for-customization
+            var selectedPatchDiv = $(`<div class="selected-patch-for-customization selected-patch-for-customization-for-back" id="${patchId}"></div>`);
+
+            // Create an img element with the same src as the original image
+            var imageElement = $('<img>').attr('src', imageSrc);
+
+            // Append the image to the new div
+            selectedPatchDiv.append(imageElement);
+
+            // Append the patchId as a data attribute
+            selectedPatchDiv.attr('data-patch-id', patchId);
+
+            // Append the new div to .select-patches
+            $('.select-patches-for-back').append(selectedPatchDiv);
+        }
+    });
+     
+     }
+
+    setTimeout(function() {
+        $('.patches-customization-editor').css('right', '0');
+    }, 100);
+        }
+
+        if ($('.edit-btn-patch-selected').hasClass('patch-selected-by-both')) {
+            $('.delete-patches-wrapper-sidebar > .tidy-patches-delete-btn-wrraper').show();
+        } else {
+            $('.delete-patches-wrapper-sidebar > .tidy-patches-delete-btn-wrraper').hide();
+        }
+
+        console.log('edit-btn-patch-selected');
+        $('.delete-patches-wrapper-sidebar > .tidy-patches-wrraper > .select-patches > .selected-patch-for-customization').addClass('edit-btn-patch-selected');
+    });
+});
 </script>
 <script>
     $(document).ready(function() {
