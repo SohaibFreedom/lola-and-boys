@@ -43,19 +43,23 @@
           console.log('Back-Area patches count:', patchActionCount);
       }
 
+      const path = document.querySelector('.custom_fill_path');
+      console.log('This is path:', path);
+
       if (patchActionCount < 2) {
-          console.log('This is under for change the color of path');
-          const path = document.querySelector('.custom_fill_path');
-          console.log('This is path:', path);
+          console.log('Removing custom_fill class');
           if (path) {
               path.classList.remove('custom_fill');
           } else {
               console.log('Path element not found.');
           }
       } else {
-        console.log('(patchActionCount is less than 2')
-          const path = document.querySelector('.custom_fill_path');
-          path.classList.add('custom_fill');
+          console.log('Adding custom_fill class');
+          if (path) {
+              path.classList.add('custom_fill');
+          } else {
+              console.log('Path element not found.');
+          }
       }
   }
 </script>
