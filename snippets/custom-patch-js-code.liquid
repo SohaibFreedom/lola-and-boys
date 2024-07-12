@@ -3128,10 +3128,12 @@ var patchActionElement = actionPatch.find('.patch-action');
           if ($('.delete-patches-wrapper-sidebar').css('display') === 'block') {
               $clickedDiv.removeClass('patches-customization-tidy-delete-btn-active');
              $('.patches-customization-editor').addClass('patches-customization-editor-active');
-    $('.patches-customization-editor').css('display', 'block');
+         $('.delete-patches-wrapper-sidebar').css('display', 'none');
+        
     $('.patches-editor-wrapper').css('display', 'none');
     $('.only-mobile-colors-wrapper').css('display', 'none');
-     $('.delete-patches-wrapper-sidebar').css('display', 'none');
+                $('.patches-customization-editor').css('display', 'block');
+
     
 //     if (window.matchMedia("(max-width: 768px)").matches){
 //        $('.only-mobile-tdy-header').css('display', 'block');
