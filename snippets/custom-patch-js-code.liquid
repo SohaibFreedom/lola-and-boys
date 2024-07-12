@@ -2956,6 +2956,7 @@ var patchActionElement = actionPatch.find('.patch-action');
     }, 100);
         }
     ismainDragging = false; // Reset the flag
+   changefillColors();
 });
 $(document).on('click', '.patches-tidy-editor-btn', function(event) {
    if (document.getElementById('Front-Area').style.visibility === 'visible') {
