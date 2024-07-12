@@ -28,29 +28,34 @@
   }
 </script>
 <script>
-  function changefillColors(){
+  function changefillColors() {
     console.log('changefillColors');
-      let patchActionCount;
 
-        if (document.getElementById('Front-Area').style.visibility === 'visible') {
-            const patches = patchesContainerr.querySelectorAll('.patch-action');
-            patchActionCount = patches.length;
-            console.log(patchActionCount);
-        } else {
-            const patches = patchesBackContainerr.querySelectorAll('.patch-action');
-            patchActionCount = patches.length;
-            console.log(patchActionCount);
-        }
+    let patchActionCount;
 
-        if (patchActionCount < 2) {
-          console.log('this is under for change the color of path');
-            const path = document.querySelector('.custom_fill_path');
-          console.log('this is path',path)
-            path.classList.remove('custom_fill');
-        }
+    if (document.getElementById('Front-Area').style.visibility === 'visible') {
+      const patches = document.querySelectorAll('#patchesContainerr .patch-action');
+      patchActionCount = patches.length;
+      console.log('Front-Area patches count:', patchActionCount);
+    } else {
+      const patches = document.querySelectorAll('#patchesBackContainerr .patch-action');
+      patchActionCount = patches.length;
+      console.log('Back-Area patches count:', patchActionCount);
+    }
 
+    if (patchActionCount < 2) {
+      console.log('This is under for change the color of path');
+      const path = document.querySelector('.custom_fill_path');
+      console.log('This is path:', path);
+      if (path) {
+        path.classList.remove('custom_fill');
+      } else {
+        console.log('Path element not found.');
+      }
+    }
   }
 </script>
+
 <script>
     const patchesContainerr = document.querySelector('.patches-container');
     const patchesBackContainerr = document.querySelector('.patches-containerr');
