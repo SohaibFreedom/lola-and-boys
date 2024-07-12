@@ -28,36 +28,35 @@
   }
 </script>
 <script>
-    function changefillColors() {
+  function changefillColors() {
       console.log('changefillColors');
 
       let patchActionCount;
 
       if (document.getElementById('Front-Area').style.visibility === 'visible') {
-        const patches = document.querySelectorAll('#patchesContainerr .patch-action');
-        patchActionCount = patches.length;
-        console.log('Front-Area patches count:', patchActionCount);
+          const patches = document.querySelectorAll('#patchesContainerr .patch-action');
+          patchActionCount = patches.length;
+          console.log('Front-Area patches count:', patchActionCount);
       } else {
-        const patches = document.querySelectorAll('#patchesBackContainerr .patch-action');
-        patchActionCount = patches.length;
-        console.log('Back-Area patches count:', patchActionCount);
+          const patches = document.querySelectorAll('#patchesBackContainerr .patch-action');
+          patchActionCount = patches.length;
+          console.log('Back-Area patches count:', patchActionCount);
       }
 
       if (patchActionCount < 2) {
-        console.log('This is under for change the color of path');
-        const path = document.querySelector('.custom_fill_path');
-        console.log('This is path:', path);
-        if (path) {
-          path.classList.remove('custom_fill');
-        } else {
-          console.log('Path element not found.');
-        }
-        else{
-        const path = document.querySelector('.custom_fill_path');
-        path.classList.add('custom_fill');
-  }
+          console.log('This is under for change the color of path');
+          const path = document.querySelector('.custom_fill_path');
+          console.log('This is path:', path);
+          if (path) {
+              path.classList.remove('custom_fill');
+          } else {
+              console.log('Path element not found.');
+          }
+      } else {
+          const path = document.querySelector('.custom_fill_path');
+          path.classList.add('custom_fill');
       }
-    }
+  }
 </script>
 
 <script>
