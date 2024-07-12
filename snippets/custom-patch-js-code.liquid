@@ -1,5 +1,12 @@
 {% assign variant = product.selected_or_first_available_variant %}
 <script>
+  $(document).ready(function() {
+      $('#small_variant').click(function() {
+          $('.small_variant').text('small');
+      });
+  });
+</script>
+<script>
    function tidyEditbtnfuncion() {
       if (window.matchMedia("(max-width: 769px)").matches) {
           $('.patches-tidy-editor-btn').css('visibility', 'visible');
