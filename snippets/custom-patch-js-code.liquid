@@ -32,31 +32,35 @@
       console.log('changefillColors');
 
       let patchActionCount;
+      const patchesContainerr = document.querySelector('.patches-container');
+      const patchesBackContainerr = document.querySelector('.patches-containerr');
 
-      if (document.getElementById('Front-Area').style.visibility === 'visible') {
-          const patches = document.querySelectorAll('#patchesContainerr .patch-action');
-          patchActionCount = patches.length;
-          console.log('Front-Area patches count:', patchActionCount);
-      } else {
-          const patches = document.querySelectorAll('#patchesBackContainerr .patch-action');
-          patchActionCount = patches.length;
-          console.log('Back-Area patches count:', patchActionCount);
-      }
 
+             if (document.getElementById('Front-Area').style.visibility === 'visible') {
+            const patches = patchesContainerr.querySelectorAll('.patch-action');
+            patchActionCount = patches.length;
+            console.log(patchActionCount);
+        } else {
+            const patches = patchesBackContainerr.querySelectorAll('.patch-action');
+            patchActionCount = patches.length;
+            console.log(patchActionCount);
+        }
       const path = document.querySelector('.custom_fill_path');
       console.log('This is path:', path);
       console.log('patchActionCount',patchActionCount)
       if (patchActionCount < 2) {
-          console.log('Removing custom_fill class');
+        console.log('Adding custom_fill class');
           if (path) {
-              path.classList.remove('custom_fill');
+              path.classList.add('custom_fill');
           } else {
               console.log('Path element not found.');
           }
       } else {
-          console.log('Adding custom_fill class');
+
+
+          console.log('Removing custom_fill class');
           if (path) {
-              path.classList.add('custom_fill');
+              path.classList.remove('custom_fill');
           } else {
               console.log('Path element not found.');
           }
