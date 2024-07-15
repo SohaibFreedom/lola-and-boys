@@ -68,11 +68,11 @@
           if (patchActionCount < 1) {
               console.log('Adding custom_fill class');
               position.classList.add('custom_svg_color');
-
+              $('#mySlider').remove('range-sliderr');
           } else {
               console.log('Removing custom_fill class');
               position.classList.remove('custom_svg_color');
-              $('#mySlider').addClass('range-sliderr');
+
           }
       });
 
