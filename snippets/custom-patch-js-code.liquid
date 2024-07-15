@@ -612,54 +612,119 @@
 -->
 
 <script>
-    // Wait for the DOM to be fully loaded
-  // Wait for the DOM to be fully loaded
   $(document).ready(function() {
-      // Select the button using its class
-      var customizeButton = $('.customize-button');
-      var cartButton = $('.customize-cart-button');
-      var neverMindBtn = $('.all-sidebar-cross-neverMind-button');
-      var clearneverMindBtn = $('.patches-customizations-nevr-btn');
-      var bannerLow = document.querySelector('.yotpo-banner-low');
+    // Select the button using its class
+    var customizeButton = $('.customize-button');
+    var cartButton = $('.customize-cart-button');
+    var neverMindBtn = $('.all-sidebar-cross-neverMind-button');
+    var clearneverMindBtn = $('.patches-customizations-nevr-btn');
 
+    // Flag to indicate whether customization mode is active
+    var isCustomizationActive = false;
 
-      // Add a click event listener to the button
-      customizeButton.click(function() {
-         var bannerLow = document.querySelector('.yotpo-banner-low');
-         console.log('clicked')
+    // Callback function to execute when mutations are observed
+    var callback = function(mutationsList, observer) {
+        for (var mutation of mutationsList) {
+            if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                mutation.addedNodes.forEach(function(node) {
+                    if (node.classList && node.classList.contains('yotpo-banner-low')) {
+                        if (isCustomizationActive) {
+                            // Hide the element if customization is active
+                            node.style.display = 'none';
+                            console.log('.yotpo-banner-low is now hidden.');
+                        }
+                    }
+                });
+            } else if (mutation.type === 'attributes' && mutation.target.classList.contains('yotpo-banner-low')) {
+                if (isCustomizationActive) {
+                    // Hide the element if customization is active
+                    mutation.target.style.display = 'none';
+                    console.log('.yotpo-banner-low is now hidden (attribute change).');
+                }
+            }
+        }
+    };
 
-          // Select all elements with the clearfix class and hide them
-          $('.hide-for-customization').hide();
-           $('#shopify-block-yotpo_product_reviews_ugc_reviews_MbrNNx').hide();
-          $('.footer').hide();
-           // bannerLow.classList.add('hidedisplay');
-          $('.annoucment-bar-top').hide();
-          $('#header').hide();
-          $('#some-id').hide();
-          // $('.yotpo-banner-low').hide();
+    // Create an observer instance linked to the callback function
+    var observer = new MutationObserver(callback);
 
-          // Show the product customization div
-          $('.product-customization').show();
+    // Configuration of the observer:
+    // We want to observe additions of nodes (childList) and attribute changes
+    var config = { attributes: true, childList: true, subtree: true };
 
-          // Add classes to make other elements visible
-          $('.announce-bar-slide-wrapper, .header-background--solid, .content').hide();
-          $('.customize-cart-button').hide();
+    // Start observing the document's body for configured mutations
+    observer.observe(document.body, config);
 
-          // Add a class to cartButton to make it visible
-          cartButton.addClass('customize-cart-button-visible');
-      });
+    // Add a click event listener to the button
+    customizeButton.click(function() {
+        isCustomizationActive = true;
+        console.log('customize button clicked');
 
-      // Add click event listener to the neverMindBtn button
-      neverMindBtn.click(function() {
-      $('.all-sidebar-cross-alert').removeClass('all-sidebar-cross-alert-visble');
-      $('.patches-customization-container-overly').css('display', 'none');
-      });
-      // clearneverMindBtn.click(function() {
-      //     // Reload the page
-      //     location.reload();
-      // });
+        // Hide the bannerLow if it already exists
+        var bannerLow = document.querySelector('.yotpo-banner-low');
+        if (bannerLow) {
+            bannerLow.style.display = 'none';
+        }
+
+        // Select all elements with the hide-for-customization class and hide them
+        $('.hide-for-customization').hide();
+
+        $('.footer').hide();
+        $('.annoucment-bar-top').hide();
+        $('#header').hide();
+        $('#some-id').hide();
+        // $('.yotpo-banner-low').hide();
+
+        // Show the product customization div
+        $('.product-customization').show();
+
+        // Add classes to make other elements visible
+        $('.announce-bar-slide-wrapper, .header-background--solid, .content').hide();
+        $('.customize-cart-button').hide();
+
+        // Add a class to cartButton to make it visible
+        cartButton.addClass('customize-cart-button-visible');
+    });
+
+    // Add click event listener to the neverMindBtn button
+    neverMindBtn.click(function() {
+        isCustomizationActive = false;
+        console.log('never mind button clicked');
+
+        // Show the bannerLow if it exists
+        var bannerLow = document.querySelector('.yotpo-banner-low');
+        if (bannerLow) {
+            bannerLow.style.display = '';
+        }
+
+        // Show all elements that were hidden for customization
+        $('.hide-for-customization').show();
+
+        $('.footer').show();
+        $('.annoucment-bar-top').show();
+        $('#header').show();
+        $('#some-id').show();
+        // $('.yotpo-banner-low').show();
+
+        // Hide the product customization div
+        $('.product-customization').hide();
+
+        // Show the original elements
+        $('.announce-bar-slide-wrapper, .header-background--solid, .content').show();
+        $('.customize-cart-button').show();
+
+        // Remove the class from cartButton
+        cartButton.removeClass('customize-cart-button-visible');
+    });
+
+    // Clear neverMindBtn click event listener
+    // clearneverMindBtn.click(function() {
+    //     // Reload the page
+    //     location.reload();
+    // });
   });
 </script>
+
 <script>
   $('.variants-continue-btn').click(function() {
      $('.patches-tidy-editor-btn').css('display', 'block');
