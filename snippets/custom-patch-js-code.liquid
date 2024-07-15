@@ -612,85 +612,86 @@
 -->
 
 <script>
-      // Wait for the DOM to be fully loaded
-    // Wait for the DOM to be fully loaded
-    $(document).ready(function() {
-        // Select the button using its class
-        var customizeButton = $('.customize-button');
-        var cartButton = $('.customize-cart-button');
-        var neverMindBtn = $('.all-sidebar-cross-neverMind-button');
-        var clearneverMindBtn = $('.patches-customizations-nevr-btn');
+  $(document).ready(function() {
+    // Select the button using its class
+    var customizeButton = $('.customize-button');
+    var cartButton = $('.customize-cart-button');
+    var neverMindBtn = $('.all-sidebar-cross-neverMind-button');
+    var clearneverMindBtn = $('.patches-customizations-nevr-btn');
+
+    // Callback function to execute when mutations are observed
+    var callback = function(mutationsList, observer) {
+        for(var mutation of mutationsList) {
+            if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                mutation.addedNodes.forEach(function(node) {
+                    if (node.classList && node.classList.contains('yotpo-banner-low')) {
+                        // Hide the element
+                        node.style.display = 'none';
+                        console.log('.yotpo-banner-low is now hidden.');
+                    }
+                });
+            } else if (mutation.type === 'attributes' && mutation.target.classList.contains('yotpo-banner-low')) {
+                // Hide the element if attributes change
+                mutation.target.style.display = 'none';
+                console.log('.yotpo-banner-low is now hidden (attribute change).');
+            }
+        }
+    };
+
+    // Create an observer instance linked to the callback function
+    var observer = new MutationObserver(callback);
+
+    // Configuration of the observer:
+    // We want to observe additions of nodes (childList) and attribute changes
+    var config = { attributes: true, childList: true, subtree: true };
+
+    // Start observing the document's body for configured mutations
+    observer.observe(document.body, config);
+
+    // Add a click event listener to the button
+    customizeButton.click(function() {
+        console.log('clicked');
+
+        // Select the yotpo-banner-low element if it already exists and hide it
         var bannerLow = document.querySelector('.yotpo-banner-low');
+        if (bannerLow) {
+            bannerLow.style.display = 'none';
+        }
 
+        // Select all elements with the hide-for-customization class and hide them
+        $('.hide-for-customization').hide();
 
-        // Add a click event listener to the button
-        customizeButton.click(function() {
-           var bannerLow = document.querySelector('.yotpo-banner-low');
-           console.log('clicked')
+        $('.footer').hide();
+        $('.annoucment-bar-top').hide();
+        $('#header').hide();
+        $('#some-id').hide();
+        // $('.yotpo-banner-low').hide();
 
-            // Select all elements with the clearfix class and hide them
-            $('.hide-for-customization').hide();
-           // Select the target node that you want to observe
-  var targetNode = document.querySelector('.yotpo-banner-low');
+        // Show the product customization div
+        $('.product-customization').show();
 
-  // Callback function to execute when mutations are observed
-  var callback = function(mutationsList, observer) {
-      for(var mutation of mutationsList) {
-          if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-              // Check if .yotpo-banner-low is added as a child node
-              var addedNode = mutation.addedNodes[0];
-              if (addedNode.classList && addedNode.classList.contains('yotpo-banner-low')) {
-                  // Hide the element
-                  addedNode.style.display = 'none';
-                  console.log('.yotpo-banner-low is now hidden.');
-              }
-          }
-      }
-  };
+        // Add classes to make other elements visible
+        $('.announce-bar-slide-wrapper, .header-background--solid, .content').hide();
+        $('.customize-cart-button').hide();
 
-  // Create an observer instance linked to the callback function
-  var observer = new MutationObserver(callback);
+        // Add a class to cartButton to make it visible
+        cartButton.addClass('customize-cart-button-visible');
+    });
 
-  // Configuration of the observer:
-  // We want to observe additions of nodes (childList) to the target node and its subtree
-  var config = { childList: true, subtree: true };
-
-  // Start observing the target node for configured mutations
-  if (targetNode) {
-      observer.observe(targetNode.parentElement, config);
-  } else {
-      console.log('Element with .yotpo-banner-low class not found.');
-  }
-
-            $('.footer').hide();
-             // bannerLow.classList.add('hidedisplay');
-            $('.annoucment-bar-top').hide();
-            $('#header').hide();
-            $('#some-id').hide();
-            // $('.yotpo-banner-low').hide();
-
-            // Show the product customization div
-            $('.product-customization').show();
-
-            // Add classes to make other elements visible
-            $('.announce-bar-slide-wrapper, .header-background--solid, .content').hide();
-            $('.customize-cart-button').hide();
-
-            // Add a class to cartButton to make it visible
-            cartButton.addClass('customize-cart-button-visible');
-        });
-
-        // Add click event listener to the neverMindBtn button
-        neverMindBtn.click(function() {
+    // Add click event listener to the neverMindBtn button
+    neverMindBtn.click(function() {
         $('.all-sidebar-cross-alert').removeClass('all-sidebar-cross-alert-visble');
         $('.patches-customization-container-overly').css('display', 'none');
-        });
-        // clearneverMindBtn.click(function() {
-        //     // Reload the page
-        //     location.reload();
-        // });
     });
+
+    // Clear neverMindBtn click event listener
+    // clearneverMindBtn.click(function() {
+    //     // Reload the page
+    //     location.reload();
+    // });
+  });
 </script>
+
 <script>
   $('.variants-continue-btn').click(function() {
      $('.patches-tidy-editor-btn').css('display', 'block');
