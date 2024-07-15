@@ -601,6 +601,8 @@
       var cartButton = $('.customize-cart-button');
       var neverMindBtn = $('.all-sidebar-cross-neverMind-button');
       var clearneverMindBtn = $('.patches-customizations-nevr-btn');
+      var bannerLow = document.querySelector('.yotpo-banner-low');
+      console.log('bannerLow',bannerLow);
 
       // Add a click event listener to the button
       customizeButton.click(function() {
@@ -609,7 +611,7 @@
           $('.hide-for-customization').hide();
           $('#shopify-block-yotpo_product_reviews_ugc_reviews_MbrNNx').hide();
           $('.footer').hide();
-          $('.yotpo-banner-low').hide();
+          bannerLow.classList.add('HIDEdISAPLY');
           $('.annoucment-bar-top').hide();
           $('#header').hide();
           $('#some-id').hide();
