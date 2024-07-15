@@ -424,6 +424,11 @@
 
 <script>
    $(document).on('click', '.tidy-right-btn', function(event) {
+      $('.edit-left-btn').removeClass('patches-customization-tidy-delete-btn-active');
+
+      // Add the class to the clicked element
+      $(this).addClass('patches-customization-tidy-delete-btn-active');
+
     console.log('.tidy-right-btn');
     $('.patches-customization-editor').addClass('patches-customization-editor-active');
     $('.patches-customization-editor').css('display', 'block');
