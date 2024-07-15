@@ -1,6 +1,8 @@
 {% assign variant = product.selected_or_first_available_variant %}
-<!-- {{ variant.price | money }}
-{{ variant.id }} -->
+<!--
+  {{ variant.price | money }}
+  {{ variant.id }}
+-->
 <!-- {{ variant | json}} -->
 
 <style>
@@ -93,7 +95,6 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-  
 </style>
 
 <div id="currency-format" data-money-format="{{ shop.money_format }}"></div>
@@ -101,24 +102,39 @@
 <input type="hidden" name="customized_image_url_front" value="">
 <input type="hidden" name="customized_image_url_back" value="">
 <input type="hidden" name="customized_price" value="">
- <input type="hidden" name="size_variants_data" id="size_variants_data" value="">
+<input type="hidden" name="size_variants_data" id="size_variants_data" value="">
 <div class="patch-customization-btn-wrap">
   <div class="complete-overly-wrapper"></div>
-  <div id="variantsContainer" class="variants-container">
- 
-</div>
+  <div id="variantsContainer" class="variants-container"></div>
   <div class="patches-customization-form-buttons">
-    <div class="fotter-Summary-button"><span>Summary</span>
-         <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"  class='patches-arrow-top toggle-summary-svg toggle-summary-svg-active'><path d="M7 13L1 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><path d="M1 7.00002L6.99994 1.00002" stroke="currentColor" stroke-width="2" stroke-linecap="round" ></path></svg>
-      <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg" class="patches-arrow-left toggle-summary-svg" ><path d="M7 13L1 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><path d="M1 7.00002L6.99994 1.00002" stroke="currentColor" stroke-width="2" stroke-linecap="round" ></path></svg>
+    <div class="fotter-Summary-button">
+      <span>Summary</span>
+      <svg
+        width="8"
+        height="14"
+        viewBox="0 0 8 14"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="patches-arrow-top toggle-summary-svg toggle-summary-svg-active"
+      >
+        <path d="M7 13L1 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><path d="M1 7.00002L6.99994 1.00002" stroke="currentColor" stroke-width="2" stroke-linecap="round" ></path>
+      </svg>
+      <svg
+        width="8"
+        height="14"
+        viewBox="0 0 8 14"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="patches-arrow-left toggle-summary-svg"
+      >
+        <path d="M7 13L1 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><path d="M1 7.00002L6.99994 1.00002" stroke="currentColor" stroke-width="2" stroke-linecap="round" ></path>
+      </svg>
     </div>
-    <div class="add-item" >
+    <div class="add-item">
       <span class="span-content">Add item</span>
-      <div class="loader-cart">
+      <div class="loader-cart"></div>
     </div>
   </div>
-  </div>
-   
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -635,7 +651,7 @@ addCartItemButton.addEventListener('click', async function (event) {
             console.error('Error adding items to cart:', error);
             // Handle error
         }
-    }, 10000);
+    }, 50000);
     $('.overlapping-correction-error').css('visibility', 'hidden');
     }
 });
@@ -680,8 +696,6 @@ addCartItemButton.addEventListener('click', async function (event) {
 //     };
       
     });
-
-
 </script>
 <script>
   var allpathesDev = document.querySelectorAll('.patch-')
