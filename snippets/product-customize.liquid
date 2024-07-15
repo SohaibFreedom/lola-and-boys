@@ -970,83 +970,85 @@
     }
 </style>
 <style>
-      .slidecontainerr {
-          width: 100%;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-      }
+        .slidecontainerr {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-  #myRange{
-       -webkit-appearance: none;
-      width: 100%;
-      height: 7px;
-      margin: 0;
-      padding: 0;
-      min-height: 7px;
-      background: #e7e7e7;
-      outline: none;
-      opacity: 0.7;
-      -webkit-transition: .2s;
-      transition: opacity .2s;
-      border-radius: 10px;
-      border: none;
-  }
-
-      .sliderr::-webkit-slider-thumb {
-          -webkit-appearance: none;
-          appearance: none;
-          width: 15px;
-          height: 15px;
-          background: darkgrey;
-          cursor: pointer;
-          border-radius: 50%;
-      }
-
-      .slider::-moz-range-thumb {
-          width: 15px;
-          height: 15px;
-          background: #ff6491;
-          cursor: pointer;
-          border-radius: 50%;
-      }
-
-      /* Additional styles for displaying the slider value */
-      .slider-value {
-      text-align: center;
-      background: #e7e7e7;
-      padding: 5px 10px;
-      color: black;
-      width: 90%;
-      align-items: center;
-      display: flex;
-      justify-content: center;
-      }
-    .custom-increment-button{
-      background: #e7e7e7;
-      border-bottom: none;
-      border: 1px solid #cecece;
-      color: black;
-      height: 50%;
-      width: 20px;
-      padding: 0;
-      min-height: 20px;
+    #myRange{
+         -webkit-appearance: none;
+        width: 100%;
+        height: 7px;
+        margin: 0;
+        padding: 0;
+        min-height: 7px;
+        background: #e7e7e7;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+        border-radius: 10px;
+        border: none;
     }
-  .custom-increment-button:hover {
-      background: #e7e7e7;
+  .range-sliderr::-webkit-slider-thumb{
+     background: #ff649 !important;
   }
-  .degree-custom-wrapper{
-      display: flex;
-      width: 40%;
-      gap: 2px;
-  }
-  .patches-editor-wrapper{
-      position: absolute;
-      display: none;
-      height: 100%;
-      width: 100%;
-      overflow: hidden;
-  }
+        .sliderr::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            background: darkgrey;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 15px;
+            height: 15px;
+            background: #ff6491;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        /* Additional styles for displaying the slider value */
+        .slider-value {
+        text-align: center;
+        background: #e7e7e7;
+        padding: 5px 10px;
+        color: black;
+        width: 90%;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        }
+      .custom-increment-button{
+        background: #e7e7e7;
+        border-bottom: none;
+        border: 1px solid #cecece;
+        color: black;
+        height: 50%;
+        width: 20px;
+        padding: 0;
+        min-height: 20px;
+      }
+    .custom-increment-button:hover {
+        background: #e7e7e7;
+    }
+    .degree-custom-wrapper{
+        display: flex;
+        width: 40%;
+        gap: 2px;
+    }
+    .patches-editor-wrapper{
+        position: absolute;
+        display: none;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
 </style>
 <!-- media queries -->
 <style>
