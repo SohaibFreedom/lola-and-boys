@@ -591,7 +591,22 @@
   // Call updateSliderValue initially
   updateSliderValue();
 </script>
+<script>
+    // Select the button with the class 'customize-button'
+  var customizeButton = document.querySelector('.customize-button');
 
+  // Select the div with the class 'yotpo-banner-low'
+  var bannerLow = document.querySelector('.yotpo-banner-low');
+
+  // Check if both the button and the div exist
+  if (customizeButton && bannerLow) {
+      // Add a click event listener to the button
+      customizeButton.addEventListener('click', function() {
+          // Add the class 'HIDEdISAPLY' to the div
+          bannerLow.classList.add('hidedisplay');
+      });
+  }
+</script>
 <script>
     // Wait for the DOM to be fully loaded
   // Wait for the DOM to be fully loaded
@@ -606,8 +621,9 @@
 
       // Add a click event listener to the button
       customizeButton.click(function() {
+         var bannerLow = document.querySelector('.yotpo-banner-low');
          console.log('clicked')
-        console.log('bannerLow',bannerLow);
+
           // Select all elements with the clearfix class and hide them
           $('.hide-for-customization').hide();
           $('#shopify-block-yotpo_product_reviews_ugc_reviews_MbrNNx').hide();
