@@ -5590,6 +5590,12 @@
         "disabled": true,
         "settings": {
         }
+      },
+      "4252583770683550135": {
+        "type": "shopify:\/\/apps\/redo-free-return-automation\/blocks\/redo_app_embed\/c613644b-6df4-4d11-b336-43a5c06745a1",
+        "disabled": false,
+        "settings": {
+        }
       }
     }
   }
