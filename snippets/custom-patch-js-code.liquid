@@ -592,22 +592,23 @@
   updateSliderValue();
 </script>
 <script>
-    // Select the button with the class 'customize-button'
+  // Select the button with the class 'customize-button'
   var customizeButton = document.querySelector('.customize-button');
 
-  // Select the div with the class 'yotpo-banner-low'
-  var bannerLow = document.querySelectorByD('#shopify-block-yotpo_product_reviews_ugc_reviews_MbrNNx');
+  // Select the div with the id 'shopify-block-yotpo_product_reviews_ugc_reviews_MbrNNx'
+  var bannerLow = document.querySelector('#shopify-block-yotpo_product_reviews_ugc_reviews_MbrNNx');
 
   // Check if both the button and the div exist
-  if (customizeButton) {
+  if (customizeButton && bannerLow) {
       // Add a click event listener to the button
       customizeButton.addEventListener('click', function() {
-        console.log(bannerLow);
-          // Add the class 'HIDEdISAPLY' to the div
+          console.log(bannerLow);
+          // Add the class 'hidedisplay' to the div
           bannerLow.classList.add('hidedisplay');
       });
   }
 </script>
+
 <!--
   <script>
       // Wait for the DOM to be fully loaded
