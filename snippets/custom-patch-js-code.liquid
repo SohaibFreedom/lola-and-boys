@@ -3647,20 +3647,56 @@ function alignHorizontal() {
 }
 
   // Function to align patches vertically
-function alignVertical() {
-   const patchesContainer = document.querySelector('.patches-container');
+// function alignVertical() {
+//    const patchesContainer = document.querySelector('.patches-container');
+//     const patchesBackContainer = document.querySelector('.patches-containerr');
+//     let patchActionCount;
+//     if (document.getElementById('Front-Area').style.visibility === 'visible') {
+//         const patches = patchesContainer.querySelectorAll('.patch-action');
+
+//         // Count the number of .patch-action elements
+//         patchActionCount = patches.length;
+//         console.log(patchActionCount);
+//     } else {
+//         const patches = patchesBackContainer.querySelectorAll('.patch-action');
+
+//         // Count the number of .patch-action elements
+//         patchActionCount = patches.length;
+//         console.log(patchActionCount);
+//     }
+
+//     if (patchActionCount < 2) {
+//         return; // Exit the function if less than 2 patches have .patch-action
+//     }
+//     const sortedPatches = sortPatchesByOrder();
+//     patchesContainer.style.flexDirection = 'column';
+
+//     sortedPatches.forEach((patch, index) => {
+//           let topPosition;
+        
+//         if (window.matchMedia("(max-width: 700px)").matches) {
+//             topPosition = index * (40 + gapValue);
+//         }
+//         else {
+//             topPosition = index * (50 + gapValue);
+//         } // Calculate the top position with the specified gap
+//         patch.style.top = index === 0 ? '0' : `${topPosition}px`;
+//         patch.style.left = '0';
+//     });
+
+//     checkPatchesPosition();
+//   checkPatchOverlapping();
+// }
+  function alignVertical() {
+    const patchesContainer = document.querySelector('.patches-container');
     const patchesBackContainer = document.querySelector('.patches-containerr');
     let patchActionCount;
     if (document.getElementById('Front-Area').style.visibility === 'visible') {
-        const patches = patchesContainer.querySelectorAll('.patch-action');
-
-        // Count the number of .patch-action elements
+        var patches = patchesContainer.querySelectorAll('.patch-action');
         patchActionCount = patches.length;
         console.log(patchActionCount);
     } else {
-        const patches = patchesBackContainer.querySelectorAll('.patch-action');
-
-        // Count the number of .patch-action elements
+        var patches = patchesBackContainer.querySelectorAll('.patch-action');
         patchActionCount = patches.length;
         console.log(patchActionCount);
     }
@@ -3671,22 +3707,22 @@ function alignVertical() {
     const sortedPatches = sortPatchesByOrder();
     patchesContainer.style.flexDirection = 'column';
 
+    let topPosition = 0;
     sortedPatches.forEach((patch, index) => {
-          let topPosition;
-        
-        if (window.matchMedia("(max-width: 700px)").matches) {
-            topPosition = index * (40 + gapValue);
+        if (index > 0) {
+            const previousPatch = sortedPatches[index - 1];
+            const previousPatchHeight = previousPatch.getBoundingClientRect().height;
+            topPosition += previousPatchHeight + gapValue;
         }
-        else {
-            topPosition = index * (50 + gapValue);
-        } // Calculate the top position with the specified gap
-        patch.style.top = index === 0 ? '0' : `${topPosition}px`;
+
+        patch.style.top = `${topPosition}px`;
         patch.style.left = '0';
     });
 
     checkPatchesPosition();
-  checkPatchOverlapping();
+    checkPatchOverlapping();
 }
+
 
 // Function to align patches diagonally left
 function alignDiagonalLeft() {
