@@ -2385,6 +2385,7 @@ patchDiv.classList.remove('patch-');
                  errorMessage.style.visibility = 'visible';
             } else {
                 errorMessage.style.visibility = 'hidden';
+              $('.overlapping-correction-error').css('display', 'none');
             }
           patchDiv.classList.add('patch-');
         }
@@ -2541,6 +2542,7 @@ console.log(dragPatch1);
                  errorMessage.style.visibility = 'visible';
             } else {
                 errorMessage.style.visibility = 'hidden';
+              $('.overlapping-correction-error').css('display', 'none');
             }
          dragPatch1.classList.add('patch-');
         const touch = event.touches[0];
@@ -2692,6 +2694,7 @@ BackcenterBox.addEventListener('touchmove', function (event) {
             } else {
                 errorMessage.style.visibility = 'hidden';
                   $('.overlapping-correction-error').css('display', 'none');
+              
             }
          dragPatch1.classList.add('patch-');
         const touch = event.touches[0];
@@ -4034,6 +4037,7 @@ function checkPatchOverlapping() {
         } else {
             console.log('hidden it');
             errorMessage.style.visibility = 'hidden';
+            $('.overlapping-correction-error').css('display', 'none');
         }
 
         patchDiv.classList.add('patch-');
@@ -4076,6 +4080,7 @@ function checkPatchallOverlapping() {
     } else {
         console.log('hidden it');
         errorMessage.style.visibility = 'hidden';
+        $('.overlapping-correction-error').css('display', 'none');
     }
 
     return false;
