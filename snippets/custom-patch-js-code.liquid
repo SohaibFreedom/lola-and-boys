@@ -2691,6 +2691,7 @@ BackcenterBox.addEventListener('touchmove', function (event) {
                  errorMessage.style.visibility = 'visible';
             } else {
                 errorMessage.style.visibility = 'hidden';
+                  $('.overlapping-correction-error').css('display', 'none');
             }
          dragPatch1.classList.add('patch-');
         const touch = event.touches[0];
