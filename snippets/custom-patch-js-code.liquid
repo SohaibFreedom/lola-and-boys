@@ -3814,20 +3814,62 @@ function alignHorizontal() {
 
 
 // Function to align patches diagonally right
+// function alignDiagonalRight() {
+//    const patchesContainer = document.querySelector('.patches-container');
+//     const patchesBackContainer = document.querySelector('.patches-containerr');
+//     let patchActionCount;
+//     if (document.getElementById('Front-Area').style.visibility === 'visible') {
+//         const patches = patchesContainer.querySelectorAll('.patch-action');
+
+//         // Count the number of .patch-action elements
+//         patchActionCount = patches.length;
+//         console.log(patchActionCount);
+//     } else {
+//         const patches = patchesBackContainer.querySelectorAll('.patch-action');
+
+//         // Count the number of .patch-action elements
+//         patchActionCount = patches.length;
+//         console.log(patchActionCount);
+//     }
+
+//     if (patchActionCount < 2) {
+//         return; // Exit the function if less than 2 patches have .patch-action
+//     }
+//     const sortedPatches = sortPatchesByOrder();
+//     console.log('this is  sorted ',sortedPatches)
+//     patchesContainer.style.flexDirection = 'row-reverse';
+
+//     sortedPatches.forEach((patch, index) => {
+//               if (window.matchMedia("(max-width: 700px)").matches) {
+//         const rightValue = index === 0 ? 0 : index * (40 + gapValue);
+//         patch.style.top = index === 0 ? '0' : `${index * (40 + gapValue) }px`;
+//         patch.style.right = `${rightValue}px`;
+//         patch.style.left = 'auto'; // Reset left property
+// }else{
+//         const rightValue = index === 0 ? 0 : index * (50 + gapValue);
+//         patch.style.top = index === 0 ? '0' : `${index * (50 + gapValue) }px`;
+//         patch.style.right = `${rightValue}px`;
+//         patch.style.left = 'auto'; // Reset left property
+// }
+      
+       
+//     });
+
+//     checkPatchesPosition();
+//   checkPatchOverlapping();
+// }
+
 function alignDiagonalRight() {
-   const patchesContainer = document.querySelector('.patches-container');
+    const patchesContainer = document.querySelector('.patches-container');
     const patchesBackContainer = document.querySelector('.patches-containerr');
     let patchActionCount;
-    if (document.getElementById('Front-Area').style.visibility === 'visible') {
-        const patches = patchesContainer.querySelectorAll('.patch-action');
 
-        // Count the number of .patch-action elements
+    if (document.getElementById('Front-Area').style.visibility === 'visible') {
+        var patches = patchesContainer.querySelectorAll('.patch-action');
         patchActionCount = patches.length;
         console.log(patchActionCount);
     } else {
-        const patches = patchesBackContainer.querySelectorAll('.patch-action');
-
-        // Count the number of .patch-action elements
+        var patches = patchesBackContainer.querySelectorAll('.patch-action');
         patchActionCount = patches.length;
         console.log(patchActionCount);
     }
@@ -3835,30 +3877,32 @@ function alignDiagonalRight() {
     if (patchActionCount < 2) {
         return; // Exit the function if less than 2 patches have .patch-action
     }
+
     const sortedPatches = sortPatchesByOrder();
-    console.log('this is  sorted ',sortedPatches)
+    console.log('this is sorted', sortedPatches);
     patchesContainer.style.flexDirection = 'row-reverse';
 
+    let rightPosition = 0;
+    let topPosition = 0;
+
     sortedPatches.forEach((patch, index) => {
-              if (window.matchMedia("(max-width: 700px)").matches) {
-        const rightValue = index === 0 ? 0 : index * (40 + gapValue);
-        patch.style.top = index === 0 ? '0' : `${index * (40 + gapValue) }px`;
-        patch.style.right = `${rightValue}px`;
+        if (index > 0) {
+            const previousPatch = sortedPatches[index - 1];
+            const previousPatchWidth = previousPatch.getBoundingClientRect().width;
+            const previousPatchHeight = previousPatch.getBoundingClientRect().height;
+
+            rightPosition += previousPatchWidth + gapValue;
+            topPosition += previousPatchHeight + gapValue;
+        }
+
+        patch.style.right = `${rightPosition}px`;
+        patch.style.top = `${topPosition}px`;
         patch.style.left = 'auto'; // Reset left property
-}else{
-        const rightValue = index === 0 ? 0 : index * (50 + gapValue);
-        patch.style.top = index === 0 ? '0' : `${index * (50 + gapValue) }px`;
-        patch.style.right = `${rightValue}px`;
-        patch.style.left = 'auto'; // Reset left property
-}
-      
-       
     });
 
     checkPatchesPosition();
-  checkPatchOverlapping();
+    checkPatchOverlapping();
 }
-
 
 
 function sortPatchesByOrder() {
