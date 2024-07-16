@@ -466,8 +466,8 @@ function BackconvertToPng() {
         
         var patchWidth, patchHeight;
         if (isMobile) {
-            patchWidth = patch.getAttribute('height') / 2;
-            patchHeight = patch.getAttribute('width') / 2;
+            patchWidth = patch.getAttribute('height') / 2 - 3;
+            patchHeight = patch.getAttribute('width') / 2 - 3;
         } else {
             patchWidth = patch.getAttribute('height');
             patchHeight = patch.getAttribute('width');
@@ -578,8 +578,8 @@ function FrontconvertToPng() {
        if (isMobile) {
        var patcnaturalwidth = patch.getAttribute('height');
         var patchnaturalHeight = patch.getAttribute('width');
-       var patchWidth = patcnaturalwidth / 2 ;
-        var patchHeight = patchnaturalHeight / 2 ;
+       var patchWidth = patcnaturalwidth / 2 - 3 ;
+        var patchHeight = patchnaturalHeight / 2 - 3;
          console.log(patchWidth)
        }else{
          var patchWidth = patch.getAttribute('height');
