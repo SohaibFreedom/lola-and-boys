@@ -2019,10 +2019,10 @@ function addPatchToBackcenterBox(patchSrc, patchId, height, width) {
     patchDiv.style.left = currentXBack + 'px';
 
     // Adjust width and height based on media query
-    if (window.matchMedia("(max-width: 1024px)").matches) {
+if (window.matchMedia("(min-width: 768px) and (max-width: 1024px)").matches) {
         patchDiv.style.width = (width / 2 + 10 ) + 'px';
         patchDiv.style.height = (height / 2 + 10  ) + 'px';
-    } else if (window.matchMedia("(max-width: 700px)").matches){
+    } else if (window.matchMedia("(max-width: 767px)").matches){
         patchDiv.style.width = (width / 2 - 3 ) + 'px';
         patchDiv.style.height = (height / 2 - 3 ) + 'px';
     } else {
