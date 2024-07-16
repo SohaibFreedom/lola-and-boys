@@ -418,7 +418,7 @@ function  convertBothToPng() {
 }
 function BackconvertToPng() {
     var imageDiv = document.getElementById('BackimageDiv');
-    var patches = imageDiv.querySelectorAll('.patch- img'); // Correct the query selector for patches
+    var patches = imageDiv.querySelectorAll('.patch- img');
     var canvas = document.createElement('canvas');
     var ctx = canvas.getContext('2d');
 
@@ -457,25 +457,22 @@ function BackconvertToPng() {
     ctx.drawImage(sourceImage, sourcePosX, sourcePosY, sourceWidth, sourceHeight);
 
     // Draw patches on the canvas
-     patches.forEach(function (patch) {
+    patches.forEach(function (patch) {
         var patchRect = patch.getBoundingClientRect();
         var patchDivRect = patch.parentElement.getBoundingClientRect();
         var patchPosX = patchDivRect.left - imageDivRect.left;
         var patchPosY = patchDivRect.top - imageDivRect.top;
-      var isMobile = window.innerWidth <= 768;
-       if (isMobile) {
-       var patcnaturalwidth = patch.getAttribute('height');
-        var patchnaturalHeight = patch.getAttribute('width');
-       var patchWidth = patcnaturalwidth / 2 ;
-        var patchHeight = patchnaturalHeight / 2 ;
-         console.log(patchWidth)
-       }else{
-         var patchWidth = patch.getAttribute('height');
-        var patchHeight = patch.getAttribute('width');
-         console.log(patchWidth)
-       }
-  
-
+        var isMobile = window.innerWidth <= 768;
+        
+        var patchWidth, patchHeight;
+        if (isMobile) {
+            patchWidth = patch.getAttribute('height') / 2;
+            patchHeight = patch.getAttribute('width') / 2;
+        } else {
+            patchWidth = patch.getAttribute('height');
+            patchHeight = patch.getAttribute('width');
+        }
+        
         // Calculate dimensions and position based on object-fit: contain
         var patchAspectRatio = patch.naturalWidth / patch.naturalHeight;
 
@@ -498,12 +495,9 @@ function BackconvertToPng() {
         // Get the rotation angle from the patch element's style
         var rotation = 0;
         var transform = patch.parentElement.style.transform;
-        console.log('transform',transform)
         if (transform) {
             var match = transform.match(/rotate\(([-\d.]+)deg\)/);
-           console.log('match',match)
             if (match) {
-              console.log('matched')
                 rotation = parseFloat(match[1]) * (Math.PI / 180); // Convert degrees to radians
             }
         }
@@ -522,9 +516,7 @@ function BackconvertToPng() {
         // For example, to display the new blob image, convert blob to ObjectURL
         var pngImageURL = URL.createObjectURL(blob);
         var counter = 1;
-
-        // Upload the blob URL
-         uploadBlob(pngImageURL, 'input[name="customized_image_url_back"]',counter);
+        uploadBlob(pngImageURL, 'input[name="customized_image_url_back"]', counter);
 
         // Display the new image
         var outputDiv = document.getElementById('BackoutputDiv');
@@ -535,6 +527,7 @@ function BackconvertToPng() {
         outputDiv.appendChild(newImg);
     }, 'image/png');
 }
+
 function FrontconvertToPng() {
     var imageDiv = document.getElementById('imageDiv');
     var patches = imageDiv.querySelectorAll('.patch- img');
