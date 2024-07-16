@@ -457,54 +457,62 @@ function BackconvertToPng() {
     ctx.drawImage(sourceImage, sourcePosX, sourcePosY, sourceWidth, sourceHeight);
 
     // Draw patches on the canvas
-    patches.forEach(function (patch) {
+     patches.forEach(function (patch) {
         var patchRect = patch.getBoundingClientRect();
         var patchDivRect = patch.parentElement.getBoundingClientRect();
-
-        // Calculate the position of the patch relative to the image div
         var patchPosX = patchDivRect.left - imageDivRect.left;
         var patchPosY = patchDivRect.top - imageDivRect.top;
-
-     
-
-    var patchWidth = patch.getAttribute('height');
+      var isMobile = window.innerWidth <= 768;
+       if (isMobile) {
+       var patcnaturalwidth = patch.getAttribute('height');
+        var patchnaturalHeight = patch.getAttribute('width');
+       var patchWidth = patcnaturalwidth / 2 ;
+        var patchHeight = patchnaturalHeight / 2 ;
+         console.log(patchWidth)
+       }else{
+         var patchWidth = patch.getAttribute('height');
         var patchHeight = patch.getAttribute('width');
-
-        console.log('patchWidth', patchWidth);
-        console.log('patchHeight', patchHeight);
-        // Get the rotation angle from the patch element's style
-        var rotationDegrees = 0;
-        var transform = patch.parentElement.style.transform;
-        if (transform) {
-            var match = transform.match(/rotate\(([-\d.]+)deg\)/);
-            if (match) {
-                rotationDegrees = parseFloat(match[1]);
-            }
-        }
+         console.log(patchWidth)
+       }
+  
 
         // Calculate dimensions and position based on object-fit: contain
         var patchAspectRatio = patch.naturalWidth / patch.naturalHeight;
+
         var drawWidth, drawHeight, drawPosX, drawPosY;
 
         if (patchWidth / patchHeight > patchAspectRatio) {
             // Container is wider than patch
             drawWidth = patchHeight * patchAspectRatio;
             drawHeight = patchHeight;
-            drawPosX = (patchWidth - drawWidth) / 2;
-            drawPosY = 0;
+            drawPosX = patchPosX + (patchWidth - drawWidth) / 2;
+            drawPosY = patchPosY;
         } else {
             // Container is taller than patch
             drawWidth = patchWidth;
             drawHeight = patchWidth / patchAspectRatio;
-            drawPosX = 0;
-            drawPosY = (patchHeight - drawHeight) / 2;
+            drawPosX = patchPosX;
+            drawPosY = patchPosY + (patchHeight - drawHeight) / 2;
         }
 
-        // Apply rotation in degrees and draw the patch
+        // Get the rotation angle from the patch element's style
+        var rotation = 0;
+        var transform = patch.parentElement.style.transform;
+        console.log('transform',transform)
+        if (transform) {
+            var match = transform.match(/rotate\(([-\d.]+)deg\)/);
+           console.log('match',match)
+            if (match) {
+              console.log('matched')
+                rotation = parseFloat(match[1]) * (Math.PI / 180); // Convert degrees to radians
+            }
+        }
+
+        // Apply rotation and draw the patch
         ctx.save();
         ctx.translate(patchPosX + patchWidth / 2, patchPosY + patchHeight / 2); // Move to the center of the patch
-        ctx.rotate(rotationDegrees * Math.PI / 180); // Rotate the canvas in degrees
-        ctx.drawImage(patch, -drawWidth / 2, -drawHeight / 2, drawWidth, drawHeight);
+        ctx.rotate(rotation); // Rotate the canvas
+        ctx.drawImage(patch, -drawWidth / 2, -drawHeight / 2, drawWidth, drawHeight); // Draw the patch
         ctx.restore();
     });
 
