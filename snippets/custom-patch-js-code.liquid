@@ -2017,8 +2017,8 @@ function addPatchToBackcenterBox(patchSrc, patchId, height, width) {
 
     // Adjust width and height based on media query
     if (window.matchMedia("(max-width: 700px)").matches) {
-        patchDiv.style.width = (width / 2 + 15) + 'px';
-        patchDiv.style.height = (height / 2 + 15) + 'px';
+        patchDiv.style.width = (width / 2 ) + 'px';
+        patchDiv.style.height = (height / 2 ) + 'px';
     } else {
         patchDiv.style.width = width + 'px';
         patchDiv.style.height = height + 'px';
