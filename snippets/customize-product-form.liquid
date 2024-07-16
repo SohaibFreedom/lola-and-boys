@@ -148,54 +148,54 @@
     const addCartButton = document.querySelector('.add-item');
     document.addEventListener('DOMContentLoaded', function () {
 
-        async function addToCart(variants, customizedImageUrl, customizedPrice,sizeVariants,messagaeData,customizedBackImageUrl) {
-            try {
-                // Prepare data for adding to cart
-                const items = variants.map(variant => {
-                    const item = {
-                        id: variant.name,
-                        image: customizedImageUrl,
-                        quantity: 1
-                    };
+        // async function addToCart(variants, customizedImageUrl, customizedPrice,sizeVariants,messagaeData,customizedBackImageUrl) {
+        //     try {
+        //         // Prepare data for adding to cart
+        //         const items = variants.map(variant => {
+        //             const item = {
+        //                 id: variant.name,
+        //                 image: customizedImageUrl,
+        //                 quantity: 1
+        //             };
 
-                    // Define properties based on variant ID
-                    if (variant.name === '{{ variant.id }}') {
-                        item.properties = {
-                            "Product Name": '{{ product.title }}',
-                            _customized_image_url_front: customizedImageUrl,
-                            _customized_image_url_back:customizedBackImageUrl,
-                            _size:sizeVariants,
-                            _info:messagaeData,
-                            _patches_price: customizedPrice,
-                           _Timestamp: Date.now().toString()
-                        };
-                    } else {
-                        item.properties = {
-                            name: 'Custom Product',
-                            _parent_variant: '{{ variant.id }}',
-                            _Timestamp: Date.now().toString(),
-                            _Unique: `${variant.id}_${Date.now()}`
-                        };
-                    }
-                    return item;
-                });
+        //             // Define properties based on variant ID
+        //             if (variant.name === '{{ variant.id }}') {
+        //                 item.properties = {
+        //                     "Product Name": '{{ product.title }}',
+        //                     _customized_image_url_front: customizedImageUrl,
+        //                     _customized_image_url_back:customizedBackImageUrl,
+        //                     _size:sizeVariants,
+        //                     _info:messagaeData,
+        //                     _patches_price: customizedPrice,
+        //                    _Timestamp: Date.now().toString()
+        //                 };
+        //             } else {
+        //                 item.properties = {
+        //                     name: 'Custom Product',
+        //                     _parent_variant: '{{ variant.id }}',
+        //                     _Timestamp: Date.now().toString(),
+        //                     _Unique: `${variant.id}_${Date.now()}`
+        //                 };
+        //             }
+        //             return item;
+        //         });
 
-                const formData = { items };
+        //         const formData = { items };
 
-                const response = await fetch(window.Shopify.routes.root + 'cart/add.js', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(formData)
-                });
+        //         const response = await fetch(window.Shopify.routes.root + 'cart/add.js', {
+        //             method: 'POST',
+        //             headers: {
+        //                 'Content-Type': 'application/json'
+        //             },
+        //             body: JSON.stringify(formData)
+        //         });
 
-                return await response.json();
-            } catch (error) {
-                console.error('Error adding items to cart:', error);
-                throw error; // Re-throw the error for further handling
-            }
-        }
+        //         return await response.json();
+        //     } catch (error) {
+        //         console.error('Error adding items to cart:', error);
+        //         throw error; // Re-throw the error for further handling
+        //     }
+        // }
 
         let Patchesdata; // Define Patchesdata outside the function
 
