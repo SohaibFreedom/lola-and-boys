@@ -574,14 +574,23 @@ function FrontconvertToPng() {
         var patchDivRect = patch.parentElement.getBoundingClientRect();
         var patchPosX = patchDivRect.left - imageDivRect.left;
         var patchPosY = patchDivRect.top - imageDivRect.top;
-      var isMobile = window.innerWidth <= 768;
+        var isMobile = window.innerWidth <= 768;
+        var isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
+
        if (isMobile) {
        var patcnaturalwidth = patch.getAttribute('height');
-        var patchnaturalHeight = patch.getAttribute('width');
+       var patchnaturalHeight = patch.getAttribute('width');
        var patchWidth = patcnaturalwidth / 2 - 3 ;
-        var patchHeight = patchnaturalHeight / 2 - 3;
+       var patchHeight = patchnaturalHeight / 2 - 3;
          console.log(patchWidth)
-       }else{
+       } 
+       else if (isTablet){
+       var patcnaturalwidth = patch.getAttribute('height');
+        var patchnaturalHeight = patch.getAttribute('width');
+       var patchWidth = patcnaturalwidth / 2 + 10 ;
+        var patchHeight = patchnaturalHeight / 2 + 10;
+         console.log(patchWidth)
+       }else) {
          var patchWidth = patch.getAttribute('height');
         var patchHeight = patch.getAttribute('width');
          console.log(patchWidth)
