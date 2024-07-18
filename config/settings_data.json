@@ -3918,7 +3918,7 @@
         ],
         "settings": {
           "show_announcement_bar": true,
-          "show_countdown": true,
+          "show_countdown": false,
           "bck_clr": "#faddff",
           "Annouce_url": "shopify:\/\/collections\/exclude-archive-collection",
           "txt_clr": "#000000",
@@ -5588,12 +5588,6 @@
       "6305591592379254261": {
         "type": "shopify:\/\/apps\/pixoo-taboola-pixel\/blocks\/pixoo_embed\/d4575259-9a7f-46b5-bb21-03a4fc3b4b59",
         "disabled": true,
-        "settings": {
-        }
-      },
-      "4252583770683550135": {
-        "type": "shopify:\/\/apps\/redo-free-return-automation\/blocks\/redo_app_embed\/c613644b-6df4-4d11-b336-43a5c06745a1",
-        "disabled": false,
         "settings": {
         }
       }
