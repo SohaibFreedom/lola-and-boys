@@ -679,19 +679,20 @@ addCartItemButton.addEventListener('click', async function (event) {
     
  
 console.log('added');
-      const addCartItemButton = document.querySelector('.add-item');
-  const loader = document.querySelector('.loader-cart');
-  const spanDiv = document.querySelector('.span-content');
-       loader.style.display = 'block';
-   spanDiv.style.display = 'none';
-   addCartItemButton.style.pointerEvents = 'none';
-   addCartItemButton.style.opacity = '0.5';
-   addCartItemButton.style.backgroundColor = '#dfdfdf';
+ console.log('added');
+loader.style.display = 'block';
+spanDiv.style.display = 'none';
+addCartItemButton.style.pointerEvents = 'none';
+addCartItemButton.style.opacity = '0.5';
+addCartItemButton.style.backgroundColor = '#dfdfdf';
 
-// Call the function
-// captureAndCombineScreenshots();
- // Perform the necessary actions before calling the function
-  $('.overlapping-correction-error').css('visibility', 'hidden');
+// Perform the necessary actions before calling the function
+$('.overlapping-correction-error').css('visibility', 'hidden');
+
+// Force a reflow and then call the function
+requestAnimationFrame(() => {
+    captureAndCombineScreenshots();
+});
 
     }
 });
