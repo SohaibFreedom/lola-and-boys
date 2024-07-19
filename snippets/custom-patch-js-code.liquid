@@ -2126,6 +2126,11 @@ function dropPatchbydraggingFront(patchElement, x, y,height,width) {
      patchDiv.style.width = (width - 20 ) + 'px';
         patchDiv.style.height = (height - 20  ) + 'px';
   }
+   else {
+     patchDiv.style.width = width + 'px';
+     patchDiv.style.height = height + 'px';
+  }
+  
     // patchDiv.style.width = width + 'px';
     // patchDiv.style.height = height + 'px';
 
@@ -2183,8 +2188,11 @@ function dropPatchbydraggingBack(patchElement, x, y, height,width) {
      patchDiv.style.width = (width - 20 ) + 'px';
         patchDiv.style.height = (height - 20  ) + 'px';
   }
-    // patchDiv.style.width = width + 'px';
-    // patchDiv.style.height = height + 'px';
+  else {
+     patchDiv.style.width = width + 'px';
+     patchDiv.style.height = height + 'px';
+  }
+   
 
     // Generate a unique ID for the patch
     var patchId = 'patch_' + Math.random().toString(36).substr(2, 9);
