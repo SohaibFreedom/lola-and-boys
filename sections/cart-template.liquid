@@ -109,6 +109,10 @@
     .back-image{
       display:none;
     }
+        .cart_delete-custom-product-button[disabled] {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
   @media screen and (max-width: 768px) {
      .parent-price-title > h3 {
         font-size: 15px !important;
@@ -731,14 +735,21 @@
                 
                 timestampGroup.forEach(item => {
                     if(item.parentVariant === 'parent'){
-                       window.addEventListener('load', function() {
-    var deletebutton = document.createElement('a');
-    deletebutton.classList.add('cart_delete-custom-product-button');
-    deletebutton.textContent = 'remove';
-    deletebutton.setAttribute('data-customized-timestamp', item.timestampp);
-    parentChildWrapperDiv.appendChild(deletebutton);
-});
+                              // Create the button element
+        var deletebutton = document.createElement('a');
+        deletebutton.classList.add('cart_delete-custom-product-button');
+        deletebutton.textContent = 'remove';
+        deletebutton.setAttribute('data-customized-timestamp', 'some-timestamp'); // Replace 'some-timestamp' with the actual timestamp
+        deletebutton.setAttribute('disabled', 'true'); // Initially disable the button
 
+        // Append the button to the parentChildWrapperDiv
+        var parentChildWrapperDiv = document.getElementById('parentChildWrapperDiv');
+        parentChildWrapperDiv.appendChild(deletebutton);
+
+        // Enable the button once the page has fully loaded
+        window.addEventListener('load', function() {
+            deletebutton.removeAttribute('disabled');
+        });
                     }
                 });
                
