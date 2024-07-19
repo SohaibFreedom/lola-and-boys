@@ -679,10 +679,17 @@ addCartItemButton.addEventListener('click', async function (event) {
     
  
 console.log('added');
-
+      const addCartItemButton = document.querySelector('.add-item');
+  const loader = document.querySelector('.loader-cart');
+  const spanDiv = document.querySelector('.span-content');
+       loader.style.display = 'block';
+   spanDiv.style.display = 'none';
+   addCartItemButton.style.pointerEvents = 'none';
+   addCartItemButton.style.opacity = '0.5';
+   addCartItemButton.style.backgroundColor = '#dfdfdf';
 
 // Call the function
-captureAndCombineScreenshots();
+// captureAndCombineScreenshots();
 
 
     }
@@ -934,79 +941,72 @@ async function addcartfiles() {
 }
 </script>
 <script>
-     function captureAndCombineScreenshots() {
+    function captureAndCombineScreenshots() {
 
 
-   // Perform the necessary actions before calling the function
-   $('.overlapping-correction-error').css('visibility', 'hidden');
-      // const addCartItemButton = document.querySelector('.add-item');
-  const loader = document.querySelector('.loader-cart');
-  // const spanDiv = document.querySelector('.span-content');
-       loader.style.display = 'block';
-   // spanDiv.style.display = 'none';
-   // addCartItemButton.style.pointerEvents = 'none';
-   // addCartItemButton.style.opacity = '0.5';
-   // addCartItemButton.style.backgroundColor = '#dfdfdf';
-         function captureDiv(id) {
-             return html2canvas(document.getElementById(id), {
-                 allowTaint: true,
-                 useCORS: true
-             });
-         }
+  // Perform the necessary actions before calling the function
+  $('.overlapping-correction-error').css('visibility', 'hidden');
 
-         if (document.getElementById('Front-Area').style.visibility === 'visible') {
-             var backArea = document.getElementById('Back-area');
-             backArea.style.visibility = 'visible';
-             backArea.style.zIndex = 0;
-              backArea.style.top = '-9999px';
-         } else {
-             document.getElementById('Front-Area').style.visibility = 'visible';
-             document.getElementById('Back-area').style.visibility = 'visible';
+        function captureDiv(id) {
+            return html2canvas(document.getElementById(id), {
+                allowTaint: true,
+                useCORS: true
+            });
+        }
 
-         }
+        if (document.getElementById('Front-Area').style.visibility === 'visible') {
+            var backArea = document.getElementById('Back-area');
+            backArea.style.visibility = 'visible';
+            backArea.style.zIndex = 0;
+             backArea.style.top = '-9999px';
+        } else {
+            document.getElementById('Front-Area').style.visibility = 'visible';
+            document.getElementById('Back-area').style.visibility = 'visible';
 
-         Promise.all([
-             captureDiv('Front-Area'),
-             captureDiv('Back-area')
-         ]).then(function(canvases) {
-             var canvas1 = canvases[0];
-             var canvas2 = canvases[1];
+        }
 
-             console.log('Canvas 1 dimensions:', canvas1.width, canvas1.height);
-             console.log('Canvas 2 dimensions:', canvas2.width, canvas2.height);
+        Promise.all([
+            captureDiv('Front-Area'),
+            captureDiv('Back-area')
+        ]).then(function(canvases) {
+            var canvas1 = canvases[0];
+            var canvas2 = canvases[1];
 
-             var combinedCanvas = document.createElement('canvas');
-             var ctx = combinedCanvas.getContext('2d');
+            console.log('Canvas 1 dimensions:', canvas1.width, canvas1.height);
+            console.log('Canvas 2 dimensions:', canvas2.width, canvas2.height);
 
-             combinedCanvas.width = Math.max(canvas1.width, canvas2.width);
-             combinedCanvas.height = canvas1.height + canvas2.height;
+            var combinedCanvas = document.createElement('canvas');
+            var ctx = combinedCanvas.getContext('2d');
 
-             console.log('Combined canvas dimensions:', combinedCanvas.width, combinedCanvas.height);
+            combinedCanvas.width = Math.max(canvas1.width, canvas2.width);
+            combinedCanvas.height = canvas1.height + canvas2.height;
 
-             ctx.drawImage(canvas1, 0, 0);
-             ctx.drawImage(canvas2, 0, canvas1.height);
+            console.log('Combined canvas dimensions:', combinedCanvas.width, combinedCanvas.height);
 
-             var combinedImageURL = combinedCanvas.toDataURL('image/png');
-             var counter = 2;
-             uploadBlob(combinedImageURL, 'input[name="customized_image_url_front"]', counter);
+            ctx.drawImage(canvas1, 0, 0);
+            ctx.drawImage(canvas2, 0, canvas1.height);
 
-             // var combinedScreenshotContainer = document.getElementById('combined-screenshot');
-             // combinedScreenshotContainer.innerHTML = ''; // Clear previous content
+            var combinedImageURL = combinedCanvas.toDataURL('image/png');
+            var counter = 2;
+            uploadBlob(combinedImageURL, 'input[name="customized_image_url_front"]', counter);
 
-             var img = new Image();
-             img.src = combinedImageURL;
+            // var combinedScreenshotContainer = document.getElementById('combined-screenshot');
+            // combinedScreenshotContainer.innerHTML = ''; // Clear previous content
 
-             img.onload = function() {
-                 console.log('Combined image loaded successfully.');
-             };
+            var img = new Image();
+            img.src = combinedImageURL;
 
-             img.onerror = function() {
-                 console.error('Error loading combined image.');
-             };
+            img.onload = function() {
+                console.log('Combined image loaded successfully.');
+            };
 
-             // combinedScreenshotContainer.appendChild(img);
-         }).catch(function(error) {
-             console.error('Error capturing divs:', error);
-         });
-     }
+            img.onerror = function() {
+                console.error('Error loading combined image.');
+            };
+
+            // combinedScreenshotContainer.appendChild(img);
+        }).catch(function(error) {
+            console.error('Error capturing divs:', error);
+        });
+    }
 </script>
