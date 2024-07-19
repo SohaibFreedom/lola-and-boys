@@ -677,7 +677,7 @@ addCartItemButton.addEventListener('click', async function (event) {
     $('.overlapping-correction-error').css('display', 'block');
   }else{
     
-  captureAndCombineScreenshots();
+ 
   console.log('added')
     loader.style.display='block';
     spanDiv.style.display='none';
@@ -685,7 +685,7 @@ addCartItemButton.addEventListener('click', async function (event) {
     addCartItemButton.style.opacity = '0.5';  
     addCartItemButton.style.backgroundColor = '#dfdfdf';  
      // convertBothToPng();
-
+ captureAndCombineScreenshots();
     $('.overlapping-correction-error').css('visibility', 'hidden');
     }
 });
