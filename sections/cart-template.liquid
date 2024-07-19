@@ -733,18 +733,14 @@
                 const parentChildWrapperDiv = document.createElement('div');
                 parentChildWrapperDiv.classList.add('parent-child-wrapper');
                 
-            timestampGroup.forEach(item => {
-    if(item.parentVariant === 'parent'){
+                timestampGroup.forEach(item => {
+    if (item.parentVariant === 'parent') {
         var deletebutton = document.createElement('a');
         deletebutton.classList.add('cart_delete-custom-product-button');
         deletebutton.textContent = 'remove';
         deletebutton.setAttribute('data-customized-timestamp', item.timestampp);
         deletebutton.setAttribute('disabled', 'true'); // Initially disable the button
-
-        // Make sure the parentChildWrapperDiv is defined
-        var parentChildWrapperDiv = document.getElementById('parentChildWrapperDiv');
         parentChildWrapperDiv.appendChild(deletebutton);
-
         window.addEventListener('load', function() {
             setTimeout(function() {
                 deletebutton.removeAttribute('disabled');
