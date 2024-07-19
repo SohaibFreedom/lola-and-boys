@@ -4400,7 +4400,7 @@ function checkPatchallOverlapping() {
     $('.centerBox > .patches-container > .patch-').removeClass('patch-action');
     $('.selected-patch-for-customization-for-front').removeClass('patch-selected');
     $('.selected-patch-for-customization-for-front').removeClass('patch-selected-by-both');
-    $('.selected-patch-for-customization-for-front > .selected-patch-order').empty();
+    $('.selected-patch-for-customization-for-front > .selected-patch-order').remove();
 
     changefillColors();
   });
@@ -4419,7 +4419,7 @@ function checkPatchallOverlapping() {
       $('.BackcenterBox > .patches-containerr > .patch-').removeClass('patch-selected');
         $('.selected-patch-for-customization-for-back').removeClass('patch-selected');
     $('.selected-patch-for-customization-for-back').removeClass('patch-selected-by-both');
-    $('.selected-patch-for-customization-for-back > .selected-patch-order').empty();
+    $('.selected-patch-for-customization-for-back > .selected-patch-order').remove();
 
     changefillColors();
   });
