@@ -679,7 +679,6 @@ addCartItemButton.addEventListener('click', async function (event) {
     
  
 console.log('added');
- console.log('added');
 loader.style.display = 'block';
 spanDiv.style.display = 'none';
 addCartItemButton.style.pointerEvents = 'none';
@@ -689,11 +688,10 @@ addCartItemButton.style.backgroundColor = '#dfdfdf';
 // Perform the necessary actions before calling the function
 $('.overlapping-correction-error').css('visibility', 'hidden');
 
-// Force a reflow and then call the function
-requestAnimationFrame(() => {
+// Use a small timeout to ensure styles are applied
+setTimeout(() => {
     captureAndCombineScreenshots();
-});
-
+}, 0);
     }
 });
 
