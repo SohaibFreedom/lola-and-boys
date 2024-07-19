@@ -731,11 +731,14 @@
                 
                 timestampGroup.forEach(item => {
                     if(item.parentVariant === 'parent'){
-                        var deletebutton = document.createElement('a');
-                        deletebutton.classList.add('cart_delete-custom-product-button');
-                        deletebutton.textContent = 'remove';
-                        deletebutton.setAttribute('data-customized-timestamp', item.timestampp);
-                        parentChildWrapperDiv.appendChild(deletebutton);
+                       window.addEventListener('load', function() {
+    var deletebutton = document.createElement('a');
+    deletebutton.classList.add('cart_delete-custom-product-button');
+    deletebutton.textContent = 'remove';
+    deletebutton.setAttribute('data-customized-timestamp', item.timestampp);
+    parentChildWrapperDiv.appendChild(deletebutton);
+});
+
                     }
                 });
                
