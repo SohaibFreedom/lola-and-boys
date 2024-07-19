@@ -412,260 +412,260 @@ const container = $('.complete-overly-wrapper');
 
 // // Call the function to convert both images
 // // convertBothToPng();
-function  convertBothToPng() {
-  BackconvertToPng();
-  FrontconvertToPng();
-}
-function BackconvertToPng() {
-    var imageDiv = document.getElementById('BackimageDiv');
-    var patches = imageDiv.querySelectorAll('.patch- img');
-    var canvas = document.createElement('canvas');
-    var ctx = canvas.getContext('2d');
+// function  convertBothToPng() {
+//   BackconvertToPng();
+//   FrontconvertToPng();
+// }
+// function BackconvertToPng() {
+//     var imageDiv = document.getElementById('BackimageDiv');
+//     var patches = imageDiv.querySelectorAll('.patch- img');
+//     var canvas = document.createElement('canvas');
+//     var ctx = canvas.getContext('2d');
 
-    // Set canvas size to match the containing div's size
-    var imageDivRect = imageDiv.getBoundingClientRect();
-    canvas.width = imageDivRect.width;
-    canvas.height = imageDivRect.height;
+//     // Set canvas size to match the containing div's size
+//     var imageDivRect = imageDiv.getBoundingClientRect();
+//     canvas.width = imageDivRect.width;
+//     canvas.height = imageDivRect.height;
 
-    // Draw the main image on the canvas with object-fit: contain
-    var sourceImage = document.getElementById('Back-image');
-    if (!sourceImage) {
-        console.error('Source image not found');
-        return;
-    }
+//     // Draw the main image on the canvas with object-fit: contain
+//     var sourceImage = document.getElementById('Back-image');
+//     if (!sourceImage) {
+//         console.error('Source image not found');
+//         return;
+//     }
 
-    // Calculate dimensions and position based on object-fit: contain
-    var containerAspectRatio = canvas.width / canvas.height;
-    var imageAspectRatio = sourceImage.naturalWidth / sourceImage.naturalHeight;
+//     // Calculate dimensions and position based on object-fit: contain
+//     var containerAspectRatio = canvas.width / canvas.height;
+//     var imageAspectRatio = sourceImage.naturalWidth / sourceImage.naturalHeight;
 
-    var sourceWidth, sourceHeight, sourcePosX, sourcePosY;
+//     var sourceWidth, sourceHeight, sourcePosX, sourcePosY;
 
-    if (containerAspectRatio > imageAspectRatio) {
-        // Container is wider than image
-        sourceWidth = canvas.height * imageAspectRatio;
-        sourceHeight = canvas.height;
-        sourcePosX = (canvas.width - sourceWidth) / 2;
-        sourcePosY = 0;
-    } else {
-        // Container is taller than image
-        sourceWidth = canvas.width;
-        sourceHeight = canvas.width / imageAspectRatio;
-        sourcePosX = 0;
-        sourcePosY = (canvas.height - sourceHeight) / 2;
-    }
+//     if (containerAspectRatio > imageAspectRatio) {
+//         // Container is wider than image
+//         sourceWidth = canvas.height * imageAspectRatio;
+//         sourceHeight = canvas.height;
+//         sourcePosX = (canvas.width - sourceWidth) / 2;
+//         sourcePosY = 0;
+//     } else {
+//         // Container is taller than image
+//         sourceWidth = canvas.width;
+//         sourceHeight = canvas.width / imageAspectRatio;
+//         sourcePosX = 0;
+//         sourcePosY = (canvas.height - sourceHeight) / 2;
+//     }
 
-    ctx.drawImage(sourceImage, sourcePosX, sourcePosY, sourceWidth, sourceHeight);
+//     ctx.drawImage(sourceImage, sourcePosX, sourcePosY, sourceWidth, sourceHeight);
 
-    // Draw patches on the canvas
-    patches.forEach(function (patch) {
-        var patchRect = patch.getBoundingClientRect();
-        var patchDivRect = patch.parentElement.getBoundingClientRect();
-        var patchPosX = patchDivRect.left - imageDivRect.left;
-        var patchPosY = patchDivRect.top - imageDivRect.top;
-        var isMobile = window.innerWidth <= 768;
-        var isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
+//     // Draw patches on the canvas
+//     patches.forEach(function (patch) {
+//         var patchRect = patch.getBoundingClientRect();
+//         var patchDivRect = patch.parentElement.getBoundingClientRect();
+//         var patchPosX = patchDivRect.left - imageDivRect.left;
+//         var patchPosY = patchDivRect.top - imageDivRect.top;
+//         var isMobile = window.innerWidth <= 768;
+//         var isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
 
-       if (isMobile) {
-       var patcnaturalwidth = patch.getAttribute('height');
-       var patchnaturalHeight = patch.getAttribute('width');
-       var patchWidth = patcnaturalwidth / 2 - 3 ;
-       var patchHeight = patchnaturalHeight / 2 - 3;
-         console.log(patchWidth)
-       } 
-       else if (isTablet){
-       var patcnaturalwidth = patch.getAttribute('height');
-        var patchnaturalHeight = patch.getAttribute('width');
-       var patchWidth = patcnaturalwidth / 2 + 10 ;
-        var patchHeight = patchnaturalHeight / 2 + 10;
-         console.log(patchWidth)
-       }else{
-         var patchWidth = patch.getAttribute('height');
-        var patchHeight = patch.getAttribute('width');
-         console.log(patchWidth)
-       }
+//        if (isMobile) {
+//        var patcnaturalwidth = patch.getAttribute('height');
+//        var patchnaturalHeight = patch.getAttribute('width');
+//        var patchWidth = patcnaturalwidth / 2 - 3 ;
+//        var patchHeight = patchnaturalHeight / 2 - 3;
+//          console.log(patchWidth)
+//        } 
+//        else if (isTablet){
+//        var patcnaturalwidth = patch.getAttribute('height');
+//         var patchnaturalHeight = patch.getAttribute('width');
+//        var patchWidth = patcnaturalwidth / 2 + 10 ;
+//         var patchHeight = patchnaturalHeight / 2 + 10;
+//          console.log(patchWidth)
+//        }else{
+//          var patchWidth = patch.getAttribute('height');
+//         var patchHeight = patch.getAttribute('width');
+//          console.log(patchWidth)
+//        }
   
         
-        // Calculate dimensions and position based on object-fit: contain
-        var patchAspectRatio = patch.naturalWidth / patch.naturalHeight;
+//         // Calculate dimensions and position based on object-fit: contain
+//         var patchAspectRatio = patch.naturalWidth / patch.naturalHeight;
 
-        var drawWidth, drawHeight, drawPosX, drawPosY;
+//         var drawWidth, drawHeight, drawPosX, drawPosY;
 
-        if (patchWidth / patchHeight > patchAspectRatio) {
-            // Container is wider than patch
-            drawWidth = patchHeight * patchAspectRatio;
-            drawHeight = patchHeight;
-            drawPosX = patchPosX + (patchWidth - drawWidth) / 2;
-            drawPosY = patchPosY;
-        } else {
-            // Container is taller than patch
-            drawWidth = patchWidth;
-            drawHeight = patchWidth / patchAspectRatio;
-            drawPosX = patchPosX;
-            drawPosY = patchPosY + (patchHeight - drawHeight) / 2;
-        }
+//         if (patchWidth / patchHeight > patchAspectRatio) {
+//             // Container is wider than patch
+//             drawWidth = patchHeight * patchAspectRatio;
+//             drawHeight = patchHeight;
+//             drawPosX = patchPosX + (patchWidth - drawWidth) / 2;
+//             drawPosY = patchPosY;
+//         } else {
+//             // Container is taller than patch
+//             drawWidth = patchWidth;
+//             drawHeight = patchWidth / patchAspectRatio;
+//             drawPosX = patchPosX;
+//             drawPosY = patchPosY + (patchHeight - drawHeight) / 2;
+//         }
 
-        // Get the rotation angle from the patch element's style
-        var rotation = 0;
-        var transform = patch.parentElement.style.transform;
-        if (transform) {
-            var match = transform.match(/rotate\(([-\d.]+)deg\)/);
-            if (match) {
-                rotation = parseFloat(match[1]) * (Math.PI / 180); // Convert degrees to radians
-            }
-        }
+//         // Get the rotation angle from the patch element's style
+//         var rotation = 0;
+//         var transform = patch.parentElement.style.transform;
+//         if (transform) {
+//             var match = transform.match(/rotate\(([-\d.]+)deg\)/);
+//             if (match) {
+//                 rotation = parseFloat(match[1]) * (Math.PI / 180); // Convert degrees to radians
+//             }
+//         }
 
-        // Apply rotation and draw the patch
-        ctx.save();
-        ctx.translate(patchPosX + patchWidth / 2, patchPosY + patchHeight / 2); // Move to the center of the patch
-        ctx.rotate(rotation); // Rotate the canvas
-        ctx.drawImage(patch, -drawWidth / 2, -drawHeight / 2, drawWidth, drawHeight); // Draw the patch
-        ctx.restore();
-    });
+//         // Apply rotation and draw the patch
+//         ctx.save();
+//         ctx.translate(patchPosX + patchWidth / 2, patchPosY + patchHeight / 2); // Move to the center of the patch
+//         ctx.rotate(rotation); // Rotate the canvas
+//         ctx.drawImage(patch, -drawWidth / 2, -drawHeight / 2, drawWidth, drawHeight); // Draw the patch
+//         ctx.restore();
+//     });
 
-    // Convert canvas to Blob
-    canvas.toBlob(function (blob) {
-        // Here, you have the image as a blob
-        // For example, to display the new blob image, convert blob to ObjectURL
-        var pngImageURL = URL.createObjectURL(blob);
-        var counter = 1;
-        uploadBlob(pngImageURL, 'input[name="customized_image_url_back"]', counter);
+//     // Convert canvas to Blob
+//     canvas.toBlob(function (blob) {
+//         // Here, you have the image as a blob
+//         // For example, to display the new blob image, convert blob to ObjectURL
+//         var pngImageURL = URL.createObjectURL(blob);
+//         var counter = 1;
+//         uploadBlob(pngImageURL, 'input[name="customized_image_url_back"]', counter);
 
-        // Display the new image
-        var outputDiv = document.getElementById('BackoutputDiv');
-        var newImg = document.createElement('img');
-        newImg.src = pngImageURL;
+//         // Display the new image
+//         var outputDiv = document.getElementById('BackoutputDiv');
+//         var newImg = document.createElement('img');
+//         newImg.src = pngImageURL;
 
-        outputDiv.innerHTML = ''; // Clear the output div before appending new image
-        outputDiv.appendChild(newImg);
-    }, 'image/png');
-}
+//         outputDiv.innerHTML = ''; // Clear the output div before appending new image
+//         outputDiv.appendChild(newImg);
+//     }, 'image/png');
+// }
 
-function FrontconvertToPng() {
-    var imageDiv = document.getElementById('imageDiv');
-    var patches = imageDiv.querySelectorAll('.patch- img');
-    var canvas = document.createElement('canvas');
-    var ctx = canvas.getContext('2d');
+// function FrontconvertToPng() {
+//     var imageDiv = document.getElementById('imageDiv');
+//     var patches = imageDiv.querySelectorAll('.patch- img');
+//     var canvas = document.createElement('canvas');
+//     var ctx = canvas.getContext('2d');
 
-    // Set canvas size to match the containing div's size
-    var imageDivRect = imageDiv.getBoundingClientRect();
-    canvas.width = imageDivRect.width;
-    canvas.height = imageDivRect.height;
+//     // Set canvas size to match the containing div's size
+//     var imageDivRect = imageDiv.getBoundingClientRect();
+//     canvas.width = imageDivRect.width;
+//     canvas.height = imageDivRect.height;
 
-    // Draw the main image on the canvas with object-fit: contain
-    var sourceImage = document.getElementById('Front-image');
-    if (!sourceImage) {
-        console.error('Source image not found');
-        return;
-    }
+//     // Draw the main image on the canvas with object-fit: contain
+//     var sourceImage = document.getElementById('Front-image');
+//     if (!sourceImage) {
+//         console.error('Source image not found');
+//         return;
+//     }
 
-    // Calculate dimensions and position based on object-fit: contain
-    var containerAspectRatio = canvas.width / canvas.height;
-    var imageAspectRatio = sourceImage.naturalWidth / sourceImage.naturalHeight;
+//     // Calculate dimensions and position based on object-fit: contain
+//     var containerAspectRatio = canvas.width / canvas.height;
+//     var imageAspectRatio = sourceImage.naturalWidth / sourceImage.naturalHeight;
 
-    var sourceWidth, sourceHeight, sourcePosX, sourcePosY;
+//     var sourceWidth, sourceHeight, sourcePosX, sourcePosY;
 
-    if (containerAspectRatio > imageAspectRatio) {
-        // Container is wider than image
-        sourceWidth = canvas.height * imageAspectRatio;
-        sourceHeight = canvas.height;
-        sourcePosX = (canvas.width - sourceWidth) / 2;
-        sourcePosY = 0;
-    } else {
-        // Container is taller than image
-        sourceWidth = canvas.width;
-        sourceHeight = canvas.width / imageAspectRatio;
-        sourcePosX = 0;
-        sourcePosY = (canvas.height - sourceHeight) / 2;
-    }
+//     if (containerAspectRatio > imageAspectRatio) {
+//         // Container is wider than image
+//         sourceWidth = canvas.height * imageAspectRatio;
+//         sourceHeight = canvas.height;
+//         sourcePosX = (canvas.width - sourceWidth) / 2;
+//         sourcePosY = 0;
+//     } else {
+//         // Container is taller than image
+//         sourceWidth = canvas.width;
+//         sourceHeight = canvas.width / imageAspectRatio;
+//         sourcePosX = 0;
+//         sourcePosY = (canvas.height - sourceHeight) / 2;
+//     }
 
-    ctx.drawImage(sourceImage, sourcePosX, sourcePosY, sourceWidth, sourceHeight);
+//     ctx.drawImage(sourceImage, sourcePosX, sourcePosY, sourceWidth, sourceHeight);
 
-    // Draw patches on the canvas
-    patches.forEach(function (patch) {
-        var patchRect = patch.getBoundingClientRect();
-        var patchDivRect = patch.parentElement.getBoundingClientRect();
-        var patchPosX = patchDivRect.left - imageDivRect.left;
-        var patchPosY = patchDivRect.top - imageDivRect.top;
-        var isMobile = window.innerWidth <= 768;
-        var isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
+//     // Draw patches on the canvas
+//     patches.forEach(function (patch) {
+//         var patchRect = patch.getBoundingClientRect();
+//         var patchDivRect = patch.parentElement.getBoundingClientRect();
+//         var patchPosX = patchDivRect.left - imageDivRect.left;
+//         var patchPosY = patchDivRect.top - imageDivRect.top;
+//         var isMobile = window.innerWidth <= 768;
+//         var isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
 
-       if (isMobile) {
-       var patcnaturalwidth = patch.getAttribute('height');
-       var patchnaturalHeight = patch.getAttribute('width');
-       var patchWidth = patcnaturalwidth / 2 - 3 ;
-       var patchHeight = patchnaturalHeight / 2 - 3;
-         console.log(patchWidth)
-       } 
-       else if (isTablet){
-       var patcnaturalwidth = patch.getAttribute('height');
-        var patchnaturalHeight = patch.getAttribute('width');
-       var patchWidth = patcnaturalwidth / 2 + 10 ;
-        var patchHeight = patchnaturalHeight / 2 + 10;
-         console.log(patchWidth)
-       }else{
-         var patchWidth = patch.getAttribute('height');
-        var patchHeight = patch.getAttribute('width');
-         console.log(patchWidth)
-       }
+//        if (isMobile) {
+//        var patcnaturalwidth = patch.getAttribute('height');
+//        var patchnaturalHeight = patch.getAttribute('width');
+//        var patchWidth = patcnaturalwidth / 2 - 3 ;
+//        var patchHeight = patchnaturalHeight / 2 - 3;
+//          console.log(patchWidth)
+//        } 
+//        else if (isTablet){
+//        var patcnaturalwidth = patch.getAttribute('height');
+//         var patchnaturalHeight = patch.getAttribute('width');
+//        var patchWidth = patcnaturalwidth / 2 + 10 ;
+//         var patchHeight = patchnaturalHeight / 2 + 10;
+//          console.log(patchWidth)
+//        }else{
+//          var patchWidth = patch.getAttribute('height');
+//         var patchHeight = patch.getAttribute('width');
+//          console.log(patchWidth)
+//        }
   
 
-        // Calculate dimensions and position based on object-fit: contain
-        var patchAspectRatio = patch.naturalWidth / patch.naturalHeight;
+//         // Calculate dimensions and position based on object-fit: contain
+//         var patchAspectRatio = patch.naturalWidth / patch.naturalHeight;
 
-        var drawWidth, drawHeight, drawPosX, drawPosY;
+//         var drawWidth, drawHeight, drawPosX, drawPosY;
 
-        if (patchWidth / patchHeight > patchAspectRatio) {
-            // Container is wider than patch
-            drawWidth = patchHeight * patchAspectRatio;
-            drawHeight = patchHeight;
-            drawPosX = patchPosX + (patchWidth - drawWidth) / 2;
-            drawPosY = patchPosY;
-        } else {
-            // Container is taller than patch
-            drawWidth = patchWidth;
-            drawHeight = patchWidth / patchAspectRatio;
-            drawPosX = patchPosX;
-            drawPosY = patchPosY + (patchHeight - drawHeight) / 2;
-        }
+//         if (patchWidth / patchHeight > patchAspectRatio) {
+//             // Container is wider than patch
+//             drawWidth = patchHeight * patchAspectRatio;
+//             drawHeight = patchHeight;
+//             drawPosX = patchPosX + (patchWidth - drawWidth) / 2;
+//             drawPosY = patchPosY;
+//         } else {
+//             // Container is taller than patch
+//             drawWidth = patchWidth;
+//             drawHeight = patchWidth / patchAspectRatio;
+//             drawPosX = patchPosX;
+//             drawPosY = patchPosY + (patchHeight - drawHeight) / 2;
+//         }
 
-        // Get the rotation angle from the patch element's style
-        var rotation = 0;
-        var transform = patch.parentElement.style.transform;
-        console.log('transform',transform)
-        if (transform) {
-            var match = transform.match(/rotate\(([-\d.]+)deg\)/);
-           console.log('match',match)
-            if (match) {
-              console.log('matched')
-                rotation = parseFloat(match[1]) * (Math.PI / 180); // Convert degrees to radians
-            }
-        }
+//         // Get the rotation angle from the patch element's style
+//         var rotation = 0;
+//         var transform = patch.parentElement.style.transform;
+//         console.log('transform',transform)
+//         if (transform) {
+//             var match = transform.match(/rotate\(([-\d.]+)deg\)/);
+//            console.log('match',match)
+//             if (match) {
+//               console.log('matched')
+//                 rotation = parseFloat(match[1]) * (Math.PI / 180); // Convert degrees to radians
+//             }
+//         }
 
-        // Apply rotation and draw the patch
-        ctx.save();
-        ctx.translate(patchPosX + patchWidth / 2, patchPosY + patchHeight / 2); // Move to the center of the patch
-        ctx.rotate(rotation); // Rotate the canvas
-        ctx.drawImage(patch, -drawWidth / 2, -drawHeight / 2, drawWidth, drawHeight); // Draw the patch
-        ctx.restore();
-    });
+//         // Apply rotation and draw the patch
+//         ctx.save();
+//         ctx.translate(patchPosX + patchWidth / 2, patchPosY + patchHeight / 2); // Move to the center of the patch
+//         ctx.rotate(rotation); // Rotate the canvas
+//         ctx.drawImage(patch, -drawWidth / 2, -drawHeight / 2, drawWidth, drawHeight); // Draw the patch
+//         ctx.restore();
+//     });
 
-    // Convert canvas to Blob
-    canvas.toBlob(function (blob) {
-        // Here, you have the image as a blob
-        // For example, to display the new blob image, convert blob to ObjectURL
-        var pngImageURL = URL.createObjectURL(blob);
-        var counter = 2;
-         uploadBlob(pngImageURL, 'input[name="customized_image_url_front"]',counter);
+//     // Convert canvas to Blob
+//     canvas.toBlob(function (blob) {
+//         // Here, you have the image as a blob
+//         // For example, to display the new blob image, convert blob to ObjectURL
+//         var pngImageURL = URL.createObjectURL(blob);
+//         var counter = 2;
+//          uploadBlob(pngImageURL, 'input[name="customized_image_url_front"]',counter);
 
-        // Display the new image
-        var outputDiv = document.getElementById('outputDiv');
-        var newImg = document.createElement('img');
-        newImg.src = pngImageURL;
+//         // Display the new image
+//         var outputDiv = document.getElementById('outputDiv');
+//         var newImg = document.createElement('img');
+//         newImg.src = pngImageURL;
 
-        outputDiv.innerHTML = ''; // Clear the output div before appending new image
-        outputDiv.appendChild(newImg);
-    }, 'image/png');
-}
+//         outputDiv.innerHTML = ''; // Clear the output div before appending new image
+//         outputDiv.appendChild(newImg);
+//     }, 'image/png');
+// }
 
 
  const addCartItemButton = document.querySelector('.add-item');
@@ -676,14 +676,14 @@ addCartItemButton.addEventListener('click', async function (event) {
     $('.overlapping-correction-error').css('display', 'block');
   }else{
     
-  
+  captureAndCombineScreenshots();
   console.log('added')
     loader.style.display='block';
     spanDiv.style.display='none';
     addCartItemButton.style.pointerEvents = 'none';
     addCartItemButton.style.opacity = '0.5';  
     addCartItemButton.style.backgroundColor = '#dfdfdf';  
-     convertBothToPng();
+     // convertBothToPng();
 
     $('.overlapping-correction-error').css('visibility', 'hidden');
     }
@@ -938,4 +938,69 @@ async function addcartfiles() {
             }
         }
 }
+</script>
+<script>
+  function captureAndCombineScreenshots() {
+      function captureDiv(id) {
+          return html2canvas(document.getElementById(id), {
+              allowTaint: true,
+              useCORS: true
+          });
+      }
+
+      if (document.getElementById('Front-Area').style.visibility === 'visible') {
+          var backArea = document.getElementById('Back-area');
+          backArea.style.visibility = 'visible';
+          backArea.style.zIndex = 0;
+           backArea.style.top = '-9999px';
+      } else {
+          document.getElementById('Front-Area').style.visibility = 'visible';
+          document.getElementById('Back-area').style.visibility = 'visible';
+
+      }
+
+      Promise.all([
+          captureDiv('Front-Area'),
+          captureDiv('Back-area')
+      ]).then(function(canvases) {
+          var canvas1 = canvases[0];
+          var canvas2 = canvases[1];
+
+          console.log('Canvas 1 dimensions:', canvas1.width, canvas1.height);
+          console.log('Canvas 2 dimensions:', canvas2.width, canvas2.height);
+
+          var combinedCanvas = document.createElement('canvas');
+          var ctx = combinedCanvas.getContext('2d');
+
+          combinedCanvas.width = Math.max(canvas1.width, canvas2.width);
+          combinedCanvas.height = canvas1.height + canvas2.height;
+
+          console.log('Combined canvas dimensions:', combinedCanvas.width, combinedCanvas.height);
+
+          ctx.drawImage(canvas1, 0, 0);
+          ctx.drawImage(canvas2, 0, canvas1.height);
+
+          var combinedImageURL = combinedCanvas.toDataURL('image/png');
+          var counter = 2;
+          uploadBlob(combinedImageURL, 'input[name="customized_image_url_front"]', counter);
+
+          var combinedScreenshotContainer = document.getElementById('combined-screenshot');
+          combinedScreenshotContainer.innerHTML = ''; // Clear previous content
+
+          var img = new Image();
+          img.src = combinedImageURL;
+
+          img.onload = function() {
+              console.log('Combined image loaded successfully.');
+          };
+
+          img.onerror = function() {
+              console.error('Error loading combined image.');
+          };
+
+          combinedScreenshotContainer.appendChild(img);
+      }).catch(function(error) {
+          console.error('Error capturing divs:', error);
+      });
+  }
 </script>
