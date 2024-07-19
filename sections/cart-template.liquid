@@ -12,110 +12,112 @@
   assign cartData = cart.items
 %}
 <style>
-  .product-custom-patch-details{
-    display: flex;
-    flex-direction: row;
-    margin: 30px -15px 0;
-    border-top: 1px solid #E4E4E4;
-    padding-top: 30px;
+    .product-custom-patch-details{
+      display: flex;
+      flex-direction: row;
+      margin: 30px -15px 0;
+      border-top: 1px solid #E4E4E4;
+      padding-top: 30px;
+    }
+    .parent-item{
+      width: 15%;
+      padding: 0 15px;
+      box-sizing: content-box;
+      display: inline-block;
+    }
+    .child-items{
+      order: 2;
+      width:85%;
+      padding: 0 15px;
+    }
+    .parent-image{
+      height: 100% !important;
+      object-fit: cover;
+      aspect-ratio: 2 / 3;
+      object-position: top;
+      width: 100%;
+    }
+    .child-item{
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+    .child-item > p{
+      order: 2;
+      margin: 0;
+      font-size: 12px;
+      color: #747474;
+    }
+    .child-image{
+     height: 30px !important;
+      width: 30px !important;
+      object-fit: contain;
+    }
+    .parent-child-wrapper{
+      width: 85%;
+      padding: 0 15px;
+      display: flex;
+      flex-direction: column-reverse;
+      height: fit-content;
+    }
+    .parent-price-title > h3{
+      font-size: 16px;
+      margin-top: 20px;
+      text-transform: capitalize;
+      letter-spacing: 0;
+    }
+    .parent-price-title > p{
+      padding:0;
+    }
+    .parent-patch-product-details{
+      display: flex;
+      margin: 30px -15px 0;
+      border-top: 1px solid #E4E4E4;
+      padding-top: 30px;
+    }
+    .parent-price-title{
+      display: flex;
+      justify-content: center;
+      align-items: center;
   }
-  .parent-item{
-    width: 15%;
-    padding: 0 15px;
-    box-sizing: content-box;
-    display: inline-block;
-  }
-  .child-items{
-    order: 2;
-    width:85%;
-    padding: 0 15px;
-  }
-  .parent-image{
-    height: 160px !important;
-    object-fit: cover;
-    aspect-ratio: 2 / 3;
-    object-position: top;
-    width: 100%;
-  }
-  .child-item{
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    margin-bottom: 10px;
-  }
-  .child-item > p{
-    order: 2;
-    margin: 0;
-    font-size: 12px;
-    color: #747474;
-  }
-  .child-image{
-   height: 30px !important;
-    width: 30px !important;
-    object-fit: contain;
-  }
-  .parent-child-wrapper{
-    width: 85%;
-    padding: 0 15px;
-    display: flex;
-    flex-direction: column-reverse;
-    height: fit-content;
-  }
-  .parent-price-title > h3{
-    font-size: 16px;
-    margin-top: 20px;
-    text-transform: capitalize;
-    letter-spacing: 0;
-  }
-  .parent-price-title > p{
-    padding:0;
-  }
-  .parent-patch-product-details{
-    display: flex;
-    margin: 30px -15px 0;
-    border-top: 1px solid #E4E4E4;
-    padding-top: 30px;
-  }
-  .parent-price-title{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-  }
-  .parent-price-title > p{
-    font-size: 14px;
-    font-weight: 600;
-    color: #000 !important;
-    line-height: 19px;
-    letter-spacing: 0.7px;
-    margin:0;
-  }
- #currency-format{
-   display:none;
- }
-  .cart_delete-custom-product-button{
-    cursor: pointer;
-    text-decoration: underline;
-    text-transform: uppercase;
-    font-size: 12px !important;
-    font-weight: 400;
-    letter-spacing: 1px;
-    line-height: 1.2;
-    width: fit-content;
-    min-height: 42px;
-    display: inline-flex;
-    align-items: center;
-  }
-@media screen and (max-width: 768px) {
-   .parent-price-title > h3 {
-      font-size: 15px !important;
-      margin-top: 0 !important;
+    }
+    .parent-price-title > p{
+      font-size: 14px;
+      font-weight: 600;
+      color: #000 !important;
+      line-height: 19px;
+      letter-spacing: 0.7px;
+      margin:0;
+    }
+   #currency-format{
+     display:none;
    }
-   .parent-item {
-      width: 30% !important;
-   }
-}
-
+    .cart_delete-custom-product-button{
+      cursor: pointer;
+      text-decoration: underline;
+      text-transform: uppercase;
+      font-size: 12px !important;
+      font-weight: 400;
+      letter-spacing: 1px;
+      line-height: 1.2;
+      width: fit-content;
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+    }
+    .back-image{
+      display:none;
+    }
+  @media screen and (max-width: 768px) {
+     .parent-price-title > h3 {
+        font-size: 15px !important;
+        margin-top: 0 !important;
+     }
+     .parent-item {
+        width: 30% !important;
+     }
+  }
 </style>
 <a name="pagecontent" id="pagecontent"></a>
 <div id="currency-format" data-money-format="{{ shop.money_format }}"></div>
@@ -129,9 +131,8 @@
   </div>
 </div>
 
- {% if cartCount == 0 %}
+{% if cartCount == 0 %}
   <div class="sixteen columns">
-    
     <div class="section clearfix">
       <div class="six columns offset-by-five">
         <p class="quote">{{ 'cart.general.continue_browsing_html' | t }}</p>
@@ -151,17 +152,14 @@
     <div class="row">
       <div class="wi-100">
         <form action="/cart" method="post" id="cart_form">
-       
           <div class="section clearfix cart-section-row">
             <div class="ten columns cart-section-left">
-              <div class="custom-patch-cart-data">
-  
-              </div>
+              <div class="custom-patch-cart-data"></div>
               {% assign total_saving = 0 %}
               {% for item in cart.items %}
-             {% if item.properties._Timestamp %}
-               {% continue %}
-               {% endif %}
+                {% if item.properties._Timestamp %}
+                  {% continue %}
+                {% endif %}
                 {% if item.vendor == 'SavedBy' %}
                   {% continue %}
                 {% endif %}
@@ -191,22 +189,21 @@
                             {{ item.properties._customized_image_url_front }} 900w
                           "
                         >
-                        {% else %}
-                          <img
-                        src="{{ item | img_url: '100x' }}"
-                        alt="{{ item.title | escape }}"
-                        class="lazyload {{ settings.image_loading_style }}"
-                        style="max-width: {{- item.image.width -}}px"
-                        data-sizes="auto"
-                        data-src="{{ item | img_url: '900x' }}"
-                        data-srcset="
-                          {{ item | img_url: '300x' }} 300w,
-                          {{ item | img_url: '600x' }} 600w,
-                          {{ item | img_url: '900x' }} 900w
-                        "
-                      >
+                      {% else %}
+                        <img
+                          src="{{ item | img_url: '100x' }}"
+                          alt="{{ item.title | escape }}"
+                          class="lazyload {{ settings.image_loading_style }}"
+                          style="max-width: {{- item.image.width -}}px"
+                          data-sizes="auto"
+                          data-src="{{ item | img_url: '900x' }}"
+                          data-srcset="
+                            {{ item | img_url: '300x' }} 300w,
+                            {{ item | img_url: '600x' }} 600w,
+                            {{ item | img_url: '900x' }} 900w
+                          "
+                        >
                       {% endif %}
-                    
                     </a>
                   </div>
 
@@ -519,7 +516,6 @@
   {% include 'cart-shipping-calculator' %}
 {% endif %}
 
-
 <script>
   function removeItem(event, urlToRemove) {
     // Prevent the default behavior of the link
@@ -635,10 +631,8 @@
                 handleDeleteButtonClick(event);
               }
             });
-
-
 </script>
- <script>
+<script>
         // Assuming cartData is defined somewhere in your HTML or is a JavaScript variable available in this scope
             var cartData = {{ cartData | json }};
         
@@ -795,11 +789,7 @@
                 // Append the parentPatchProductDetailsDiv to the target div
                 customPatchCartData.appendChild(parentPatchProductDetailsDiv);
             });
-        
-        
-        
-        
-        </script>
+</script>
 {% schema %}
 {
   "name": "Cart page",
@@ -842,7 +832,5 @@
       color: red !important;
   }
 </style>
-
-
 
 <!-- GPO installed -->
