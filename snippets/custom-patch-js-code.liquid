@@ -2121,8 +2121,13 @@ function dropPatchbydraggingFront(patchElement, x, y,height,width) {
     patchDiv.style.top = y + 'px';
     patchDiv.style.left = x + 'px';
  //   patchDiv.style.transform = 'translate(-50%, -50%)';
-    patchDiv.style.width = width + 'px';
-    patchDiv.style.height = height + 'px';
+
+    if (window.matchMedia("(min-width:  1024px) and (max-width: 1600px)").matches){
+     patchDiv.style.width = (width - 20 ) + 'px';
+        patchDiv.style.height = (height - 20  ) + 'px';
+  }
+    // patchDiv.style.width = width + 'px';
+    // patchDiv.style.height = height + 'px';
 
     // Generate a unique ID for the patch
     var patchId = 'patch_' + Math.random().toString(36).substr(2, 9);
