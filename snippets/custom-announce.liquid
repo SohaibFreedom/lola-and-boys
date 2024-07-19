@@ -12,38 +12,50 @@
       </a>
       {% if section.settings.show_countdown %}
         <script>
-  // Set the fixed target end date and time for the countdown
-  const fixedTargetDate = new Date('2024-07-19T03:59:00Z').getTime();
+          // Function to format numbers with leading zeros
+          const formatWithZero = (num) => `${num}`.padStart(2, '0');
 
-  // Function to format numbers with leading zeros
-  const formatWithZero = (num) => `${num}`.padStart(2, '0');
+          // Delay initialization of countdown by 2 seconds
+          setTimeout(function() {
+            // Retrieve the fixed target end date from Liquid variable
+            const fixedTargetDate = new Date('{{ section.settings.countdown_end_date }}').getTime();
 
-  // Update the countdown every second
-  const countdownTimer = setInterval(function () {
-    // Calculate the remaining time in seconds
-    const remainingTime = Math.floor((fixedTargetDate - new Date().getTime()) / 1000);
+            // Update the countdown every second
+            const countdownTimer = setInterval(function () {
+              // Calculate the remaining time in seconds
+              const remainingTime = Math.floor((fixedTargetDate - new Date().getTime()) / 1000);
 
-    // Calculate the remaining time in hours, minutes, and seconds
-    const hours = Math.floor(remainingTime / 3600);
-    const minutes = Math.floor((remainingTime % 3600) / 60);
-    const seconds = remainingTime % 60;
+              // Calculate the remaining time in hours, minutes, and seconds
+              const hours = Math.floor(remainingTime / 3600);
+              const minutes = Math.floor((remainingTime % 3600) / 60);
+              const seconds = remainingTime % 60;
 
-    // Format hours, minutes, and seconds with leading zeros
-    const formattedHours = formatWithZero(hours);
-    const formattedMinutes = formatWithZero(minutes);
-    const formattedSeconds = formatWithZero(seconds);
+              // Format hours, minutes, and seconds with leading zeros
+              const formattedHours = formatWithZero(hours);
+              const formattedMinutes = formatWithZero(minutes);
+              const formattedSeconds = formatWithZero(seconds);
 
-    // Display the remaining time
-    const countdownElement = document.querySelector('.countdown');
+              // Display the remaining time
+              const countdownElement = document.querySelector('.countdown');
 
-    countdownElement.innerHTML = `<div class="countdown-wrapper"><div>Ends in</div><div class="countdown-number"><div class="hours-number"><div>${formattedHours} :</div></div><div class="hours-number"><div>${formattedMinutes} :</div></div><div class="hours-number"><div>${formattedSeconds}</div></div></div><div class="details">Shop Now</div></div>`;
+              countdownElement.innerHTML = `
+                <div class="countdown-wrapper">
+                  <div>Ends in</div>
+                  <div class="countdown-number">
+                    <div class="hours-number">${formattedHours} :</div>
+                    <div class="hours-number">${formattedMinutes} :</div>
+                    <div class="hours-number">${formattedSeconds}</div>
+                  </div>
+                  <div class="details">Shop Now</div>
+                </div>`;
 
-    // Stop the countdown if the remaining time reaches zero
-    if (remainingTime <= 0) {
-      clearInterval(countdownTimer);
-      countdownElement.textContent = "Countdown is over!";
-    }
-  }, 100);
+              // Stop the countdown if the remaining time reaches zero
+              if (remainingTime <= 0) {
+                clearInterval(countdownTimer);
+                countdownElement.textContent = "Countdown is over!";
+              }
+            }, 100);
+          }, 2000); // 2000 milliseconds = 2 seconds
         </script>
       {% endif %}
       {% style %}
@@ -83,7 +95,7 @@
                      justify-content: center;
                      align-items: center;
                      background: none;
-                     color: #fff !important;
+                     color: #000 !important;
                      padding: 0;
                      font-size: 22px;
                      font-weight: 400 !important;
