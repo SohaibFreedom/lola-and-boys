@@ -529,108 +529,142 @@
 </script>
 <!-- app snipet js -->
 <script>
-            // Function to fetch cart data from the server
-            function fetchCartDataAndUpdateVariable() {
-              fetch(window.Shopify.routes.root + 'cart.js', {
-                method: 'GET',
-                headers: {
-                  'Content-Type': 'application/json'
-                }
-              })
-              .then(response => {
-                return response.json();
-              })
-              .then(data => {
-                // Update the allCartData variable with the fetched data
-                allCartData = data.items || [];
-              })
-              .catch(error => {
-                console.error('Error fetching cart data:', error);
-              });
+              // Function to fetch cart data from the server
+              function fetchCartDataAndUpdateVariable() {
+                fetch(window.Shopify.routes.root + 'cart.js', {
+                  method: 'GET',
+                  headers: {
+                    'Content-Type': 'application/json'
+                  }
+                })
+                .then(response => {
+                  return response.json();
+                })
+                .then(data => {
+                  // Update the allCartData variable with the fetched data
+                  allCartData = data.items || [];
+                })
+                .catch(error => {
+                  console.error('Error fetching cart data:', error);
+                });
+              }
+
+              // Initialize allCartData as an empty array
+              var allCartData = [];
+
+              // Function to handle delete button click
+       function handleDeleteButtonClick(event) {
+        // Get the timestamp value from the data attribute of the clicked button
+        var timestamp = event.target.dataset.customizedTimestamp;
+
+        // Array to store the IDs of items to delete
+        var itemIdsToDelete = [];
+
+        // Iterate over each item in the cart data
+        allCartData.forEach(function(item) {
+            // Check if the item has the "_Timestamp" property equal to the timestamp
+            if (item.properties && item.properties._Timestamp === timestamp) {
+                // If it matches the condition, store its ID
+                itemIdsToDelete.push(item.key);
             }
+        });
 
-            // Initialize allCartData as an empty array
-            var allCartData = [];
+        // Check if any item IDs were found
+        // if (itemIdsToDelete.length > 0) {
+        //     // Log items to delete
+        //     console.log("Items to delete:", itemIdsToDelete);
 
-            // Function to handle delete button click
-     function handleDeleteButtonClick(event) {
-      // Get the timestamp value from the data attribute of the clicked button
-      var timestamp = event.target.dataset.customizedTimestamp;
+        //     // Define a function to delete items one by one
+        //     function deleteItemsSequentially(index) {
+        //         if (index < itemIdsToDelete.length) {
+        //             var itemIdToDelete = itemIdsToDelete[index];
+        //             console.log("Deleting item with ID:", itemIdToDelete);
 
-      // Array to store the IDs of items to delete
-      var itemIdsToDelete = [];
+        //             // Construct the updates object for the fetch request
+        //             var updates = {};
+        //             updates[itemIdToDelete] = 0; // Set the quantity to 0 to delete the item
 
-      // Iterate over each item in the cart data
-      allCartData.forEach(function(item) {
-          // Check if the item has the "_Timestamp" property equal to the timestamp
-          if (item.properties && item.properties._Timestamp === timestamp) {
-              // If it matches the condition, store its ID
-              itemIdsToDelete.push(item.key);
-          }
+        //             // Send update request for the item
+        //             fetch(window.Shopify.routes.root + 'cart/update.js', {
+        //                 method: 'POST',
+        //                 headers: {
+        //                     'Content-Type': 'application/json'
+        //                 },
+        //                 body: JSON.stringify({ updates })
+        //             })
+        //             .then(response => response.json())
+        //             .then(data => {
+        //                 // Handle response if needed
+        //                 console.log("Update response:", data);
+        //                 console.log("Item with ID " + itemIdToDelete + " has been deleted.");
+
+        //                 // Delete next item recursively
+        //                 deleteItemsSequentially(index + 1);
+        //             })
+        //             .catch(error => {
+        //                 console.error('Error updating cart:', error);
+        //             });
+        //         } else {
+        //             console.log("All items have been deleted.");
+        //             location.reload();
+        //         }
+        //     }
+
+        //     // Start deleting items sequentially
+        //     deleteItemsSequentially(0);
+        // } else {
+        //     console.log("No items found with the specified timestamp.");
+        // }
+         if (itemIdsToDelete.length > 0) {
+      // Log items to delete
+      console.log("Items to delete:", itemIdsToDelete);
+
+      // Construct the updates object for the fetch request
+      var updates = {};
+      itemIdsToDelete.forEach(itemId => {
+          updates[itemId] = 0; // Set the quantity to 0 to delete the item
       });
 
-      // Check if any item IDs were found
-      if (itemIdsToDelete.length > 0) {
-          // Log items to delete
-          console.log("Items to delete:", itemIdsToDelete);
+      // Send update request for all items
+      fetch(window.Shopify.routes.root + 'cart/update.js', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ updates })
+      })
+      .then(response => response.json())
+      .then(data => {
+          // Handle response if needed
+          console.log("Update response:", data);
+          console.log("All specified items have been deleted.");
 
-          // Define a function to delete items one by one
-          function deleteItemsSequentially(index) {
-              if (index < itemIdsToDelete.length) {
-                  var itemIdToDelete = itemIdsToDelete[index];
-                  console.log("Deleting item with ID:", itemIdToDelete);
-
-                  // Construct the updates object for the fetch request
-                  var updates = {};
-                  updates[itemIdToDelete] = 0; // Set the quantity to 0 to delete the item
-
-                  // Send update request for the item
-                  fetch(window.Shopify.routes.root + 'cart/update.js', {
-                      method: 'POST',
-                      headers: {
-                          'Content-Type': 'application/json'
-                      },
-                      body: JSON.stringify({ updates })
-                  })
-                  .then(response => response.json())
-                  .then(data => {
-                      // Handle response if needed
-                      console.log("Update response:", data);
-                      console.log("Item with ID " + itemIdToDelete + " has been deleted.");
-
-                      // Delete next item recursively
-                      deleteItemsSequentially(index + 1);
-                  })
-                  .catch(error => {
-                      console.error('Error updating cart:', error);
-                  });
-              } else {
-                  console.log("All items have been deleted.");
-                  location.reload();
-              }
-          }
-
-          // Start deleting items sequentially
-          deleteItemsSequentially(0);
-      } else {
-          console.log("No items found with the specified timestamp.");
-      }
+          // Reload the page to reflect the updated cart
+          location.reload();
+      })
+      .catch(error => {
+          console.error('Error updating cart:', error);
+      });
+  } else {
+      console.log("No items found with the specified timestamp.");
   }
 
+    }
 
 
 
-            // Event delegation to handle delete button click
-            document.addEventListener('click', function(event) {
-              if (event.target.classList.contains('cart_delete-custom-product-button')) {
-            var deleteButtons = document.querySelectorAll('.cart_delete-custom-product-button'); // Corrected selector
-            deleteButtons.forEach(function(deleteButton) {
-            deleteButton.style.pointerEvents = 'none';
-            deleteButton.style.opacity = '0.5';
-        });
-                handleDeleteButtonClick(event);
-              }
-            });
+
+              // Event delegation to handle delete button click
+              document.addEventListener('click', function(event) {
+                if (event.target.classList.contains('cart_delete-custom-product-button')) {
+              var deleteButtons = document.querySelectorAll('.cart_delete-custom-product-button'); // Corrected selector
+              deleteButtons.forEach(function(deleteButton) {
+              deleteButton.style.pointerEvents = 'none';
+              deleteButton.style.opacity = '0.5';
+          });
+                  handleDeleteButtonClick(event);
+                }
+              });
 </script>
 <script>
         // Assuming cartData is defined somewhere in your HTML or is a JavaScript variable available in this scope
