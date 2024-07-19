@@ -1873,7 +1873,11 @@ function addPatchToCenterBox(patchSrc, patchId, height, width) {
     patchDiv.style.left = currentX + 'px';
 
     // Adjust width and height based on media query
- if (window.matchMedia("(min-width: 768px) and (max-width: 1024px)").matches) {
+  if (window.matchMedia("(min-width:  1024px) and (max-width: 1800px)").matches){
+     patchDiv.style.width = (width - 15 ) + 'px';
+        patchDiv.style.height = (height - 15  ) + 'px';
+  }
+ else if (window.matchMedia("(min-width: 768px) and (max-width: 1024px)").matches) {
         patchDiv.style.width = (width / 2 + 15 ) + 'px';
         patchDiv.style.height = (height / 2 + 15  ) + 'px';
     } else if (window.matchMedia("(max-width: 767px)").matches){
