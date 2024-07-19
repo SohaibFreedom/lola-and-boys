@@ -935,6 +935,7 @@ async function addcartfiles() {
 </script>
 <script>
     function captureAndCombineScreenshots() {
+      const loader = document.querySelector('.loader-cart');
       loader.style.display = 'block';
   spanDiv.style.display = 'none';
   addCartItemButton.style.pointerEvents = 'none';
