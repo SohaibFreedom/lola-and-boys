@@ -4398,6 +4398,7 @@ function checkPatchallOverlapping() {
       // Remove the 'patch-selected' class from all elements with the class 'selected-patch-for-customization-for-front'
       $('.selected-patch-for-customization-for-front').removeClass('patch-selected-by-btn');
     $('.centerBox > .patches-container > .patch-').removeClass('patch-action');
+    $('.centerBox > .patches-container > .patch-').removeClass('patch-selected');
     changefillColors();
   });
     $(document).on('click', '.back-selected-patches-select', function() {
@@ -4411,6 +4412,7 @@ function checkPatchallOverlapping() {
       // Remove the 'patch-selected' class from all elements with the class 'selected-patch-for-customization-for-front'
       $('.selected-patch-for-customization-for-back').removeClass('patch-selected-by-btn');
     $('.BackcenterBox > .patches-containerr > .patch-').removeClass('patch-action');
+      $('.BackcenterBox > .patches-containerr > .patch-').removeClass('patch-selected');
     changefillColors();
   });
 </script>
