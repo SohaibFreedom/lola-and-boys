@@ -2877,6 +2877,8 @@ BackcenterBox.addEventListener('mouseup', function (event) {
           $('#showFrontBtn').addClass('patches-customization-btn-active');
          $('#Back-area').css('visibility', 'hidden');
         } else if (event.target.id === 'showBackBtnn') {
+            var backArea = document.getElementById('Back-area');
+             backArea.style.top = '0px';
           // Hide front image and show back image
           $('#showFrontBtn').removeClass('patches-customization-btn-active');
           $('#showBackBtnn').addClass('patches-customization-btn-active');
