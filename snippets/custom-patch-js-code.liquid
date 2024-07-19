@@ -4406,8 +4406,7 @@ function checkPatchallOverlapping() {
       // Add the 'patch-selected' class to all elements with the class 'selected-patch-for-customization-for-front'
       $('.selected-patch-for-customization-for-back').addClass('patch-selected-by-btn');
       $('.BackcenterBox > .patches-containerr > .patch-').addClass('patch-action');
-         $('.selected-patch-for-customization-for-back').removeClass('patch-selected');
-    $('.selected-patch-for-customization-for-back').removeClass('patch-selected-by-both');
+
       changefillColors();
   });
 
@@ -4416,6 +4415,8 @@ function checkPatchallOverlapping() {
       $('.selected-patch-for-customization-for-back').removeClass('patch-selected-by-btn');
     $('.BackcenterBox > .patches-containerr > .patch-').removeClass('patch-action');
       $('.BackcenterBox > .patches-containerr > .patch-').removeClass('patch-selected');
+        $('.selected-patch-for-customization-for-back').removeClass('patch-selected');
+    $('.selected-patch-for-customization-for-back').removeClass('patch-selected-by-both');
     changefillColors();
   });
 </script>
