@@ -741,9 +741,10 @@
                         deletebutton.setAttribute('data-customized-timestamp', item.timestampp);
                        deletebutton.setAttribute('disabled', 'true'); // Initially disable the button
                         parentChildWrapperDiv.appendChild(deletebutton);
-                       window.addEventListener('load', function() {
-            deletebutton.removeAttribute('disabled');
-        });
+       window.addEventListener('load', function() {
+            setTimeout(function() {
+                deletebutton.removeAttribute('disabled');
+            }, 500);
                     }
                 });
                
