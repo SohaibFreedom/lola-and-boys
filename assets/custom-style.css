@@ -1065,6 +1065,10 @@ html
   }
 }
 @media only screen and (max-width: 768px) {
+  .collection-specific-tags {
+    font-size: 11px;
+}
+  
   .featured-promotions-section
     .feature_grid-collection
     .featured-promotions
