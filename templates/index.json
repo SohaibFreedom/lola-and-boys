@@ -403,9 +403,9 @@
         "image_9Qgf3d": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/024A4590.jpg",
-            "link": "shopify:\/\/collections\/summer",
-            "title": "Summer",
+            "image": "shopify:\/\/shop_images\/SUMMER_-_BTS.jpg",
+            "link": "shopify:\/\/collections\/back-to-school",
+            "title": "Back to school",
             "text": "",
             "button_label": "shop now",
             "button_link": "shopify:\/\/collections\/valentines-day"
@@ -436,7 +436,7 @@
         "image_hUpHCc": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/BEST_SELLERS.png",
+            "image": "shopify:\/\/shop_images\/BEST_SELLERs.jpg",
             "link": "shopify:\/\/collections\/best-sellers",
             "title": "BEST SELLERS",
             "text": "",
