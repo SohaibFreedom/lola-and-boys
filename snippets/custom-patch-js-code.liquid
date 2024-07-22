@@ -4402,7 +4402,7 @@ function checkPatchallOverlapping() {
     $('.selected-patch-for-customization-for-front').removeClass('patch-selected-by-both');
     $('.selected-patch-for-customization-for-front > .selected-patch-order').remove();
     console.log('this is order',order)
-    order=0;
+    order=1;
     console.log('this is new order',order)
     changefillColors();
   });
@@ -4424,5 +4424,6 @@ function checkPatchallOverlapping() {
     $('.selected-patch-for-customization-for-back > .selected-patch-order').remove();
 
     changefillColors();
+      orderBack=1;
   });
 </script>
