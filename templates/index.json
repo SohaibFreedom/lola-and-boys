@@ -16,8 +16,9 @@
           "type": "image",
           "disabled": true,
           "settings": {
-            "image_mobile": "shopify:\/\/shop_images\/Prime_Day_HP_mob.jpg",
-            "mp4": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/6fd2dc5721a04203adef8e6fd4fb662e.mp4",
+            "image": "shopify:\/\/shop_images\/Lola_BTS_2024_HP_1.jpg",
+            "image_mobile": "shopify:\/\/shop_images\/Lola_Camp_Collection_HP_mob_1_0a1594ec-5d36-4daf-8c78-25223d0050fa.jpg",
+            "mp4": "",
             "mobilevideo": "",
             "pretext": "",
             "title": "",
