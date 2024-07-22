@@ -1,27 +1,59 @@
-            {% include 'wh_calculate_discount' with product, hide_method: 'break' %}
+{% include 'wh_calculate_discount' with product, hide_method: 'break' %}
 {% assign collection_handles = product.collections | map: 'handle' %}
 <div class="thumbnail-overlay">
   <a href="{{ product.url | within: collection }}" itemprop="url" class="hidden-product-link">{{ product.title }}</a>
   <div class="info">
-{% if customer.tags.size > 0 %}
-    {% if settings.thumbnail_hover_enabled %}
-      {% include "product-info" %}
+    {% if customer.tags.size > 0 %}
+      {% if settings.thumbnail_hover_enabled %}
+        {% include 'product-info' %}
+      {% endif %}
+    {% else %}
+      {% if settings.thumbnail_hover_enabled and settings.quick_shop_enabled %}
+        {% include 'product-info' %}
+        {% include 'quick-shop-button' %}
+      {% elsif settings.thumbnail_hover_enabled %}
+        {% include 'product-info' %}
+      {% elsif settings.quick_shop_enabled %}
+        {% include 'quick-shop-button' %}
+      {% endif %}
     {% endif %}
-{% else %}
-    {% if settings.thumbnail_hover_enabled and settings.quick_shop_enabled %}
-      {% include "product-info" %}
-      {% include 'quick-shop-button' %}
-    {% elsif settings.thumbnail_hover_enabled %}
-      {% include "product-info" %}
-    {% elsif settings.quick_shop_enabled %}
-      {% include 'quick-shop-button' %}
-    {% endif %}
-{% endif %}
   </div>
 </div>
+
+{% if product.tags contains 'best-selling-tag' %}
+  <div class="collection-specific-tags">
+    <div class="product-tag best-selling">
+      <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/heart.png?v=1721673293" width="20">
+      <span>Best Seller</span>
+    </div>
+  </div>
+{% endif %}
+
+{% if product.tags contains 'just-in-tag' %}
+  <div class="collection-specific-tags">
+    <div class="product-tag just-in">
+      <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/Star.png?v=1721673294" width="20">
+      <span>Just In</span>
+    </div>
+  </div>
+{% endif %}
+
+{% if product.tags contains 'selling-fast-tag' %}
+  <div class="collection-specific-tags">
+    <div class="product-tag just-in">
+      <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/lightning.png?v=1721673293" width="20">
+      <span>Selling fast</span>
+    </div>
+  </div>
+{% endif %}
+
 <div class="banner_holder">
   {% if product.available %}
-    {% if settings.sale_banner_enabled and wh_compare_at_price_max > wh_price and wh_discount_value == 1 and set_price == null %}
+    {% if settings.sale_banner_enabled
+      and wh_compare_at_price_max > wh_price
+      and wh_discount_value == 1
+      and set_price == null
+    %}
       <div class="sale_banner thumbnail_banner">{{ 'collections.general.sale' | t }}</div>
     {% endif %}
   {% endif %}
@@ -32,5 +64,3 @@
     <div class="preorder_banner thumbnail_banner">{{ 'collections.general.pre_order' | t }}</div>
   {% endif %}
 </div>
-
-          
