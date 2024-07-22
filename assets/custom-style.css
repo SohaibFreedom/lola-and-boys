@@ -1067,6 +1067,7 @@ html
 @media only screen and (max-width: 768px) {
   .collection-specific-tags {
     font-size: 11px;
+    padding: 3px 12px;
 }
   
   .featured-promotions-section
