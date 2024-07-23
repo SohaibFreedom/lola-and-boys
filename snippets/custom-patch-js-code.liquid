@@ -3076,6 +3076,7 @@ BackcenterBox.addEventListener('mouseup', function (event) {
             $targetPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + order + '</span>');
             $clickedPatch.addClass('patch-action').attr('order-data', order);
             order++;
+     changefillColors()
              }
       else if (document.getElementById('Back-area').style.visibility === 'visible') {
              orderBack = 1;
@@ -3083,6 +3084,7 @@ BackcenterBox.addEventListener('mouseup', function (event) {
             $targetPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + orderBack + '</span>');
             $clickedPatch.addClass('patch-action').attr('order-data', orderBack);
             orderBack++;
+         changefillColors()
      }
           
           // Check if the class was added
