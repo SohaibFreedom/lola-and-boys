@@ -3817,42 +3817,134 @@ function calculateMostCommonLeft(leftPositions) {
 //     checkPatchesPosition();
 //   checkPatchOverlapping();
 // }
-  function alignVertical() {
+//   function alignVertical() {
+//     const patchesContainer = document.querySelector('.patches-container');
+//     const patchesBackContainer = document.querySelector('.patches-containerr');
+//     let patchActionCount;
+//     if (document.getElementById('Front-Area').style.visibility === 'visible') {
+//         var patches = patchesContainer.querySelectorAll('.patch-action');
+//         patchActionCount = patches.length;
+//         console.log(patchActionCount);
+//     } else {
+//         var patches = patchesBackContainer.querySelectorAll('.patch-action');
+//         patchActionCount = patches.length;
+//         console.log(patchActionCount);
+//     }
+
+//     if (patchActionCount < 2) {
+//         return; // Exit the function if less than 2 patches have .patch-action
+//     }
+//     const sortedPatches = sortPatchesByOrder();
+//     patchesContainer.style.flexDirection = 'column';
+
+//     let topPosition = 0;
+//     sortedPatches.forEach((patch, index) => {
+//         if (index > 0) {
+//             const previousPatch = sortedPatches[index - 1];
+//             const previousPatchHeight = previousPatch.getBoundingClientRect().height;
+//             topPosition += previousPatchHeight + gapValue;
+//         }
+
+//         patch.style.top = `${topPosition}px`;
+//         patch.style.left = '0';
+//     });
+
+//     checkPatchesPosition();
+//     checkPatchOverlapping();
+// }
+function alignVertical() {
     const patchesContainer = document.querySelector('.patches-container');
     const patchesBackContainer = document.querySelector('.patches-containerr');
-    let patchActionCount;
+    let patches;
+    
     if (document.getElementById('Front-Area').style.visibility === 'visible') {
-        var patches = patchesContainer.querySelectorAll('.patch-action');
-        patchActionCount = patches.length;
-        console.log(patchActionCount);
+        patches = Array.from(patchesContainer.querySelectorAll('.patch-action'));
     } else {
-        var patches = patchesBackContainer.querySelectorAll('.patch-action');
-        patchActionCount = patches.length;
-        console.log(patchActionCount);
+        patches = Array.from(patchesBackContainer.querySelectorAll('.patch-action'));
     }
+
+    const patchActionCount = patches.length;
+    console.log('Number of patches:', patchActionCount);
 
     if (patchActionCount < 2) {
         return; // Exit the function if less than 2 patches have .patch-action
     }
-    const sortedPatches = sortPatchesByOrder();
-    patchesContainer.style.flexDirection = 'column';
 
-    let topPosition = 0;
-    sortedPatches.forEach((patch, index) => {
-        if (index > 0) {
-            const previousPatch = sortedPatches[index - 1];
-            const previousPatchHeight = previousPatch.getBoundingClientRect().height;
-            topPosition += previousPatchHeight + gapValue;
+    // Sort patches based on the order-data attribute
+    patches.sort((a, b) => {
+        const orderA = parseInt(a.getAttribute('order-data'), 10);
+        const orderB = parseInt(b.getAttribute('order-data'), 10);
+        return orderA - orderB;
+    });
+
+    // Calculate the most common top position
+    const topPositions = patches.map(patch => patch.offsetTop);
+    const mostCommonTop = calculateMostCommonTop(topPositions);
+    console.log('Most common top position:', mostCommonTop);
+
+    // Calculate the average left position
+    const leftPositions = patches.map(patch => patch.offsetLeft);
+    const averageLeft = leftPositions.reduce((sum, left) => sum + left, 0) / leftPositions.length;
+    console.log('Average left position:', averageLeft);
+    
+    // Initialize the top position for alignment
+    let topPosition = parseFloat(mostCommonTop); // Ensure topPosition is a number
+
+    // Array to store calculated positions for debugging
+    let patchPositions = [];
+
+    patches.forEach((patch, index) => {
+        // Set the left position of all patches to the average left position
+        patch.style.left = `${averageLeft}px`;
+
+        if (index === 0) {
+            // For the first patch, adjust top to the most common top position
+            patch.style.top = `${topPosition}px`;
+        } else {
+            // For subsequent patches, position them relative to the previous patch
+            const previousPatch = patches[index - 1];
+            const previousPatchHeight = parseFloat(previousPatch.offsetHeight); // Ensure height is a number
+            topPosition += previousPatchHeight; // Move to the position below the previous patch
+            patch.style.top = `${topPosition}px`;
         }
 
-        patch.style.top = `${topPosition}px`;
-        patch.style.left = '0';
+        // Store the new position for debugging
+        patchPositions.push({
+            id: patch.getAttribute('order-data'),
+            top: patch.style.top,
+            left: patch.style.left
+        });
+
+        console.log(`Patch ${patch.getAttribute('order-data')} new top position: ${patch.style.top}`);
+        console.log(`Patch ${patch.getAttribute('order-data')} new left position: ${patch.style.left}`);
     });
+
+    console.log('Final positions:', patchPositions);
 
     checkPatchesPosition();
     checkPatchOverlapping();
 }
 
+function calculateMostCommonTop(topPositions) {
+    const frequencyMap = {};
+    topPositions.forEach(position => {
+        if (!frequencyMap[position]) {
+            frequencyMap[position] = 0;
+        }
+        frequencyMap[position]++;
+    });
+
+    let mostCommonTop = topPositions[0];
+    let maxCount = 0;
+    for (const position in frequencyMap) {
+        if (frequencyMap[position] > maxCount) {
+            maxCount = frequencyMap[position];
+            mostCommonTop = position;
+        }
+    }
+
+    return mostCommonTop;
+}
 
 // Function to align patches diagonally left
 // function alignDiagonalLeft() {
