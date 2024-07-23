@@ -4134,20 +4134,63 @@ function alignDiagonalLeft() {
 //   checkPatchOverlapping();
 // }
 
+// function alignDiagonalRight() {
+//     const patchesContainer = document.querySelector('.patches-container');
+//     const patchesBackContainer = document.querySelector('.patches-containerr');
+//     let patchActionCount;
+
+//     if (document.getElementById('Front-Area').style.visibility === 'visible') {
+//         var patches = patchesContainer.querySelectorAll('.patch-action');
+//         patchActionCount = patches.length;
+//         console.log(patchActionCount);
+//     } else {
+//         var patches = patchesBackContainer.querySelectorAll('.patch-action');
+//         patchActionCount = patches.length;
+//         console.log(patchActionCount);
+//     }
+
+//     if (patchActionCount < 2) {
+//         return; // Exit the function if less than 2 patches have .patch-action
+//     }
+
+//     const sortedPatches = sortPatchesByOrder();
+//     console.log('this is sorted', sortedPatches);
+//     patchesContainer.style.flexDirection = 'row-reverse';
+
+//     let rightPosition = 0;
+//     let topPosition = 0;
+
+//     sortedPatches.forEach((patch, index) => {
+//         if (index > 0) {
+//             const previousPatch = sortedPatches[index - 1];
+//             const previousPatchWidth = previousPatch.getBoundingClientRect().width;
+//             const previousPatchHeight = previousPatch.getBoundingClientRect().height;
+
+//             rightPosition += previousPatchWidth + gapValue;
+//             topPosition += previousPatchHeight + gapValue;
+//         }
+
+//         patch.style.right = `${rightPosition}px`;
+//         patch.style.top = `${topPosition}px`;
+//         patch.style.left = 'auto'; // Reset left property
+//     });
+
+//     checkPatchesPosition();
+//     checkPatchOverlapping();
+// }
 function alignDiagonalRight() {
     const patchesContainer = document.querySelector('.patches-container');
     const patchesBackContainer = document.querySelector('.patches-containerr');
-    let patchActionCount;
+    let patches;
 
     if (document.getElementById('Front-Area').style.visibility === 'visible') {
-        var patches = patchesContainer.querySelectorAll('.patch-action');
-        patchActionCount = patches.length;
-        console.log(patchActionCount);
+        patches = patchesContainer.querySelectorAll('.patch-action');
     } else {
-        var patches = patchesBackContainer.querySelectorAll('.patch-action');
-        patchActionCount = patches.length;
-        console.log(patchActionCount);
+        patches = patchesBackContainer.querySelectorAll('.patch-action');
     }
+
+    const patchActionCount = patches.length;
+    console.log(patchActionCount);
 
     if (patchActionCount < 2) {
         return; // Exit the function if less than 2 patches have .patch-action
@@ -4155,30 +4198,42 @@ function alignDiagonalRight() {
 
     const sortedPatches = sortPatchesByOrder();
     console.log('this is sorted', sortedPatches);
-    patchesContainer.style.flexDirection = 'row-reverse';
 
-    let rightPosition = 0;
-    let topPosition = 0;
+    // Get the initial position of the first patch
+    const firstPatch = sortedPatches[0];
+    const initialRight = parseFloat(window.getComputedStyle(firstPatch).right) || 0;
+    const initialTop = parseFloat(window.getComputedStyle(firstPatch).top) || 0;
 
+    // Keep the first patch in its original position
+    firstPatch.style.position = 'absolute';
+    firstPatch.style.right = `${initialRight}px`;
+    firstPatch.style.top = `${initialTop}px`;
+    firstPatch.style.left = 'auto'; // Reset left property
+
+    let rightPosition = initialRight;
+    let topPosition = initialTop;
+
+    // Adjust positions for other patches
     sortedPatches.forEach((patch, index) => {
         if (index > 0) {
             const previousPatch = sortedPatches[index - 1];
             const previousPatchWidth = previousPatch.getBoundingClientRect().width;
             const previousPatchHeight = previousPatch.getBoundingClientRect().height;
 
+            // Update position based on the previous patch
             rightPosition += previousPatchWidth + gapValue;
             topPosition += previousPatchHeight + gapValue;
-        }
 
-        patch.style.right = `${rightPosition}px`;
-        patch.style.top = `${topPosition}px`;
-        patch.style.left = 'auto'; // Reset left property
+            patch.style.position = 'absolute';
+            patch.style.right = `${rightPosition}px`;
+            patch.style.top = `${topPosition}px`;
+            patch.style.left = 'auto'; // Reset left property
+        }
     });
 
     checkPatchesPosition();
     checkPatchOverlapping();
 }
-
 
 function sortPatchesByOrder() {
     let sortedPatches; // Declare sortedPatches variable here
