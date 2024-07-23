@@ -3423,6 +3423,8 @@ var patchActionElement = actionPatch.find('.patch-action');
             }
         });
         $(document).on('click', '.selected-patch-for-customization-for-back', function(event) {
+              changefillColors();
+                  console.log('click on back patches');
             var $clickedPatch = $(this);
             var patchId = $clickedPatch.data('patch-id');
             if (!$clickedPatch.hasClass('patch-selected')) {
@@ -3439,8 +3441,7 @@ var patchActionElement = actionPatch.find('.patch-action');
                  $targetPatch.addClass('patch-selected-by-both')
                 $('#' + patchId).addClass('patch-action').attr('order-data', orderBack);
                 orderBack++;
-                    changefillColors();
-                  console.log('click on back patches');
+                
               }
 
             } else {
