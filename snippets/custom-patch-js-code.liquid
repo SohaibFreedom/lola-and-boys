@@ -3439,6 +3439,8 @@ var patchActionElement = actionPatch.find('.patch-action');
                  $targetPatch.addClass('patch-selected-by-both')
                 $('#' + patchId).addClass('patch-action').attr('order-data', orderBack);
                 orderBack++;
+                    changefillColors();
+                  console.log('click on back patches');
               }
 
             } else {
