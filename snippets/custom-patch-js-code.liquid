@@ -3991,49 +3991,102 @@ function calculateMostCommonTop(topPositions) {
 //     checkPatchesPosition();
 //   checkPatchOverlapping();
 // }
-  function alignDiagonalLeft() {
+//   function alignDiagonalLeft() {
+//     const patchesContainer = document.querySelector('.patches-container');
+//     const patchesBackContainer = document.querySelector('.patches-containerr');
+//     let patchActionCount;
+
+//     if (document.getElementById('Front-Area').style.visibility === 'visible') {
+//         var patches = patchesContainer.querySelectorAll('.patch-action');
+//         patchActionCount = patches.length;
+//         console.log(patchActionCount);
+//     } else {
+//         var patches = patchesBackContainer.querySelectorAll('.patch-action');
+//         patchActionCount = patches.length;
+//         console.log(patchActionCount);
+//     }
+
+//     if (patchActionCount < 2) {
+//         return; // Exit the function if less than 2 patches have .patch-action
+//     }
+    
+//     const sortedPatches = sortPatchesByOrder();
+//     patchesContainer.style.flexDirection = 'row';
+
+//     let leftPosition = 0;
+//     let topPosition = 0;
+
+//     sortedPatches.forEach((patch, index) => {
+//         if (index > 0) {
+//             const previousPatch = sortedPatches[index - 1];
+//             const previousPatchWidth = previousPatch.getBoundingClientRect().width;
+//             const previousPatchHeight = previousPatch.getBoundingClientRect().height;
+
+//             leftPosition += previousPatchWidth + gapValue;
+//             topPosition += previousPatchHeight + gapValue;
+//         }
+
+//         patch.style.left = `${leftPosition}px`;
+//         patch.style.top = `${topPosition}px`;
+//     });
+
+//     checkPatchesPosition();
+//     checkPatchOverlapping();
+// }
+function alignDiagonalLeft() {
     const patchesContainer = document.querySelector('.patches-container');
     const patchesBackContainer = document.querySelector('.patches-containerr');
     let patchActionCount;
 
+    let patches;
     if (document.getElementById('Front-Area').style.visibility === 'visible') {
-        var patches = patchesContainer.querySelectorAll('.patch-action');
-        patchActionCount = patches.length;
-        console.log(patchActionCount);
+        patches = patchesContainer.querySelectorAll('.patch-action');
     } else {
-        var patches = patchesBackContainer.querySelectorAll('.patch-action');
-        patchActionCount = patches.length;
-        console.log(patchActionCount);
+        patches = patchesBackContainer.querySelectorAll('.patch-action');
     }
+
+    patchActionCount = patches.length;
+    console.log(patchActionCount);
 
     if (patchActionCount < 2) {
         return; // Exit the function if less than 2 patches have .patch-action
     }
     
     const sortedPatches = sortPatchesByOrder();
-    patchesContainer.style.flexDirection = 'row';
 
-    let leftPosition = 0;
-    let topPosition = 0;
+    // Get the initial position of the first patch using offsetLeft and offsetTop
+    const firstPatch = sortedPatches[0];
+    const initialLeft = firstPatch.offsetLeft;
+    const initialTop = firstPatch.offsetTop;
 
+    // Keep the first patch in its original position
+    firstPatch.style.position = 'absolute';
+    firstPatch.style.left = `${initialLeft}px`;
+    firstPatch.style.top = `${initialTop}px`;
+
+    let leftPosition = initialLeft;
+    let topPosition = initialTop;
+
+    // Adjust positions for other patches
     sortedPatches.forEach((patch, index) => {
         if (index > 0) {
             const previousPatch = sortedPatches[index - 1];
             const previousPatchWidth = previousPatch.getBoundingClientRect().width;
             const previousPatchHeight = previousPatch.getBoundingClientRect().height;
 
+            // Update position based on the previous patch
             leftPosition += previousPatchWidth + gapValue;
             topPosition += previousPatchHeight + gapValue;
-        }
 
-        patch.style.left = `${leftPosition}px`;
-        patch.style.top = `${topPosition}px`;
+            patch.style.position = 'absolute';
+            patch.style.left = `${leftPosition}px`;
+            patch.style.top = `${topPosition}px`;
+        }
     });
 
     checkPatchesPosition();
     checkPatchOverlapping();
 }
-
 
 // Function to align patches diagonally right
 // function alignDiagonalRight() {
