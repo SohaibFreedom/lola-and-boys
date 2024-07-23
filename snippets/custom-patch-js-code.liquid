@@ -3648,42 +3648,134 @@ function givingGap() {
 //     checkPatchesPosition();
 //     checkPatchOverlapping();
 // }
+// function alignHorizontal() {
+//     const patchesContainer = document.querySelector('.patches-container');
+//     const patchesBackContainer = document.querySelector('.patches-containerr');
+//     let patchActionCount;
+//     if (document.getElementById('Front-Area').style.visibility === 'visible') {
+//         var patches = patchesContainer.querySelectorAll('.patch-action');
+//         patchActionCount = patches.length;
+//         console.log(patchActionCount);
+//     } else {
+//         var patches = patchesBackContainer.querySelectorAll('.patch-action');
+//         patchActionCount = patches.length;
+//         console.log(patchActionCount);
+//     }
+
+//     if (patchActionCount < 2) {
+//         return; // Exit the function if less than 2 patches have .patch-action
+//     }
+//     const sortedPatches = sortPatchesByOrder();
+//     patchesContainer.style.flexDirection = 'row';
+
+//     let leftPosition = 0;
+//     sortedPatches.forEach((patch, index) => {
+//         if (index > 0) {
+//             const previousPatch = sortedPatches[index - 1];
+//             const previousPatchWidth = previousPatch.getBoundingClientRect().width;
+//             leftPosition += previousPatchWidth + gapValue;
+//         }
+
+//         patch.style.top = '0';
+//         patch.style.left = `${leftPosition}px`;
+//     });
+
+//     checkPatchesPosition();
+//     checkPatchOverlapping();
+// }
 function alignHorizontal() {
     const patchesContainer = document.querySelector('.patches-container');
     const patchesBackContainer = document.querySelector('.patches-containerr');
-    let patchActionCount;
+    let patches;
+    
     if (document.getElementById('Front-Area').style.visibility === 'visible') {
-        var patches = patchesContainer.querySelectorAll('.patch-action');
-        patchActionCount = patches.length;
-        console.log(patchActionCount);
+        patches = Array.from(patchesContainer.querySelectorAll('.patch-action'));
     } else {
-        var patches = patchesBackContainer.querySelectorAll('.patch-action');
-        patchActionCount = patches.length;
-        console.log(patchActionCount);
+        patches = Array.from(patchesBackContainer.querySelectorAll('.patch-action'));
     }
+
+    const patchActionCount = patches.length;
+    console.log('Number of patches:', patchActionCount);
 
     if (patchActionCount < 2) {
         return; // Exit the function if less than 2 patches have .patch-action
     }
-    const sortedPatches = sortPatchesByOrder();
-    patchesContainer.style.flexDirection = 'row';
 
-    let leftPosition = 0;
-    sortedPatches.forEach((patch, index) => {
-        if (index > 0) {
-            const previousPatch = sortedPatches[index - 1];
-            const previousPatchWidth = previousPatch.getBoundingClientRect().width;
-            leftPosition += previousPatchWidth + gapValue;
+    // Sort patches based on the order-data attribute
+    patches.sort((a, b) => {
+        const orderA = parseInt(a.getAttribute('order-data'), 10);
+        const orderB = parseInt(b.getAttribute('order-data'), 10);
+        return orderA - orderB;
+    });
+
+    // Calculate the average top position
+    const topPositions = patches.map(patch => patch.offsetTop);
+    const averageTop = topPositions.reduce((sum, top) => sum + top, 0) / topPositions.length;
+    console.log('Average top position:', averageTop);
+
+    // Calculate the most common left position
+    const leftPositions = patches.map(patch => patch.offsetLeft);
+    const mostCommonLeft = calculateMostCommonLeft(leftPositions);
+    console.log('Most common left position:', mostCommonLeft);
+
+    // Initialize the left position for alignment
+    let leftPosition = parseFloat(mostCommonLeft); // Ensure leftPosition is a number
+
+    // Array to store calculated positions for debugging
+    let patchPositions = [];
+
+    patches.forEach((patch, index) => {
+        // Set the top position of all patches to the average top position
+        patch.style.top = `${averageTop}px`;
+
+        if (index === 0) {
+            // For the first patch, adjust left to the most common left position
+            patch.style.left = `${leftPosition}px`;
+        } else {
+            // For subsequent patches, position them relative to the previous patch
+            const previousPatch = patches[index - 1];
+            const previousPatchWidth = parseFloat(previousPatch.getBoundingClientRect().width); // Ensure width is a number
+            leftPosition += previousPatchWidth; // Move to the position to the right of the previous patch
+            patch.style.left = `${leftPosition}px`;
         }
 
-        patch.style.top = '0';
-        patch.style.left = `${leftPosition}px`;
+        // Store the new position for debugging
+        patchPositions.push({
+            id: patch.getAttribute('order-data'),
+            top: patch.style.top,
+            left: patch.style.left
+        });
+
+        console.log(`Patch ${patch.getAttribute('order-data')} new top position: ${patch.style.top}`);
+        console.log(`Patch ${patch.getAttribute('order-data')} new left position: ${patch.style.left}`);
     });
+
+    console.log('Final positions:', patchPositions);
 
     checkPatchesPosition();
     checkPatchOverlapping();
 }
 
+function calculateMostCommonLeft(leftPositions) {
+    const frequencyMap = {};
+    leftPositions.forEach(position => {
+        if (!frequencyMap[position]) {
+            frequencyMap[position] = 0;
+        }
+        frequencyMap[position]++;
+    });
+
+    let mostCommonLeft = leftPositions[0];
+    let maxCount = 0;
+    for (const position in frequencyMap) {
+        if (frequencyMap[position] > maxCount) {
+            maxCount = frequencyMap[position];
+            mostCommonLeft = position;
+        }
+    }
+
+    return mostCommonLeft;
+}
   // Function to align patches vertically
 // function alignVertical() {
 //    const patchesContainer = document.querySelector('.patches-container');
