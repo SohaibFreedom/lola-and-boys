@@ -1,5 +1,10 @@
 {% assign variant = product.selected_or_first_available_variant %}
 <script>
+  $('#patches-back-button').click(function() {
+    console.log('#patches-back-button')
+    location.reload();
+});
+
    console.log('product',{{product | json}})
   var product = {{product | json}};
   if (product.tags && product.tags.includes('patch-customizer')) {
@@ -773,10 +778,6 @@
           $('.size_variants_errors').css('display', 'block');
       }
   });
-$('#patches-back-button').click(function() {
-    console.log('#patches-back-button')
-    location.reload();
-});
 
     $('.patches-back-button').click(function() {
        // location.reload();
