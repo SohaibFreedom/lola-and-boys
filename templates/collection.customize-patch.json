@@ -9,6 +9,32 @@
 */
 {
   "sections": {
+    "patch_banner_a34nNG": {
+      "type": "patch-banner",
+      "blocks": {
+        "steps_XMR3Et": {
+          "type": "steps",
+          "settings": {
+            "step-number": "",
+            "step-content": ""
+          }
+        },
+        "steps_wtcCyE": {
+          "type": "steps",
+          "settings": {
+            "step-number": "",
+            "step-content": ""
+          }
+        }
+      },
+      "block_order": [
+        "steps_XMR3Et",
+        "steps_wtcCyE"
+      ],
+      "settings": {
+        "title": "Patch banner"
+      }
+    },
     "main": {
       "type": "collection-template",
       "blocks": {
@@ -49,6 +75,7 @@
     }
   },
   "order": [
+    "patch_banner_a34nNG",
     "main"
   ]
 }
