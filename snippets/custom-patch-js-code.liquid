@@ -3735,7 +3735,7 @@ function alignHorizontal() {
             // For subsequent patches, position them relative to the previous patch
             const previousPatch = patches[index - 1];
             const previousPatchWidth = parseFloat(previousPatch.getBoundingClientRect().width); // Ensure width is a number
-            leftPosition += previousPatchWidth; // Move to the position to the right of the previous patch
+            leftPosition += previousPatchWidth  + gapValue; // Move to the position to the right of the previous patch
             patch.style.left = `${leftPosition}px`;
         }
 
@@ -3904,7 +3904,7 @@ function alignVertical() {
             // For subsequent patches, position them relative to the previous patch
             const previousPatch = patches[index - 1];
             const previousPatchHeight = parseFloat(previousPatch.offsetHeight); // Ensure height is a number
-            topPosition += previousPatchHeight; // Move to the position below the previous patch
+            topPosition += previousPatchHeight  + gapValue; // Move to the position below the previous patch
             patch.style.top = `${topPosition}px`;
         }
 
