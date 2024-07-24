@@ -1,0 +1,142 @@
+<style>
+    .Patch_banner_fr_customize_products_wrapper{
+          background: #fff1f5;
+    }
+    .Patch_banner_fr_customize_products_steps{
+          display: flex;
+              gap: 20px;
+    }
+    .Patch_banner_fr_customize_products_step_icon{
+        display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+    .Patch_banner_fr_customize_products_step_icon_img_div{
+      width:60px;
+      height:60px;
+    }
+    .Patch_banner_fr_customize_products_step_icon_img_div > img {
+      height:100%;
+      width:100%;
+      object-fit:contain;
+    }
+    .Patch_banner_fr_customize_products_wrap{
+          padding: 75px 70px;
+    }
+    .Patch_banner_fr_customize_products_step_content{
+      margin: 0;
+      font-size: 16px;
+    }
+    .Patch_banner_fr_customize_products_step_content{
+      display: flex;
+      flex-direction: column;
+    }
+     @media (max-width: 1024px){
+           .Patch_banner_fr_customize_products_step_content{
+         width:80%;
+      }
+      .Patch_banner_fr_customize_products_step_icon_img_div {
+      width: 20%;
+  }
+     }
+    @media (max-width: 768px){
+      .Patch_banner_fr_customize_products_wrap {
+      padding: 38px 23px;
+  }
+      .Patch_banner_fr_customize_products_steps {
+      flex-direction: column;
+  }
+    }
+</style>
+<div class="Patch_banner_fr_customize_products_wrapper">
+  <div class="Patch_banner_fr_customize_products_wrap">
+    <div class="Patch_banner_fr_customize_products_heading">
+      <h2>{{ section.settings.title }}</h2>
+    </div>
+    <div class="Patch_banner_fr_customize_products_steps">
+      {% for block in section.blocks %}
+        <div class="Patch_banner_fr_customize_products_step_parent">
+          <div class="Patch_banner_fr_customize_products_step_icon">
+            <div class="Patch_banner_fr_customize_products_step_icon_img_div">
+              {% if block.settings.image %}
+                <img src="{{ block.settings.image | img_url }}" alt="">
+              {% endif %}
+            </div>
+            <p class="Patch_banner_fr_customize_products_step_content">
+              <span class="Patch_banner_fr_customize_products_step_number"
+                >Step {{ block.settings['step-number'] }}:</span
+              >
+              {{ block.settings['step-content'] }}
+            </p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Patch banner",
+  "tag": "section",
+  "class": "banner",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Patch banner"
+    }
+  ],
+  "max_blocks": 5,
+  "blocks": [
+     {
+       "name": "Step",
+       "type": "steps",
+       "settings": [
+          {
+          "type": "text",
+           "id": "step-number",
+           "label": "Step Number"
+         },{
+          "type": "text",
+           "id": "step-content",
+           "label": "Description"
+         },{
+           "type": "image_picker",
+           "id": "image",
+           "label": "Image"
+         }
+       ]
+     }
+  ],
+  "presets": [
+    {
+      "name": "Patch banner",
+      "settings": {
+        "title": "Patch banner"
+      },
+      "blocks": [
+        {
+          "type": "steps"
+        },
+        {
+          "type": "steps"
+        }
+      ]
+    }
+  ],
+  "locales": {
+    "en": {
+      "title": "Patch bannerr"
+    },
+    "fr": {
+      "title": "Diaporama"
+    }
+  },
+  "enabled_on": {
+    "templates": ["*"],
+    "groups": ["footer"]
+  }
+}
+{% endschema %}
