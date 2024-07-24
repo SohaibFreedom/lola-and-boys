@@ -1885,16 +1885,29 @@ function addPatchToCenterBox(patchSrc, patchId, height, width) {
     patchDiv.style.left = currentX + 'px';
 
     // Adjust width and height based on media query
-  if (window.matchMedia("(min-width:  1024px) and (max-width: 1600px)").matches){
-     patchDiv.style.width = (width - 20 ) + 'px';
-        patchDiv.style.height = (height - 20  ) + 'px';
-  }
- else if (window.matchMedia("(min-width: 768px) and (max-width: 1024px)").matches) {
-        patchDiv.style.width = (width / 2 + 15 ) + 'px';
-        patchDiv.style.height = (height / 2 + 15  ) + 'px';
-    } else if (window.matchMedia("(max-width: 767px)").matches){
-        patchDiv.style.width = (width / 2  ) + 'px';
-        patchDiv.style.height = (height / 2  ) + 'px';
+    if (window.matchMedia("(min-width: 1024px) and (max-width: 1600px)").matches) {
+        patchDiv.style.width = (width - 20) + 'px';
+        patchDiv.style.height = (height - 20) + 'px';
+    } else if (window.matchMedia("(min-width: 768px) and (max-width: 1024px)").matches) {
+        patchDiv.style.width = (width / 2 + 15) + 'px';
+        patchDiv.style.height = (height / 2 + 15) + 'px';
+    } else if (window.matchMedia("(max-width: 767px)").matches) {
+      console.log('under mbile');
+        // Calculate half width and height
+        var halfWidth = width / 2;
+        var halfHeight = height / 2;
+
+        // Check if they are less than 20 and add 5px if true
+        if (halfWidth < 20) {
+            halfWidth += 5;
+        }
+        if (halfHeight < 20) {
+            halfHeight += 5;
+        }
+
+        // Set the patch dimensions
+        patchDiv.style.width = halfWidth + 'px';
+        patchDiv.style.height = halfHeight + 'px';
     } else {
         patchDiv.style.width = width + 'px';
         patchDiv.style.height = height + 'px';
@@ -1943,7 +1956,7 @@ function addPatchToCenterBox(patchSrc, patchId, height, width) {
 
     // Add click event listener to the dynamically created patch
     patchDiv.addEventListener('dragstart', function(event) {
-       ismainDragging = true;
+        ismainDragging = true;
         event.preventDefault();
         event.dataTransfer.setData('text/plain', patchDiv.querySelector('img').src);
         dragPatch1 = patchDiv;
@@ -1958,8 +1971,8 @@ function addPatchToCenterBox(patchSrc, patchId, height, width) {
     });
 
     checkPatchallOverlapping();
-   selectpastchesodertidy(patchSrc,newPatchId);
-   tidyEditbtnfuncion();
+    selectpastchesodertidy(patchSrc, newPatchId);
+    tidyEditbtnfuncion();
 }
 
 //    function addPatchToBackcenterBox(patchSrc, patchId,height, width) {
