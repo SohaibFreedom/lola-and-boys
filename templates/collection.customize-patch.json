@@ -9,30 +9,41 @@
 */
 {
   "sections": {
-    "patch_banner_a34nNG": {
+    "patch_banner_FWnUWa": {
       "type": "patch-banner",
       "blocks": {
-        "steps_XMR3Et": {
+        "steps_Xa4YKH": {
           "type": "steps",
           "settings": {
-            "step-number": "",
-            "step-content": ""
+            "step-number": "1",
+            "step-content": "Select your silhouette from our collection of travel bags, Pouches & accessories.",
+            "image": "shopify:\/\/shop_images\/1_small_2b5a38a3-9955-4a6c-98fe-874da13c7def.webp"
           }
         },
-        "steps_wtcCyE": {
+        "steps_RtUFNb": {
           "type": "steps",
           "settings": {
-            "step-number": "",
-            "step-content": ""
+            "step-number": "3",
+            "step-content": "Enjoy your 1-of-a-kind design, created by hand & shipped to you!",
+            "image": "shopify:\/\/shop_images\/3_small_8b542a66-b734-46a6-8183-0268c26b90fb.png"
+          }
+        },
+        "steps_qWfbB4": {
+          "type": "steps",
+          "settings": {
+            "step-number": "2",
+            "step-content": "Customize with Patches from our library of letters & icons.",
+            "image": "shopify:\/\/shop_images\/2_small_f7363cb1-c9c9-4d02-821f-d9e1847025a0.webp"
           }
         }
       },
       "block_order": [
-        "steps_XMR3Et",
-        "steps_wtcCyE"
+        "steps_Xa4YKH",
+        "steps_RtUFNb",
+        "steps_qWfbB4"
       ],
       "settings": {
-        "title": "Patch banner"
+        "title": "Create Your Signature Design"
       }
     },
     "main": {
@@ -75,7 +86,7 @@
     }
   },
   "order": [
-    "patch_banner_a34nNG",
+    "patch_banner_FWnUWa",
     "main"
   ]
 }
