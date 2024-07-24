@@ -1,9 +1,12 @@
 {% assign variant = product.selected_or_first_available_variant %}
 <script>
-  $('#patches-back-button').click(function() {
-    console.log('#patches-back-button')
-    location.reload();
+$(document).ready(function() {
+    $('#patches-back-button').click(function() {
+        console.log('#patches-back-button clicked');
+        location.reload();
+    });
 });
+
 
    console.log('product',{{product | json}})
   var product = {{product | json}};
