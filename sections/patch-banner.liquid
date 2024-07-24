@@ -50,28 +50,30 @@
     }
 </style>
 <div class="Patch_banner_fr_customize_products_wrapper">
-  <div class="Patch_banner_fr_customize_products_wrap">
-    <div class="Patch_banner_fr_customize_products_heading">
-      <h2>{{ section.settings.title }}</h2>
-    </div>
-    <div class="Patch_banner_fr_customize_products_steps">
-      {% for block in section.blocks %}
-        <div class="Patch_banner_fr_customize_products_step_parent">
-          <div class="Patch_banner_fr_customize_products_step_icon">
-            <div class="Patch_banner_fr_customize_products_step_icon_img_div">
-              {% if block.settings.image %}
-                <img src="{{ block.settings.image | img_url }}" alt="">
-              {% endif %}
+  <div class="container">
+    <div class="Patch_banner_fr_customize_products_wrap">
+      <div class="Patch_banner_fr_customize_products_heading">
+        <h2>{{ section.settings.title }}</h2>
+      </div>
+      <div class="Patch_banner_fr_customize_products_steps">
+        {% for block in section.blocks %}
+          <div class="Patch_banner_fr_customize_products_step_parent">
+            <div class="Patch_banner_fr_customize_products_step_icon">
+              <div class="Patch_banner_fr_customize_products_step_icon_img_div">
+                {% if block.settings.image %}
+                  <img src="{{ block.settings.image | img_url }}" alt="">
+                {% endif %}
+              </div>
+              <p class="Patch_banner_fr_customize_products_step_content">
+                <span class="Patch_banner_fr_customize_products_step_number"
+                  >Step {{ block.settings['step-number'] }}:</span
+                >
+                {{ block.settings['step-content'] }}
+              </p>
             </div>
-            <p class="Patch_banner_fr_customize_products_step_content">
-              <span class="Patch_banner_fr_customize_products_step_number"
-                >Step {{ block.settings['step-number'] }}:</span
-              >
-              {{ block.settings['step-content'] }}
-            </p>
           </div>
-        </div>
-      {% endfor %}
+        {% endfor %}
+      </div>
     </div>
   </div>
 </div>
