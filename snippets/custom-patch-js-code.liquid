@@ -1,5 +1,14 @@
 {% assign variant = product.selected_or_first_available_variant %}
 <script>
+   console.log('product',{{product | json}})
+  var product = {{product | json}};
+  if (product.tags && product.tags.includes('patch-customizer')) {
+      console.log('hide the zakeke customiz bnm')
+      var button = document.querySelector('#zakeke-product-button-custom');
+      if (button) {
+        button.style.display = 'none';
+      }
+    }
   $(document).ready(function() {
       $('#small_variant').click(function() {
         console.log('change-text');
