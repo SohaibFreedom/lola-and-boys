@@ -809,10 +809,38 @@ $(document).ready(function() {
         } else {
             $('.only-mobile-colors-wrapper').css('display', 'none');
         }
-    } else {
+    }
+    else {
         // Show the error div
         $('.size_variants_errors').css('display', 'block');
     }
+}else{
+          $('.variants-selected-sidebar').addClass('variants-continue-btn-invisible');
+
+        if (window.matchMedia("(max-width: 769px)").matches) {
+            // $('.patches-tidy-editor-btn').css('visibility', 'visible');
+            $('.patches-editor-wrapper').css('display', 'flex');
+        } else {
+            $('.patches-tidy-editor-btn').css('visibility', 'hidden');
+            $('.patches-editor-wrapper').css('display', 'block');
+        }
+        $('.size_variants_errors').css('display', 'none');
+
+        if (window.matchMedia("(max-width: 768px)").matches) {
+            $('.only-mobile').css('display', 'none');
+        }
+
+        if (window.matchMedia("(max-width: 769px)").matches) {
+            // $('.patches-tidy-editor-btn').css('visibility', 'visible');
+        } else {
+            $('.patches-tidy-editor-btn').css('visibility', 'hidden');
+        }
+
+        if (window.matchMedia("(max-width: 768px)").matches) {
+            $('.only-mobile-colors-wrapper').css('display', 'block');
+        } else {
+            $('.only-mobile-colors-wrapper').css('display', 'none');
+        }
 }
 
   });
