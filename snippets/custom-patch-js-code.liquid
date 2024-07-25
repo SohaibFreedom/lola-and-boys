@@ -1256,10 +1256,11 @@ function closePopup() {
         const product = {{ product | json }};
 
         if (Array.isArray(product.tags) && product.tags.includes('back-pack')) {
+          console.log('back-pack')
             imgHeight += 10;
             imgWidth += 10;
         }
-
+        console.log('alphabetsimgHeight',imgHeight)
         img.height = imgHeight;
         img.width = imgWidth;
 
