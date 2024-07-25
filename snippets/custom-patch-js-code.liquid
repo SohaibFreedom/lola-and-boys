@@ -2365,14 +2365,14 @@ function dropPatchbydraggingFront(patchElement, x, y,height,width) {
     patchDiv.style.top = y + 'px';
     patchDiv.style.left = x + 'px';
  //   patchDiv.style.transform = 'translate(-50%, -50%)';
-  height = parseInt(height, 10);
-    width = parseInt(width, 10);
+  // height = parseInt(height, 10);
+  //   width = parseInt(width, 10);
 
-    // Check if the product contains the "back-pack" tag
-    if (Array.isArray(product.tags) && product.tags.includes('back-pack')) {
-        height += 10;
-        width += 10;
-    }
+  //   // Check if the product contains the "back-pack" tag
+  //   if (Array.isArray(product.tags) && product.tags.includes('back-pack')) {
+  //       height += 10;
+  //       width += 10;
+  //   }
     if (window.matchMedia("(min-width:  1024px) and (max-width: 1600px)").matches){
      patchDiv.style.width = (width - 20 ) + 'px';
         patchDiv.style.height = (height - 20  ) + 'px';
