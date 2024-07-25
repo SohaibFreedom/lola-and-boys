@@ -1983,17 +1983,6 @@ function addPatchToCenterBox(patchSrc, patchId, height, width) {
     patchDiv.setAttribute('v-id', patchId);
     patchDiv.classList.add('patch-');
     patchDiv.style.position = 'absolute';
-
-    height = parseInt(height, 10);
-    width = parseInt(width, 10);
-
-    // Check if the product contains the "back-pack" tag
-    if (Array.isArray(product.tags) && product.tags.includes('back-pack')) {
-        height += 10;
-        width += 10;
-    }
-
-    // Position the patch
     patchDiv.style.top = currentY + 'px';
     patchDiv.style.left = currentX + 'px';
 
@@ -2197,14 +2186,6 @@ function addPatchToBackcenterBox(patchSrc, patchId, height, width) {
     patchDiv.setAttribute('v-id', patchId);
     patchDiv.classList.add('patch-');
     patchDiv.style.position = 'absolute';
-  height = parseInt(height, 10);
-    width = parseInt(width, 10);
-
-    // Check if the product contains the "back-pack" tag
-    if (Array.isArray(product.tags) && product.tags.includes('back-pack')) {
-        height += 10;
-        width += 10;
-    }
     // Position the patch
     patchDiv.style.top = currentYBack + 'px';
     patchDiv.style.left = currentXBack + 'px';
@@ -2365,14 +2346,6 @@ function dropPatchbydraggingFront(patchElement, x, y,height,width) {
     patchDiv.style.top = y + 'px';
     patchDiv.style.left = x + 'px';
  //   patchDiv.style.transform = 'translate(-50%, -50%)';
-  // height = parseInt(height, 10);
-  //   width = parseInt(width, 10);
-
-  //   // Check if the product contains the "back-pack" tag
-  //   if (Array.isArray(product.tags) && product.tags.includes('back-pack')) {
-  //       height += 10;
-  //       width += 10;
-  //   }
     if (window.matchMedia("(min-width:  1024px) and (max-width: 1600px)").matches){
      patchDiv.style.width = (width - 20 ) + 'px';
         patchDiv.style.height = (height - 20  ) + 'px';
@@ -2434,14 +2407,6 @@ function dropPatchbydraggingBack(patchElement, x, y, height,width) {
     patchDiv.style.top = y + 'px';
     patchDiv.style.left = x + 'px';
     // patchDiv.style.transform = 'translate(-50%, -50%)';
-    height = parseInt(height, 10);
-    width = parseInt(width, 10);
-
-    // Check if the product contains the "back-pack" tag
-    if (Array.isArray(product.tags) && product.tags.includes('back-pack')) {
-        height += 10;
-        width += 10;
-    }
     if (window.matchMedia("(min-width:  1024px) and (max-width: 1600px)").matches){
      patchDiv.style.width = (width - 20 ) + 'px';
         patchDiv.style.height = (height - 20  ) + 'px';
