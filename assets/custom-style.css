@@ -4,26 +4,25 @@
   display: block;
 }
 .collection-specific-tags {
-    position: absolute;
-    left: 0;
- 		bottom:0;
-    background: #fdf1ff !important;
-    padding: 5px 18px;
-    text-transform: uppercase;
-    font-size: 14px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #fdf1ff !important;
+  padding: 5px 18px;
+  text-transform: uppercase;
+  font-size: 14px;
 }
 
 .collection-specific-tags img {
-    width:20px !important;
-		height:auto !important;
+  width: 20px !important;
+  height: auto !important;
 }
 .collection-specific-tags .product-tag {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    flex-wrap: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: nowrap;
 }
-
 
 .c-insta-grid-wrapper {
   display: flex;
@@ -1067,9 +1066,12 @@ html
 @media only screen and (max-width: 768px) {
   .collection-specific-tags {
     font-size: 11px;
-    padding: 3px 12px;
-}
-  
+    padding: 0 9px;
+  }
+  .collection-specific-tags img {
+    width: 11px !important;
+  }
+
   .featured-promotions-section
     .feature_grid-collection
     .featured-promotions
