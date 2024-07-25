@@ -1226,66 +1226,66 @@ function closePopup() {
    //      $('.patches').append(div);
    //   });
    // }
-//         function showAlphabets() {
-//     // Clear existing content in the patches container
-//     $('.patches').empty();
+        function showAlphabets() {
+    // Clear existing content in the patches container
+    $('.patches').empty();
 
-//     // Loop through the alphabets data and display alphabets
-//     alphabets.forEach(item => {
-//         const div = document.createElement('div');
-//         const title = document.createElement('p');
-//         div.setAttribute('v-id', item.id);
-//         // div.setAttribute('draggable', 'true');
-//         div.classList.add('patch');
-//         title.classList.add('patch-title');
-//         title.textContent = item.alphabetname;
+    // Loop through the alphabets data and display alphabets
+    alphabets.forEach(item => {
+        const div = document.createElement('div');
+        const title = document.createElement('p');
+        div.setAttribute('v-id', item.id);
+        // div.setAttribute('draggable', 'true');
+        div.classList.add('patch');
+        title.classList.add('patch-title');
+        title.textContent = item.alphabetname;
 
-//         const img = document.createElement('img');
-//         img.src = item.image;
-//         img.alt = item.name;
-//         img.classList.add('patch-image');
-//         img.setAttribute('crossorigin', 'anonymous');
+        const img = document.createElement('img');
+        img.src = item.image;
+        img.alt = item.name;
+        img.classList.add('patch-image');
+        img.setAttribute('crossorigin', 'anonymous');
 
-//         // Get the height and width as integers
-//         let imgHeight = parseInt(item.height, 10);
-//         let imgWidth = parseInt(item.width, 10);
+        // Get the height and width as integers
+        let imgHeight = parseInt(item.height, 10);
+        let imgWidth = parseInt(item.width, 10);
 
-//         // Check if the product contains the "back-pack" tag
-//         console.log('product', {{ product | json }});
-//         const product = {{ product | json }};
+        // Check if the product contains the "back-pack" tag
+        console.log('product', {{ product | json }});
+        const product = {{ product | json }};
 
-//         if (Array.isArray(product.tags) && product.tags.includes('back-pack')) {
-//           console.log('back-pack')
-//             imgHeight += 10;
-//             imgWidth += 10;
-//         }
-//         console.log('alphabetsimgHeight',imgHeight)
-//         // img.height = imgHeight;
-//         // img.width = imgWidth;
+        if (Array.isArray(product.tags) && product.tags.includes('back-pack')) {
+          console.log('back-pack')
+            imgHeight += 10;
+            imgWidth += 10;
+        }
+        console.log('alphabetsimgHeight',imgHeight)
+        // img.height = imgHeight;
+        // img.width = imgWidth;
 
-//         const svgDiv = document.createElement('div');
-//         svgDiv.classList.add('zoom');
-//         const svgIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-//         svgIcon.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-//         svgIcon.setAttribute('class', 'h-6 w-6');
-//         svgIcon.setAttribute('fill', 'none');
-//         svgIcon.setAttribute('viewBox', '0 0 24 24');
-//         svgIcon.setAttribute('stroke', 'currentColor');
-//         svgIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>';
-//         svgDiv.appendChild(svgIcon);
+        const svgDiv = document.createElement('div');
+        svgDiv.classList.add('zoom');
+        const svgIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svgIcon.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+        svgIcon.setAttribute('class', 'h-6 w-6');
+        svgIcon.setAttribute('fill', 'none');
+        svgIcon.setAttribute('viewBox', '0 0 24 24');
+        svgIcon.setAttribute('stroke', 'currentColor');
+        svgIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>';
+        svgDiv.appendChild(svgIcon);
 
-//         div.appendChild(img);
-//         div.appendChild(title);
-//         div.appendChild(svgDiv);
+        div.appendChild(img);
+        div.appendChild(title);
+        div.appendChild(svgDiv);
 
-//         // Add event listener to the SVG icon to open the pop-up
-//         svgDiv.addEventListener('click', function() {
-//             openPopup(item);
-//         });
+        // Add event listener to the SVG icon to open the pop-up
+        svgDiv.addEventListener('click', function() {
+            openPopup(item);
+        });
 
-//         $('.patches').append(div);
-//     });
-// }
+        $('.patches').append(div);
+    });
+}
  });
  
  
