@@ -1094,8 +1094,7 @@ document.querySelector('.customization-search-bar').addEventListener('input', fi
         let imgHeight = parseInt(item.height, 10);
         let imgWidth = parseInt(item.width, 10);
 
-        // Check if the product contains the "back-pack" tag
-        console.log('product', {{ product | json }});
+     
         const product = {{ product | json }};
 
         if (Array.isArray(product.tags) && product.tags.includes('back-pack')) {
