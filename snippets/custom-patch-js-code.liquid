@@ -750,36 +750,71 @@ $(document).ready(function() {
   $('.variants-continue-btn').click(function() {
      $('.patches-tidy-editor-btn').css('display', 'block');
       // Check if the class .size_variants_active exists in any .size_variants_circle elements
-      if ($('.size_variants_circle').hasClass('size_variants_active')) {
-          // Add the class to the clicked element
-          $('.variants-selected-sidebar').addClass('variants-continue-btn-invisible');
+  //     if ($('.size_variants_circle').hasClass('size_variants_active')) {
+  //         // Add the class to the clicked element
+  //         $('.variants-selected-sidebar').addClass('variants-continue-btn-invisible');
 
-          if (window.matchMedia("(max-width: 769px)").matches) {
-              // $('.patches-tidy-editor-btn').css('visibility', 'visible');
-              $('.patches-editor-wrapper').css('display', 'flex');
-          } else {
-              $('.patches-tidy-editor-btn').css('visibility', 'hidden');
-            $('.patches-editor-wrapper').css('display', 'block');
-          }
-           $('.size_variants_errors').css('display', 'none');
+  //         if (window.matchMedia("(max-width: 769px)").matches) {
+  //             // $('.patches-tidy-editor-btn').css('visibility', 'visible');
+  //             $('.patches-editor-wrapper').css('display', 'flex');
+  //         } else {
+  //             $('.patches-tidy-editor-btn').css('visibility', 'hidden');
+  //           $('.patches-editor-wrapper').css('display', 'block');
+  //         }
+  //          $('.size_variants_errors').css('display', 'none');
 
-              if (window.matchMedia("(max-width: 768px)").matches){
-          $('.only-mobile').css('display', 'none');
-      }
+  //             if (window.matchMedia("(max-width: 768px)").matches){
+  //         $('.only-mobile').css('display', 'none');
+  //     }
+  //       if (window.matchMedia("(max-width: 769px)").matches) {
+  //             // $('.patches-tidy-editor-btn').css('visibility', 'visible');
+  //         } else {
+  //             $('.patches-tidy-editor-btn').css('visibility', 'hidden');
+  //         }
+  //            if (window.matchMedia("(max-width: 768px)").matches){
+  //         $('.only-mobile-colors-wrapper').css('display', 'block');
+  //     }else{
+  //        $('.only-mobile-colors-wrapper').css('display', 'none');
+  // }
+  //     } else {
+  //         // Show the error div
+  //         $('.size_variants_errors').css('display', 'block');
+  //     }
+    if ($('.size_variants_section').css('visibility') === 'visible') {
+    if ($('.size_variants_circle').hasClass('size_variants_active')) {
+        // Add the class to the clicked element
+        $('.variants-selected-sidebar').addClass('variants-continue-btn-invisible');
+
         if (window.matchMedia("(max-width: 769px)").matches) {
-              // $('.patches-tidy-editor-btn').css('visibility', 'visible');
-          } else {
-              $('.patches-tidy-editor-btn').css('visibility', 'hidden');
-          }
-             if (window.matchMedia("(max-width: 768px)").matches){
-          $('.only-mobile-colors-wrapper').css('display', 'block');
-      }else{
-         $('.only-mobile-colors-wrapper').css('display', 'none');
-  }
-      } else {
-          // Show the error div
-          $('.size_variants_errors').css('display', 'block');
-      }
+            // $('.patches-tidy-editor-btn').css('visibility', 'visible');
+            $('.patches-editor-wrapper').css('display', 'flex');
+        } else {
+            $('.patches-tidy-editor-btn').css('visibility', 'hidden');
+            $('.patches-editor-wrapper').css('display', 'block');
+        }
+        $('.size_variants_errors').css('display', 'none');
+
+        if (window.matchMedia("(max-width: 768px)").matches) {
+            $('.only-mobile').css('display', 'none');
+        }
+
+        if (window.matchMedia("(max-width: 769px)").matches) {
+            // $('.patches-tidy-editor-btn').css('visibility', 'visible');
+        } else {
+            $('.patches-tidy-editor-btn').css('visibility', 'hidden');
+        }
+
+        if (window.matchMedia("(max-width: 768px)").matches) {
+            $('.only-mobile-colors-wrapper').css('display', 'block');
+        } else {
+            $('.only-mobile-colors-wrapper').css('display', 'none');
+        }
+    } else {
+        // Show the error div
+        $('.size_variants_errors').css('display', 'block');
+    }
+}
+
   });
 
     $('.patches-back-button').click(function() {
