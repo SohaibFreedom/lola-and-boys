@@ -1239,7 +1239,7 @@ centerBox.style.left = currentImageData.FLeft + '%';
  //     centerBox.style.left = currentImageData.BLeft  + '%';
  //   }
  // }
- function showBackImage() {
+function showBackImage() {
    // Get the variant ID
    const variantId = "{{variant.id}}"; // Replace "{{variant.id}}" with your actual variant ID
 
@@ -1254,9 +1254,9 @@ centerBox.style.left = currentImageData.FLeft + '%';
      // Check if Backimg is empty and hide the div if it is
      const patchesWrapper = document.querySelector(".patches-customizations-btn-wrapper");
      if (!currentImageData.Backimg) {
-       patchesWrapper.style.display = "none";
+       patchesWrapper.style.visibility = "hidden";
      } else {
-       patchesWrapper.style.display = "block";
+       patchesWrapper.style.visibility = "visible";
      }
 
      // Update CSS properties of #centerBox
@@ -1267,6 +1267,7 @@ centerBox.style.left = currentImageData.FLeft + '%';
      centerBox.style.left = currentImageData.BLeft + '%';
    }
 }
+
 
    })
    .catch(error => {
