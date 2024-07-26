@@ -1192,112 +1192,112 @@ function closePopup() {
  
    // Function to show alphabets
       // old alphabets
-   // function showAlphabets() {
-   //   // Clear existing content in the patches container
-   //   $('.patches').empty();
+   function showAlphabets() {
+     // Clear existing content in the patches container
+     $('.patches').empty();
  
-   //   // Loop through the alphabets data and display alphabets
-   //   alphabets.forEach(item => {
-   //     const div = document.createElement('div');
-   //     const title = document.createElement('p');
-   //     div.setAttribute('v-id', item.id);
-   //     // div.setAttribute('draggable', 'true');
-   //     div.classList.add('patch');
-   //     title.classList.add('patch-title');
-   //     title.textContent = item.alphabetname;
+     // Loop through the alphabets data and display alphabets
+     alphabets.forEach(item => {
+       const div = document.createElement('div');
+       const title = document.createElement('p');
+       div.setAttribute('v-id', item.id);
+       // div.setAttribute('draggable', 'true');
+       div.classList.add('patch');
+       title.classList.add('patch-title');
+       title.textContent = item.alphabetname;
  
-   //     const img = document.createElement('img');
-   //     img.src = item.image;
-   //     img.alt = item.name;
-   //     img.classList.add('patch-image');
-   //     img.setAttribute('crossorigin', 'anonymous');
-   //     img.height = item.height;
-   //     img.width = item.width;
+       const img = document.createElement('img');
+       img.src = item.image;
+       img.alt = item.name;
+       img.classList.add('patch-image');
+       img.setAttribute('crossorigin', 'anonymous');
+       img.height = item.height;
+       img.width = item.width;
 
 
-   //      const svgDiv = document.createElement('div');
-   //      svgDiv.classList.add('zoom');
-   //      const svgIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-   //      svgIcon.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-   //      svgIcon.setAttribute('class', 'h-6 w-6');
-   //      svgIcon.setAttribute('fill', 'none');
-   //      svgIcon.setAttribute('viewBox', '0 0 24 24');
-   //      svgIcon.setAttribute('stroke', 'currentColor');
-   //      svgIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>';
-   //      svgDiv.appendChild(svgIcon);
+        const svgDiv = document.createElement('div');
+        svgDiv.classList.add('zoom');
+        const svgIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svgIcon.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+        svgIcon.setAttribute('class', 'h-6 w-6');
+        svgIcon.setAttribute('fill', 'none');
+        svgIcon.setAttribute('viewBox', '0 0 24 24');
+        svgIcon.setAttribute('stroke', 'currentColor');
+        svgIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>';
+        svgDiv.appendChild(svgIcon);
 
-   //      div.appendChild(img);
-   //      div.appendChild(title);
-   //      div.appendChild(svgDiv);
+        div.appendChild(img);
+        div.appendChild(title);
+        div.appendChild(svgDiv);
 
-   //      // Add event listener to the SVG icon to open the pop-up
-   //      svgDiv.addEventListener('click', function() {
-   //          openPopup(item);
-   //      });
+        // Add event listener to the SVG icon to open the pop-up
+        svgDiv.addEventListener('click', function() {
+            openPopup(item);
+        });
 
-   //      $('.patches').append(div);
-   //   });
-   // }
-//         function showAlphabets() {
-//     // Clear existing content in the patches container
-//     $('.patches').empty();
+        $('.patches').append(div);
+     });
+   }
+        function showAlphabets() {
+    // Clear existing content in the patches container
+    $('.patches').empty();
 
-//     // Loop through the alphabets data and display alphabets
-//     // alphabets.forEach(item => {
-//     //     const div = document.createElement('div');
-//     //     const title = document.createElement('p');
-//     //     div.setAttribute('v-id', item.id);
-//     //     // div.setAttribute('draggable', 'true');
-//     //     div.classList.add('patch');
-//     //     title.classList.add('patch-title');
-//     //     title.textContent = item.alphabetname;
+    // Loop through the alphabets data and display alphabets
+    // alphabets.forEach(item => {
+    //     const div = document.createElement('div');
+    //     const title = document.createElement('p');
+    //     div.setAttribute('v-id', item.id);
+    //     // div.setAttribute('draggable', 'true');
+    //     div.classList.add('patch');
+    //     title.classList.add('patch-title');
+    //     title.textContent = item.alphabetname;
 
-//     //     const img = document.createElement('img');
-//     //     // img.src = item.image;
-//     //     // img.alt = item.name;
-//     //     // img.classList.add('patch-image');
-//     //     // img.setAttribute('crossorigin', 'anonymous');
+    //     const img = document.createElement('img');
+    //     // img.src = item.image;
+    //     // img.alt = item.name;
+    //     // img.classList.add('patch-image');
+    //     // img.setAttribute('crossorigin', 'anonymous');
 
-//     //     // Get the height and width as integers
-//     //     let imgHeight = parseInt(item.height, 10);
-//     //     let imgWidth = parseInt(item.width, 10);
+    //     // Get the height and width as integers
+    //     let imgHeight = parseInt(item.height, 10);
+    //     let imgWidth = parseInt(item.width, 10);
 
-//     //     // Check if the product contains the "back-pack" tag
-//     //     console.log('product', {{ product | json }});
-//     //     const product = {{ product | json }};
+    //     // Check if the product contains the "back-pack" tag
+    //     console.log('product', {{ product | json }});
+    //     const product = {{ product | json }};
 
-//     //     if (Array.isArray(product.tags) && product.tags.includes('back-pack')) {
-//     //       console.log('back-pack')
-//     //         imgHeight += 10;
-//     //         imgWidth += 10;
-//     //     }
-//     //     console.log('alphabetsimgHeight',imgHeight)
-//     //     // img.height = imgHeight;
-//     //     // img.width = imgWidth;
+    //     if (Array.isArray(product.tags) && product.tags.includes('back-pack')) {
+    //       console.log('back-pack')
+    //         imgHeight += 10;
+    //         imgWidth += 10;
+    //     }
+    //     console.log('alphabetsimgHeight',imgHeight)
+    //     // img.height = imgHeight;
+    //     // img.width = imgWidth;
 
-//     //     const svgDiv = document.createElement('div');
-//     //     svgDiv.classList.add('zoom');
-//     //     const svgIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-//     //     svgIcon.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-//     //     svgIcon.setAttribute('class', 'h-6 w-6');
-//     //     svgIcon.setAttribute('fill', 'none');
-//     //     svgIcon.setAttribute('viewBox', '0 0 24 24');
-//     //     svgIcon.setAttribute('stroke', 'currentColor');
-//     //     svgIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>';
-//     //     svgDiv.appendChild(svgIcon);
+    //     const svgDiv = document.createElement('div');
+    //     svgDiv.classList.add('zoom');
+    //     const svgIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    //     svgIcon.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    //     svgIcon.setAttribute('class', 'h-6 w-6');
+    //     svgIcon.setAttribute('fill', 'none');
+    //     svgIcon.setAttribute('viewBox', '0 0 24 24');
+    //     svgIcon.setAttribute('stroke', 'currentColor');
+    //     svgIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>';
+    //     svgDiv.appendChild(svgIcon);
 
-//     //     div.appendChild(img);
-//     //     div.appendChild(title);
-//     //     div.appendChild(svgDiv);
+    //     div.appendChild(img);
+    //     div.appendChild(title);
+    //     div.appendChild(svgDiv);
 
-//     //     // Add event listener to the SVG icon to open the pop-up
-//     //     svgDiv.addEventListener('click', function() {
-//     //         openPopup(item);
-//     //     });
+    //     // Add event listener to the SVG icon to open the pop-up
+    //     svgDiv.addEventListener('click', function() {
+    //         openPopup(item);
+    //     });
 
-//     //     $('.patches').append(div);
-//     // });
-// }
+    //     $('.patches').append(div);
+    // });
+}
  });
  
  
@@ -2872,8 +2872,204 @@ function checkOverlapWithPatches(patchRect, patchClass) {
             }
         });
   
+// centerBox.addEventListener('touchstart', function (event) {
+//     console.log('touch Start')
+//     if (event.touches.length === 1) {
+//         const touch = event.touches[0];
+//         const rect = centerBox.getBoundingClientRect();
+//         const mouseX = touch.clientX - rect.left;
+//         const mouseY = touch.clientY - rect.top;
+
+//         // Check if there's an existing patch at the touched position
+//         let existingPatchIndex = patches.findIndex(patch => {
+//             return mouseX >= patch.x - patch.width / 2 &&
+//                 mouseX <= patch.x + patch.width / 2 &&
+//                 mouseY >= patch.y - patch.height / 2 &&
+//                 mouseY <= patch.y + patch.height / 2;
+//         });
+
+//         if (existingPatchIndex !== -1) {
+//             // Existing patch found, set it as the dragPatch
+//             dragPatch1 = document.getElementById(patches[existingPatchIndex].id);
+
+//             // Calculate offset for smoother dragging
+//             offsetX = mouseX - patches[existingPatchIndex].x;
+//             offsetY = mouseY - patches[existingPatchIndex].y;
+
+//             // Prevent further propagation of the event
+//             event.preventDefault();
+//             event.stopPropagation();
+//         }
+//     }
+// });
 centerBox.addEventListener('touchstart', function (event) {
-    console.log('touch Start')
+  ismainDragging = false;
+    console.log('touch StartTT')
+   if (!ismainDragging) {
+        console.log('Element clicked');
+  
+        // Your click functionality here
+    const patchElement = $(event.target).closest('.patch-');
+ // patchElement.toggleClass('patch-open-editor');
+          var $clickedPatch = $(this);
+       if ($clickedPatch.hasClass('patch-action')) {
+         console.log('patch-action exists')
+         $('.selected-patch-for-customization').removeClass('patch-selected').find('.selected-patch-order').remove();
+         $('.selected-patch-for-customization').removeClass('patch-selected-by-btn');
+         $('.edit-btn-patch-selected').removeClass('patch-selected-by-both');
+         $clickedPatch.removeClass('patch-action').removeAttr('order-data'); 
+             var patchId = $clickedPatch.attr('id'); // Get the id attribute
+        console.log("Clicked patch id: " + patchId); // Log the id attribute value
+
+        // Use the attribute selector to find the element with the matching data-patch-id
+        var $targetPatch = $('[data-patch-id="' + patchId + '"]');
+        console.log("Target patch element:", $targetPatch); // Log the selected element
+          if (document.getElementById('Front-Area').style.visibility === 'visible') {
+            order=1;
+            // Set the order for the clicked patch
+            $targetPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + order + '</span>');
+            $clickedPatch.addClass('patch-action').attr('order-data', order);
+            order++;
+             }
+      else if (document.getElementById('Back-area').style.visibility === 'visible') {
+             orderBack = 1;
+            // Set the order for the clicked patch
+            $targetPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + orderBack + '</span>');
+            $clickedPatch.addClass('patch-action').attr('order-data', orderBack);
+            orderBack++;
+     }
+       }
+       else{
+          var patchId = $clickedPatch.attr('id'); // Get the id attribute
+        console.log("Clicked patch id: " + patchId); // Log the id attribute value
+
+        // Use the attribute selector to find the element with the matching data-patch-id
+        var $targetPatch = $('[data-patch-id="' + patchId + '"]');
+        console.log("Target patch element:", $targetPatch); // Log the selected element
+
+        // Check if the target element is found
+        if ($targetPatch.length) {
+          
+                   $('.selected-patch-for-customization').removeClass('patch-selected').find('.selected-patch-order').remove();
+            $('.patch-').removeClass('patch-action').removeAttr('order-data');
+
+            
+         
+
+  if (document.getElementById('Front-Area').style.visibility === 'visible') {
+            order=1;
+            // Set the order for the clicked patch
+            $targetPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + order + '</span>');
+            $clickedPatch.addClass('patch-action').attr('order-data', order);
+            order++;
+     changefillColors()
+             }
+      else if (document.getElementById('Back-area').style.visibility === 'visible') {
+             orderBack = 1;
+            // Set the order for the clicked patch
+            $targetPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + orderBack + '</span>');
+            $clickedPatch.addClass('patch-action').attr('order-data', orderBack);
+            orderBack++;
+        console.log('click on back image');
+         changefillColors()
+     }
+          
+          // Check if the class was added
+          if ($targetPatch.hasClass('patch-selected')) {
+            console.log('Class patch-selected added to element with data-patch-id ' + patchId);
+          } else {
+            console.log('Class patch-selected not added to element with data-patch-id ' + patchId);
+          }
+        } else {
+          console.log('No element found with data-patch-id ' + patchId);
+        }
+           $('.patch-').removeClass('patch-action'); // Remove the class from all elements
+     $(this).addClass('patch-action');
+       }
+       
+   
+    // $targetPatch.removeClass('patch-selected-by-btn');
+    
+    $('.patches-customization-editor').addClass('patches-customization-editor-active');
+    $('.patches-customization-editor').css('display', 'block');
+    $('.patches-editor-wrapper').css('display', 'none');
+    $('.only-mobile-colors-wrapper').css('display', 'none');
+    
+    if (window.matchMedia("(max-width: 768px)").matches){
+       $('.only-mobile-tdy-header').css('display', 'block');
+    }else{
+       $('.only-mobile-tdy-header').css('display', 'none');  
+}
+
+      if (document.getElementById('Front-Area').style.visibility === 'visible') {
+          $('.back-tdiy-patches-btn').removeClass('tdiy-patches-btn-active')
+        $('.front-tdiy-patches-btn').addClass('tdiy-patches-btn-active')
+        $('.select-patches-for-back').removeClass('select-patches-active')
+        $('.select-patches-for-front').addClass('select-patches-active')
+          $('.patches-container .patch-').each(function() {
+        var patchId = $(this).attr('id');
+       var actionPatch = $(this); // Assuming 'this' is a jQuery object
+var patchActionElement = actionPatch.find('.patch-action');
+  console.log('patchActionElement',patchActionElement);
+        
+        // Check if the patch with the same ID already exists in .select-patches
+        if (!$('.select-patches-for-front').find('[data-patch-id="' + patchId + '"]').length) {
+            // Get image source
+            var imageSrc = $(this).find('.patch-image').attr('src');
+
+            // Create a new div with class .selected-patch-for-customization
+            var selectedPatchDiv = $(`<div class="selected-patch-for-customization selected-patch-for-customization-for-front" id="${patchId}"></div>`);
+
+            // Create an img element with the same src as the original image
+            var imageElement = $('<img>').attr('src', imageSrc);
+
+            // Append the image to the new div
+            selectedPatchDiv.append(imageElement);
+
+            // Append the patchId as a data attribute
+            selectedPatchDiv.attr('data-patch-id', patchId);
+
+            // Append the new div to .select-patches
+            $('.select-patches-for-front').append(selectedPatchDiv);
+        }
+    });
+    }
+      else if (document.getElementById('Back-area').style.visibility === 'visible') {
+        $('.front-tdiy-patches-btn').removeClass('tdiy-patches-btn-active')
+        $('.back-tdiy-patches-btn').addClass('tdiy-patches-btn-active')
+        $('.select-patches-for-front').removeClass('select-patches-active')
+        $('.select-patches-for-back').addClass('select-patches-active')
+        $('.patches-containerr .patch-').each(function() {
+        var patchId = $(this).attr('id');
+        
+        // Check if the patch with the same ID already exists in .select-patches
+        if (!$('.select-patches-for-back').find('[data-patch-id="' + patchId + '"]').length) {
+            // Get image source
+            var imageSrc = $(this).find('.patch-image').attr('src');
+
+            // Create a new div with class .selected-patch-for-customization
+            var selectedPatchDiv = $(`<div class="selected-patch-for-customization selected-patch-for-customization-for-back" id="${patchId}"></div>`);
+
+            // Create an img element with the same src as the original image
+            var imageElement = $('<img>').attr('src', imageSrc);
+
+            // Append the image to the new div
+            selectedPatchDiv.append(imageElement);
+
+            // Append the patchId as a data attribute
+            selectedPatchDiv.attr('data-patch-id', patchId);
+
+            // Append the new div to .select-patches
+            $('.select-patches-for-back').append(selectedPatchDiv);
+        }
+    });
+     
+     }
+
+    setTimeout(function() {
+        $('.patches-customization-editor').css('right', '0');
+    }, 100);
+        }
     if (event.touches.length === 1) {
         const touch = event.touches[0];
         const rect = centerBox.getBoundingClientRect();
@@ -2900,9 +3096,9 @@ centerBox.addEventListener('touchstart', function (event) {
             event.preventDefault();
             event.stopPropagation();
         }
+      
     }
 });
-
 centerBox.addEventListener('touchmove', function (event) {
     let touchedElement = event.target;
  
