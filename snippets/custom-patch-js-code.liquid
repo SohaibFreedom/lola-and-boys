@@ -2902,206 +2902,164 @@ function checkOverlapWithPatches(patchRect, patchClass) {
 //         }
 //     }
 // });
+
+
 centerBox.addEventListener('touchstart', function (event) {
-  ismainDragging = false;
-    console.log('touch StartTT')
-   if (!ismainDragging) {
-        console.log('Element clicked mobile');
-  
-        // Your click functionality here
-    const patchElement = $(event.target).closest('.patch-');
- // patchElement.toggleClass('patch-open-editor');
-          var $clickedPatch = $(this);
-       console.log('this is clicked patch',$clickedPatch);
-       if ($clickedPatch.hasClass('patch-action')) {
-         console.log('patch-action exists')
-     //             $('.patch-').removeClass('patch-action'); // Remove the class from all elements
-     // $(this).addClass('patch-action');
-         $('.selected-patch-for-customization').removeClass('patch-selected').find('.selected-patch-order').remove();
-         $('.selected-patch-for-customization').removeClass('patch-selected-by-btn');
-         $('.edit-btn-patch-selected').removeClass('patch-selected-by-both');
-         $clickedPatch.removeClass('patch-action').removeAttr('order-data'); 
-             var patchId = $clickedPatch.attr('id'); // Get the id attribute
-        console.log("Clicked patch id: " + patchId); // Log the id attribute value
+        ismainDragging = false;
+        console.log('touch StartTT');
 
-        // Use the attribute selector to find the element with the matching data-patch-id
-        var $targetPatch = $('[data-patch-id="' + patchId + '"]');
-        console.log("Target patch element:", $targetPatch); // Log the selected element
-          if (document.getElementById('Front-Area').style.visibility === 'visible') {
-            order=1;
-            // Set the order for the clicked patch
-            $targetPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + order + '</span>');
-            $clickedPatch.addClass('patch-action').attr('order-data', order);
-            order++;
-             }
-      else if (document.getElementById('Back-area').style.visibility === 'visible') {
-             orderBack = 1;
-            // Set the order for the clicked patch
-            $targetPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + orderBack + '</span>');
-            $clickedPatch.addClass('patch-action').attr('order-data', orderBack);
-            orderBack++;
-     }
-       }
-       else{
-          var patchId = $clickedPatch.attr('id'); // Get the id attribute
-        console.log("Clicked patch id: " + patchId); // Log the id attribute value
+        if (!ismainDragging) {
+            const patchElement = $(event.target).closest('.patch-');
 
-        // Use the attribute selector to find the element with the matching data-patch-id
-        var $targetPatch = $('[data-patch-id="' + patchId + '"]');
-        console.log("Target patch element:", $targetPatch); // Log the selected element
+            if (patchElement.length > 0) {
+                console.log('Element clicked');
+                // Your click functionality here
+                let $clickedPatch = patchElement;
 
-        // Check if the target element is found
-        if ($targetPatch.length) {
-          
-                   $('.selected-patch-for-customization').removeClass('patch-selected').find('.selected-patch-order').remove();
-            $('.patch-').removeClass('patch-action').removeAttr('order-data');
+                if ($clickedPatch.hasClass('patch-action')) {
+                    console.log('patch-action exists');
+                    $('.selected-patch-for-customization').removeClass('patch-selected').find('.selected-patch-order').remove();
+                    $('.selected-patch-for-customization').removeClass('patch-selected-by-btn');
+                    $('.edit-btn-patch-selected').removeClass('patch-selected-by-both');
+                    $clickedPatch.removeClass('patch-action').removeAttr('order-data');
 
-            
-         
+                    const patchId = $clickedPatch.attr('id');
+                    console.log("Clicked patch id: " + patchId);
 
-  if (document.getElementById('Front-Area').style.visibility === 'visible') {
-            order=1;
-            // Set the order for the clicked patch
-            $targetPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + order + '</span>');
-            $clickedPatch.addClass('patch-action').attr('order-data', order);
-            order++;
-     changefillColors()
-             }
-      else if (document.getElementById('Back-area').style.visibility === 'visible') {
-             orderBack = 1;
-            // Set the order for the clicked patch
-            $targetPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + orderBack + '</span>');
-            $clickedPatch.addClass('patch-action').attr('order-data', orderBack);
-            orderBack++;
-        console.log('click on back image');
-         changefillColors()
-     }
-          
-          // Check if the class was added
-          if ($targetPatch.hasClass('patch-selected')) {
-            console.log('Class patch-selected added to element with data-patch-id ' + patchId);
-          } else {
-            console.log('Class patch-selected not added to element with data-patch-id ' + patchId);
-          }
-        } else {
-          console.log('No element found with data-patch-id ' + patchId);
+                    const $targetPatch = $('[data-patch-id="' + patchId + '"]');
+                    console.log("Target patch element:", $targetPatch);
+
+                    if (document.getElementById('Front-Area').style.visibility === 'visible') {
+                        order = 1;
+                        $targetPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + order + '</span>');
+                        $clickedPatch.addClass('patch-action').attr('order-data', order);
+                        order++;
+                    } else if (document.getElementById('Back-area').style.visibility === 'visible') {
+                        orderBack = 1;
+                        $targetPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + orderBack + '</span>');
+                        $clickedPatch.addClass('patch-action').attr('order-data', orderBack);
+                        orderBack++;
+                    }
+                } else {
+                    const patchId = $clickedPatch.attr('id');
+                    console.log("Clicked patch id: " + patchId);
+
+                    const $targetPatch = $('[data-patch-id="' + patchId + '"]');
+                    console.log("Target patch element:", $targetPatch);
+
+                    if ($targetPatch.length) {
+                        $('.selected-patch-for-customization').removeClass('patch-selected').find('.selected-patch-order').remove();
+                        $('.patch-').removeClass('patch-action').removeAttr('order-data');
+
+                        if (document.getElementById('Front-Area').style.visibility === 'visible') {
+                            order = 1;
+                            $targetPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + order + '</span>');
+                            $clickedPatch.addClass('patch-action').attr('order-data', order);
+                            order++;
+                            changefillColors();
+                        } else if (document.getElementById('Back-area').style.visibility === 'visible') {
+                            orderBack = 1;
+                            $targetPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + orderBack + '</span>');
+                            $clickedPatch.addClass('patch-action').attr('order-data', orderBack);
+                            orderBack++;
+                            console.log('click on back image');
+                            changefillColors();
+                        }
+
+                        if ($targetPatch.hasClass('patch-selected')) {
+                            console.log('Class patch-selected added to element with data-patch-id ' + patchId);
+                        } else {
+                            console.log('Class patch-selected not added to element with data-patch-id ' + patchId);
+                        }
+                    } else {
+                        console.log('No element found with data-patch-id ' + patchId);
+                    }
+                    $('.patch-').removeClass('patch-action');
+                    $(this).addClass('patch-action');
+                }
+
+                $('.patches-customization-editor').addClass('patches-customization-editor-active');
+                $('.patches-customization-editor').css('display', 'block');
+                $('.patches-editor-wrapper').css('display', 'none');
+                $('.only-mobile-colors-wrapper').css('display', 'none');
+
+                if (window.matchMedia("(max-width: 768px)").matches) {
+                    $('.only-mobile-tdy-header').css('display', 'block');
+                } else {
+                    $('.only-mobile-tdy-header').css('display', 'none');
+                }
+
+                if (document.getElementById('Front-Area').style.visibility === 'visible') {
+                    $('.back-tdiy-patches-btn').removeClass('tdiy-patches-btn-active');
+                    $('.front-tdiy-patches-btn').addClass('tdiy-patches-btn-active');
+                    $('.select-patches-for-back').removeClass('select-patches-active');
+                    $('.select-patches-for-front').addClass('select-patches-active');
+                    $('.patches-container .patch-').each(function () {
+                        const patchId = $(this).attr('id');
+                        const actionPatch = $(this);
+                        const patchActionElement = actionPatch.find('.patch-action');
+                        console.log('patchActionElement', patchActionElement);
+
+                        if (!$('.select-patches-for-front').find('[data-patch-id="' + patchId + '"]').length) {
+                            const imageSrc = $(this).find('.patch-image').attr('src');
+                            const selectedPatchDiv = $(`<div class="selected-patch-for-customization selected-patch-for-customization-for-front" id="${patchId}"></div>`);
+                            const imageElement = $('<img>').attr('src', imageSrc);
+                            selectedPatchDiv.append(imageElement);
+                            selectedPatchDiv.attr('data-patch-id', patchId);
+                            $('.select-patches-for-front').append(selectedPatchDiv);
+                        }
+                    });
+                } else if (document.getElementById('Back-area').style.visibility === 'visible') {
+                    $('.front-tdiy-patches-btn').removeClass('tdiy-patches-btn-active');
+                    $('.back-tdiy-patches-btn').addClass('tdiy-patches-btn-active');
+                    $('.select-patches-for-front').removeClass('select-patches-active');
+                    $('.select-patches-for-back').addClass('select-patches-active');
+                    $('.patches-container .patch-').each(function () {
+                        const patchId = $(this).attr('id');
+                        const actionPatch = $(this);
+                        const patchActionElement = actionPatch.find('.patch-action');
+                        console.log('patchActionElement', patchActionElement);
+
+                        if (!$('.select-patches-for-back').find('[data-patch-id="' + patchId + '"]').length) {
+                            const imageSrc = $(this).find('.patch-image').attr('src');
+                            const selectedPatchDiv = $(`<div class="selected-patch-for-customization selected-patch-for-customization-for-back" id="${patchId}"></div>`);
+                            const imageElement = $('<img>').attr('src', imageSrc);
+                            selectedPatchDiv.append(imageElement);
+                            selectedPatchDiv.attr('data-patch-id', patchId);
+                            $('.select-patches-for-back').append(selectedPatchDiv);
+                        }
+                    });
+                }
+
+                setTimeout(function () {
+                    $('.patches-customization-editor').css('right', '0');
+                }, 100);
+            }
         }
-           $('.patch-').removeClass('patch-action'); // Remove the class from all elements
-     $(this).addClass('patch-action');
-       }
-       
-   
-    // $targetPatch.removeClass('patch-selected-by-btn');
-    
-    $('.patches-customization-editor').addClass('patches-customization-editor-active');
-    $('.patches-customization-editor').css('display', 'block');
-    $('.patches-editor-wrapper').css('display', 'none');
-    $('.only-mobile-colors-wrapper').css('display', 'none');
-    
-    if (window.matchMedia("(max-width: 768px)").matches){
-       $('.only-mobile-tdy-header').css('display', 'block');
-    }else{
-       $('.only-mobile-tdy-header').css('display', 'none');  
-}
 
-      if (document.getElementById('Front-Area').style.visibility === 'visible') {
-          $('.back-tdiy-patches-btn').removeClass('tdiy-patches-btn-active')
-        $('.front-tdiy-patches-btn').addClass('tdiy-patches-btn-active')
-        $('.select-patches-for-back').removeClass('select-patches-active')
-        $('.select-patches-for-front').addClass('select-patches-active')
-          $('.patches-container .patch-').each(function() {
-        var patchId = $(this).attr('id');
-       var actionPatch = $(this); // Assuming 'this' is a jQuery object
-var patchActionElement = actionPatch.find('.patch-action');
-  console.log('patchActionElement',patchActionElement);
-        
-        // Check if the patch with the same ID already exists in .select-patches
-        if (!$('.select-patches-for-front').find('[data-patch-id="' + patchId + '"]').length) {
-            // Get image source
-            var imageSrc = $(this).find('.patch-image').attr('src');
+        if (event.touches.length === 1) {
+            const touch = event.touches[0];
+            const rect = centerBox.getBoundingClientRect();
+            const mouseX = touch.clientX - rect.left;
+            const mouseY = touch.clientY - rect.top;
 
-            // Create a new div with class .selected-patch-for-customization
-            var selectedPatchDiv = $(`<div class="selected-patch-for-customization selected-patch-for-customization-for-front" id="${patchId}"></div>`);
+            let existingPatchIndex = patches.findIndex(patch => {
+                return mouseX >= patch.x - patch.width / 2 &&
+                    mouseX <= patch.x + patch.width / 2 &&
+                    mouseY >= patch.y - patch.height / 2 &&
+                    mouseY <= patch.y + patch.height / 2;
+            });
 
-            // Create an img element with the same src as the original image
-            var imageElement = $('<img>').attr('src', imageSrc);
-
-            // Append the image to the new div
-            selectedPatchDiv.append(imageElement);
-
-            // Append the patchId as a data attribute
-            selectedPatchDiv.attr('data-patch-id', patchId);
-
-            // Append the new div to .select-patches
-            $('.select-patches-for-front').append(selectedPatchDiv);
-        }
-    });
-    }
-      else if (document.getElementById('Back-area').style.visibility === 'visible') {
-        $('.front-tdiy-patches-btn').removeClass('tdiy-patches-btn-active')
-        $('.back-tdiy-patches-btn').addClass('tdiy-patches-btn-active')
-        $('.select-patches-for-front').removeClass('select-patches-active')
-        $('.select-patches-for-back').addClass('select-patches-active')
-        $('.patches-containerr .patch-').each(function() {
-        var patchId = $(this).attr('id');
-        
-        // Check if the patch with the same ID already exists in .select-patches
-        if (!$('.select-patches-for-back').find('[data-patch-id="' + patchId + '"]').length) {
-            // Get image source
-            var imageSrc = $(this).find('.patch-image').attr('src');
-
-            // Create a new div with class .selected-patch-for-customization
-            var selectedPatchDiv = $(`<div class="selected-patch-for-customization selected-patch-for-customization-for-back" id="${patchId}"></div>`);
-
-            // Create an img element with the same src as the original image
-            var imageElement = $('<img>').attr('src', imageSrc);
-
-            // Append the image to the new div
-            selectedPatchDiv.append(imageElement);
-
-            // Append the patchId as a data attribute
-            selectedPatchDiv.attr('data-patch-id', patchId);
-
-            // Append the new div to .select-patches
-            $('.select-patches-for-back').append(selectedPatchDiv);
+            if (existingPatchIndex !== -1) {
+                dragPatch1 = document.getElementById(patches[existingPatchIndex].id);
+                offsetX = mouseX - patches[existingPatchIndex].x;
+                offsetY = mouseY - patches[existingPatchIndex].y;
+                event.preventDefault();
+                event.stopPropagation();
+            }
         }
     });
-     
-     }
 
-    setTimeout(function() {
-        $('.patches-customization-editor').css('right', '0');
-    }, 100);
-        }
-    if (event.touches.length === 1) {
-        const touch = event.touches[0];
-        const rect = centerBox.getBoundingClientRect();
-        const mouseX = touch.clientX - rect.left;
-        const mouseY = touch.clientY - rect.top;
-
-        // Check if there's an existing patch at the touched position
-        let existingPatchIndex = patches.findIndex(patch => {
-            return mouseX >= patch.x - patch.width / 2 &&
-                mouseX <= patch.x + patch.width / 2 &&
-                mouseY >= patch.y - patch.height / 2 &&
-                mouseY <= patch.y + patch.height / 2;
-        });
-
-        if (existingPatchIndex !== -1) {
-            // Existing patch found, set it as the dragPatch
-            dragPatch1 = document.getElementById(patches[existingPatchIndex].id);
-
-            // Calculate offset for smoother dragging
-            offsetX = mouseX - patches[existingPatchIndex].x;
-            offsetY = mouseY - patches[existingPatchIndex].y;
-
-            // Prevent further propagation of the event
-            event.preventDefault();
-            event.stopPropagation();
-        }
-      
-    }
-});
 centerBox.addEventListener('touchmove', function (event) {
     let touchedElement = event.target;
  
