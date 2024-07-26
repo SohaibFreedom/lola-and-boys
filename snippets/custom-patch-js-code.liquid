@@ -3448,33 +3448,33 @@ centerBox.addEventListener('touchend', function (event) {
 
 BackcenterBox.addEventListener('touchstart', function (event) {
     console.log('touch Start')
-    if (event.touches.length === 1) {
-        const touch = event.touches[0];
-        const rect = BackcenterBox.getBoundingClientRect();
-        const mouseX = touch.clientX - rect.left;
-        const mouseY = touch.clientY - rect.top;
+    // if (event.touches.length === 1) {
+    //     const touch = event.touches[0];
+    //     const rect = BackcenterBox.getBoundingClientRect();
+    //     const mouseX = touch.clientX - rect.left;
+    //     const mouseY = touch.clientY - rect.top;
 
-        // Check if there's an existing patch at the touched position
-        let existingPatchIndex = patches.findIndex(patch => {
-            return mouseX >= patch.x - patch.width / 2 &&
-                mouseX <= patch.x + patch.width / 2 &&
-                mouseY >= patch.y - patch.height / 2 &&
-                mouseY <= patch.y + patch.height / 2;
-        });
+    //     // Check if there's an existing patch at the touched position
+    //     let existingPatchIndex = patches.findIndex(patch => {
+    //         return mouseX >= patch.x - patch.width / 2 &&
+    //             mouseX <= patch.x + patch.width / 2 &&
+    //             mouseY >= patch.y - patch.height / 2 &&
+    //             mouseY <= patch.y + patch.height / 2;
+    //     });
 
-        if (existingPatchIndex !== -1) {
-            // Existing patch found, set it as the dragPatch
-            dragPatch1 = document.getElementById(patches[existingPatchIndex].id);
+    //     if (existingPatchIndex !== -1) {
+    //         // Existing patch found, set it as the dragPatch
+    //         dragPatch1 = document.getElementById(patches[existingPatchIndex].id);
 
-            // Calculate offset for smoother dragging
-            offsetX = mouseX - patches[existingPatchIndex].x;
-            offsetY = mouseY - patches[existingPatchIndex].y;
+    //         // Calculate offset for smoother dragging
+    //         offsetX = mouseX - patches[existingPatchIndex].x;
+    //         offsetY = mouseY - patches[existingPatchIndex].y;
 
-            // Prevent further propagation of the event
-            event.preventDefault();
-            event.stopPropagation();
-        }
-    }
+    //         // Prevent further propagation of the event
+    //         event.preventDefault();
+    //         event.stopPropagation();
+    //     }
+    // }
 });
 
 BackcenterBox.addEventListener('touchmove', function (event) {
