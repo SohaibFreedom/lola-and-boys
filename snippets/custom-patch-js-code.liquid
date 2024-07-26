@@ -2912,7 +2912,7 @@ centerBox.addEventListener('touchstart', function (event) {
     const patchElement = $(event.target).closest('.patch-');
  // patchElement.toggleClass('patch-open-editor');
           var $clickedPatch = $(this);
-       console.log($clickedPatch);
+       console.log('this is clicked patch',$clickedPatch);
        if ($clickedPatch.hasClass('patch-action')) {
          console.log('patch-action exists')
                  $('.patch-').removeClass('patch-action'); // Remove the class from all elements
