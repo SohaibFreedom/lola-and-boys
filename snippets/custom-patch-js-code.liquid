@@ -2915,8 +2915,8 @@ centerBox.addEventListener('touchstart', function (event) {
        console.log('this is clicked patch',$clickedPatch);
        if ($clickedPatch.hasClass('patch-action')) {
          console.log('patch-action exists')
-                 $('.patch-').removeClass('patch-action'); // Remove the class from all elements
-     $(this).addClass('patch-action');
+     //             $('.patch-').removeClass('patch-action'); // Remove the class from all elements
+     // $(this).addClass('patch-action');
          $('.selected-patch-for-customization').removeClass('patch-selected').find('.selected-patch-order').remove();
          $('.selected-patch-for-customization').removeClass('patch-selected-by-btn');
          $('.edit-btn-patch-selected').removeClass('patch-selected-by-both');
