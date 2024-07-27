@@ -981,19 +981,25 @@ document.querySelector('.customization-search-bar').addEventListener('input', fi
         img.classList.add('patch-image');
         img.setAttribute('crossorigin', 'anonymous');
  // Get the height and width as integers
-        let imgHeight = parseInt(item.height, 10);
-        let imgWidth = parseInt(item.width, 10);
+let imgHeight = parseInt(item.height, 10);
+let imgWidth = parseInt(item.width, 10);
 
-     
-        const product = {{ product | json }};
+const product = {{ product | json }};
 
-        if (Array.isArray(product.tags) && product.tags.includes('back-pack')) {
-            imgHeight += 10;
-            imgWidth += 10;
-        }
+if (Array.isArray(product.tags)) {
+    if (product.tags.includes('back-pack')) {
+        imgHeight += 10;
+        imgWidth += 10;
+    }
+    if (product.tags.includes('#patch-it-bag')) {
+        imgHeight += 25;
+      imgWidth += 10;
+    }
+}
 
-        img.height = imgHeight;
-        img.width = imgWidth;
+img.height = imgHeight;
+img.width = imgWidth;
+
 
         const svgDiv = document.createElement('div');
         svgDiv.classList.add('zoom');
