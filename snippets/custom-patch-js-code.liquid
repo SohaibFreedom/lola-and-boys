@@ -1,6 +1,5 @@
 {% assign variant = product.selected_or_first_available_variant %}
 <script>
-  <script>
     document.addEventListener('DOMContentLoaded', function () {
        console.log('gardient-color-before');
         const product = {{ product | json }};
@@ -13,7 +12,6 @@
     });
 </script>
 
-</script>
 <script>
 $(document).ready(function() {
     $('.patches-back-button-relaod').click(function() {
