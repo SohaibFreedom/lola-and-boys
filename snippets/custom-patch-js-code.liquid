@@ -2,10 +2,11 @@
 <script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
+       console.log('gardient-color-before');
         const product = {{ product | json }};
 
         if (Array.isArray(product.tags) && product.tags.includes('gardient-color')) {
-          console.log('gardient-color')
+          console.log('gardient-color');
             $('.size_variants_section_heading').css('display', 'none');
             $('.variant-selector-sidebar-btn').css('display', 'none');
         }
