@@ -1393,7 +1393,7 @@ $('.size_variants').click(function() {
  function showFrontImage() {
    // Get the variant ID
    const variantId = "{{variant.id}}"; // Replace "{{variant.id}}" with your actual variant ID
- 
+ console.log('variantId',variantId);
    // Find the image data for the current variant
    // const currentImageData = imagesData.find(item => item.FproductId === variantId && item.direction === "Frontside");
      const currentImageData = imagesData.find(item => item.FproductId === variantId );
