@@ -1238,8 +1238,25 @@ function closePopup() {
        img.alt = item.name;
        img.classList.add('patch-image');
        img.setAttribute('crossorigin', 'anonymous');
-       img.height = item.height;
-       img.width = item.width;
+      let imgHeight = parseInt(item.height, 10);
+let imgWidth = parseInt(item.width, 10);
+
+const product = {{ product | json }};
+
+if (Array.isArray(product.tags)) {
+    if (product.tags.includes('back-pack')) {
+        imgHeight += 10;
+        imgWidth += 10;
+    }
+    if (product.tags.includes('patch-it-bag')) {
+       console.log("patch-it-bag")
+        imgHeight += 25;
+      imgWidth += 10;
+    }
+}
+
+img.height = imgHeight;
+img.width = imgWidth;
 
 
         const svgDiv = document.createElement('div');
