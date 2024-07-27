@@ -15,8 +15,8 @@
         "steps_Xa4YKH": {
           "type": "steps",
           "settings": {
-            "step-number": "1",
-            "step-content": "Select your silhouette from our collection of travel bags, Pouches & accessories.",
+            "step-number": "1 Choose Your Item",
+            "step-content": "Select from our stylish collection of custom hoodies, backpacks, fanny packs, denim jackets, and other bags.",
             "image": "shopify:\/\/shop_images\/1_small_2b5a38a3-9955-4a6c-98fe-874da13c7def.webp"
           }
         },
@@ -24,7 +24,7 @@
           "type": "steps",
           "settings": {
             "step-number": "3",
-            "step-content": "Enjoy your 1-of-a-kind design, created by hand & shipped to you!",
+            "step-content": "Customize your item with patches from our extensive library of letters and icons.",
             "image": "shopify:\/\/shop_images\/3_small_8b542a66-b734-46a6-8183-0268c26b90fb.png"
           }
         },
