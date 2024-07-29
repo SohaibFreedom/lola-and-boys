@@ -5085,7 +5085,7 @@ function sortPatchesByOrder() {
 
 // Function to check if patches are outside the container and change border color accordingly
 function checkPatchesPosition() {
-  console.log('checkPatchesPosition',checkPatchesPosition)
+    console.log('checkPatchesPosition', checkPatchesPosition);
     const containerRect = patchesContainer.getBoundingClientRect();
     const patchActions = patchesContainer.querySelectorAll('.patch-action');
     let patchesOutside = false;
@@ -5099,19 +5099,19 @@ function checkPatchesPosition() {
             patchRect.top > containerRect.bottom
         ) {
             patchesOutside = true;
+            return; // Break out of the forEach loop
         }
     });
 
     if (patchesOutside) {
-    
-          console.log('yes outside');
+        console.log('Yes, at least one patch is outside');
         patchesContainer.style.border = '2px solid red'; // Change border color to red
-
     } else {
-          console.log('yes inside');
+        console.log('All patches are inside');
         patchesContainer.style.border = ''; // Reset border color
     }
 }
+
 
 alignVerticalBtn.addEventListener('click', () => {
     updateAlignment(alignVerticalBtn.id);
