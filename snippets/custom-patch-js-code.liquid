@@ -5241,43 +5241,86 @@ function sortPatchesByOrder() {
 
 
 // Function to check if patches are outside the container and change border color accordingly
-function checkPatchesPosition() {
-   const product = {{ product | json }};
+// function checkPatchesPosition() {
+//    const product = {{ product | json }};
 
-        if (Array.isArray(product.tags) && product.tags.includes('bag-bound-area')) 
-        {
-         console.log('checkPatchesPosition', checkPatchesPosition);
+//         if (Array.isArray(product.tags) && product.tags.includes('bag-bound-area')) 
+//         {
+//          console.log('checkPatchesPosition', checkPatchesPosition);
+//     const containerRect = patchesContainer.getBoundingClientRect();
+//     const patchActions = patchesContainer.querySelectorAll('.patch-');
+//     let patchesOutside = false;
+
+//     patchActions.forEach(patch => {
+//         const patchRect = patch.getBoundingClientRect();
+//         if (
+//             patchRect.right < containerRect.left ||
+//             patchRect.left > containerRect.right ||
+//             patchRect.bottom < containerRect.top ||
+//             patchRect.top > containerRect.bottom
+//         ) {
+//             patchesOutside = true;
+//             return; // Break out of the forEach loop
+//         }
+//     });
+
+//     if (patchesOutside) {
+//         console.log('Yes, at least one patch is outside');
+//         // patchesContainer.style.border = '2px solid red'; // Change border color to red
+//     } else {
+//         console.log('All patches are inside');
+//         patchesContainer.style.border = ''; // Reset border color
+//     }
+//         }
+//   else {
+//     console.log('this is shirt')
+//   }
+   
+// }
+function checkPatchesPosition() {
+    console.log('checkPatchesPosition', checkPatchesPosition);
     const containerRect = patchesContainer.getBoundingClientRect();
     const patchActions = patchesContainer.querySelectorAll('.patch-');
     let patchesOutside = false;
 
     patchActions.forEach(patch => {
         const patchRect = patch.getBoundingClientRect();
-        if (
-            patchRect.right < containerRect.left ||
-            patchRect.left > containerRect.right ||
-            patchRect.bottom < containerRect.top ||
-            patchRect.top > containerRect.bottom
-        ) {
+        
+        let moved = false;
+
+        const patchStyle = window.getComputedStyle(patch);
+        const patchLeft = parseFloat(patchStyle.left);
+        const patchTop = parseFloat(patchStyle.top);
+
+        if (patchRect.left < containerRect.left) {
+            patch.style.left = `${patchLeft + (containerRect.left - patchRect.left)}px`;
+            moved = true;
+        } else if (patchRect.right > containerRect.right) {
+            patch.style.left = `${patchLeft - (patchRect.right - containerRect.right)}px`;
+            moved = true;
+        }
+
+        if (patchRect.top < containerRect.top) {
+            patch.style.top = `${patchTop + (containerRect.top - patchRect.top)}px`;
+            moved = true;
+        } else if (patchRect.bottom > containerRect.bottom) {
+            patch.style.top = `${patchTop - (patchRect.bottom - containerRect.bottom)}px`;
+            moved = true;
+        }
+
+        if (moved) {
             patchesOutside = true;
-            return; // Break out of the forEach loop
         }
     });
 
     if (patchesOutside) {
-        console.log('Yes, at least one patch is outside');
-        // patchesContainer.style.border = '2px solid red'; // Change border color to red
+        console.log('Yes, at least one patch is partially outside');
+        patchesContainer.style.border = '2px solid red'; // Change border color to red
     } else {
         console.log('All patches are inside');
         patchesContainer.style.border = ''; // Reset border color
     }
-        }
-  else {
-    console.log('this is shirt')
-  }
-   
 }
-
 
 alignVerticalBtn.addEventListener('click', () => {
     updateAlignment(alignVerticalBtn.id);
