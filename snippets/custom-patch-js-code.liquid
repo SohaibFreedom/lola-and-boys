@@ -5102,9 +5102,12 @@ function checkPatchesPosition() {
     });
 
     if (patchesOutside) {
+    
+          console.log('yes outside');
         patchesContainer.style.border = '2px solid red'; // Change border color to red
         patchesContainer.style.border = ''; // Change border color to red
     } else {
+          console.log('yes inside');
         patchesContainer.style.border = ''; // Reset border color
     }
 }
