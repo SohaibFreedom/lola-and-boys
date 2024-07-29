@@ -5085,7 +5085,11 @@ function sortPatchesByOrder() {
 
 // Function to check if patches are outside the container and change border color accordingly
 function checkPatchesPosition() {
-    console.log('checkPatchesPosition', checkPatchesPosition);
+   const product = {{ product | json }};
+
+        if (Array.isArray(product.tags) && product.tags.includes('gardient-color')) 
+        {
+         console.log('checkPatchesPosition', checkPatchesPosition);
     const containerRect = patchesContainer.getBoundingClientRect();
     const patchActions = patchesContainer.querySelectorAll('.patch-action');
     let patchesOutside = false;
@@ -5110,6 +5114,11 @@ function checkPatchesPosition() {
         console.log('All patches are inside');
         patchesContainer.style.border = ''; // Reset border color
     }
+        }
+  else {
+    console.log('this is shirt')
+  }
+   
 }
 
 
