@@ -5322,7 +5322,10 @@ function sortPatchesByOrder() {
 //     }
 // }
 function checkPatchesPosition() {
-    console.log('checkPatchesPosition Now', checkPatchesPosition);
+   const product = {{ product | json }};
+       if (Array.isArray(product.tags) && product.tags.includes('bag-bound-area')) 
+  {
+     console.log('checkPatchesPosition Now', checkPatchesPosition);
     const containerRect = patchesContainer.getBoundingClientRect();
     const patchActions = patchesContainer.querySelectorAll('.patch-');
     let patchesOutside = false;
@@ -5369,6 +5372,10 @@ function checkPatchesPosition() {
         console.log('All patches are inside');
         patchesContainer.style.border = ''; // Reset border color
     }
+  }
+   else {
+     console.log('t shirt');
+   }
 }
 
 alignVerticalBtn.addEventListener('click', () => {
