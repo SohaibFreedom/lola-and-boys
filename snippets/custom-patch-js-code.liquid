@@ -5476,18 +5476,22 @@ if (window.matchMedia("(max-width: 700px)").matches) {
                 case 'top':
                     top -= increment;
                  checkPatchOverlapping();
+                 checkPatchesPosition();
                     break;
                 case 'left':
                     right += increment;
                  checkPatchOverlapping();
+                 checkPatchesPosition();
                     break;
                 case 'right':
                     right -= increment;
                  checkPatchOverlapping();
+                checkPatchesPosition();
                     break;
                 case 'bottom':
                     top += increment;
                  checkPatchOverlapping();
+                 checkPatchesPosition();
                     break;
             }
         } else {
@@ -5495,18 +5499,22 @@ if (window.matchMedia("(max-width: 700px)").matches) {
                 case 'top':
                     top -= increment;
                 checkPatchOverlapping();
+                checkPatchesPosition();
                     break;
                 case 'left':
                     left -= increment;
                   checkPatchOverlapping();
+                 checkPatchesPosition();
                     break;
                 case 'right':
                     left += increment;
                   checkPatchOverlapping();
+                 checkPatchesPosition();
                     break;
                 case 'bottom':
                     top += increment;
                   checkPatchOverlapping();
+                 checkPatchesPosition();
                     break;
             }
         }
