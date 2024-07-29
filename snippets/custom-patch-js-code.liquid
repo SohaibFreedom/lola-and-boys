@@ -1455,31 +1455,74 @@ img.width = imgWidth;
         }
     });
 }
-function showSizeVariants() {
-    console.log('this is color variants', colorVariants);
-
-    const variantId = "{{variant.id}}"; // Replace "{{variant.id}}" with your actual variant ID
     
-    sizeVariants.forEach(sizeVariant => {
-        if (sizeVariant.id === variantId) {
-            if (sizeVariant.Smalll === "false") {
-                const small = document.getElementById('small_variant');
-                small.classList.add("hide_size_variants");
-            }
-           if (sizeVariant.Medium === "false") {
-                const small = document.getElementById('medium_variant');
-                small.classList.add("hide_size_variants");
-            }
-           if (sizeVariant.Large === "false") {
-                const small = document.getElementById('large_variant');
-                small.classList.add("hide_size_variants");
-            }
-           if (sizeVariant.Extra_Large === "false") {
-                const small = document.getElementById('extra_large_variant');
-                small.classList.add("hide_size_variants");
-            }
+     //old size variantts
+// function showSizeVariants() {
+//     console.log('this is color variants', colorVariants);
+
+//     const variantId = "{{variant.id}}"; // Replace "{{variant.id}}" with your actual variant ID
+    
+//     sizeVariants.forEach(sizeVariant => {
+//         if (sizeVariant.id === variantId) {
+//             if (sizeVariant.Smalll === "false") {
+//                 const small = document.getElementById('small_variant');
+//                 small.classList.add("hide_size_variants");
+//             }
+//            if (sizeVariant.Medium === "false") {
+//                 const small = document.getElementById('medium_variant');
+//                 small.classList.add("hide_size_variants");
+//             }
+//            if (sizeVariant.Large === "false") {
+//                 const small = document.getElementById('large_variant');
+//                 small.classList.add("hide_size_variants");
+//             }
+//            if (sizeVariant.Extra_Large === "false") {
+//                 const small = document.getElementById('extra_large_variant');
+//                 small.classList.add("hide_size_variants");
+//             }
           
-        }
+//         }
+//     });
+// }
+
+     //new size variants
+
+       function showSizeVariants() {
+    console.log('This is size variants');
+
+    const product = {{ product | json }};
+
+    // Clear any existing hidden classes
+    document.getElementById('small_variant').classList.remove("hide_size_variants");
+    document.getElementById('medium_variant').classList.remove("hide_size_variants");
+    document.getElementById('large_variant').classList.remove("hide_size_variants");
+    document.getElementById('extra_large_variant').classList.remove("hide_size_variants");
+
+    // Iterate over the product variants
+    product.variants.forEach(variant => {
+        console.log('Variant ID:', variant.id);
+
+        // Check each sizeVariant against the current product variant
+        sizeVariants.forEach(sizeVariant => {
+            if (sizeVariant.id.toString() === variant.id.toString()) {
+                if (sizeVariant.Smalll === "false") {
+                    const small = document.getElementById('small_variant');
+                    small.classList.add("hide_size_variants");
+                }
+                if (sizeVariant.Medium === "false") {
+                    const medium = document.getElementById('medium_variant');
+                    medium.classList.add("hide_size_variants");
+                }
+                if (sizeVariant.Large === "false") {
+                    const large = document.getElementById('large_variant');
+                    large.classList.add("hide_size_variants");
+                }
+                if (sizeVariant.Extra_Large === "false") {
+                    const extraLarge = document.getElementById('extra_large_variant');
+                    extraLarge.classList.add("hide_size_variants");
+                }
+            }
+        });
     });
 }
 $('.size_variants').click(function() {
@@ -1492,6 +1535,7 @@ $('.size_variants').click(function() {
             });
 
  //Function to show front image
+     //old front image
  function showFrontImage() {
    // Get the variant ID
    const variantId = "{{variant.id}}"; // Replace "{{variant.id}}" with your actual variant ID
