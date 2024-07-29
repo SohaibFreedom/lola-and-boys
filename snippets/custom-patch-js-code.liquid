@@ -5515,7 +5515,81 @@ if (window.matchMedia("(max-width: 700px)").matches) {
 
   
 
-    patches.forEach(patch => {
+    // patches.forEach(patch => {
+    //     let top = parseInt(patch.style.top) || 0;
+    //     let left = parseInt(patch.style.left) || 0;
+    //     let right = parseInt(patch.style.right) || 0;
+
+    //     if (currentFunctionId === 'align-diagonal-right') {
+    //         switch (direction) {
+    //             case 'top':
+    //                 top -= increment;
+    //              checkPatchOverlapping();
+    //              checkPatchesPosition();
+    //                 break;
+    //             case 'left':
+    //                 right += increment;
+    //              checkPatchOverlapping();
+    //              checkPatchesPosition();
+    //                 break;
+    //             case 'right':
+    //                 right -= increment;
+    //              checkPatchOverlapping();
+    //             checkPatchesPosition();
+    //                 break;
+    //             case 'bottom':
+    //                 top += increment;
+    //              checkPatchOverlapping();
+    //              checkPatchesPosition();
+    //                 break;
+    //         }
+    //     } else {
+    //         switch (direction) {
+    //             case 'top':
+    //                 top -= increment;
+    //             checkPatchOverlapping();
+    //             checkPatchesPosition();
+    //                 break;
+    //             case 'left':
+    //                 left -= increment;
+    //               checkPatchOverlapping();
+    //              checkPatchesPosition();
+    //                 break;
+    //             case 'right':
+    //                 left += increment;
+    //               checkPatchOverlapping();
+    //              checkPatchesPosition();
+    //                 break;
+    //             case 'bottom':
+    //                 top += increment;
+    //               checkPatchOverlapping();
+    //              checkPatchesPosition();
+    //                 break;
+    //         }
+    //     }
+
+    //     if (currentFunctionId === 'align-diagonal-right') {
+    //         patch.style.top = `${top}px`;
+    //         patch.style.left = 'auto';
+    //         patch.style.right = `${right}px`;
+    //     } else {
+    //         patch.style.top = `${top}px`;
+    //         patch.style.left = `${left}px`;
+    //     }
+    // });
+     // Function to get the computed border color of the container
+function getBorderColor(element) {
+    const style = window.getComputedStyle(element);
+    return style.borderColor;
+}
+
+patches.forEach(patch => {
+    // Get the border color of the container
+    const container = document.querySelector('.patches-container');
+    const borderColor = getBorderColor(container);
+
+    // Check if the border color is not red
+    if (borderColor !== 'rgb(255, 0, 0)') { // 'rgb(255, 0, 0)' is the RGB equivalent of red
         let top = parseInt(patch.style.top) || 0;
         let left = parseInt(patch.style.left) || 0;
         let right = parseInt(patch.style.right) || 0;
@@ -5524,50 +5598,35 @@ if (window.matchMedia("(max-width: 700px)").matches) {
             switch (direction) {
                 case 'top':
                     top -= increment;
-                 checkPatchOverlapping();
-                 checkPatchesPosition();
                     break;
                 case 'left':
                     right += increment;
-                 checkPatchOverlapping();
-                 checkPatchesPosition();
                     break;
                 case 'right':
                     right -= increment;
-                 checkPatchOverlapping();
-                checkPatchesPosition();
                     break;
                 case 'bottom':
                     top += increment;
-                 checkPatchOverlapping();
-                 checkPatchesPosition();
                     break;
             }
         } else {
             switch (direction) {
                 case 'top':
                     top -= increment;
-                checkPatchOverlapping();
-                checkPatchesPosition();
                     break;
                 case 'left':
                     left -= increment;
-                  checkPatchOverlapping();
-                 checkPatchesPosition();
                     break;
                 case 'right':
                     left += increment;
-                  checkPatchOverlapping();
-                 checkPatchesPosition();
                     break;
                 case 'bottom':
                     top += increment;
-                  checkPatchOverlapping();
-                 checkPatchesPosition();
                     break;
             }
         }
 
+        // Apply the new styles
         if (currentFunctionId === 'align-diagonal-right') {
             patch.style.top = `${top}px`;
             patch.style.left = 'auto';
@@ -5576,7 +5635,13 @@ if (window.matchMedia("(max-width: 700px)").matches) {
             patch.style.top = `${top}px`;
             patch.style.left = `${left}px`;
         }
-    });
+
+        // Check for overlapping and positions
+        checkPatchOverlapping();
+        checkPatchesPosition();
+    }
+});
+
 }
 function checkPatchOverlapping() {
     console.log('checking overlapping');
