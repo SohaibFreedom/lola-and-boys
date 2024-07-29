@@ -5091,7 +5091,7 @@ function checkPatchesPosition() {
         {
          console.log('checkPatchesPosition', checkPatchesPosition);
     const containerRect = patchesContainer.getBoundingClientRect();
-    const patchActions = patchesContainer.querySelectorAll('.patch-action');
+    const patchActions = patchesContainer.querySelectorAll('.patch-');
     let patchesOutside = false;
 
     patchActions.forEach(patch => {
