@@ -5577,7 +5577,7 @@ if (window.matchMedia("(max-width: 700px)").matches) {
     //         patch.style.left = `${left}px`;
     //     }
     // });
-     // Function to get the computed border color of the container
+// Function to get the computed border color of the container
 function getBorderColor(element) {
     const style = window.getComputedStyle(element);
     return style.borderColor;
@@ -5588,59 +5588,76 @@ patches.forEach(patch => {
     const container = document.querySelector('.patches-container');
     const borderColor = getBorderColor(container);
 
-    // Check if the border color is not red
-    if (borderColor !== 'rgb(255, 0, 0)') { // 'rgb(255, 0, 0)' is the RGB equivalent of red
-        let top = parseInt(patch.style.top) || 0;
-        let left = parseInt(patch.style.left) || 0;
-        let right = parseInt(patch.style.right) || 0;
+    let top = parseInt(patch.style.top) || 0;
+    let left = parseInt(patch.style.left) || 0;
+    let right = parseInt(patch.style.right) || 0;
 
-        if (currentFunctionId === 'align-diagonal-right') {
-            switch (direction) {
-                case 'top':
+    // Determine whether to apply changes based on border color
+    const canUpdate = borderColor !== 'rgb(255, 0, 0)'; // 'rgb(255, 0, 0)' is the RGB value for red
+
+    if (currentFunctionId === 'align-diagonal-right') {
+        switch (direction) {
+            case 'top':
+                if (canUpdate) {
                     top -= increment;
-                    break;
-                case 'left':
+                }
+                break;
+            case 'left':
+                if (canUpdate) {
                     right += increment;
-                    break;
-                case 'right':
+                }
+                break;
+            case 'right':
+                if (canUpdate) {
                     right -= increment;
-                    break;
-                case 'bottom':
+                }
+                break;
+            case 'bottom':
+                if (canUpdate) {
                     top += increment;
-                    break;
-            }
-        } else {
-            switch (direction) {
-                case 'top':
+                }
+                break;
+        }
+    } else {
+        switch (direction) {
+            case 'top':
+                if (canUpdate) {
                     top -= increment;
-                    break;
-                case 'left':
+                }
+                break;
+            case 'left':
+                if (canUpdate) {
                     left -= increment;
-                    break;
-                case 'right':
+                }
+                break;
+            case 'right':
+                if (canUpdate) {
                     left += increment;
-                    break;
-                case 'bottom':
+                }
+                break;
+            case 'bottom':
+                if (canUpdate) {
                     top += increment;
-                    break;
-            }
+                }
+                break;
         }
-
-        // Apply the new styles
-        if (currentFunctionId === 'align-diagonal-right') {
-            patch.style.top = `${top}px`;
-            patch.style.left = 'auto';
-            patch.style.right = `${right}px`;
-        } else {
-            patch.style.top = `${top}px`;
-            patch.style.left = `${left}px`;
-        }
-
-        // Check for overlapping and positions
-        checkPatchOverlapping();
-        checkPatchesPosition();
     }
+
+    // Apply the new styles
+    if (currentFunctionId === 'align-diagonal-right') {
+        patch.style.top = `${top}px`;
+        patch.style.left = 'auto';
+        patch.style.right = `${right}px`;
+    } else {
+        patch.style.top = `${top}px`;
+        patch.style.left = `${left}px`;
+    }
+
+    // Check for overlapping and positions
+    checkPatchOverlapping();
+    checkPatchesPosition();
 });
+
 
 }
 function checkPatchOverlapping() {
