@@ -5084,6 +5084,7 @@ function sortPatchesByOrder() {
 
 // Function to check if patches are outside the container and change border color accordingly
 function checkPatchesPosition() {
+  console.log('checkPatchesPosition',checkPatchesPosition)
     const containerRect = patchesContainer.getBoundingClientRect();
     const patchActions = patchesContainer.querySelectorAll('.patch-action');
     let patchesOutside = false;
