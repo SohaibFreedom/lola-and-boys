@@ -3,6 +3,9 @@
   margin: 2rem 0 1rem !important;
   display: block;
 }
+div#accessiblembilenav .login-signup-mobile-c a > span {
+  color: #fff !important;
+}
 .collection-specific-tags {
   position: absolute;
   left: 0;
