@@ -103,7 +103,6 @@
 <input type="hidden" name="customized_image_url_back" value="">
 <input type="hidden" name="customized_price" value="">
 <input type="hidden" name="size_variants_data" id="size_variants_data" value="">
-<input type="hidden" name="selective_variant_ID" id="selective_variant_ID" value="">
 <div
   class="overlapping-correction-error"
   style=""
@@ -846,7 +845,6 @@ async function addcartfiles() {
     const customizedPrice = document.querySelector('input[name="customized_price"]').value;
     const sizeVariants = document.querySelector('input[name="size_variants_data"]').value;
     const messagaeData = document.querySelector('textarea[name="messagefield"]').value;
-    const variantID = document.querySelector('input[name="selective_variant_ID"]').value;
 
     // Initialize an empty array to store variant IDs and names
     const variants = [];
@@ -880,7 +878,7 @@ async function addcartfiles() {
     });
 
     // Add {{ variant.id }} as the first item in the array
-    variants.unshift({ id: '1', name:  variantID });
+    variants.unshift({ id: '1', name: '{{ variant.id }}' });
     console.log('these are variants array', variants);
 
     try {
@@ -903,7 +901,7 @@ async function addcartfiles() {
                     };
 
                     // Define properties based on variant ID
-                    if (variant.name ===  variantID) {
+                    if (variant.name === '{{ variant.id }}') {
                         item.properties = {
                             "Product Name": '{{ product.title }}',
                             _customized_image_url_front: customizedImageUrl,
@@ -916,7 +914,7 @@ async function addcartfiles() {
                     } else {
                         item.properties = {
                             name: 'Custom Product',
-                            _parent_variant:  variantID,
+                            _parent_variant: '{{ variant.id }}',
                             _Timestamp: Date.now().toString(),
                             _Unique: `${variant.id}_${Date.now()}`
                         };
