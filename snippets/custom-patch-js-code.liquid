@@ -927,9 +927,10 @@ $(document).ready(function() {
        const sizeVariants = data.sizevariants;
      console.log('imagesData',imagesData);
      console.log(sizeVariants);
-     showcolorVariants();
+    
      showFrontImage();
      showBackImage();
+      showcolorVariants();
        showSizeVariants();
  
 
@@ -1407,53 +1408,284 @@ img.width = imgWidth;
     const sidebarBtn = document.querySelector('.variant-selector-sidebar-btn');
     sidebarBtn.innerHTML = '';
 
+    let firstColorVariant; // Variable to store the first color variant div
+
     // Iterate over the product variants
     product.variants.forEach(variant => {
         // Check if the current variant matches any color variant
         colorVariants.forEach(colorVariant => {
-            if (colorVariant.id.toString() === variant.id.toString()) {
-                // Create a new div for each color variant
-                const parentDiv = document.createElement('div');
-                parentDiv.classList.add('parent-variant-wrapper');
-                const newDiv = document.createElement('div');
-                newDiv.style.backgroundColor = colorVariant.Variants;
-                newDiv.classList.add('color-variant');
+            // Check if the product contains the tag "back-pack"
+            const productTags = {{ product.tags | json }};
+            if (productTags.includes("back-pack")) {
+              if (colorVariant.id.toString() === variant.id.toString()){
+                     const matchingVariants = product.variants.filter(variant => {
+    return variant.title.toLowerCase().includes(colorVariant.colorname.toLowerCase());
+});
 
-                // Add click event listener to each div
-                newDiv.addEventListener('click', () => {
-                    // Remove the class from all color-variant divs
-                    document.querySelectorAll('.color-variant').forEach((div) => {
-                        div.classList.remove('selected-variant');
-                    });
+console.log('matchingVariantsBack Pack',matchingVariants);
+          let isAvailable = matchingVariants.length > 0 && matchingVariants[0].available;
 
-                    // Add the class to the clicked div
-                    newDiv.classList.add('selected-variant');
+if (isAvailable) {
+    console.log("The variant is available.");
+    console.log('back-pack');
+   // Create a new div for each color variant
+   const parentDiv = document.createElement('div');
+   parentDiv.classList.add('parent-variant-wrapper');
+   const newDiv = document.createElement('div');
+   newDiv.style.backgroundColor = colorVariant.Variants;
+   newDiv.classList.add('color-variant');
+   newDiv.setAttribute('color-title', colorVariant.colorname);
+   console.log(document.getElementById('Front-image'));
+   console.log(colorVariant.productImg);
+   // Set the images for the front and back
+ 
 
-                    // Set the src attribute of the image with id "Front-image" and "Back-image"
+   // Add click event listener to each div
+   newDiv.addEventListener('click', () => {
+   // Remove the class from all color-variant divs
+   document.querySelectorAll('.color-variant').forEach((div) => {
+       div.classList.remove('selected-variant');
+   });
+
+   // Add the class to the clicked div
+   newDiv.classList.add('selected-variant');
+   const colorTitle = newDiv.getAttribute('color-title');
+   console.log('colorTitle', colorTitle);
+
+   // Update the content of the .color_selector_heading div
+   const colorSelectorHeading = document.querySelector('.color_selector_heading');
+     console.log(colorSelectorHeading)
+   if (colorSelectorHeading) {
+     console.log('yes its existes colorSelectorHeading')
+       colorSelectorHeading.textContent = colorTitle;
+   }
+
+   // Find the matching variant
+   const matchingVariant = product.variants.find(variant =>
+       variant.title.toLowerCase().includes(colorTitle.toLowerCase())
+   );
+
+   if (matchingVariant) {
+       // Update the input value with the matching variant ID
+       const hiddenInput = document.querySelector('input[name="selective_variant_ID"]');
+       if (hiddenInput) {
+           hiddenInput.value = matchingVariant.id;
+       }
+   }
+
+   // Set the src attribute of the image with id "Front-image" and "Back-image"
+   document.getElementById('Front-image').src = colorVariant.productImg;
+   document.getElementById('Back-image').src = colorVariant.backImg;
+});
+
+
+   // Append the new div to the div with class "variant-selector-sidebar-btn"
+   parentDiv.appendChild(newDiv);
+   sidebarBtn.appendChild(parentDiv);
+
+   // Store the first color variant div
+   if (!firstColorVariant) {
+       firstColorVariant = newDiv;
+   }
+} else {
+    console.log("The variant is not available.");
+    // Perform actions if the condition is false
+}
+              }
+            } 
+            
+            else {
+              console.log('non back'); 
+                                      // Assuming variants is an array of variant objects
+
+ if (colorVariant.id.toString() === variant.id.toString()) {
+                   const matchingVariants = product.variants.filter(variant => {
+    return variant.title.toLowerCase().includes(colorVariant.colorname.toLowerCase());
+});
+
+console.log('matchingVariants',matchingVariants);
+// Check if any of the matching variants are available
+const isAnyVariantAvailable = matchingVariants.some(variant => variant.available);
+
+if (isAnyVariantAvailable) {
+    console.log('At least one variant is available.');
+   
+                          // Create a new div for each color variant
+                    const parentDiv = document.createElement('div');
+                    parentDiv.classList.add('parent-variant-wrapper');
+                    const newDiv = document.createElement('div');
+                    newDiv.style.backgroundColor = colorVariant.Variants;
+                    newDiv.classList.add('color-variant');
+                    newDiv.setAttribute('color-title', colorVariant.colorname);
+
+                    // Set the images for the front and back
                     document.getElementById('Front-image').src = colorVariant.productImg;
                     document.getElementById('Back-image').src = colorVariant.backImg;
-                });
 
-                // Append the new div to the div with class "variant-selector-sidebar-btn"
-                parentDiv.appendChild(newDiv);
-                sidebarBtn.appendChild(parentDiv);
+                    // Add click event listener to each div
+                    newDiv.addEventListener('click', () => {
+                        // Remove the class from all color-variant divs
+                        document.querySelectorAll('.color-variant').forEach((div) => {
+                            div.classList.remove('selected-variant');
+                        });
+
+                        // Add the class to the clicked div
+                        newDiv.classList.add('selected-variant');
+                        const colorTitle = newDiv.getAttribute('color-title');
+                        console.log('colorTitle', colorTitle);
+                           const colorSelectorHeading = document.querySelector('.color_selector_heading');
+     console.log(colorSelectorHeading)
+   if (colorSelectorHeading) {
+     console.log('yes its existes colorSelectorHeading')
+       colorSelectorHeading.textContent = colorTitle;
+   }
+                               const sizeSelectorHeading = document.querySelector('.size_selector_heading');
+     console.log(sizeSelectorHeading)
+   if (sizeSelectorHeading) {
+     console.log('yes its existes colorSelectorHeading')
+       sizeSelectorHeading.textContent = '';
+   }
+                        // Call createVariantDivs if not a "back-pack"
+                        createVariantDivs(colorTitle);
+
+                        // Set the src attribute of the image with id "Front-image" and "Back-image"
+                        document.getElementById('Front-image').src = colorVariant.productImg;
+                        document.getElementById('Back-image').src = colorVariant.backImg;
+                    });
+
+                    // Append the new div to the div with class "variant-selector-sidebar-btn"
+                    parentDiv.appendChild(newDiv);
+                    sidebarBtn.appendChild(parentDiv);
+
+                    // Store the first color variant div
+                    if (!firstColorVariant) {
+                        firstColorVariant = newDiv;
+                    }
+
+} else {
+    console.log('All variants are unavailable.');
+    // Condition becomes false
+}
+                      }
+                  
             }
         });
     });
 
-    // Add the .selected-variant class to the first .color-variant div on page reload
-    window.addEventListener('load', () => {
-        const firstColorVariant = document.querySelector('.color-variant');
-        if (firstColorVariant) {
-            firstColorVariant.classList.add('selected-variant');
-            // Set the src attribute of the image with id "Front-image" and "Back-image" based on the first color variant
-            const firstColorVariantData = colorVariants.find(colorVariant => colorVariant.id.toString() === product.variants[0].id.toString());
-            if (firstColorVariantData) {
-                document.getElementById('Front-image').src = firstColorVariantData.productImg;
-                document.getElementById('Back-image').src = firstColorVariantData.backImg;
+
+    // Automatically move the first color variant to createVariantDivs
+    if (firstColorVariant) {
+        console.log('firstColorVariant');
+        firstColorVariant.classList.add('selected-variant');
+        // document.getElementById('Front-image').src = colorVariant.productImg;
+        // document.getElementById('Back-image').src = colorVariant.backImg;
+        const colorTitle = firstColorVariant.getAttribute('color-title');
+        console.log('First color variant', colorTitle);
+    const colorSelectorHeading = document.querySelector('.color_selector_heading');
+     console.log(colorSelectorHeading)
+   if (colorSelectorHeading) {
+     console.log('yes its existes colorSelectorHeading')
+       colorSelectorHeading.textContent = colorTitle;
+   }
+        const productTags = {{ product.tags | json }};
+        if (!productTags.includes("back-pack")) {
+            createVariantDivs(colorTitle);
+        } 
+        else {
+            // If it's a back-pack, find the matching variant
+            const matchingVariant = product.variants.find((variant) =>
+                variant.title.toLowerCase().includes(colorTitle.toLowerCase())
+            );
+
+            if (matchingVariant) {
+                // Update the input value with the matching variant ID
+                const hiddenInput = document.querySelector('input[name="selective_variant_ID"]');
+                if (hiddenInput) {
+                    hiddenInput.value = matchingVariant.id;
+                }
             }
         }
-    });
+        console.log('colorVariants:', colorVariants);
+        console.log('colorTitle',colorTitle)
+
+// Step 1: Find all color variants that match the title
+const matchingColorVariants = colorVariants.filter(colorVariant => 
+    colorVariant.colorname &&
+    colorTitle &&
+    colorVariant.colorname.toLowerCase() === colorTitle.toLowerCase()
+);
+
+console.log('matchingColorVariants', matchingColorVariants);
+
+// Step 2: From the matching color variants, find the one where the IDs match
+const firstColorVariantData = matchingColorVariants.find(colorVariant => 
+    product.variants.some(variant =>
+        variant.id.toString() === colorVariant.id.toString()
+    )
+);
+
+console.log('firstColorVariantData', firstColorVariantData);
+
+if (firstColorVariantData) {
+    console.log('yes i am under ', firstColorVariantData.productImg);
+    
+    // Set the src attribute of the images with the found color variant data
+    document.getElementById('Front-image').src = firstColorVariantData.productImg;
+    document.getElementById('Back-image').src = firstColorVariantData.backImg;
+}
+
+    }
+}
+
+
+// Function to create variant divs based on the color-title
+function createVariantDivs(colorTitle) {
+  const product2 = {{ product | json }};
+  const variantsContainer = document.getElementById('variants-containers');
+  
+  // Clear existing variant divs
+  variantsContainer.innerHTML = '';
+
+  // Filter and create divs for matching variants
+  product2.variants.forEach(variant => {
+    if (
+      variant.title.toLowerCase().includes(colorTitle.toLowerCase()) &&
+      variant.available
+    ) {
+      const variantDiv = document.createElement('div');
+      variantDiv.textContent = variant.option1;
+      variantDiv.setAttribute('data-v-id', variant.id);
+      variantDiv.classList.add('select_size', 'size_variants_circle', 'size_variants');
+      variantsContainer.appendChild(variantDiv);
+
+      // Add click event listener to each dynamically created div
+      variantDiv.addEventListener('click', () => {
+        // Remove 'size_variants_active' class from all '.select_size' divs
+        const allSelectSizeDivs = document.querySelectorAll('.select_size');
+        allSelectSizeDivs.forEach(div => {
+          div.classList.remove('size_variants_active');
+        });
+
+        // Add 'size_variants_active' class to the clicked div
+        variantDiv.classList.add('size_variants_active');
+            const colorSelectorHeading = document.querySelector('.size_selector_heading');
+     console.log(colorSelectorHeading)
+   if (colorSelectorHeading) {
+     console.log('yes its existes colorSelectorHeading')
+       colorSelectorHeading.textContent = variant.option1;
+   }
+        // Get the value of the data-v-id attribute
+        const vId = variantDiv.getAttribute('data-v-id');
+        console.log('vId', vId);
+
+        // Update the value of the hidden input
+        const hiddenInput = document.getElementById('selective_variant_ID');
+        if (hiddenInput) {
+          hiddenInput.value = vId;
+        }
+      });
+    }
+  });
 }
     
      //old size variantts
