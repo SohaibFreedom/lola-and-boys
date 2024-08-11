@@ -1,9 +1,6 @@
 {% assign variant = product.selected_or_first_available_variant %}
 
 <style>
-  .small_selected_heading{
-    font-size: 70%;
-  }
   .hidedisplay{
     display: none !important;
   }
@@ -1138,7 +1135,7 @@
         }
         .size_variants_circle {
         height: 35px !important;
-        width:fit-content; !important;
+        width: 35px !important;
         }
         .size_variants_section {
               margin-top: 0 !important;
@@ -1404,11 +1401,11 @@
   }
   .size_variants_circle{
     height: 40px;
-    width: fit-content;
-    padding: 17px;
+    width: 40px;
     display: flex;
     justify-content: center;
     border: 1px solid #d1d0d0;
+    border-radius: 50%;
     align-items: center;
     background: #ffffff;
   }
@@ -1660,22 +1657,19 @@
         </div>
       </div>
       <div class="variant-selector-sidebar-btn-main-wrapper">
-        <h2 class="product-tile-for-selected">{{ product.title }} </h2>
-        <span class="size_variants_section_heading size_variants_section_color_heading">Select Color : <small class="color_selector_heading small_selected_heading"></small></span>
+        <h2 class="product-tile-for-selected">{{ product.title }}</h2>
+        <span class="size_variants_section_heading size_variants_section_color_heading">Select Color</span>
         <div class="variant-selector-sidebar-btn"></div>
       </div>
       <div class="size_variants_section">
-        <span class="size_variants_section_heading">Select Size: <small class="size_selector_heading small_selected_heading"></small></span>
-        <!-- <span class="size_variants_section_heading">Select Size</span> -->
-        <!-- <div class="size_variants_swatches">
+        <span class="size_variants_section_heading">Select Size: <small class="size_selector_heading"></small></span>
+        <div class="size_variants_swatches">
           <div id="small_variant" class="size_variants_circle size_variants" vlaue="S">S</div>
           <div id="medium_variant" class="size_variants size_variants_circle" vlaue="M">M</div>
           <div id="large_variant" class="size_variants size_variants_circle" vlaue="L">L</div>
           <div id="extra_large_variant" class="size_variants size_variants_circle" vlaue="XL">XL</div>
-        </div> -->
-        <div id="variants-containers" class="size_variants_swatches"></div>
+        </div>
       </div>
-      
       <div class="size_variants_errors"><span>Please select size first</span></div>
       <div class="variant-selector-sidebar-foter">
         <div class="patches-customization-form-buttons">
