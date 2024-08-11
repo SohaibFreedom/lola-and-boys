@@ -1,2137 +1,1013 @@
 {% assign variant = product.selected_or_first_available_variant %}
+<!--
+  {{ variant.price | money }}
+  {{ variant.id }}
+-->
+<!-- {{ variant | json}} -->
 
 <style>
-  .small_selected_heading{
-    font-size: 70%;
-  }
-  .hidedisplay{
-    display: none !important;
-  }
-  .custom_svg_color{
-     color: darkgrey !important
-  }
-  .custom_fill{
-    fill: darkgrey !important
-  }
-  .message_box_div{ width:65%; }
-  .edit-tidy-btns-wrapper > .patches-customization-tidy-delete-btn-active{
-        background-color: #ffe2e8;
-  }
-  .patch-transparent-border{
-        border: none !important;
-
-  }
-  .onlymobile-screen{
-    display: none !important;
-  }
-       .clear-btn-only-desktop{
-       display: block !important;
-      }
-  .clear-btn-only-mobile{
-            position: absolute;
-        top: 103px;
-        right: 18px;
-       display:none !important;
-    padding: 0px 27px !important;
-  }
-  .only-mobile-eidt-btn{
-    display:none;
-    background: white !important;
-    box-shadow: 0px 2px 4px rgb(0 0 0 / 5%) !important;
-    font-size: 14px !important;
-    padding: 0 27px !important;
-    border-radius: 26px !important;
-    cursor: pointer !important;
-    border: 1px solid #9900ef00 !important;
-  }
-  .slidecontainerrRange{
-    width:60%;
-  }
-    input[type="range"]:disabled {
-      cursor: not-allowed;
-  }
-     .not-allowed {
-              cursor: not-allowed !Important;
-          }
-
-          .not-allowed:hover {
-              background-color: #e7e7e7 !Important;
-          }
-    .add-patch-pop-up-btn{
-      text-align: center;
-      width: 30%;
-      margin: 0 auto;
-      background: #ffe2e8;
-      font-weight: bold;
-      border-radius: 50px;
-      padding: 11px 0;
-      cursor: pointer;
-    }
-    .delete-patches-wrapper-sidebar > .tidy-patches-wrraper > .select-patches  > .selected-patch-for-customization > .selected-patch-order{
-      display:none;
-    }
-    /* .delete-patches-wrapper-sidebar > .tidy-patches-wrraper > .select-patches  > .patch-selected-by-both {
-       border: 1px solid black;
-    } */
-   .patch-selected-by-both {
-       border: 1px solid black !important;
-    }
-    .edit-delete-btn{
-          border-bottom: 1px solid #f3f3f3;
-    }
-    .overlapping-correction-error{
+    .variants-container {
       display: none;
-      color: rgb(221, 34, 75);
-    font-size: 20px;
-    text-align: center;
-    padding: 5px 5px;
-    background: rgb(255 216 225);
-    margin-bottom: 11px;
-    }
-    .main__patches__wrapp{
-      overflow: hidden;
-      height: calc(100vh - 160px);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    }
-    .main__patches__wrapper{
-          height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-    .scrollbox{
-      overflow:auto;
-    }
-    .product-tile-for-selected{
-      text-transform: capitalize;
-      font-size: 30px !important;
-
-    }
-    .tidy-patches-changes-btn-wrraper{
       position: absolute;
-          width: 100%;
-      border-top: 1px solid #e2e0e0;
-      background: white;
-      bottom: 0;
-      padding: 20px;
-    }
-    .scrollboxInner{
-
-    }
-
-    .tidy-patches-apply-changes-btn{
-      width: 100%;
-      background: #ffe2e8;
-      display: flex;
-      justify-content: center;
-      padding: 12px 20px;
-      border-radius: 25px;
-      cursor: pointer;
-      font-weight: 600;
-    }
-    .patches-tidy-editor-btn{
-          background-color: #ffffff;
-      border-radius: 26px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 0 27px;
-      font-size: 14px;
-      cursor: pointer;
-      box-shadow: 0px 2px 4px rgb(0 0 0 / 5%);
-       visibility: hidden;
-    }
-    .tidy-clear-btn-wrapp{
-      display:flex;
-    }
-    .only-mobile{
-      display:none;
-      width: 100%;
-    }
-    .only-mobile-colors-wrapper{
-      display:none ;
-      width: 100%;
-    }
-    .only-mobile-tdy-header{
-       display:none ;
-      width: 100%;
-    }
-    .messagefield:focus{
-      border:none;
-    }
-    .messagefield{
-      padding: 11px;
-      border: none;
-      background: #f4f4f4;
-      border-radius: 2px;
-      resize: none;
-    }
-    .overlapping-error{
-      color: red;
-      font-size: 20px;
-      visibility: hidden;
-      margin-left: 30px;
-    }
-    .size_variants_errors{
-      display:none;
-      padding:30px;
-    }
-    .size_variants_errors > span{
-      font-size: 20px;
-      color: red;
-    }
-    .customize-button{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border: 1px solid;
-      padding: 15px;
-      margin-bottom: 15px;
-      cursor: pointer;
-      border-radius: 20px;
-    }
-    .customize-button > span{
-      font-weight: bold;
-    }
-     .patches-customization-wrapper{
-      display: flex;
-      height: 100vh;
-     }
-          .product-customization{
-            display:none;
-        }
-        .Customization-heading{
-              margin: 0 100px;
-      }
-      .patches-customization-container{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 65%;
-            background: #fff8fa;
-            position:relative;
-      }
-    .patches-customization-container-overly{
-      display:none;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      z-index: 1;
-      background: #ffdbe182;
-    }
-      .imageDiv {
-          position: relative;
-       width: 100%;
-       /* height:  100%; */
-          height: auto;
-      }
-      .sourceImage {
-          width: 100%;
-          height: 100%;
-          /* object-fit:contain; */
-          display: block;
-          margin: auto;
-      }
-
-      .centerMarker {
-          position: absolute;
-          width: 10px;
-          height: 10px;
-          background-color: red;
-          border-radius: 50%;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-      }
-
-      .centerBox {
-          position: absolute;
-          width: 100px;
-          height: 100px;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-      }
-      .BackcenterBox{
-          position: absolute;
-          width: 100px;
-          height: 100px;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-      }
-
-      .patches-container {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          border: 2px solid transparent;
-      }
-
-      .images-patches-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: auto 0;
-      }
-      .patch-:hover{
-          cursor: all-scroll;
-      }
-      .patch:hover{
-          cursor: all-scroll;
-      }
-      .patch-action{
-      border-color: red !important;
-      }
-     .patch-{
-       border: 2px solid #ff000000;
-     }
-      .patch > img{
-      height: 70% !important;
-      width: 70% !important;
-      object-fit: contain;
-      }
-      .checkit{
-          position: relative;
-      width: 450px;
-      height: 404px;
-      display: flex;
-      justify-content: center;
-    }
-      #Front-Area, #Back-area{
-        position: absolute;
-            height: 100%;
-      width: 100%;
-    }
-    .image-hidden{
-    left: -9999px;
-    top: -9999px;
-    }
-</style>
-<style>
-              /* Offcanvas Menu Styles */
-              #patches-customization-offcanvas-menu {
-                width: 35%;
-                background-color: #ffffff;
-                overflow-x: hidden;
-                position:relative;
-                z-index: 1;
-              }
-              .patches-customization-header{
-                display: flex;
-                justify-content: space-between;
-                padding: 27px;
-                border-bottom: 1px solid #dddddd;
-                align-items: center;
-            }
-            .patches-back-button{
-              font-size: 20px;
-              gap: 5px;
-              cursor: pointer;
-              display: flex;
-              align-items: center;
-            }
-            .patches-back-button > h2{
-            margin: 0;
-            font-size: 18px;
-            letter-spacing: 1px;
-            text-transform: capitalize;
-            }
-            .patches-customization-remover{
-              height: 30px;
-              width: 30px;
-              cursor:pointer;
-            }
-
-            .add-patches-info{
-              display: flex;
-              justify-content: space-between;
-              padding: 20px 40px;
-            }
-            .add-patches-info-title{
-              font-weight: 600;
-            }
-            .patches-toggle-buttons{
-            display: flex;
-            width: 85%;
-            margin: 0 auto;
-          }
-
-            .patch-toggle-btn{
-                border: 1px solid #f2f2f2;
-                display: flex;
-                justify-content: center;
-                width: 100%;
-                padding: 7px 0px;
-                cursor: pointer;
-                font-weight: 600;
-            }
-            .alphabets-button{
-            border-top-right-radius: 20px;
-            border-bottom-right-radius: 20px;
-            border-left:none;
-            }
-          .patches-button{
-            border-top-left-radius: 20px;
-            border-bottom-left-radius: 20px;
-            border-right:none;
-          }
-          .custom-patches-filter{
-            display: flex;
-            width: 90%;
-            margin: 16px auto;
-            gap: 10px;
-          }
-          .customization-search-bar{
-            margin-bottom: 0 !important;
-            border-radius: 20px;
-            font-size: 17px !important;
-            border: 1px solid #f2f2f2 !important;
-          }
-          .custom-patches-sort-btn{
-               display: flex;
-      align-items: center;
-      width: 43%;
-      border: 1px solid #ffe2e8;
-      justify-content: center;
-      border-radius: 18px;
-      background: #ffe2e8;
-      }
-      .patches{
-      display: flex;
-      flex-wrap: wrap;
-      padding: 20px 0;
-      gap: 10px;
-      justify-content: center;
-      width: 90%;
-      height: unset;
-      overflow: hidden;
-      margin: auto;
-      }
-      .tidy-patches-adjustment-wrapper{
-        height: auto;
-      overflow: hidden;
-      }
-          .patch{
-            height: 70px;
-            width: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid transparent;
-            position:relative;
-            flex-direction: column;
-          }
-        .patch:hover {
-          border-color:red !important;
-        }
-
-          .patch-image{
-            height: 100% !important;
-            width: 100% !important;
-            object-fit:contain;
-          }
-          .custom-patch-active{
-            background: #ffe2e8;
-            border: 1px solid #ffe2e8;
-            color: black;
-          }
-        .patch-title{
-          font-size: 14px;
-          position: absolute;
-          opacity: 0;
-          text-align: center;
-          margin: 0;
-          transition: opacity 0.3s;
-          text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
-          color: #777777;
-          width:100%;
-          font-weight: 600;
-        }
-        .patch-title:hover{
-          opacity:1;
-      }
-     .popup {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: white;
-      max-width: 550px;
-      padding: 20px;
-      width: calc(100% - 40px);
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-      z-index: 9999;
-      border-radius: 20px;
-      opacity: 0;
-      animation: fadeIn 0.5s ease forwards;
-      transition: opacity 0.3s ease;
-     }
-
-      @keyframes fadeIn {
-      0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-      100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-    }
-    .patch-pop_up-image-wrapper{
-       text-align: center;
-      width: 100%;
-      height: 400px;
-    }
-    .popup-name{
-      margin: 20px auto;
-      text-align: center;
-      font-size: 20px;
-    }
-    .popup.active {
-      opacity: 1; /* Show the pop-up when active class is applied */
-  }
-
-    .popup img {
-      max-width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .popup-close {
-        cursor: pointer;
-        margin-top: 10px;
-        text-align: right;
-    }
-    .zoom{
-      position: absolute;
-      bottom: -7px;
-      right: 0;
-      opacity:0;
-    }
-    .zoom > svg{
-      height: 20px;
-      cursor: pointer;
-      width: 20px;
-  }
-  .patch:hover:hover .zoom{
-    opacity: 1;
-  }
-  .fade-out {
-      animation: fadeOut 0.3s ease forwards; /* Apply fade-out animation */
-  }
-
-  @keyframes fadeOut {
-      0% { opacity: 1; }
-      100% { opacity: 0; }
-  }
-    .patches-customization-btns-wrapper{
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      position: absolute;
-      bottom: 27px;
-      padding: 0 15px;
-    }
-    .patches-customizations-btn{
-      background: white;
-      box-shadow: 0px 2px 4px rgb(0 0 0 / 5%);
-      padding: 9px 30px;
-      font-size: 18px;
-    }
-    .patches-customizations-btn-wrapper{
-      display: flex;
-      cursor: pointer;
-    }
-    .patches-customizations-back-btn{
-      border-top-right-radius: 25px;
-      border-bottom-right-radius: 25px;
-    }
-    .patches-customizations-front-btn{
-      border-top-left-radius: 25px;
-      border-bottom-left-radius: 25px;
-    }
-    .patches-customization-btn-active{
-      background-color: #ffe2e8;
-  }
-    .patches-clear-btn{
-      background-color: #ffffff;
-      border-radius: 26px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 18px;
-      cursor: pointer;
-      box-shadow: 0px 2px 4px rgb(0 0 0 / 5%);
-    padding: 9px 30px;
-    }
-    .patches-customization-clear-alert-pop-up{
-      height: 100%;
-      width: 100%;
-      right: -2400px;
-      transition: right 0.5s ease;
-      background: #ffffff;
-      position: absolute;
-      z-index: 9999;
-      display: none;
-    }
-    .patches-customization-clear-popup-active{
-      display:block;
-    }
-    .patches-containerr{
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-    .patches-customization-editor{
-      height: 100%;
-      width: 100%;
-      right: -2400px;
-      transition: right 0.5s ease;
-      position: absolute;
-      z-index: 2;
-      display: none;
-    }
-    /* .patch-open-editor{
-      border:1px solid blue;
-    } */
-    .variant-selector-sidebar-header{
-      display: flex;
-      width: 100%;
-      justify-content: space-between;
-      padding: 27px;
-      border-bottom: 1px solid #e0e0e0;
-      align-items: center;
-    }
-    .close-variant-selector-editor{
-      width: 30px;
-      height: 30px;
-      cursor:pointer;
-    }
-    .variants-selected-sidebar{
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: white;
-      z-index: 9999;
-    }
-    .variant-selector-sidebar-foter{
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      padding: 20px 40px;
-    }
-    .variants-continue-btn{
-      padding: 12px 71px;
-      background: #ffe2e8;
-      border-top-right-radius: 20px;
-      border-bottom-right-radius: 20px;
-      width: 60%;
-      cursor: pointer;
-    }
-    .variant-selector-sidebar-btn{
-      margin: 12px 0;
-      margin-top: 6px;
-      display: flex;
-      flex-wrap: wrap;
-  }
-    .variant-selector-sidebar-btn-main-wrapper{
-    display: flex;
-      flex-wrap: wrap;
-      flex-direction: column;
-      padding: 0 30px;
-    }
-    .variant-selector-sidebar-btn-main-wrapper > h2{
-        font-size: 25px;
-      margin-bottom: 2rem;
-          letter-spacing: 0px;
-    }
-    .color-variant{
-      cursor:pointer;
-      height:35px;
-      width:35px;
-      border-radius: 3px;
-      border:1px solid transparent;
-      transition: background-color 0.3s ease;
-    }
-
-    .selected-variant{
-      border:1px solid #ff3030;
-      }
-    .parent-variant-wrapper{
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-  }
-    @media (max-width: 1800px) {
-      .imageDiv {
-          position: relative;
-      /* height: 100%; */
-      height: auto;
-      width: 100%;
-      }
-  }
-</style>
-<style>
-    .variants-continue-btn-invisible{
-      display:none;
-    }
-    .all-sidebar-cross-alert{
-      position:absolute;
-      z-index:99999;
-      display:none;
-      background: white;
-      position:absolute;
-      width:100%;
-      height:100%;
-    }
-    .all-sidebar-cross-alert-visble{
-      display:block;
-    }
-    .all-sidebar-cross-alert-header{
-      display: flex;
-      padding: 20px 20px;
-      justify-content: space-between;
-      border-bottom: 1px solid #e3e3e3;
-      align-items: center;
-    }
-    .all-sidebar-cross-alert-header > span{
-      font-size: 16px;
-      font-weight: bold;
-    }
-    .all-sidebar-cross-content{
-      padding: 20px;
-    }
-    .all-sidebar-cross-button-wrapper{
-      display: flex;
-      position: absolute;
-      bottom: 10px;
-      width: 100%;
-      gap: 10px;
-      justify-content: center;
-      font-weight: 600;
-
-    }
-    .crosssvg-wrapper{
-      width: 30px;
-      cursor:pointer;
-      height:30px;
-    }
-    .all-sidebar-cross-exit-button{
-      width: 40%;
-      justify-content: center;
-      display: flex;
-      background: #ffe2e8;
-      border-radius: 20px;
-      padding: 10px;
-      cursor:pointer;
-  }
-    .all-sidebar-cross-neverMind-button{
-      width: 40%;
-      justify-content: center;
-      display: flex;
-      background: #f9f9f9;
-      border-radius: 20px;
-      padding: 10px;
-      cursor:pointer;
-  }
-    .all-sidebar-cross-neverMind-button:hover{
-       background: #ffeff2;
-    }
-</style>
-<style>
-    .dragpatchDiv{
-      opacity:0;
-  }
-    .selected-patch-for-customization{
-      width: 50px;
-      height: 50px;
-      background: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      position: relative;
-      border: 1px transparent;
-      border-radius: 2px;
-  }
-    .selected-patch-for-customization > img{
-      width: 80%;
-      height: 80%;
-      object-fit: contain;
-    }
-    .selected-patch-order{
-      position: absolute;
-      top: -5px;
-      left: -5px;
-      border-radius: 50%;
-      background: #ff6491;
-      color: white;
-      width: 14px;
-      height: 14px;
-      font-size: 10px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  }
-    .select-patches{
-      display: none;
-      gap: 20px;
-      padding: 10px 0px;
-    }
-    .select-patches-active{
-      display:flex !important;
-      flex-wrap: wrap;
-    }
-    .patch-selected{
-      border: 1px solid;
-    }
-    .tidy-patches-header{
-      display: flex;
-      justify-content: space-between;
-      padding: 25px 30px;
-      background-color: white;
-      align-items: center;
-    }
-    .close-patches-customization-editor{
-      height: 30px;
-      width: 30px;
-      cursor: pointer;
-    }
-    .tidy-patches-title{
-      font-size: 18px;
-      letter-spacing: 1px;
-      text-transform: capitalize;
-      margin: 0;
-    }
-    .tidy-patches-content{
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 0px;
-  }
-    .front-tdiy-patches-btn{
-      display:none;
-    }
-    .back-tdiy-patches-btn{
-      display:none;
-    }
-    .tdiy-patches-btn-active{
-      display:block;
-    }
-    .tidy-patches-heading{
-      font-weight: bold;
-    }
-    .tidy-patches-action-btn{
-      display: flex;
-      gap: 20px;
-    }
-    .tidy-patches-btns{
-      border-bottom: 1px solid black;
-      cursor: pointer;
-    }
-    .tidy-patches-wrraper{
-      background: #f8f8f8;
-      padding: 20px 30px;
-    }
-    .alignment-title{
-      background: white;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      padding-left: 30px;
-      font-size: 15px;
-      font-weight: 600;
-    }
-    .alignment-actions{
-      display: flex;
-      gap: 5px;
-    }
-    .tidy-patches-adjustment-btns{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #e7e7e7;
-      width: 50px;
-      height: 50px;
-      padding: 7px;
-      cursor:pointer;
-    }
-    .tidy-patches-alignment-section{
-      display: flex;
-      background: white;
-      padding: 25px 20px;
-      border-bottom: 1px solid #e2e0e0;
-      justify-content: space-between;
-    }
-    .patches-arrow-top{
-          transform: rotate(90deg);
-      }
-      .patches-arrow-left{
-          transform: rotate(-90deg);
-      }
-      .patches-arrow-right{
-          transform: rotate(180deg);
-      }
-    .tidy-patches-delete-title{
-          width: 40%;
-    }
-    .tidy-patches-delete-btn{
-      width: 60%;
-      background: #ffe2e8;
-      display: flex;
-      justify-content: center;
-      padding: 12px 20px;
-      border-radius: 25px;
-      cursor: pointer;
-      font-weight: 600;
-    }
-    .tidy-patches-delete-btn-wrraper{
-      display: flex;
-      background: white;
-      padding: 20px;
-      width: 100%;
-      border-bottom: 1px solid #e2e0e0;
-    }
-  .tidy-patches-delete-btn:hover {
-      background-color: #fde3ff;
-  }
-    .tidy-patches-adjustment-btns:hover{
-      background-color: #fde3ff ;
-    }
-    .tidy-patches-svg{
-      fill: #f490ff !important;
-    }
-    .clear-patches-alert-header{
-      display: flex;
-      justify-content: space-between;
-      padding: 23px 30px;
-      border-bottom: 1px solid #e6e6e6;
-      background: #ffffff;
-    }
-    .clear-patches-alert-header-title{
-      font-size: 16px;
-      font-weight: bold;
-    }
-    .close-customization-clear-alert{
-      width: 30px;
-      height: 30px;
-      cursor:pointer;
-    }
-    .close-customization-clear-alert-content{
-      padding: 40px 30px;
-    }
-    .close-customization-clear-alert-content > span {
-      font-size: 14px;
-    }
-    .clear-patches-alert-footer{
-      bottom: 0;
-      display: flex;
-      padding: 20px 30px;
-      gap: 5px;
-      position: absolute;
-      background: white;
-      border-top: 1px solid gainsboro;
-      width: 100%;
-    }
-    .patches-customizations-clear-footer-btns{
-      width: 50%;
-      border-radius: 39px;
-      padding: 12px;
-      justify-content: center;
-      display: flex;
+      bottom: 61px;
+      color: #747474;
       font-weight: 500;
-      color: #2c272d;
-      cursor: pointer;
-      font-weight: 600;
-      text-transform: capitalize;
-    }
-    .patches-customizations-clear-btn{
-      background: #ffe2e8;
-    }
-    .patches-customizations-clear-btn:hover{
-      background: #fff2f4;
-    }
-    .patches-customizations-nevr-btn{
-
-      background: #f4f4f4;
-  }
-    .patches-customizations-nevr-btn:hover{
-      background: #fcd5dc;
-    }
-    .patch-selected-by-btn{
-      border: 1px solid;
-    }
-    .toggle-summary-svg{
-      display:none;
-    }
-    .toggle-summary-svg-active{
-      display:block;
-    }
-    .variants-continue-btn{
-      font-weight:600;
-    }
-    .summary-btn-content{
-     font-weight:600;
-     z-index: 500;
-    }
-    .complete-overly-wrapper{
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background: #ffdbe182;
-      top: 0;
       left: 0;
-      display: none;
-    }
-</style>
-<style>
-          .slidecontainerr {
-              width: 100%;
-              display: flex;
-              align-items: center;
-              gap: 10px;
-          }
-
-      #myRange{
-           -webkit-appearance: none;
-          width: 100%;
-          height: 7px;
-          margin: 0;
-          padding: 0;
-          min-height: 7px;
-          background: #e7e7e7;
-          outline: none;
-          opacity: 0.7;
-          -webkit-transition: .2s;
-          transition: opacity .2s;
-          border-radius: 10px;
-          border: none;
-      }
-   .range-sliderr::-webkit-slider-thumb {
-      background: #ff6490 !important; /* Example with a valid hex color code */
+      width: 100%;
+      background-color: white;
+      animation: slide-up 0.5s ease forwards;
+      padding: 29px 23px;
+      border-top-left-radius: 25px;
+      border-top-right-radius: 25px;
+      background: rgb(255 255 255);
   }
-     .sliderr::-webkit-slider-thumb {
-              -webkit-appearance: none;
-              appearance: none;
-              width: 15px;
-              height: 15px;
-              background: darkgrey;
-              cursor: pointer;
-              border-radius: 50%;
-          }
 
-          .slider::-moz-range-thumb {
-              width: 15px;
-              height: 15px;
-              background: #ff6491;
-              cursor: pointer;
-              border-radius: 50%;
-          }
-
-          /* Additional styles for displaying the slider value */
-          .slider-value {
-          text-align: center;
-          background: #e7e7e7;
-          padding: 5px 10px;
-          color: black;
-          width: 90%;
-          align-items: center;
-          display: flex;
-          justify-content: center;
-          }
-        .custom-increment-button{
-          background: #e7e7e7;
-          border-bottom: none;
-          border: 1px solid #cecece;
-          color: black;
-          height: 50%;
-          width: 20px;
-          padding: 0;
-          min-height: 20px;
-        }
-      .custom-increment-button:hover {
-          background: #e7e7e7;
+  @keyframes slide-up {
+      from {
+          transform: translateY(100%);
       }
-      .degree-custom-wrapper{
-          display: flex;
-          width: 40%;
-          gap: 2px;
+      to {
+          transform: translateY(0);
       }
-      .patches-editor-wrapper{
-          position: absolute;
-          display: none;
-          height: 100%;
-          width: 100%;
-          overflow: hidden;
-      }
-</style>
-<!-- media queries -->
-<style>
-    @media screen and (max-width: 1024px) {
-      .checkit {
-
-      width: 590px;
-      height: 554px;
-
   }
-    }
-      @media screen and (max-width: 768px) {
-        .variants-container {
-          max-height: 200px !important;
-          overflow: scroll;
-        }
-        .clear-btn-only-mobile{
-          display: block !important;
-        }
-        .onlymobile-screen{
-          display: block !important;
-        }
-        .clear-btn-only-desktop{
-         display: none !important;
-        }
-        .only-mobile-eidt-btn{
-          display: block !important;
-          visibility: hidden;
-        }
-        .alignment-actions{
-              width: 60% !important;
-        }
-        .edit-tidy-btn-wrapp{
-          display:none !important;
-        }
-        .color-variant:hover {
-        height: 30px;
-        width: 30px;
-    }
-        .variant-selector-sidebar-btn-main-wrapper > h2{
-          margin-bottom: 10px;
-        }
-         .product-tile-for-selected{
-        font-size: 17px !important;
-        margin-bottom: 0px;
-        }
-        .size_variants_section_heading{
-          font-size: 12px !important;
-        }
-        .parent-variant-wrapper {
-        width: 30px;
-        height: 30px;
-        }
-        .color-variant{
-        height: 30px;
-        width: 30px;
-        }
-        .size_variants_section_heading{
-              font-size: 12px !important;
-        }
-        .variant-selector-sidebar-btn {
-        margin: 6px 0;
-            gap: 3px;
-        }
-          .overlapping-correction-error{
-       font-size: 12px;
-      }
-        .size_variants_errors > span{
-              font-size: 15px;
-        }
-        .size_variants_section_heading{
-              font-size: 15px !important;
-        }
-        .size_variants_circle {
-        height: 35px !important;
-        width:fit-content; !important;
-        }
-        .size_variants_section {
-              margin-top: 0 !important;
-        }
-        .patch-toggle-btn{
-              padding: 2px 0px;
-        }
-        .customization-search-bar{
-    font-size: 16px !important;
-            height: 31px !important;
-            min-height: 30px !important;
-        }
-           .patches-toggle-buttons{
-          margin: 5px auto !important;
-        }
-        .custom-patches-sort-btn {
-            font-size: 9px;
-        }
-        .patches-customization-wrapper{
-                 height: fit-content;
-        }
-            #patches-customization-offcanvas-menu{
-            width: 100%;
-            height: calc(100% - 100vw);
-            min-height: 50vw;
-            position: absolute;
-            bottom: 0;
-        }
-        .patches-editor-wrapper {
-        position: absolute;
-        bottom: 0;
-        height: 100%;
-        width: 100%;
-        overflow: hidden;
-        flex-direction: column;
-        }
-        .main__patches__wrapp{
-        position: relative;
-       height: calc(92% - 49px);
-        }
-        .main__patches__wrapper {
-        height: 100%;
-        display: flex;
-        flex-direction: column
-    }
-
-        .tidy-patches-delete-btn{
-          font-size: 12px;
-        }
-        .alignment-title{
-          font-size: 12px;
-        }
-        .tidy-patches-delete-btn-wrraper {
-          padding: 11px;
-        }
-        .tidy-patches-alignment-section{
-              padding: 10px 20px;
-        }
-        .variant-selector-sidebar-header{
-          padding: 20px !important;
-        }
-            .tidy-patches-header {
-            padding: 20px !important;
-        }
-        .patches-customizations-btn {
-          padding: 2px 30px;
-        font-size: 14px;
-        }
-       .custom-patches-filter{
-         margin: 5px auto !important;
-       }
-                 .only-mobile{
-        display:block ;
-
-        .only-mobile-colors-wrapper{
-          display:none !important;
-        }
-        .patches-customizations-btn{
-        padding: 2px 26px;
-        font-size: 14px;
-        }
-     }
-         .only-desktop{
-        display:none !important;
-      }
-        .patch-pop_up-image-wrapper {
-          height: 150px !important;
-        }
-        .patches-customization-wrapper{
-              flex-direction: column;
-        }
-        .patches-customization-container{
-             width: 100%;
-            height: 100vw;
-    }
-    .images-patches-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 5px;
-        padding-bottom: 51px;
-    }
-        .overlapping-error {
-          font-size: 12px;
-          margin-left:0;
-        }
-        .checkit {
-        width: 344px;
-        height: 300px;
-        display: flex;
-        justify-content: center;
-    }
-        .patches-customization-btns-wrapper {
-          bottom: 10px;
-        }
-
-
-        .tidy-patches-header{
-          padding: 20px !important;
-        }
-        .tidy-patches-content {
-              padding: 10px 0px;
-        }
-        .selected-patch-for-customization {
-        width: 30px;
-        height: 30px;
-        }
-        .,,
-        .add-patches-info {
-          display: none;
-    }
-        .patches-toggle-buttons {
-          margin: 10px auto;
-        }
-        .patches-customization-header{
-          padding: 20px;
-        }
-        .add-item{
-        padding: 7px 36px !important;
-      }
-        .variants-continue-btn{
-            padding: 12px 25px !important;
-
-        }
-        .fotter-Summary-button{
-              padding: 12px 15px;
-        }
-    }
-       @media screen and (max-width: 375px){
-         .variant-selector-sidebar-btn-main-wrapper > h2{
-          margin-bottom: 5px;
-        }
-             .checkit {
-            width: 200px;
-            height: 156px;
-             }
-         .patches-customization-header {
-            padding: 10px;
-        }
-             .patches-toggle-buttons {
-            margin: 5px auto;
-        }
-         .main__patches__wrapp {
-            position: relative;
-            height: calc(87% - 49px);
-        }
-       }
-      @media screen and (max-width: 1024px){
-
-        .messagefield {
-              font-size: 16px;
-        }
-        .add-patches-info{
-        display:none;
-        }
-         .custom-patches-sort-btn{
-          font-size: 10px;
-        }
-       .add-item{
-        padding: 12px 25px !important;
-        }
-        .tidy-patches-wrraper{
-       padding: 7px 12px;
-        }
-        .select-patches{
-          padding: 5px 0px;
-        }
-        .tidy-patches-content {
-          padding: 5px 0px;
-        }
-        .patches-clear-btn{
-              font-size: 14px;
-        }
-        .variants-continue-btn {
-         padding: 12px 25px !important;
-        }
-          .fotter-Summary-button {
-            padding: 10px !important;
-        }
-        .patches-toggle-buttons{
-          margin: 20px auto;
-        }
-        .tidy-patches-content {
-         font-size: 12px;
-    }
-      }
-    @media screen and (min-width: 1500px) and (max-width: 9400px) {
-        .checkit {
-            width: 750px;
-            height: 704px;
-        }
-    }
-
-      @media screen and (max-width: 820px) and (min-width: 769px){
-
-
-        .patches-customization-form-buttons{
-              font-size: 10px;
-        }
-        .custom-patches-sort-btn{
-          font-size: 10px;
-        }
-        .patches-customization-header{
-          padding: 27px 7px;
-        }
-        .patches-back-button > h2{
-          font-size: 15px;
-        }
-        .tidy-patches-alignment-section{
-          gap: 10px;
-          padding: 25px 0;
-          justify-content: flex-start;
-        }
-        .alignment-title{
-          padding-left: 3px;
-    }
-        .alignment-actions{
-          width: 60%;
-    }
-        .clear-patches-alert-footer {
-              font-size: 10px;
-        }
-      }
-</style>
-<style>
-  .size_variants_section{
-    padding: 0 30px;
-    margin-top: 2rem;
+  .patch-customization-offcanvas-form{
+    position:relative;
   }
-  .size_variants_section_heading{
-    margin: 0;
-    font-size: 20px;
-    text-transform: capitalize;
-     font-weight: 600;
-  }
-  .hide_size_variants{
-    display:none !important;
-  }
-  .size_variants_swatches{
-    display: flex;
-    gap: 15px;
-    margin-top: 5px;
-  }
-  .size_variants_circle{
-    height: 40px;
-    width: fit-content;
-    padding: 17px;
-    display: flex;
-    justify-content: center;
-    border: 1px solid #d1d0d0;
-    align-items: center;
+  .patch-customizaton-foter{
+    bottom: 0;
+    padding: 20px 40px;
+    border-top: 1px solid #dddddd;
+    width: 100%;
+    position: absolute;
     background: #ffffff;
   }
-  .size_variants_active{
+  .patches-customization-form-buttons{
+    display: flex;
+    width: 100%;
+    position: relative;
+  }
+  .fotter-Summary-button{
+    display: flex;
+    align-items: center;
+    font-weight:600;
+    gap: 10px;
+    padding: 12px 36px;
+    background: #f8f8f8;
+    color: black;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    cursor:pointer;
+    width: 40%;
+  }
+  .add-item{
+    font-weight:600;
+    padding: 12px 71px;
+    display: flex;
+    align-items: center;
     background: #ffe2e8;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    width: 60%;
+    cursor: pointer;
   }
-   .size_variants{
-     cursor: pointer;
-    }
+  .total-price{
+    border-top: 1px solid #dddddd;
+    margin-top: 20px;
+    padding-top: 12px;
+    display:flex;
+    justify-content:space-between;
+  }
+  .customization-patch-product-information{
+    display:flex;
+    justify-content:space-between;
+  }
+  .loader-cart {
+            border: 2px solid #f3f3f3; /* Light grey */
+            border-top: 2px solid #ff5477; /* Blue */
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            animation: spin 2s linear infinite;
+            display:none;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
 </style>
-<style>
-    /* .patches-customization-tidy-delete-btn-active{
-          background-color: #ffe2e8 !important;
-    } */
-    .edit-tidy-btn-wrapp{
-      width: 100%;
-      display: flex;
-      justify-content: flex-end;
-      margin-right: 5rem;
-      padding-top: 2rem;
-      visibility: hidden;
-    }
-    .edit-delete-btn{
-      background: white;
-      box-shadow: 0px 2px 4px rgb(0 0 0 / 5%);
-      padding: 9px 30px;
-      font-size: 18px;
-      cursor: pointer;
-      border: 1px solid #9900ef00;
-    }
-    .edit-left-btn{
-             border-top-left-radius: 25px;
-      border-bottom-left-radius: 25px;
-    }
-    .tidy-right-btn{
-            border-top-right-radius: 25px;
-      border-bottom-right-radius: 25px;
-    }
-    .edit-tidy-btns-wrapper{
-          display: flex;
-    }
-  .tidy-right-btn:hover {
-      border: 1px solid #ffa8ba;
-  }
 
-  .edit-left-btn:hover {
-      border: 1px solid #ffa8ba;
-  }
-    .delete-patches-wrapper-sidebar{
-      height: 100%;
-      width: 100%;
-      position: absolute;
-      display: none;
+<div id="currency-format" data-money-format="{{ shop.money_format }}"></div>
 
-    }
-</style>
-<div class="patches-customization-wrapper">
-  <div class="patches-customization-container">
-    <div class="only-mobile">
-      <div class="variant-selector-sidebar-header">
-        <div class="patches-back-button patches-back-button-relaod" id="patches-back-button">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            width="30"
-            height="30"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-          </svg>
-          <h2>Back For More Styles</h2>
-        </div>
-        <div class="close-variant-selector-editor">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            width="30"
-            height="30"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </div>
-      </div>
+<input type="hidden" name="customized_image_url_front" value="">
+<input type="hidden" name="customized_image_url_back" value="">
+<input type="hidden" name="customized_price" value="">
+<input type="hidden" name="size_variants_data" id="size_variants_data" value="">
+<input type="hidden" name="selective_variant_ID" id="selective_variant_ID" value="">
+<div
+  class="overlapping-correction-error"
+  style=""
+>
+  Please correct overlapping error first
+</div>
+<div class="patch-customization-btn-wrap">
+  <div class="complete-overly-wrapper"></div>
+  <div id="variantsContainer" class="variants-container"></div>
+  <div class="patches-customization-form-buttons">
+    <div class="fotter-Summary-button">
+      <span>Summary</span>
+      <svg
+        width="8"
+        height="14"
+        viewBox="0 0 8 14"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="patches-arrow-top toggle-summary-svg toggle-summary-svg-active"
+      >
+        <path d="M7 13L1 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><path d="M1 7.00002L6.99994 1.00002" stroke="currentColor" stroke-width="2" stroke-linecap="round" ></path>
+      </svg>
+      <svg
+        width="8"
+        height="14"
+        viewBox="0 0 8 14"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="patches-arrow-left toggle-summary-svg"
+      >
+        <path d="M7 13L1 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><path d="M1 7.00002L6.99994 1.00002" stroke="currentColor" stroke-width="2" stroke-linecap="round" ></path>
+      </svg>
     </div>
-    <div class="only-mobile-colors-wrapper">
-      <div class="patches-customization-header">
-        <div class="patches-back-button">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            width="30"
-            height="30"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-          </svg>
-          <h2>Back For More Colors</h2>
-        </div>
-        <div class="patches-customization-remover">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            width="30"
-            height="30"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </div>
-      </div>
-    </div>
-    <div class="only-mobile-tdy-header">
-      <div class="tidy-patches-header ">
-        <h2 class="tidy-patches-title">Tidy Patches</h2>
-        <div class="close-patches-customization-editor">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            width="30"
-            height="30"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </div>
-      </div>
-    </div>
-
-    <div class="patches-customization-container-overly"></div>
-    <div class="edit-tidy-btn-wrapp">
-      <div class="edit-tidy-btns-wrapper">
-        <div class="edit-delete-btn edit-left-btn">Edit</div>
-        <div class="edit-delete-btn tidy-right-btn">Tidy</div>
-      </div>
-    </div>
-    <div class="images-patches-wrapper">
-      <div class="overlapping-error">Patches are overlapping or are too close for stitching</div>
-      <!-- <div class="overlapping-correction-error">Please correct overlapping error first</div> -->
-      <div class="dragpatchDiv"></div>
-      <div class="checkit">
-        <div id="Front-Area" class="image-hidden">
-          <div id="imageDiv" class="imageDiv">
-            <img
-              class="sourceImage"
-              id="Front-image"
-              src=""
-              alt=""
-              crossorigin="anonymous"
-            >
-            <div class="centerBox" id="centerBox">
-              <div class="patches-container"></div>
-              <!-- Patch container -->
-            </div>
-          </div>
-        </div>
-        <div id="Back-area" class="image-hidden">
-          <div id="BackimageDiv" class="imageDiv">
-            <img
-              class="sourceImage"
-              id="Back-image"
-              src=""
-              alt=""
-              crossorigin="anonymous"
-            >
-            <div class="BackcenterBox" id="BackcenterBox">
-              <div class="patches-containerr"></div>
-              <!-- Patch container -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="patches-clear-btn clear-btn-only-mobile" id="clear-shirt-Btnn">Clear</div>
-    <div class="patches-customization-btns-wrapper">
-      <div class="patches-customizations-btn-wrapper">
-        <div
-          class="patches-customizations-btn patches-customizations-front-btn patches-customization-btn-active"
-          id="showFrontBtn"
-        >
-          Front
-        </div>
-        <div class="patches-customizations-btn patches-customizations-back-btn" id="showBackBtnn">Back</div>
-      </div>
-
-      <div class="tidy-clear-btn-wrapp">
-        <div class="patches-tidy-editor-btn onlymobile-screen">Tidy</div>
-        <div class="patches-clear-btn clear-btn-only-desktop" id="clear-shirt-Btnn">Clear</div>
-        <div class="edit-delete-btn edit-left-btn only-mobile-eidt-btn">Edit</div>
-      </div>
-    </div>
-  </div>
-  <div id="patches-customization-offcanvas-menu" class="patches-offacnavs-customization">
-    <div class="all-sidebar-cross-alert">
-      <div class="all-sidebar-cross-alert-header">
-        <span>Are you sure want to exit?</span>
-        <div class="crosssvg-wrapper">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            width="30"
-            height="30"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </div>
-      </div>
-      <div class="all-sidebar-cross-content">
-        <span>If you exit now your design will not be saved. Are you sure you want to exit?</span>
-      </div>
-      <div class="all-sidebar-cross-button-wrapper">
-        <div class="all-sidebar-cross-exit-button">Exit</div>
-        <div class="all-sidebar-cross-neverMind-button">Never Mind</div>
-      </div>
-    </div>
-    <div class="variants-selected-sidebar">
-      <div class="variant-selector-sidebar-header only-desktop">
-        <div class="patches-back-button patches-back-button-relaod" id="patches-back-button">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            width="30"
-            height="30"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-          </svg>
-          <h2>Back For More Styles</h2>
-        </div>
-        <div class="close-variant-selector-editor">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            width="30"
-            height="30"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </div>
-      </div>
-      <div class="variant-selector-sidebar-btn-main-wrapper">
-        <h2 class="product-tile-for-selected">{{ product.title }} </h2>
-        <span class="size_variants_section_heading size_variants_section_color_heading">Select Color : <small class="color_selector_heading small_selected_heading"></small></span>
-        <div class="variant-selector-sidebar-btn"></div>
-      </div>
-      <div class="size_variants_section">
-        <span class="size_variants_section_heading">Select Size: <small class="size_selector_heading small_selected_heading"></small></span>
-        <!-- <span class="size_variants_section_heading">Select Size</span> -->
-        <!-- <div class="size_variants_swatches">
-          <div id="small_variant" class="size_variants_circle size_variants" vlaue="S">S</div>
-          <div id="medium_variant" class="size_variants size_variants_circle" vlaue="M">M</div>
-          <div id="large_variant" class="size_variants size_variants_circle" vlaue="L">L</div>
-          <div id="extra_large_variant" class="size_variants size_variants_circle" vlaue="XL">XL</div>
-        </div> -->
-        <div id="variants-containers" class="size_variants_swatches"></div>
-      </div>
-      
-      <div class="size_variants_errors"><span>Please select size first</span></div>
-      <div class="variant-selector-sidebar-foter">
-        <div class="patches-customization-form-buttons">
-          <div class="complete-overly-wrapper"></div>
-          <div id="variantsContainer" class="variants-container">
-            <!-- Data will be populated here dynamically -->
-          </div>
-          <div class="fotter-Summary-button">
-            <span class="summary-btn-content">Summary</span>
-            <svg
-              width="8"
-              height="14"
-              viewBox="0 0 8 14"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              class="patches-arrow-top toggle-summary-svg toggle-summary-svg-active"
-            >
-              <path d="M7 13L1 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><path d="M1 7.00002L6.99994 1.00002" stroke="currentColor" stroke-width="2" stroke-linecap="round" ></path>
-            </svg>
-            <svg
-              width="8"
-              height="14"
-              viewBox="0 0 8 14"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              class="patches-arrow-left toggle-summary-svg"
-            >
-              <path d="M7 13L1 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><path d="M1 7.00002L6.99994 1.00002" stroke="currentColor" stroke-width="2" stroke-linecap="round" ></path>
-            </svg>
-          </div>
-          <div class="variants-continue-btn">Continue</div>
-        </div>
-      </div>
-    </div>
-    <div class="patches-customization-editor">
-      <div class="tidy-patches-header only-desktop">
-        <h2 class="tidy-patches-title">Tidy Patches</h2>
-        <div class="close-patches-customization-editor">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            width="30"
-            height="30"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </div>
-      </div>
-      <div class="main__patches__wrapp">
-        <div class="main__patches__wrapper">
-          <div class="tidy-patches-wrraper">
-            <div class="tidy-patches-content ">
-              <span class="tidy-patches-heading">Select Patches To Tidy</span>
-              <div class="front-tdiy-patches-btn tdiy-patches-btn-active">
-                <div class="tidy-patches-action-btn">
-                  <div class="tidy-patches-btns front-selected-patches-unselect">Unselect</div>
-                  <div class="tidy-patches-btns front-selected-patches-select">Select All</div>
-                </div>
-              </div>
-              <div class="back-tdiy-patches-btn">
-                <div class="tidy-patches-action-btn">
-                  <div class="tidy-patches-btns back-selected-patches-unselect">Unselect</div>
-                  <div class="tidy-patches-btns back-selected-patches-select">Select All</div>
-                </div>
-              </div>
-            </div>
-            <div class="select-patches select-patches-for-front select-patches-active"></div>
-            <div class="select-patches select-patches-for-back"></div>
-          </div>
-          <div class="scrollbox">
-            <div class="scrollboxInner">
-              <div class="tidy-patches-adjustment-wrapper">
-                <div class="tidy-patches-delete-btn-wrraper">
-                  <div class="tidy-patches-delete-title alignment-title">Delete Patch</div>
-                  <div class="tidy-patches-delete-btn">Delete</div>
-                </div>
-                <div class="tidy-patches-alignment-section">
-                  <div class="alignment-title">
-                    <span>Align</span>
-                  </div>
-                  <div class="alignment-actions">
-                    <div id="align-horizontal" class="tidy-patches-adjustment-btns">
-                      <svg
-                        class="tidy-patches-svg"
-                        width="38"
-                        height="10"
-                        viewBox="0 0 38 10"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path class="custom_fill_path custom_fill"
-                            d="M6.76418 1.42856C6.07594 1.42901 5.45207 1.69637 4.99811 2.12805C4.54302 1.69788 3.91869 1.43204 3.22972 1.43284C1.83897 1.43427 0.71309 2.52076 0.714295 3.85855C0.718283 6.93254 5.00617 8.57141 5.00617 8.57141C5.00617 8.57141 9.29036 6.92264 9.28572 3.84784C9.28396 2.50996 8.1553 1.42704 6.76418 1.42856Z"
-                            fill="#ff6491"></path>
-                        <path class="custom_fill_path custom_fill"
-                            d="M20.7642 1.42856C20.0759 1.42901 19.4521 1.69637 18.9981 2.12805C18.543 1.69788 17.9187 1.43204 17.2297 1.43284C15.839 1.43427 14.7131 2.52076 14.7143 3.85855C14.7183 6.93254 19.0062 8.57141 19.0062 8.57141C19.0062 8.57141 23.2904 6.92264 23.2857 3.84784C23.284 2.50996 22.1553 1.42704 20.7642 1.42856Z"
-                            fill="#ff6491"></path>
-                        <path class="custom_fill_path custom_fill"
-                            d="M34.7642 1.42856C34.0759 1.42901 33.4521 1.69637 32.9981 2.12805C32.543 1.69788 31.9187 1.43204 31.2297 1.43284C29.839 1.43427 28.7131 2.52076 28.7143 3.85855C28.7183 6.93254 33.0062 8.57141 33.0062 8.57141C33.0062 8.57141 37.2904 6.92264 37.2857 3.84784C37.284 2.50996 36.1553 1.42704 34.7642 1.42856Z"
-                            fill="#ff6491"></path>
-                      </svg>
-                    </div>
-                    <div id="align-vertical" class="tidy-patches-adjustment-btns">
-                      <svg
-                        class="tidy-patches-svg"
-                        width="10"
-                        height="38"
-                        viewBox="0 0 10 38"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path class="custom_fill_path custom_fill"
-                            d="M6.76418 1.42856C6.07594 1.42901 5.45207 1.69637 4.99811 2.12805C4.54302 1.69788 3.91869 1.43204 3.22972 1.43284C1.83897 1.43427 0.71309 2.52076 0.714295 3.85855C0.718283 6.93254 5.00617 8.57141 5.00617 8.57141C5.00617 8.57141 9.29036 6.92264 9.28572 3.84784C9.28396 2.50996 8.1553 1.42704 6.76418 1.42856Z"
-                            fill="#ff6491"></path>
-                        <path class="custom_fill_path custom_fill"
-                            d="M6.76418 15.4286C6.07594 15.429 5.45207 15.6964 4.99811 16.1281C4.54302 15.6979 3.91869 15.432 3.22972 15.4328C1.83897 15.4343 0.71309 16.5208 0.714295 17.8585C0.718283 20.9325 5.00617 22.5714 5.00617 22.5714C5.00617 22.5714 9.29036 20.9226 9.28572 17.8478C9.28396 16.51 8.1553 15.427 6.76418 15.4286Z"
-                            fill="#ff6491"></path>
-                        <path class="custom_fill_path custom_fill"
-                            d="M6.76418 29.4286C6.07594 29.429 5.45207 29.6964 4.99811 30.1281C4.54302 29.6979 3.91869 29.432 3.22972 29.4328C1.83897 29.4343 0.71309 30.5208 0.714295 31.8585C0.718283 34.9325 5.00617 36.5714 5.00617 36.5714C5.00617 36.5714 9.29036 34.9226 9.28572 31.8478C9.28396 30.51 8.1553 29.427 6.76418 29.4286Z"
-                            fill="#ff6491"></path>
-                      </svg>
-                    </div>
-                    <div id="align-diagonal-right" class="tidy-patches-adjustment-btns">
-                      <svg
-                        class="tidy-patches-svg"
-                        width="38"
-                        height="38"
-                        viewBox="0 0 38 38"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path class="custom_fill_path custom_fill"
-                            d="M34.7642 1.42856C34.0759 1.42901 33.4521 1.69637 32.9981 2.12805C32.543 1.69788 31.9187 1.43204 31.2297 1.43284C29.839 1.43427 28.7131 2.52076 28.7143 3.85855C28.7183 6.93254 33.0062 8.57141 33.0062 8.57141C33.0062 8.57141 37.2904 6.92264 37.2857 3.84784C37.284 2.50996 36.1553 1.42704 34.7642 1.42856Z"
-                            fill="#ff6491"></path>
-                        <path class="custom_fill_path custom_fill"
-                            d="M20.7642 15.4286C20.0759 15.429 19.4521 15.6964 18.9981 16.1281C18.543 15.6979 17.9187 15.432 17.2297 15.4328C15.839 15.4343 14.7131 16.5208 14.7143 17.8585C14.7183 20.9325 19.0062 22.5714 19.0062 22.5714C19.0062 22.5714 23.2904 20.9226 23.2857 17.8478C23.284 16.51 22.1553 15.427 20.7642 15.4286Z"
-                            fill="#ff6491"></path>
-                        <path class="custom_fill_path custom_fill"
-                            d="M6.76418 29.4286C6.07594 29.429 5.45207 29.6964 4.99811 30.1281C4.54302 29.6979 3.91869 29.432 3.22972 29.4328C1.83897 29.4343 0.71309 30.5208 0.714295 31.8585C0.718283 34.9325 5.00617 36.5714 5.00617 36.5714C5.00617 36.5714 9.29036 34.9226 9.28572 31.8478C9.28396 30.51 8.1553 29.427 6.76418 29.4286Z"
-                            fill="#ff6491"></path>
-                      </svg>
-                    </div>
-                    <div id="align-diagonal-left" class="tidy-patches-adjustment-btns">
-                      <svg
-                        class="tidy-patches-svg"
-                        width="38"
-                        height="38"
-                        viewBox="0 0 38 38"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path class="custom_fill_path custom_fill"
-                            d="M3.23582 1.42856C3.92406 1.42901 4.54793 1.69637 5.00189 2.12805C5.45698 1.69788 6.08131 1.43204 6.77028 1.43284C8.16103 1.43427 9.28691 2.52076 9.2857 3.85855C9.28172 6.93254 4.99383 8.57141 4.99383 8.57141C4.99383 8.57141 0.709644 6.92264 0.714281 3.84784C0.716043 2.50996 1.8447 1.42704 3.23582 1.42856Z"
-                            fill="#ff6491"></path>
-                        <path class="custom_fill_path custom_fill"
-                            d="M17.2358 15.4286C17.9241 15.429 18.5479 15.6964 19.0019 16.1281C19.457 15.6979 20.0813 15.432 20.7703 15.4328C22.161 15.4343 23.2869 16.5208 23.2857 17.8585C23.2817 20.9325 18.9938 22.5714 18.9938 22.5714C18.9938 22.5714 14.7096 20.9226 14.7143 17.8478C14.716 16.51 15.8447 15.427 17.2358 15.4286Z"
-                            fill="#ff6491"></path>
-                        <path class="custom_fill_path custom_fill"
-                            d="M31.2358 29.4286C31.9241 29.429 32.5479 29.6964 33.0019 30.1281C33.457 29.6979 34.0813 29.432 34.7703 29.4328C36.161 29.4343 37.2869 30.5208 37.2857 31.8585C37.2817 34.9325 32.9938 36.5714 32.9938 36.5714C32.9938 36.5714 28.7096 34.9226 28.7143 31.8478C28.716 30.51 29.8447 29.427 31.2358 29.4286Z"
-                            fill="#ff6491"></path>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="tidy-patches-alignment-section">
-                  <div class="alignment-title">
-                    <span>Space</span>
-                  </div>
-                  <div class="alignment-actions">
-                    <div id="gap10" class="tidy-patches-adjustment-btns">
-                      <svg
-                        width="33"
-                        height="10"
-                        viewBox="0 0 33 10"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="disabled"
-                      >
-                        <path class="custom_fill_path custom_fill" d="M6.76375 1.42858C6.07552 1.42902 5.45165 1.69638 4.99768 2.12807C4.5426 1.6979 3.91826 1.43205 3.22929 1.43286C1.83854 1.43428 0.712663 2.52077 0.713868 3.85856C0.717856 6.93256 5.00575 8.57143 5.00575 8.57143C5.00575 8.57143 9.28993 6.92265 9.28529 3.84786C9.28353 2.50998 8.15487 1.42706 6.76375 1.42858Z" fill="#ff6491"></path><line x1="18.5" y1="4.97501" x2="14.5" y2="4.97501" stroke="#393939" stroke-linecap="round"></line><line x1="18.5" y1="5.625" x2="18.5" y2="4.375" stroke="#393939" stroke-linecap="round"></line><line x1="14.5" y1="5.625" x2="14.5" y2="4.375" stroke="#393939" stroke-linecap="round"></line><path class="custom_fill_path custom_fill" d="M29.7638 1.42858C29.0755 1.42902 28.4516 1.69638 27.9977 2.12807C27.5426 1.6979 26.9183 1.43205 26.2293 1.43286C24.8385 1.43428 23.7127 2.52077 23.7139 3.85856C23.7179 6.93256 28.0057 8.57143 28.0057 8.57143C28.0057 8.57143 32.2899 6.92265 32.2853 3.84786C32.2835 2.50998 31.1549 1.42706 29.7638 1.42858Z" fill="#ff6491"></path>
-                      </svg>
-                    </div>
-                    <div id="gap15" class="tidy-patches-adjustment-btns">
-                      <svg
-                        width="38"
-                        height="10"
-                        viewBox="0 0 38 10"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="disabled"
-                      >
-                        <path  class="custom_fill_path custom_fill" d="M6.76375 1.42858C6.07552 1.42902 5.45165 1.69638 4.99768 2.12807C4.5426 1.6979 3.91826 1.43205 3.22929 1.43286C1.83854 1.43428 0.712663 2.52077 0.713868 3.85856C0.717856 6.93256 5.00575 8.57143 5.00575 8.57143C5.00575 8.57143 9.28993 6.92265 9.28529 3.84786C9.28353 2.50998 8.15487 1.42706 6.76375 1.42858Z" fill="#ff6491"></path><line x1="23.5" y1="4.97498" x2="14.5" y2="4.97498" stroke="#393939" stroke-linecap="round"></line><line x1="23.5" y1="5.625" x2="23.5" y2="4.375" stroke="#393939" stroke-linecap="round"></line><line x1="14.5" y1="5.625" x2="14.5" y2="4.375" stroke="#393939" stroke-linecap="round"></line><path class="custom_fill_path custom_fill" d="M34.7638 1.42858C34.0755 1.42902 33.4516 1.69638 32.9977 2.12807C32.5426 1.6979 31.9183 1.43205 31.2293 1.43286C29.8385 1.43428 28.7127 2.52077 28.7139 3.85856C28.7179 6.93256 33.0057 8.57143 33.0057 8.57143C33.0057 8.57143 37.2899 6.92265 37.2853 3.84786C37.2835 2.50998 36.1549 1.42706 34.7638 1.42858Z" fill="#ff6491"></path>
-                      </svg>
-                    </div>
-                    <div id="gap20" class="tidy-patches-adjustment-btns">
-                      <svg
-                        width="43"
-                        height="10"
-                        viewBox="0 0 43 10"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="disabled"
-                      >
-                        <path class="custom_fill_path custom_fill" d="M6.76375 1.42858C6.07552 1.42902 5.45165 1.69638 4.99768 2.12807C4.5426 1.6979 3.91826 1.43205 3.22929 1.43286C1.83854 1.43428 0.712663 2.52077 0.713868 3.85856C0.717856 6.93256 5.00575 8.57143 5.00575 8.57143C5.00575 8.57143 9.28993 6.92265 9.28529 3.84786C9.28353 2.50998 8.15487 1.42706 6.76375 1.42858Z" fill="#ff6491"></path><line x1="28.5" y1="4.9751" x2="14.5" y2="4.9751" stroke="#393939" stroke-linecap="round"></line><line x1="28.5" y1="5.625" x2="28.5" y2="4.375" stroke="#393939" stroke-linecap="round"></line><line x1="14.25" y1="5.625" x2="14.25" y2="4.375" stroke="#393939" stroke-linecap="round"></line><path class="custom_fill_path custom_fill" d="M39.7638 1.42858C39.0755 1.42902 38.4516 1.69638 37.9977 2.12807C37.5426 1.6979 36.9183 1.43205 36.2293 1.43286C34.8385 1.43428 33.7127 2.52077 33.7139 3.85856C33.7179 6.93256 38.0057 8.57143 38.0057 8.57143C38.0057 8.57143 42.2899 6.92265 42.2853 3.84786C42.2835 2.50998 41.1549 1.42706 39.7638 1.42858Z" fill="#ff6491"></path>
-                      </svg>
-                    </div>
-                    <div id="gap25" class="tidy-patches-adjustment-btns">
-                      <svg
-                        width="48"
-                        height="10"
-                        viewBox="0 0 48 10"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="disabled"
-                      >
-                        <path  class="custom_fill_path custom_fill" d="M6.76375 1.42858C6.07552 1.42902 5.45165 1.69638 4.99768 2.12807C4.5426 1.6979 3.91826 1.43205 3.22929 1.43286C1.83854 1.43428 0.712663 2.52077 0.713868 3.85856C0.717856 6.93256 5.00575 8.57143 5.00575 8.57143C5.00575 8.57143 9.28993 6.92265 9.28529 3.84786C9.28353 2.50998 8.15487 1.42706 6.76375 1.42858Z" fill="#ff6491"></path><line x1="33.5" y1="4.9751" x2="14.5" y2="4.9751" stroke="#393939" stroke-linecap="round"></line><line x1="33.5" y1="5.625" x2="33.5" y2="4.375" stroke="#393939" stroke-linecap="round"></line><line x1="14.5" y1="5.625" x2="14.5" y2="4.375" stroke="#393939" stroke-linecap="round"></line><path class="custom_fill_path custom_fill" d="M44.7638 1.42858C44.0755 1.42902 43.4516 1.69638 42.9977 2.12807C42.5426 1.6979 41.9183 1.43205 41.2293 1.43286C39.8385 1.43428 38.7127 2.52077 38.7139 3.85856C38.7179 6.93256 43.0057 8.57143 43.0057 8.57143C43.0057 8.57143 47.2899 6.92265 47.2853 3.84786C47.2835 2.50998 46.1549 1.42706 44.7638 1.42858Z" fill="#ff6491"></path>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-                <div class="tidy-patches-alignment-section">
-                  <div class="alignment-title">
-                    <span>Position</span>
-                  </div>
-                  <div class="alignment-actions">
-                    <div onclick="movePatch('top')" class="tidy-patches-adjustment-btns" id="move-top">
-                      <svg
-                        width="8"
-                        height="14"
-                        viewBox="0 0 8 14"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="patches-arrow-top change_svg_color custom_svg_color"
-                      >
-                        <path d="M7 13L1 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><path d="M1 7.00002L6.99994 1.00002" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
-                      </svg>
-                    </div>
-                    <div onclick="movePatch('left')" class="tidy-patches-adjustment-btns" id="move-left">
-                      <svg
-                        width="8"
-                        height="14"
-                        viewBox="0 0 8 14"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="patches-arrow-bottom change_svg_color custom_svg_color"
-                      >
-                        <path d="M7 13L1 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><path d="M1 7.00002L6.99994 1.00002" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
-                      </svg>
-                    </div>
-                    <div onclick="centerPatches()" class="tidy-patches-adjustment-btns" id="move-center">
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 12 12"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="circle change_svg_color custom_svg_color"
-                      >
-                        <circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="2"></circle>
-                      </svg>
-                    </div>
-                    <div onclick="movePatch('right')" class="tidy-patches-adjustment-btns" id="move-right">
-                      <svg
-                        width="8"
-                        height="14"
-                        viewBox="0 0 8 14"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="patches-arrow-right change_svg_color custom_svg_color"
-                      >
-                        <path d="M7 13L1 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><path d="M1 7.00002L6.99994 1.00002" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
-                      </svg>
-                    </div>
-                    <div onclick="movePatch('bottom')" class="tidy-patches-adjustment-btns" id="move-bottom">
-                      <svg
-                        width="8"
-                        height="14"
-                        viewBox="0 0 8 14"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="patches-arrow-left change_svg_color custom_svg_color"
-                      >
-                        <path d="M7 13L1 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><path d="M1 7.00002L6.99994 1.00002" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-                <div class="tidy-patches-alignment-section">
-                  <div class="alignment-title">
-                    <span>Rotate</span>
-                  </div>
-                  <div class="alignment-actions slidecontainerrRange">
-                    <div class="slidecontainerr">
-                      <input type="range" min="-180" max="180" value="0" class="sliderr" id="myRange">
-                      <div class="degree-custom-wrapper">
-                        <div class="slider-value"><span id="demo">0</span><span>°</span></div>
-                        <div class="degree-button-container">
-                          <button class="custom-increment-button" id="decrementButton">-</button>
-                          <button class="custom-increment-button" id="incrementButton">+</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="tidy-patches-alignment-section">
-                  <div class="alignment-title">
-                    <span>Message</span>
-                  </div>
-                  <div class="alignment-actions message_box_div">
-                    <div class="slidecontainerr">
-                      <textarea
-                        class="messagefield"
-                        autofocus="false"
-                        maxlength="220"
-                        rows="10"
-                        cols="50"
-                        id="messagefield"
-                        name="messagefield"
-                        placeholder="Need to be more specific about your patch placement? Add a note for our customizers!"
-                      ></textarea>
-                    </div>
-                  </div>
-                </div>
-             </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="tidy-patches-changes-btn-wrraper">
-        <div class="tidy-patches-apply-changes-btn">Apply Changes</div>
-      </div>
-    </div>
-    <div class="patches-customization-clear-alert-pop-up">
-      <div class="clear-patches-alert-header">
-        <span class="clear-patches-alert-header-title">Clear All Patches</span>
-        <div class="close-customization-clear-alert">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            width="30"
-            height="30"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </div>
-      </div>
-      <div class="close-customization-clear-alert-content">
-        <span
-          >This will remove all patches you selected from the front and back of your item. This action can not be
-          undone. Are you sure you want to start from scratch?</span
-        >
-      </div>
-      <div class="clear-patches-alert-footer">
-        <div class="patches-customizations-clear-btn patches-customizations-clear-footer-btns" id="clear-shirt-Btnn">
-          Remove Patches
-        </div>
-        <div class="patches-customizations-nevr-btn patches-customizations-clear-footer-btns">Never Mind</div>
-      </div>
-    </div>
-
-    <div class="patches-editor-wrapper">
-      <div class="patches-customization-header only-desktop">
-        <div class="patches-back-button">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            width="30"
-            height="30"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-          </svg>
-          <h2>Back For More Colors</h2>
-        </div>
-        <div class="patches-customization-remover">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            width="30"
-            height="30"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </div>
-      </div>
-      <div class="main__patches__wrapp">
-        <div class="main__patches__wrapper">
-          <div class="add-patches-info">
-            <span class="add-patches-info-title">Add Patches</span>
-            <span class="add-patches-info-desc">Click or drag a patch to add it to your item</span>
-          </div>
-          <div class="patches-toggle-buttons">
-            <div class="patches-button patch-toggle-btn custom-patch-active" id="patches-button">Patches</div>
-            <div class="alphabets-button patch-toggle-btn" id="alphabets-button">Alphabets</div>
-          </div>
-          <div class="custom-patches-filter">
-            <input
-              type="text"
-              name="search-patches"
-              placeholder="Search patches"
-              class="customization-search-bar"
-            >
-
-            <div class="custom-patches-sort-btn">Filter & Sort</div>
-          </div>
-          <div class="scrollbox">
-            <div class="scrollboxInner">
-              <div class="patches"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="patch-customizaton-foter">
-        <div class="patch-customization-offcanvas-form">{% render 'customize-product-form' with 'product' %}</div>
-      </div>
-    </div>
-    <div class="delete-patches-wrapper-sidebar">
-      <div class="tidy-patches-header only-desktop">
-        <h2 class="tidy-patches-title">Edit Patches</h2>
-        <div class="close-patches-customization-editor">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            width="30"
-            height="30"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </div>
-      </div>
-      <div class="tidy-patches-wrraper">
-        <div class="tidy-patches-content ">
-          <span class="tidy-patches-heading">Select Patches To Edit</span>
-          <div class="front-tdiy-patches-btn tdiy-patches-btn-active"></div>
-          <div class="back-tdiy-patches-btn"></div>
-        </div>
-        <div class="select-patches select-patches-for-front select-patches-active"></div>
-        <div class="select-patches select-patches-for-back"></div>
-      </div>
-      <div class="tidy-patches-delete-btn-wrraper edit-delete-btn">
-        <div class="tidy-patches-delete-title alignment-title">Delete Patch</div>
-        <div class="tidy-patches-delete-btn">Delete</div>
-      </div>
-      <div class="tidy-patches-changes-btn-wrraper">
-        <div class="tidy-patches-apply-changes-btn">Apply Changes</div>
-      </div>
+    <div class="add-item">
+      <span class="span-content">Add item</span>
+      <div class="loader-cart"></div>
     </div>
   </div>
 </div>
-{% render 'custom-patch-js-code' %}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+<script>
+    const addCartButton = document.querySelector('.add-item');
+    document.addEventListener('DOMContentLoaded', function () {
+
+        // async function addToCart(variants, customizedImageUrl, customizedPrice,sizeVariants,messagaeData,customizedBackImageUrl) {
+        //     try {
+        //         // Prepare data for adding to cart
+        //         const items = variants.map(variant => {
+        //             const item = {
+        //                 id: variant.name,
+        //                 image: customizedImageUrl,
+        //                 quantity: 1
+        //             };
+
+        //             // Define properties based on variant ID
+        //             if (variant.name === '{{ variant.id }}') {
+        //                 item.properties = {
+        //                     "Product Name": '{{ product.title }}',
+        //                     _customized_image_url_front: customizedImageUrl,
+        //                     _customized_image_url_back:customizedBackImageUrl,
+        //                     _size:sizeVariants,
+        //                     _info:messagaeData,
+        //                     _patches_price: customizedPrice,
+        //                    _Timestamp: Date.now().toString()
+        //                 };
+        //             } else {
+        //                 item.properties = {
+        //                     name: 'Custom Product',
+        //                     _parent_variant: '{{ variant.id }}',
+        //                     _Timestamp: Date.now().toString(),
+        //                     _Unique: `${variant.id}_${Date.now()}`
+        //                 };
+        //             }
+        //             return item;
+        //         });
+
+        //         const formData = { items };
+
+        //         const response = await fetch(window.Shopify.routes.root + 'cart/add.js', {
+        //             method: 'POST',
+        //             headers: {
+        //                 'Content-Type': 'application/json'
+        //             },
+        //             body: JSON.stringify(formData)
+        //         });
+
+        //         return await response.json();
+        //     } catch (error) {
+        //         console.error('Error adding items to cart:', error);
+        //         throw error; // Re-throw the error for further handling
+        //     }
+        // }
+
+        let Patchesdata; // Define Patchesdata outside the function
+
+        // Fetch Patchesdata from the API endpoint
+        fetch(`https://lolaandtheboys.com/apps/data-pickup`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Assign the fetched data to Patchesdata
+                Patchesdata = data;
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+
+  $('.fotter-Summary-button').click(function () {
+   
+      $('.toggle-summary-svg').toggleClass('toggle-summary-svg-active');
+const container = $('.complete-overly-wrapper');
+    if (container.css('display') === 'none') {
+        container.css('display', 'block');
+    } else {
+        container.css('display', 'none');
+    }
+        const variants = [];
+        // let totalPrice = 0; // Initialize total price
+        let productactualPrice = '{{ product.price }}';
+        let productPrice = parseFloat(productactualPrice.slice(0, -2));
+        // Get all div elements with the class "patch-"
+        const patchDivs = document.querySelectorAll('.patch-');
+        var currencyFormat = document.getElementById('currency-format').dataset.moneyFormat;
+        var amountPlaceholder = currencyFormat.match(/\{\{amount\}\}/)[0];
+        var currencySymbol = currencyFormat.replace(amountPlaceholder, '');
+    
+        const variantPrice = currencySymbol.trim() + productPrice;
+            // If a variant with the corresponding v-id is found, push its ID and name to the variants array
+             variants.unshift({ id: '1', name: '{{ product.title }}', price: variantPrice });
+    
+        // Loop through each patch div
+        patchDivs.forEach(patch => {
+            // Get the variant ID from the v-id attribute
+            const vId = patch.getAttribute('v-id');
+            const Id = patch.getAttribute('id');
+
+            const alphabets = Patchesdata.alphabets;
+            const patches = Patchesdata.patches;
+            // Find the corresponding variant object in Patchesdata
+            const alphabetVariant = alphabets.find(item => item.id.toString() === vId);
+            const patchVariant = patches.find(item => item.id.toString() === vId);
+
+            // Merge the properties of both variant objects into a single object
+            const variant = { ...alphabetVariant, ...patchVariant };
+
+             
+
+            
+
+            if (variant) {
+                const price = parseFloat(variant.price);
+                const formattedPrice = currencySymbol.trim() + price.toFixed(0);
+                variants.push({
+                    id: Id,
+                    name: variant.alphabetname || variant.patchname,
+                    price: formattedPrice
+                });
+                
+                // Add the formatted price to the total price
+                productPrice +=  price;
+            }
+
+        });
+
+        let variantsHTML = "";
+        variants.forEach(variant => {
+            variantsHTML += `<div class="customization-patch-product-information">
+                <div class="customization-patch-product-name">${variant.name}</div> <div class="customization-patch-product-name">${variant.price}</div></div>`;
+        });
+
+        variantsHTML += `<div class="total-price"><span>Total</span> <span>${currencySymbol.trim()}${productPrice}</span></div>`;
+
+        // Update the content of the variants container
+        $('.variants-container').html(variantsHTML);
+
+        // Toggle visibility of the variants container with animation
+        $('.variants-container').slideToggle();
+    });
+
+// function convertBothToPng() {
+//   console.log('convertBothToPng')
+//     let blobCounter = 0; // Counter to track the number of completed canvas.toBlob calls
+
+//     // Function to handle conversion for either front or back image
+//     function convertSingleToPng(isBack) {
+//         var imageDiv = document.getElementById(isBack ? 'BackimageDiv' : 'imageDiv');
+//         var patches = imageDiv.querySelectorAll('.patch- img');
+//         var canvas = document.createElement('canvas');
+//         var ctx = canvas.getContext('2d');
+
+//         // Set canvas size to match the containing div's size
+//         var imageDivRect = imageDiv.getBoundingClientRect();
+//         canvas.width = imageDivRect.width;
+//         canvas.height = imageDivRect.height;
+
+//         // Draw the main image on the canvas with object-fit: contain
+//         var sourceImage = document.getElementById(isBack ? 'Back-image' : 'Front-image');
+//         if (!sourceImage) {
+//             console.error('Source image not found');
+//             return;
+//         }
+
+//         // Calculate dimensions and position based on object-fit: contain
+//         var containerAspectRatio = canvas.width / canvas.height;
+//         var imageAspectRatio = sourceImage.naturalWidth / sourceImage.naturalHeight;
+
+//         var sourceWidth, sourceHeight, sourcePosX, sourcePosY;
+
+//         if (containerAspectRatio > imageAspectRatio) {
+//             // Container is wider than image
+//             sourceWidth = canvas.height * imageAspectRatio;
+//             sourceHeight = canvas.height;
+//             sourcePosX = (canvas.width - sourceWidth) / 2;
+//             sourcePosY = 0;
+//         } else {
+//             // Container is taller than image
+//             sourceWidth = canvas.width;
+//             sourceHeight = canvas.width / imageAspectRatio;
+//             sourcePosX = 0;
+//             sourcePosY = (canvas.height - sourceHeight) / 2;
+//         }
+
+//         ctx.drawImage(sourceImage, sourcePosX, sourcePosY, sourceWidth, sourceHeight);
+
+//         // Draw patches on the canvas
+//         patches.forEach(function (patch) {
+//             var patchRect = patch.getBoundingClientRect();
+//             var patchDivRect = patch.parentElement.getBoundingClientRect();
+//             var patchPosX = patchDivRect.left - imageDivRect.left;
+//             var patchPosY = patchDivRect.top - imageDivRect.top;
+
+//             var patchWidth = patch.getAttribute('height');
+//             var patchHeight = patch.getAttribute('width');
+//             if (window.innerWidth <= 768) {
+//                 var patcnaturalwidth = patch.getAttribute('height');
+//                 var patchnaturalHeight = patch.getAttribute('width');
+//                 patchWidth = patcnaturalwidth / 2 + 15;
+//                 patchHeight = patchnaturalHeight / 2 + 15;
+//             }
+
+//             // Calculate dimensions and position based on object-fit: contain
+//             var patchAspectRatio = patch.naturalWidth / patch.naturalHeight;
+
+//             var drawWidth, drawHeight, drawPosX, drawPosY;
+
+//             if (patchWidth / patchHeight > patchAspectRatio) {
+//                 // Container is wider than patch
+//                 drawWidth = patchHeight * patchAspectRatio;
+//                 drawHeight = patchHeight;
+//                 drawPosX = patchPosX + (patchWidth - drawWidth) / 2;
+//                 drawPosY = patchPosY;
+//             } else {
+//                 // Container is taller than patch
+//                 drawWidth = patchWidth;
+//                 drawHeight = patchWidth / patchAspectRatio;
+//                 drawPosX = patchPosX;
+//                 drawPosY = patchPosY + (patchHeight - drawHeight) / 2;
+//             }
+
+//             // Get the rotation angle from the patch element's style
+//             var rotation = 0;
+//             var transform = patch.parentElement.style.transform;
+//             if (transform) {
+//                 var match = transform.match(/rotate\(([-\d.]+)deg\)/);
+//                 if (match) {
+//                     rotation = parseFloat(match[1]) * (Math.PI / 180); // Convert degrees to radians
+//                 }
+//             }
+
+//             // Apply rotation and draw the patch
+//             ctx.save();
+//             ctx.translate(patchPosX + patchWidth / 2, patchPosY + patchHeight / 2); // Move to the center of the patch
+//             ctx.rotate(rotation); // Rotate the canvas
+//             ctx.drawImage(patch, -drawWidth / 2, -drawHeight / 2, drawWidth, drawHeight); // Draw the patch
+//             ctx.restore();
+//         });
+
+//         // Convert canvas to Blob
+//         canvas.toBlob(function (blob) {
+         
+                 
+//             // Here, you have the image as a blob
+//             // For example, to display the new blob image, convert blob to ObjectURL
+//             var pngImageURL = URL.createObjectURL(blob);
+
+//             // uploadBlob(pngImageURL, isBack ? 'input[name="customized_image_url_back"]' : 'input[name="customized_image_url_front"]');
+      
+            
+//         }, 'image/png');
+//     }
+
+//     // Convert both front and back images
+//     convertSingleToPng(true);  // Convert back image
+//     convertSingleToPng(false); // Convert front image
+// }
+
+
+
+
+
+
+
+// // Call the function to convert both images
+// // convertBothToPng();
+// function  convertBothToPng() {
+//   BackconvertToPng();
+//   FrontconvertToPng();
+// }
+// function BackconvertToPng() {
+//     var imageDiv = document.getElementById('BackimageDiv');
+//     var patches = imageDiv.querySelectorAll('.patch- img');
+//     var canvas = document.createElement('canvas');
+//     var ctx = canvas.getContext('2d');
+
+//     // Set canvas size to match the containing div's size
+//     var imageDivRect = imageDiv.getBoundingClientRect();
+//     canvas.width = imageDivRect.width;
+//     canvas.height = imageDivRect.height;
+
+//     // Draw the main image on the canvas with object-fit: contain
+//     var sourceImage = document.getElementById('Back-image');
+//     if (!sourceImage) {
+//         console.error('Source image not found');
+//         return;
+//     }
+
+//     // Calculate dimensions and position based on object-fit: contain
+//     var containerAspectRatio = canvas.width / canvas.height;
+//     var imageAspectRatio = sourceImage.naturalWidth / sourceImage.naturalHeight;
+
+//     var sourceWidth, sourceHeight, sourcePosX, sourcePosY;
+
+//     if (containerAspectRatio > imageAspectRatio) {
+//         // Container is wider than image
+//         sourceWidth = canvas.height * imageAspectRatio;
+//         sourceHeight = canvas.height;
+//         sourcePosX = (canvas.width - sourceWidth) / 2;
+//         sourcePosY = 0;
+//     } else {
+//         // Container is taller than image
+//         sourceWidth = canvas.width;
+//         sourceHeight = canvas.width / imageAspectRatio;
+//         sourcePosX = 0;
+//         sourcePosY = (canvas.height - sourceHeight) / 2;
+//     }
+
+//     ctx.drawImage(sourceImage, sourcePosX, sourcePosY, sourceWidth, sourceHeight);
+
+//     // Draw patches on the canvas
+//     patches.forEach(function (patch) {
+//         var patchRect = patch.getBoundingClientRect();
+//         var patchDivRect = patch.parentElement.getBoundingClientRect();
+//         var patchPosX = patchDivRect.left - imageDivRect.left;
+//         var patchPosY = patchDivRect.top - imageDivRect.top;
+//         var isMobile = window.innerWidth <= 768;
+//         var isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
+
+//        if (isMobile) {
+//        var patcnaturalwidth = patch.getAttribute('height');
+//        var patchnaturalHeight = patch.getAttribute('width');
+//        var patchWidth = patcnaturalwidth / 2 - 3 ;
+//        var patchHeight = patchnaturalHeight / 2 - 3;
+//          console.log(patchWidth)
+//        } 
+//        else if (isTablet){
+//        var patcnaturalwidth = patch.getAttribute('height');
+//         var patchnaturalHeight = patch.getAttribute('width');
+//        var patchWidth = patcnaturalwidth / 2 + 10 ;
+//         var patchHeight = patchnaturalHeight / 2 + 10;
+//          console.log(patchWidth)
+//        }else{
+//          var patchWidth = patch.getAttribute('height');
+//         var patchHeight = patch.getAttribute('width');
+//          console.log(patchWidth)
+//        }
+  
+        
+//         // Calculate dimensions and position based on object-fit: contain
+//         var patchAspectRatio = patch.naturalWidth / patch.naturalHeight;
+
+//         var drawWidth, drawHeight, drawPosX, drawPosY;
+
+//         if (patchWidth / patchHeight > patchAspectRatio) {
+//             // Container is wider than patch
+//             drawWidth = patchHeight * patchAspectRatio;
+//             drawHeight = patchHeight;
+//             drawPosX = patchPosX + (patchWidth - drawWidth) / 2;
+//             drawPosY = patchPosY;
+//         } else {
+//             // Container is taller than patch
+//             drawWidth = patchWidth;
+//             drawHeight = patchWidth / patchAspectRatio;
+//             drawPosX = patchPosX;
+//             drawPosY = patchPosY + (patchHeight - drawHeight) / 2;
+//         }
+
+//         // Get the rotation angle from the patch element's style
+//         var rotation = 0;
+//         var transform = patch.parentElement.style.transform;
+//         if (transform) {
+//             var match = transform.match(/rotate\(([-\d.]+)deg\)/);
+//             if (match) {
+//                 rotation = parseFloat(match[1]) * (Math.PI / 180); // Convert degrees to radians
+//             }
+//         }
+
+//         // Apply rotation and draw the patch
+//         ctx.save();
+//         ctx.translate(patchPosX + patchWidth / 2, patchPosY + patchHeight / 2); // Move to the center of the patch
+//         ctx.rotate(rotation); // Rotate the canvas
+//         ctx.drawImage(patch, -drawWidth / 2, -drawHeight / 2, drawWidth, drawHeight); // Draw the patch
+//         ctx.restore();
+//     });
+
+//     // Convert canvas to Blob
+//     canvas.toBlob(function (blob) {
+//         // Here, you have the image as a blob
+//         // For example, to display the new blob image, convert blob to ObjectURL
+//         var pngImageURL = URL.createObjectURL(blob);
+//         var counter = 1;
+//         uploadBlob(pngImageURL, 'input[name="customized_image_url_back"]', counter);
+
+//         // Display the new image
+//         var outputDiv = document.getElementById('BackoutputDiv');
+//         var newImg = document.createElement('img');
+//         newImg.src = pngImageURL;
+
+//         outputDiv.innerHTML = ''; // Clear the output div before appending new image
+//         outputDiv.appendChild(newImg);
+//     }, 'image/png');
+// }
+
+// function FrontconvertToPng() {
+//     var imageDiv = document.getElementById('imageDiv');
+//     var patches = imageDiv.querySelectorAll('.patch- img');
+//     var canvas = document.createElement('canvas');
+//     var ctx = canvas.getContext('2d');
+
+//     // Set canvas size to match the containing div's size
+//     var imageDivRect = imageDiv.getBoundingClientRect();
+//     canvas.width = imageDivRect.width;
+//     canvas.height = imageDivRect.height;
+
+//     // Draw the main image on the canvas with object-fit: contain
+//     var sourceImage = document.getElementById('Front-image');
+//     if (!sourceImage) {
+//         console.error('Source image not found');
+//         return;
+//     }
+
+//     // Calculate dimensions and position based on object-fit: contain
+//     var containerAspectRatio = canvas.width / canvas.height;
+//     var imageAspectRatio = sourceImage.naturalWidth / sourceImage.naturalHeight;
+
+//     var sourceWidth, sourceHeight, sourcePosX, sourcePosY;
+
+//     if (containerAspectRatio > imageAspectRatio) {
+//         // Container is wider than image
+//         sourceWidth = canvas.height * imageAspectRatio;
+//         sourceHeight = canvas.height;
+//         sourcePosX = (canvas.width - sourceWidth) / 2;
+//         sourcePosY = 0;
+//     } else {
+//         // Container is taller than image
+//         sourceWidth = canvas.width;
+//         sourceHeight = canvas.width / imageAspectRatio;
+//         sourcePosX = 0;
+//         sourcePosY = (canvas.height - sourceHeight) / 2;
+//     }
+
+//     ctx.drawImage(sourceImage, sourcePosX, sourcePosY, sourceWidth, sourceHeight);
+
+//     // Draw patches on the canvas
+//     patches.forEach(function (patch) {
+//         var patchRect = patch.getBoundingClientRect();
+//         var patchDivRect = patch.parentElement.getBoundingClientRect();
+//         var patchPosX = patchDivRect.left - imageDivRect.left;
+//         var patchPosY = patchDivRect.top - imageDivRect.top;
+//         var isMobile = window.innerWidth <= 768;
+//         var isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
+
+//        if (isMobile) {
+//        var patcnaturalwidth = patch.getAttribute('height');
+//        var patchnaturalHeight = patch.getAttribute('width');
+//        var patchWidth = patcnaturalwidth / 2 - 3 ;
+//        var patchHeight = patchnaturalHeight / 2 - 3;
+//          console.log(patchWidth)
+//        } 
+//        else if (isTablet){
+//        var patcnaturalwidth = patch.getAttribute('height');
+//         var patchnaturalHeight = patch.getAttribute('width');
+//        var patchWidth = patcnaturalwidth / 2 + 10 ;
+//         var patchHeight = patchnaturalHeight / 2 + 10;
+//          console.log(patchWidth)
+//        }else{
+//          var patchWidth = patch.getAttribute('height');
+//         var patchHeight = patch.getAttribute('width');
+//          console.log(patchWidth)
+//        }
+  
+
+//         // Calculate dimensions and position based on object-fit: contain
+//         var patchAspectRatio = patch.naturalWidth / patch.naturalHeight;
+
+//         var drawWidth, drawHeight, drawPosX, drawPosY;
+
+//         if (patchWidth / patchHeight > patchAspectRatio) {
+//             // Container is wider than patch
+//             drawWidth = patchHeight * patchAspectRatio;
+//             drawHeight = patchHeight;
+//             drawPosX = patchPosX + (patchWidth - drawWidth) / 2;
+//             drawPosY = patchPosY;
+//         } else {
+//             // Container is taller than patch
+//             drawWidth = patchWidth;
+//             drawHeight = patchWidth / patchAspectRatio;
+//             drawPosX = patchPosX;
+//             drawPosY = patchPosY + (patchHeight - drawHeight) / 2;
+//         }
+
+//         // Get the rotation angle from the patch element's style
+//         var rotation = 0;
+//         var transform = patch.parentElement.style.transform;
+//         console.log('transform',transform)
+//         if (transform) {
+//             var match = transform.match(/rotate\(([-\d.]+)deg\)/);
+//            console.log('match',match)
+//             if (match) {
+//               console.log('matched')
+//                 rotation = parseFloat(match[1]) * (Math.PI / 180); // Convert degrees to radians
+//             }
+//         }
+
+//         // Apply rotation and draw the patch
+//         ctx.save();
+//         ctx.translate(patchPosX + patchWidth / 2, patchPosY + patchHeight / 2); // Move to the center of the patch
+//         ctx.rotate(rotation); // Rotate the canvas
+//         ctx.drawImage(patch, -drawWidth / 2, -drawHeight / 2, drawWidth, drawHeight); // Draw the patch
+//         ctx.restore();
+//     });
+
+//     // Convert canvas to Blob
+//     canvas.toBlob(function (blob) {
+//         // Here, you have the image as a blob
+//         // For example, to display the new blob image, convert blob to ObjectURL
+//         var pngImageURL = URL.createObjectURL(blob);
+//         var counter = 2;
+//          uploadBlob(pngImageURL, 'input[name="customized_image_url_front"]',counter);
+
+//         // Display the new image
+//         var outputDiv = document.getElementById('outputDiv');
+//         var newImg = document.createElement('img');
+//         newImg.src = pngImageURL;
+
+//         outputDiv.innerHTML = ''; // Clear the output div before appending new image
+//         outputDiv.appendChild(newImg);
+//     }, 'image/png');
+// }
+
+
+ const addCartItemButton = document.querySelector('.add-item');
+ const loader = document.querySelector('.loader-cart');
+ const spanDiv = document.querySelector('.span-content');
+addCartItemButton.addEventListener('click', async function (event) {
+  if ($('.overlapping-error').css('visibility') === 'visible') {
+    $('.overlapping-correction-error').css('display', 'block');
+  }else{
+    
+ 
+console.log('added');
+loader.style.display = 'block';
+spanDiv.style.display = 'none';
+addCartItemButton.style.pointerEvents = 'none';
+addCartItemButton.style.opacity = '0.5';
+addCartItemButton.style.backgroundColor = '#dfdfdf';
+
+// Perform the necessary actions before calling the function
+$('.overlapping-correction-error').css('visibility', 'hidden');
+
+// Use a small timeout to ensure styles are applied
+setTimeout(() => {
+    captureAndCombineScreenshots();
+}, 1);
+    }
+});
+
+//  function loadCartSection(response) {
+  
+//             // Fetch the entire HTML page
+//             $.get(window.location.href, function (data) {
+
+//                 // Extract the content inside the #offcanvas-right element
+//                 var offcanvasContent = $(data).find('#offcanvas-right').html();
+//                 // Load the extracted content into the #offcanvas-right element
+//                 $('#offcanvas-right').html(offcanvasContent);
+
+//                 // Add class to .c-offcanvas--right if the cart is not empty
+//                 const cartNotEmpty = response.items.length > 0;
+//                 const offcanvasRight = document.querySelector('.c-offcanvas--right');
+//                 if (cartNotEmpty) {
+//                     offcanvasRight.classList.add('cart-drawer-open');
+//                 } else {
+//                     offcanvasRight.classList.remove('cart-drawer-open');
+//                 }
+
+//                 // Add class to .cart-drawer-overlay if the cart is not empty
+//                 const cartDrawerOverlay = document.querySelector('.js-ajax-cart-set');
+//                 if (cartNotEmpty) {
+//                     cartDrawerOverlay.classList.add('cart-drawer-overlay');
+//                 } else {
+//                     cartDrawerOverlay.classList.remove('cart-drawer-overlay');
+//                 }
+//             });
+    
+// setTimeout(function() {
+//     var addCartItemButton = document.querySelector('.add-item');
+//    loader.style.display='none';
+//     spanDiv.style.display='block';
+//     addCartItemButton.style.pointerEvents = 'auto'; // Revert pointer-events to its default value
+//     addCartItemButton.style.opacity = '1'; // Set opacity back to normal
+//     addCartItemButton.style.backgroundColor = '#ffe2e8'; // Change background color
+// }, 3000);
+ 
+//     };
+      
+    });
+</script>
+<script>
+  var allpathesDev = document.querySelectorAll('.patch-')
+  console.log(allpathesDev)
+</script>
+<script>
+ async function uploadBlob(pngImageURL, inputSelector,counter) {
+  try {
+
+    // Fetch the image URL
+    const response = await fetch(pngImageURL);
+
+    // Convert the fetched response to a blob
+    const blob = await response.blob();
+
+    // Use FormData to prepare the data for sending
+    const formData = new FormData();
+    formData.append('image', blob, 'upload.png');
+
+    // Send the FormData to the server
+    const result = await fetch('https://heroic-frangipane-c8c826.netlify.app/.netlify/functions/getdata/check', {
+      method: 'POST',
+      body: formData
+    });
+
+    // Assuming the server responds with JSON
+    const jsonResponse = await result.json();
+    console.log(jsonResponse);
+
+    // Update the value of the input field with the file URL
+    if (jsonResponse && jsonResponse.fileUrl) {
+      document.querySelector(inputSelector).value = jsonResponse.fileUrl;
+    } else {
+      console.error('File URL not found in the response');
+    }
+
+    // Increment the counter and check condition
+  addcartfiles();
+
+  } catch (error) {
+    console.error('Error uploading blob:', error);
+  }
+}
+
+
+async function addcartfiles() {
+    let Patchesdata; // Define Patchesdata outside the function
+
+    // Fetch Patchesdata from the API endpoint
+    try {
+        const response = await fetch(`https://lolaandtheboys.com/apps/data-pickup`);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        console.log(data);
+        // Assign the fetched data to Patchesdata
+        Patchesdata = data;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return; // Exit the function if fetching fails
+    }
+
+    // Patchesdata is now available
+    console.log('Patchesdata', Patchesdata);
+
+    console.log('addcartfiles');
+    const variantPrice = [];
+    let productPrice = '{{ variant.price }}';
+    console.log('this is product price', productPrice);
+    let totalPrice = parseFloat(productPrice.slice(0, -2));
+
+    const patchDivsPrice = document.querySelectorAll('.patch-');
+    patchDivsPrice.forEach(patch => {
+      const vId = patch.getAttribute('v-id');
+      const Id = patch.getAttribute('id');
+      const alphabets = Patchesdata.alphabets;
+      const patches = Patchesdata.patches;
+
+      const alphabetVariant = alphabets.find(item => item.id.toString() === vId);
+      const patchVariant = patches.find(item => item.id.toString() === vId);
+
+      const variant = { ...alphabetVariant, ...patchVariant };
+
+      if (variant) {
+        const price = parseFloat(variant.price);
+        if (!isNaN(price)) { // Check if price is a valid number
+          totalPrice += price;
+        } else {
+          console.error(`Invalid price for variant with v-id ${vId}`);
+        }
+      } else {
+        console.error(`Variant not found for v-id ${vId}`);
+      }
+    });
+
+    var currencyFormat = document.getElementById('currency-format').dataset.moneyFormat;
+    var amountPlaceholder = currencyFormat.match(/\{\{amount\}\}/)[0];
+    var currencySymbol = currencyFormat.replace(amountPlaceholder, '');
+    var pricewithSymbol = currencySymbol.trim() + totalPrice;
+    $('input[name="customized_price"]').val(pricewithSymbol);
+
+    // event.preventDefault(); // Prevent the default button click behavior
+
+    // Get the custom data from the hidden input fields
+    const customizedImageUrl = document.querySelector('input[name="customized_image_url_front"]').value;
+    const customizedBackImageUrl = document.querySelector('input[name="customized_image_url_back"]').value;
+    const customizedPrice = document.querySelector('input[name="customized_price"]').value;
+    const sizeVariants = document.querySelector('input[name="size_variants_data"]').value;
+    const messagaeData = document.querySelector('textarea[name="messagefield"]').value;
+    const variantID = document.querySelector('input[name="selective_variant_ID"]').value;
+
+    // Initialize an empty array to store variant IDs and names
+    const variants = [];
+
+    // Get all div elements with the class "patch-"
+    const patchDivs = document.querySelectorAll('.patch-');
+
+    // Loop through each patch div
+    patchDivs.forEach(patch => {
+      // Get the variant ID from the v-id attribute
+      const vId = patch.getAttribute('v-id');
+      const Id = patch.getAttribute('id');
+      
+      const alphabets = Patchesdata.alphabets;
+      const patches = Patchesdata.patches;
+
+      // Find the corresponding variant object in Patchesdata
+      const alphabetVariant = alphabets.find(item => item.id.toString() === vId);
+      const patchVariant = patches.find(item => item.id.toString() === vId);
+
+      // Merge the properties of both variant objects into a single object
+      const variant = { ...alphabetVariant, ...patchVariant };
+      
+      // If a variant with the corresponding v-id is found, push its ID and name to the variants array
+      if (variant) {
+        variants.push({
+          id: Id,
+          name: variant.name || variant.variant_id
+        });
+      }
+    });
+
+    // Add {{ variant.id }} as the first item in the array
+    variants.unshift({ id: '1', name:  variantID });
+    console.log('these are variants array', variants);
+
+    try {
+      const response = await addToCart(variants, customizedImageUrl, customizedPrice, sizeVariants, messagaeData, customizedBackImageUrl);
+      console.log('Cart Response:', response);
+      // loadCartSection(response);
+      window.location.href = '/cart';
+    } catch (error) {
+      console.error('Error adding items to cart:', error);
+      // Handle error
+    }
+    async function addToCart(variants, customizedImageUrl, customizedPrice,sizeVariants,messagaeData,customizedBackImageUrl) {
+            try {
+                // Prepare data for adding to cart
+                const items = variants.map(variant => {
+                    const item = {
+                        id: variant.name,
+                        image: customizedImageUrl,
+                        quantity: 1
+                    };
+
+                    // Define properties based on variant ID
+                    if (variant.name ===  variantID) {
+                        item.properties = {
+                            "Product Name": '{{ product.title }}',
+                            _customized_image_url_front: customizedImageUrl,
+                            _customized_image_url_back:customizedBackImageUrl,
+                            _size:sizeVariants,
+                            _info:messagaeData,
+                            _patches_price: customizedPrice,
+                           _Timestamp: Date.now().toString()
+                        };
+                    } else {
+                        item.properties = {
+                            name: 'Custom Product',
+                            _parent_variant:  variantID,
+                            _Timestamp: Date.now().toString(),
+                            _Unique: `${variant.id}_${Date.now()}`
+                        };
+                    }
+                    return item;
+                });
+
+                const formData = { items };
+
+                const response = await fetch(window.Shopify.routes.root + 'cart/add.js', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                return await response.json();
+            } catch (error) {
+                console.error('Error adding items to cart:', error);
+                throw error; // Re-throw the error for further handling
+            }
+        }
+}
+</script>
+<script>
+  function captureAndCombineScreenshots() {
+
+
+
+
+      function captureDiv(id) {
+          return html2canvas(document.getElementById(id), {
+              allowTaint: true,
+              useCORS: true
+          });
+      }
+
+      if (document.getElementById('Front-Area').style.visibility === 'visible') {
+          var backArea = document.getElementById('Back-area');
+          backArea.style.visibility = 'visible';
+          backArea.style.zIndex = 0;
+           backArea.style.top = '-9999px';
+      } else {
+          document.getElementById('Front-Area').style.visibility = 'visible';
+          document.getElementById('Back-area').style.visibility = 'visible';
+
+      }
+
+      Promise.all([
+          captureDiv('Front-Area'),
+          captureDiv('Back-area')
+      ]).then(function(canvases) {
+          var canvas1 = canvases[0];
+          var canvas2 = canvases[1];
+
+          console.log('Canvas 1 dimensions:', canvas1.width, canvas1.height);
+          console.log('Canvas 2 dimensions:', canvas2.width, canvas2.height);
+
+          var combinedCanvas = document.createElement('canvas');
+          var ctx = combinedCanvas.getContext('2d');
+
+          combinedCanvas.width = Math.max(canvas1.width, canvas2.width);
+          combinedCanvas.height = canvas1.height + canvas2.height;
+
+          console.log('Combined canvas dimensions:', combinedCanvas.width, combinedCanvas.height);
+
+          ctx.drawImage(canvas1, 0, 0);
+          ctx.drawImage(canvas2, 0, canvas1.height);
+
+          var combinedImageURL = combinedCanvas.toDataURL('image/png');
+          var counter = 2;
+          uploadBlob(combinedImageURL, 'input[name="customized_image_url_front"]', counter);
+
+          // var combinedScreenshotContainer = document.getElementById('combined-screenshot');
+          // combinedScreenshotContainer.innerHTML = ''; // Clear previous content
+
+          var img = new Image();
+          img.src = combinedImageURL;
+
+          img.onload = function() {
+              console.log('Combined image loaded successfully.');
+          };
+
+          img.onerror = function() {
+              console.error('Error loading combined image.');
+          };
+
+          // combinedScreenshotContainer.appendChild(img);
+      }).catch(function(error) {
+          console.error('Error capturing divs:', error);
+      });
+  }
+</script>
