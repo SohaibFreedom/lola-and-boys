@@ -6,6 +6,9 @@
 div#accessiblembilenav .login-signup-mobile-c a > span {
   color: #fff !important;
 }
+.patch-options-hide {
+	display:none;
+}
 .collection-specific-tags {
   position: absolute;
   left: 0;
