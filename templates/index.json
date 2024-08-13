@@ -648,6 +648,13 @@
             "image": "shopify:\/\/shop_images\/d8e7cb11-eeb2-46ee-892c-8baf95351b47.png",
             "link": ""
           }
+        },
+        "logo_image_yRm4wa": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/logo.svg",
+            "link": ""
+          }
         }
       },
       "block_order": [
@@ -660,7 +667,8 @@
         "logo_image_pBVKhe",
         "logo_image_K3feVF",
         "logo_image_jNqL8Q",
-        "logo_image_Tyjifi"
+        "logo_image_Tyjifi",
+        "logo_image_yRm4wa"
       ],
       "settings": {
         "class": "logos-main-wrapper",
