@@ -9,13 +9,14 @@
 */
 {
   "sections": {
-    "main": {
-      "type": "page",
+    "shogun-helper": {
+      "type": "shogun-helper",
       "settings": {
       }
     },
-    "shogun-helper": {
-      "type": "shogun-helper",
+    "main": {
+      "type": "page",
+      "disabled": true,
       "settings": {
       }
     },
@@ -23,11 +24,85 @@
       "type": "shogun-optimizer",
       "settings": {
       }
+    },
+    "featured_text_wfkTX3": {
+      "type": "featured-text",
+      "settings": {
+        "title": "Stores",
+        "content": "",
+        "text_size": "featured_text",
+        "text_alignment": "align_left",
+        "button_label": "",
+        "button_link": ""
+      }
+    },
+    "custom_image_text_CgLMQq": {
+      "type": "custom-image-text",
+      "blocks": {
+        "image_iyCnKY": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/lola-04_800x_53169fad-e52b-45f3-9ae2-3050faae61e0.webp",
+            "colorbg": "",
+            "Class": "locationstore-text",
+            "title": "WATERTOWER MALL, IL",
+            "text": "<p>2nd Floor, 835 Michigan Ave Chicago, 60611<\/p><p><strong>Email:<\/strong> Uwchicago@Lolaandtheboys.com<\/p><p>Monday - Thursday: 11:00 AM - 7:00 PM<br\/>Friday - Saturday: 1:00 AM - 8:00 PM<br\/>Sunday: 12:00 PM - 6:00 PM<\/p><p><\/p>",
+            "button_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_iyCnKY"
+      ],
+      "settings": {
+        "sectionClass": "location-inner-col locationstores",
+        "featured_links_per_row": "1",
+        "frontpage_text_align": "center",
+        "frontpage_image_position": "left",
+        "frontpage_grid_style": "full_width"
+      }
+    },
+    "richtext_custom_iAfKeY": {
+      "type": "richtext-custom",
+      "blocks": {
+        "button_PkwRJE": {
+          "type": "button",
+          "settings": {
+            "button_label": "BACK TO STORES",
+            "button_link": "https:\/\/lolaandtheboys.com\/pages\/locations",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "button_PkwRJE"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "custom_class": "locations-text",
+        "custom_id": "",
+        "display_flex": false,
+        "gap_between": "",
+        "content_alignment": "center",
+        "heading_color": "white",
+        "text_color": "white",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 52,
+        "Image_size": 50
+      }
     }
   },
   "order": [
     "shogun-helper",
     "main",
-    "shogun-optimizer"
+    "shogun-optimizer",
+    "featured_text_wfkTX3",
+    "custom_image_text_CgLMQq",
+    "richtext_custom_iAfKeY"
   ]
 }
