@@ -62,18 +62,6 @@
             "link": "#inquire-now"
           }
         },
-        "image_pQQMBh": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/099A0205_2_0b8a4a03-c9fa-4052-81a2-ccb66d70b1f1.png",
-            "colorbg": "#f6d2ff",
-            "Class": "",
-            "title": "Pump It Up With Add-Ons\u2028",
-            "text": "<p>The party does not need to stop once you leave the Unicorn World Universe! We have gift bag options as well as custom patch experiences to make everyone happy and feel special. \u2028<\/p><p><\/p><h4>Photo\/Video Package $400 Includes:<\/h4><ul><li>Photos of Event<\/li><li>Video of Event<\/li><li>Gallery of All Edited photos\u2028<\/li><\/ul><p><\/p>",
-            "button_label": "",
-            "link": ""
-          }
-        },
         "image_9emqYi": {
           "type": "image",
           "settings": {
@@ -81,7 +69,7 @@
             "colorbg": "#f6d2ff",
             "Class": "",
             "title": "",
-            "text": "<h4>Patch Bar Experience<\/h4><ul><li>Per Guest: Custom Jacket is: $55 patches w\/name and 4 patches<\/li><li>Custom Hoodie $30 with 4 patches<\/li><li>Custom Tees  $20 with 4 patches<\/li><\/ul><h4>Runway Fashion Show + Photographer\u2028$1,250 Includes:<\/h4><ul><li>Hair & Makeup & Styled Looks To Model (15 Kids Max)<\/li><li>30% OFF Styled Looks<\/li><\/ul>",
+            "text": "<h4>Patch Bar Experience<\/h4><ul><li>Per Guest: Custom Jacket is: $55 patches w\/name and 4 patches<\/li><li>Custom Hoodie $30 with 4 patches<\/li><li>Custom Tees  $20 with 4 patches<\/li><\/ul><p><\/p>",
             "button_label": "",
             "link": ""
           }
@@ -101,7 +89,6 @@
       },
       "block_order": [
         "image_aaxiLD",
-        "image_pQQMBh",
         "image_9emqYi",
         "image_D4yxm4"
       ],
