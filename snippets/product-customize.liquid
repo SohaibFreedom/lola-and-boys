@@ -176,7 +176,6 @@
     }
     .size_variants_errors{
       display:none;
-      padding:30px;
     }
     .size_variants_errors > span{
       font-size: 20px;
@@ -1670,7 +1669,10 @@
         <div class="variant-selector-sidebar-btn"></div>
       </div>
       <div class="size_variants_section">
+        <div class="size_variants_section_error_heading_wrapp"> 
         <span class="size_variants_section_heading">Select Size: <small class="size_selector_heading small_selected_heading"></small></span>
+        <div class="size_variants_errors"><span>Please select size first</span></div>
+          </div>
         <!-- <span class="size_variants_section_heading">Select Size</span> -->
         <!-- <div class="size_variants_swatches">
           <div id="small_variant" class="size_variants_circle size_variants" vlaue="S">S</div>
@@ -1681,7 +1683,7 @@
         <div id="variants-containers" class="size_variants_swatches"></div>
       </div>
       
-      <div class="size_variants_errors"><span>Please select size first</span></div>
+      
       <div class="variant-selector-sidebar-foter">
         <div class="patches-customization-form-buttons">
           <div class="complete-overly-wrapper"></div>
