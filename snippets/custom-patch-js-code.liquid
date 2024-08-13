@@ -5478,60 +5478,110 @@ function sortPatchesByOrder() {
 //     }
 // }
 function checkPatchesPosition() {
-   const product = {{ product | json }};
-       if (Array.isArray(product.tags) && product.tags.includes('bag-bound-area')) 
-  {
-     console.log('checkPatchesPosition Now', checkPatchesPosition);
-    const containerRect = patchesContainer.getBoundingClientRect();
-    const patchActions = patchesContainer.querySelectorAll('.patch-');
-    let patchesOutside = false;
+  const product = {{ product | json }};
+      if (Array.isArray(product.tags) && product.tags.includes('bag-bound-area')) 
+ {
+    console.log('checkPatchesPosition Now', checkPatchesPosition);
+   const containerRect = patchesContainer.getBoundingClientRect();
+   const patchActions = patchesContainer.querySelectorAll('.patch-');
+   let patchesOutside = false;
 
-    patchActions.forEach(patch => {
-        const patchRect = patch.getBoundingClientRect();
-        
-        let moved = false;
+   patchActions.forEach(patch => {
+       const patchRect = patch.getBoundingClientRect();
+       
+       let moved = false;
 
-        const patchStyle = window.getComputedStyle(patch);
-        const patchLeft = parseFloat(patchStyle.left);
-        const patchTop = parseFloat(patchStyle.top);
+       const patchStyle = window.getComputedStyle(patch);
+       const patchLeft = parseFloat(patchStyle.left);
+       const patchTop = parseFloat(patchStyle.top);
 
-        if (patchRect.left < containerRect.left) {
-            patch.style.left = `${patchLeft + (containerRect.left - patchRect.left)}px`;
-            moved = true;
-        } else if (patchRect.right > containerRect.right) {
-            patch.style.left = `${patchLeft - (patchRect.right - containerRect.right)}px`;
-            moved = true;
-        }
+       if (patchRect.left < containerRect.left) {
+           patch.style.left = `${patchLeft + (containerRect.left - patchRect.left)}px`;
+           moved = true;
+       } else if (patchRect.right > containerRect.right) {
+           patch.style.left = `${patchLeft - (patchRect.right - containerRect.right)}px`;
+           moved = true;
+       }
 
-        if (patchRect.top < containerRect.top) {
-            patch.style.top = `${patchTop + (containerRect.top - patchRect.top)}px`;
-            moved = true;
-        } else if (patchRect.bottom > containerRect.bottom) {
-            patch.style.top = `${patchTop - (patchRect.bottom - containerRect.bottom)}px`;
-            moved = true;
-        }
+       if (patchRect.top < containerRect.top) {
+           patch.style.top = `${patchTop + (containerRect.top - patchRect.top)}px`;
+           moved = true;
+       } else if (patchRect.bottom > containerRect.bottom) {
+           patch.style.top = `${patchTop - (patchRect.bottom - containerRect.bottom)}px`;
+           moved = true;
+       }
 
-        if (moved) {
-            patchesOutside = true;
-            // Disable further movement by adding a class
-            patch.classList.add('out-of-bounds');
-        } else {
-            // Re-enable movement if the patch is inside
-            patch.classList.remove('out-of-bounds');
-        }
-    });
+       if (moved) {
+           patchesOutside = true;
+           // Disable further movement by adding a class
+           patch.classList.add('out-of-bounds');
+       } else {
+           // Re-enable movement if the patch is inside
+           patch.classList.remove('out-of-bounds');
+       }
+   });
 
-    if (patchesOutside) {
-        console.log('Yes, at least one patch is partially outside Now');
-        patchesContainer.style.border = '2px solid red'; // Change border color to red
-    } else {
-        console.log('All patches are inside');
-        patchesContainer.style.border = ''; // Reset border color
-    }
-  }
-   else {
-     console.log('t shirt');
+   if (patchesOutside) {
+       console.log('Yes, at least one patch is partially outside Now');
+       patchesContainer.style.border = '2px solid red'; // Change border color to red
+   } else {
+       console.log('All patches are inside');
+       patchesContainer.style.border = ''; // Reset border color
    }
+ }
+ else {
+  const patchesContainerShirt = document.querySelectorAll('.imageDiv');
+
+  patchesContainerShirt.forEach(container => {
+      console.log('checkPatchesPosition Now', checkPatchesPosition);
+      const containerRect = container.getBoundingClientRect();
+      const patchActions = container.querySelectorAll('.patch-');
+      let patchesOutside = false;
+
+      patchActions.forEach(patch => {
+          const patchRect = patch.getBoundingClientRect();
+          let moved = false;
+
+          const patchStyle = window.getComputedStyle(patch);
+          const patchLeft = parseFloat(patchStyle.left);
+          const patchTop = parseFloat(patchStyle.top);
+
+          if (patchRect.left < containerRect.left) {
+              patch.style.left = `${patchLeft + (containerRect.left - patchRect.left)}px`;
+              moved = true;
+          } else if (patchRect.right > containerRect.right) {
+              patch.style.left = `${patchLeft - (patchRect.right - containerRect.right)}px`;
+              moved = true;
+          }
+
+          if (patchRect.top < containerRect.top) {
+              patch.style.top = `${patchTop + (containerRect.top - patchRect.top)}px`;
+              moved = true;
+          } else if (patchRect.bottom > containerRect.bottom) {
+              patch.style.top = `${patchTop - (patchRect.bottom - containerRect.bottom)}px`;
+              moved = true;
+          }
+
+          if (moved) {
+              patchesOutside = true;
+              // Disable further movement by adding a class
+              patch.classList.add('out-of-bounds');
+          } else {
+              // Re-enable movement if the patch is inside
+              patch.classList.remove('out-of-bounds');
+          }
+      });
+
+      if (patchesOutside) {
+          console.log('Yes, at least one patch is partially outside Now');
+          container.style.border = '2px solid red'; // Change border color to red
+      } else {
+          console.log('All patches are inside');
+          container.style.border = ''; // Reset border color
+      }
+  });
+}
+
 }
 
 alignVerticalBtn.addEventListener('click', () => {
