@@ -6,6 +6,52 @@
 .logo-bar-section.container.logos-main-wrapper {
   max-width: 1700px !important;
 }
+.locationstore-text .description p {
+  margin-top: 30px;
+}
+.locationstores .featured-link--half img {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+.location-inner-col {
+  max-width: 1420px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.container.location-columns .column {
+  margin: 0 !important;
+}
+.locations-text .rich-text__buttons a:hover {
+  color: #fff !important;
+}
+.locations-text .rich-text__buttons a {
+  color: #fff !important;
+}
+.container.location-columns .one-third.column {
+  width: 100%;
+}
+.container.location-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  max-width: 100% !important;
+  padding: 30px;
+}
+.container.location-columns .continue-button {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  padding: 0;
+}
+.container.location-columns .continue-button:hover {
+  background: #fff;
+  color: #000;
+}
+.container.location-columns .one-third.column img {
+  object-fit: cover;
+  aspect-ratio: 3 / 3;
+}
+
 div#accessiblembilenav .login-signup-mobile-c a > span {
   color: #fff !important;
 }
