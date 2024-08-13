@@ -40,28 +40,16 @@
         "text_TNxppt": {
           "type": "text",
           "settings": {
-            "text": "<p>In need of a wardrobe refresh? Book a one-on-one private appointment with a personal stylist at any of our boutiques. Trust us, you want the VIP treatment.<\/p><p><\/p><p>Not near a store? We also offer virtual styling appointments.<\/p>",
+            "text": "<p>Visit any of our boutiques for an exceptional shopping experience. Our stylish locations offer a curated selection of the latest trends and timeless pieces, ensuring you'll find something you love. <strong>We also have exciting plans to open more stores in the future, bringing our unique shopping experience to even more locations.<\/strong><\/p>",
             "text_align": "center",
             "description_size": "16",
             "textClass": ""
-          }
-        },
-        "button_tUQBU4": {
-          "type": "button",
-          "settings": {
-            "button_label": "BOOK AN APPOINTMENT",
-            "button_link": "",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
           }
         }
       },
       "block_order": [
         "heading_eW98e4",
-        "text_TNxppt",
-        "button_tUQBU4"
+        "text_TNxppt"
       ],
       "settings": {
         "desktop_content_position": "center",
