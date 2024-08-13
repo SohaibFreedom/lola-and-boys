@@ -40,7 +40,7 @@
         "text_TNxppt": {
           "type": "text",
           "settings": {
-            "text": "<p>Visit any of our boutiques for an exceptional shopping experience. Our stylish locations offer a curated selection of the latest trends and timeless pieces, ensuring you'll find something you love. <strong>We also have exciting plans to open more stores in the future, bringing our unique shopping experience to even more locations.<\/strong><\/p>",
+            "text": "<p>Visit any of our boutiques for an exceptional shopping experience. Our stylish locations offer a curated selection of the latest trends and timeless pieces, ensuring you'll find something you love. <\/p><p><strong>We also have exciting plans to open more stores in the future, bringing our unique shopping experience to even more locations.<\/strong><\/p>",
             "text_align": "center",
             "description_size": "16",
             "textClass": ""
