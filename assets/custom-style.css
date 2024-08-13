@@ -598,7 +598,7 @@ wishlist-link-floating[wk-rendered] {
 }
 .logos-main-wrapper .logo-bar {
   display: grid !important;
-  grid-template-columns: repeat(10, 1fr) !important;
+  grid-template-columns: repeat(11, 1fr) !important;
   align-items: center;
 }
 .logos-main-wrapper .logo-bar__item {
