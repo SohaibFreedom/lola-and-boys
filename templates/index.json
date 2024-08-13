@@ -57,6 +57,7 @@
         },
         "image_U3EW4E": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify:\/\/shop_images\/SUMMER_Sale_up_to_70_OFF_HP.jpg",
             "image_mobile": "shopify:\/\/shop_images\/SUMMER_Sale_up_to_70_OFF_HP_Mob_b5e49d37-e8c2-4d3c-8726-aeb32cfafa3f.jpg",
