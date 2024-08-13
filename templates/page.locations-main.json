@@ -9,13 +9,14 @@
 */
 {
   "sections": {
-    "main": {
-      "type": "page",
+    "shogun-helper": {
+      "type": "shogun-helper",
       "settings": {
       }
     },
-    "shogun-helper": {
-      "type": "shogun-helper",
+    "main": {
+      "type": "page",
+      "disabled": true,
       "settings": {
       }
     },
@@ -23,11 +24,125 @@
       "type": "shogun-optimizer",
       "settings": {
       }
+    },
+    "richtext_custom_HKGbX4": {
+      "type": "richtext-custom",
+      "blocks": {
+        "heading_eW98e4": {
+          "type": "heading",
+          "settings": {
+            "heading": "Locations",
+            "txtClass": "",
+            "heading_align": "center",
+            "heading_size": "38"
+          }
+        },
+        "text_TNxppt": {
+          "type": "text",
+          "settings": {
+            "text": "<p>In need of a wardrobe refresh? Book a one-on-one private appointment with a personal stylist at any of our boutiques. Trust us, you want the VIP treatment.<\/p><p><\/p><p>Not near a store? We also offer virtual styling appointments.<\/p>",
+            "text_align": "center",
+            "description_size": "16",
+            "textClass": ""
+          }
+        },
+        "button_tUQBU4": {
+          "type": "button",
+          "settings": {
+            "button_label": "BOOK AN APPOINTMENT",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_eW98e4",
+        "text_TNxppt",
+        "button_tUQBU4"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "custom_class": "locations-text",
+        "custom_id": "",
+        "display_flex": false,
+        "gap_between": "",
+        "content_alignment": "center",
+        "heading_color": "white",
+        "text_color": "white",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52,
+        "Image_size": 50
+      }
+    },
+    "text_columns_with_images_YxhUew": {
+      "type": "text-columns-with-images",
+      "blocks": {
+        "text_block_ViRghJ": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify:\/\/shop_images\/lola-03_800x_ecc2e1cb-aa63-484a-8a0b-cff9df6acb87.webp",
+            "title": "919N Larrabee St, IL",
+            "code": "",
+            "heading_size": "regular_text",
+            "text": "<p>Chicago, 60611<\/p>",
+            "align_text": "left",
+            "button_label": "STORE DETAILS",
+            "button_link": "https:\/\/lolaandtheboys.com\/pages\/larrabee-store-page",
+            "border_style": "none"
+          }
+        },
+        "text_block_hT3YaN": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify:\/\/shop_images\/lola-04_800x_96660dfc-8311-4dce-bc1c-e3b2313d4f3f.webp",
+            "title": "Watertower Mall, IL",
+            "code": "",
+            "heading_size": "regular_text",
+            "text": "<p>2nd Floor, 835 Michigan Ave Chicago, 60611<\/p>",
+            "align_text": "left",
+            "button_label": "STORE DETAILS",
+            "button_link": "https:\/\/lolaandtheboys.com\/pages\/watertower-mall-store-page",
+            "border_style": "none"
+          }
+        },
+        "text_block_i7A9Hp": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify:\/\/shop_images\/lola-03_800x_40693384-34e7-4fd0-aaf3-8f7830332963.webp",
+            "title": "520 N Michigan Ave, IL",
+            "code": "",
+            "heading_size": "regular_text",
+            "text": "<p>Chicago, 60611<\/p>",
+            "align_text": "left",
+            "button_label": "STORE DETAILS",
+            "button_link": "https:\/\/lolaandtheboys.com\/pages\/michigan-ave-store-page",
+            "border_style": "none"
+          }
+        }
+      },
+      "block_order": [
+        "text_block_ViRghJ",
+        "text_block_hT3YaN",
+        "text_block_i7A9Hp"
+      ],
+      "settings": {
+        "title": "",
+        "cClass": "location-columns"
+      }
     }
   },
   "order": [
     "shogun-helper",
     "main",
-    "shogun-optimizer"
+    "shogun-optimizer",
+    "richtext_custom_HKGbX4",
+    "text_columns_with_images_YxhUew"
   ]
 }
