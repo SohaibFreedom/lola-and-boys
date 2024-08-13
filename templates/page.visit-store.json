@@ -1,3 +1,12 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "sections": {
     "394228ba-0d60-40a7-8c84-e2610d7863a7": {
@@ -146,7 +155,7 @@
             "heading_size": "regular_text",
             "text": "<p>Frustrated by the lack of playful children's clothing options, Irina took matters into her own hands, sparking a creative journey to design the fun and colorful attire she envisioned for her kids and others.<\/p>",
             "align_text": "center",
-            "button_label": "Learn more",
+            "button_label": "",
             "button_link": "shopify:\/\/pages\/founders",
             "border_style": "none"
           }
