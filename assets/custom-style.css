@@ -3,11 +3,14 @@
   margin: 2rem 0 1rem !important;
   display: block;
 }
+.logo-bar-section.container.logos-main-wrapper {
+  max-width: 1700px !important;
+}
 div#accessiblembilenav .login-signup-mobile-c a > span {
   color: #fff !important;
 }
 .patch-options-hide {
-	display:none;
+  display: none;
 }
 .collection-specific-tags {
   position: absolute;
