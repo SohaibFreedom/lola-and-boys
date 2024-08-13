@@ -47,8 +47,8 @@
             "Class": "locationstore-text",
             "title": "Lola + The Boys at Northbridge",
             "text": "<p><strong>520 N Michigan Ave, Chicago, IL, 60611<\/strong><\/p><p><strong>Email: <\/strong><a href=\"mailto:Northbridge@Lolaandtheboys.com\" title=\"mailto:Northbridge@Lolaandtheboys.com\">Northbridge@Lolaandtheboys.com<\/a><\/p><p>Monday - Saturday: 10:00 AM - 8:00 PM<br\/>Sunday: 11:00 AM - 8:00 PM<\/p><p><\/p>",
-            "button_label": "",
-            "link": ""
+            "button_label": "Get Directions",
+            "link": "https:\/\/www.google.com\/maps\/dir\/\/Lola+%2B+The+Boys+North+Bridge,+Michigan+Avenue,+Chicago,+IL\/@41.8913494,-87.665632,13z\/data=!3m2!4b1!5s0x880fd354648d5def:0x3333a570d956e015!4m8!4m7!1m0!1m5!1m1!1s0x880e2d55e4d2851f:0xe855ba88c6ea8621!2m2!1d-87.6244326!2d41.8913568?entry=ttu"
           }
         }
       },
