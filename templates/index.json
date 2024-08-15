@@ -12,6 +12,26 @@
     "slideshow_nB6m8V": {
       "type": "slideshow",
       "blocks": {
+        "image_MzwgLN": {
+          "type": "image",
+          "settings": {
+            "mp4": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/d22dec8d0a654f3bac6e0f245fd65e93.mp4",
+            "mobilevideo": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/ac1dc5d67ecd452990bf180f8104f805.mp4",
+            "pretext": "",
+            "title": "",
+            "subtitle": "",
+            "text_position": "center",
+            "text_align": "center",
+            "caption_background": false,
+            "caption_background_transparency": false,
+            "button1": "",
+            "button1_link": "https:\/\/lolaandtheboys.com\/collections\/free-gift-with-purchase",
+            "button1_highlight": false,
+            "button2": "",
+            "button2_link": "",
+            "button2_highlight": false
+          }
+        },
         "image_zPL6aM": {
           "type": "image",
           "settings": {
@@ -167,6 +187,7 @@
         }
       },
       "block_order": [
+        "image_MzwgLN",
         "image_zPL6aM",
         "image_KD9mi6",
         "image_U3EW4E",
