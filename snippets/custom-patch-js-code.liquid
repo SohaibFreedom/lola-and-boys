@@ -3,7 +3,11 @@
     document.addEventListener('DOMContentLoaded', function () {
        console.log('gardient-color-before');
         const product = {{ product | json }};
-
+         if (!product.available) {
+        // Hide the button if the product is not available
+        $('.customize-button').hide();
+           console.log('PRODUCT IS OUT OF STOCK');
+    }
         if (Array.isArray(product.tags) && product.tags.includes('gardient-color')) {
         
             $('.size_variants_section_color_heading').css('display', 'none');
