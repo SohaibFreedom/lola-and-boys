@@ -3,6 +3,7 @@
     document.addEventListener('DOMContentLoaded', function () {
        console.log('gardient-color-before');
         const product = {{ product | json }};
+                 console.log(product.available);
          if (!product.available) {
         // Hide the button if the product is not available
         $('.customize-button').hide();
