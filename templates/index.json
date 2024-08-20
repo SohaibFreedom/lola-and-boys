@@ -497,8 +497,8 @@
     "best_sellers_section_bDD7BB": {
       "type": "best-sellers-section",
       "settings": {
-        "title": "Shop The Vacation Edit",
-        "collection": "vacation",
+        "title": "Shop The Fall Edit",
+        "collection": "fall-2024",
         "collection_style": "slider",
         "collection_description": false,
         "products_per": 5,
