@@ -3,104 +3,114 @@
 {% endcomment %}
 
 {% comment %}
-    ** Contact page - custom view **
-    - Page template
+  ** Contact page - custom view **
+  - Page template
 {% endcomment %}
-{% if section.settings.image != nil %}
-    <header class="banner center page_banner dark-overlay-{{ section.settings.image_darken }}">
-        <img src="{{ section.settings.image | img_url: '100x' }}" alt="{% if section.settings.image.alt != blank %}{{ section.settings.image.alt | escape }}{% else %}{{ page.title | escape }}{% endif %}" class="lazyload {{ settings.image_loading_style }}" data-src="{{ section.settings.image | img_url: '1400x', format: 'pjpg' }}" sizes="100vw" srcset="{{ section.settings.image | img_url: '480x', format: 'pjpg' }} 480w, {{ section.settings.image | img_url: '765x', format: 'pjpg' }} 765w, {{ section.settings.image | img_url: '1400x', format: 'pjpg' }} 1400w, {{ section.settings.image | img_url: '2048x', format: 'pjpg' }} 2048w"/>
-        <div class="caption captionOverlay--true">
-            <h1 class="headline">{{ section.settings.title }}</h1>
-            <p class="subtitle">{{ section.settings.subtitle }}</p>
-        </div>
-    </header>
+{% if section.settings.image != null %}
+  <header class="banner center page_banner dark-overlay-{{ section.settings.image_darken }}">
+    <img
+      src="{{ section.settings.image | img_url: '100x' }}"
+      alt="{% if section.settings.image.alt != blank %}{{ section.settings.image.alt | escape }}{% else %}{{ page.title | escape }}{% endif %}"
+      class="lazyload {{ settings.image_loading_style }}"
+      data-src="{{ section.settings.image | img_url: '1400x', format: 'pjpg' }}"
+      sizes="100vw"
+      srcset="{{ section.settings.image | img_url: '480x', format: 'pjpg' }} 480w, {{ section.settings.image | img_url: '765x', format: 'pjpg' }} 765w, {{ section.settings.image | img_url: '1400x', format: 'pjpg' }} 1400w, {{ section.settings.image | img_url: '2048x', format: 'pjpg' }} 2048w"
+    >
+    <div class="caption captionOverlay--true">
+      <h1 class="headline">{{ section.settings.title }}</h1>
+      <p class="subtitle">{{ section.settings.subtitle }}</p>
+    </div>
+  </header>
 {% endif %}
 <a name="pagecontent" id="pagecontent"></a>
 <div class="container main content main-container">
-    <div class="contact-page-content">
-        <div class="page-title">
-            {% if section.settings.image == nil %}
-                <h1>{{ page.title }}</h1>
-            {% endif %}
-        </div>
-        <div class="contact-page-inner">
-            <div class="row">
-                <div class="contact-page-coustmer wi-25 wi-100">
-                    <div class="contact-page-box-title">
-                        <h4>CUSTOMER CARE</h4>
-                    </div>
-                    <div class="contact-page-box-content">
-                        <div class="contact-menu-list">
-                          <ul>
-                          {% for link in linklists.contact-us.links %}
-                            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-                          {% endfor %}
-                          </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-support-box wi-50 wi-100">
-<!--                     <div class="contact-page-box-title contact-page-emptry-title">
-                        <h4></h4>
-                    </div> -->
-                    <div class="contact-page-box-content">
-                        <div class="contact-support-content">
-                           {% if section.settings.title != blank %}
-                              <h3>{{section.settings.title}}</h3>
-                           {% endif %}
-                           {% if section.settings.text != blank %}
-                            <p>{{section.settings.text}}</p>
-                           {% endif %}
-                        </div>
-                      {% if section.settings.phone_number != blank %}
-                        <div class="contact-support-content">
-                            <h3>{{section.settings.phone_title}}</h3>
-                            <p><a href="tel:{{section.settings.phone_number}}">{{section.settings.phone_number}}</a></p>
-                        </div>
-                       {% endif %}
-                      {% if section.settings.contactemail != blank %}
-                        <div class="contact-support-content">
-                            <h3>{{section.settings.email_title}}</h3>
-                            <p><a href="mailto:{{section.settings.contactemail}}">{{section.settings.contactemail}}</a></p>
-                        </div>
-                      {% endif %}
-                        
-                
-                    </div>
-                    <div class="contact-page-box-content contact-box-many-part contact-expert-box">
-                        <div class="contact-support-content">
-                            <div class="contact-expert-img">
-                                <a href="{{section.settings.contact_style_expert_link}}">{{section.settings.contact_style_expert_label}}</a>
-                                {% if section.settings.contactexpertimage != blank %}
-                                <img src="{{ section.settings.contactexpertimage | img_url: '800x' }}" alt="">
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-page-coustmer wi-25 wi-100">
-                    <div class="contact-page-box-title contact-page-emptry-title">
-                        <h4></h4>
-                    </div>
-                    <div class="contact-page-box-content">
-                      {% if section.settings.hour_html != blank %}
-                        <div class="contact-support-content">
-                            <h3> {{section.settings.hour_title}}</h3>
-                            {{section.settings.hour_html}}
-                        </div>
-                      {% endif %}
-                       {% if section.settings.main_ofc_html != blank %}
-                        <div class="contact-support-content">
-                            <h3>{{section.settings.main_ofc_title}}</h3>
-                            {{section.settings.main_ofc_html}}
-                        </div>
-                      {% endif %}
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="contact-page-content">
+    <div class="page-title">
+      {% if section.settings.image == null %}
+        <h1>{{ page.title }}</h1>
+      {% endif %}
     </div>
- </div>
+    <div class="contact-page-inner">
+      <div class="row">
+        <div class="contact-page-coustmer wi-25 wi-100">
+          <div class="contact-page-box-title">
+            <h4>CUSTOMER CARE</h4>
+          </div>
+          <div class="contact-page-box-content">
+            <div class="contact-menu-list">
+              <ul>
+                {% for link in linklists['contact-us'].links %}
+                  <li>
+                    <a href="{{ link.url }}">{{ link.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="contact-support-box wi-50 wi-100">
+          <div class="contact-page-box-content">
+            <div class="contact-support-content">
+              {% if section.settings.title != blank %}
+                <h3>{{ section.settings.title }}</h3>
+              {% endif %}
+              {% if section.settings.text != blank %}
+                <p>{{ section.settings.text }}</p>
+              {% endif %}
+            </div>
+            {% if section.settings.phone_number != blank %}
+              <div class="contact-support-content">
+                <h3>{{ section.settings.phone_title }}</h3>
+                <p>
+                  <a href="tel:{{section.settings.phone_number}}">{{ section.settings.phone_number }}</a>
+                </p>
+              </div>
+            {% endif %}
+            {% if section.settings.contactemail != blank %}
+              <div class="contact-support-content">
+                <h3>{{ section.settings.email_title }}</h3>
+                <p>
+                  <a href="mailto:{{section.settings.contactemail}}">{{ section.settings.contactemail }}</a>
+                </p>
+              </div>
+            {% endif %}
+          </div>
+          <div class="contact-page-box-content contact-box-many-part contact-expert-box">
+            <div class="contact-support-content">
+              <div class="contact-expert-img">
+                <a href="{{section.settings.contact_style_expert_link}}">
+                  {{- section.settings.contact_style_expert_label -}}
+                </a>
+                {% if section.settings.contactexpertimage != blank %}
+                  <img src="{{ section.settings.contactexpertimage | img_url: '800x' }}" alt="">
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-page-coustmer wi-25 wi-100">
+          <div class="contact-page-box-title contact-page-emptry-title">
+            <h4></h4>
+          </div>
+          <div class="contact-page-box-content">
+            {% if section.settings.hour_html != blank %}
+              <div class="contact-support-content">
+                <h3>{{ section.settings.hour_title }}</h3>
+                {{ section.settings.hour_html }}
+              </div>
+            {% endif %}
+            {% if section.settings.main_ofc_html != blank %}
+              <div class="contact-support-content">
+                <h3>{{ section.settings.main_ofc_title }}</h3>
+                {{ section.settings.main_ofc_html }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% schema %}
 {
