@@ -1,1 +1,37 @@
-{"sections":{"main":{"type":"contact-template","settings":{"title":"","text":"","hour_title":"MAIN OFFICE","hour_html":"<p>919 N Larrabee st <br>Chicago IL 60610<\/p>\n<b>Store Hours:<\/b>\n<p>Monday-Friday: 10 AM to 6 PM<br>\nSaturday: 11 AM to 5 PM<br>\nSunday: Closed<\/p>","main_ofc_title":"Unicorn World Store","main_ofc_html":"<p>Watertower Mall - 2nd Floor <br>835 Michigan Ave <br>Chicago, IL 60611<\/p>\n<b>Store Hours:<\/b>\n<p>Monday-Thursday: 11 AM to 7 PM<br>Friday-Saturday: 11 AM to 8 PM<br>Sunday: 12 PM to 6 PM\n\n<\/p>","phone_title":"","phone_number":"","email_title":"Reach Us By Email","contactemail":"customerservice@lolaandtheboys.com","contact_heading":"NEED A FASTER RESPONSE?","contact_subtitle":"<p>Fill out our form below.<\/p>","contact_bug_heading":"WANT TO REPORT A BUG?","contact_bug_subtitle":"<p>Complete the form below to report a site\/app bug. Tapping \"SUBMIT REPORT\" will also send us your browser info or app data so we may best diagnose the issue.<\/p>","contact_style_expert_label":"","contact_style_expert_link":"mailto:customerservice@lolaandtheboys.com"}}},"order":["main"]}
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "main": {
+      "type": "contact-template",
+      "settings": {
+        "title": "",
+        "text": "",
+        "hour_title": "MAIN OFFICE",
+        "hour_html": "<p>919 N Larrabee st <br>Chicago IL 60610<\/p>\n<b>Store Hours:<\/b>\n<p>Monday-Friday: 10 AM to 6 PM<br>\nSaturday: 11 AM to 5 PM<br>\nSunday: Closed<\/p>",
+        "main_ofc_title": "Unicorn World Store",
+        "main_ofc_html": "<p>Watertower Mall - 2nd Floor <br>835 Michigan Ave <br>Chicago, IL 60611<\/p>\n<b>Store Hours:<\/b>\n<p>Monday-Thursday: 11 AM to 7 PM<br>Friday-Saturday: 11 AM to 8 PM<br>Sunday: 12 PM to 6 PM\n\n<\/p>\n<br>\n\n\n<h3>Lola + The Boys at Northbridge<\/h3>\n<p>520 N Michigan Ave, <br>Chicago, IL, 60611\n<\/p>\n<b>Store Hours:<\/b>\n<p>Monday - Saturday: 10:00 AM - 8:00 PM<br>Sunday: 11:00 AM - 8:00 PM\n\n<\/p>",
+        "phone_title": "",
+        "phone_number": "",
+        "email_title": "Reach Us By Email",
+        "contactemail": "customerservice@lolaandtheboys.com",
+        "contact_heading": "NEED A FASTER RESPONSE?",
+        "contact_subtitle": "<p>Fill out our form below.<\/p>",
+        "contact_bug_heading": "WANT TO REPORT A BUG?",
+        "contact_bug_subtitle": "<p>Complete the form below to report a site\/app bug. Tapping \"SUBMIT REPORT\" will also send us your browser info or app data so we may best diagnose the issue.<\/p>",
+        "contact_style_expert_label": "",
+        "contact_style_expert_link": "mailto:customerservice@lolaandtheboys.com"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
