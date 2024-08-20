@@ -15,8 +15,9 @@
         "image_MzwgLN": {
           "type": "image",
           "settings": {
-            "mp4": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/d22dec8d0a654f3bac6e0f245fd65e93.mp4",
-            "mobilevideo": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/ac1dc5d67ecd452990bf180f8104f805.mp4",
+            "image_mobile": "shopify:\/\/shop_images\/Fall_2024_HP_mob_2.jpg",
+            "mp4": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/92cae586926a4300abc5d45e7b67c670.mp4",
+            "mobilevideo": "",
             "pretext": "",
             "title": "",
             "subtitle": "",
