@@ -1206,24 +1206,62 @@ if (Array.isArray(product.tags)) {
         $('.patches').append(patchDiv);
     });
 }
-function openPopup(item) {
+fufunction openPopup(item) {
     console.log("Opening popup for item:", item);
-     const popup = document.querySelector('.popup');
-    if (popup) {
-        popup.classList.add('active');
+
+    // Define default dimensions
+    let imgHeight = item.height || 100; // Default value if item.height is not defined
+    let imgWidth = item.width || 100;  // Default value if item.width is not defined
+
+    // Adjust dimensions based on product tags
+    const product = {{ product | json }}; // Ensure this variable is set correctly
+
+    if (Array.isArray(product.tags)) {
+        if (product.tags.includes('back-pack')) {
+            imgHeight += 45;
+            imgWidth += 45;
+        }
+
+        if (product.tags.includes('patch-it-bag')) {
+            if (imgHeight < 30 && imgWidth < 30) {
+                imgHeight += 45;
+                imgWidth += 45;
+            } else if (imgHeight > 30 && imgWidth < 30) {
+                imgHeight += 70;
+                imgWidth += 30;
+            } else {
+                imgHeight += 70;
+                imgWidth += 70;
+            }
+        }
+    }
+
+    // Check if the popup is already open
+    const existingPopup = document.querySelector('.popup');
+    if (existingPopup) {
+        existingPopup.classList.add('active');
         return; // Popup is already open, no need to create a new one
     }
 
-    // Create the pop-up content
+    // Create the pop-up content with adjusted dimensions
     const popupContent = `
         <div class="popup active">
-           <div class="popup-close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="30" height="30"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></div>
+           <div class="popup-close">
+               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="30" height="30">
+                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+               </svg>
+           </div>
             <div class="patch-pop_up-image-wrapper">
-            <img src="${item.image}" alt="${item.name}"  class="popup-image" />
+                <img src="${item.image}" alt="${item.name}" class="popup-image" />
             </div>
             <p class="popup-name">${item.patchname || item.alphabetname}</p>
-           <div class="add-patch-pop-up-btn" data-patch-src-popup="${item.image}" data-patch-id-popup="${item.id}" data-patch-height-popup="${item.height}" data-patch-width-popup="${item.width}">Add Patch</div>
-
+            <div class="add-patch-pop-up-btn" 
+                 data-patch-src-popup="${item.image}" 
+                 data-patch-id-popup="${item.id}" 
+                 data-patch-height-popup="${imgHeight}" 
+                 data-patch-width-popup="${imgWidth}">
+                Add Patch
+            </div>
         </div>
     `;
 
@@ -1235,11 +1273,8 @@ function openPopup(item) {
         console.log("Close button clicked");
         closePopup();
     });
-
-
-
-
 }
+
 
 
 function closePopup() {
