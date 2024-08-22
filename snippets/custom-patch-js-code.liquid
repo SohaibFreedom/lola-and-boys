@@ -2635,10 +2635,17 @@ function addPatchToCenterBox(patchSrc, patchId, height, width) {
         if (halfWidth < 20) {
             halfWidth += 1;
         }
-        else {
+          else{
+            if (product.tags.includes('patch-it-bag')){
+              halfHeight += 5;
+       halfWidth += 5;
+            }
+              else {
        halfHeight += 15;
        halfWidth += 15;
        }
+          }
+      
 
         // Set the patch dimensions
         patchDiv.style.width = halfWidth + 'px';
