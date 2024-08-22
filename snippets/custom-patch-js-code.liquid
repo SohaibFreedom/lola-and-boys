@@ -2519,6 +2519,7 @@ let currentX = 0;
 let currentY = 0;
 
 function addPatchToCenterBox(patchSrc, patchId, height, width) {
+  console.log('adding to front'); 
     var patchDiv = document.createElement('div');
     patchDiv.setAttribute('v-id', patchId);
     patchDiv.classList.add('patch-');
@@ -2585,6 +2586,7 @@ function addPatchToCenterBox(patchSrc, patchId, height, width) {
         patchDiv.style.height = halfHeight + 'px';
     }
  else if (window.matchMedia("(min-width: 768px) and (max-width: 1024px)").matches) {
+     console.log('yes this is 768px'); 
   // Calculate half width and height
         var halfWidth = width / 2;
         var halfHeight = height / 2;
