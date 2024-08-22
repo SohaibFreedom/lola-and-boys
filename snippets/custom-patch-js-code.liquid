@@ -3491,24 +3491,11 @@ patchDiv.classList.remove('patch-');
                 document.querySelector('.patches-container').getBoundingClientRect() :
                 document.querySelector('.patches-containerr').getBoundingClientRect();
 
-            let patchRect = patchDiv.getBoundingClientRect();
-
-            // Check for overlap with other patches
-            let isOverlapping = checkOverlapWithPatches(patchRect, '.patch-');
-
-            // Display or hide the error message based on overlap
-            let errorMessage = document.querySelector('.overlapping-error');
-            if (isOverlapping) {
-              console.log('overlapping');
-                 errorMessage.style.visibility = 'visible';
-            } else {
-                errorMessage.style.visibility = 'hidden';
-              $('.overlapping-correction-error').css('display', 'none');
-            }
           patchDiv.classList.add('patch-');
         }
     }
   checkPatchesPosition();
+   checkPatchDRAGGINGOverlapping();
 }
 
 function checkOverlapWithPatches(patchRect, patchClass) {
@@ -3849,20 +3836,7 @@ console.log(dragPatch1);
     if (event.touches.length === 1 && dragPatch1) {
          // Check for overlap with other patches
   console.log('dragPatch1',dragPatch1)
-      dragPatch1.classList.remove('patch-');
-      let patchRect = dragPatch1.getBoundingClientRect();
-            let isOverlapping = checkOverlapWithPatches(patchRect, '.centerBox > .patches-container > .patch-');
-
-            // Display or hide the error message based on overlap
-            let errorMessage = document.querySelector('.overlapping-error');
-            if (isOverlapping) {
-              console.log('overlapping');
-                 errorMessage.style.visibility = 'visible';
-            } else {
-                errorMessage.style.visibility = 'hidden';
-              $('.overlapping-correction-error').css('display', 'none');
-            }
-         dragPatch1.classList.add('patch-');
+       checkPatchDRAGGINGOverlapping();
         const touch = event.touches[0];
         const rect = centerBox.getBoundingClientRect();
         const mouseX = touch.clientX - rect.left;
@@ -4001,21 +3975,7 @@ BackcenterBox.addEventListener('touchmove', function (event) {
    console.log('nunder');
     if (event.touches.length === 1 && dragPatch1) {
       console.log('under');
-   dragPatch1.classList.remove('patch-');
-      let patchRect = dragPatch1.getBoundingClientRect();
-               let isOverlapping = checkOverlapWithPatches(patchRect, '.BackcenterBox > .patches-containerr > .patch-');
-
-            // Display or hide the error message based on overlap
-            let errorMessage = document.querySelector('.overlapping-error');
-            if (isOverlapping) {
-              console.log('overlapping');
-                 errorMessage.style.visibility = 'visible';
-            } else {
-                errorMessage.style.visibility = 'hidden';
-                  $('.overlapping-correction-error').css('display', 'none');
-              
-            }
-         dragPatch1.classList.add('patch-');
+       checkPatchDRAGGINGOverlapping();
         const touch = event.touches[0];
         const rect = BackcenterBox.getBoundingClientRect();
         const mouseX = touch.clientX - rect.left;
@@ -6024,6 +5984,100 @@ patches.forEach(patch => {
 });
 
 
+}
+
+   function checkPatchDRAGGINGOverlapping() {
+    console.log('checking overlapping');
+    let errorMessage = document.querySelector('.overlapping-error');
+    let patchDivs;
+
+    if (document.getElementById('Front-Area').style.visibility === 'visible') {
+        console.log('front area overlapping');
+        patchDivs = document.querySelectorAll('.centerBox > .patches-container > .patch-');
+        let isOverlapping = false; // Track if any overlap is detected
+
+        // Loop through each patch
+        patchDivs.forEach(patchDiv => {
+            patchDiv.classList.remove('patch-'); // Temporarily remove class to avoid self-overlap
+            let patchRect = patchDiv.getBoundingClientRect();
+            let patches = document.querySelectorAll('.centerBox > .patches-container > .patch-');
+
+            // Check if this patch overlaps with any other patches
+            for (let i = 0; i < patches.length; i++) {
+                let otherPatchRect = patches[i].getBoundingClientRect();
+                if (
+                    patchRect.left < otherPatchRect.right &&
+                    patchRect.right > otherPatchRect.left &&
+                    patchRect.top < otherPatchRect.bottom &&
+                    patchRect.bottom > otherPatchRect.top
+                ) {
+                    console.log('overlappingggg');
+                    isOverlapping = true; // Set the overlap flag to true
+                    break; // Stop checking once overlap is detected
+                }
+            }
+
+            patchDiv.classList.add('patch-'); // Re-add class after checking
+
+            if (isOverlapping) {
+                // If any overlap is detected, show the error message and stop further checks
+                errorMessage.style.visibility = 'visible';
+                return; // Stop further execution as overlap is detected
+            }
+        });
+
+        // If no overlap was detected after checking all patches, hide the error message
+        if (!isOverlapping) {
+            console.log('hidden it');
+            errorMessage.style.visibility = 'hidden';
+            $('.overlapping-correction-error').css('display', 'none');
+        }
+
+        return false;
+    } else {
+        console.log('back area overlapping');
+        patchDivs = document.querySelectorAll('.BackcenterBox > .patches-containerr > .patch-');
+        let isOverlapping = false; // Track if any overlap is detected
+
+        // Loop through each patch
+        patchDivs.forEach(patchDiv => {
+            patchDiv.classList.remove('patch-'); // Temporarily remove class to avoid self-overlap
+            let patchRect = patchDiv.getBoundingClientRect();
+            let patches = document.querySelectorAll('.BackcenterBox > .patches-containerr > .patch-');
+
+            // Check if this patch overlaps with any other patches
+            for (let i = 0; i < patches.length; i++) {
+                let otherPatchRect = patches[i].getBoundingClientRect();
+                if (
+                    patchRect.left < otherPatchRect.right &&
+                    patchRect.right > otherPatchRect.left &&
+                    patchRect.top < otherPatchRect.bottom &&
+                    patchRect.bottom > otherPatchRect.top
+                ) {
+                    console.log('overlappingggg');
+                    isOverlapping = true; // Set the overlap flag to true
+                    break; // Stop checking once overlap is detected
+                }
+            }
+
+            patchDiv.classList.add('patch-'); // Re-add class after checking
+
+            if (isOverlapping) {
+                // If any overlap is detected, show the error message and stop further checks
+                errorMessage.style.visibility = 'visible';
+                return; // Stop further execution as overlap is detected
+            }
+        });
+
+        // If no overlap was detected after checking all patches, hide the error message
+        if (!isOverlapping) {
+            console.log('hidden it');
+            errorMessage.style.visibility = 'hidden';
+            $('.overlapping-correction-error').css('display', 'none');
+        }
+
+        return false;
+    }
 }
 function checkPatchOverlapping() {
     console.log('checking overlapping');
