@@ -1000,10 +1000,20 @@ if (Array.isArray(product.tags)) {
         imgHeight += 45;
         imgWidth += 45;
     }
-    if (product.tags.includes('patch-it-bag')) {
-       console.log("patch-it-bag")
+       if (product.tags.includes('patch-it-bag')) {
+       if (imgHeight < 30 && imgWidth < 30) {
+        imgHeight += 45;
+        imgWidth += 45;
+    } 
+       else if (imgHeight > 30 && imgWidth < 30) {
         imgHeight += 55;
-      imgWidth += 55;
+        imgWidth += 30;
+    } 
+       else{
+         imgHeight += 55;
+        imgWidth += 55;   
+    }
+     
     }
 }
 
@@ -1277,10 +1287,20 @@ if (Array.isArray(product.tags)) {
         imgHeight += 45;
         imgWidth += 45;
     }
-    if (product.tags.includes('patch-it-bag')) {
-       console.log("patch-it-bag")
+       if (product.tags.includes('patch-it-bag')) {
+       if (imgHeight < 30 && imgWidth < 30) {
+        imgHeight += 45;
+        imgWidth += 45;
+    } 
+       else if (imgHeight > 30 && imgWidth < 30) {
         imgHeight += 55;
-      imgWidth += 55;
+        imgWidth += 30;
+    } 
+       else{
+         imgHeight += 55;
+        imgWidth += 55;   
+    }
+     
     }
 }
 
