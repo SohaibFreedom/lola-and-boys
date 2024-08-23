@@ -766,104 +766,9 @@ $(document).ready(function() {
 </script>
 
 <script>
-  $('.variants-continue-btn').click(function() {
-    console.log('continue to next moment');
-     $('.patches-tidy-editor-btn').css('display', 'block');
-      // Check if the class .size_variants_active exists in any .size_variants_circle elements
-  //     if ($('.size_variants_circle').hasClass('size_variants_active')) {
-  //         // Add the class to the clicked element
-  //         $('.variants-selected-sidebar').addClass('variants-continue-btn-invisible');
+ 
 
-  //         if (window.matchMedia("(max-width: 769px)").matches) {
-  //             // $('.patches-tidy-editor-btn').css('visibility', 'visible');
-  //             $('.patches-editor-wrapper').css('display', 'flex');
-  //         } else {
-  //             $('.patches-tidy-editor-btn').css('visibility', 'hidden');
-  //           $('.patches-editor-wrapper').css('display', 'block');
-  //         }
-  //          $('.size_variants_errors').css('display', 'none');
 
-  //             if (window.matchMedia("(max-width: 768px)").matches){
-  //         $('.only-mobile').css('display', 'none');
-  //     }
-  //       if (window.matchMedia("(max-width: 769px)").matches) {
-  //             // $('.patches-tidy-editor-btn').css('visibility', 'visible');
-  //         } else {
-  //             $('.patches-tidy-editor-btn').css('visibility', 'hidden');
-  //         }
-  //            if (window.matchMedia("(max-width: 768px)").matches){
-  //         $('.only-mobile-colors-wrapper').css('display', 'block');
-  //     }else{
-  //        $('.only-mobile-colors-wrapper').css('display', 'none');
-  // }
-  //     } else {
-  //         // Show the error div
-  //         $('.size_variants_errors').css('display', 'block');
-  //     }
-    if ($('.size_variants_section').css('visibility') === 'visible') {
-    if ($('.size_variants_circle').hasClass('size_variants_active')) {
-        // Add the class to the clicked element
-        $('.variants-selected-sidebar').addClass('variants-continue-btn-invisible');
-
-        if (window.matchMedia("(max-width: 769px)").matches) {
-            // $('.patches-tidy-editor-btn').css('visibility', 'visible');
-            $('.patches-editor-wrapper').css('display', 'flex');
-        } else {
-            $('.patches-tidy-editor-btn').css('visibility', 'hidden');
-            $('.patches-editor-wrapper').css('display', 'block');
-        }
-        $('.size_variants_errors').css('display', 'none');
-
-        if (window.matchMedia("(max-width: 768px)").matches) {
-            $('.only-mobile').css('display', 'none');
-        }
-
-        if (window.matchMedia("(max-width: 769px)").matches) {
-            // $('.patches-tidy-editor-btn').css('visibility', 'visible');
-        } else {
-            $('.patches-tidy-editor-btn').css('visibility', 'hidden');
-        }
-
-        if (window.matchMedia("(max-width: 768px)").matches) {
-            $('.only-mobile-colors-wrapper').css('display', 'block');
-        } else {
-            $('.only-mobile-colors-wrapper').css('display', 'none');
-        }
-    }
-    else {
-        // Show the error div
-        $('.size_variants_errors').css('display', 'block');
-    }
-}else{
-          $('.variants-selected-sidebar').addClass('variants-continue-btn-invisible');
-
-        if (window.matchMedia("(max-width: 769px)").matches) {
-            // $('.patches-tidy-editor-btn').css('visibility', 'visible');
-            $('.patches-editor-wrapper').css('display', 'flex');
-        } else {
-            $('.patches-tidy-editor-btn').css('visibility', 'hidden');
-            $('.patches-editor-wrapper').css('display', 'block');
-        }
-        $('.size_variants_errors').css('display', 'none');
-
-        if (window.matchMedia("(max-width: 768px)").matches) {
-            $('.only-mobile').css('display', 'none');
-        }
-
-        if (window.matchMedia("(max-width: 769px)").matches) {
-            // $('.patches-tidy-editor-btn').css('visibility', 'visible');
-        } else {
-            $('.patches-tidy-editor-btn').css('visibility', 'hidden');
-        }
-
-        if (window.matchMedia("(max-width: 768px)").matches) {
-            $('.only-mobile-colors-wrapper').css('display', 'block');
-        } else {
-            $('.only-mobile-colors-wrapper').css('display', 'none');
-        }
-}
-
-  });
 
     $('.patches-back-button').click(function() {
        // location.reload();
@@ -994,6 +899,39 @@ let imgHeight = parseInt(item.height, 10);
 let imgWidth = parseInt(item.width, 10);
 
 const product = {{ product | json }};
+const variantname = document.querySelector('input[name="selective_variant_name"]').value.trim();
+console.log('this is variantname', variantname);
+
+// Convert both the product title and the comparison string to lowercase
+if (variantname === '1' || variantname === '2' || variantname === '2/3' ||   variantname === '3/4' ||   variantname === '4/5' || variantname === '5/6' || 
+    variantname === '4' || variantname === '5' || variantname === '6') {
+    
+    console.log('condition true');
+    imgHeight += 20;
+    imgWidth += 20;
+
+} else if (variantname === '6/7' ||  variantname === '8' || variantname === '7/8' || variantname === '8/9' ||  
+           variantname === '10' || variantname === '9/10' || variantname === '10/11' || variantname === '11/12' || variantname === '12' || 
+           variantname === '14') {
+    
+    imgHeight += 10;
+    imgWidth += 10;
+} else if (variantname === 'Small'){
+    console.log('condition true');
+  imgHeight += 30;
+    imgWidth += 30;
+    }
+      else if (variantname === 'Medium'){
+        console.log('condition true');
+  imgHeight += 20;
+    imgWidth += 20;
+    }
+      else if (variantname === 'Large'){
+          console.log('condition true');
+  imgHeight += 10;
+    imgWidth += 10;
+    }
+
 
 if (Array.isArray(product.tags)) {
     if (product.tags.includes('back-pack')) {
@@ -1038,7 +976,7 @@ img.width = imgWidth;
 
         // Add event listener to the SVG icon to open the pop-up
         svgDiv.addEventListener('click', function() {
-            openPopup(item);
+            openPopup(item,imgHeight,imgWidth);
         });
 
         $('.patches').append(div);
@@ -1051,7 +989,9 @@ img.width = imgWidth;
         patchesContainer.appendChild(noDataMessage);
     }
 }
-       showPatches();
+
+      
+       // showPatches();
 
  $('#patches-button').click(function(){
      $(this).addClass('custom-patch-active'); 
@@ -1120,6 +1060,7 @@ img.width = imgWidth;
 //     });
 // }
  function showPatches() {
+  
     // Clear existing content in the patches container
     $('.patches').empty();
 
@@ -1145,8 +1086,43 @@ img.width = imgWidth;
         // Get the height and width as integers
    let imgHeight = parseInt(item.height, 10);
 let imgWidth = parseInt(item.width, 10);
-
 const product = {{ product | json }};
+// Get the variant name as a string
+const variantname = document.querySelector('input[name="selective_variant_name"]').value.trim();
+console.log('this is variantname', variantname);
+
+// Convert both the product title and the comparison string to lowercase
+if (variantname === '1' || variantname === '2' || variantname === '2/3' ||   variantname === '3/4' ||   variantname === '4/5' || variantname === '5/6' || 
+    variantname === '4' || variantname === '5' || variantname === '6') {
+    
+    console.log('condition true');
+    imgHeight += 20;
+    imgWidth += 20;
+
+} else if (variantname === '6/7' ||  variantname === '8' || variantname === '7/8' || variantname === '8/9' ||  
+           variantname === '10' || variantname === '9/10' || variantname === '10/11' || variantname === '11/12' || variantname === '12' || 
+           variantname === '14') {
+    
+    imgHeight += 10;
+    imgWidth += 10;
+} else if (variantname === 'Small'){
+    console.log('condition true');
+  imgHeight += 30;
+    imgWidth += 30;
+    }
+      else if (variantname === 'Medium'){
+        console.log('condition true');
+  imgHeight += 20;
+    imgWidth += 20;
+    }
+      else if (variantname === 'Large'){
+          console.log('condition true');
+  imgHeight += 10;
+    imgWidth += 10;
+    }
+
+
+
 
 if (Array.isArray(product.tags)) {
     if (product.tags.includes('back-pack')) {
@@ -1200,12 +1176,126 @@ if (Array.isArray(product.tags)) {
 
         // Add event listener to the SVG icon to open the pop-up
         svgDiv.addEventListener('click', function() {
-            openPopup(item);
+            openPopup(item,imgHeight,imgWidth);
         });
 
         $('.patches').append(patchDiv);
     });
 }
+$('.variants-continue-btn').click(function() {
+    // Check if the product has 'none-size-products' tag
+    if (Array.isArray(product.tags) && product.tags.includes('none-size-products')) {
+        // Skip size variant checks and directly show the loader
+        showPatches();
+        console.log('continue to next moment');
+
+        // Show the loader
+        $('.loader-cart-contiune').css('display', 'block');
+
+        // Hide the continue button and change the background color of the wrapper
+        $('.variants-continue-btn').css('display', 'none');
+        $('.variants-continue-btn-wrapper').css('background-color', 'rgb(223, 223, 223)');
+
+        // Set a timeout for 1 second for the loader to be visible
+        setTimeout(function() {
+            // Hide the loader after 1 second
+            $('.loader-cart-contiune').css('display', 'none');
+
+            // Change background color back to #ffe2e8
+            $('.variants-continue-btn-wrapper').css('background-color', '#ffe2e8');
+
+            // Show the continue button again
+            $('.variants-continue-btn').css('display', 'block');
+
+            // Additional logic can continue here if needed...
+            $('.patches-tidy-editor-btn').css('display', 'block');
+
+            // Add the class to the sidebar
+            $('.variants-selected-sidebar').addClass('variants-continue-btn-invisible');
+
+            // Handle responsive display changes
+            if (window.matchMedia("(max-width: 769px)").matches) {
+                $('.patches-editor-wrapper').css('display', 'flex');
+            } else {
+                $('.patches-tidy-editor-btn').css('visibility', 'hidden');
+                $('.patches-editor-wrapper').css('display', 'block');
+            }
+
+            $('.size_variants_errors').css('display', 'none');
+
+            if (window.matchMedia("(max-width: 768px)").matches) {
+                $('.only-mobile').css('display', 'none');
+            }
+
+            if (window.matchMedia("(max-width: 768px)").matches) {
+                $('.only-mobile-colors-wrapper').css('display', 'block');
+            } else {
+                $('.only-mobile-colors-wrapper').css('display', 'none');
+            }
+
+        }, 1000); // 1 second delay for loader
+
+    } else {
+        // Check if size variants are active only if product doesn't have 'none-size-products' tag
+        if ($('.size_variants_circle').hasClass('size_variants_active')) {
+            showPatches();
+            console.log('continue to next moment');
+
+            // Show the loader
+            $('.loader-cart-contiune').css('display', 'block');
+
+            // Hide the continue button and change the background color of the wrapper
+            $('.variants-continue-btn').css('display', 'none');
+            $('.variants-continue-btn-wrapper').css('background-color', 'rgb(223, 223, 223)');
+
+            // Set a timeout for 1 second for the loader to be visible
+            setTimeout(function() {
+                // Hide the loader after 1 second
+                $('.loader-cart-contiune').css('display', 'none');
+
+                // Change background color back to #ffe2e8
+                $('.variants-continue-btn-wrapper').css('background-color', '#ffe2e8');
+
+                // Show the continue button again
+                $('.variants-continue-btn').css('display', 'block');
+
+                // Additional logic can continue here if needed...
+                $('.patches-tidy-editor-btn').css('display', 'block');
+
+                // Add the class to the sidebar
+                $('.variants-selected-sidebar').addClass('variants-continue-btn-invisible');
+
+                // Handle responsive display changes
+                if (window.matchMedia("(max-width: 769px)").matches) {
+                    $('.patches-editor-wrapper').css('display', 'flex');
+                } else {
+                    $('.patches-tidy-editor-btn').css('visibility', 'hidden');
+                    $('.patches-editor-wrapper').css('display', 'block');
+                }
+
+                $('.size_variants_errors').css('display', 'none');
+
+                if (window.matchMedia("(max-width: 768px)").matches) {
+                    $('.only-mobile').css('display', 'none');
+                }
+
+                if (window.matchMedia("(max-width: 768px)").matches) {
+                    $('.only-mobile-colors-wrapper').css('display', 'block');
+                } else {
+                    $('.only-mobile-colors-wrapper').css('display', 'none');
+                }
+
+            }, 1000); // 1 second delay for loader
+        } else {
+            // Show the error div if no active size variant is selected
+            $('.size_variants_errors').css('display', 'block');
+        }
+    }
+});
+
+
+
+
 // function openPopup(item) {
 //     console.log("Opening popup for item:", item);
 //      const popup = document.querySelector('.popup');
@@ -1241,35 +1331,12 @@ if (Array.isArray(product.tags)) {
 
 // }
 
-function openPopup(item) {
-    console.log("Opening popup for item:", item);
+function openPopup(item,imgHeight,imgWidth) {
+    console.log("Opening popup for item:", item,imgHeight,imgWidth);
 
-    // Define default dimensions as integers
-    let imgHeight = parseInt(item.height, 10) || 100; // Default value if item.height is not defined
-    let imgWidth = parseInt(item.width, 10) || 100;  // Default value if item.width is not defined
 
     // Adjust dimensions based on product tags
     const product = {{ product | json }}; // Ensure this variable is set correctly
-
-    if (Array.isArray(product.tags)) {
-        if (product.tags.includes('back-pack')) {
-            imgHeight += 45;
-            imgWidth += 45;
-        }
-
-        if (product.tags.includes('patch-it-bag')) {
-            if (imgHeight < 30 && imgWidth < 30) {
-                imgHeight += 45;
-                imgWidth += 45;
-            } else if (imgHeight > 30 && imgWidth < 30) {
-                imgHeight += 75;
-                imgWidth += 30;
-            } else {
-                imgHeight += 75;
-                imgWidth += 75;
-            }
-        }
-    }
 
     // Check if the popup is already open
     const existingPopup = document.querySelector('.popup');
@@ -1343,6 +1410,7 @@ function closePopup() {
        const img = document.createElement('img');
        img.src = item.image;
        img.alt = item.name;
+      
        img.classList.add('patch-image');
        img.setAttribute('crossorigin', 'anonymous');
       let imgHeight = parseInt(item.height, 10);
@@ -1732,30 +1800,42 @@ function createVariantDivs(colorTitle) {
 
       // Add click event listener to each dynamically created div
       variantDiv.addEventListener('click', () => {
-        // Remove 'size_variants_active' class from all '.select_size' divs
-        const allSelectSizeDivs = document.querySelectorAll('.select_size');
-        allSelectSizeDivs.forEach(div => {
-          div.classList.remove('size_variants_active');
-        });
-      $('.size_variants_errors').css('display', 'none');
-        // Add 'size_variants_active' class to the clicked div
-        variantDiv.classList.add('size_variants_active');
-            const colorSelectorHeading = document.querySelector('.size_selector_heading');
-     console.log(colorSelectorHeading)
-   if (colorSelectorHeading) {
-     console.log('yes its existes colorSelectorHeading')
-       colorSelectorHeading.textContent = variant.option1;
-   }
-        // Get the value of the data-v-id attribute
-        const vId = variantDiv.getAttribute('data-v-id');
-        console.log('vId', vId);
+    // Remove 'size_variants_active' class from all '.select_size' divs
+    const allSelectSizeDivs = document.querySelectorAll('.select_size');
+    allSelectSizeDivs.forEach(div => {
+        div.classList.remove('size_variants_active');
+    });
 
-        // Update the value of the hidden input
-        const hiddenInput = document.getElementById('selective_variant_ID');
-        if (hiddenInput) {
-          hiddenInput.value = vId;
-        }
-      });
+    // Hide any size variant errors
+    $('.size_variants_errors').css('display', 'none');
+
+    // Add 'size_variants_active' class to the clicked div
+    variantDiv.classList.add('size_variants_active');
+
+    // Update the colorSelectorHeading with the variant option1
+    const colorSelectorHeading = document.querySelector('.size_selector_heading');
+    if (colorSelectorHeading) {
+        colorSelectorHeading.textContent = variant.option1;
+    }
+
+    // Get the value of the data-v-id attribute
+    const vId = variantDiv.getAttribute('data-v-id');
+    console.log('vId', vId);
+
+    // Update the value of the hidden input with id 'selective_variant_ID'
+    const hiddenInput = document.getElementById('selective_variant_ID');
+    if (hiddenInput) {
+        hiddenInput.value = vId;
+    }
+
+    // Get the text content of the clicked div and assign it to the hidden input 'selective_variant_name'
+    const clickedDivText = variantDiv.textContent.trim(); // Get the text of the clicked div
+    const hiddenNameInput = document.getElementById('selective_variant_name');
+    if (hiddenNameInput) {
+        hiddenNameInput.value = clickedDivText; // Set the text content as the value of the hidden input
+    }
+});
+
     }
   });
 }
