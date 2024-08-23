@@ -95,6 +95,20 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+  .loader-cart-contiune {
+            border: 2px solid #f3f3f3; /* Light grey */
+            border-top: 2px solid #ff5477; /* Blue */
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            animation: spin2 2s linear infinite;
+            display:none;
+        }
+
+        @keyframes spin2 {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
 </style>
 
 <div id="currency-format" data-money-format="{{ shop.money_format }}"></div>
@@ -104,6 +118,7 @@
 <input type="hidden" name="customized_price" value="">
 <input type="hidden" name="size_variants_data" id="size_variants_data" value="">
 <input type="hidden" name="selective_variant_ID" id="selective_variant_ID" value="">
+<input type="hidden" name="selective_variant_name" id="selective_variant_name" value="">
 <div
   class="overlapping-correction-error"
   style=""
