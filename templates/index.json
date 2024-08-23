@@ -287,7 +287,7 @@
         "image_eJCjKd": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/NEW_ARRIVAL_df3e8eac-2e18-48fd-9505-a054369734bc.jpg",
+            "image": "shopify:\/\/shop_images\/NEW_ARRIVALS_9fab4537-e105-4437-8826-dbbaf147f5f7.jpg",
             "link": "shopify:\/\/collections\/newarrivals",
             "title": "",
             "title_n": "123",
@@ -330,7 +330,7 @@
         "image_YKz689": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/GIRLS_44c831d5-e484-4b6c-bb06-e51f44b297c2.jpg",
+            "image": "shopify:\/\/shop_images\/GIRLS_a7ed4d1d-264e-4e94-a6fc-4591f409f420.jpg",
             "link": "https:\/\/lolaandtheboys.com\/collections\/girls-1",
             "title1": "Girls",
             "text": "",
@@ -341,7 +341,7 @@
         "image_fph4tc": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/SHOES_a5c2f9d3-4aed-411f-816e-e800b8ffed5a.jpg",
+            "image": "shopify:\/\/shop_images\/SHOES_79c0be8f-0e8f-4456-89c0-9325b80b3f14.jpg",
             "link": "https:\/\/lolaandtheboys.com\/collections\/shoes2022",
             "title1": "Shoes",
             "text": "",
@@ -374,7 +374,7 @@
         "image_DP4QiN": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/SETS_e596070b-95f3-4ce5-973e-f7be64533f0b.jpg",
+            "image": "shopify:\/\/shop_images\/SETS_4e9fe625-0651-4ec4-8e42-49f786d6b985.jpg",
             "link": "shopify:\/\/collections\/sets",
             "title1": "SETS",
             "text": "",
@@ -425,9 +425,9 @@
         "image_9Qgf3d": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/SUMMER_-_BTS.jpg",
-            "link": "shopify:\/\/collections\/back-to-school",
-            "title": "BTS",
+            "image": "shopify:\/\/shop_images\/OUTERWEAR.jpg",
+            "link": "https:\/\/lolaandtheboys.com\/collections\/girls-outerwear-jackets",
+            "title": "outwear",
             "text": "",
             "button_label": "shop now",
             "button_link": "shopify:\/\/collections\/valentines-day"
@@ -436,7 +436,7 @@
         "image_wedKWc": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/DRESSES_0fcd5ba8-68c2-44c8-a5fe-0c1435b1fb13.jpg",
+            "image": "shopify:\/\/shop_images\/DRESSES_18b625bb-24b5-4111-9077-89c3e3a63a40.jpg",
             "link": "https:\/\/lolaandtheboys.com\/collections\/girls-dresses-1",
             "title": "Dresses",
             "text": "",
@@ -458,7 +458,7 @@
         "image_hUpHCc": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/BEST_SELLERs.jpg",
+            "image": "shopify:\/\/shop_images\/BEST_SELLERS_773ccb3e-3c38-44b6-b979-651e6cac2790.jpg",
             "link": "shopify:\/\/collections\/best-sellers",
             "title": "BEST SELLERS",
             "text": "",
@@ -511,7 +511,7 @@
         "image_MKtq7p": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/ERAS.jpg",
+            "image": "shopify:\/\/shop_images\/ERAS_TOUR.jpg",
             "link": "https:\/\/lolaandtheboys.com\/collections\/eras-tour",
             "title1": "Eras Tour",
             "text": "",
