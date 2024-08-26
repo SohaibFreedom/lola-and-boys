@@ -3141,10 +3141,21 @@ function addPatchToBackcenterBox(patchSrc, patchId, height, width) {
         if (halfWidth < 20) {
             halfWidth += 1;
         }
-        else {
+         else{
+            if (product.tags.includes('patch-it-bag')){
+            console.log('yes this patch-it-bag'); 
+       halfHeight += 5;
+       halfWidth += 5;
+            }
+              else if (product.tags.includes('customize-long-bag')){
+                    halfHeight += 25;
+       halfWidth += 25;
+              }
+              else {
        halfHeight += 15;
        halfWidth += 15;
        }
+          }
 
         // Set the patch dimensions
         patchDiv.style.width = halfWidth + 'px';
@@ -3205,7 +3216,11 @@ var halfHeight = (height / 2) - 2;
         if (halfHeight < 20) {
             halfHeight += 1;
         }
-
+const product = {{ product | json }};
+   if (product.tags.includes('customize-long-bag')){
+      halfHeight += 10;
+     halfWidth += 10;
+}
         // Set the patch dimensions
         patchDiv.style.width = halfWidth + 'px';
         patchDiv.style.height = halfHeight + 'px';
