@@ -2870,7 +2870,11 @@ var halfHeight = (height / 2) - 2;
         if (halfHeight < 20) {
             halfHeight += 1;
         }
-
+const product = {{ product | json }};
+   if (product.tags.includes('customize-long-bag')){
+      halfHeight += 10;
+     halfWidth += 10;
+}
         // Set the patch dimensions
         patchDiv.style.width = halfWidth + 'px';
         patchDiv.style.height = halfHeight + 'px';
