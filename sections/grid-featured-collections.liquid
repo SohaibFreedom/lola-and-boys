@@ -35,7 +35,7 @@
     >
       {% for block in section.blocks %}
         <figure
-          class="feature-section section-{{ forloop.index }} promo-{{ forloop.index }} title-overlay-{{ title_on_image }} {% if section.settings.featured_links_animation != blank %}promo-animation--true{% endif %}"
+          class="feature-section {{ block.settings.customclass }} section-{{ forloop.index }} promo-{{ forloop.index }} title-overlay-{{ title_on_image }} {% if section.settings.featured_links_animation != blank %}promo-animation--true{% endif %}"
           {{ block.shopify_attributes }}
         >
              <a class="collection-info__caption " href="{{ block.settings.link }}" itemprop="url" tabindex="0">
@@ -226,6 +226,11 @@
           "id": "title1",
           "label": "Header",
           "default": "Feature"
+        },
+        {
+          "type": "text",
+          "id": "customclass",
+          "label": "Custom Class"
         },
         {
           "type": "richtext",
