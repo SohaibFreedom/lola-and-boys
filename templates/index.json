@@ -332,6 +332,7 @@
             "image": "shopify:\/\/shop_images\/GIRLS_a7ed4d1d-264e-4e94-a6fc-4591f409f420.jpg",
             "link": "https:\/\/lolaandtheboys.com\/collections\/girls-1",
             "title1": "Girls",
+            "customclass": "",
             "text": "",
             "button_label": "Shop now",
             "button_link": ""
@@ -343,6 +344,7 @@
             "image": "shopify:\/\/shop_images\/SHOES_79c0be8f-0e8f-4456-89c0-9325b80b3f14.jpg",
             "link": "https:\/\/lolaandtheboys.com\/collections\/shoes2022",
             "title1": "Shoes",
+            "customclass": "shoes-img-fix",
             "text": "",
             "button_label": "Shop now",
             "button_link": ""
@@ -354,6 +356,7 @@
             "image": "shopify:\/\/shop_images\/LATB_BTS24_00702.jpg",
             "link": "https:\/\/lolaandtheboys.com\/collections\/boys-1",
             "title1": "Boys",
+            "customclass": "",
             "text": "",
             "button_label": "Shop now",
             "button_link": ""
@@ -365,6 +368,7 @@
             "image": "shopify:\/\/shop_images\/BRIRTHDA_QUEEN.jpg",
             "link": "https:\/\/lolaandtheboys.com\/collections\/birthday",
             "title1": "Birthday Looks",
+            "customclass": "",
             "text": "",
             "button_label": "Shop now",
             "button_link": ""
@@ -376,6 +380,7 @@
             "image": "shopify:\/\/shop_images\/SETS_4e9fe625-0651-4ec4-8e42-49f786d6b985.jpg",
             "link": "shopify:\/\/collections\/sets",
             "title1": "SETS",
+            "customclass": "",
             "text": "",
             "button_label": "Shop now",
             "button_link": ""
@@ -387,6 +392,7 @@
             "image": "shopify:\/\/shop_images\/LATB_BTS24_00215.jpg",
             "link": "shopify:\/\/collections\/customize-patch-products",
             "title1": "Customize It",
+            "customclass": "",
             "text": "",
             "button_label": "Shop now",
             "button_link": ""
