@@ -3919,11 +3919,11 @@
         "settings": {
           "show_announcement_bar": true,
           "show_countdown": true,
-          "countdown_end_date": "2024-09-01T12:00:00Z",
+          "countdown_end_date": "2024-09-02T12:00:00Z",
           "bck_clr": "#faddff",
           "Annouce_url": "https:\/\/lolaandtheboys.com\/collections\/summersale20",
           "txt_clr": "#000000",
-          "text": "<b>LABOR DAY SALE : 25% OFF SITE WIDE<\/b>",
+          "text": "<b>Labor Day Sale! Take 25% OFF Site Wide <\/b>",
           "phone_number": "",
           "top_bar_menu": "help",
           "cart_icon": "cart",
