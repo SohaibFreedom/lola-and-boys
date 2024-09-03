@@ -3919,7 +3919,7 @@
         "settings": {
           "show_announcement_bar": true,
           "show_countdown": true,
-          "countdown_end_date": "2024-09-03T05:00:00Z",
+          "countdown_end_date": "2024-09-03T06:00:00Z",
           "bck_clr": "#faddff",
           "Annouce_url": "shopify:\/\/collections\/labor-day-sale",
           "txt_clr": "#000000",
