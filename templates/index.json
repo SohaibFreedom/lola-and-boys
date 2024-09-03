@@ -15,9 +15,8 @@
         "image_U3EW4E": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Lola_LABOR_DAY_HP.jpg",
             "image_mobile": "shopify:\/\/shop_images\/Lola_LABOR_DAY_HP_mob_2.jpg",
-            "mp4": "",
+            "mp4": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/d65d00828eed4077bf54e1eec8651fa8.mp4",
             "mobilevideo": "",
             "pretext": "",
             "title": "",
