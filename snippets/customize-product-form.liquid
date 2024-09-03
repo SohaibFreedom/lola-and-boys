@@ -125,6 +125,7 @@
 >
   Please correct overlapping error first
 </div>
+ <div class="overlapping-correction-error" id="Out-of-stock-error"></div>
 <div class="patch-customization-btn-wrap">
   <div class="complete-overly-wrapper"></div>
   <div id="variantsContainer" class="variants-container"></div>
@@ -898,12 +899,45 @@ async function addcartfiles() {
     variants.unshift({ id: '1', name:  variantID });
     console.log('these are variants array', variants);
 
-    try {
+  try {
       const response = await addToCart(variants, customizedImageUrl, customizedPrice, sizeVariants, messagaeData, customizedBackImageUrl);
       console.log('Cart Response:', response);
-      // loadCartSection(response);
-      window.location.href = '/cart';
-    } catch (error) {
+   if (response.status === 422) {
+  const outOfStockDiv = document.getElementById('Out-of-stock-error');
+  console.log(outOfStockDiv);
+  if (outOfStockDiv) {
+    const addItemDiv = document.querySelector('.add-item');
+    if (addItemDiv) {
+      addItemDiv.style.background = '#ffe2e8';
+      addItemDiv.style.opacity = '1';
+      addItemDiv.style.pointerEvents = '';
+    }
+
+    // Display .span-content div
+    const spanContentDiv = document.querySelector('.span-content');
+    if (spanContentDiv) {
+      spanContentDiv.style.display = 'block';
+    }
+    
+    const loaderCartDiv = document.querySelector('.loader-cart');
+    if (loaderCartDiv) {
+      loaderCartDiv.style.display = 'none';
+    }
+    
+    console.log('yes exists');
+    outOfStockDiv.style.display = 'block'; // Display the div
+    outOfStockDiv.style.visibility = 'visible';
+    outOfStockDiv.textContent = response.message; // Set the content to the error message
+    
+    // Call the function to hide the outOfStockDiv after 5 seconds
+    hideOutOfStockDivAfterDelay();
+  }
+}else {
+    // Redirect to cart if the response is successful
+    window.location.href = '/cart';
+  }
+    } 
+    catch (error) {
       console.error('Error adding items to cart:', error);
       // Handle error
     }
@@ -955,6 +989,15 @@ async function addcartfiles() {
                 throw error; // Re-throw the error for further handling
             }
         }
+}
+   function hideOutOfStockDivAfterDelay() {
+  setTimeout(() => {
+    const outOfStockDiv = document.getElementById('Out-of-stock-error');
+    if (outOfStockDiv) {
+      outOfStockDiv.style.display = 'none';
+      outOfStockDiv.style.visibility = 'none';
+    }
+  }, 5000); // Delay of 5 seconds
 }
 </script>
 <script>
