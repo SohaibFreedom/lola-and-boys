@@ -3919,11 +3919,11 @@
         "settings": {
           "show_announcement_bar": true,
           "show_countdown": true,
-          "countdown_end_date": "2024-09-04T07:00:00Z",
+          "countdown_end_date": "2024-09-05T01:00:00Z",
           "bck_clr": "#faddff",
           "Annouce_url": "shopify:\/\/collections\/labor-day-sale",
           "txt_clr": "#000000",
-          "text": "<b> Site Wide Sale Extended until Midnight! Up to 60% Off Styles <\/b>",
+          "text": "<b> Labor Day SALE Extended Last Chance: Up to 60% Off\n<\/b>",
           "phone_number": "",
           "top_bar_menu": "help",
           "cart_icon": "cart",
