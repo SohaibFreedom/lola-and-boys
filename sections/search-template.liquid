@@ -80,6 +80,7 @@
    {% if settings.search_option == 'everything' or wh_price == blank %}
 
     {% for item in search.results %}
+      {% unless item.tags contains 'swipe-product' or item.tags contains 'patch' %}
 {% include 'wh_calculate_discount' with item, hide_method: 'skip' %}
 {% include 'bold-product' with item, hide_action: 'skip' %}
       <div class="product_row">
@@ -160,7 +161,7 @@
           {% endif %}
         </div>
       </div>
-
+ {% endunless %}
    {% endfor %}
 
   {% else %}
@@ -198,8 +199,9 @@
     </div>
   {% endif %}
 
-  {% include 'pagination' with sidebar %}
+
 </div>
+      {% include 'pagination' with sidebar %}
 </div>
 {% endpaginate %}
 
