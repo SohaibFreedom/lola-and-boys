@@ -2681,7 +2681,10 @@ function addPatchToCenterBox(patchSrc, patchId, height, width) {
   console.log('yes this is 1031px'); 
  const normalizedWidth = window.innerWidth / window.devicePixelRatio;
 console.log('Normalized Width:', normalizedWidth);
-
+if (normalizedWidth >= 1024) {
+    console.log('This is iPad Pro');
+    // Your logic here
+}
         var halfWidth =width - 20;
         var halfHeight = height - 20;
 
