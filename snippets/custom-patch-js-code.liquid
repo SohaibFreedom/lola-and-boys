@@ -2680,8 +2680,8 @@ function addPatchToCenterBox(patchSrc, patchId, height, width) {
  if (window.matchMedia("(min-width: 1031px) and (max-width: 1600px)").matches) {
   console.log('yes this is 1031px'); 
  const normalizedWidth = window.innerWidth / window.devicePixelRatio;
-console.log('Normalized Width is:', normalizedWidth);
-if (normalizedWidth >= 1024) {
+console.log('Normalized Width is this:', normalizedWidth);
+if (normalizedWidth >= 900 && normalizedWidth <= 1024) {
     console.log('This is iPad Pro');
     // Your logic here
 }
