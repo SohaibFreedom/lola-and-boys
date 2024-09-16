@@ -1,5 +1,3 @@
-{% include 'shogun-content-handler' %}
-
 {% capture content %}
 <!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="{{ shop.locale }}"> <![endif]-->
@@ -184,10 +182,7 @@ Delete
   
 <script src="{{ 'storepickupcr.js' | asset_url }}" defer="defer"></script>  
   {% render 'yotpo js' %}
-<!--Gem_Page_Header_Script-->
-{% render 'gem-app-header-scripts' %}
-<!--End_Gem_Page_Header_Script -->
-  
+
 
   
 	{%- if dropinblog == 1 -%}{{ dropinblog_head_bottom }}{%- endif -%}
