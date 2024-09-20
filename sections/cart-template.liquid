@@ -685,11 +685,29 @@
                     }
                     if (item.properties._customized_image_url_front) {
                         console.log('in');
+                        // console.log(item.properties.Font Color);
                         const imageUrl = item.properties._customized_image_url_front;
                         const backImageUrl = item.properties._customized_image_url_back ;
                         const priceProduct = item.properties._patches_price; // Convert item.price to a string                  
-                        const timestamp = item.properties._Timestamp; // Convert item.price to a string                  
-                        timestampMap[timestamp].push({
+                        const timestamp = item.properties._Timestamp; // Convert item.price to a string  
+                       if (item.properties._embroideryProduct === 'Embroidery Product'){
+                        const textfont = item.properties.Font; // Convert item.price to a string                  
+                        const fontcolor = item.properties["Font Color"]; 
+                          const priceProduct1 = item.price;
+                        let finalPrice = priceProduct1 + Number(specificVariantPrice);
+                         timestampMap[timestamp].push({
+                            emb:'Embroidery',
+                            title: item.title,
+                            price:  Number(finalPrice) / 100,
+                            imageUrl: imageUrl, // Include imageUrl in the object being pushed to the array
+                            parentVariant: 'parent',
+                            timestampp: timestamp,
+                            textfont:textfont,
+                            fontcolor:fontcolor
+                        });
+                       }
+                       else{
+                          timestampMap[timestamp].push({
                             title: item.title,
                             price: priceProduct,
                             imageUrl: imageUrl, // Include imageUrl in the object being pushed to the array
@@ -697,6 +715,8 @@
                             backImage: backImageUrl,
                             timestampp: timestamp
                         });
+                     }
+                       
                     } else {
                         const timestamp = item.properties._Timestamp; 
                         const imageUrl = item.image;
@@ -734,19 +754,55 @@
                 parentChildWrapperDiv.classList.add('parent-child-wrapper');
                 
                 timestampGroup.forEach(item => {
-    if (item.parentVariant === 'parent') {
-        var deletebutton = document.createElement('a');
-        deletebutton.classList.add('cart_delete-custom-product-button');
-        deletebutton.textContent = 'remove';
-        deletebutton.setAttribute('data-customized-timestamp', item.timestampp);
-        deletebutton.setAttribute('disabled', 'true'); // Initially disable the button
-        parentChildWrapperDiv.appendChild(deletebutton);
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                deletebutton.removeAttribute('disabled');
-            }, 3000);
-        });
-    }
+  if (item.parentVariant === 'parent') {
+    // Create the delete button
+    var deletebutton = document.createElement('a');
+    deletebutton.classList.add('cart_delete-custom-product-button');
+    deletebutton.textContent = 'remove';
+    deletebutton.setAttribute('data-customized-timestamp', item.timestampp);
+    deletebutton.setAttribute('disabled', 'true'); // Initially disable the button
+    parentChildWrapperDiv.appendChild(deletebutton);
+    
+    // Enable the delete button after 3 seconds
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            deletebutton.removeAttribute('disabled');
+        }, 3000);
+    });
+if (item.emb === 'Embroidery'){
+    // Create the first div for textfont
+    var textFontDiv = document.createElement('div');
+    textFontDiv.classList.add('child-item');
+    
+    // Create a p tag for textfont inside the div
+    var textFontP = document.createElement('p');
+    textFontP.textContent = 'Font: ' + item.textfont;
+    
+    // Append p tag to the textFontDiv
+    textFontDiv.appendChild(textFontP);
+
+    // Append the textFontDiv to parentChildWrapperDiv
+    parentChildWrapperDiv.appendChild(textFontDiv);
+
+    // Create the second div for fontcolor
+    var fontColorDiv = document.createElement('div');
+    fontColorDiv.classList.add('child-item');
+    
+    // Create a p tag for fontcolor inside the div
+    var fontColorP = document.createElement('p');
+    fontColorP.textContent = 'Font Color: ' + item.fontcolor;
+    
+    // Append p tag to the fontColorDiv
+    fontColorDiv.appendChild(fontColorP);
+
+    // Append the fontColorDiv to parentChildWrapperDiv
+    parentChildWrapperDiv.appendChild(fontColorDiv);
+}
+  
+}
+
+
+
 });
 
                
