@@ -201,6 +201,14 @@
    </svg>
  </div>
 {% endif %}
+                {% if product.tags contains "embroidery-customizer" %}
+ <div class="embroider-button">
+  <span>Embroidery</span> 
+   <svg class="icon icon-monogram-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M16 8.99999C16 9 16 9.00001 16 9.00002C16 9.5523 15.5523 10 15 10C12.1769 10 9.91305 12.2521 9.91305 15C9.91305 15.5523 9.46533 16 8.91305 16C8.36077 16 7.91305 15.5523 7.91305 15C7.91305 13.037 8.72886 11.2684 10.0402 10L3 10C2.44772 10 2 9.55228 2 9C2 8.44771 2.44772 8 3 8L10.04 8C8.72866 6.73159 7.91285 4.96296 7.91285 3C7.91285 2.44771 8.36057 2 8.91285 2C9.46514 2 9.91285 2.44772 9.91285 3C9.91285 5.74789 12.1767 7.99998 14.9998 7.99998C15.029 7.99998 15.0578 8.00123 15.0864 8.00368C15.5307 8.04168 15.8921 8.37022 15.9797 8.79848C15.993 8.86357 16 8.93097 16 8.99999Z" fill="#2C272D"></path>
+   </svg>
+ </div>
+               {% endif %}
           {% endunless %}
  {% render 'ZooomyListWishlistProduct' %}
           {% if section.settings.product_description_position == "bottom" %}
@@ -312,6 +320,9 @@
     {% endif %}
 <div class="product-customization">
     {% render 'product-customize' %}
+  </div> 
+  <div class="embroidery-customization">
+    {% render 'embroidery-customize' %}
   </div> 
 <script>
   jdgmSettings.scrollTopOffset = 160;
