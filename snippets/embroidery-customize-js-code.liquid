@@ -278,15 +278,15 @@
       // Set the content of the dynamically created .emb-font-type-area div
       newDiv.textContent = inputField.value;
     if (inputField.value.length <= 5) {
-  newDiv.style.fontSize = '45px';
+  newDiv.style.fontSize = '25px';
 } 
       else {
   if (window.innerWidth < 769) {
     newDiv.style.setProperty('font-size', '10px', 'important');
   } else if (window.innerWidth >= 1024 && window.innerWidth <= 1300) {
-    newDiv.style.setProperty('font-size', '25px', 'important');
+    newDiv.style.setProperty('font-size', '15px', 'important');
   } else {
-     newDiv.style.fontSize = '35px';
+     newDiv.style.fontSize = '15px';
   }
 }
      });
