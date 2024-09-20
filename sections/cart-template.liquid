@@ -673,11 +673,22 @@
 <script>
         // Assuming cartData is defined somewhere in your HTML or is a JavaScript variable available in this scope
             var cartData = {{ cartData | json }};
-        
+              console.log(cartData);
             const timestampMap = {};
-        
+        let specificVariantPrice = 0;
+
+// First, loop through cartData to find the price of variant 42085140430950
+cartData.forEach(item => {
+  console.log(item.variant_id);
+    if (item.variant_id === 42085140430950) {
+      console.log('true')
+        // Store the price of the specific variant for future calculations
+        specificVariantPrice = item.price; 
+    }
+});
+  console.log('stiching price',specificVariantPrice)
             // Group items by _Timestamp
-            cartData.forEach(item => {
+             cartData.forEach(item => {
                 if (item.properties._Timestamp) { // Check if _Timestamp property exists
                     const timestamp = item.properties._Timestamp;
                     if (!timestampMap[timestamp]) {
@@ -752,7 +763,6 @@
                 // Create a new div to contain child items and parent price/title
                 const parentChildWrapperDiv = document.createElement('div');
                 parentChildWrapperDiv.classList.add('parent-child-wrapper');
-                
                 timestampGroup.forEach(item => {
   if (item.parentVariant === 'parent') {
     // Create the delete button
@@ -832,7 +842,12 @@ if (item.emb === 'Embroidery'){
                     // Create p element for title and price
                     const titleAndPrice = document.createElement('p');
                     if (item.parentVariant === 'parent') {
+                      if (item.emb === 'Embroidery'){
+                        titleAndPrice.textContent = `${currencySymbol} ${item.price}`;
+                      }else{
                         titleAndPrice.textContent = `${item.price}`; // Fix concatenation
+                      }
+                        
                     } else {
                         titleAndPrice.textContent = `${item.title} - ${currencySymbol} ${item.price}`; // Fix concatenation
                     }
