@@ -9,6 +9,10 @@
 .locationstore-text .description p {
   margin-top: 30px;
 }
+#mobile_menu a span {
+  padding: 0 !important;
+  font-size: 12px !important;
+}
 .locationstores .featured-link--half img {
   aspect-ratio: 3 / 2;
   object-fit: cover;
@@ -1125,7 +1129,7 @@ html
   }
   .shoes-img-fix img {
     object-position: center 95% !important;
-}
+  }
   .collection-specific-tags img {
     width: 11px !important;
   }
