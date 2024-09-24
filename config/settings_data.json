@@ -161,7 +161,7 @@
       "newsletter_bg": "",
       "newsletter_popup_image_align": "left",
       "newsletter_popup_title": "Sign up today",
-      "newsletter_popup_text": "<p><\/p>",
+      "newsletter_popup_text": "<p></p>",
       "newsletter_popup_text_align": "center",
       "newsletter_popup_seconds": "0",
       "newsletter_popup_days": "14",
@@ -313,7 +313,7 @@
       "feature1_description": "Optional description can go here",
       "feature1_button": "",
       "feature2_enabled": true,
-      "feature2_link": "http:\/\/help.outofthesandbox.com\/",
+      "feature2_link": "http://help.outofthesandbox.com/",
       "feature2_title": "Promo 2",
       "feature2_description": "Visit the Out of the Sandbox Support Center for Turbo-related articles and how-tos",
       "feature2_button": "",
@@ -323,7 +323,7 @@
       "feature3_description": "Publish Turbo as your main theme when you're ready to launch!",
       "feature3_button": "",
       "feature4_enabled": true,
-      "feature4_link": "https:\/\/twitter.com\/outofthesandbox",
+      "feature4_link": "https://twitter.com/outofthesandbox",
       "feature4_title": "Promo 4",
       "feature4_description": "Let us know when your new shop launches on Twitter",
       "feature4_button": "",
@@ -708,7 +708,7 @@
               "type": "text",
               "settings": {
                 "title": "Title",
-                "content": "<p>Use this text to share information about your brand with your customers.<\/p>",
+                "content": "<p>Use this text to share information about your brand with your customers.</p>",
                 "social_icons_footer": true
               }
             }
@@ -729,9 +729,9 @@
           "type": "image-with-text-overlay",
           "settings": {
             "image": "",
-            "pretext": "<p>Introducing the<\/p>",
+            "pretext": "<p>Introducing the</p>",
             "title": "Turbo Shopify Theme",
-            "subtitle": "<p>From Out of the Sandbox<\/p>",
+            "subtitle": "<p>From Out of the Sandbox</p>",
             "caption_background": false,
             "caption_background_transparency": false,
             "text_position": "center",
@@ -749,7 +749,7 @@
           "settings": {
             "image": "",
             "title": "Talk about your brand",
-            "content": "<p>Use this text to share information about your brand with your customers.<\/p>\r\n<p>Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "content": "<p>Use this text to share information about your brand with your customers.</p>\r\n<p>Describe a product, share announcements, or welcome customers to your store.</p>",
             "text_size": "featured_text",
             "text_alignment": "center",
             "button_label": "",
@@ -765,7 +765,7 @@
                 "image": "",
                 "link": "",
                 "title": "Feature",
-                "text": "<p>Promotion description details.<\/p>",
+                "text": "<p>Promotion description details.</p>",
                 "button_label": ""
               }
             },
@@ -775,7 +775,7 @@
                 "image": "",
                 "link": "",
                 "title": "Feature",
-                "text": "<p>Promotion description details.<\/p>",
+                "text": "<p>Promotion description details.</p>",
                 "button_label": ""
               }
             },
@@ -785,7 +785,7 @@
                 "image": "",
                 "link": "",
                 "title": "Feature",
-                "text": "<p>Promotion description details.<\/p>",
+                "text": "<p>Promotion description details.</p>",
                 "button_label": ""
               }
             },
@@ -795,7 +795,7 @@
                 "image": "",
                 "link": "",
                 "title": "Feature",
-                "text": "<p>Promotion description details.<\/p>",
+                "text": "<p>Promotion description details.</p>",
                 "button_label": ""
               }
             }
@@ -850,9 +850,9 @@
               "type": "image",
               "settings": {
                 "image": "",
-                "pretext": "<p>Short text that precedes the headline<\/p>",
+                "pretext": "<p>Short text that precedes the headline</p>",
                 "title": "Your headline here",
-                "subtitle": "<p>This is a short subheading for your slideshow image<\/p>",
+                "subtitle": "<p>This is a short subheading for your slideshow image</p>",
                 "text_position": "center",
                 "text_align": "center",
                 "caption_background": false,
@@ -883,7 +883,7 @@
               "settings": {
                 "image": "",
                 "title": "Your headline",
-                "text": "<p>Promotion description appears here.<\/p>",
+                "text": "<p>Promotion description appears here.</p>",
                 "button_label": "View all",
                 "link": ""
               }
@@ -893,7 +893,7 @@
               "settings": {
                 "image": "",
                 "title": "Your headline",
-                "text": "<p>Promotion description appears here.<\/p>",
+                "text": "<p>Promotion description appears here.</p>",
                 "button_label": "View all",
                 "link": ""
               }
@@ -1021,7 +1021,7 @@
           "type": "newsletter",
           "settings": {
             "newsletter_title": "Subscribe",
-            "newsletter_text": "<p>Sign up to get the latest on sales, new releases and more &hellip;<\/p>",
+            "newsletter_text": "<p>Sign up to get the latest on sales, new releases and more &hellip;</p>",
             "display_first_name": false,
             "display_last_name": false,
             "newsletter_section_text_align": "center",
@@ -1069,7 +1069,7 @@
                 "enable_image": true,
                 "darken_bg": false,
                 "title": "Customer Testimonial",
-                "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. <\/p>",
+                "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. </p>",
                 "name": "",
                 "store_name": "",
                 "link": "",
@@ -1084,7 +1084,7 @@
                 "enable_image": true,
                 "darken_bg": false,
                 "title": "Customer Testimonial",
-                "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. <\/p>",
+                "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. </p>",
                 "name": "",
                 "store_name": "",
                 "link": "",
@@ -1099,7 +1099,7 @@
                 "enable_image": true,
                 "darken_bg": false,
                 "title": "Customer Testimonial",
-                "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. <\/p>",
+                "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. </p>",
                 "name": "",
                 "store_name": "",
                 "link": "",
@@ -1287,22 +1287,22 @@
       "display_first_name": false,
       "display_last_name": false,
       "use_newsletter_border": false,
-      "newsletter_bg": "shopify:\/\/shop_images\/NL-popup2.jpg",
+      "newsletter_bg": "shopify://shop_images/NL-popup2.jpg",
       "newsletter_popup_image_align": "right",
       "newsletter_popup_title": "Sign Up Today",
-      "newsletter_popup_text": "<p><\/p>",
+      "newsletter_popup_text": "<p></p>",
       "newsletter_popup_text_align": "center",
       "newsletter_popup_seconds": "0",
       "newsletter_popup_days": "7",
-      "twitter_link": "https:\/\/twitter.com\/outofthesandbox",
-      "facebook_link": "https:\/\/facebook.com\/ootsb",
+      "twitter_link": "https://twitter.com/outofthesandbox",
+      "facebook_link": "https://facebook.com/ootsb",
       "google_link": "",
-      "youtube_link": "https:\/\/www.youtube.com\/user\/outofthesandbox",
+      "youtube_link": "https://www.youtube.com/user/outofthesandbox",
       "vimeo_link": "",
       "pinterest_link": "",
       "tumblr_link": "",
-      "instagram_link": "https:\/\/instagram.com\/outofthesandboxshopify",
-      "snapchat_link": "https:\/\/www.snapchat.com\/add\/shopify",
+      "instagram_link": "https://instagram.com/outofthesandboxshopify",
+      "snapchat_link": "https://www.snapchat.com/add/shopify",
       "houzz_link": "",
       "linkedin_link": "",
       "email_link": "",
@@ -1452,7 +1452,7 @@
       "feature1_description": "Optional description can go here",
       "feature1_button": "",
       "feature2_enabled": true,
-      "feature2_link": "http:\/\/help.outofthesandbox.com\/",
+      "feature2_link": "http://help.outofthesandbox.com/",
       "feature2_title": "Promo 2",
       "feature2_description": "Visit the Out of the Sandbox Support Center for Turbo-related articles and how-tos",
       "feature2_button": "",
@@ -1462,7 +1462,7 @@
       "feature3_description": "Publish Turbo as your main theme when you're ready to launch!",
       "feature3_button": "",
       "feature4_enabled": true,
-      "feature4_link": "https:\/\/twitter.com\/outofthesandbox",
+      "feature4_link": "https://twitter.com/outofthesandbox",
       "feature4_title": "Promo 4",
       "feature4_description": "Let us know when your new shop launches on Twitter",
       "feature4_button": "",
@@ -1839,7 +1839,7 @@
               "type": "text",
               "settings": {
                 "title": "Title",
-                "content": "<p>Use this text to share information about your brand with your customers.<\/p>",
+                "content": "<p>Use this text to share information about your brand with your customers.</p>",
                 "social_icons_footer": true
               }
             }
@@ -1860,9 +1860,9 @@
           "type": "image-with-text-overlay",
           "settings": {
             "image": "",
-            "pretext": "<p>Introducing the<\/p>",
+            "pretext": "<p>Introducing the</p>",
             "title": "Turbo Shopify Theme",
-            "subtitle": "<p>From Out of the Sandbox<\/p>",
+            "subtitle": "<p>From Out of the Sandbox</p>",
             "caption_background": false,
             "caption_background_transparency": false,
             "text_position": "center",
@@ -1880,7 +1880,7 @@
           "settings": {
             "image": "",
             "title": "Talk about your brand",
-            "content": "<p>Use this text to share information about your brand with your customers.<\/p>\r\n<p>Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "content": "<p>Use this text to share information about your brand with your customers.</p>\r\n<p>Describe a product, share announcements, or welcome customers to your store.</p>",
             "text_size": "featured_text",
             "text_alignment": "center",
             "button_label": "",
@@ -1896,7 +1896,7 @@
                 "image": "",
                 "link": "",
                 "title": "Feature",
-                "text": "<p>Promotion description details.<\/p>",
+                "text": "<p>Promotion description details.</p>",
                 "button_label": ""
               }
             },
@@ -1906,7 +1906,7 @@
                 "image": "",
                 "link": "",
                 "title": "Feature",
-                "text": "<p>Promotion description details.<\/p>",
+                "text": "<p>Promotion description details.</p>",
                 "button_label": ""
               }
             },
@@ -1916,7 +1916,7 @@
                 "image": "",
                 "link": "",
                 "title": "Feature",
-                "text": "<p>Promotion description details.<\/p>",
+                "text": "<p>Promotion description details.</p>",
                 "button_label": ""
               }
             },
@@ -1926,7 +1926,7 @@
                 "image": "",
                 "link": "",
                 "title": "Feature",
-                "text": "<p>Promotion description details.<\/p>",
+                "text": "<p>Promotion description details.</p>",
                 "button_label": ""
               }
             }
@@ -1981,9 +1981,9 @@
               "type": "image",
               "settings": {
                 "image": "",
-                "pretext": "<p>Short text that precedes the headline<\/p>",
+                "pretext": "<p>Short text that precedes the headline</p>",
                 "title": "Your headline here",
-                "subtitle": "<p>This is a short subheading for your slideshow image<\/p>",
+                "subtitle": "<p>This is a short subheading for your slideshow image</p>",
                 "text_position": "center",
                 "text_align": "center",
                 "caption_background": false,
@@ -2014,7 +2014,7 @@
               "settings": {
                 "image": "",
                 "title": "Your headline",
-                "text": "<p>Promotion description appears here.<\/p>",
+                "text": "<p>Promotion description appears here.</p>",
                 "button_label": "View all",
                 "link": ""
               }
@@ -2024,7 +2024,7 @@
               "settings": {
                 "image": "",
                 "title": "Your headline",
-                "text": "<p>Promotion description appears here.<\/p>",
+                "text": "<p>Promotion description appears here.</p>",
                 "button_label": "View all",
                 "link": ""
               }
@@ -2152,7 +2152,7 @@
           "type": "newsletter",
           "settings": {
             "newsletter_title": "Subscribe",
-            "newsletter_text": "<p>Sign up to get the latest on sales, new releases and more &hellip;<\/p>",
+            "newsletter_text": "<p>Sign up to get the latest on sales, new releases and more &hellip;</p>",
             "display_first_name": false,
             "display_last_name": false,
             "newsletter_section_text_align": "center",
@@ -2200,7 +2200,7 @@
                 "enable_image": true,
                 "darken_bg": false,
                 "title": "Customer Testimonial",
-                "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. <\/p>",
+                "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. </p>",
                 "name": "",
                 "store_name": "",
                 "link": "",
@@ -2215,7 +2215,7 @@
                 "enable_image": true,
                 "darken_bg": false,
                 "title": "Customer Testimonial",
-                "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. <\/p>",
+                "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. </p>",
                 "name": "",
                 "store_name": "",
                 "link": "",
@@ -2230,7 +2230,7 @@
                 "enable_image": true,
                 "darken_bg": false,
                 "title": "Customer Testimonial",
-                "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. <\/p>",
+                "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. </p>",
                 "name": "",
                 "store_name": "",
                 "link": "",
@@ -2346,7 +2346,7 @@
       "newsletter_section_background_color": "#a70b0b",
       "custom_logo": "",
       "password_page_text_color": "#ffffff",
-      "password-page-background": "shopify:\/\/shop_images\/hat_366c6fe3-ebb2-4e80-a86e-ca45d3739c19.jpg",
+      "password-page-background": "shopify://shop_images/hat_366c6fe3-ebb2-4e80-a86e-ca45d3739c19.jpg",
       "pagework_page_bg_stretched": true,
       "logo_font": "Google_Rubik",
       "logo_weight": "normal",
@@ -2437,15 +2437,15 @@
       "default_currency": "USD",
       "mailchimp_link": "",
       "secondary_newsletter_banner": true,
-      "twitter_link": "https:\/\/twitter.com\/ootsb",
-      "facebook_link": "https:\/\/facebook.com\/outofthesandbox",
+      "twitter_link": "https://twitter.com/ootsb",
+      "facebook_link": "https://facebook.com/outofthesandbox",
       "google_link": "",
       "youtube_link": "",
       "vimeo_link": "",
       "pinterest_link": "",
       "tumblr_link": "",
-      "instagram_link": "https:\/\/instagram.com\/outofthesandboxshopify",
-      "snapchat_link": "https:\/\/www.snapchat.com\/add\/shopify",
+      "instagram_link": "https://instagram.com/outofthesandboxshopify",
+      "snapchat_link": "https://www.snapchat.com/add/shopify",
       "houzz_link": "",
       "linkedin_link": "",
       "email_link": "",
@@ -2725,7 +2725,7 @@
               "type": "text",
               "settings": {
                 "title": "Title",
-                "content": "<p>Use this text to share information about your brand with your customers.<\/p>",
+                "content": "<p>Use this text to share information about your brand with your customers.</p>",
                 "social_icons_footer": true
               }
             }
@@ -2746,9 +2746,9 @@
           "type": "image-with-text-overlay",
           "settings": {
             "image": "",
-            "pretext": "<p>Introducing the<\/p>",
+            "pretext": "<p>Introducing the</p>",
             "title": "Turbo Shopify Theme",
-            "subtitle": "<p>From Out of the Sandbox<\/p>",
+            "subtitle": "<p>From Out of the Sandbox</p>",
             "caption_background": false,
             "caption_background_transparency": false,
             "text_position": "center",
@@ -2766,7 +2766,7 @@
           "settings": {
             "image": "",
             "title": "Talk about your brand",
-            "content": "<p>Use this text to share information about your brand with your customers.<\/p>\r\n<p>Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "content": "<p>Use this text to share information about your brand with your customers.</p>\r\n<p>Describe a product, share announcements, or welcome customers to your store.</p>",
             "text_size": "featured_text",
             "text_alignment": "center",
             "button_label": "",
@@ -2782,7 +2782,7 @@
                 "image": "",
                 "link": "",
                 "title": "Feature",
-                "text": "<p>Promotion description details.<\/p>",
+                "text": "<p>Promotion description details.</p>",
                 "button_label": ""
               }
             },
@@ -2792,7 +2792,7 @@
                 "image": "",
                 "link": "",
                 "title": "Feature",
-                "text": "<p>Promotion description details.<\/p>",
+                "text": "<p>Promotion description details.</p>",
                 "button_label": ""
               }
             },
@@ -2802,7 +2802,7 @@
                 "image": "",
                 "link": "",
                 "title": "Feature",
-                "text": "<p>Promotion description details.<\/p>",
+                "text": "<p>Promotion description details.</p>",
                 "button_label": ""
               }
             },
@@ -2812,7 +2812,7 @@
                 "image": "",
                 "link": "",
                 "title": "Feature",
-                "text": "<p>Promotion description details.<\/p>",
+                "text": "<p>Promotion description details.</p>",
                 "button_label": ""
               }
             }
@@ -2867,9 +2867,9 @@
               "type": "image",
               "settings": {
                 "image": "",
-                "pretext": "<p>Short text that precedes the headline<\/p>",
+                "pretext": "<p>Short text that precedes the headline</p>",
                 "title": "Your headline here",
-                "subtitle": "<p>This is a short subheading for your slideshow image<\/p>",
+                "subtitle": "<p>This is a short subheading for your slideshow image</p>",
                 "text_position": "center",
                 "text_align": "center",
                 "caption_background": false,
@@ -2900,7 +2900,7 @@
               "settings": {
                 "image": "",
                 "title": "Your headline",
-                "text": "<p>Promotion description appears here.<\/p>",
+                "text": "<p>Promotion description appears here.</p>",
                 "button_label": "View all",
                 "link": ""
               }
@@ -2910,7 +2910,7 @@
               "settings": {
                 "image": "",
                 "title": "Your headline",
-                "text": "<p>Promotion description appears here.<\/p>",
+                "text": "<p>Promotion description appears here.</p>",
                 "button_label": "View all",
                 "link": ""
               }
@@ -3038,7 +3038,7 @@
           "type": "newsletter",
           "settings": {
             "newsletter_title": "Subscribe",
-            "newsletter_text": "<p>Sign up to get the latest on sales, new releases and more &hellip;<\/p>",
+            "newsletter_text": "<p>Sign up to get the latest on sales, new releases and more &hellip;</p>",
             "display_first_name": false,
             "display_last_name": false,
             "newsletter_section_text_align": "center",
@@ -3086,7 +3086,7 @@
                 "enable_image": true,
                 "darken_bg": false,
                 "title": "Customer Testimonial",
-                "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. <\/p>",
+                "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. </p>",
                 "name": "",
                 "store_name": "",
                 "link": "",
@@ -3101,7 +3101,7 @@
                 "enable_image": true,
                 "darken_bg": false,
                 "title": "Customer Testimonial",
-                "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. <\/p>",
+                "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. </p>",
                 "name": "",
                 "store_name": "",
                 "link": "",
@@ -3116,7 +3116,7 @@
                 "enable_image": true,
                 "darken_bg": false,
                 "title": "Customer Testimonial",
-                "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. <\/p>",
+                "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. </p>",
                 "name": "",
                 "store_name": "",
                 "link": "",
@@ -3327,7 +3327,7 @@
     "currency_format": "money_format",
     "supported_currencies": "USD CAD AUD GBP EUR JPY",
     "default_currency": "USD",
-    "mailchimp_link": "https:\/\/lolaandtheboys.us12.list-manage.com\/subscribe\/post?u=e8b0b99a2ba56c69819a6c44b&amp;id=7801e14526",
+    "mailchimp_link": "https://lolaandtheboys.us12.list-manage.com/subscribe/post?u=e8b0b99a2ba56c69819a6c44b&amp;id=7801e14526",
     "secondary_newsletter_banner": false,
     "newsletter_popup": false,
     "newsletter_popup_close": true,
@@ -3339,7 +3339,7 @@
     "newsletter_bg": "",
     "newsletter_popup_image_align": "left",
     "newsletter_popup_title": "Sign up today",
-    "newsletter_popup_text": "<p><\/p>",
+    "newsletter_popup_text": "<p></p>",
     "newsletter_popup_text_align": "center",
     "popup_button1": "",
     "popup_button1_link": "",
@@ -3350,60 +3350,60 @@
     "newsletter_popup_seconds": 0,
     "newsletter_popup_days": "14",
     "twitter_link": "",
-    "facebook_link": "https:\/\/www.facebook.com\/lolaandtheboys",
+    "facebook_link": "https://www.facebook.com/lolaandtheboys",
     "google_link": "",
     "youtube_link": "",
     "vimeo_link": "",
-    "pinterest_link": "https:\/\/www.pinterest.com\/lolaandtheboys\/",
+    "pinterest_link": "https://www.pinterest.com/lolaandtheboys/",
     "tumblr_link": "",
-    "instagram_link": "https:\/\/www.instagram.com\/lolaandtheboys\/",
+    "instagram_link": "https://www.instagram.com/lolaandtheboys/",
     "snapchat_link": "",
     "houzz_link": "",
     "linkedin_link": "",
     "email_link": "",
-    "tiktok_link": "https:\/\/www.tiktok.com\/@lolaandtheboys",
-    "favicon": "shopify:\/\/shop_images\/LATB-favicon.png",
-    "home_preview": "shopify:\/\/shop_images\/ZARA-sets-19092022.jpg",
+    "tiktok_link": "https://www.tiktok.com/@lolaandtheboys",
+    "favicon": "shopify://shop_images/LATB-favicon.png",
+    "home_preview": "shopify://shop_images/ZARA-sets-19092022.jpg",
     "disqus_enabled": false,
     "disqus_shortname": "",
-    "look_book_first_one": "shopify:\/\/shop_images\/img-13.jpg",
-    "look_book_first_second": "shopify:\/\/shop_images\/img-9.jpg",
+    "look_book_first_one": "shopify://shop_images/img-13.jpg",
+    "look_book_first_second": "shopify://shop_images/img-9.jpg",
     "first_collection": "look-book-1",
-    "look_book_two_one": "shopify:\/\/shop_images\/img-6.jpg",
-    "look_book_two_second": "shopify:\/\/shop_images\/img-4.jpg",
+    "look_book_two_one": "shopify://shop_images/img-6.jpg",
+    "look_book_two_second": "shopify://shop_images/img-4.jpg",
     "two_collection": "look-book-2",
-    "look_book_three_one": "shopify:\/\/shop_images\/img-11.jpg",
-    "look_book_three_second": "shopify:\/\/shop_images\/Girl_4_5c3efcb6-2554-4796-aaee-be954ec4f94a.png",
+    "look_book_three_one": "shopify://shop_images/img-11.jpg",
+    "look_book_three_second": "shopify://shop_images/Girl_4_5c3efcb6-2554-4796-aaee-be954ec4f94a.png",
     "three_collection": "look-book-3",
-    "look_book_four_one": "shopify:\/\/shop_images\/img-2.jpg",
-    "look_book_four_second": "shopify:\/\/shop_images\/Girl_1_6fffe42a-41d3-4f79-be73-7909aab5fce5.png",
+    "look_book_four_one": "shopify://shop_images/img-2.jpg",
+    "look_book_four_second": "shopify://shop_images/Girl_1_6fffe42a-41d3-4f79-be73-7909aab5fce5.png",
     "four_collection": "look-book-4",
-    "look_book_five_one": "shopify:\/\/shop_images\/img-8.jpg",
-    "look_book_five_second": "shopify:\/\/shop_images\/img-10.jpg",
+    "look_book_five_one": "shopify://shop_images/img-8.jpg",
+    "look_book_five_second": "shopify://shop_images/img-10.jpg",
     "five_collection": "look-book-5",
-    "look_book_six_one": "shopify:\/\/shop_images\/img-1.jpg",
-    "look_book_six_second": "shopify:\/\/shop_images\/Boy_4_bdaf284a-0d7b-40bf-9585-a8dc512e281c.png",
+    "look_book_six_one": "shopify://shop_images/img-1.jpg",
+    "look_book_six_second": "shopify://shop_images/Boy_4_bdaf284a-0d7b-40bf-9585-a8dc512e281c.png",
     "six_collection": "look-book-6",
-    "look_book_seven_one": "shopify:\/\/shop_images\/img-12.jpg",
-    "look_book_seven_second": "shopify:\/\/shop_images\/img-3.jpg",
+    "look_book_seven_one": "shopify://shop_images/img-12.jpg",
+    "look_book_seven_second": "shopify://shop_images/img-3.jpg",
     "seven_collection": "look-book-7",
-    "look_book_eight_one": "shopify:\/\/shop_images\/img-7.jpg",
-    "look_book_eight_second": "shopify:\/\/shop_images\/img-5.jpg",
+    "look_book_eight_one": "shopify://shop_images/img-7.jpg",
+    "look_book_eight_second": "shopify://shop_images/img-5.jpg",
     "eight_collection": "look-book-8",
-    "look_book_nine_one": "shopify:\/\/shop_images\/girls_cap.jpg",
-    "look_book_nine_second": "shopify:\/\/shop_images\/girls_jacket.jpg",
+    "look_book_nine_one": "shopify://shop_images/girls_cap.jpg",
+    "look_book_nine_second": "shopify://shop_images/girls_jacket.jpg",
     "nine_collection": "look-book-9",
-    "look_book_ten_one": "shopify:\/\/shop_images\/boys_jacket.jpg",
-    "look_book_ten_second": "shopify:\/\/shop_images\/boys_full_pair.jpg",
+    "look_book_ten_one": "shopify://shop_images/boys_jacket.jpg",
+    "look_book_ten_second": "shopify://shop_images/boys_full_pair.jpg",
     "ten_collection": "look-book-10",
-    "look_book_eleven_one": "shopify:\/\/shop_images\/MicrosoftTeams-image_2.jpg",
-    "look_book_eleven_second": "shopify:\/\/shop_images\/MicrosoftTeams-image_3.jpg",
+    "look_book_eleven_one": "shopify://shop_images/MicrosoftTeams-image_2.jpg",
+    "look_book_eleven_second": "shopify://shop_images/MicrosoftTeams-image_3.jpg",
     "eleven_collection": "look-book-11",
-    "look_book_twelve_one": "shopify:\/\/shop_images\/MicrosoftTeams-image_6.jpg",
-    "look_book_twelve_second": "shopify:\/\/shop_images\/MicrosoftTeams-image_5.jpg",
+    "look_book_twelve_one": "shopify://shop_images/MicrosoftTeams-image_6.jpg",
+    "look_book_twelve_second": "shopify://shop_images/MicrosoftTeams-image_5.jpg",
     "twelve_collection": "look-book-12",
-    "look_book_thirteen_one": "shopify:\/\/shop_images\/MicrosoftTeams-image_7.jpg",
-    "look_book_thirteen_second": "shopify:\/\/shop_images\/MicrosoftTeams-image_4.jpg",
+    "look_book_thirteen_one": "shopify://shop_images/MicrosoftTeams-image_7.jpg",
+    "look_book_thirteen_second": "shopify://shop_images/MicrosoftTeams-image_4.jpg",
     "thirteen_collection": "look-book-13",
     "checkout_header_image": "",
     "checkout_logo_position": "left",
@@ -3416,12 +3416,12 @@
     "checkout_accent_color": "#197bbd",
     "checkout_button_color": "#197bbd",
     "checkout_error_color": "#e32c2b",
-    "collecon_first": "shopify:\/\/collections\/boho",
-    "collecon-first": "shopify:\/\/collections\/boho",
-    "look_book_one": "shopify:\/\/shop_images\/Boy_8.png",
-    "look_book_second": "shopify:\/\/shop_images\/Boy_4.png",
-    "look_book_third": "shopify:\/\/shop_images\/Boy_1.png",
-    "look_book_four": "shopify:\/\/shop_images\/Boy_2.png",
+    "collecon_first": "shopify://collections/boho",
+    "collecon-first": "shopify://collections/boho",
+    "look_book_one": "shopify://shop_images/Boy_8.png",
+    "look_book_second": "shopify://shop_images/Boy_4.png",
+    "look_book_third": "shopify://shop_images/Boy_1.png",
+    "look_book_four": "shopify://shop_images/Boy_2.png",
     "featured_promos_text_color": "#ffffff",
     "use_custom_bg_image": false,
     "custom_logo": "",
@@ -3561,7 +3561,7 @@
     "feature1_description": "Optional description can go here",
     "feature1_button": "",
     "feature2_enabled": true,
-    "feature2_link": "http:\/\/help.outofthesandbox.com\/",
+    "feature2_link": "http://help.outofthesandbox.com/",
     "feature2_title": "Promo 2",
     "feature2_description": "Visit the Out of the Sandbox Support Center for Turbo-related articles and how-tos",
     "feature2_button": "",
@@ -3571,7 +3571,7 @@
     "feature3_description": "Publish Turbo as your main theme when you're ready to launch!",
     "feature3_button": "",
     "feature4_enabled": true,
-    "feature4_link": "https:\/\/twitter.com\/outofthesandbox",
+    "feature4_link": "https://twitter.com/outofthesandbox",
     "feature4_title": "Promo 4",
     "feature4_description": "Let us know when your new shop launches on Twitter",
     "feature4_button": "",
@@ -3909,7 +3909,7 @@
             "type": "Announcement_slider",
             "settings": {
               "content": "Shop Our Clearance Sale! Up to 80% Off Styles",
-              "link": "https:\/\/lolaandtheboys.com\/collections\/archivesale"
+              "link": "https://lolaandtheboys.com/collections/archivesale"
             }
           }
         },
@@ -3919,17 +3919,17 @@
         "settings": {
           "show_announcement_bar": true,
           "show_countdown": true,
-          "countdown_end_date": "2024-09-24T05:00:00Z",
+          "countdown_end_date": "2024-09-25T05:00:00Z",
           "bck_clr": "#faddff",
-          "Annouce_url": "shopify:\/\/collections\/dress-sale",
+          "Annouce_url": "shopify://collections/dress-sale",
           "txt_clr": "#000000",
-          "text": "<b> The Dress Sale : 25% OFF All Lola Dresses\n<\/b>",
+          "text": "<b> The Dress Sale : 25% OFF All Lola Dresses\n</b>",
           "phone_number": "",
           "top_bar_menu": "help",
           "cart_icon": "cart",
           "show_cart": true,
           "logo_display_width": 180,
-          "logo": "shopify:\/\/shop_images\/lola-logo-stars-03_1c7bd026-d5ed-4657-b95e-286bb452d008.png",
+          "logo": "shopify://shop_images/lola-logo-stars-03_1c7bd026-d5ed-4657-b95e-286bb452d008.png",
           "main_linklist": "main-menu",
           "main_linklist2": "",
           "vertical_menu": true,
@@ -3949,9 +3949,9 @@
           "footer-0": {
             "type": "logo",
             "settings": {
-              "image": "shopify:\/\/shop_images\/White-lola-logo-stars-03.png",
+              "image": "shopify://shop_images/White-lola-logo-stars-03.png",
               "text_align": "left",
-              "maincontent": "<p>This fantastically fun brand was born in Chicago in 2016. Lola and the Boys reimagines kids’ fashion as outrageously fun, comfy and totally doable.<\/p>",
+              "maincontent": "<p>This fantastically fun brand was born in Chicago in 2016. Lola and the Boys reimagines kids’ fashion as outrageously fun, comfy and totally doable.</p>",
               "social_icons_footer": false
             }
           },
@@ -3973,7 +3973,7 @@
             "type": "newsletter",
             "settings": {
               "newstitle": "Newsletter",
-              "newscontent": "<p>Sign up for the latest news, offers and styles<\/p>",
+              "newscontent": "<p>Sign up for the latest news, offers and styles</p>",
               "display_newsletter": true
             }
           }
@@ -3985,7 +3985,7 @@
           "fb2ecc9d-e7f5-4096-b058-26c9043bb448"
         ],
         "settings": {
-          "copyright_text": "<a href=\"https:\/\/freedommediax.com\" target=\"_blank\">Powered By Freedom<\/a>",
+          "copyright_text": "<a href=\"https://freedommediax.com\" target=\"_blank\">Powered By Freedom</a>",
           "display_designed_by": false,
           "display_payment_methods": true,
           "title1": "GET IN THE KNOW",
@@ -3998,11 +3998,11 @@
           "button_text": "privacy policy",
           "button_link1": "#",
           "button_text1": "BEGIN SURVEY",
-          "image11": "shopify:\/\/shop_images\/app1.png",
+          "image11": "shopify://shop_images/app1.png",
           "button_link11": "#",
-          "image22": "shopify:\/\/shop_images\/app2.png",
+          "image22": "shopify://shop_images/app2.png",
           "button_link22": "#",
-          "image33": "shopify:\/\/shop_images\/app3.png",
+          "image33": "shopify://shop_images/app3.png",
           "button_link33": "#"
         }
       },
@@ -4013,7 +4013,7 @@
             "type": "filter",
             "settings": {
               "filter_name": "Size",
-              "filter_tags": "2,4,6,8,10,12,14\/16,\n12\/18 months5.5 (21) PREORDER- SHIPS 12\/15,\n6C(22) PREORDER SHIPS 12\/15,\n7C (23) PREORDER - SHIPS 12\/15,\n8C (24) PREORDER - SHIPS 12\/15,\n9C (25) PREORDER - SHIPS 12\/15,\n9.5 (26) PREORDER - SHIPS 12\/15,\n10C (27) PREORDER - SHIPS 12\/15,\n11C (28) PREORDER - SHIPS 12\/15,\n11.5 (29) PREORDER - SHIPS 12\/15,\n12C (30)- PREORDER - SHIPS 12\/15,\n13C (31) PREORDER - SHIPS 12\/15,\n1Y (32) PREORDER- SHIPS 12\/15,\n2Y (33) PREORDER - SHIPS 12\/15,\n3Y (34),\n4Y (35),\n5Y (36),\n6Y (37)",
+              "filter_tags": "2,4,6,8,10,12,14/16,\n12/18 months5.5 (21) PREORDER- SHIPS 12/15,\n6C(22) PREORDER SHIPS 12/15,\n7C (23) PREORDER - SHIPS 12/15,\n8C (24) PREORDER - SHIPS 12/15,\n9C (25) PREORDER - SHIPS 12/15,\n9.5 (26) PREORDER - SHIPS 12/15,\n10C (27) PREORDER - SHIPS 12/15,\n11C (28) PREORDER - SHIPS 12/15,\n11.5 (29) PREORDER - SHIPS 12/15,\n12C (30)- PREORDER - SHIPS 12/15,\n13C (31) PREORDER - SHIPS 12/15,\n1Y (32) PREORDER- SHIPS 12/15,\n2Y (33) PREORDER - SHIPS 12/15,\n3Y (34),\n4Y (35),\n5Y (36),\n6Y (37)",
               "enable_filter_swatches": true
             }
           },
@@ -4039,7 +4039,7 @@
           "collection_tags": true,
           "collection_sort": true,
           "featured_collection_image": false,
-          "image": "shopify:\/\/shop_images\/IMG_7741.jpg",
+          "image": "shopify://shop_images/IMG_7741.jpg",
           "image_darken": false,
           "toggle": false
         }
@@ -4048,7 +4048,7 @@
         "type": "newsletter",
         "settings": {
           "newsletter_title": "Join The Club",
-          "newsletter_text": "<p>Sign up to get the latest on sales, new releases and more …<\/p>",
+          "newsletter_text": "<p>Sign up to get the latest on sales, new releases and more …</p>",
           "display_first_name": false,
           "display_last_name": false,
           "newsletter_section_text_align": "center",
@@ -4093,7 +4093,7 @@
           "c01ce308-58bf-4cea-b022-6b8aab78b31c": {
             "type": "column",
             "settings": {
-              "richtext_top": "<p><\/p>",
+              "richtext_top": "<p></p>",
               "image_caption_top": "",
               "image_link_top": "",
               "menu_1": "",
@@ -4106,7 +4106,7 @@
               "menu_4_link": "",
               "image_caption_bottom": "",
               "image_link_bottom": "",
-              "richtext_bottom": "<p><\/p>"
+              "richtext_bottom": "<p></p>"
             }
           }
         },
@@ -4146,7 +4146,7 @@
           "page-details-template-0": {
             "type": "image_with_text_overlay",
             "settings": {
-              "image": "shopify:\/\/shop_images\/boho-babes-banner.jpg",
+              "image": "shopify://shop_images/boho-babes-banner.jpg",
               "pretext": "",
               "title": "",
               "subtitle": "",
@@ -4174,7 +4174,7 @@
             "settings": {
               "image": "",
               "title": "Some Headline",
-              "content": "<p>Shop our Boho babes collection this festival season and receive a FREE Flower Crown with purchase!<\/p>",
+              "content": "<p>Shop our Boho babes collection this festival season and receive a FREE Flower Crown with purchase!</p>",
               "text_size": "featured_text",
               "text_alignment": "center",
               "button_label": "",
@@ -4232,17 +4232,17 @@
           "title": "",
           "text": "",
           "hour_title": "MAIN OFFICE",
-          "hour_html": "<p>919 N Larrabee st <br>Chicago IL 60610<\/p>\n<b>Store Hours:<\/b>\n<p>Monday-Friday: 10 AM to 6 PM<br>\nSaturday: 11 AM to 5 PM<br>\nSunday: Closed<\/p>",
+          "hour_html": "<p>919 N Larrabee st <br>Chicago IL 60610</p>\n<b>Store Hours:</b>\n<p>Monday-Friday: 10 AM to 6 PM<br>\nSaturday: 11 AM to 5 PM<br>\nSunday: Closed</p>",
           "main_ofc_title": "Unicorn World Store",
-          "main_ofc_html": "<p>Watertower Mall - 2nd Floor <br>835 Michigan Ave <br>Chicago, IL 60611<\/p>\n<b>Store Hours:<\/b>\n<p>Monday-Thursday: 11 AM to 7 PM<br>Friday-Saturday: 11 AM to 8 PM<br>Sunday: 12 PM to 6 PM\n\n<\/p>",
+          "main_ofc_html": "<p>Watertower Mall - 2nd Floor <br>835 Michigan Ave <br>Chicago, IL 60611</p>\n<b>Store Hours:</b>\n<p>Monday-Thursday: 11 AM to 7 PM<br>Friday-Saturday: 11 AM to 8 PM<br>Sunday: 12 PM to 6 PM\n\n</p>",
           "phone_title": "",
           "phone_number": "",
           "email_title": "Reach Us By Email",
           "contactemail": "customerservice@lolaandtheboys.com",
           "contact_heading": "NEED A FASTER RESPONSE?",
-          "contact_subtitle": "<p>Fill out our form below.<\/p>",
+          "contact_subtitle": "<p>Fill out our form below.</p>",
           "contact_bug_heading": "WANT TO REPORT A BUG?",
-          "contact_bug_subtitle": "<p>Complete the form below to report a site\/app bug. Tapping \"SUBMIT REPORT\" will also send us your browser info or app data so we may best diagnose the issue.<\/p>",
+          "contact_bug_subtitle": "<p>Complete the form below to report a site/app bug. Tapping \"SUBMIT REPORT\" will also send us your browser info or app data so we may best diagnose the issue.</p>",
           "contact_style_expert_label": "",
           "contact_style_expert_link": "mailto:customerservice@lolaandtheboys.com"
         }
@@ -4253,8 +4253,8 @@
           "0199c801-9911-41f5-bdde-e6b9833a4d6a": {
             "type": "image",
             "settings": {
-              "image_mobile": "shopify:\/\/shop_images\/Lola_VDay_HP_banner_mob_651438ea-b7c0-4ecb-8d10-30b1eadc4ee1.jpg",
-              "mp4": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/cb1a7d944d894239a1878e8ce77c2a4a.mp4",
+              "image_mobile": "shopify://shop_images/Lola_VDay_HP_banner_mob_651438ea-b7c0-4ecb-8d10-30b1eadc4ee1.jpg",
+              "mp4": "https://cdn.shopify.com/videos/c/o/v/cb1a7d944d894239a1878e8ce77c2a4a.mp4",
               "mobilevideo": "",
               "pretext": "",
               "title": "",
@@ -4264,7 +4264,7 @@
               "caption_background": false,
               "caption_background_transparency": false,
               "button1": "",
-              "button1_link": "https:\/\/lolaandtheboys.com\/collections\/friendsandfamilysale",
+              "button1_link": "https://lolaandtheboys.com/collections/friendsandfamilysale",
               "button1_highlight": false,
               "button2": "",
               "button2_link": "",
@@ -4274,8 +4274,8 @@
           "d57ce731-17a5-47fb-bb3b-8fadecbcdaef": {
             "type": "image",
             "settings": {
-              "image_mobile": "shopify:\/\/shop_images\/Mother_s_Day_HP_mob_1.jpg",
-              "mp4": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/f3af8b6688de40788a0d7ee5d4cfd1c1.mp4",
+              "image_mobile": "shopify://shop_images/Mother_s_Day_HP_mob_1.jpg",
+              "mp4": "https://cdn.shopify.com/videos/c/o/v/f3af8b6688de40788a0d7ee5d4cfd1c1.mp4",
               "mobilevideo": "",
               "pretext": "",
               "title": "",
@@ -4285,7 +4285,7 @@
               "caption_background": false,
               "caption_background_transparency": false,
               "button1": "",
-              "button1_link": "shopify:\/\/collections\/mommy-me-1",
+              "button1_link": "shopify://collections/mommy-me-1",
               "button1_highlight": false,
               "button2": "",
               "button2_link": "",
@@ -4295,8 +4295,8 @@
           "f73e9650-a95b-4248-9670-bb3a1dc690f1": {
             "type": "image",
             "settings": {
-              "image_mobile": "shopify:\/\/shop_images\/Lola_Archive_Sale_mob.jpg",
-              "mp4": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/7b5bec7e2af54dc18e64f247abd18a71.mp4",
+              "image_mobile": "shopify://shop_images/Lola_Archive_Sale_mob.jpg",
+              "mp4": "https://cdn.shopify.com/videos/c/o/v/7b5bec7e2af54dc18e64f247abd18a71.mp4",
               "mobilevideo": "",
               "pretext": "",
               "title": "",
@@ -4306,7 +4306,7 @@
               "caption_background": false,
               "caption_background_transparency": false,
               "button1": "",
-              "button1_link": "https:\/\/lolaandtheboys.com\/collections\/archivesale",
+              "button1_link": "https://lolaandtheboys.com/collections/archivesale",
               "button1_highlight": false,
               "button2": "",
               "button2_link": "",
@@ -4316,8 +4316,8 @@
           "08b10095-7780-481c-a75e-d693d81941ea": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Lola_Pretty_In_Pink_HP.jpg",
-              "image_mobile": "shopify:\/\/shop_images\/Lola_Archive_Sale_HP_banner_mob_2.jpg",
+              "image": "shopify://shop_images/Lola_Pretty_In_Pink_HP.jpg",
+              "image_mobile": "shopify://shop_images/Lola_Archive_Sale_HP_banner_mob_2.jpg",
               "mp4": "",
               "mobilevideo": "",
               "pretext": "",
@@ -4328,7 +4328,7 @@
               "caption_background": false,
               "caption_background_transparency": false,
               "button1": "",
-              "button1_link": "https:\/\/lolaandtheboys.com\/collections\/barbiecore",
+              "button1_link": "https://lolaandtheboys.com/collections/barbiecore",
               "button1_highlight": false,
               "button2": "",
               "button2_link": "",
@@ -4338,8 +4338,8 @@
           "5f31882f-df39-40df-824d-98c8399cd0ec": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/HOME_PAGE_BANNER_desktop_12.jpg",
-              "image_mobile": "shopify:\/\/shop_images\/HOME_PAGE_BANNER_MOBILE_9.jpg",
+              "image": "shopify://shop_images/HOME_PAGE_BANNER_desktop_12.jpg",
+              "image_mobile": "shopify://shop_images/HOME_PAGE_BANNER_MOBILE_9.jpg",
               "mp4": "",
               "mobilevideo": "",
               "pretext": "",
@@ -4350,7 +4350,7 @@
               "caption_background": false,
               "caption_background_transparency": false,
               "button1": "",
-              "button1_link": "https:\/\/lolaandtheboys.com\/collections\/ballerina",
+              "button1_link": "https://lolaandtheboys.com/collections/ballerina",
               "button1_highlight": false,
               "button2": "",
               "button2_link": "",
@@ -4370,10 +4370,10 @@
           "slideshow_animation": "slide",
           "headline": "SUMMER COLLECTION",
           "paragraph": "SHOP OUR",
-          "bannre_link": "https:\/\/lolaandtheboys.com\/collections\/summer-sneaker-sale",
+          "bannre_link": "https://lolaandtheboys.com/collections/summer-sneaker-sale",
           "button_link": "",
           "button_text": "",
-          "image": "shopify:\/\/shop_images\/Shoe-Sale-Banner-_1.jpg",
+          "image": "shopify://shop_images/Shoe-Sale-Banner-_1.jpg",
           "slideshow_speed": 18
         }
       },
@@ -4425,45 +4425,45 @@
           "1620733117f7c8d574-2": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/024A4590.jpg",
-              "link": "shopify:\/\/collections\/spring-2025",
+              "image": "shopify://shop_images/024A4590.jpg",
+              "link": "shopify://collections/spring-2025",
               "title": "SPRING",
               "text": "",
               "button_label": "shop now",
-              "button_link": "shopify:\/\/collections\/valentines-day"
+              "button_link": "shopify://collections/valentines-day"
             }
           },
           "1620733117f7c8d574-1": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/IMG_1299.jpg",
-              "link": "https:\/\/lolaandtheboys.com\/collections\/girls-dresses-1",
+              "image": "shopify://shop_images/IMG_1299.jpg",
+              "link": "https://lolaandtheboys.com/collections/girls-dresses-1",
               "title": "Dresses",
               "text": "",
               "button_label": "shop now",
-              "button_link": "shopify:\/\/collections\/girls-dresses-1"
+              "button_link": "shopify://collections/girls-dresses-1"
             }
           },
           "1620733117f7c8d574-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/ARCHIVE_SALE_2.jpg",
-              "link": "shopify:\/\/collections\/archivesale",
+              "image": "shopify://shop_images/ARCHIVE_SALE_2.jpg",
+              "link": "shopify://collections/archivesale",
               "title": "Archive Sale",
               "text": "",
               "button_label": "shop now",
-              "button_link": "shopify:\/\/collections\/archivesale"
+              "button_link": "shopify://collections/archivesale"
             }
           },
           "219d52f2-8c10-4fb1-80ed-498170eb6159": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/BEST_SELLERS.png",
-              "link": "shopify:\/\/collections\/best-sellers",
+              "image": "shopify://shop_images/BEST_SELLERS.png",
+              "link": "shopify://collections/best-sellers",
               "title": "BEST SELLERS",
               "text": "",
               "button_label": "shop now",
-              "button_link": "shopify:\/\/collections\/best-sellers"
+              "button_link": "shopify://collections/best-sellers"
             }
           }
         },
@@ -4484,14 +4484,14 @@
       "162078668625f346b9": {
         "type": "shell-of-percentage",
         "settings": {
-          "sale_link": "https:\/\/lolaandtheboys.com\/collections\/spring-blow-out-sale",
+          "sale_link": "https://lolaandtheboys.com/collections/spring-blow-out-sale",
           "title": "Sale",
           "description": "Youre favorite style are up to",
           "title_sale": "65% OFF!",
-          "button_link": "https:\/\/lolaandtheboys.com\/collections\/spring-blow-out-sale",
+          "button_link": "https://lolaandtheboys.com/collections/spring-blow-out-sale",
           "button_text": "SHOP THE SALE",
-          "image": "shopify:\/\/shop_images\/SALE_65_OFF.jpg",
-          "mobile_image": "shopify:\/\/shop_images\/SALE_65_OFF_mob.jpg"
+          "image": "shopify://shop_images/SALE_65_OFF.jpg",
+          "mobile_image": "shopify://shop_images/SALE_65_OFF_mob.jpg"
         }
       },
       "16208058593000aadb": {
@@ -4500,34 +4500,34 @@
           "16208058593000aadb-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/IMG_4344_43da5303-f0d6-4cc2-8b11-d3f0f914da0b.jpg",
-              "link": "https:\/\/lolaandtheboys.com\/collections\/eras-tour",
+              "image": "shopify://shop_images/IMG_4344_43da5303-f0d6-4cc2-8b11-d3f0f914da0b.jpg",
+              "link": "https://lolaandtheboys.com/collections/eras-tour",
               "title1": "Eras Tour",
               "text": "",
               "button_label": "Shop Now",
-              "button_link": "https:\/\/lolaandtheboys.com\/collections\/eras-tour"
+              "button_link": "https://lolaandtheboys.com/collections/eras-tour"
             }
           },
           "16208058593000aadb-1": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/0Z1A9395.jpg",
-              "link": "https:\/\/lolaandtheboys.com\/collections\/loungewear",
+              "image": "shopify://shop_images/0Z1A9395.jpg",
+              "link": "https://lolaandtheboys.com/collections/loungewear",
               "title1": "Lounge Sets",
               "text": "",
               "button_label": "Shop now",
-              "button_link": "https:\/\/lolaandtheboys.com\/collections\/fall-outerwear"
+              "button_link": "https://lolaandtheboys.com/collections/fall-outerwear"
             }
           },
           "16208058593000aadb-2": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Shot_36_0105.jpg",
-              "link": "shopify:\/\/collections\/mommy-me-1",
+              "image": "shopify://shop_images/Shot_36_0105.jpg",
+              "link": "shopify://collections/mommy-me-1",
               "title1": "Mommy + Me",
               "text": "",
               "button_label": "Shop now",
-              "button_link": "shopify:\/\/collections\/mommy-me-1"
+              "button_link": "shopify://collections/mommy-me-1"
             }
           }
         },
@@ -4562,21 +4562,21 @@
             "type": "question",
             "settings": {
               "title": "Frequently asked question",
-              "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>"
+              "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>"
             }
           },
           "e2f6e1f0-73b7-489d-aa15-18d4d2e19ada": {
             "type": "question",
             "settings": {
               "title": "Frequently asked question",
-              "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>"
+              "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>"
             }
           },
           "31064a53-4149-4aa3-a71d-0a594bf53670": {
             "type": "question",
             "settings": {
               "title": "Frequently asked question",
-              "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>"
+              "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>"
             }
           }
         },
@@ -4618,8 +4618,8 @@
       "about-member-img-section": {
         "type": "about-member-img-section",
         "settings": {
-          "image": "shopify:\/\/shop_images\/2131313.png",
-          "image1": "shopify:\/\/shop_images\/banner-about.jpg"
+          "image": "shopify://shop_images/2131313.png",
+          "image1": "shopify://shop_images/banner-about.jpg"
         }
       },
       "about-form-section": {
@@ -4641,15 +4641,15 @@
       "about-application-section": {
         "type": "about-application-section",
         "settings": {
-          "image": "shopify:\/\/shop_images\/454545454.png",
+          "image": "shopify://shop_images/454545454.png",
           "title": "LOLAANDTHEBOYS ON THE GO",
           "description": "Download our super easy-to-use app available on iPhone, iPad, and Android.",
           "img_link1": "#",
-          "image1": "shopify:\/\/shop_images\/iphone-icon.png",
+          "image1": "shopify://shop_images/iphone-icon.png",
           "img_link2": "#",
-          "image2": "shopify:\/\/shop_images\/ipad-icon.png",
+          "image2": "shopify://shop_images/ipad-icon.png",
           "img_link3": "#",
-          "image3": "shopify:\/\/shop_images\/android-icon.png",
+          "image3": "shopify://shop_images/android-icon.png",
           "title1": "LET'S GET SOCIAL",
           "description1": "See what we're up to #irl by following us @lolaandtheboys!"
         }
@@ -4661,21 +4661,21 @@
             "type": "question",
             "settings": {
               "title": "Frequently asked question",
-              "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>"
+              "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>"
             }
           },
           "7c607f70-c823-4698-90e5-c5b583f8cd81": {
             "type": "question",
             "settings": {
               "title": "Frequently asked question",
-              "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>"
+              "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>"
             }
           },
           "b85c1a2e-fa7c-47b4-b3e0-434f4fddcbfe": {
             "type": "question",
             "settings": {
               "title": "Frequently asked question",
-              "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>"
+              "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>"
             }
           }
         },
@@ -4735,78 +4735,78 @@
           "7a15dbf9-6313-4c64-a4fb-7403e43aa2ba": {
             "type": "question",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Daily-Mom-Parent-Portal_Summer-Fashion_Lola-and-the-Boys-7.jpg",
+              "image": "shopify://shop_images/Daily-Mom-Parent-Portal_Summer-Fashion_Lola-and-the-Boys-7.jpg",
               "heading": "17 Cute & Trendy Summer Styles For Kids",
               "press_post_site": "dailymom.com",
               "press_post_date": "Jun 16 2022",
               "button_label": "Read full article",
-              "button_link": "https:\/\/dailymom.com\/shine\/17-cute-trendy-summer-styles-for-kids\/"
+              "button_link": "https://dailymom.com/shine/17-cute-trendy-summer-styles-for-kids/"
             }
           },
           "752b3ff5-753d-422c-9563-9a30dc9d9e90": {
             "type": "question",
             "settings": {
-              "image": "shopify:\/\/shop_images\/kiddo-family.jpg",
+              "image": "shopify://shop_images/kiddo-family.jpg",
               "heading": "Kiddo fashion’s Irina Ovrutsky from Lola & The Boys",
               "press_post_site": "thechic.us",
               "press_post_date": "Jun  29 2017",
               "button_label": "Read full article",
-              "button_link": "https:\/\/www.thechic.us\/lolaandtheboys\/"
+              "button_link": "https://www.thechic.us/lolaandtheboys/"
             }
           },
           "cd088108-6008-41a7-8e42-11757ad3402b": {
             "type": "question",
             "settings": {
-              "image": "shopify:\/\/shop_images\/chicago-mom.jpg",
+              "image": "shopify://shop_images/chicago-mom.jpg",
               "heading": "Chicago mom creates affordable fashion line at 'Lola & The Boys' online store",
               "press_post_site": "abc7chicago.com",
               "press_post_date": "Jun 29 2017",
               "button_label": "Read full article",
-              "button_link": "https:\/\/abc7chicago.com\/windy-city-live-fashion-kids-clothes-lola-and-the-boys\/2159932\/"
+              "button_link": "https://abc7chicago.com/windy-city-live-fashion-kids-clothes-lola-and-the-boys/2159932/"
             }
           },
           "abc93d07-d8c3-4e77-ba4c-60ef94f231a7": {
             "type": "question",
             "settings": {
-              "image": "shopify:\/\/shop_images\/lola-and-boys.png",
+              "image": "shopify://shop_images/lola-and-boys.png",
               "heading": "Model and Fashion Designer Irina Ovrutsky tells us more about the mother daughter chic clothing store, Lola and the Boys!",
               "press_post_site": "YouAndMeThisMorning",
               "press_post_date": "Jun 14 2017",
               "button_label": "Read full article",
-              "button_link": "https:\/\/www.youtube.com\/watch?v=Qd4X8h_fMng"
+              "button_link": "https://www.youtube.com/watch?v=Qd4X8h_fMng"
             }
           },
           "7e84ac2a-70cb-4a7f-919a-a7b10c63b8f0": {
             "type": "question",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Fabricofourlivescover.jpg",
+              "image": "shopify://shop_images/Fabricofourlivescover.jpg",
               "heading": "The Fabric of our Lives",
               "press_post_site": "jwcdaily.com",
               "press_post_date": "Oct 14 2016",
               "button_label": "Read full article",
-              "button_link": "https:\/\/jwcdaily.com\/sheridanroadmagazine\/2016\/10\/14\/the-fabric-of-our-lives\/"
+              "button_link": "https://jwcdaily.com/sheridanroadmagazine/2016/10/14/the-fabric-of-our-lives/"
             }
           },
           "9c6218ee-d00f-482f-87ad-12e8f20d509d": {
             "type": "question",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Irina4.webp",
+              "image": "shopify://shop_images/Irina4.webp",
               "heading": "Irina Ovrutsky Designs Playful, Trendy And Affordable Kids Clothing",
               "press_post_site": "ladybossblogger.com",
               "press_post_date": "Mar 15 2017",
               "button_label": "Read full article",
-              "button_link": "https:\/\/ladybossblogger.com\/irina-ovrutsky-designs-playful-trendy-affordable-kids-clothing\/"
+              "button_link": "https://ladybossblogger.com/irina-ovrutsky-designs-playful-trendy-affordable-kids-clothing/"
             }
           },
           "66741a44-7a79-4fec-b316-5cc298647ea8": {
             "type": "question",
             "settings": {
-              "image": "shopify:\/\/shop_images\/earnshaws.jpg",
+              "image": "shopify://shop_images/earnshaws.jpg",
               "heading": "The 2018 Earnie Awards",
               "press_post_site": "earnshaws.com",
               "press_post_date": "Nov 27 2018",
               "button_label": "Read full article",
-              "button_link": "https:\/\/www.earnshaws.com\/earnie-awards\/the-2018-earnie-awards\/"
+              "button_link": "https://www.earnshaws.com/earnie-awards/the-2018-earnie-awards/"
             }
           }
         },
@@ -4824,7 +4824,7 @@
         ],
         "settings": {
           "headline": "PRESS",
-          "date_news": "<p>Our team loves working with bloggers and journalists around the globe to share compelling stories! If you’re a member of the media and would like to talk, please get in touch with appropriate team or send an email to <a href=\"mailto:someone@example.com\">irina@lolaandtheboys.com.<\/a><\/p>",
+          "date_news": "<p>Our team loves working with bloggers and journalists around the globe to share compelling stories! If you’re a member of the media and would like to talk, please get in touch with appropriate team or send an email to <a href=\"mailto:someone@example.com\">irina@lolaandtheboys.com.</a></p>",
           "headline1": "Featured In The press!"
         }
       },
@@ -4834,40 +4834,40 @@
           "16246000176a3dd474-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/rainbow-img.jpg",
-              "link": "shopify:\/\/collections\/newarrivals",
+              "image": "shopify://shop_images/rainbow-img.jpg",
+              "link": "shopify://collections/newarrivals",
               "title": "Just Dropped",
               "title_n": "258+",
               "title_1": "New Arrivals",
               "text": "",
               "button_label": "shop now",
-              "button_link": "shopify:\/\/collections\/newarrivals"
+              "button_link": "shopify://collections/newarrivals"
             }
           },
           "16246000176a3dd474-1": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/0Z1A9193.jpg",
-              "link": "shopify:\/\/collections\/newarrivals",
+              "image": "shopify://shop_images/0Z1A9193.jpg",
+              "link": "shopify://collections/newarrivals",
               "title": "",
               "title_n": "123",
               "title_1": "Feature",
               "text": "",
               "button_label": "shop now",
-              "button_link": "shopify:\/\/collections\/newarrivals"
+              "button_link": "shopify://collections/newarrivals"
             }
           },
           "07b4c041-478c-477d-88c7-66769c976658": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Lola_WB_Homepage__mob_d7173db9-30cc-4d07-99fa-b988d5220b86.jpg",
-              "link": "shopify:\/\/collections\/warner-brothers",
+              "image": "shopify://shop_images/Lola_WB_Homepage__mob_d7173db9-30cc-4d07-99fa-b988d5220b86.jpg",
+              "link": "shopify://collections/warner-brothers",
               "title": "",
               "title_n": "",
               "title_1": "Feature",
               "text": "",
               "button_label": "shop now",
-              "button_link": "shopify:\/\/collections\/warner-brothers"
+              "button_link": "shopify://collections/warner-brothers"
             }
           }
         },
@@ -4932,14 +4932,14 @@
           "2aaaa043-d5f8-492b-b465-17d7d823ed8a": {
             "type": "image_and_text",
             "settings": {
-              "new_about_image": "shopify:\/\/shop_images\/Screen_Shot_2019-05-01_at_10.31.00_AM_large_1bbb0309-9fea-486c-89dd-2aebec5efe74.png",
+              "new_about_image": "shopify://shop_images/Screen_Shot_2019-05-01_at_10.31.00_AM_large_1bbb0309-9fea-486c-89dd-2aebec5efe74.png",
               "new_about_text": ""
             }
           },
           "e92fe480-d9b3-4836-b806-e7a4c5d05084": {
             "type": "image_and_text",
             "settings": {
-              "new_about_text": "<em>Lola and the Boys<\/em> reimagines kids’ fashion as outrageously fun, comfy and totally doable."
+              "new_about_text": "<em>Lola and the Boys</em> reimagines kids’ fashion as outrageously fun, comfy and totally doable."
             }
           },
           "608db3c8-0bd9-4430-a53c-e7c1df0a482e": {
@@ -4951,7 +4951,7 @@
           "435bfd06-b2f5-4080-ab5e-1b0f59f00d90": {
             "type": "image_and_text",
             "settings": {
-              "new_about_text": "For <em>Lola and the Boys<\/em>’ founder Irina Ovrutsky, having kids pushed her inner artist to come out and play. Going from model to mama, she had daughter Lola (followed by sons Shia, then Julian (“JuJu”), and it changed everything. Irina put the brakes on a women’s boutique she had in the works and suddenly saw style through a different lens—more colorful for kids, yet practical for parents."
+              "new_about_text": "For <em>Lola and the Boys</em>’ founder Irina Ovrutsky, having kids pushed her inner artist to come out and play. Going from model to mama, she had daughter Lola (followed by sons Shia, then Julian (“JuJu”), and it changed everything. Irina put the brakes on a women’s boutique she had in the works and suddenly saw style through a different lens—more colorful for kids, yet practical for parents."
             }
           },
           "27bb15d2-ad1d-486c-bd17-f651cce5fbc8": {
@@ -4969,7 +4969,7 @@
           "c0b8edf3-e98f-4210-8242-1c2877f71e0a": {
             "type": "image_and_text",
             "settings": {
-              "new_about_text": "And so, this fantastically fun brand was born in Chicago in 2016. With it, came Irina’s built-in focus group of mini me’s to yea or nay fabrics, colors and trends, giving her designs an enthusiastic thumbs up, or an<em>ugh, dinosaurs are so last season for 8-year-olds, Mom.<\/em>"
+              "new_about_text": "And so, this fantastically fun brand was born in Chicago in 2016. With it, came Irina’s built-in focus group of mini me’s to yea or nay fabrics, colors and trends, giving her designs an enthusiastic thumbs up, or an<em>ugh, dinosaurs are so last season for 8-year-olds, Mom.</em>"
             }
           },
           "4a244145-e0ca-413d-a82b-18e73f10e243": {
@@ -5012,42 +5012,42 @@
           "49b3ea75-c609-4cb2-a08d-f4fd9ef959fa": {
             "type": "collection_list",
             "settings": {
-              "collection_link": "shopify:\/\/collections\/girls-dresses-1",
+              "collection_link": "shopify://collections/girls-dresses-1",
               "linktext": "Dresses"
             }
           },
           "b033deb4-4027-4b7c-aa4c-4c90ffeb6acf": {
             "type": "collection_list",
             "settings": {
-              "collection_link": "shopify:\/\/collections\/sets",
+              "collection_link": "shopify://collections/sets",
               "linktext": "Sets"
             }
           },
           "5f9957dc-9d05-49df-8d52-58066609b2ef": {
             "type": "collection_list",
             "settings": {
-              "collection_link": "shopify:\/\/collections\/girls-sneakers",
+              "collection_link": "shopify://collections/girls-sneakers",
               "linktext": "Shoes"
             }
           },
           "78a8760a-d651-45f9-8869-580e8f066dc4": {
             "type": "collection_list",
             "settings": {
-              "collection_link": "shopify:\/\/collections\/best-sellers",
+              "collection_link": "shopify://collections/best-sellers",
               "linktext": "Best Sellers"
             }
           },
           "144999fc-b825-438d-9437-94efe4685628": {
             "type": "collection_list",
             "settings": {
-              "collection_link": "https:\/\/lolaandtheboys.com\/collections\/newarrivals",
+              "collection_link": "https://lolaandtheboys.com/collections/newarrivals",
               "linktext": "New Arrivals"
             }
           },
           "e84f9287-18a9-4e62-99ee-b216db842499": {
             "type": "collection_list",
             "settings": {
-              "collection_link": "https:\/\/lolaandtheboys.com\/collections\/spring-blow-out-sale",
+              "collection_link": "https://lolaandtheboys.com/collections/spring-blow-out-sale",
               "linktext": "Sale On Sale"
             }
           }
@@ -5109,8 +5109,8 @@
           "532f6d09-62f1-4935-b9b0-ef50019960eb-1688661992de00fd5a-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/GIRLSS_13eaba4e-b7ea-4963-a04a-4bbfa8e14a05.jpg",
-              "link": "https:\/\/lolaandtheboys.com\/collections\/girls-1",
+              "image": "shopify://shop_images/GIRLSS_13eaba4e-b7ea-4963-a04a-4bbfa8e14a05.jpg",
+              "link": "https://lolaandtheboys.com/collections/girls-1",
               "title1": "Girls",
               "text": "",
               "button_label": "",
@@ -5120,8 +5120,8 @@
           "532f6d09-62f1-4935-b9b0-ef50019960eb-1688661992de00fd5a-1": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/0Z1A1802.jpg",
-              "link": "https:\/\/lolaandtheboys.com\/collections\/shoes2022",
+              "image": "shopify://shop_images/0Z1A1802.jpg",
+              "link": "https://lolaandtheboys.com/collections/shoes2022",
               "title1": "Shoes",
               "text": "",
               "button_label": "",
@@ -5131,8 +5131,8 @@
           "532f6d09-62f1-4935-b9b0-ef50019960eb-1688661992de00fd5a-2": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/LATB_DC_10102023_1439_3.jpg",
-              "link": "https:\/\/lolaandtheboys.com\/collections\/boys-1",
+              "image": "shopify://shop_images/LATB_DC_10102023_1439_3.jpg",
+              "link": "https://lolaandtheboys.com/collections/boys-1",
               "title1": "Boys",
               "text": "",
               "button_label": "",
@@ -5142,8 +5142,8 @@
           "a88ed398-747e-4fb7-bcb2-8eee0b9d138e": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/BRIRTHDA_QUEEN.jpg",
-              "link": "https:\/\/lolaandtheboys.com\/collections\/birthday",
+              "image": "shopify://shop_images/BRIRTHDA_QUEEN.jpg",
+              "link": "https://lolaandtheboys.com/collections/birthday",
               "title1": "Birthday Looks",
               "text": "",
               "button_label": "",
@@ -5153,8 +5153,8 @@
           "27503c35-161f-4ddb-a65c-6bab6dc1e530": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/0Z1A9789.jpg",
-              "link": "shopify:\/\/collections\/sets",
+              "image": "shopify://shop_images/0Z1A9789.jpg",
+              "link": "shopify://collections/sets",
               "title1": "SETS",
               "text": "",
               "button_label": "",
@@ -5164,8 +5164,8 @@
           "8fa324cd-f2a1-4935-be5e-a58cb8a10b26": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/024A3606.jpg",
-              "link": "shopify:\/\/collections\/swim-collection",
+              "image": "shopify://shop_images/024A3606.jpg",
+              "link": "shopify://collections/swim-collection",
               "title1": "Swim",
               "text": "",
               "button_label": "",
@@ -5197,11 +5197,11 @@
             "type": "text_block",
             "settings": {
               "enable_image": true,
-              "image": "shopify:\/\/shop_images\/099A2700_2_9b9b5d29-c21c-4860-8bb9-9af42ce62e36.jpg",
+              "image": "shopify://shop_images/099A2700_2_9b9b5d29-c21c-4860-8bb9-9af42ce62e36.jpg",
               "title": "Meet Our Founder",
               "code": "",
               "heading_size": "regular_text",
-              "text": "<p>Irina Ovrustky, the founder of Lola and the Boys, creates fashion that celebrates the joy and whimsy of childhood. Each doodle, patch, stitch, and sequin is inspired by her own little ones, Lola, Shia, and Julian. Lola and the Boys is a love story to her children and a testament to the belief that kids' apparel can and should be as dynamic as their imaginations.<\/p>",
+              "text": "<p>Irina Ovrustky, the founder of Lola and the Boys, creates fashion that celebrates the joy and whimsy of childhood. Each doodle, patch, stitch, and sequin is inspired by her own little ones, Lola, Shia, and Julian. Lola and the Boys is a love story to her children and a testament to the belief that kids' apparel can and should be as dynamic as their imaginations.</p>",
               "align_text": "center",
               "button_label": "",
               "button_link": "",
@@ -5212,11 +5212,11 @@
             "type": "text_block",
             "settings": {
               "enable_image": true,
-              "image": "shopify:\/\/shop_images\/unciron-cropped.png",
+              "image": "shopify://shop_images/unciron-cropped.png",
               "title": "Visit Our Stores",
               "code": "",
               "heading_size": "regular_text",
-              "text": "<p>Live the charm of Lola and the Boys IRL! Visit a world where unicorns prance and rainbows embellish every corner without ever leaving Chicago. Each visit promises to be a memorable experience for kids and parents alike.<\/p>",
+              "text": "<p>Live the charm of Lola and the Boys IRL! Visit a world where unicorns prance and rainbows embellish every corner without ever leaving Chicago. Each visit promises to be a memorable experience for kids and parents alike.</p>",
               "align_text": "center",
               "button_label": "",
               "button_link": "",
@@ -5238,63 +5238,63 @@
           "76f5a124-96b0-43cc-8115-6da408ef1085-logo_image-1": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Harper_s_Bazaar_Logo_svg_3bfaef6c-a18b-48c5-84bd-91b509d16695.png",
+              "image": "shopify://shop_images/Harper_s_Bazaar_Logo_svg_3bfaef6c-a18b-48c5-84bd-91b509d16695.png",
               "link": ""
             }
           },
           "d95e51b7-f4e2-43cb-8530-a3b16ba8c130": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/e34f3e61-dbda-47cf-be4b-3a7447ff0c00.png",
+              "image": "shopify://shop_images/e34f3e61-dbda-47cf-be4b-3a7447ff0c00.png",
               "link": ""
             }
           },
           "76f5a124-96b0-43cc-8115-6da408ef1085-logo_image-2": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/abc-7-2-logo-png-transparent_967ee0b7-ec43-44ff-a1c4-8fd31d5ab0f0.png",
+              "image": "shopify://shop_images/abc-7-2-logo-png-transparent_967ee0b7-ec43-44ff-a1c4-8fd31d5ab0f0.png",
               "link": ""
             }
           },
           "8705f40b-6975-4c93-9ac2-c01447b5eed7": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/vanity-fair-logo_29057420-44b9-4c02-a48b-6e4a5cfdb97c.png",
+              "image": "shopify://shop_images/vanity-fair-logo_29057420-44b9-4c02-a48b-6e4a5cfdb97c.png",
               "link": ""
             }
           },
           "76f5a124-96b0-43cc-8115-6da408ef1085-logo_image-3": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/us-weekly_90424067-95c0-418e-9dc1-fa342c8867c7.png",
+              "image": "shopify://shop_images/us-weekly_90424067-95c0-418e-9dc1-fa342c8867c7.png",
               "link": ""
             }
           },
           "3b43249d-bb76-474f-acf5-c2175a016019": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/download_1f871b81-ad50-4dd5-ba17-56c444004cc8.png",
+              "image": "shopify://shop_images/download_1f871b81-ad50-4dd5-ba17-56c444004cc8.png",
               "link": ""
             }
           },
           "76f5a124-96b0-43cc-8115-6da408ef1085-logo_image-4": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/ok-magazine-logo-D6F257F7C7-seeklogo.com_6a0809d5-05e6-4b9c-9da8-4f0cbd3112a2.png",
+              "image": "shopify://shop_images/ok-magazine-logo-D6F257F7C7-seeklogo.com_6a0809d5-05e6-4b9c-9da8-4f0cbd3112a2.png",
               "link": ""
             }
           },
           "f734926b-d47b-4f1b-bb7b-15587cf9f582": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/RealSimple_svg_0f508d5b-cdaf-4834-b078-d48ddb8b3ee3.png",
+              "image": "shopify://shop_images/RealSimple_svg_0f508d5b-cdaf-4834-b078-d48ddb8b3ee3.png",
               "link": ""
             }
           },
           "logo_image_Y76kjg": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/d8e7cb11-eeb2-46ee-892c-8baf95351b47.png",
+              "image": "shopify://shop_images/d8e7cb11-eeb2-46ee-892c-8baf95351b47.png",
               "link": ""
             }
           }
@@ -5321,7 +5321,7 @@
           "column_NJt4j6": {
             "type": "column",
             "settings": {
-              "bg_image": "shopify:\/\/shop_images\/www-ski-2_1080x_b202a360-068a-47b1-a020-419df4607709.webp",
+              "bg_image": "shopify://shop_images/www-ski-2_1080x_b202a360-068a-47b1-a020-419df4607709.webp",
               "show_plus": true,
               "title": "Ski Suit 1",
               "price": "$230",
@@ -5333,7 +5333,7 @@
           "column_NkTdJ7": {
             "type": "column",
             "settings": {
-              "bg_image": "shopify:\/\/shop_images\/www-ski-8_1080x_a3b0b34a-92f1-46db-a279-e4b35b07eeeb.webp",
+              "bg_image": "shopify://shop_images/www-ski-8_1080x_a3b0b34a-92f1-46db-a279-e4b35b07eeeb.webp",
               "show_plus": true,
               "title": "Ski Suit 1",
               "price": "$230",
@@ -5354,7 +5354,7 @@
         "type": "image-with-text-overlay",
         "settings": {
           "customClass": "desktop-party-banner",
-          "image": "shopify:\/\/shop_images\/Lola_Let_s_Party_Banner_1.jpg",
+          "image": "shopify://shop_images/Lola_Let_s_Party_Banner_1.jpg",
           "pretext": "",
           "title": "",
           "subtitle": "",
@@ -5363,7 +5363,7 @@
           "text_position": "center",
           "text_align": "center",
           "button1": "",
-          "button1_link": "shopify:\/\/pages\/chicago-celebrations",
+          "button1_link": "shopify://pages/chicago-celebrations",
           "button1_highlight": false,
           "button2": "",
           "button2_link": "",
@@ -5374,7 +5374,7 @@
         "type": "image-with-text-overlay",
         "settings": {
           "customClass": "mobile-party-banner",
-          "image": "shopify:\/\/shop_images\/Lola_Let_s_Party_Banner_mob.jpg",
+          "image": "shopify://shop_images/Lola_Let_s_Party_Banner_mob.jpg",
           "pretext": "",
           "title": "",
           "subtitle": "",
@@ -5383,7 +5383,7 @@
           "text_position": "center",
           "text_align": "center",
           "button1": "",
-          "button1_link": "shopify:\/\/pages\/chicago-celebrations",
+          "button1_link": "shopify://pages/chicago-celebrations",
           "button1_highlight": false,
           "button2": "",
           "button2_link": "",
@@ -5407,7 +5407,7 @@
     ],
     "blocks": {
       "15014643352720781508": {
-        "type": "shopify:\/\/apps\/wrapped\/blocks\/app-embed\/1714fc7d-e525-4a14-8c3e-1b6ed95734c5",
+        "type": "shopify://apps/wrapped/blocks/app-embed/1714fc7d-e525-4a14-8c3e-1b6ed95734c5",
         "disabled": false,
         "settings": {
           "show_pricing": false,
@@ -5418,31 +5418,31 @@
         }
       },
       "6097499278999377719": {
-        "type": "shopify:\/\/apps\/mega-menu\/blocks\/app-embed\/7a00835e-fe40-45a5-a615-2eb4ab697b58",
+        "type": "shopify://apps/mega-menu/blocks/app-embed/7a00835e-fe40-45a5-a615-2eb4ab697b58",
         "disabled": false,
         "settings": {
         }
       },
       "12509190167029697241": {
-        "type": "shopify:\/\/apps\/blotout-edgetag\/blocks\/app-embed\/ae22d985-ba57-41f5-94c5-18d3dd98ea3c",
+        "type": "shopify://apps/blotout-edgetag/blocks/app-embed/ae22d985-ba57-41f5-94c5-18d3dd98ea3c",
         "disabled": false,
         "settings": {
         }
       },
       "starapps-via": {
-        "type": "shopify:\/\/apps\/variant-image-automator\/blocks\/starapps-via-embed\/2a01d106-3d10-48e8-ba53-5cb971217ac4",
+        "type": "shopify://apps/variant-image-automator/blocks/starapps-via-embed/2a01d106-3d10-48e8-ba53-5cb971217ac4",
         "disabled": false,
         "settings": {
         }
       },
       "5439026248262864547": {
-        "type": "shopify:\/\/apps\/preorder-globo\/blocks\/app-embed\/e547a0ad-8212-4bcc-b02f-761faa9b8af2",
+        "type": "shopify://apps/preorder-globo/blocks/app-embed/e547a0ad-8212-4bcc-b02f-761faa9b8af2",
         "disabled": false,
         "settings": {
         }
       },
       "5888675206956468567": {
-        "type": "shopify:\/\/apps\/loop-returns-exchanges\/blocks\/onstore\/e32ccd84-40d6-4b16-98bf-b6b9da010afd",
+        "type": "shopify://apps/loop-returns-exchanges/blocks/onstore/e32ccd84-40d6-4b16-98bf-b6b9da010afd",
         "disabled": true,
         "settings": {
           "show-onstore-bar": false,
@@ -5463,7 +5463,7 @@
         }
       },
       "14197025361042770389": {
-        "type": "shopify:\/\/apps\/wishlist-king\/blocks\/app-settings-main\/194f5011-a43c-4b22-b12e-eaf20dc4506a",
+        "type": "shopify://apps/wishlist-king/blocks/app-settings-main/194f5011-a43c-4b22-b12e-eaf20dc4506a",
         "disabled": false,
         "settings": {
           "theme_preset": "turbo",
@@ -5487,19 +5487,19 @@
           "font_text_scale": 100,
           "access_mode": "UNRESTRICTED",
           "wishlist_mode": "PRODUCT",
-          "wishlist_path": "\/apps\/wishlist",
+          "wishlist_path": "/apps/wishlist",
           "money_show_currency_code": true
         }
       },
       "13655089695959051254": {
-        "type": "shopify:\/\/apps\/wishlist-king\/blocks\/code-access\/194f5011-a43c-4b22-b12e-eaf20dc4506a",
+        "type": "shopify://apps/wishlist-king/blocks/code-access/194f5011-a43c-4b22-b12e-eaf20dc4506a",
         "disabled": false,
         "settings": {
           "version": "main"
         }
       },
       "4139971114690857691": {
-        "type": "shopify:\/\/apps\/wishlist-king\/blocks\/wishlist-button-collection\/194f5011-a43c-4b22-b12e-eaf20dc4506a",
+        "type": "shopify://apps/wishlist-king/blocks/wishlist-button-collection/194f5011-a43c-4b22-b12e-eaf20dc4506a",
         "disabled": false,
         "settings": {
           "button_style": "plain_accent_1",
@@ -5519,7 +5519,7 @@
         }
       },
       "3915993389370480168": {
-        "type": "shopify:\/\/apps\/wishlist-king\/blocks\/wishlist-link-floating\/194f5011-a43c-4b22-b12e-eaf20dc4506a",
+        "type": "shopify://apps/wishlist-king/blocks/wishlist-link-floating/194f5011-a43c-4b22-b12e-eaf20dc4506a",
         "disabled": false,
         "settings": {
           "button_style": "solid_accent_1",
@@ -5543,11 +5543,11 @@
         }
       },
       "6680288666557934739": {
-        "type": "shopify:\/\/apps\/wishlist-king\/blocks\/wishlist-page\/194f5011-a43c-4b22-b12e-eaf20dc4506a",
+        "type": "shopify://apps/wishlist-king/blocks/wishlist-page/194f5011-a43c-4b22-b12e-eaf20dc4506a",
         "disabled": false,
         "settings": {
           "column_width": "md",
-          "wishlist_empty_link": "shopify:\/\/collections\/all",
+          "wishlist_empty_link": "shopify://collections/all",
           "page_max_width": 1200,
           "page_padding_top": 30,
           "page_padding_bottom": 80,
@@ -5560,7 +5560,7 @@
           "cta_button": "add_to_cart",
           "cta_button_style": "solid_accent_1",
           "alignment": "center",
-          "image_aspect_ratio": "1\/1",
+          "image_aspect_ratio": "1/1",
           "image_object_fit": "cover",
           "show_vendor": false,
           "show_product_title": true,
@@ -5569,25 +5569,25 @@
         }
       },
       "12512365888938011351": {
-        "type": "shopify:\/\/apps\/analyzify-ga4-ads-tracking\/blocks\/app-embed\/69637cfd-dd6f-4511-aa97-7037cfb5515c",
+        "type": "shopify://apps/analyzify-ga4-ads-tracking/blocks/app-embed/69637cfd-dd6f-4511-aa97-7037cfb5515c",
         "disabled": false,
         "settings": {
         }
       },
       "17428600031447253342": {
-        "type": "shopify:\/\/apps\/attentive\/blocks\/attn-tag\/8df62c72-8fe4-407e-a5b3-72132be30a0d",
+        "type": "shopify://apps/attentive/blocks/attn-tag/8df62c72-8fe4-407e-a5b3-72132be30a0d",
         "disabled": false,
         "settings": {
         }
       },
       "7280966411886983154": {
-        "type": "shopify:\/\/apps\/monk\/blocks\/app-embed\/e949adb6-87ca-4b97-8f31-0e51bf507f2d",
+        "type": "shopify://apps/monk/blocks/app-embed/e949adb6-87ca-4b97-8f31-0e51bf507f2d",
         "disabled": false,
         "settings": {
         }
       },
       "6305591592379254261": {
-        "type": "shopify:\/\/apps\/pixoo-taboola-pixel\/blocks\/pixoo_embed\/d4575259-9a7f-46b5-bb21-03a4fc3b4b59",
+        "type": "shopify://apps/pixoo-taboola-pixel/blocks/pixoo_embed/d4575259-9a7f-46b5-bb21-03a4fc3b4b59",
         "disabled": true,
         "settings": {
         }
