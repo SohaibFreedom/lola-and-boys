@@ -2005,9 +2005,10 @@ function showBackImage() {
      img.src = currentImageData.Backimg;
 
      // Check if Backimg is empty and hide the div if it is
+       const productTags = {{ product.tags | json }};
      const patchesWrapper = document.querySelector(".patches-customizations-btn-wrapper");
      const sizevariantscontaier = document.querySelector(".size_variants_section");
-     if (!currentImageData.Backimg) {
+     if (!currentImageData.Backimg && productTags.includes("happ-velour-set")) {
        patchesWrapper.style.visibility = "hidden";
        sizevariantscontaier.style.visibility = "hidden";
      } else {
