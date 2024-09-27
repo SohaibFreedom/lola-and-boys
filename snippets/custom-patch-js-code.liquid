@@ -2040,14 +2040,18 @@ function showBackImage() {
      const sizevariantscontaier = document.querySelector(".size_variants_section");
       if (productTags.includes("happ-velour-set")){
        sizevariantscontaier.style.visibility = "hidden"; 
+          sizevariantscontaier.style.visibility = "visible";
       }
-     if (!currentImageData.Backimg) {
+     else{
+            if (!currentImageData.Backimg) {
     patchesWrapper.style.visibility = "hidden";
     sizevariantscontaier.style.visibility = "hidden";
 } else {
     patchesWrapper.style.visibility = "visible";
     sizevariantscontaier.style.visibility = "visible";
 }
+
+     }
 
 
      // Update CSS properties of #centerBox
