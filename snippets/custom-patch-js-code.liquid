@@ -2038,7 +2038,10 @@ function showBackImage() {
        const productTags = {{ product.tags | json }};
      const patchesWrapper = document.querySelector(".patches-customizations-btn-wrapper");
      const sizevariantscontaier = document.querySelector(".size_variants_section");
-     if (!currentImageData.Backimg || productTags.includes("happ-velour-set")) {
+      if (productTags.includes("happ-velour-set")){
+       sizevariantscontaier.style.visibility = "hidden"; 
+      }
+     if (!currentImageData.Backimg) {
     patchesWrapper.style.visibility = "hidden";
     sizevariantscontaier.style.visibility = "hidden";
 } else {
