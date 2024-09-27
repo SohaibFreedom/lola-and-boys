@@ -905,10 +905,16 @@ console.log('this is variantname', variantname);
 // Convert both the product title and the comparison string to lowercase
 if (variantname === '1' || variantname === '2' || variantname === '2/3' ||   variantname === '3/4' ||   variantname === '4/5' || variantname === '5/6' || 
     variantname === '4' || variantname === '5' || variantname === '6') {
-    
+    if (!productTags.includes("happ-velour-set")) {
     console.log('condition true');
     imgHeight += 20;
     imgWidth += 20;
+}else{
+    console.log('condition false');  
+   imgHeight += 0;
+    imgWidth += 0;    
+}
+
 
 } else if (variantname === '6/7' ||  variantname === '8' || variantname === '7/8' || variantname === '8/9' ||  
            variantname === '10' || variantname === '9/10' || variantname === '10/11' || variantname === '11/12' || variantname === '12' || 
