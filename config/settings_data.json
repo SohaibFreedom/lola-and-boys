@@ -3918,8 +3918,8 @@
         ],
         "settings": {
           "show_announcement_bar": true,
-          "show_countdown": false,
-          "countdown_end_date": "2024-10-011T10:00:00Z",
+          "show_countdown": true,
+          "countdown_end_date": "2024-10-01T10:00:00Z",
           "bck_clr": "#faddff",
           "Annouce_url": "shopify://collections/dress-sale",
           "txt_clr": "#000000",
