@@ -3919,7 +3919,7 @@
         "settings": {
           "show_announcement_bar": true,
           "show_countdown": true,
-          "countdown_end_date": "2024-10-04T05:00:00Z",
+          "countdown_end_date": "2024-10-05T05:00:00Z",
           "bck_clr": "#faddff",
           "Annouce_url": "shopify://collections/dress-sale",
           "txt_clr": "#000000",
@@ -5410,7 +5410,6 @@
         "type": "shopify://apps/wrapped/blocks/app-embed/1714fc7d-e525-4a14-8c3e-1b6ed95734c5",
         "disabled": false,
         "settings": {
-          "show_pricing": false,
           "font_color": "#000000",
           "background_color": "#ffffff",
           "border_color": "#000000",
