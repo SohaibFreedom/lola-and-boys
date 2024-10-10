@@ -1,0 +1,90 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "custom_image_text_3ztbDW": {
+      "type": "custom-image-text",
+      "blocks": {
+        "image_HjdpJN": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/099A0238_1_3924f148-b806-4eac-bd19-bf029b6537de.png",
+            "colorbg": "#f6d2ff",
+            "Class": "",
+            "title": "Thank You For Your Submission!",
+            "text": "<p>We wanted to extend a big thank you for being an active member of our community! <strong>Your exclusive discount code has been sent to your inbox.  </strong></p><p>We appreciate your support and love having you on this journey with us. Don’t forget to follow <strong>@lolaandtheboys</strong> for exclusive deals and surprise launches.</p>",
+            "button_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_HjdpJN"
+      ],
+      "settings": {
+        "sectionClass": "Thanks-UGC-banner",
+        "featured_links_per_row": "1",
+        "frontpage_text_align": "left",
+        "frontpage_image_position": "left",
+        "frontpage_grid_style": "full_width"
+      }
+    },
+    "featured_collection_tAXAhz": {
+      "type": "featured-collection",
+      "settings": {
+        "customClass": "founder-page-products",
+        "title": "Shop Best Sellers",
+        "collection": "best-sellers",
+        "collection_style": "grid",
+        "collection_description": true,
+        "products_per": 4,
+        "products_limit": 5
+      }
+    },
+    "richtext_custom_PV7Ga6": {
+      "type": "richtext-custom",
+      "blocks": {
+        "button_4DP8Ci": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop All",
+            "button_link": "shopify://collections/best-sellers",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "button_4DP8Ci"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "custom_class": "",
+        "custom_id": "",
+        "display_flex": false,
+        "gap_between": "",
+        "content_alignment": "center",
+        "heading_color": "white",
+        "text_color": "white",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 52,
+        "Image_size": 50
+      }
+    }
+  },
+  "order": [
+    "custom_image_text_3ztbDW",
+    "featured_collection_tAXAhz",
+    "richtext_custom_PV7Ga6"
+  ]
+}
