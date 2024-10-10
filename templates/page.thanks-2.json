@@ -9,48 +9,27 @@
 */
 {
   "sections": {
-    "custom_image_text_3ztbDW": {
-      "type": "custom-image-text",
-      "blocks": {
-        "image_HjdpJN": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/099A0238_1_3924f148-b806-4eac-bd19-bf029b6537de.png",
-            "colorbg": "#f6d2ff",
-            "Class": "",
-            "title": "Thank You For Your Submission!",
-            "text": "<p>We wanted to extend a big thank you for being an active member of our community! <strong>Your exclusive discount code has been sent to your inbox.  </strong></p><p>We appreciate your support and love having you on this journey with us. Don’t forget to follow <strong>@lolaandtheboys</strong> for exclusive deals and surprise launches.</p>",
-            "button_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_HjdpJN"
-      ],
-      "settings": {
-        "sectionClass": "Thanks-UGC-banner",
-        "featured_links_per_row": "1",
-        "frontpage_text_align": "left",
-        "frontpage_image_position": "left",
-        "frontpage_grid_style": "full_width"
-      }
-    },
-    "featured_collection_tAXAhz": {
-      "type": "featured-collection",
-      "settings": {
-        "customClass": "founder-page-products",
-        "title": "Shop Best Sellers",
-        "collection": "best-sellers",
-        "collection_style": "grid",
-        "collection_description": true,
-        "products_per": 4,
-        "products_limit": 5
-      }
-    },
     "richtext_custom_PV7Ga6": {
       "type": "richtext-custom",
       "blocks": {
+        "heading_yW73PP": {
+          "type": "heading",
+          "settings": {
+            "heading": "Thank You",
+            "txtClass": "",
+            "heading_align": "center",
+            "heading_size": "38"
+          }
+        },
+        "text_ywRxY4": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Thank you for your submission! We’ve received your information and will be in touch soon.</p>",
+            "text_align": "center",
+            "description_size": "16",
+            "textClass": ""
+          }
+        },
         "button_4DP8Ci": {
           "type": "button",
           "settings": {
@@ -64,6 +43,8 @@
         }
       },
       "block_order": [
+        "heading_yW73PP",
+        "text_ywRxY4",
         "button_4DP8Ci"
       ],
       "settings": {
@@ -76,15 +57,13 @@
         "heading_color": "white",
         "text_color": "white",
         "full_width": true,
-        "padding_top": 0,
-        "padding_bottom": 52,
+        "padding_top": 92,
+        "padding_bottom": 80,
         "Image_size": 50
       }
     }
   },
   "order": [
-    "custom_image_text_3ztbDW",
-    "featured_collection_tAXAhz",
     "richtext_custom_PV7Ga6"
   ]
 }
