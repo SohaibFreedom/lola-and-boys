@@ -911,9 +911,13 @@ if (variantname === '1' || variantname === '2' || variantname === '2/3' ||   var
     imgWidth += 20;
 }
     else{
-    console.log('condition false');  
-    imgHeight -= 10;
-    imgWidth -= 10;    
+ if (window.innerWidth > 768) {
+        console.log('condition false');
+        imgHeight -= 10;
+        imgWidth -= 10;
+    } else {
+        console.log('Screen size is less than or equal to 768px, no adjustment.');
+    }    
 }
 
 
@@ -926,9 +930,15 @@ if (variantname === '1' || variantname === '2' || variantname === '2/3' ||   var
     imgWidth += 10;
 }
      else{
+    if (window.innerWidth > 768) {
     console.log('condition false');  
     imgHeight -= 15;
-    imgWidth -= 15;    
+    imgWidth -= 15; 
+   } 
+        else {
+        console.log('Screen size is less than or equal to 768px, no adjustment.');
+    }    
+      
 }
    
 } else if (variantname === 'Small'){
@@ -1115,10 +1125,15 @@ if (variantname === '1' || variantname === '2' || variantname === '2/3' ||   var
     imgHeight += 20;
     imgWidth += 20;
 }
-    else{
-    console.log('condition false');  
-    imgHeight -= 10;
-    imgWidth -= 10;    
+else {
+    if (window.innerWidth > 768) {
+        console.log('condition false');
+        imgHeight -= 10;
+        imgWidth -= 10;
+    } 
+    else {
+        console.log('Screen size is less than or equal to 768px, no adjustment.');
+    }
 }
 
 } else if (variantname === '6/7' ||  variantname === '8' || variantname === '7/8' || variantname === '8/9' ||  
@@ -1132,8 +1147,13 @@ if (variantname === '1' || variantname === '2' || variantname === '2/3' ||   var
 }
      else{
     console.log('condition false');  
-    imgHeight -= 15;
-    imgWidth -= 15;    
+       if (window.innerWidth > 768){
+             imgHeight -= 15;
+    imgWidth -= 15;  
+       }else{
+         console.log('Screen size is less than or equal to 768px, no adjustment.');
+       }
+  
 }
 } else if (variantname === 'Small'){
     console.log('condition true');
