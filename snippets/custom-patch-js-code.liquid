@@ -900,7 +900,7 @@ let imgWidth = parseInt(item.width, 10);
 
 const product = {{ product | json }};
 const variantname = document.querySelector('input[name="selective_variant_name"]').value.trim();
-console.log('this is variantname', variantname);
+
 
 // Convert both the product title and the comparison string to lowercase
 if (variantname === '1' || variantname === '2' || variantname === '2/3' ||   variantname === '3/4' ||   variantname === '4/5' || variantname === '5/6' || 
@@ -932,6 +932,7 @@ if (variantname === '1' || variantname === '2' || variantname === '2/3' ||   var
      else{
     if (window.innerWidth > 768) {
     console.log('condition false');  
+     console.log(innerWidth);  
     imgHeight -= 15;
     imgWidth -= 15; 
    } 
