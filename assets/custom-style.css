@@ -3,6 +3,39 @@
   margin: 2rem 0 1rem !important;
   display: block;
 }
+.search_dropdown_mobile .header_search_form {
+    padding-top: 0 !important;
+}
+.search_dropdown_mobile .header_search_form .search-submit {
+        top: 16px;
+        font-size: 20px;
+}
+.logo-inner-main {
+    padding: 0 1rem;
+}
+
+.header_search_form {
+    width: 100% !important;
+}
+.header_search_form input, .header_search_form input:focus, .header_search_form input:active {
+    font-size: 20px !important;
+    margin-bottom: 7px !important;
+}
+.main_nav_wrapper .header_search_form .icon-search:before {
+    font-size:20px;
+}
+li.search_container {
+    max-width: 320px !important;
+    width: 100% !important;
+}
+
+@media screen and (max-width: 1024px) {
+.logo-inner-main li.search_container {
+    max-width: 220px !important;
+    width: 100% !important;
+}
+}
+
 .logo-bar-section.container.logos-main-wrapper {
   max-width: 1700px !important;
 }
