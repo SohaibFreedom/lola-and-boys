@@ -1,17 +1,18 @@
-<div class="container">
+<div class="lola-loginandregister-main">
   <a name="pagecontent" id="pagecontent"></a>
 
-  <div class="sixteen columns clearfix collection_nav">
-    <h1>{{ 'customer.login.title' | t }}</h1>
-    <div class="feature_divider"></div>
+  <div class="collection_nav">
+    <h1>LOLA AND THE BOYS</h1>
+    <p>Please sign in or create an account</p>
   </div>
 
   <div class="clearfix" id="customer">
     <br class="clear">
-    <div class="six columns offset-by-five animated fadeInUp" id="login_form">
-      {% form 'customer_login' %}
+    <div class="lola-loginandregister-wrapper  animated fadeInUp" id="login_form">
+<div class="lola-login"> 
+  {% form 'customer_login' %}
         {{ form.errors | default_errors }}
-
+<h2 class="form-heading">SIGN IN</h2>
         <label for="customer_email" class="login">{{ 'customer.login.email' | t }}</label>
         <input
           type="email"
@@ -30,11 +31,11 @@
             Customer Account Login
           {% endcomment %}
 
-          <small class="right"
+          <!-- <small class="right"
             ><em
               ><a href="#" onclick="showRecoverPasswordForm()">{{ 'customer.login.forgot_password' | t }}</a></em
             ></small
-          >
+          > -->
           <label for="customer_password" class="login">{{ 'customer.login.password' | t }}</label>
           <input
             type="password"
@@ -54,13 +55,15 @@
           style="margin-bottom: 5px !important"
           tabindex="3"
         >
-
-        {% unless shop.checkout.guest_login %}
+        {% if form.password_needed %}
+              <p style="margin-top:20px;"><a href="#" onclick="showRecoverPasswordForm()">{{ 'customer.login.forgot_password' | t }}</a></p>
+        {% endif %}
+        <!-- {% unless shop.checkout.guest_login %}
           <p class="right" style="padding-top: 10px;">
             {{ 'customer.login.new_customer_label' | t }}
             {{ 'customer.login.sign_up_html' | t | customer_register_link }}
           </p>
-        {% endunless %}
+        {% endunless %} -->
       {% endform %}
 
       <div class="large--right">
@@ -71,6 +74,65 @@
           {% endform %}
         {% endif %}
       </div>
+</div>
+<div class="lola-register">
+  <h2 class="form-heading">SIGN UP!</h2>
+  <div id="customer">
+      <!-- Create Customer -->
+      <div id="create-customer">
+
+        {% form 'create_customer' %}
+          {{ form.errors | default_errors }}
+
+          <!-- <div id="first_name" class="clearfix large_form">
+            <label for="first_name" class="login">{{ 'customer.register.first_name' | t }}</label>
+            <input type="text" value="" name="customer[first_name]" id="first_name" class="large" size="30" />
+          </div>
+
+          <div id="last_name" class="clearfix large_form">
+            <label for="last_name" class="login">{{ 'customer.register.last_name' | t }}</label>
+            <input type="text" value="" name="customer[last_name]" id="last_name" class="large" size="30" />
+          </div> -->
+
+          <div id="email" class="clearfix large_form">
+            <label for="email" class="login">{{ 'customer.register.email' | t }}</label>
+            <input type="email" value="" name="customer[email]" id="email" class="large" size="30" />
+          </div>
+			
+             <!-- <div id="phonenumber" class="clearfix large_form">
+            <label for="address_phone_new">{{ 'customer.addresses.phone' | t }}</label>
+            <input type="tel" id="address_phone_new" class="address_form" name="address[phone]" value="{{form.phone}}" placeholder="(847) 552-1911">
+          </div> -->
+          <div id="password" class="clearfix large_form">
+            <label for="password" class="login">{{ 'customer.register.password' | t }}</label>
+            <input type="password" value="" name="customer[password]" id="password" class="large password" size="30" />
+          </div>
+
+          <div id="birthday-wrapper" class="clearfix large_form">
+
+<label for="birthday" class="label">Birthday</label>
+
+<input type="date" value="" name="customer[note][birthday]" id="birthday" class="text" size="30" /></div>
+		
+          <div class="acceptsMarketing">
+            <input type="checkbox" id="customer[accepts_marketing]" name="customer[accepts_marketing]">
+            <label for="customer[accepts_marketing]">{{ 'customer.register.accepts_marketing' | t }}</label>
+          </div>
+
+          <div class="action_bottom">
+            <input class="btn action_button" type="submit" value="{{ 'customer.register.sign_up' | t }}" />
+            <!-- <p class="right" style="padding-top: 8px;">
+              {{ 'customer.register.returning_customer_label' | t }} {{ 'customer.register.sign_in_html' | t | customer_login_link }}
+            </p> -->
+          </div>
+
+        {% endform %}
+      </div><!-- /#create-customer -->
+    </div>
+</div>
+
+      
+      
     </div>
 
     <div id="recover-password" style="display:none">
@@ -137,6 +199,64 @@
     showRecoverPasswordForm();
   {% endif %}
 </script>
+<style>
+  .lola-loginandregister-main input{
+    background: #f6f6f6 !important;
+}
+
+.lola-loginandregister-main input.btn.action_button {
+	 background: #000 !important;
+	font-size:18px;
+}
+  .lola-loginandregister-main .form-heading{
+    margin-top: 1.2857142857rem;
+    margin-bottom: .9642857143rem;
+    font-size: 1rem;
+    line-height: 1.2857142857rem;
+}
+
+.lola-loginandregister-main{
+	max-width:1100px;
+	margin:0 auto;
+	padding-top:60px
+}
+.lola-loginandregister-main .acceptsMarketing {
+    margin-bottom: 0;
+}
+.lola-loginandregister-main .collection_nav h1{
+font-size:24px;
+	margin:0;
+}
+
+.lola-loginandregister-main .collection_nav p{
+font-size:15px;
+}
+
+.lola-loginandregister-main .lola-loginandregister-wrapper .action_button{
+width:100% !important;
+margin-top:20px;
+}
+
+.lola-loginandregister-wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+	gap:60px;
+
+}
+
+@media screen and (max-width: 1024px) {
+.lola-loginandregister-wrapper{
+    grid-template-columns: 1fr !important;
+}
+	.lola-loginandregister-main{
+	margin:0 20px;
+}
+	
+}
+
+</style>
+
+
 {% schema %}
   {
     "name": "Login",
