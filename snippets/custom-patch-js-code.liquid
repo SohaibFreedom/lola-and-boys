@@ -1015,6 +1015,10 @@ document.querySelector('.customization-search-bar').addEventListener('input', fi
                     console.log('condition false');
                     imgHeight -= 10;
                     imgWidth -= 10;
+                   // Ensure imgWidth does not go below 20
+                    if (imgWidth < 20) {
+                        imgWidth = 20;
+                    }
                 }
             } else if (variantname === '6/7' || variantname === '8' || variantname === '7/8' || variantname === '8/9' ||  
                        variantname === '10' || variantname === '9/10' || variantname === '10/11' || variantname === '11/12' || variantname === '12' || 
@@ -1027,6 +1031,10 @@ document.querySelector('.customization-search-bar').addEventListener('input', fi
                     console.log('condition false');
                     imgHeight -= 15;
                     imgWidth -= 15;
+                   // Ensure imgWidth does not go below 20
+                    if (imgWidth < 20) {
+                        imgWidth = 20;
+                    }
                 }
             } else if (variantname === 'Small') {
                 console.log('condition true');
