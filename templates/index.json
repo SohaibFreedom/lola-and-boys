@@ -310,11 +310,7 @@
           }
         }
       },
-      "block_order": [
-        "image_tAHiiP",
-        "image_eJCjKd",
-        "image_tDQkFx"
-      ],
+      "block_order": ["image_tAHiiP", "image_eJCjKd", "image_tDQkFx"],
       "settings": {
         "featured_promos_per_row": 3,
         "featured_promos_grid": "full_width",
@@ -547,11 +543,7 @@
           }
         }
       },
-      "block_order": [
-        "image_MKtq7p",
-        "image_xkDgQ7",
-        "image_h4Vwnh"
-      ],
+      "block_order": ["image_MKtq7p", "image_xkDgQ7", "image_h4Vwnh"],
       "settings": {
         "featured_promos_per_row": 3,
         "featured_promos_grid": "full_width",
@@ -594,14 +586,108 @@
           }
         }
       },
-      "block_order": [
-        "text_block_33BgeT",
-        "text_block_QWRgTJ"
-      ],
+      "block_order": ["text_block_33BgeT", "text_block_QWRgTJ"],
       "settings": {
         "title": "",
         "cClass": "visit-founder-home"
       }
+    },
+
+    "announce_marquee_XqhL6w": {
+      "type": "announce-marquee",
+      "blocks": {
+        "logo_block_8VJrbp": {
+          "type": "logo_block",
+          "settings": {
+            "logo_image": "shopify://shop_images/Harper_s_Bazaar_Logo_svg_3bfaef6c-a18b-48c5-84bd-91b509d16695.png",
+            "logo_alt_text": ""
+          }
+        },
+        "logo_block_ezcDEz": {
+          "type": "logo_block",
+          "settings": {
+            "logo_image": "shopify://shop_images/e34f3e61-dbda-47cf-be4b-3a7447ff0c00.png",
+            "logo_alt_text": ""
+          }
+        },
+        "logo_block_7UqkNm": {
+          "type": "logo_block",
+          "settings": {
+            "logo_image": "shopify://shop_images/abc-7-2-logo-png-transparent_967ee0b7-ec43-44ff-a1c4-8fd31d5ab0f0.png",
+            "logo_alt_text": ""
+          }
+        },
+        "logo_block_Uy8KE6": {
+          "type": "logo_block",
+          "settings": {
+            "logo_image": "shopify://shop_images/vanity-fair-logo_29057420-44b9-4c02-a48b-6e4a5cfdb97c.png",
+            "logo_alt_text": ""
+          }
+        },
+        "logo_block_w3zqpN": {
+          "type": "logo_block",
+          "settings": {
+            "logo_image": "shopify://shop_images/forbes.com_logo.png",
+            "logo_alt_text": ""
+          }
+        },
+        "logo_block_PQwjRf": {
+          "type": "logo_block",
+          "settings": {
+            "logo_image": "shopify://shop_images/us-weekly_90424067-95c0-418e-9dc1-fa342c8867c7.png",
+            "logo_alt_text": ""
+          }
+        },
+        "logo_block_zKdieH": {
+          "type": "logo_block",
+          "settings": {
+            "logo_image": "shopify://shop_images/download_1f871b81-ad50-4dd5-ba17-56c444004cc8.png",
+            "logo_alt_text": ""
+          }
+        },
+        "logo_block_amqa9Y": {
+          "type": "logo_block",
+          "settings": {
+            "logo_image": "shopify://shop_images/ok-magazine-logo-D6F257F7C7-seeklogo.com_6a0809d5-05e6-4b9c-9da8-4f0cbd3112a2.png",
+            "logo_alt_text": ""
+          }
+        },
+        "logo_block_VBcbnw": {
+          "type": "logo_block",
+          "settings": {
+            "logo_image": "shopify://shop_images/RealSimple_svg_0f508d5b-cdaf-4834-b078-d48ddb8b3ee3.png",
+            "logo_alt_text": ""
+          }
+        },
+        "logo_block_wNbtzM": {
+          "type": "logo_block",
+          "settings": {
+            "logo_image": "shopify://shop_images/d8e7cb11-eeb2-46ee-892c-8baf95351b47.png",
+            "logo_alt_text": ""
+          }
+        },
+        "logo_block_zR7HXA": {
+          "type": "logo_block",
+          "settings": {
+            "logo_image": "shopify://shop_images/logo.svg",
+            "logo_alt_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_block_8VJrbp",
+        "logo_block_ezcDEz",
+        "logo_block_7UqkNm",
+        "logo_block_Uy8KE6",
+        "logo_block_w3zqpN",
+        "logo_block_PQwjRf",
+        "logo_block_zKdieH",
+        "logo_block_amqa9Y",
+        "logo_block_VBcbnw",
+        "logo_block_wNbtzM",
+        "logo_block_zR7HXA"
+      ],
+      "settings": {}
     },
     "logo_bar_JPBrgt": {
       "type": "logo-bar",
@@ -754,6 +840,7 @@
     "best_sellers_section_bDD7BB",
     "collection_new_Ah8hzk",
     "text_columns_with_images_9x8WgE",
+    "announce_marquee_XqhL6w",
     "logo_bar_JPBrgt",
     "image_with_text_overlay_RXmeiN",
     "image_with_text_overlay_jBjqqw"
