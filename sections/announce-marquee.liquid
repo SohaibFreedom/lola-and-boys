@@ -2,6 +2,7 @@
   {% if section.settings.heading %}
     <h2>{{ section.settings.heading }}</h2>
   {% endif %}
+  <span class="soon-in">{{ section.settings.text | default: 'As Seen In' }}</span>
   <div class="scorri">
     <ul class="tithome-images">
       {% for block in section.blocks %}
@@ -78,67 +79,74 @@
   </div>
 </div>
 <style>
-  .cont-wrap {
-      width: 100%;
-      overflow: hidden;
-      background: #000000 !important;
-      margin: 30px 0;
+    .soon-in {
+        display: flex;
+        justify-content: center;
+        margin-top: 25px;
+        font-size: 20px;
+        color: #fff;
   }
-
-  .scorri {
-      position: relative;
-      display: flex;
-      width: 100%;
-      justify-content: flex-start;
-      overflow: hidden;
-      white-space: nowrap;
-  }
-
-  .tithome-images {
-      display: flex;
-      animation: marquee 30s linear infinite;
-      align-items: center;
-      padding: 20px 0;
-      gap: 2rem;
-      margin:0;
-  }
-
-  .tithome-images li {
-      display: inline-block;
-      list-style: none;
-      padding-right: 30px;
-      margin-bottom:0 !important;
-  }
-
-  .tithome-images img {
-      max-width: 70px;
-      mix-blend-mode: difference;
-      filter: invert(1);
-  }
-
-  @keyframes marquee {
-      0% {
-          transform: translateX(0);
-      }
-      100% {
-          transform: translateX(-100%);
-      }
-  }
-  @media only screen and (max-width: 768px) {
-      .tithome-images li {
-        padding-right: 10px;
-      }
-
-      .tithome-images img {
-          max-width: 50px;
-      }
-
-      .tithome-images {
-          padding: 10px 0;
-          display: flex;
-          align-items: center;
-      }
+    .cont-wrap {
+        width: 100%;
+        overflow: hidden;
+        background: #000000 !important;
+        margin: 30px 0;
     }
+
+    .scorri {
+        position: relative;
+        display: flex;
+        width: 100%;
+        justify-content: flex-start;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .tithome-images {
+        display: flex;
+        animation: marquee 30s linear infinite;
+        align-items: center;
+        padding: 20px 0;
+        gap: 2rem;
+        margin:0;
+    }
+
+    .tithome-images li {
+        display: inline-block;
+        list-style: none;
+        padding-right: 30px;
+        margin-bottom:0 !important;
+    }
+
+    .tithome-images img {
+        max-width: 70px;
+        mix-blend-mode: difference;
+        filter: invert(1);
+    }
+
+    @keyframes marquee {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+    @media only screen and (max-width: 768px) {
+        .tithome-images li {
+          padding-right: 10px;
+        }
+
+        .tithome-images img {
+            max-width: 50px;
+        }
+
+        .tithome-images {
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+      }
 </style>
 
 {% schema %}
@@ -149,6 +157,11 @@
         "type": "inline_richtext",
         "id": "heading",
         "label": "Heading"
+    },
+     {
+        "type": "inline_richtext",
+        "id": "text",
+        "label": "text"
     }
   ],
   "blocks": [
