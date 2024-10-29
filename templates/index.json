@@ -310,7 +310,11 @@
           }
         }
       },
-      "block_order": ["image_tAHiiP", "image_eJCjKd", "image_tDQkFx"],
+      "block_order": [
+        "image_tAHiiP",
+        "image_eJCjKd",
+        "image_tDQkFx"
+      ],
       "settings": {
         "featured_promos_per_row": 3,
         "featured_promos_grid": "full_width",
@@ -543,7 +547,11 @@
           }
         }
       },
-      "block_order": ["image_MKtq7p", "image_xkDgQ7", "image_h4Vwnh"],
+      "block_order": [
+        "image_MKtq7p",
+        "image_xkDgQ7",
+        "image_h4Vwnh"
+      ],
       "settings": {
         "featured_promos_per_row": 3,
         "featured_promos_grid": "full_width",
@@ -586,13 +594,15 @@
           }
         }
       },
-      "block_order": ["text_block_33BgeT", "text_block_QWRgTJ"],
+      "block_order": [
+        "text_block_33BgeT",
+        "text_block_QWRgTJ"
+      ],
       "settings": {
         "title": "",
         "cClass": "visit-founder-home"
       }
     },
-
     "announce_marquee_XqhL6w": {
       "type": "announce-marquee",
       "blocks": {
@@ -687,7 +697,9 @@
         "logo_block_wNbtzM",
         "logo_block_zR7HXA"
       ],
-      "settings": {}
+      "settings": {
+        "heading": ""
+      }
     },
     "logo_bar_JPBrgt": {
       "type": "logo-bar",
@@ -783,6 +795,7 @@
         "logo_image_Tyjifi",
         "logo_image_yRm4wa"
       ],
+      "disabled": true,
       "settings": {
         "class": "logos-main-wrapper",
         "title": "AS SEEN IN"
