@@ -1179,7 +1179,7 @@ document.querySelector('.customization-search-bar').addEventListener('input', fi
 
 // Step 3: Use availableVariants directly in showPatches
 function showPatches() {
-  console.log('showPatches',availableVariants);
+  console.log('showPatches', availableVariants);
   // Clear existing content in the patches container
   $('.patches').empty();
 
@@ -1209,13 +1209,19 @@ function showPatches() {
       img.classList.add('patch-image');
       img.setAttribute('crossorigin', 'anonymous');
 
+      // Set the srcset attribute with different resolutions
+      img.srcset = `
+        ${item.image} 1x, 
+        ${item.image.replace('.jpg', '@2x.jpg')} 2x, 
+        ${item.image.replace('.jpg', '@3x.jpg')} 3x
+      `;
+
       // Get the height and width as integers
       let imgHeight = parseInt(item.height, 10);
       let imgWidth = parseInt(item.width, 10);
       const product = {{ product | json }};
       const variantname = document.querySelector('input[name="selective_variant_name"]').value.trim();
      
-
       // Adjust height and width based on variant name
       // (Include your logic for adjusting imgHeight and imgWidth here)
 
@@ -1239,12 +1245,11 @@ function showPatches() {
 
       // Add event listener to the SVG icon to open the pop-up
       svgDiv.addEventListener('click', function() {
-          openPopup(item, imgHeight, imgWidth);
+        openPopup(item, imgHeight, imgWidth);
       });
 
       $('.patches').append(patchDiv);
-    }
-    else{
+    } else {
       console.log('no this is not available');
     }
   });
