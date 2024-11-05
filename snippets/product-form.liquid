@@ -97,42 +97,7 @@
       
           <div class="product_cart_btns">
 
-{% unless product.content contains 'zakeke-design-tag' %}
-{% if product.tags contains 'zakeke-product' or product.content contains 'zakeke-product-tag' %}
-<button id="zakeke-product-button-custom" class="btn button">
-	<span>Customize</span>
-</button>
-<script>
-	(function () {
-		const btn = document.querySelector("#zakeke-product-button-custom");
-		btn.addEventListener("click", function (event) {
-			event.preventDefault();
-			event.stopPropagation();
-			const url = new URL(window.location.href);
-			const variant = url.searchParams.get('variant');
-			
-			let rootUrl = '{{ routes.root_url }}';
-			if (rootUrl === '/') {
-				rootUrl = '';
-			}
-			
-			const zakekeUrl = new URL(rootUrl + (window.zakekeUrl || "/apps/zakeke") + '?pid={{ product.id }}', document.location);
 
-			if (variant) {
-				zakekeUrl.searchParams.set('id', variant);
-			}
-
-			window.location.href = zakekeUrl.toString();
-		});
-	})();
-</script>
-<style>
-	#zakeke-product-button {
-		display: none;
-	}
-</style>
-{% endif %}
-{% endunless %}
             
            <button type="submit" name="add" class="action_button add_to_cart liquid_ajax_cart {% if collection.handle contains 'look-book' %}lookbook_lookbook_btn{% endif %}" data-label={{ add_to_cart_label | json }}>
         <span class="text">{{ add_to_cart_label }}</span>
