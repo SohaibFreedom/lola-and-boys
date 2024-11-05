@@ -14,6 +14,7 @@
       "blocks": {
         "image_U3EW4E": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image_mobile": "shopify://shop_images/Lola_Early_BF_HP_mob_31e059a1-bd37-43c8-b2f1-c71b0d2b4a28.jpg",
             "mp4": "https://cdn.shopify.com/videos/c/o/v/1151ef10867843f7bc9aaf047921f4bf.mp4",
