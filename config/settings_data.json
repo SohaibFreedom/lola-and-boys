@@ -3917,6 +3917,7 @@
           "23ee518c-ddd9-496f-825e-6d407e57a3a9"
         ],
         "settings": {
+          "collection": "popular-products-header",
           "show_announcement_bar": false,
           "show_countdown": false,
           "countdown_end_date": "2024-11-05T09:00:00Z",
@@ -3932,6 +3933,7 @@
           "logo": "shopify://shop_images/lola-logo-stars-03_1c7bd026-d5ed-4657-b95e-286bb452d008.png",
           "main_linklist": "main-menu",
           "main_linklist2": "",
+          "main_linklist3": "header-overlay-menu",
           "vertical_menu": true,
           "search_enabled": true,
           "fixed_header": false,
