@@ -2,19 +2,19 @@
 <div class="product-overall-fit">
   {% assign overall_fit_value = product.metafields.custom.overallfit %}
   <div class="bar">
-    <span class="dot {% if overall_fit_value == "Too small" %}star{% endif %}" style="left: 0%;">
+    <span class="dot {% if overall_fit_value == "Runs Small" %}star{% endif %}" style="left: 0%;">
       {%- if overall_fit_value == 'Runs Small' %}★{% endif -%}
     </span>
-    <span class="dot {% if overall_fit_value == "Small" %}star{% endif %}" style="left: 25%;">
+    <span class="dot {% if overall_fit_value == "Slightly Small" %}star{% endif %}" style="left: 25%;">
       {%- if overall_fit_value == 'Slightly Small' %}★{% endif -%}
     </span>
-    <span class="dot {% if overall_fit_value == "True to size" %}star{% endif %}" style="left: 50%;">
+    <span class="dot {% if overall_fit_value == "True to Size" %}star{% endif %}" style="left: 50%;">
       {%- if overall_fit_value == 'True to Size' %}★{% endif -%}
     </span>
-    <span class="dot {% if overall_fit_value == "Large" %}star{% endif %}" style="left: 75%;">
+    <span class="dot {% if overall_fit_value == "Slightly Large" %}star{% endif %}" style="left: 75%;">
       {%- if overall_fit_value == 'Slightly Large' %}★{% endif -%}
     </span>
-    <span class="dot {% if overall_fit_value == "Too large" %}star{% endif %}" style="left: 100%;">
+    <span class="dot {% if overall_fit_value == "Runs Large" %}star{% endif %}" style="left: 100%;">
       {%- if overall_fit_value == 'Runs Large' %}★{% endif -%}
     </span>
     {% if overall_fit_value == blank %}
