@@ -3917,8 +3917,8 @@
           "23ee518c-ddd9-496f-825e-6d407e57a3a9"
         ],
         "settings": {
-          "show_announcement_bar": true,
-          "show_countdown": true,
+          "show_announcement_bar": false,
+          "show_countdown": false,
           "countdown_end_date": "2024-11-05T09:00:00Z",
           "bck_clr": "#faddff",
           "Annouce_url": "https://lolaandtheboys.com/collections/early-access-black-friday",
