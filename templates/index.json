@@ -57,7 +57,6 @@
         },
         "image_MzwgLN": {
           "type": "image",
-          "disabled": true,
           "settings": {
             "image_mobile": "shopify://shop_images/Fall_2024_HP_mob_2.jpg",
             "mp4": "https://cdn.shopify.com/videos/c/o/v/92cae586926a4300abc5d45e7b67c670.mp4",
