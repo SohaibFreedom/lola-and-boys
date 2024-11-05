@@ -66,6 +66,9 @@
 	{% if product.available %}
     {% if settings.display_product_quantity %}
       <div class="gPositionLimitMessage"></div>
+         {% if product.tags contains 'show-truesize' %}
+        {% render 'product-overallfit' %}
+      {% endif %}
       <div class="left product-quantity-box">
         <label for="quantity">{{ 'products.product.quantity' | t }}</label>
         <span class="ss-icon product-minus js-change-quantity" data-func="minus"><span class="icon-minus"></span></span>
