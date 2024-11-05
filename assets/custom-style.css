@@ -3,6 +3,33 @@
     grid-template-columns: 1fr 1fr 1fr;
 }
 
+@media screen and (max-width: 769px) {
+.search-template-section .container .one.column,
+.search-template-section .container .one.columns,
+.search-template-section .container .two.columns,
+.search-template-section .container .three.columns,
+.search-template-section .container .four.columns,
+.search-template-section .container .five.columns,
+.search-template-section .container .six.columns,
+.search-template-section .container .seven.columns,
+.search-template-section .container .eight.columns,
+.search-template-section .container .nine.columns,
+.search-template-section .container .ten.columns,
+.search-template-section .container .eleven.columns,
+.search-template-section .container .twelve.columns,
+.search-template-section .container .thirteen.columns,
+.search-template-section .container .fourteen.columns,
+.search-template-section .container .fifteen.columns,
+.search-template-section .container .sixteen.columns,
+.search-template-section .container .one-third.column,
+.search-template-section .container .two-thirds.column,
+.search-template-section .container .one-fifth.column,
+.search-template-section .container .one-sixth.column,
+.search-template-section .container .one-seventh.column {
+    width: 100%;
+}
+
+}
 
 
 
