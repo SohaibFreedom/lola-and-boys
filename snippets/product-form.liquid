@@ -69,13 +69,17 @@
          {% if product.tags contains 'show-truesize' %}
         {% render 'product-overallfit' %}
       {% endif %}
+
+       {% unless product.tags contains 'patch-app-category' %}
       <div class="left product-quantity-box">
         <label for="quantity">{{ 'products.product.quantity' | t }}</label>
         <span class="ss-icon product-minus js-change-quantity" data-func="minus"><span class="icon-minus"></span></span>
         <input type="number" min="1" size="2" class="quantity" name="quantity" data-id="{{product.id}}" id="quantity" value="1" {% if settings.limit_quantity and variant.inventory_management != blank and variant.inventory_policy == "deny" %}max="{{ variant.inventory_quantity }}"{% endif %} />
         <span class="ss-icon product-plus js-change-quantity" data-func="plus"><span class="icon-plus"></span></span>
       </div>
+         {% endunless %}
     {% endif %}
+      
     <div class="purchase clearfix {% if settings.display_product_quantity %}inline_purchase{% endif %}">
       
       {% if wh_settings_cart_action == 'reload_page' %}
@@ -94,7 +98,8 @@
       {% endfor %}
 
 
-      
+
+      {% unless product.tags contains 'patch-app-category' %}
           <div class="product_cart_btns">
 
 
@@ -128,6 +133,7 @@
       </button>
       
       </div>
+            {% endunless %}
       {% comment %}
        <p class="action_button btn add-cart" onclick="addItem('product-form-{{ product.id }}'); return false;" data-cart-add="{{ product.id }}">Add to Cart</p>
       {% endcomment %}  
