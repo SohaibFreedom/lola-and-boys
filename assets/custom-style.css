@@ -31,7 +31,9 @@
 
 }
 
-
+.customize-button {
+    margin-top: 1rem;
+}
 
 .heading-cart-empty {
   font-size: 24px;
