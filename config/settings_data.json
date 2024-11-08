@@ -1056,8 +1056,7 @@
           "block_order": [
             "1489285451288-1"
           ],
-          "settings": {
-          }
+          "settings": {}
         },
         "1489285524898": {
           "type": "testimonial",
@@ -2187,8 +2186,7 @@
           "block_order": [
             "1489285451288-1"
           ],
-          "settings": {
-          }
+          "settings": {}
         },
         "1489285524898": {
           "type": "testimonial",
@@ -3073,8 +3071,7 @@
           "block_order": [
             "1489285451288-1"
           ],
-          "settings": {
-          }
+          "settings": {}
         },
         "1489285524898": {
           "type": "testimonial",
@@ -3924,7 +3921,7 @@
           "bck_clr": "#faddff",
           "Annouce_url": "shopify://collections/wicked",
           "txt_clr": "#000000",
-          "text": "<b>⭐️ Just DROPPED : New Wicked Collaboration | Shop Now ⭐️\n</b>",
+          "text": "<b>Just DROPPED : New Wicked Collaboration | Shop Now \n</b>",
           "phone_number": "",
           "top_bar_menu": "help",
           "cart_icon": "cart",
@@ -4216,8 +4213,7 @@
           "page-details-template-5",
           "1523046148095"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cart-template": {
         "type": "cart-template",
@@ -4614,8 +4610,7 @@
       },
       "about-page-listing-section": {
         "type": "about-page-listing-section",
-        "settings": {
-        }
+        "settings": {}
       },
       "about-member-img-section": {
         "type": "about-member-img-section",
@@ -4900,18 +4895,15 @@
       },
       "announcement_bar": {
         "type": "announcement_bar",
-        "settings": {
-        }
+        "settings": {}
       },
       "cart-drawer": {
         "type": "cart-drawer",
-        "settings": {
-        }
+        "settings": {}
       },
       "my-cart": {
         "type": "my-cart",
-        "settings": {
-        }
+        "settings": {}
       },
       "blog-template-2": {
         "type": "blog-template-2",
@@ -5005,8 +4997,7 @@
           "064c67ae-854d-4a53-af7f-e5a8ccf303a5",
           "b780371a-3229-43da-b4b1-5377a47d9e31"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "1646884228469db92a": {
         "type": "collection-mobile-list",
@@ -5349,8 +5340,7 @@
           "column_NJt4j6",
           "column_NkTdJ7"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "image_with_text_overlay_T4n4Af": {
         "type": "image-with-text-overlay",
@@ -5421,26 +5411,22 @@
       "6097499278999377719": {
         "type": "shopify://apps/mega-menu/blocks/app-embed/7a00835e-fe40-45a5-a615-2eb4ab697b58",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "12509190167029697241": {
         "type": "shopify://apps/blotout-edgetag/blocks/app-embed/ae22d985-ba57-41f5-94c5-18d3dd98ea3c",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "starapps-via": {
         "type": "shopify://apps/variant-image-automator/blocks/starapps-via-embed/2a01d106-3d10-48e8-ba53-5cb971217ac4",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "5439026248262864547": {
         "type": "shopify://apps/preorder-globo/blocks/app-embed/e547a0ad-8212-4bcc-b02f-761faa9b8af2",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "5888675206956468567": {
         "type": "shopify://apps/loop-returns-exchanges/blocks/onstore/e32ccd84-40d6-4b16-98bf-b6b9da010afd",
@@ -5572,26 +5558,22 @@
       "12512365888938011351": {
         "type": "shopify://apps/analyzify-ga4-ads-tracking/blocks/app-embed/69637cfd-dd6f-4511-aa97-7037cfb5515c",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "17428600031447253342": {
         "type": "shopify://apps/attentive/blocks/attn-tag/8df62c72-8fe4-407e-a5b3-72132be30a0d",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "7280966411886983154": {
         "type": "shopify://apps/monk/blocks/app-embed/e949adb6-87ca-4b97-8f31-0e51bf507f2d",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "6305591592379254261": {
         "type": "shopify://apps/pixoo-taboola-pixel/blocks/pixoo_embed/d4575259-9a7f-46b5-bb21-03a4fc3b4b59",
         "disabled": true,
-        "settings": {
-        }
+        "settings": {}
       }
     }
   }
