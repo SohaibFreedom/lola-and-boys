@@ -1,0 +1,138 @@
+.search input[type="text"] {
+  border: none !important;
+  margin-bottom: 0;
+  font-size: 14px;
+}
+.search-empty-template-header {
+  margin-top: 4rem;
+}
+
+.search input[type="text"]::placeholder {
+  color: #000;
+}
+.search-empty-mainwrapper {
+  height: auto !important;
+}
+
+.empty-search-collection .more-collection-inner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: center;
+}
+
+.empty-search-collection {
+  padding: 60px 0 0;
+  text-align: center;
+}
+
+.empty-search-collection h3 {
+  font-size: 36px;
+  line-height: 36px;
+  margin-bottom: 40px;
+}
+
+.empty-search-collection .more-collection-inner a {
+  display: block;
+}
+
+.empty-search-collection .more-collection-inner p {
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 31px;
+  margin: 0 0 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #333;
+}
+
+.empty-search-collection .more-collection-inner span {
+  display: block;
+  font-size: 14px;
+  line-height: 17px;
+  margin-top: 5px;
+  text-transform: uppercase;
+  color: #333;
+}
+
+.search-empty-template .breadcrumb-collection,
+.search-empty-template .search-temp-heading,
+.search-empty-template .search-btn-hide {
+  display: none;
+}
+.search-empty-mainwrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.search-empty-wrapper {
+  display: block !important;
+}
+
+.search .image_columns {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #b6b1ad;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.search .image_columns button {
+  background: none;
+  padding: 0;
+}
+
+.search .image_columns button:hover {
+  background: transparent;
+  border: none;
+}
+
+.search-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.search .quote {
+  font-size: 24px;
+  line-height: normal;
+  font-style: normal;
+  font-weight: 600;
+  margin: 0 0 15px;
+  text-transform: uppercase;
+}
+
+.search .para_text {
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  color: #000;
+  line-height: 22px;
+}
+@media only screen and (max-width: 768px) {
+  .empty-search-collection h3 {
+    font-size: 24px;
+    line-height: 24px;
+    margin-bottom: 15px;
+  }
+
+  .empty-search-collection .more-collection-inner p {
+    font-size: 15px;
+  }
+  .search .quote {
+    font-size: 16px;
+    line-height: 23px;
+  }
+
+  .search .para_text {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .empty-search-collection .more-collection-wrap {
+    padding: 30px 0 0;
+  }
+
+  .empty-search-collection .more-collection-inner {
+    grid-template-columns: 1fr;
+  }
+}
