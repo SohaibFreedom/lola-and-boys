@@ -1,38 +1,51 @@
 .header .main_nav_wrapper .main_nav .logo .logo-inner-main {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr 1fr;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 @media screen and (max-width: 769px) {
-.search-template-section .container .one.column,
-.search-template-section .container .one.columns,
-.search-template-section .container .two.columns,
-.search-template-section .container .three.columns,
-.search-template-section .container .four.columns,
-.search-template-section .container .five.columns,
-.search-template-section .container .six.columns,
-.search-template-section .container .seven.columns,
-.search-template-section .container .eight.columns,
-.search-template-section .container .nine.columns,
-.search-template-section .container .ten.columns,
-.search-template-section .container .eleven.columns,
-.search-template-section .container .twelve.columns,
-.search-template-section .container .thirteen.columns,
-.search-template-section .container .fourteen.columns,
-.search-template-section .container .fifteen.columns,
-.search-template-section .container .sixteen.columns,
-.search-template-section .container .one-third.column,
-.search-template-section .container .two-thirds.column,
-.search-template-section .container .one-fifth.column,
-.search-template-section .container .one-sixth.column,
-.search-template-section .container .one-seventh.column {
+  .search-template-section .container .one.column,
+  .search-template-section .container .one.columns,
+  .search-template-section .container .two.columns,
+  .search-template-section .container .three.columns,
+  .search-template-section .container .four.columns,
+  .search-template-section .container .five.columns,
+  .search-template-section .container .six.columns,
+  .search-template-section .container .seven.columns,
+  .search-template-section .container .eight.columns,
+  .search-template-section .container .nine.columns,
+  .search-template-section .container .ten.columns,
+  .search-template-section .container .eleven.columns,
+  .search-template-section .container .twelve.columns,
+  .search-template-section .container .thirteen.columns,
+  .search-template-section .container .fourteen.columns,
+  .search-template-section .container .fifteen.columns,
+  .search-template-section .container .sixteen.columns,
+  .search-template-section .container .one-third.column,
+  .search-template-section .container .two-thirds.column,
+  .search-template-section .container .one-fifth.column,
+  .search-template-section .container .one-sixth.column,
+  .search-template-section .container .one-seventh.column {
     width: 100%;
+  }
+}
+/* New csss */
+
+.header_search_form {
+  display: flex;
+  align-items: center;
+}
+.search-temp-heading h1 {
+  margin: 1rem 0 2rem;
 }
 
+.header_search_form .icon-search {
+  z-index: 1000;
+  font-size: 20px;
 }
-
+/* New csss */
 .customize-button {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 .heading-cart-empty {
@@ -42,53 +55,59 @@
 }
 
 .search_dropdown_mobile .header_search_form {
-    padding-top: 0 !important;
+  padding-top: 0 !important;
 }
-.footer-section .footer .container .bottom-footer-section .footer_credits .credits {
-    padding: 10px 0 0;
-    margin: 0;
+.footer-section
+  .footer
+  .container
+  .bottom-footer-section
+  .footer_credits
+  .credits {
+  padding: 10px 0 0;
+  margin: 0;
 }
- #fullWidthSearchOverlay .overlay-body-content ul li a {
-    padding-top: 0 !important;
-    padding-bottom: 15px !important;
-       text-transform: capitalize;
+#fullWidthSearchOverlay .overlay-body-content ul li a {
+  padding-top: 0 !important;
+  padding-bottom: 15px !important;
+  text-transform: capitalize;
 }
 .footer-section .footer .container .bottom-footer-section .footer_credits {
-    width: 100%;
-    padding-top: 0px !important;
-    margin: 50px 0 0 !important;
-    border-top: 1px solid #404040;
+  width: 100%;
+  padding-top: 0px !important;
+  margin: 50px 0 0 !important;
+  border-top: 1px solid #404040;
 }
 .search_dropdown_mobile .header_search_form .search-submit {
-        top: 16px;
-        font-size: 20px;
+  top: 16px;
+  font-size: 20px;
 }
 .logo-inner-main {
-    padding: 0 1rem;
+  padding: 0 1rem;
 }
 
 .header_search_form {
-      width: 100% !important;
-    max-width: 600px;
-  
+  width: 100% !important;
+  max-width: 600px;
 }
-.header_search_form input, .header_search_form input:focus, .header_search_form input:active {
-    font-size: 20px !important;
-    margin-bottom: 7px !important;
+.header_search_form input,
+.header_search_form input:focus,
+.header_search_form input:active {
+  font-size: 20px !important;
+  margin-bottom: 7px !important;
 }
 .main_nav_wrapper .header_search_form .icon-search:before {
-    font-size:20px;
+  font-size: 20px;
 }
 li.search_container {
-    max-width: 320px !important;
-    width: 100% !important;
+  max-width: 320px !important;
+  width: 100% !important;
 }
 
 @media screen and (max-width: 1024px) {
-.logo-inner-main li.search_container {
+  .logo-inner-main li.search_container {
     max-width: 220px !important;
     width: 100% !important;
-}
+  }
 }
 
 .logo-bar-section.container.logos-main-wrapper {
@@ -1403,18 +1422,17 @@ html
     top: 16px;
   }
 
-@media screen and (max-width: 480px) {
+  @media screen and (max-width: 480px) {
     #header .top_bar .icon-search {
-        right: 77% !important;
+      right: 77% !important;
     }
-}
-@media screen and (min-width: 481px) and (max-width: 650px) { 
-   #header .top_bar .icon-search {
-        right: 84% !important;
+  }
+  @media screen and (min-width: 481px) and (max-width: 650px) {
+    #header .top_bar .icon-search {
+      right: 84% !important;
     }
-}
-  
-  
+  }
+
   .forms-heading-ugc {
     margin-bottom: 1rem;
   }
@@ -2168,21 +2186,19 @@ html
   }
 }
 
-
 .product-item a.product-title {
   font-size: 16px !important;
-  font-weight:600;
-  line-height:24px;
-  padding:0;
-  color:#000 !important;
+  font-weight: 600;
+  line-height: 24px;
+  padding: 0;
+  color: #000 !important;
   margin: 10px 0;
   color: #333;
 }
- 
+
 .product-item .product-price {
   font-size: 14px;
-  font-weight:400;
+  font-weight: 400;
   color: #000;
-  margin:0;
+  margin: 0;
 }
-
