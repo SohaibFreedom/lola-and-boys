@@ -1,8 +1,11 @@
+{{ 'search-template.css' | asset_url | stylesheet_tag }}
+
 {% comment %}
   The contents of the search.liquid template can be found in /sections/search-template.liquid
 {% endcomment %}
 
 {% include 'wh_calculate_discount' with item, hide_method: 'break' %}
+
 {% comment %}
 ** Search results - default view **
 - Template section
@@ -11,16 +14,24 @@
 
 {% assign search_pagination = section.settings.pagination_limit %}
 {% paginate search.results by search_pagination %}
-<div class="container">
+<div class="container {% if search.results == empty %}search-empty-template{% else %} search-template-container{% endif %}">
 
 <a name="pagecontent" id="pagecontent"></a>
 
   <div class="clearfix breadcrumb-collection">
     {% if section.settings.search_breadcrumb %}
       <div class="eight columns breadcrumb_text" itemscope itemtype="http://schema.org/BreadcrumbList">
-        <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="{{ shop.url }}" title="{{ shop.name | escape }}" itemprop="item" class="breadcrumb_link"><span itemprop="name">{{ 'general.breadcrumbs.home' | t }}</span></a></span>
+        <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a href="{{ shop.url }}" title="{{ shop.name | escape }}" itemprop="item" class="breadcrumb_link">
+            <span itemprop="name">{{ 'general.breadcrumbs.home' | t }}</span>
+          </a>
+        </span>
         <span class="breadcrumb-divider">/</span>
-        <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="/search" itemprop="item" class="breadcrumb_link"><span itemprop="name">{{ 'general.search.title' | t }}</span></a></span>
+        <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a href="/search" itemprop="item" class="breadcrumb_link">
+            <span itemprop="name">{{ 'general.search.title' | t }}</span>
+          </a>
+        </span>
 
         {% if paginate.pages != 0 %}
           <span class="breadcrumb-divider">/</span> {{ 'general.breadcrumbs.page' | t: current_page: paginate.current_page, pages: paginate.pages }}
@@ -31,36 +42,196 @@
 
   <div class="section clearfix">
     <div class="sixteen columns clearfix">
-      <h1>{{ 'general.search.title' | t }}</h1>
+      <h1 class="search-temp-heading">Showing search results for "{{ search.terms }}"</h1>
       <div class="feature_divider"></div>
     </div>
   </div>
 
-{% comment %}Check to see if sidebar should be enabled{% endcomment %}
+{% comment %} Check to see if sidebar should be enabled {% endcomment %}
 {% if section.blocks.size > 0 %}
-  {% assign sidebar = false %}
+  {% assign sidebar = true %}
 {% else %}
   {% assign sidebar = false %}
 {% endif %}
 
 {% if sidebar %}
   {% include 'sidebar' %}
-  <div class="">
+  <div class="content-with-sidebar">
 {% else %}
-  <div data-sectionId="{% if section.id %}{{section.id}}{% endif %}" data-settings='{% if section.settings %}{{section.settings | json}}{% endif %}' id="gf-products" class="sixteen columns">
+  <div data-section-id="{{ section.id }}" data-settings='{{ section.settings | json }}' id="gf-products" class="sixteen columns {% if search.results == empty %}search-empty-wrapper{% endif %}">
 {% endif %}
 
   {% if search.performed %}
 
     {% if search.results == empty %}
-      <br class="clear" />
-      <br class="clear" />
-      <div class="clearfix">
-        <p class="quote">{{ 'general.search.no_results_html' | t: terms: search.terms }}</p>
+
+      <div class="search-empty-mainwrapper">
+      <div class="search-empty-template-header">
+        <p class="quote">No results for "{{ search.terms }}"</p>
+        <p class="para_text">{{ section.settings.para_text }}</p>
       </div>
 
-      <br class="clear" />
-      <br class="clear" />
+      <form class="search search-container" action="/search">
+        <div class="{% if sidebar %}three{% else %}five{% endif %} columns">
+            &nbsp;
+        </div>
+        <div class="image_columns center">
+            {% if settings.search_option != 'everything' %}
+                <input type="hidden" name="type" value="product" />
+            {% endif %}
+            <input type="text" id="search-input" name="q" placeholder="{{ 'general.search.placeholder' | t }}" value="{{ search.terms }}" x-webkit-speech autocapitalize="off" autocomplete="off" autocorrect="off" />
+    
+            <!-- Clear Button with Cross Icon -->
+            <button type="button" class="clear-button" id="clear-button" style="display: none;">
+                <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#000" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 8L8 16M8 8L16 16" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+        <div class="two columns search-btn-hide">
+            <input type="submit" name="submit" class="action_button" value="{{ 'general.search.submit' | t }}" />
+        </div>
+      </form>
+
+      <div class="more-collection-wrap empty-search-collection">
+        <h3>Looking for more?</h3>
+        <div class="more-collection-inner">
+          <div class="collection-item">
+            <a href="/collections/girls-1" class="inner-link">
+              <p>Girls</p>
+              <img class="collection-img" src="https://lolaandtheboys.com/cdn/shop/files/GIRLS_a7ed4d1d-264e-4e94-a6fc-4591f409f420_600x.jpg?v=1724445724" alt="" height="auto" width="auto" />
+              <span>Shop Now</span>
+            </a>
+          </div>
+          <div class="collection-item">
+            <a href="/collections/shoes2022" class="inner-link">
+              <p>Shoes</p>
+              <img class="collection-img" src="https://lolaandtheboys.com/cdn/shop/files/SHOES_79c0be8f-0e8f-4456-89c0-9325b80b3f14_600x.jpg?v=1724446114" alt="" height="auto" width="auto" />
+              <span>Shop Now</span>
+            </a>
+          </div>
+          <div class="collection-item">
+            <a href="https://lolaandtheboys.com/collections/boys-1" class="inner-link">
+              <p>Boys</p>
+              <img class="collection-img" src="https://lolaandtheboys.com/cdn/shop/files/LATB_BTS24_00702_600x.jpg?v=1724792390" alt="" height="auto" width="auto" />
+              <span>Shop Now</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+  {% if section.blocks.size > 0 %}
+    {% if section.settings.title != blank %}
+      <div class="sixteen columns center">
+         <div class="title-collections">
+        <h2 class="title">
+          {{ section.settings.title }}
+        </h2>
+        <p>
+        	{{ section.settings.description }}
+           <a href="{{ section.settings.button_link }}" class="lola-and-btn">{{ section.settings.button_text }}</a>
+        </p>
+       
+        </div>
+      </div>
+    {% endif %}
+  {% endif %}
+</div>
+      
+    </div>
+    {% else %}
+
+      {% if settings.search_option == 'everything' or wh_price == blank %}
+
+        {% for item in search.results %}
+          {% unless item.tags contains 'swipe-product' or item.tags contains 'patch' %}
+            {% include 'wh_calculate_discount' with item, hide_method: 'skip' %}
+            {% include 'bold-product' with item, hide_action: 'skip' %}
+            <div class="product_row">
+              {% assign featured_image = false %}
+
+              {% if item.object_type == 'article' and item.image %}
+                {% assign featured_image = true %}
+                <div class="image_columns alpha">
+                  <a href="{{ item.url }}" title="{{ item.title | escape }}">
+                    <img src="{{ item.image | img_url: '600x', scale: 2 }}" alt="{{ item.title | escape }}" />
+                  </a>
+                </div>
+              {% elsif item.featured_image %}
+                {% assign featured_image = true %}
+                <div class="image_columns alpha">
+                  <a href="{{ item.url }}" title="{{ item.title | escape }}">
+                    <img src="{{ item.featured_image | product_img_url: '600x', scale: 2 }}" alt="{{ item.title | escape }}" />
+                  </a>
+                </div>
+              {% endif %}
+
+              <div class="product_info">
+                <h5 class="sub_title">
+                  <a href="{{ item.url }}" title="{{ item.title | escape }}">{{ item.title }}</a>
+                </h5>
+
+                {% if wh_price %}
+                  <div class="info">
+                    <span class="price">
+                      {% if wh_compare_at_price_max > wh_price %}
+                        <span class="was_price">{{ wh_compare_at_price_max | money }}</span>
+                      {% endif %}
+
+                      {% if item.available %}
+                        {% if item.price_varies %}
+                          <small><em>{{ 'products.general.from' | t }}</em></small>
+                        {% endif %}
+                        {{ wh_price_min | money }}
+                      {% else %}
+                        {{ wh_price_min | money }} - {{ 'products.product.sold_out' | t }}
+                      {% endif %}
+                    </span>
+                  </div>
+                {% endif %}
+
+                {% if item.object_type == 'article' %}
+                  <p class="blog_meta">
+                    {% if section.settings.blog_author %}
+                      <span>{{ 'blogs.article.by_author' | t: author: item.author }}</span>
+                    {% endif %}
+                    {% if section.settings.blog_date %}
+                      <span>{{ item.published_at | date: "month_day_year" }}</span>
+                    {% endif %}
+                  </p>
+                {% endif %}
+
+                {% if item.excerpt %}
+                  <div class="excerpt">{{ item.excerpt }}</div>
+
+                  {% if section.settings.read_more_link %}
+                    <p>
+                      <a href="{{ item.url }}" title="{{ item.title | escape }}">{{ 'blogs.general.continue_reading_html' | t }} <span class="icon-right-arrow"></span></a>
+                    </p>
+                  {% endif %}
+                {% else %}
+                  <p class="product-desc-hide-blog">
+                    {{ item.content | strip_html | truncatewords: 40 | highlight: search.terms | replace: 'Description', '' | replace: 'Specs', '' | replace: 'Shipping', '' | replace: 'Size', '' }}
+                  </p>
+                {% endif %}
+              </div>
+            </div>
+          {% endunless %}
+        {% endfor %}
+
+      {% else %}
+        {% assign products = search.results %}
+        {% assign products_per_row = section.settings.products_per_row %}
+        {% include 'product-loop', sidebar: sidebar %}
+      {% endif %}
+    {% endif %}
+
+  {% else %}
+    <div class="clearfix search_page">
+      <div class="center">
+        <h3>{{ 'general.search.description' | t }}</h3>
+      </div>
       <form class="search" action="/search">
         <div class="{% if sidebar %}three{% else %}five{% endif %} columns">
           &nbsp;
@@ -72,138 +243,48 @@
           <input type="text" name="q" placeholder="{{ 'general.search.placeholder' | t }}" value="{{ search.terms }}" x-webkit-speech autocapitalize="off" autocomplete="off" autocorrect="off" />
         </div>
         <div class="two columns">
-          <input type="submit" name="submit" class="action_button" value="{{ 'general.search.submit' | t }}" style="margin-top:0" />
+          <input type="submit" name="submit" class="action_button" value="{{ 'general.search.submit' | t }}" />
         </div>
       </form>
-    {% else %}
-
-   {% if settings.search_option == 'everything' or wh_price == blank %}
-
-    {% for item in search.results %}
-      {% unless item.tags contains 'swipe-product' or item.tags contains 'patch' %}
-{% include 'wh_calculate_discount' with item, hide_method: 'skip' %}
-{% include 'bold-product' with item, hide_action: 'skip' %}
-      <div class="product_row">
-        {% assign featured_image = false %}
-
-        {% if item.object_type == 'article' and item.image %}
-          {% assign featured_image = true %}
-          <div class="image_columns alpha">
-             <a href="{{ item.url }}" title="{{ item.title | escape }}">
-                <img src="{{ item.image | img_url: '600x', scale: 2 }}"  alt="{{ item.title | escape }}" />
-             </a>
-          </div>
-        {% elsif item.featured_image %}
-          {% assign featured_image = true %}
-          <div class="image_columns alpha">
-             <a href="{{ item.url }}" title="{{ item.title | escape }}">
-                <img src="{{ item.featured_image | product_img_url: '600x', scale: 2 }}"  alt="{{ item.title | escape }}" />
-             </a>
-          </div>
-        {% endif %}
-
-        {% if sidebar %}
-          <div class="product_info">
-        {% else %}
-          <div class="product_info">
-        {% endif %}
-
-          <h5 class="sub_title">
-            <a href="{{ item.url }}" title="{{ item.title | escape }}">{{ item.title }}</a>
-          </h5>
-
-          {% if wh_price %}
-             <div class="info">
-                <span class="price">
-                  {% if wh_compare_at_price_max > wh_price %}
-                    <span class="was_price">{{ wh_compare_at_price_max | money }}</span>
-                  {% endif %}
-
-                  {% if item.available %}
-                    {% if item.price_varies %}
-                      {% if wh_compare_at_price_max > wh_price %}
-                        <br />
-                      {% endif %}
-                      <small><em>{{ 'products.general.from' | t }}</em></small>
-                    {% endif %}
-                    {{ wh_price_min | money }}
-                  {% else %}
-                    {{ wh_price_min | money }} - {{ 'products.product.sold_out' | t }}
-                  {% endif %}
-                </span>
-            </div>
-          {% endif %}
-
-          {% if item.object_type == 'article' %}
-            <p class="blog_meta">
-              {% if section.settings.blog_author %}
-                <span>{{ 'blogs.article.by_author' | t: author: item.author }}</span>
-              {% endif %}
-
-              {% if section.settings.blog_date %}
-                <span>{{ item.published_at | date: format: "month_day_year" }}</span>
-              {% endif %}
-            </p>
-          {% endif %}
-
-          {% if item.excerpt %}
-            <div class="excerpt">{{ item.excerpt }}</div>
-
-            {% if section.settings.read_more_link %}
-              <p>
-                <a href="{{ item.url }}" title="{{ item.title | escape }}">{{ 'blogs.general.continue_reading_html' | t }} <span class="icon-right-arrow"></span></a>
-              </p>
-            {% endif %}
-          {% else %}
-            <p class="product-desc-hide-blog">
-              {{ item.content | strip_html | truncatewords: 40 | highlight: search.terms | replace: 'Description', '' | replace: 'Specs', '' | replace: 'Shipping', '' | replace: 'Size', '' }}
-            </p>
-          {% endif %}
-        </div>
-      </div>
- {% endunless %}
-   {% endfor %}
-
-  {% else %}
-    {% assign products = search.results %}
-    {% assign products_per_row = section.settings.products_per_row %}
-    {% include 'product-loop', sidebar: sidebar %}
-
-  {% endif %}
-{% endif %}
-
-  {% else %}
-    <div class="clearfix search_page">
-      <br class="clear" />
-      <div class="center">
-        <h3>
-          {{ 'general.search.description' | t }}
-        </h3>
-      </div>
-      <br class="clear" />
-        <form class="search" action="/search">
-          <div class="{% if sidebar %}three{% else %}five{% endif %} columns">
-            &nbsp;
-          </div>
-          <div class="image_columns center">
-            {% if settings.search_option != 'everything' %}
-              <input type="hidden" name="type" value="product" />
-            {% endif %}
-            <input type="text" name="q" placeholder="{{ 'general.search.placeholder' | t }}" value="{{ search.terms }}" x-webkit-speech autocapitalize="off" autocomplete="off" autocorrect="off" />
-          </div>
-          <div class="two columns">
-            <input type="submit" name="submit" class="action_button" value="{{ 'general.search.submit' | t }}" style="margin-top:0" />
-          </div>
-        </form>
-      </div>
     </div>
   {% endif %}
 
-
-</div>
-      {% include 'pagination' with sidebar %}
+  {% include 'pagination' %}
 </div>
 {% endpaginate %}
+
+
+
+<script>
+  
+  const searchInput = document.getElementById('search-input');
+  const clearButton = document.getElementById('clear-button');
+
+  // Show the clear button when the input field is focused and there's text
+  searchInput.addEventListener('focus', () => {
+      clearButton.style.display = searchInput.value.length > 0 ? 'block' : 'none';
+  });
+  
+  // Hide the clear button when the input field loses focus, only if the input is empty
+  searchInput.addEventListener('blur', () => {
+      if (searchInput.value.length === 0) {
+          clearButton.style.display = 'none';
+      }
+  });
+  
+  // Show the clear button when there is text in the input
+  searchInput.addEventListener('input', () => {
+      clearButton.style.display = searchInput.value.length > 0 ? 'block' : 'none';
+  });
+  
+  // Clear the input when the clear button is clicked
+  clearButton.addEventListener('click', () => {
+      searchInput.value = '';
+      clearButton.style.display = 'none';
+      searchInput.focus();
+  });
+
+</script>
 
 {% schema %}
 
@@ -211,6 +292,13 @@
   "name": "Search",
   "class": "search-template-section",
   "settings": [
+    {
+      "type": "text",
+      "id": "para_text",
+      "label": "Text",
+      "default": "Tip: Try rephrasing your search term, or using a related term."
+    },
+    
     {
       "type": "checkbox",
       "id": "search_breadcrumb",
