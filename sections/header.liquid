@@ -1,4 +1,4 @@
-            {% include 'wh_calculate_discount' with product, hide_method: 'break' %}
+{% include 'wh_calculate_discount' with product, hide_method: 'break' %}
 {% comment %}
 ** Header - default view **
 - Static section
@@ -15,7 +15,90 @@
   assign cartCount = cartCount | minus: 1
   endif
 %}
+<div id="fullWidthSearchOverlay" class="full-width-overlay">
+                    <div class="overlay-content">
+                      
 
+                  <div class="search-wrap">
+                   
+                    <form action="/search" class="header_search_form">
+                      {% if settings.search_option != 'everything' %}
+                        <input type="hidden" name="type" value="product" />
+                      {% endif %}
+                      <span class="icon-search search-submit"></span>
+                      <input type="text" name="q" placeholder="{{ 'general.search.title' | t: shop_name: shop.name }}" value="{% if search and wh_price %}{{ search.terms }}{% endif %}" autocapitalize="off" autocomplete="off" autocorrect="off" />
+                    </form>
+                     <span class="close-overlay" onclick="closeFullWidthSearch()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M9.00939 10L2.5 3.49061L3.49061 2.5L10 9.00939L16.5094 2.5L17.5 3.49061L10.9906 10L17.5 16.5094L16.5094 17.5L10 10.9906L3.49061 17.5L2.5 16.5094L9.00939 10Z" fill="currentColor"></path>
+                        </svg>
+                      </span>
+                  </div>
+
+
+
+
+
+
+                  
+                      <div class="overlay-body-content">
+                        <div class="sidebar-menu-wrap">
+                    <h3 class="menu-heading">Trending Searches</h3>
+                          <div class="trending-searches-wrapper">
+                    <ul>
+                      {% if section.settings.main_linklist3 != blank %}
+                        {% for link in linklists[section.settings.main_linklist3].links %}
+                          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                        {% endfor %}
+                      {% else %}
+                        <li>No trending searches found.</li>
+                      {% endif %}
+                    </ul>
+                            </div>
+                  </div>
+                  
+                        
+                        <div class="collection-product-wrap">
+                    <h3>Popular Products</h3>
+                          <div class="collection-product-list-wrap">
+                    <div class="collection-product-list">
+                      {% assign selected_collection = section.settings.collection %}
+                      {% if collections[selected_collection] %}
+                        {% assign products = collections[selected_collection].products %}
+                        {% if products.size > 0 %}
+                          {% for product in products %}
+                            <div class="product-item">
+                              <a href="{{ product.url }}">
+                                <img class="product-img" src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title }}">
+                              </a>
+                              <h4>
+                                <a class="product-title" href="{{ product.url }}">{{ product.title }}</a>
+                              </h4>
+                              <p class="product-price">
+                                {{ product.price | money }}
+                              </p>
+                            </div>
+                          {% endfor %}
+                        {% else %}
+                          <p>No products found in this collection.</p>
+                        {% endif %}
+                      {% else %}
+                        <p>Selected collection not found.</p>
+                      {% endif %}
+                    </div>
+                  </div>        
+                  </div>
+                  
+                  
+                      </div>
+
+              <div class="shop-best-btn">
+                <a  href="https://lolaandtheboys.com/collections/best-sellers">Shop Best Sellers</a>
+              </div>
+                      
+                      
+                    </div>
+                  </div>
 <header id="header" class="mobile_nav-fixed--{{ section.settings.fixed_header }}">
 
 
@@ -48,7 +131,12 @@
       {% endif %}
     </a>
     {% if section.settings.search_enabled %}
-      <a href="/search" class="icon-search dropdown_link" title="{{ 'general.search.title' | t | escape }}" data-dropdown-rel="search"></a>
+      <!-- <a href="/search" class="icon-search dropdown_link" title="{{ 'general.search.title' | t | escape }}" data-dropdown-rel="search"></a> -->
+
+      <li class="search_link">
+                    <a href="javascript:void(0);" onclick="openFullWidthSearch()" class="icon-search dropdown_link" title="{{ 'general.search.title' | t | escape }}" data-dropdown-rel="search"></a>
+                  </li>
+      
     {% endif %}
     {% comment %}
     {% include 'iwish_v2' with 'iwishlink' %}
@@ -67,7 +155,7 @@
 
   </div>
   {% if section.settings.search_enabled %}
-    <div class="dropdown_container center" data-dropdown="search">
+    <!-- <div class="dropdown_container center" data-dropdown="search">
       <div class="dropdown search_dropdown_mobile">
         <form action="/search" class="header_search_form">
           {% if settings.search_option != 'everything' %}
@@ -77,7 +165,13 @@
           <input type="text" name="q" placeholder="{{ 'general.search.title' | t: shop_name: shop.name }}" autocapitalize="off" autocomplete="off" autocorrect="off" class="search-terms" />
         </form>
       </div>
-    </div>
+    </div> -->
+
+
+
+    
+
+    
   {% endif %}
   <div class="dropdown_container" data-dropdown="menu">
     <div class="dropdown">
@@ -198,15 +292,10 @@
           <div class="logo text-align--{{ section.settings.logo_alignment }}">
             <div class="main-container align-items-center justify-content-between logo-inner-main">
 
-               <li class="search_container">
-                <form action="/search" class="header_search_form">
-                  {% if settings.search_option != 'everything' %}
-                    <input type="hidden" name="type" value="product" />
-                  {% endif %}
-                  <span class="icon-search search-submit"></span>
-                  <input type="text" name="q" placeholder="{{ 'general.search.title' | t: shop_name: shop.name }}" value="{% if search and wh_price %}{{ search.terms }}{% endif %}" autocapitalize="off" autocomplete="off" autocorrect="off" />
-                </form>
-              </li>
+                <li class="search_link">
+                    <a href="javascript:void(0);" onclick="openFullWidthSearch()" class="icon-search dropdown_link" title="{{ 'general.search.title' | t | escape }}" data-dropdown-rel="search"></a>
+                  </li>
+                     
 
           
             <a href="{{ shop.url }}" title="{{ shop.name }}">
@@ -250,11 +339,10 @@
                 
             <div class="header-search-main">
               
-              {% comment %}
-              <li class="search_link">
-                <a href="/search" class="icon-search dropdown_link" title="{{ 'general.search.title' | t | escape }}" data-dropdown-rel="search"></a>
-              </li>
-              {% endcomment %}
+          
+          
+
+              
               <li class="wish_link"> <a class="fa fa-heart-o" href="https://lolaandtheboys.com/apps/wishlist"> <div id="wishlist-count2"><span id="wishlist-count2-value"></span></div></a></li>
               <li class="cart_link">
                 {% if section.settings.show_cart %}
@@ -464,9 +552,397 @@
 
 
 <style>
+
+ .full-width-overlay .product-item a.product-title {
+    letter-spacing: 0px;
+}
+  
+   .full-width-overlay .header_search_form .search-submit {
+        font-size: 20px !important;
+    }
+.header .main_nav_wrapper .main_nav .logo .logo-inner-main a {
+    margin: 0 auto;
+}
+
+  
+.shop-best-btn {
+    text-align: center;
+    margin-top: 70px;
+display:none;
+}
+
+.shop-best-btn a{
+     background: #000;
+    color: #fff;
+padding:15px 30px
+}
+ header .cart_container {
+    z-index: 1;
+}
+
+  
+  @media screen and (max-width: 769px) {
+   
+
+html:has(.full-width-overlay.mobilesearch-overflowhidden) {
+    overflow: hidden;
+}
+
+
+    
+.shop-best-btn {
+display:block !important;
+}
+.full-width-overlay .collection-product-list .product-item h4{
+  margin-bottom:0 !important;
+}
+   .full-width-overlay .header_search_form {
+    padding: 15px 0 0 !important;
+
+}
+
+  .full-width-overlay   .header_search_form .search-submit {
+        top: 32px !important;
+        left: 7px;
+        right: 0;
+        width: min-content;
+        display: inline-block;
+    }
+ .full-width-overlay .close-overlay {
+    top: -4px;
+    position: relative;
+           order: 1;
+}
+ #fullWidthSearchOverlay .sidebar-menu-wrap ul li {
+    width: auto;
+}
+#fullWidthSearchOverlay .overlay-body-content ul li a {
+        border: 1px solid #000;
+        border-radius: 25px;
+        padding: 5px 16px !important;
+        text-align: center;
+        font-size: 14px;
+  font-weight: 300 !important;
+    }
+    
+
+#fullWidthSearchOverlay .header_search_form {
+    border: none !important;
+          order: 2;
+}
+#fullWidthSearchOverlay .header_search_form input {
+    margin-bottom: 0px !important;
+    border: 1px solid #000;
+          padding: 25px 42px;
+}
+    
+
+ .full-width-overlay .collection-product-wrap h3 {
+    color: #000;
+}
+ .full-width-overlay .collection-product-list .product-item a.product-title {
+    font-weight: 400 !important;
+}
+    
+    
+ .full-width-overlay .header_search_form {
+    margin-left: 20px;
+}
+    
+ .full-width-overlay .overlay-content{
+  height:100% !important;
+}
+ .full-width-overlay .search-wrap {
+    margin-bottom: 20px;
+}
+    
+	 .full-width-overlay .trending-searches-wrapper{
+	    overflow: scroll;
+        padding-bottom: 15px;
+	}
+    
+ .full-width-overlay .sidebar-menu-wrap ul {
+    display: flex;
+    width: 600px;
+          gap: 5px !important;
+}
+	
+	
+   .full-width-overlay .collection-product-wrap h3 {
+    text-align: left;
+		 	margin-bottom:10px !important;
+}
+
+ .full-width-overlay .overlay-body-content{
+flex-direction:column;
+  gap:20px !important;
+}
+
+ .full-width-overlay .collection-product-wrap, .sidebar-menu-wrap{
+width:100% !important;
+}
+ .full-width-overlay .collection-product-list-wrap{
+    overflow: auto;
+	    scrollbar-width: none;
+}
+
+ .full-width-overlay .overlay-content {
+    padding: 0 10px 30px !important;
+	    overflow-x: auto;
+           overflow-y: hidden;
+}
+
+ .full-width-overlay .collection-product-list {
+    gap: 5px !important;
+	    width: 150vw;
+	flex-wrap:nowrap !important;
+}
+
+
+ .full-width-overlay .product-item {
+    width:25% !important;
+}
+    
+}
+
+  .full-width-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0000007d;
+  z-index: 1000;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
+}
+
+.overlay-content {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+    height: auto;
+    background: #fff;
+    padding: 0 40px 50px;
+}
+#fullWidthSearchOverlay .product-title{
+    text-transform: capitalize;
+}
+
+#fullWidthSearchOverlay .product-price{
+font-weight:300 !important;
+}
+.close-overlay {
+  /* position: absolute;
+  top:0;
+  right: 40px; */
+  cursor:pointer;
+}
+.search-wrap {
+  display:flex;
+  align-items:center;
+}
+  
+.search-bar {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  max-width: 600px;
+  width: 100%;
+  border-bottom: 1px solid #000;
+  margin: 0 auto;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+}
+
+  .search-bar input[type=text] {
+    border:none;
+    margin:0;
+    background-color: #fff;
+    overflow: hidden;
+    padding-left: 16px;
+    outline: none;
+    font-size: 16px;
+    font-weight:400;
+    height: 24px !important;
+    min-height: 24px !important;
+    line-height: 24px !important;
+    width: 100%;
+    margin: 8px 0;
+  }
+
+  input[type=text]::placeholder {
+    color:#A3A3A3;
+  }
+
+.overlay-body-content {
+  display: flex;
+  gap: 20px;
+  max-width: 1050px;
+  margin: 0 auto;
+ 
+}
+
+.main_nav div.logo .overlay-content .product-item a {
+  font-size: 14px !important;
+  font-weight: 600;
+  line-height: 19px !important;
+  padding: 0 !important;
+  margin: 10px 0;
+  letter-spacing:0.3px;
+}
+
+.main_nav div.logo .overlay-content a {
+  color:#000 !important;
+  font-family: "Proxima Nova Rg" !important;
+}
+
+.main_nav div.logo .overlay-content h4 {
+  padding:0;
+  margin:0;
+}
+
+/* .header .main_nav_wrapper .main_nav .logo .overlay-content a {
+  font-family: 'Proxima Nova Rg', sans-serif !important;
+} */
+
+.trending-searches {
+  width: 30%;
+}
+
+.trending-searches h3 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.trending-searches ul {
+  list-style: none;
+  padding: 0;
+}
+
+.trending-searches ul li a {
+  color: #333;
+  text-decoration: none;
+  display: block;
+  padding: 5px 0;
+}
+
+.trending-searches ul li a:hover {
+  text-decoration: underline;
+}
+
+.collection-product-wrap {
+  width: 75%;
+}
+
+.sidebar-menu-wrap {
+  width:25%;
+}
+
+.sidebar-menu-wrap .menu-heading {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 1px;
+  color: #000;
+  margin:0 0 10px;
+} 
+  
+.collection-product-wrap h3 {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1.12px;
+    line-height: 22px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.collection-product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.product-item {
+  width:calc(25% - 20px)
+}
+
+.product-item a {
+  margin:0;
+}
+
+.product-item img {
+  max-width: 100% !important;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display:block;
+}
+
+.product-item a.product-title {
+  font-size: 16px;
+  font-weight:600;
+  line-height:24px;
+  padding:0;
+  color:#000 !important;
+  margin: 10px 0;
+  color: #333;
+}
+ 
+.product-item p.product-price {
+  font-size: 13px;
+  font-weight:400;
+  color: #605e5c;
+  margin:0;
+  font-family: "Proxima Nova Rg" !important;
+}
+
+.sidebar-menu-wrap ul {
+  margin:0;
+  padding:0;
+} 
+
+.sidebar-menu-wrap ul li {
+  margin: 0;
+  padding: 0;
+  display: block;
+  width: 100%;
+}
+
+.sidebar-menu-wrap ul li a {
+  font-size: 13px;
+  line-height:13px;
+  margin: 0;
+  padding: 0;
+  display: block !important;
+  width: 100%;
+}
+
+#fullWidthSearchOverlay .header .main_nav_wrapper .main_nav  li {
+    padding: 0 !important;
+}
+
+.product-item a {
+  float:none !important;
+}
+ 
+
+  
   .main_nav div.logo a {
     padding-top: {{ section.settings.logo_top_padding }}px;
     padding-bottom: {{ section.settings.logo_top_padding }}px;
+  }
+
+  .header .main_nav_wrapper .main_nav .logo .logo-inner-main .header-search-main .search_link {
+    display:block;
   }
 
   div.logo img {
@@ -515,6 +991,8 @@
     }
   {% endif %}
 
+  
+
 </style>
 
 {% schema %}
@@ -523,7 +1001,12 @@
   "name": "Header",
   "class": "header-section",
   "settings": [
-  
+  {
+    "type": "collection",
+    "id": "collection",
+    "label": "Collection"
+  },
+    
     {
      "type": "header",
      "content": "Top bar"
@@ -645,6 +1128,11 @@
       "label": "Secondary menu"
     },
     {
+      "type": "link_list",
+      "id": "main_linklist3",
+      "label": "Search Overlay Menu"
+    },
+    {
       "type": "checkbox",
       "id": "vertical_menu",
       "label": "Enable vertical menus",
@@ -660,6 +1148,7 @@
       "label": "Enable search",
       "default": true
     },
+    
     {
      "type": "header",
      "content": "Layout"
@@ -775,6 +1264,8 @@
       ]
  }
   ]
+
+
 }
 
 {% endschema %}
@@ -807,4 +1298,21 @@ setupButtonClickEventListeners();
 setInterval(function () {
     updateWishlistCount();
 }, 0);
+
+
+function openFullWidthSearch() {
+
+  document.querySelector(".full-width-overlay").style.display = "flex";
+  document.querySelector(".full-width-overlay").classList.add("mobilesearch-overflowhidden");
+
+}
+
+function closeFullWidthSearch() {
+
+  document.querySelector(".full-width-overlay").style.display = "none";
+  document.querySelector(".full-width-overlay").classList.remove("mobilesearch-overflowhidden");
+
+}
+
+  
 </script>
