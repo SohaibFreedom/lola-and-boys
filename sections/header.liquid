@@ -15,19 +15,31 @@
   assign cartCount = cartCount | minus: 1
   endif
 %}
+
 <div id="fullWidthSearchOverlay" class="full-width-overlay">
+
+
+
+
+
+
+  
                     <div class="overlay-content">
                       
 
                   <div class="search-wrap">
+                    <div class="header_search_form">
+                      <span class="icon-search"></span>
+                      <input type="text" id="instantSearchInput" placeholder="Search" />
+                    </div>
                    
-                    <form action="/search" class="header_search_form">
+                    <!-- <form action="/search" class="header_search_form">
                       {% if settings.search_option != 'everything' %}
                         <input type="hidden" name="type" value="product" />
                       {% endif %}
                       <span class="icon-search search-submit"></span>
                       <input type="text" name="q" placeholder="{{ 'general.search.title' | t: shop_name: shop.name }}" value="{% if search and wh_price %}{{ search.terms }}{% endif %}" autocapitalize="off" autocomplete="off" autocorrect="off" />
-                    </form>
+                    </form> -->
                      <span class="close-overlay" onclick="closeFullWidthSearch()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                           <path fill-rule="evenodd" clip-rule="evenodd" d="M9.00939 10L2.5 3.49061L3.49061 2.5L10 9.00939L16.5094 2.5L17.5 3.49061L10.9906 10L17.5 16.5094L16.5094 17.5L10 10.9906L3.49061 17.5L2.5 16.5094L9.00939 10Z" fill="currentColor"></path>
@@ -43,8 +55,18 @@
                   
                       <div class="overlay-body-content">
                         <div class="sidebar-menu-wrap">
-                    <h3 class="menu-heading">Trending Searches</h3>
+                          <div class="collection-searches-wrapper" style="display: none;">
+                          <h3 class="menu-heading">Suggestions</h3>
+                            <div class="collection-results-wrapper"> 
+                            
+                          <ul id="collectionResults"></ul>
+
+                              </div>
+                         </div>
+                          <div class="trending-searches-main">
+                            <h3 class="menu-heading">Trending Searches</h3>
                           <div class="trending-searches-wrapper">
+                             
                     <ul>
                       {% if section.settings.main_linklist3 != blank %}
                         {% for link in linklists[section.settings.main_linklist3].links %}
@@ -55,10 +77,21 @@
                       {% endif %}
                     </ul>
                             </div>
+                            </div>
                   </div>
                   
                         
                         <div class="collection-product-wrap">
+                           <div id="recommended-products" style="display: none;"> 
+                              <h3>Recommended Products</h3>
+                            <a id="viewAllResultsButton" href="" class="view-all-results-button" style="display: none;">View All Results for "<span id="searchQuery"></span>"</a>
+                             <div class="search-results-wrapper">
+                                <div id="searchResults"></div>
+                             </div>
+                          
+                           </div>
+
+                       <div id="popular-products">  
                     <h3>Popular Products</h3>
                           <div class="collection-product-list-wrap">
                     <div class="collection-product-list">
@@ -86,7 +119,12 @@
                         <p>Selected collection not found.</p>
                       {% endif %}
                     </div>
-                  </div>        
+                  </div>   
+</div> 
+                         
+
+
+                          
                   </div>
                   
                   
@@ -98,7 +136,10 @@
                       
                       
                     </div>
+
                   </div>
+
+
 <header id="header" class="mobile_nav-fixed--{{ section.settings.fixed_header }}">
 
 
@@ -597,7 +638,7 @@ display:block !important;
   margin-bottom:0 !important;
 }
    .full-width-overlay .header_search_form {
-    padding: 15px 0 0 !important;
+    padding: 0px 15px 0 !important;
 
 }
 
@@ -614,7 +655,8 @@ display:block !important;
            order: 1;
 }
  #fullWidthSearchOverlay .sidebar-menu-wrap ul li {
-    width: auto;
+    width: max-content;
+    min-width: max-content;
 }
 #fullWidthSearchOverlay .overlay-body-content ul li a {
         border: 1px solid #000;
@@ -627,13 +669,12 @@ display:block !important;
     
 
 #fullWidthSearchOverlay .header_search_form {
-    border: none !important;
+    border: 1px solid #000 !important;
           order: 2;
 }
 #fullWidthSearchOverlay .header_search_form input {
-    margin-bottom: 0px !important;
-    border: 1px solid #000;
-          padding: 25px 42px;
+          margin-bottom: 0px !important;
+        padding: 25px 10px;
 }
     
 
@@ -647,6 +688,7 @@ display:block !important;
     
  .full-width-overlay .header_search_form {
     margin-left: 20px;
+   margin-top: 20px;
 }
     
  .full-width-overlay .overlay-content{
@@ -1316,3 +1358,196 @@ function closeFullWidthSearch() {
 
   
 </script>
+
+
+<script>
+
+document.getElementById('instantSearchInput').addEventListener('input', function() {
+    const query = this.value.trim();
+    const searchResultsContainer = document.getElementById('searchResults');
+    const collectionResultsContainer = document.getElementById('collectionResults');
+    const trendingSearchesWrapper = document.querySelector('.trending-searches-main');
+    const collectionSearchesWrapper = document.querySelector('.collection-searches-wrapper');
+    const popularProducts = document.getElementById('popular-products');
+    const recommendedProducts = document.getElementById('recommended-products');
+    const viewAllResultsButton = document.getElementById('viewAllResultsButton');
+
+    if (query.length > 1) {
+        trendingSearchesWrapper.style.display = 'none';
+        collectionSearchesWrapper.style.display = 'block';
+        popularProducts.style.display = 'none';
+        recommendedProducts.style.display = 'block';
+
+        // Update "View All" button URL and text
+        viewAllResultsButton.href = `/search?q=${encodeURIComponent(query)}`;
+        viewAllResultsButton.innerHTML = `View All Results for "${query}"`;
+        viewAllResultsButton.style.display = 'inline-block';
+
+        fetch(`/search/suggest.json?q=${encodeURIComponent(query)}&resources[type]=product,collection&resources[limit]=8`)
+            .then(response => response.json())
+            .then(data => {
+
+             console.log(data);
+                // Clear previous results
+                searchResultsContainer.innerHTML = '';
+                collectionResultsContainer.innerHTML = '';
+
+                // Display product results (limit to 4)
+                if (data.resources.results.products.length > 0) {
+                    data.resources.results.products.slice(0, 4).forEach(product => {
+                        const currency = product.currency || 'USD'; // Default to USD if currency is not specified
+
+const formattedPrice = Shopify.formatMoney(product.price, "{{ shop.money_format }}");
+
+
+                        const productHtml = `
+                            <div class="search-result-item product-item">
+                                <a href="${product.url}">
+                                    <img class="product-img" src="${product.image.replace(/(\.[^.]*)$/, '_400x$1')}" alt="${product.title}" />
+                                    <h4><a class="product-title" href="${product.url}">${product.title}</a></h4>
+                                    <p class="product-price">${formattedPrice}</p>
+                                </a>
+                            </div>
+                        `;
+                        searchResultsContainer.innerHTML += productHtml;
+                    });
+                } else {
+                    searchResultsContainer.innerHTML = '<p>No products found</p>';
+                  viewAllResultsButton.style.display = 'none';
+                }
+
+                // Display collection results (limit to 4)
+                if (data.resources.results.collections.length > 0) {
+                    data.resources.results.collections.slice(0, 4).forEach(collection => {
+                        const collectionHtml = `
+                            <li class="collection-result-item">
+                                <a href="${collection.url}">${collection.title}</a>
+                            </li>
+                        `;
+                        collectionResultsContainer.innerHTML += collectionHtml;
+                    });
+                } else {
+                    trendingSearchesWrapper.style.display = 'block';
+                    collectionSearchesWrapper.style.display = 'none';
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching search results:', error);
+                searchResultsContainer.innerHTML = '<p>Error fetching results</p>';
+                collectionResultsContainer.innerHTML = '<p>Error fetching collections</p>';
+            });
+    } else {
+        trendingSearchesWrapper.style.display = 'block';
+        collectionSearchesWrapper.style.display = 'none';
+        popularProducts.style.display = 'block';
+        recommendedProducts.style.display = 'none';
+
+        searchResultsContainer.innerHTML = '';
+        collectionResultsContainer.innerHTML = '';
+        viewAllResultsButton.style.display = 'none'; // Hide "View All" when no query
+    }
+});
+
+document.getElementById('instantSearchInput').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault(); // Prevent form submission if within a form
+        const query = this.value.trim();
+        if (query.length > 0) {
+            window.location.href = `/search?q=${encodeURIComponent(query)}`;
+        }
+    }
+});
+  
+
+document.querySelector('.close-overlay').addEventListener('click', function() {
+    const searchInput = document.getElementById('instantSearchInput');
+    const searchResultsContainer = document.getElementById('searchResults');
+    const collectionResultsContainer = document.getElementById('collectionResults');
+    const trendingSearchesWrapper = document.querySelector('.trending-searches-main');
+    const collectionSearchesWrapper = document.querySelector('.collection-searches-wrapper');
+    const popularProducts = document.getElementById('popular-products');
+    const recommendedProducts = document.getElementById('recommended-products');
+    const viewAllResultsButton = document.getElementById('viewAllResultsButton');
+    
+    // Clear the search input field
+    searchInput.value = '';
+
+    // Reset the view to default state
+    trendingSearchesWrapper.style.display = 'block';
+    collectionSearchesWrapper.style.display = 'none';
+    popularProducts.style.display = 'block';
+    recommendedProducts.style.display = 'none';
+    searchResultsContainer.innerHTML = '';
+    collectionResultsContainer.innerHTML = '';
+    viewAllResultsButton.style.display = 'none'; // Hide "View All" button
+});
+
+  
+</script>
+
+
+
+            <style>
+@media screen and (max-width: 769px) {
+  #fullWidthSearchOverlay  #viewAllResultsButton {
+    position: relative !important;
+    margin-right: 0 !important;
+            margin-bottom: 15px;
+}
+  #fullWidthSearchOverlay .collection-product-wrap h3{
+      display: block !important;
+} 
+.full-width-overlay #searchResults {
+         width: 150vw;
+}
+ .full-width-overlay .search-results-wrapper{
+    overflow: auto;
+    scrollbar-width: none;
+  }
+ .full-width-overlay .collection-results-wrapper{
+    overflow: auto;
+    padding-bottom: 15px;
+  }
+.full-width-overlay  .icon-search{
+        position: relative;
+    top: 4px;
+  }
+  
+}
+
+
+ #fullWidthSearchOverlay #recommended-products{
+  position:relative;
+}
+  #fullWidthSearchOverlay  #viewAllResultsButton{
+    position: absolute;
+    right: 0;
+    margin-right: 20px;
+    text-decoration: underline;
+  }
+
+     #fullWidthSearchOverlay .collection-product-wrap h3{
+      color:#000;
+      display: inline-block;
+}         
+          .full-width-overlay    #searchResults {
+      display: flex;
+  gap:20px;
+}
+
+.full-width-overlay .search-result-item {
+  width: calc(25% - 20px);
+}
+
+.full-width-overlay .search-result-item img {
+  max-width: 100% !important;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    display: block;
+}
+
+.full-width-overlay .search-result-item p {
+    margin: 0;
+}
+
+            </style>            
