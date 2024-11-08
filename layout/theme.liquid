@@ -670,6 +670,28 @@ $('.product_section .gPreorderBtn').click(function(){
       
 // Overlay for globo menu app and disable scroll
       
+document.addEventListener('DOMContentLoaded', () => {
+    const mobileNav = document.querySelector('.mobile_nav');
+    const dropdownContainer = document.querySelector('.dropdown_container');
+    const dropdownOverlay = document.querySelector('.dropdown-overlay-globomenu'); // Ensure this class exists in your HTML
+    const body = document.body;
+
+    const toggleDropdown = () => {
+        const isOpen = dropdownContainer.classList.toggle('dropdown_open-custom');
+        body.classList.toggle('nav-overflow-hidden', isOpen);
+        
+        // Show or hide the overlay based on dropdown state
+        dropdownOverlay.style.display = isOpen ? 'block' : 'none';
+    };
+
+    mobileNav.addEventListener('click', toggleDropdown);
+
+    document.addEventListener('click', (event) => {
+        if (!mobileNav.contains(event.target) && !dropdownContainer.contains(event.target) && dropdownContainer.classList.contains('dropdown_open-custom')) {
+            toggleDropdown();
+        }
+    });
+});
 
 
       
