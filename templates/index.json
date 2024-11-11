@@ -285,7 +285,7 @@
         "image_eJCjKd": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/NEW_ARRIVALS_9fab4537-e105-4437-8826-dbbaf147f5f7.jpg",
+            "image": "shopify://shop_images/PHOTO_1.jpg",
             "link": "shopify://collections/newarrivals",
             "title": "",
             "title_n": "123",
@@ -298,8 +298,8 @@
         "image_tDQkFx": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/14_feed.jpg",
-            "link": "shopify://collections/warner-brothers",
+            "image": "shopify://shop_images/5_9.jpg",
+            "link": "shopify://collections/wicked",
             "title": "",
             "title_n": "",
             "title_1": "Feature",
@@ -340,7 +340,7 @@
         "image_fph4tc": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/SHOES_79c0be8f-0e8f-4456-89c0-9325b80b3f14.jpg",
+            "image": "shopify://shop_images/PHOTo_2.jpg",
             "link": "https://lolaandtheboys.com/collections/shoes2022",
             "title1": "Shoes",
             "customclass": "shoes-img-fix",
