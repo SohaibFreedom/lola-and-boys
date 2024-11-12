@@ -1343,6 +1343,12 @@ setInterval(function () {
 
 
 function openFullWidthSearch() {
+    setTimeout(() => {
+        const searchInput = document.getElementById("instantSearchInput");
+        if (searchInput) {
+            searchInput.focus();
+        }
+    }, 100); 
 
   document.querySelector(".full-width-overlay").style.display = "flex";
   document.querySelector(".full-width-overlay").classList.add("mobilesearch-overflowhidden");
@@ -1355,6 +1361,34 @@ function closeFullWidthSearch() {
   document.querySelector(".full-width-overlay").classList.remove("mobilesearch-overflowhidden");
 
 }
+
+
+
+const overlay = document.getElementById('fullWidthSearchOverlay');
+const overlayContent = document.querySelector('.overlay-content');
+
+
+function closeOverlay() {
+  overlay.style.display = 'none'; 
+}
+overlay.addEventListener('click', function (event) {
+
+  if (!overlayContent.contains(event.target)) {
+    closeOverlay();
+  }
+});
+
+
+overlayContent.addEventListener('click', function (event) {
+  event.stopPropagation(); 
+});
+
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    closeOverlay(); 
+  }
+});
 
   
 </script>
