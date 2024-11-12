@@ -191,7 +191,7 @@
                   </div>
                 {% endif %}
 
-                {% if item.object_type == 'article' %}
+                <!-- {% if item.object_type == 'article' %}
                   <p class="blog_meta">
                     {% if section.settings.blog_author %}
                       <span>{{ 'blogs.article.by_author' | t: author: item.author }}</span>
@@ -200,7 +200,7 @@
                       <span>{{ item.published_at | date: "month_day_year" }}</span>
                     {% endif %}
                   </p>
-                {% endif %}
+                {% endif %} -->
 
                 {% if item.excerpt %}
                   <div class="excerpt">{{ item.excerpt }}</div>
