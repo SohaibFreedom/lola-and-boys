@@ -12,6 +12,27 @@
     "slideshow_nB6m8V": {
       "type": "slideshow",
       "blocks": {
+        "image_U3EW4E": {
+          "type": "image",
+          "settings": {
+            "image_mobile": "shopify://shop_images/Early_BF_20_OFF_HP_mob_23bfd63c-df9f-4d95-baa6-f9e36b0e8575.jpg",
+            "mp4": "https://cdn.shopify.com/videos/c/o/v/33f47c9842ee4f919c82c53c4966d9bd.mp4",
+            "mobilevideo": "",
+            "pretext": "",
+            "title": "",
+            "subtitle": "",
+            "text_position": "center",
+            "text_align": "center",
+            "caption_background": false,
+            "caption_background_transparency": false,
+            "button1": "",
+            "button1_link": "https://lolaandtheboys.com/collections/early-access-black-friday",
+            "button1_highlight": false,
+            "button2": "",
+            "button2_link": "",
+            "button2_highlight": false
+          }
+        },
         "image_zPL6aM": {
           "type": "image",
           "settings": {
@@ -28,27 +49,6 @@
             "caption_background_transparency": false,
             "button1": "",
             "button1_link": "https://lolaandtheboys.com/collections/holiday-shop",
-            "button1_highlight": false,
-            "button2": "",
-            "button2_link": "",
-            "button2_highlight": false
-          }
-        },
-        "image_U3EW4E": {
-          "type": "image",
-          "settings": {
-            "image_mobile": "shopify://shop_images/Early_BF_20_OFF_HP_mob_23bfd63c-df9f-4d95-baa6-f9e36b0e8575.jpg",
-            "mp4": "https://cdn.shopify.com/videos/c/o/v/33f47c9842ee4f919c82c53c4966d9bd.mp4",
-            "mobilevideo": "",
-            "pretext": "",
-            "title": "",
-            "subtitle": "",
-            "text_position": "center",
-            "text_align": "center",
-            "caption_background": false,
-            "caption_background_transparency": false,
-            "button1": "",
-            "button1_link": "https://lolaandtheboys.com/collections/early-access-black-friday",
             "button1_highlight": false,
             "button2": "",
             "button2_link": "",
@@ -186,8 +186,8 @@
         }
       },
       "block_order": [
-        "image_zPL6aM",
         "image_U3EW4E",
+        "image_zPL6aM",
         "image_V87qeG",
         "image_KD9mi6",
         "image_MzwgLN",
