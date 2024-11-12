@@ -191,7 +191,16 @@
                   </div>
                 {% endif %}
 
-                
+                {% if item.object_type == 'article' %}
+                  <p class="blog_meta">
+                    {% if section.settings.blog_author %}
+                      <span>{{ 'blogs.article.by_author' | t: author: item.author }}</span>
+                    {% endif %}
+                    {% if section.settings.blog_date %}
+                      <span>{{ item.published_at | date: "month_day_year" }}</span>
+                    {% endif %}
+                  </p>
+                {% endif %}
 
                 {% if item.excerpt %}
                   <div class="excerpt">{{ item.excerpt }}</div>
