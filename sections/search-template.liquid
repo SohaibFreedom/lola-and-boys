@@ -145,6 +145,7 @@
       {% if settings.search_option == 'everything' or wh_price == blank %}
 
         {% for item in search.results %}
+            {% if item.object_type == 'product' %}
           {% unless item.tags contains 'swipe-product' or item.tags contains 'patch' %}
             {% include 'wh_calculate_discount' with item, hide_method: 'skip' %}
             {% include 'bold-product' with item, hide_action: 'skip' %}
@@ -218,6 +219,7 @@
               </div>
             </div>
           {% endunless %}
+          {% endif %}
         {% endfor %}
 
       {% else %}
