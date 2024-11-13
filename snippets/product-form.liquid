@@ -138,9 +138,15 @@
        <p class="action_button btn add-cart" onclick="addItem('product-form-{{ product.id }}'); return false;" data-cart-add="{{ product.id }}">Add to Cart</p>
       {% endcomment %}  
 
-      <div style="display:none;">
         <template id="giftnote-pdp">
-          <style></style>
+          <style>
+            #button{
+                border-radius: 0;
+                border-width: 2px;
+                text-transform: uppercase;
+                font-weight: 700;
+            }
+          </style>
         </template>
         {% if product.vendor == 'Giftnote' %}
           <giftnote-voucher-button
@@ -148,14 +154,13 @@
             data-label="Send as a gift 🎁"
           ></giftnote-voucher-button>
         {% else %}
-          <giftnote-button
+          <!-- <giftnote-button
             data-styles="giftnote-pdp"
             data-add="Add a gift message 🎁"
             data-edit="Edit gift message 🎁"
-          ></giftnote-button>
+          ></giftnote-button> -->
         {% endif %}
       </div>
-    </div>
     {% endif %}
 
           
