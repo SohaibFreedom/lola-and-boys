@@ -138,7 +138,23 @@
        <p class="action_button btn add-cart" onclick="addItem('product-form-{{ product.id }}'); return false;" data-cart-add="{{ product.id }}">Add to Cart</p>
       {% endcomment %}  
 
-
+      <div style="display:none;">
+        <template id="giftnote-pdp">
+          <style></style>
+        </template>
+        {% if product.vendor == 'Giftnote' %}
+          <giftnote-voucher-button
+            data-styles="giftnote-pdp"
+            data-label="Send as a gift 🎁"
+          ></giftnote-voucher-button>
+        {% else %}
+          <giftnote-button
+            data-styles="giftnote-pdp"
+            data-add="Add a gift message 🎁"
+            data-edit="Edit gift message 🎁"
+          ></giftnote-button>
+        {% endif %}
+      </div>
     </div>
     {% endif %}
 
