@@ -16,6 +16,10 @@
             opacity: 0.5;
             cursor: not-allowed;
         }
+  .cart-temp-header .page-title h1 {
+    margin-bottom: 10px;
+    margin-top: 3rem;
+}
     .product-custom-patch-details{
       display: flex;
       flex-direction: row;
@@ -125,11 +129,11 @@
 </style>
 <a name="pagecontent" id="pagecontent"></a>
 <div id="currency-format" data-money-format="{{ shop.money_format }}"></div>
-<div class="main-container">
+<div class="main-container cart-temp-header">
   <div class="row">
     <div class="wi-100">
       <div class="page-title">
-        <h1>{{ 'cart.general.title' | t }}</h1>
+        <h1>{{ 'cart.general.title' | t }} ({{ cartCount }})</h1>
       </div>
     </div>
   </div>
