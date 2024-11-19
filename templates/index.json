@@ -679,7 +679,14 @@
         "logo_block_zR7HXA": {
           "type": "logo_block",
           "settings": {
-            "logo_image": "shopify://shop_images/logo.svg",
+            "logo_image": "shopify://shop_images/glamour_logo.png",
+            "logo_alt_text": ""
+          }
+        },
+        "logo_block_WeccVP": {
+          "type": "logo_block",
+          "settings": {
+            "logo_image": "shopify://shop_images/logo-1_1.svg",
             "logo_alt_text": ""
           }
         }
@@ -695,7 +702,8 @@
         "logo_block_amqa9Y",
         "logo_block_VBcbnw",
         "logo_block_wNbtzM",
-        "logo_block_zR7HXA"
+        "logo_block_zR7HXA",
+        "logo_block_WeccVP"
       ],
       "settings": {
         "heading": "",
