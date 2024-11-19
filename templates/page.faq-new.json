@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "faq_accordian_MAhA47": {
@@ -16,133 +16,133 @@
           "type": "shipping",
           "settings": {
             "title": "When will my order ship?",
-            "description": "<p>All orders will generally ship within <strong>2-3 business days<\/strong> from the day of order placement. During peak times orders may take<strong> 4-5 business days<\/strong> or more to ship from the day of order placement.<\/p>"
+            "description": "<p>All orders will generally ship within <strong>2-3 business days</strong> from the day of order placement. During peak times orders may take<strong> 4-5 business days</strong> or more to ship from the day of order placement.</p>"
           }
         },
         "shipping_JbkPXc": {
           "type": "shipping",
           "settings": {
             "title": "How long will it take for my order to arrive after it is shipped?",
-            "description": "<p>Regular shipping will take <strong>4-7 working days<\/strong> to deliver after the order departs from the warehouse.<\/p><p><br\/>Orders under express shipping will arrive within <strong>2-3 business days.<\/strong><\/p><p>Overnight shipping will arrive the next business day<\/p><p>Saturday Overnight will arrive the next day, Saturday as long as the order was processed Friday before 4pm.<\/p><p>Expedited and ground shipping speeds come into effect after your non-custom order has been processed and\/or your custom order is completed. Choosing expedited shipping will not expedite your order’s processing time.<\/p>"
+            "description": "<p>Regular shipping will take <strong>4-7 working days</strong> to deliver after the order departs from the warehouse.</p><p><br/>Orders under express shipping will arrive within <strong>2-3 business days.</strong></p><p>Overnight shipping will arrive the next business day</p><p>Saturday Overnight will arrive the next day, Saturday as long as the order was processed Friday before 4pm.</p><p>Expedited and ground shipping speeds come into effect after your non-custom order has been processed and/or your custom order is completed. Choosing expedited shipping will not expedite your order’s processing time.</p>"
           }
         },
         "shipping_87Kbe3": {
           "type": "shipping",
           "settings": {
-            "title": "Saved By Package Protection?",
-            "description": "<p>We’ve partnered with Saved By—a package protection and tracking solution—to give our customers the best possible delivery experience. Saved By provides low-cost shipping protection to protect your package if it gets lost, stolen, or damaged while in transit. Please note <strong>LOLA<\/strong> is not responsible for lost or missing packages unless Saved By Package Protection is purchased. For orders without package protection, customers can file a claim with a courier.<\/p>"
+            "title": "Swipe Package Protection?",
+            "description": "<p>We’ve partnered with Swipe—a package protection and tracking solution—to give our customers the best possible delivery experience. Swipe provides low-cost shipping protection to protect your package if it gets lost, stolen, or damaged while in transit. Please note <strong>LOLA</strong> is not responsible for lost or missing packages unless Swipe Package Protection is purchased. For orders without package protection, customers can file a claim with a courier.</p>"
           }
         },
         "shipping_WzEKCq": {
           "type": "shipping",
           "settings": {
             "title": "Can I combine the shipping of multiple orders?",
-            "description": "<p>We are unable to combine shipping or refund extra shipping costs. Once your order is placed, it is given to our team to be packed and filled.<\/p>"
+            "description": "<p>We are unable to combine shipping or refund extra shipping costs. Once your order is placed, it is given to our team to be packed and filled.</p>"
           }
         },
         "shipping_zEpijt": {
           "type": "shipping",
           "settings": {
             "title": "Can I change the shipping address?",
-            "description": "<p>If your order has no tracking number or details yet, please email <a href=\"mailto:customerservice@lolaandtheboys.com\" title=\"mailto:customerservice@lolaandtheboys.com\">customerservice@lolaandtheboys.com<\/a>  and we would be happy to change it for you!<\/p>"
+            "description": "<p>If your order has no tracking number or details yet, please email <a href=\"mailto:customerservice@lolaandtheboys.com\" title=\"mailto:customerservice@lolaandtheboys.com\">customerservice@lolaandtheboys.com</a>  and we would be happy to change it for you!</p>"
           }
         },
         "shipping_k7bmar": {
           "type": "shipping",
           "settings": {
             "title": "Do you ship internationally and what are your international policies?",
-            "description": "<p>Yes, we ship internationally and on our orders duties and taxes are included through our partnership with Shopify Markets Pro! All international orders are final!<\/p>"
+            "description": "<p>Yes, we ship internationally and on our orders duties and taxes are included through our partnership with Shopify Markets Pro! All international orders are final!</p>"
           }
         },
         "shipping_j3q4XL": {
           "type": "shipping",
           "settings": {
             "title": "How can I track my order?",
-            "description": "<p>Once your order is shipped, an email will be sent to you with essential tracking information. It can take up to 48 hours for your first scan to appear. You can also log in to the <strong>SHOP<\/strong> App to check updates on orders.<\/p>"
+            "description": "<p>Once your order is shipped, an email will be sent to you with essential tracking information. It can take up to 48 hours for your first scan to appear. You can also log in to the <strong>SHOP</strong> App to check updates on orders.</p>"
           }
         },
         "shipping_dqai4c": {
           "type": "shipping",
           "settings": {
             "title": "What happens if my order is delayed?",
-            "description": "<p>We do our best to ship all orders following the turnaround time that was posted on your cart page and in your email confirmation at the time of purchase. However, please note that orders are sometimes subject to delay. Lola + The Boys is not responsible for shipping carrier delays, and we do not refund shipping if your package is delayed due to courier issue.<\/p>"
+            "description": "<p>We do our best to ship all orders following the turnaround time that was posted on your cart page and in your email confirmation at the time of purchase. However, please note that orders are sometimes subject to delay. Lola + The Boys is not responsible for shipping carrier delays, and we do not refund shipping if your package is delayed due to courier issue.</p>"
           }
         },
         "returns_E4kGPw": {
           "type": "returns",
           "settings": {
             "title": "What is your return policy?",
-            "description": "<p><strong>Lola + The Boys<\/strong> Return\/Exchange Policy is <strong>30 days<\/strong> from the day of your purchase to notify us of a refund request. To be eligible for a return, your item must be unused and in the same condition that you received it in with all original purchase tags attached to items. All items will be inspected upon return. All returns are handled on a case-by-case basis and ultimately at Lola’s team discretion, including determining whether an item is unworn and unwashed. Upon inspection and approval, a full refund will be issued within <strong>7-10 business days<\/strong>.<br\/><\/p><p>All SALE items are final, but maybe exchanged for a different size only. All shipping fees for normal return apply.<\/p><p>Purchased Gift Cards are non-returnable and non-refundable, provided, however, that if a Gift Card does not function, we may, in our sole discretion replace it.<\/p><p>Custom items, including those with embroidery, are non-returnable. However, if a specific patch is unavailable, we can offer a replacement with a similar patch or provide a refund for that item. Please note that exchanges are handled on a case-by-case basis to ensure customer satisfaction.<\/p><p>All in store returns must present a valid state identification in order to verify and protect our amazing customers from any potential fraud!<\/p>"
+            "description": "<p><strong>Lola + The Boys</strong> Return/Exchange Policy is <strong>30 days</strong> from the day of your purchase to notify us of a refund request. To be eligible for a return, your item must be unused and in the same condition that you received it in with all original purchase tags attached to items. All items will be inspected upon return. All returns are handled on a case-by-case basis and ultimately at Lola’s team discretion, including determining whether an item is unworn and unwashed. Upon inspection and approval, a full refund will be issued within <strong>7-10 business days</strong>.<br/></p><p>All SALE items are final, but maybe exchanged for a different size only. All shipping fees for normal return apply.</p><p>Purchased Gift Cards are non-returnable and non-refundable, provided, however, that if a Gift Card does not function, we may, in our sole discretion replace it.</p><p>Custom items, including those with embroidery, are non-returnable. However, if a specific patch is unavailable, we can offer a replacement with a similar patch or provide a refund for that item. Please note that exchanges are handled on a case-by-case basis to ensure customer satisfaction.</p><p>All in store returns must present a valid state identification in order to verify and protect our amazing customers from any potential fraud!</p>"
           }
         },
         "returns_ry6RH6": {
           "type": "returns",
           "settings": {
             "title": "How can I process a return?",
-            "description": "<p>You can return or exchange your item by following this <a href=\"https:\/\/returns.lolaandtheboys.com\/\" target=\"_blank\">link<\/a>.<\/p>"
+            "description": "<p>You can return or exchange your item by following this <a href=\"https://returns.lolaandtheboys.com/\" target=\"_blank\">link</a>.</p>"
           }
         },
         "order_support_eb9CFe": {
           "type": "order-support",
           "settings": {
             "title": "How do I contact customer service?",
-            "description": "<p>For any queries you may have, please email <a href=\"mailto:customerservice@lolaandtheboys.com\" target=\"_blank\">customerservice@lolaandtheboys.com<\/a>. Our dedicated team will respond to your inquiry within <strong>24-48 hours<\/strong> from Monday to Friday, 9am-5pm CST (excluding holidays). Kindly remember to check your Junk and Spam folders, as our emails may not always be recognized.<\/p>"
+            "description": "<p>For any queries you may have, please email <a href=\"mailto:customerservice@lolaandtheboys.com\" target=\"_blank\">customerservice@lolaandtheboys.com</a>. Our dedicated team will respond to your inquiry within <strong>24-48 hours</strong> from Monday to Friday, 9am-5pm CST (excluding holidays). Kindly remember to check your Junk and Spam folders, as our emails may not always be recognized.</p>"
           }
         },
         "order_support_YX9yKk": {
           "type": "order-support",
           "settings": {
             "title": "Can I change or cancel my order?",
-            "description": "<p>Cancellation can be done as long as the order is not yet fulfilled by the warehouse. Please contact us at <a href=\"mailto:customerservice@lolaandtheboys.com\" title=\"mailto:customerservice@lolaandtheboys.com\">customerservice@lolaandtheboys.com<\/a> to assist you.<\/p>"
+            "description": "<p>Cancellation can be done as long as the order is not yet fulfilled by the warehouse. Please contact us at <a href=\"mailto:customerservice@lolaandtheboys.com\" title=\"mailto:customerservice@lolaandtheboys.com\">customerservice@lolaandtheboys.com</a> to assist you.</p>"
           }
         },
         "order_support_BmYBiH": {
           "type": "order-support",
           "settings": {
             "title": "What type of payment methods do you accept?",
-            "description": "<p>We accept all major credit cards and debit cards.<\/p>"
+            "description": "<p>We accept all major credit cards and debit cards.</p>"
           }
         },
         "order_support_pFM4Vx": {
           "type": "order-support",
           "settings": {
             "title": "How is our sizing?",
-            "description": "<p>Our standard sizing for kids is from sizes from 2-14! For example, if the item is sized 4 this would fit an average sized 4-year old!<\/p>"
+            "description": "<p>Our standard sizing for kids is from sizes from 2-14! For example, if the item is sized 4 this would fit an average sized 4-year old!</p>"
           }
         },
         "refer_earn_mFDygF": {
           "type": "refer-earn",
           "settings": {
             "title": "Where can I get my referral link?",
-            "description": "<p>You can get your referral link by filling out this form: <a href=\"https:\/\/lolaandtheboys.com\/pages\/refer\" target=\"_blank\">https:\/\/lolaandtheboys.com\/pages\/refer<\/a>.<\/p>"
+            "description": "<p>You can get your referral link by filling out this form: <a href=\"https://lolaandtheboys.com/pages/refer\" target=\"_blank\">https://lolaandtheboys.com/pages/refer</a>.</p>"
           }
         },
         "refer_earn_4FVgLr": {
           "type": "refer-earn",
           "settings": {
             "title": "Where and when will I get my 20% off referral code?",
-            "description": "<p>You will get your 20% off code via email once your referee makes their first purchase.<\/p>"
+            "description": "<p>You will get your 20% off code via email once your referee makes their first purchase.</p>"
           }
         },
         "discount_rewards_X78ACV": {
           "type": "discount-rewards",
           "settings": {
             "title": "Can I stack up my promo codes?",
-            "description": "<p>Customers may only apply one discount\/promo code per order.<\/p>"
+            "description": "<p>Customers may only apply one discount/promo code per order.</p>"
           }
         },
         "discount_rewards_iqbfb8": {
           "type": "discount-rewards",
           "settings": {
-            "title": "Can I use rewards with promo code\/discount?",
-            "description": "<p>Yes, rewards can be combined with promo\/discount. You can redeem rewards before checkout. For list of rewards amount you can use in order, refer to this link: <a href=\"https:\/\/lolaandtheboys.com\/pages\/rewards\" target=\"_blank\">https:\/\/lolaandtheboys.com\/pages\/rewards<\/a>. You can only use one rewards amount per order.<\/p>"
+            "title": "Can I use rewards with promo code/discount?",
+            "description": "<p>Yes, rewards can be combined with promo/discount. You can redeem rewards before checkout. For list of rewards amount you can use in order, refer to this link: <a href=\"https://lolaandtheboys.com/pages/rewards\" target=\"_blank\">https://lolaandtheboys.com/pages/rewards</a>. You can only use one rewards amount per order.</p>"
           }
         },
         "discount_rewards_cUFnC4": {
           "type": "discount-rewards",
           "settings": {
-            "title": "I forgot to use my promo\/discount code\/rewards, can they be applied retroactively?",
-            "description": "<p>Promo\/discount codes, rewards, and offers must be applied at the time of purchase (before checkout) and may not be applied to previous orders.<\/p>"
+            "title": "I forgot to use my promo/discount code/rewards, can they be applied retroactively?",
+            "description": "<p>Promo/discount codes, rewards, and offers must be applied at the time of purchase (before checkout) and may not be applied to previous orders.</p>"
           }
         }
       },
@@ -168,7 +168,7 @@
         "discount_rewards_cUFnC4"
       ],
       "settings": {
-        "heading": "Have questions?<br><span class=\"light\">Get answers<\/span>",
+        "heading": "Have questions?<br><span class=\"light\">Get answers</span>",
         "show_tabs": true
       }
     }
