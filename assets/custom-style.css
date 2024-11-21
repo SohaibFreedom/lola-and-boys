@@ -29,6 +29,10 @@
     width: 100%;
   }
 }
+
+.instagrid-css-link-c .fs-timeline-entry {
+  background-position: top;
+}
 /* New csss */
 
 .header_search_form {
