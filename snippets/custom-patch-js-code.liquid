@@ -1209,19 +1209,81 @@ function showPatches() {
       img.classList.add('patch-image');
       img.setAttribute('crossorigin', 'anonymous');
 
-      // Get the height and width as integers
-      let imgHeight = parseInt(item.height, 10);
-      let imgWidth = parseInt(item.width, 10);
-      const product = {{ product | json }};
-      const variantname = document.querySelector('input[name="selective_variant_name"]').value.trim();
-     
+     // Get the height and width as integers
+            let imgHeight = parseInt(item.height, 10);
+            let imgWidth = parseInt(item.width, 10);
 
-      // Adjust height and width based on variant name
-      // (Include your logic for adjusting imgHeight and imgWidth here)
+            const product = {{ product | json }};
+            const variantname = document.querySelector('input[name="selective_variant_name"]').value.trim();
+            console.log('this is variantname', variantname);
 
-      img.height = imgHeight;
-      img.width = imgWidth;
+            // Adjust imgHeight and imgWidth based on variantname and productTags
+            if (variantname === '1' || variantname === '2' || variantname === '2/3' || variantname === '3/4' || variantname === '4/5' || variantname === '5/6' || 
+                variantname === '4' || variantname === '5' || variantname === '6') {
+                if (!productTags.includes("happ-velour-set")) {
+                    console.log('condition true');
+                    imgHeight += 20;
+                    imgWidth += 20;
+                } else {
+                    console.log('condition false');
+                    imgHeight -= 10;
+                    imgWidth -= 10;
+                   // Ensure imgWidth does not go below 20
+                    if (imgWidth < 20) {
+                        imgWidth = 20;
+                    }
+                }
+            } else if (variantname === '6/7' || variantname === '8' || variantname === '7/8' || variantname === '8/9' ||  
+                       variantname === '10' || variantname === '9/10' || variantname === '10/11' || variantname === '11/12' || variantname === '12' || 
+                       variantname === '14') {
+                if (!productTags.includes("happ-velour-set")) {
+                    console.log('condition true');
+                    imgHeight += 10;
+                    imgWidth += 10;
+                } else {
+                    console.log('condition false');
+                    imgHeight -= 15;
+                    imgWidth -= 15;
+                   // Ensure imgWidth does not go below 20
+                    if (imgWidth < 20) {
+                        imgWidth = 20;
+                    }
+                }
+            } else if (variantname === 'Small') {
+                console.log('condition true');
+                imgHeight += 30;
+                imgWidth += 30;
+            } else if (variantname === 'Medium') {
+                console.log('condition true');
+                imgHeight += 20;
+                imgWidth += 20;
+            } else if (variantname === 'Large') {
+                console.log('condition true');
+                imgHeight += 10;
+                imgWidth += 10;
+            }
 
+            if (Array.isArray(product.tags)) {
+                if (product.tags.includes('back-pack')) {
+                    imgHeight += 35;
+                    imgWidth += 35;
+                }
+                if (product.tags.includes('patch-it-bag')) {
+                    if (imgHeight < 30 && imgWidth < 30) {
+                        imgHeight += 45;
+                        imgWidth += 45;
+                    } else if (imgHeight > 30 && imgWidth < 30) {
+                        imgHeight += 75;
+                        imgWidth += 30;
+                    } else {
+                        imgHeight += 75;
+                        imgWidth += 75;
+                    }
+                }
+            }
+
+            img.height = imgHeight;
+            img.width = imgWidth;
       const svgDiv = document.createElement('div');
       svgDiv.classList.add('zoom');
       const svgIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -2381,306 +2443,6 @@ function FrontconvertToPng() {
         outputDiv.appendChild(newImg);
     }, 'image/png');
 }
-
-
-
-
-
-
-
-
-// function BackconvertToPng() {
-//     var imageDiv = document.getElementById('BackimageDiv');
-//     var patches = imageDiv.querySelectorAll('.patch- img'); // Ensure your selector matches the elements
-//     var canvas = document.createElement('canvas');
-//     var ctx = canvas.getContext('2d');
-
-//     // Set canvas size to match the containing div's size
-//     var imageDivRect = imageDiv.getBoundingClientRect();
-//     canvas.width = imageDivRect.width;
-//     canvas.height = imageDivRect.height;
-
-//     // Draw the main image on the canvas with object-fit: cover
-//     var sourceImage = document.getElementById('Back-image');
-//     if (!sourceImage) {
-//         console.error('Source image not found');
-//         return;
-//     }
-
-//     // Calculate dimensions and position based on object-fit: cover
-//     var containerAspectRatio = canvas.width / canvas.height;
-//     var imageAspectRatio = sourceImage.naturalWidth / sourceImage.naturalHeight;
-
-//     var sourceWidth, sourceHeight, sourcePosX, sourcePosY;
-
-//     if (containerAspectRatio > imageAspectRatio) {
-//         // Container is wider than image
-//         sourceWidth = sourceImage.naturalWidth;
-//         sourceHeight = sourceImage.naturalWidth / containerAspectRatio;
-//         sourcePosX = 0;
-//         sourcePosY = (sourceImage.naturalHeight - sourceHeight) / 2;
-//     } else {
-//         // Container is taller than image
-//         sourceWidth = sourceImage.naturalHeight * containerAspectRatio;
-//         sourceHeight = sourceImage.naturalHeight;
-//         sourcePosX = (sourceImage.naturalWidth - sourceWidth) / 2;
-//         sourcePosY = 0;
-//     }
-
-//     ctx.drawImage(sourceImage, sourcePosX, sourcePosY, sourceWidth, sourceHeight, 0, 0, canvas.width, canvas.height);
-
-//     // Draw patches on the canvas
-//     patches.forEach(function (patch) {
-//         var rect = patch.getBoundingClientRect();
-//         var patchPosX = rect.left - imageDivRect.left;
-//         var patchPosY = rect.top - imageDivRect.top;
-//         var patchWidth = patch.width;
-//         var patchHeight = patch.height ;
-     
-//         // Draw the patch dynamically based on its natural width and height
-//         ctx.drawImage(patch, patchPosX, patchPosY, patchWidth, patchHeight);
-//     });
-
-//     // Convert canvas to Blob
-//     canvas.toBlob(function (blob) {
-//         // Here, you have the image as a blob
-//         // For example, to display the new blob image, convert blob to ObjectURL
-//         var pngImageURL = URL.createObjectURL(blob);
-
-//         //uploadBlob(pngImageURL);
-//         uploadBlob(pngImageURL, 'input[name="customized_image_url_back"]');
-//         // Display the new image
-//         var outputDiv = document.getElementById('BackoutputDiv');
-//         var newImg = document.createElement('img');
-//         newImg.src = pngImageURL;
-
-//         outputDiv.innerHTML = ''; // Clear the output div before appending new image
-//         outputDiv.appendChild(newImg);
-//     }, 'image/png');
-// }
-
-// function FrontconvertToPng() {
-//     var imageDiv = document.getElementById('imageDiv');
-//     var patches = imageDiv.querySelectorAll('.patch- img'); 
-//     var canvas = document.createElement('canvas');
-//     var ctx = canvas.getContext('2d');
-
-//     // Set canvas size to match the containing div's size
-//     var imageDivRect = imageDiv.getBoundingClientRect();
-//     canvas.width = imageDivRect.width;
-//     canvas.height = imageDivRect.height;
-
-//     // Draw the main image on the canvas with object-fit: cover
-//     var sourceImage = document.getElementById('Front-image');
-//     if (!sourceImage) {
-//         console.error('Source image not found');
-//         return;
-//     }
-
-//     // Calculate dimensions and position based on object-fit: cover
-//     var containerAspectRatio = canvas.width / canvas.height;
-//     var imageAspectRatio = sourceImage.naturalWidth / sourceImage.naturalHeight;
-
-//     var sourceWidth, sourceHeight, sourcePosX, sourcePosY;
-
-//     if (containerAspectRatio > imageAspectRatio) {
-//         // Container is wider than image
-//         sourceWidth = sourceImage.naturalWidth;
-//         sourceHeight = sourceImage.naturalWidth / containerAspectRatio;
-//         sourcePosX = 0;
-//         sourcePosY = (sourceImage.naturalHeight - sourceHeight) / 2;
-//     } else {
-//         // Container is taller than image
-//         sourceWidth = sourceImage.naturalHeight * containerAspectRatio;
-//         sourceHeight = sourceImage.naturalHeight;
-//         sourcePosX = (sourceImage.naturalWidth - sourceWidth) / 2;
-//         sourcePosY = 0;
-//     }
-
-//     ctx.drawImage(sourceImage, sourcePosX, sourcePosY, sourceWidth, sourceHeight, 0, 0, canvas.width, canvas.height);
-
-//     // Draw patches on the canvas
-//     patches.forEach(function (patch) {
-//         var rect = patch.getBoundingClientRect();
-//         var patchPosX = rect.left - imageDivRect.left;
-//         var patchPosY = rect.top - imageDivRect.top;
-//         var patchWidth = patch.width;
-//         var patchHeight = patch.height ;
-     
-//         // Draw the patch dynamically based on its natural width and height
-//         ctx.drawImage(patch, patchPosX, patchPosY, patchWidth, patchHeight);
-//     });
-
-//     // Convert canvas to Blob
-//     canvas.toBlob(function (blob) {
-//         // Here, you have the image as a blob
-//         // For example, to display the new blob image, convert blob to ObjectURL
-//         var pngImageURL = URL.createObjectURL(blob);
-
-//         uploadBlob(pngImageURL, 'input[name="customized_image_url_front"]');
-
-//         // Display the new image
-//         var outputDiv = document.getElementById('outputDiv');
-//         var newImg = document.createElement('img');
-//         newImg.src = pngImageURL;
-
-//         outputDiv.innerHTML = ''; // Clear the output div before appending new image
-//         outputDiv.appendChild(newImg);
-//     }, 'image/png');
-// }
-
-//  function FrontconvertToPng() {
-//     var imageDiv = document.getElementById('imageDiv');
-//     var patches = imageDiv.querySelectorAll('.patch- img'); 
-//     var canvas = document.createElement('canvas');
-//     var ctx = canvas.getContext('2d');
-
-//     // Set canvas size to match the containing div's size
-//     var imageDivRect = imageDiv.getBoundingClientRect();
-//     canvas.width = imageDivRect.width;
-//     canvas.height = imageDivRect.height;
-
-//     // Draw the main image on the canvas with object-fit: contain
-//     var sourceImage = document.getElementById('Front-image');
-//     if (!sourceImage) {
-//         console.error('Source image not found');
-//         return;
-//     }
-
-//     // Calculate dimensions and position based on object-fit: contain
-//     var containerAspectRatio = canvas.width / canvas.height;
-//     var imageAspectRatio = sourceImage.naturalWidth / sourceImage.naturalHeight;
-
-//     var sourceWidth, sourceHeight, sourcePosX, sourcePosY;
-
-//     if (containerAspectRatio > imageAspectRatio) {
-//         // Container is wider than image
-//         sourceWidth = canvas.height * imageAspectRatio;
-//         sourceHeight = canvas.height;
-//         sourcePosX = (canvas.width - sourceWidth) / 2;
-//         sourcePosY = 0;
-//     } else {
-//         // Container is taller than image
-//         sourceWidth = canvas.width;
-//         sourceHeight = canvas.width / imageAspectRatio;
-//         sourcePosX = 0;
-//         sourcePosY = (canvas.height - sourceHeight) / 2;
-//     }
-
-//     ctx.drawImage(sourceImage, sourcePosX, sourcePosY, sourceWidth, sourceHeight);
-
-//     // Draw patches on the canvas
-//     patches.forEach(function (patch) {
-//         var patchRect = patch.getBoundingClientRect();
-//         var patchDivRect = patch.parentElement.getBoundingClientRect();
-//         var patchPosX = patchDivRect.left - imageDivRect.left;
-//         var patchPosY = patchDivRect.top - imageDivRect.top;
-//         var patchWidth = patchDivRect.width;
-//         var patchHeight = patchDivRect.height;
-
-//         // Calculate dimensions and position based on object-fit: contain
-//         var patchAspectRatio = patch.naturalWidth / patch.naturalHeight;
-
-//         var drawWidth, drawHeight, drawPosX, drawPosY;
-
-//         if (patchWidth / patchHeight > patchAspectRatio) {
-//             // Container is wider than patch
-//             drawWidth = patchHeight * patchAspectRatio;
-//             drawHeight = patchHeight;
-//             drawPosX = patchPosX + (patchWidth - drawWidth) / 2;
-//             drawPosY = patchPosY;
-//         } else {
-//             // Container is taller than patch
-//             drawWidth = patchWidth;
-//             drawHeight = patchWidth / patchAspectRatio;
-//             drawPosX = patchPosX;
-//             drawPosY = patchPosY + (patchHeight - drawHeight) / 2;
-//         }
-
-//         ctx.drawImage(patch, drawPosX, drawPosY, drawWidth, drawHeight);
-//     });
-
-//     // Convert canvas to Blob
-//     canvas.toBlob(function (blob) {
-//         // Here, you have the image as a blob
-//         // For example, to display the new blob image, convert blob to ObjectURL
-//         var pngImageURL = URL.createObjectURL(blob);
-
-//         uploadBlob(pngImageURL, 'input[name="customized_image_url_front"]');
-
-//         // Display the new image
-//         var outputDiv = document.getElementById('outputDiv');
-//         var newImg = document.createElement('img');
-//         newImg.src = pngImageURL;
-
-//         outputDiv.innerHTML = ''; // Clear the output div before appending new image
-//         outputDiv.appendChild(newImg);
-//     }, 'image/png');
-// }
-
-
-
-
-// Function to add patch to the center box
-// function addPatchToCenterBox(patchSrc, patchId, height, width) {
-//     var patchDiv = document.createElement('div');
-//     patchDiv.setAttribute('v-id', patchId);
-//     patchDiv.classList.add('patch-');
-//     patchDiv.style.position = 'absolute';
-//     patchDiv.style.top = '0';
-//     patchDiv.style.left = '0';
-//     // patchDiv.style.transform = 'translate(-50%, -50%)';
-//      if (window.matchMedia("(max-width: 700px)").matches){
-//       patchDiv.style.width = (height / 2 + 15) + 'px';
-// patchDiv.style.height = (width / 2 + 15) + 'px';
-
-//      }
-//      else{
-//    patchDiv.style.width = width + 'px';
-//     patchDiv.style.height = height + 'px';
-// }
-
-
-//    var editTidyBtnwrapper = document.querySelector('.edit-tidy-btn-wrapp');
-// editTidyBtnwrapper.style.visibility = 'visible';
-
-  
-//     // Generate a unique ID for the patch
-//     var patchId = 'patch_' + Math.random().toString(36).substr(2, 9);
-
-//     patchDiv.setAttribute('id', patchId);
-//     patchDiv.innerHTML = `<img src="${patchSrc}" alt="" class="patch-image" width="${width}" height="${height}" crossorigin="anonymous">`;
-//     var centerBox = document.querySelector('.centerBox');
-//     centerBox.querySelector('.patches-container').appendChild(patchDiv);
-
-//     // Add the patch to the patches array with its ID
-//     patches.push({ id: patchId, patchSrc,width, height });
-
-
-//     // Add click event listener to the dynamically created patch
-//     document.querySelectorAll('.patch-').forEach(patch1 => {
-
-//         patch1.addEventListener('dragstart', function (event) {
-        
-//             event.preventDefault();
-//             event.dataTransfer.setData('text/plain', patch1.querySelector('img').src);
-//             dragPatch1 = patch1;
-
-//             centerBox.addEventListener('mousemove', mousemoveHandler);
-//         });
-
-//         patch1.addEventListener('click', function () {
-//             dragPatch1 = patch1;
-//             var patchSrc = patch1.querySelector('img').src;
-//             updatePosition(patch1.id);
-//             centerBox.removeEventListener('mousemove', mousemoveHandler);
-
-//         });
-//        checkPatchallOverlapping();
-//     });
-
-
-// }
 
   function  selectpastchesodertidy(patchSrc,newPatchId){
     if (document.getElementById('Front-Area').style.visibility === 'visible') {
