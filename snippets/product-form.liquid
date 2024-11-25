@@ -181,16 +181,25 @@
   </form>
 
             <script>
-              $(document).ready(function () {
-    $(".swatch-element").on("click", function () {
-        // Check if the clicked element has the class .soldout
-        if ($(this).hasClass("soldout")) {
+$(document).ready(function () {
+    function updateCheckoutButton() {
+        // Check if any .swatch-element has the class .soldout
+        if ($(".swatch-element.soldout").length > 0) {
             // Hide the checkout button
             $(".checkout_btn_product")[0].style.display = "none";
         } else {
             // Show the checkout button
             $(".checkout_btn_product")[0].style.display = "block";
         }
+    }
+
+    // Run the check on page load
+    updateCheckoutButton();
+
+    // Attach event listener for clicks on .swatch-element
+    $(".swatch-element").on("click", function () {
+        updateCheckoutButton();
     });
 });
+
             </script>
