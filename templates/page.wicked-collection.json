@@ -378,12 +378,27 @@
             "detail_left": "",
             "detail_bottom": ""
           }
+        },
+        "one_col_block_TLWAw3": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "Silver Crystal Cowgirl Boots",
+            "price_onecol": "$98",
+            "link_onecol": "shopify://products/silver-crystal-cowgirl-boots",
+            "top_onecol": "80%",
+            "left_onecol": "60%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": ""
+          }
         }
       },
       "block_order": [
         "one_col_block_AaXczW",
         "one_col_block_Lwy7P3",
-        "one_col_block_P36RMK"
+        "one_col_block_P36RMK",
+        "one_col_block_TLWAw3"
       ],
       "settings": {
         "bg_image": "shopify://shop_images/LATB_WICKED_09242024_0138_3.jpg",
