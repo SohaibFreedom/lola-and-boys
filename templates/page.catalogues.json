@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "featured_promotions_PBEtyQ": {
@@ -6,78 +15,89 @@
         "image_rmqifN": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/024A3521.webp",
-            "link": "shopify:\/\/pages\/summer-looks",
+            "image": "shopify://shop_images/024A3521.webp",
+            "link": "shopify://pages/summer-looks",
             "title": "Summer LookBook",
             "text": "",
             "button_label": "View Lookbook",
-            "button_link": "shopify:\/\/pages\/spring-2024"
+            "button_link": "shopify://pages/spring-2024"
           }
         },
         "image_gLqkLM": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Shot_38_0009.jpg",
-            "link": "shopify:\/\/pages\/spring-2024",
+            "image": "shopify://shop_images/Shot_38_0009.jpg",
+            "link": "shopify://pages/spring-2024",
             "title": "Spring LookBook",
             "text": "",
             "button_label": "View Lookbook",
-            "button_link": "shopify:\/\/pages\/spring-2024"
+            "button_link": "shopify://pages/spring-2024"
           }
         },
         "image_abwkXV": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/0014_L_TB_HOLIDAY_11082023_0618.png",
-            "link": "shopify:\/\/pages\/holiday-lookbook",
+            "image": "shopify://shop_images/0014_L_TB_HOLIDAY_11082023_0618.png",
+            "link": "shopify://pages/holiday-lookbook",
             "title": "Holidays LookBook",
             "text": "",
             "button_label": "View Lookbook",
-            "button_link": "shopify:\/\/pages\/warner-brothers-lookbook"
+            "button_link": "shopify://pages/warner-brothers-lookbook"
           }
         },
         "image_Fz39Qc": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/0015_583A9271.png",
-            "link": "shopify:\/\/pages\/birthday-lookbook",
+            "image": "shopify://shop_images/0015_583A9271.png",
+            "link": "shopify://pages/birthday-lookbook",
             "title": "Birthday lookbook",
             "text": "",
             "button_label": "View Lookbook",
-            "button_link": "shopify:\/\/pages\/warner-brothers-lookbook"
+            "button_link": "shopify://pages/warner-brothers-lookbook"
           }
         },
         "image_pxbJyY": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/LOLA_08122023_2V2A9476_cf20ffad-3450-4d1e-af1c-1b6fd9655393.png",
-            "link": "shopify:\/\/pages\/fall-lookbook",
+            "image": "shopify://shop_images/LOLA_08122023_2V2A9476_cf20ffad-3450-4d1e-af1c-1b6fd9655393.png",
+            "link": "shopify://pages/fall-lookbook",
             "title": "Fall 23 LookBook",
             "text": "",
             "button_label": "View Lookbook",
-            "button_link": "shopify:\/\/pages\/fall-lookbook"
+            "button_link": "shopify://pages/fall-lookbook"
           }
         },
         "image_zVFciw": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/LATB_DC_10102023_1288.png",
-            "link": "shopify:\/\/pages\/warner-brothers-lookbook",
+            "image": "shopify://shop_images/LATB_DC_10102023_1288.png",
+            "link": "shopify://pages/warner-brothers-lookbook",
             "title": "Warner Brothers LookBook",
             "text": "",
             "button_label": "View Lookbook",
-            "button_link": "shopify:\/\/pages\/warner-brothers-lookbook"
+            "button_link": "shopify://pages/warner-brothers-lookbook"
           }
         },
         "image_ikgQmY": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/LATB_01152024_00829.png",
-            "link": "shopify:\/\/pages\/valentine-lookbook",
+            "image": "shopify://shop_images/LATB_01152024_00829.png",
+            "link": "shopify://pages/valentine-lookbook",
             "title": "Valentines Day LookBook",
             "text": "",
             "button_label": "View Lookbook",
-            "button_link": "shopify:\/\/pages\/valentine-lookbook"
+            "button_link": "shopify://pages/valentine-lookbook"
+          }
+        },
+        "image_3rTYQ6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/LATB_WICKED_09242024_0123_1.jpg",
+            "link": "shopify://pages/wicked-collection",
+            "title": "Wicked Collection",
+            "text": "",
+            "button_label": "View Lookbook",
+            "button_link": "shopify://pages/wicked-collection"
           }
         }
       },
@@ -88,7 +108,8 @@
         "image_Fz39Qc",
         "image_pxbJyY",
         "image_zVFciw",
-        "image_ikgQmY"
+        "image_ikgQmY",
+        "image_3rTYQ6"
       ],
       "custom_css": [
         ".featured-promotions {margin: 3rem 0;}",
