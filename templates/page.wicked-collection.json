@@ -225,62 +225,6 @@
         "padding_top_right": ""
       }
     },
-    "one_col_block_JFpWdN": {
-      "type": "one-col-block",
-      "blocks": {
-        "one_col_block_AaXczW": {
-          "type": "one_col_block",
-          "settings": {
-            "show_plus": true,
-            "title_onecol": "RAINBOW BUTTERFLY OMBRE DRESS",
-            "price_onecol": "$64",
-            "link_onecol": "shopify://products/rainbow-butterfly-ombre-dress",
-            "top_onecol": "40%",
-            "left_onecol": "60%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_bottom": ""
-          }
-        },
-        "one_col_block_3LU34i": {
-          "type": "one_col_block",
-          "settings": {
-            "show_plus": true,
-            "title_onecol": "CRYSTAL STUDDED KNOT HEADBAND",
-            "price_onecol": "$24",
-            "link_onecol": "shopify://products/crystal-knot-headband-1",
-            "top_onecol": "3%",
-            "left_onecol": "50%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_bottom": ""
-          }
-        },
-        "one_col_block_pwGVfd": {
-          "type": "one_col_block",
-          "settings": {
-            "show_plus": true,
-            "title_onecol": "MINI IRIDESCENT DOT PURSE",
-            "price_onecol": "$40",
-            "link_onecol": "shopify://products/mini-croc-purse-1",
-            "top_onecol": "94%",
-            "left_onecol": "60%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_bottom": "100%"
-          }
-        }
-      },
-      "block_order": [
-        "one_col_block_AaXczW",
-        "one_col_block_3LU34i",
-        "one_col_block_pwGVfd"
-      ],
-      "settings": {
-        "bg_image": "shopify://shop_images/LOLA_08122023_2V2A9476.png",
-        "padding_top": "70%"
-      }
-    },
     "two_col_block_mQCgDj": {
       "type": "two-col-block",
       "blocks": {
@@ -384,10 +328,66 @@
         "right_col_block_ttWMWV"
       ],
       "settings": {
-        "bg_image_left": "shopify://shop_images/LOLAANDTHEBOYS_July23__V2A7717_9930033b-f28d-4a5f-9570-aff8e2f78603.png",
+        "bg_image_left": "shopify://shop_images/LATB_WICKED_09242024_0517.jpg",
         "padding_top_left": "",
-        "bg_image_right": "shopify://shop_images/LOLAANDTHEBOYS_July23__V2A7473_150083aa-27d9-456b-9baa-cd4e5a12415e.png",
+        "bg_image_right": "shopify://shop_images/LATB_WICKED_09242024_1161.jpg",
         "padding_top_right": ""
+      }
+    },
+    "one_col_block_JFpWdN": {
+      "type": "one-col-block",
+      "blocks": {
+        "one_col_block_AaXczW": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "RAINBOW BUTTERFLY OMBRE DRESS",
+            "price_onecol": "$64",
+            "link_onecol": "shopify://products/rainbow-butterfly-ombre-dress",
+            "top_onecol": "40%",
+            "left_onecol": "60%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": ""
+          }
+        },
+        "one_col_block_3LU34i": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "CRYSTAL STUDDED KNOT HEADBAND",
+            "price_onecol": "$24",
+            "link_onecol": "shopify://products/crystal-knot-headband-1",
+            "top_onecol": "3%",
+            "left_onecol": "50%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": ""
+          }
+        },
+        "one_col_block_pwGVfd": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "MINI IRIDESCENT DOT PURSE",
+            "price_onecol": "$40",
+            "link_onecol": "shopify://products/mini-croc-purse-1",
+            "top_onecol": "94%",
+            "left_onecol": "60%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": "100%"
+          }
+        }
+      },
+      "block_order": [
+        "one_col_block_AaXczW",
+        "one_col_block_3LU34i",
+        "one_col_block_pwGVfd"
+      ],
+      "settings": {
+        "bg_image": "shopify://shop_images/LOLA_08122023_2V2A9476.png",
+        "padding_top": "70%"
       }
     },
     "two_col_block_k99c7K": {
@@ -1028,8 +1028,8 @@
     "custom_liquid_eR6R3c",
     "one_col_block_36EFcU",
     "two_col_block_Tzqd8b",
-    "one_col_block_JFpWdN",
     "two_col_block_mQCgDj",
+    "one_col_block_JFpWdN",
     "two_col_block_k99c7K",
     "one_col_block_q4Bzrw",
     "two_col_block_QitAVg",
