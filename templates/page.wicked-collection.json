@@ -288,21 +288,6 @@
             "detail_bottom": "100%"
           }
         },
-        "right_col_block_6Ge4ee": {
-          "type": "right_col_block",
-          "settings": {
-            "show_plus_right": true,
-            "title_right": "SMILEY ICE CREAM TENNIS SKIRT",
-            "price_right": "$32",
-            "link_right": "shopify://products/pleated-smiley-ice-cream-patch-skirt",
-            "top_right": "50%",
-            "left_right": "50%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "",
-            "detail_bottom": ""
-          }
-        },
         "right_col_block_ttWMWV": {
           "type": "right_col_block",
           "settings": {
@@ -317,6 +302,21 @@
             "detail_right": "",
             "detail_bottom": "100%"
           }
+        },
+        "right_col_block_6Ge4ee": {
+          "type": "right_col_block",
+          "settings": {
+            "show_plus_right": true,
+            "title_right": "Crystal Encrusted Headband",
+            "price_right": "$26",
+            "link_right": "shopify://products/crystal-encrusted-headband",
+            "top_right": "1%",
+            "left_right": "40%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": ""
+          }
         }
       },
       "block_order": [
@@ -324,8 +324,8 @@
         "left_col_block_XT83ap",
         "right_col_block_MJrrgT",
         "right_col_block_jeWEEp",
-        "right_col_block_6Ge4ee",
-        "right_col_block_ttWMWV"
+        "right_col_block_ttWMWV",
+        "right_col_block_6Ge4ee"
       ],
       "settings": {
         "bg_image_left": "shopify://shop_images/LATB_WICKED_09242024_0517.jpg",
