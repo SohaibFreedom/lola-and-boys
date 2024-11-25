@@ -103,6 +103,20 @@
             "detail_left": "",
             "detail_bottom": ""
           }
+        },
+        "one_col_block_RNw3fQ": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "Glinda Sequin Ombre Bomber Hot Pink",
+            "price_onecol": "$88",
+            "link_onecol": "shopify://products/glinda-sequin-ombre-bomber-copy",
+            "top_onecol": "50%",
+            "left_onecol": "77%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": ""
+          }
         }
       },
       "block_order": [
@@ -111,7 +125,8 @@
         "one_col_block_6L6GY9",
         "one_col_block_PB8NRx",
         "one_col_block_gHDDCH",
-        "one_col_block_A7j3WX"
+        "one_col_block_A7j3WX",
+        "one_col_block_RNw3fQ"
       ],
       "settings": {
         "bg_image": "shopify://shop_images/LATB_WICKED_09242024_0951.jpg",
