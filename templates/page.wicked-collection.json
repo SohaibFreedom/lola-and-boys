@@ -33,10 +33,25 @@
             "detail_left": "",
             "detail_bottom": ""
           }
+        },
+        "one_col_block_cnQN8p": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "Elphaba Sequin Set",
+            "price_onecol": "120",
+            "link_onecol": "shopify://products/elphaba-sequin-set",
+            "top_onecol": "34%",
+            "left_onecol": "57%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": ""
+          }
         }
       },
       "block_order": [
-        "one_col_block_jEAMRt"
+        "one_col_block_jEAMRt",
+        "one_col_block_cnQN8p"
       ],
       "settings": {
         "bg_image": "shopify://shop_images/LATB_WICKED_09242024_0951.jpg",
