@@ -350,10 +350,25 @@
             "detail_left": "",
             "detail_bottom": ""
           }
+        },
+        "one_col_block_Lwy7P3": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "Wicked Gem Joggers",
+            "price_onecol": "$52",
+            "link_onecol": "shopify://products/wickedly-beautiful-hoodie-copy",
+            "top_onecol": "88%",
+            "left_onecol": "44%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": "100%"
+          }
         }
       },
       "block_order": [
-        "one_col_block_AaXczW"
+        "one_col_block_AaXczW",
+        "one_col_block_Lwy7P3"
       ],
       "settings": {
         "bg_image": "shopify://shop_images/LATB_WICKED_09242024_0138_3.jpg",
