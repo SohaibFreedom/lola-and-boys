@@ -364,11 +364,26 @@
             "detail_left": "",
             "detail_bottom": "100%"
           }
+        },
+        "one_col_block_P36RMK": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "Midnight Shimmer Dress",
+            "price_onecol": "$78",
+            "link_onecol": "shopify://products/midnight-shimmer-dress",
+            "top_onecol": "47%",
+            "left_onecol": "60%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": ""
+          }
         }
       },
       "block_order": [
         "one_col_block_AaXczW",
-        "one_col_block_Lwy7P3"
+        "one_col_block_Lwy7P3",
+        "one_col_block_P36RMK"
       ],
       "settings": {
         "bg_image": "shopify://shop_images/LATB_WICKED_09242024_0138_3.jpg",
