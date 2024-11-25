@@ -684,10 +684,25 @@
             "detail_left": "",
             "detail_bottom": ""
           }
+        },
+        "one_col_block_hDEJyb": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "Women's Wickedly Beautiful Tee",
+            "price_onecol": "$36",
+            "link_onecol": "shopify://products/womens-wickedly-beautiful-tee",
+            "top_onecol": "50%",
+            "left_onecol": "50%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": ""
+          }
         }
       },
       "block_order": [
-        "one_col_block_KNaKA3"
+        "one_col_block_KNaKA3",
+        "one_col_block_hDEJyb"
       ],
       "settings": {
         "bg_image": "shopify://shop_images/IMG_3028.jpg",
