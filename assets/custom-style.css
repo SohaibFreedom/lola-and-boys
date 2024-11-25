@@ -469,6 +469,7 @@ div#template--15401532719206__richtext_custom_UT9Bit .rich-text__blocks {
 .lookbooks_header ul {
   display: flex;
   align-items: center;
+  flex-wrap:wrap;
   justify-content: center;
   gap: 1rem;
   margin: 0 !important;
