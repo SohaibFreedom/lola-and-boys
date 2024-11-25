@@ -527,6 +527,21 @@
             "detail_right": "",
             "detail_bottom": ""
           }
+        },
+        "right_col_block_BGV7gL": {
+          "type": "right_col_block",
+          "settings": {
+            "show_plus_right": true,
+            "title_right": "Bubble Sparkle Gown",
+            "price_right": "$120",
+            "link_right": "shopify://products/glinda-sparkle-gown",
+            "top_right": "50%",
+            "left_right": "20%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": ""
+          }
         }
       },
       "block_order": [
@@ -534,7 +549,8 @@
         "left_col_block_qiYyfp",
         "left_col_block_qnMgdB",
         "left_col_block_gzNFKD",
-        "right_col_block_CkEBi8"
+        "right_col_block_CkEBi8",
+        "right_col_block_BGV7gL"
       ],
       "settings": {
         "bg_image_left": "shopify://shop_images/LATB_WICKED_09242024_0123_1.jpg",
