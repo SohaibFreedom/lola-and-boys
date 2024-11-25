@@ -457,11 +457,11 @@
           "type": "left_col_block",
           "settings": {
             "show_plus_left": true,
-            "title_left": "SMILE ART METALLIC MOTO",
-            "price_left": "$88",
-            "link_left": "shopify://products/smile-art-mettalic-moto",
-            "top_left": "25%",
-            "left_left": "22%",
+            "title_left": "Bubble Sparkle Gown",
+            "price_left": "$120",
+            "link_left": "shopify://products/glinda-sparkle-gown",
+            "top_left": "55%",
+            "left_left": "30%",
             "detail_top": "",
             "detail_left": "",
             "detail_right": "",
@@ -511,66 +511,6 @@
             "detail_left": "",
             "detail_right": "",
             "detail_bottom": "100%"
-          }
-        },
-        "left_col_block_Gh7YiY": {
-          "type": "left_col_block",
-          "settings": {
-            "show_plus_left": true,
-            "title_left": "SILVER CRYSTAL COWGIRL BOOTS",
-            "price_left": "$98",
-            "link_left": "shopify://products/silver-crystal-cowgirl-boots",
-            "top_left": "92%",
-            "left_left": "58%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "",
-            "detail_bottom": "100%"
-          }
-        },
-        "left_col_block_QxmHNU": {
-          "type": "left_col_block",
-          "settings": {
-            "show_plus_left": true,
-            "title_left": "CRYSTAL STAR SUNGLASSES",
-            "price_left": "$34",
-            "link_left": "shopify://products/star-crystal-sunglasses",
-            "top_left": "8%",
-            "left_left": "59%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "",
-            "detail_bottom": ""
-          }
-        },
-        "left_col_block_Xn3Vmx": {
-          "type": "left_col_block",
-          "settings": {
-            "show_plus_left": true,
-            "title_left": "LAVENDER CRYSTAL FEATHER DRESS",
-            "price_left": "$89",
-            "link_left": "shopify://products/lavender-crystal-feather-dress",
-            "top_left": "58%",
-            "left_left": "27%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "",
-            "detail_bottom": ""
-          }
-        },
-        "left_col_block_jTDhyE": {
-          "type": "left_col_block",
-          "settings": {
-            "show_plus_left": true,
-            "title_left": "SUPER FUN CRYSTAL SOCKS",
-            "price_left": "$19",
-            "link_left": "shopify://products/super",
-            "top_left": "82%",
-            "left_left": "59%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "",
-            "detail_bottom": ""
           }
         },
         "right_col_block_CkEBi8": {
@@ -654,10 +594,6 @@
         "left_col_block_qiYyfp",
         "left_col_block_qnMgdB",
         "left_col_block_gzNFKD",
-        "left_col_block_Gh7YiY",
-        "left_col_block_QxmHNU",
-        "left_col_block_Xn3Vmx",
-        "left_col_block_jTDhyE",
         "right_col_block_CkEBi8",
         "right_col_block_Ywt8dt",
         "right_col_block_FcHaqH",
