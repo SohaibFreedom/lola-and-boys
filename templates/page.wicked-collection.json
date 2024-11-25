@@ -527,66 +527,6 @@
             "detail_right": "",
             "detail_bottom": ""
           }
-        },
-        "right_col_block_Ywt8dt": {
-          "type": "right_col_block",
-          "settings": {
-            "show_plus_right": true,
-            "title_right": "FOIL PLEATED SKIRT",
-            "price_right": "$48",
-            "link_right": "shopify://products/copy-of-denim-pink-patch-skirt",
-            "top_right": "55%",
-            "left_right": "20%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "",
-            "detail_bottom": ""
-          }
-        },
-        "right_col_block_FcHaqH": {
-          "type": "right_col_block",
-          "settings": {
-            "show_plus_right": true,
-            "title_right": "SILVER CRYSTAL COWGIRL BOOTS",
-            "price_right": "$98",
-            "link_right": "shopify://products/silver-crystal-cowgirl-boots",
-            "top_right": "80%",
-            "left_right": "23%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "",
-            "detail_bottom": "100%"
-          }
-        },
-        "right_col_block_6QLTyz": {
-          "type": "right_col_block",
-          "settings": {
-            "show_plus_right": true,
-            "title_right": "PINK IRIDESCENT HEART COWGIRL BOOTS",
-            "price_right": "$68",
-            "link_right": "shopify://products/pink-iridescent-heart-cowgirl-boots",
-            "top_right": "82%",
-            "left_right": "54%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "",
-            "detail_bottom": "100%"
-          }
-        },
-        "right_col_block_MptPDQ": {
-          "type": "right_col_block",
-          "settings": {
-            "show_plus_right": true,
-            "title_right": "3D BUNNY SOCKS",
-            "price_right": "$7",
-            "link_right": "shopify://products/bunny-socks",
-            "top_right": "73%",
-            "left_right": "37%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "",
-            "detail_bottom": "100%"
-          }
         }
       },
       "block_order": [
@@ -594,11 +534,7 @@
         "left_col_block_qiYyfp",
         "left_col_block_qnMgdB",
         "left_col_block_gzNFKD",
-        "right_col_block_CkEBi8",
-        "right_col_block_Ywt8dt",
-        "right_col_block_FcHaqH",
-        "right_col_block_6QLTyz",
-        "right_col_block_MptPDQ"
+        "right_col_block_CkEBi8"
       ],
       "settings": {
         "bg_image_left": "shopify://shop_images/LATB_WICKED_09242024_0123_1.jpg",
