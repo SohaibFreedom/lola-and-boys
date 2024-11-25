@@ -698,11 +698,26 @@
             "detail_left": "",
             "detail_bottom": ""
           }
+        },
+        "one_col_block_tiW4rK": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "Glinda Roses Puff Sleeve Dress",
+            "price_onecol": "$78",
+            "link_onecol": "shopify://products/glinda-crown-tutu-dress-copy",
+            "top_onecol": "70%",
+            "left_onecol": "70%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": ""
+          }
         }
       },
       "block_order": [
         "one_col_block_KNaKA3",
-        "one_col_block_hDEJyb"
+        "one_col_block_hDEJyb",
+        "one_col_block_tiW4rK"
       ],
       "settings": {
         "bg_image": "shopify://shop_images/IMG_3028.jpg",
