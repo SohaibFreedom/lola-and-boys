@@ -47,11 +47,26 @@
             "detail_left": "",
             "detail_bottom": ""
           }
+        },
+        "one_col_block_6L6GY9": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "Glinda Crown Dress",
+            "price_onecol": "$68",
+            "link_onecol": "shopify://products/glinda-crown-dress",
+            "top_onecol": "55%",
+            "left_onecol": "44%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": ""
+          }
         }
       },
       "block_order": [
         "one_col_block_jEAMRt",
-        "one_col_block_cnQN8p"
+        "one_col_block_cnQN8p",
+        "one_col_block_6L6GY9"
       ],
       "settings": {
         "bg_image": "shopify://shop_images/LATB_WICKED_09242024_0951.jpg",
