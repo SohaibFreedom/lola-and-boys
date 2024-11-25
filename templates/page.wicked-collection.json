@@ -671,83 +671,6 @@
         "padding_top_right": ""
       }
     },
-    "two_col_block_QitAVg": {
-      "type": "two-col-block",
-      "blocks": {
-        "left_col_block_P97VpH": {
-          "type": "left_col_block",
-          "settings": {
-            "show_plus_left": true,
-            "title_left": "ROSE FEATHER PARTY DRESS",
-            "price_left": "$78",
-            "link_left": "shopify://products/rose-feather-party-dress",
-            "top_left": "38%",
-            "left_left": "67%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "",
-            "detail_bottom": ""
-          }
-        },
-        "left_col_block_iTdhq9": {
-          "type": "left_col_block",
-          "settings": {
-            "show_plus_left": true,
-            "title_left": "HAPPY EMOJI BEANIE",
-            "price_left": "$26",
-            "link_left": "shopify://products/grey-emoji-beanie",
-            "top_left": "6%",
-            "left_left": "44%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "",
-            "detail_bottom": ""
-          }
-        },
-        "right_col_block_C94wTj": {
-          "type": "right_col_block",
-          "settings": {
-            "show_plus_right": true,
-            "title_right": "EVERYTHING IS GONNA BE ALRIGHT SET",
-            "price_right": "$68",
-            "link_right": "shopify://products/everything-is-gonna-be-alright-set",
-            "top_right": "40%",
-            "left_right": "40%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "",
-            "detail_bottom": ""
-          }
-        },
-        "right_col_block_wDgDKB": {
-          "type": "right_col_block",
-          "settings": {
-            "show_plus_right": true,
-            "title_right": "WOMEN'S PRETTY IN PINK SEQUIN BOMBER",
-            "price_right": "$98",
-            "link_right": "shopify://products/womens-pretty-in-pink-sequin-bomber",
-            "top_right": "50%",
-            "left_right": "67%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "",
-            "detail_bottom": ""
-          }
-        }
-      },
-      "block_order": [
-        "left_col_block_P97VpH",
-        "left_col_block_iTdhq9",
-        "right_col_block_C94wTj",
-        "right_col_block_wDgDKB"
-      ],
-      "settings": {
-        "bg_image_left": "shopify://shop_images/LOLA_08122023_2V2A9778_d5e0178b-dae3-4d3d-88bf-0525be037dfb.png",
-        "padding_top_left": "",
-        "bg_image_right": "shopify://shop_images/LOLAANDTHEBOYS_July23__V2A5513_f7d43839-d479-46a0-abf6-2e6bb9da0554.png",
-        "padding_top_right": ""
-      }
-    },
     "two_col_block_njPjat": {
       "type": "two-col-block",
       "blocks": {
@@ -1050,7 +973,6 @@
     "two_col_block_mQCgDj",
     "one_col_block_JFpWdN",
     "two_col_block_k99c7K",
-    "two_col_block_QitAVg",
     "two_col_block_njPjat",
     "one_col_block_BWiedE"
   ]
