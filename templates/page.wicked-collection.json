@@ -671,47 +671,6 @@
         "padding_top_right": ""
       }
     },
-    "one_col_block_q4Bzrw": {
-      "type": "one-col-block",
-      "blocks": {
-        "one_col_block_nwaGKA": {
-          "type": "one_col_block",
-          "settings": {
-            "show_plus": true,
-            "title_onecol": "EMERALD SPARKLE SEQUIN SET",
-            "price_onecol": "$120",
-            "link_onecol": "shopify://products/emerald-sparkle-sequin-set",
-            "top_onecol": "64%",
-            "left_onecol": "45%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_bottom": ""
-          }
-        },
-        "one_col_block_3DnJnq": {
-          "type": "one_col_block",
-          "settings": {
-            "show_plus": true,
-            "title_onecol": "NEW YORK FUZZY BASEBALL HAT",
-            "price_onecol": "$36",
-            "link_onecol": "shopify://products/new-york-fuzzy-baseball-hat",
-            "top_onecol": "3%",
-            "left_onecol": "53%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_bottom": ""
-          }
-        }
-      },
-      "block_order": [
-        "one_col_block_nwaGKA",
-        "one_col_block_3DnJnq"
-      ],
-      "settings": {
-        "bg_image": "shopify://shop_images/LOLA_08122023_2V2A8261.png",
-        "padding_top": "70%"
-      }
-    },
     "two_col_block_QitAVg": {
       "type": "two-col-block",
       "blocks": {
@@ -1091,7 +1050,6 @@
     "two_col_block_mQCgDj",
     "one_col_block_JFpWdN",
     "two_col_block_k99c7K",
-    "one_col_block_q4Bzrw",
     "two_col_block_QitAVg",
     "two_col_block_njPjat",
     "one_col_block_BWiedE"
