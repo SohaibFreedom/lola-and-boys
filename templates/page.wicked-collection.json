@@ -117,6 +117,20 @@
             "detail_left": "",
             "detail_bottom": ""
           }
+        },
+        "one_col_block_b6RiUD": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "Crystal Encrusted Headband",
+            "price_onecol": "$26",
+            "link_onecol": "shopify://products/crystal-encrusted-headband",
+            "top_onecol": "27%",
+            "left_onecol": "81%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": ""
+          }
         }
       },
       "block_order": [
@@ -126,7 +140,8 @@
         "one_col_block_PB8NRx",
         "one_col_block_gHDDCH",
         "one_col_block_A7j3WX",
-        "one_col_block_RNw3fQ"
+        "one_col_block_RNw3fQ",
+        "one_col_block_b6RiUD"
       ],
       "settings": {
         "bg_image": "shopify://shop_images/LATB_WICKED_09242024_0951.jpg",
