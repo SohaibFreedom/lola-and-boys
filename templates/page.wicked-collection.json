@@ -684,25 +684,10 @@
             "detail_left": "",
             "detail_bottom": ""
           }
-        },
-        "one_col_block_epnjDr": {
-          "type": "one_col_block",
-          "settings": {
-            "show_plus": true,
-            "title_onecol": "LOLA FEATHER SET",
-            "price_onecol": "$64",
-            "link_onecol": "shopify://products/lola-feather-set",
-            "top_onecol": "60%",
-            "left_onecol": "70%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_bottom": ""
-          }
         }
       },
       "block_order": [
-        "one_col_block_KNaKA3",
-        "one_col_block_epnjDr"
+        "one_col_block_KNaKA3"
       ],
       "settings": {
         "bg_image": "shopify://shop_images/IMG_3028.jpg",
