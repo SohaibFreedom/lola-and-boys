@@ -179,3 +179,18 @@
   	</div>
 
   </form>
+
+            <script>
+              $(document).ready(function () {
+    $(".swatch-element").on("click", function () {
+        // Check if the clicked element has the class .soldout
+        if ($(this).hasClass("soldout")) {
+            // Hide the checkout button
+            $(".checkout_btn_product")[0].style.display = "none";
+        } else {
+            // Show the checkout button
+            $(".checkout_btn_product")[0].style.display = "block";
+        }
+    });
+});
+            </script>
