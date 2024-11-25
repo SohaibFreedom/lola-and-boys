@@ -642,15 +642,15 @@
           "type": "right_col_block",
           "settings": {
             "show_plus_right": true,
-            "title_right": "RHINESTONE BUCKET HANDBAG",
-            "price_right": "$60",
-            "link_right": "shopify://products/rhinestone-bucket-handbag",
-            "top_right": "70%",
+            "title_right": "Bubble Gum Shimmer Boots",
+            "price_right": "$98",
+            "link_right": "shopify://products/light-pink-sparkle-boots",
+            "top_right": "85%",
             "left_right": "70%",
             "detail_top": "",
             "detail_left": "",
             "detail_right": "",
-            "detail_bottom": ""
+            "detail_bottom": "100%"
           }
         }
       },
