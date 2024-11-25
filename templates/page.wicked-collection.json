@@ -542,6 +542,21 @@
             "detail_right": "",
             "detail_bottom": ""
           }
+        },
+        "right_col_block_BFDGYD": {
+          "type": "right_col_block",
+          "settings": {
+            "show_plus_right": true,
+            "title_right": "Hologram Magic Sneaker",
+            "price_right": "$68",
+            "link_right": "shopify://products/hologram-sneaker-preorder",
+            "top_right": "90%",
+            "left_right": "70%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": "100%"
+          }
         }
       },
       "block_order": [
@@ -550,7 +565,8 @@
         "left_col_block_qnMgdB",
         "left_col_block_gzNFKD",
         "right_col_block_CkEBi8",
-        "right_col_block_BGV7gL"
+        "right_col_block_BGV7gL",
+        "right_col_block_BFDGYD"
       ],
       "settings": {
         "bg_image_left": "shopify://shop_images/LATB_WICKED_09242024_0123_1.jpg",
