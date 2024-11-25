@@ -392,13 +392,28 @@
             "detail_left": "",
             "detail_bottom": ""
           }
+        },
+        "one_col_block_z9WTUe": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "Wicked Sequin Stripe Set",
+            "price_onecol": "$74",
+            "link_onecol": "shopify://products/wicked-gem-joggers-copy",
+            "top_onecol": "30%",
+            "left_onecol": "68%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": ""
+          }
         }
       },
       "block_order": [
         "one_col_block_AaXczW",
         "one_col_block_Lwy7P3",
         "one_col_block_P36RMK",
-        "one_col_block_TLWAw3"
+        "one_col_block_TLWAw3",
+        "one_col_block_z9WTUe"
       ],
       "settings": {
         "bg_image": "shopify://shop_images/LATB_WICKED_09242024_0138_3.jpg",
