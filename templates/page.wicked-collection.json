@@ -75,13 +75,28 @@
             "detail_left": "",
             "detail_bottom": ""
           }
+        },
+        "one_col_block_gHDDCH": {
+          "type": "one_col_block",
+          "settings": {
+            "show_plus": true,
+            "title_onecol": "Wickedly Beautiful Tee",
+            "price_onecol": "$36",
+            "link_onecol": "shopify://products/wickedly-beautiful-tee",
+            "top_onecol": "58%",
+            "left_onecol": "67%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_bottom": ""
+          }
         }
       },
       "block_order": [
         "one_col_block_jEAMRt",
         "one_col_block_cnQN8p",
         "one_col_block_6L6GY9",
-        "one_col_block_PB8NRx"
+        "one_col_block_PB8NRx",
+        "one_col_block_gHDDCH"
       ],
       "settings": {
         "bg_image": "shopify://shop_images/LATB_WICKED_09242024_0951.jpg",
