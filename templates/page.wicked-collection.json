@@ -23,12 +23,12 @@
         "one_col_block_jEAMRt": {
           "type": "one_col_block",
           "settings": {
-            "show_plus": false,
-            "title_onecol": "wer",
-            "price_onecol": "$23",
-            "link_onecol": "",
-            "top_onecol": "20%",
-            "left_onecol": "20%",
+            "show_plus": true,
+            "title_onecol": "Elphaba Sequin Bomber",
+            "price_onecol": "$88",
+            "link_onecol": "shopify://products/glinda-roses-puff-sleeve-dress-copy",
+            "top_onecol": "35%",
+            "left_onecol": "30%",
             "detail_top": "",
             "detail_left": "",
             "detail_bottom": ""
@@ -39,7 +39,7 @@
         "one_col_block_jEAMRt"
       ],
       "settings": {
-        "bg_image": "shopify://shop_images/2_3.png",
+        "bg_image": "shopify://shop_images/LATB_WICKED_09242024_0951.jpg",
         "padding_top": "70%"
       }
     },
