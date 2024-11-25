@@ -612,11 +612,11 @@
           "type": "right_col_block",
           "settings": {
             "show_plus_right": true,
-            "title_right": "JADE FEATHER PARTY DRESS",
-            "price_right": "$78",
-            "link_right": "shopify://products/jade-feather-party-dress",
-            "top_right": "43%",
-            "left_right": "11%",
+            "title_right": "Women's Glinda Sequin Ombre Bomber",
+            "price_right": "$98",
+            "link_right": "shopify://products/womens-elphaba-sequin-bomber-copy",
+            "top_right": "40%",
+            "left_right": "20%",
             "detail_top": "",
             "detail_left": "",
             "detail_right": "",
@@ -652,21 +652,6 @@
             "detail_right": "",
             "detail_bottom": ""
           }
-        },
-        "right_col_block_znWtCT": {
-          "type": "right_col_block",
-          "settings": {
-            "show_plus_right": true,
-            "title_right": "ROSE FEATHER PARTY DRESS",
-            "price_right": "$78",
-            "link_right": "shopify://products/rose-feather-party-dress",
-            "top_right": "31%",
-            "left_right": "78%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "",
-            "detail_bottom": ""
-          }
         }
       },
       "block_order": [
@@ -674,8 +659,7 @@
         "left_col_block_UkUKrr",
         "right_col_block_DqWmJD",
         "right_col_block_djqni8",
-        "right_col_block_WxTVYH",
-        "right_col_block_znWtCT"
+        "right_col_block_WxTVYH"
       ],
       "settings": {
         "bg_image_left": "shopify://shop_images/highcompress_LATB_WICKED_09242024_0015_3_2000x_2022b9dd-e315-46f3-bbd7-ade78f76d884.jpg",
