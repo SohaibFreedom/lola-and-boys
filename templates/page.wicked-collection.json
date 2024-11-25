@@ -341,52 +341,22 @@
           "type": "one_col_block",
           "settings": {
             "show_plus": true,
-            "title_onecol": "RAINBOW BUTTERFLY OMBRE DRESS",
-            "price_onecol": "$64",
-            "link_onecol": "shopify://products/rainbow-butterfly-ombre-dress",
-            "top_onecol": "40%",
-            "left_onecol": "60%",
+            "title_onecol": "Wicked Long Tulle Skirt",
+            "price_onecol": "$54",
+            "link_onecol": "shopify://products/wicked-long-tulle-skirt",
+            "top_onecol": "48%",
+            "left_onecol": "37%",
             "detail_top": "",
             "detail_left": "",
             "detail_bottom": ""
-          }
-        },
-        "one_col_block_3LU34i": {
-          "type": "one_col_block",
-          "settings": {
-            "show_plus": true,
-            "title_onecol": "CRYSTAL STUDDED KNOT HEADBAND",
-            "price_onecol": "$24",
-            "link_onecol": "shopify://products/crystal-knot-headband-1",
-            "top_onecol": "3%",
-            "left_onecol": "50%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_bottom": ""
-          }
-        },
-        "one_col_block_pwGVfd": {
-          "type": "one_col_block",
-          "settings": {
-            "show_plus": true,
-            "title_onecol": "MINI IRIDESCENT DOT PURSE",
-            "price_onecol": "$40",
-            "link_onecol": "shopify://products/mini-croc-purse-1",
-            "top_onecol": "94%",
-            "left_onecol": "60%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_bottom": "100%"
           }
         }
       },
       "block_order": [
-        "one_col_block_AaXczW",
-        "one_col_block_3LU34i",
-        "one_col_block_pwGVfd"
+        "one_col_block_AaXczW"
       ],
       "settings": {
-        "bg_image": "shopify://shop_images/LOLA_08122023_2V2A9476.png",
+        "bg_image": "shopify://shop_images/LATB_WICKED_09242024_0138_3.jpg",
         "padding_top": "70%"
       }
     },
