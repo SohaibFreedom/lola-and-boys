@@ -181,6 +181,21 @@
             "detail_bottom": "100%"
           }
         },
+        "left_col_block_DLMUCa": {
+          "type": "left_col_block",
+          "settings": {
+            "show_plus_left": true,
+            "title_left": "Elphaba Sequin Skirt",
+            "price_left": "$58",
+            "link_left": "shopify://products/glinda-sparkle-skirt-copy",
+            "top_left": "64%",
+            "left_left": "60%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": ""
+          }
+        },
         "right_col_block_NpYtnK": {
           "type": "right_col_block",
           "settings": {
@@ -200,6 +215,7 @@
       "block_order": [
         "left_col_block_Di4xef",
         "left_col_block_DafMfh",
+        "left_col_block_DLMUCa",
         "right_col_block_NpYtnK"
       ],
       "settings": {
