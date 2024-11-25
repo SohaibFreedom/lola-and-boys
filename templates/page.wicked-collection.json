@@ -155,11 +155,11 @@
           "type": "left_col_block",
           "settings": {
             "show_plus_left": true,
-            "title_left": "LITTLE MISS SUNSHINE FAUX FUR JACKET",
-            "price_left": "$98",
-            "link_left": "shopify://products/little-miss-sunshine-faux-fur-jacket",
-            "top_left": "40%",
-            "left_left": "20%",
+            "title_left": "Women's Wickedly Beautiful Tee",
+            "price_left": "$36",
+            "link_left": "shopify://products/womens-wickedly-beautiful-tee",
+            "top_left": "20%",
+            "left_left": "37%",
             "detail_top": "",
             "detail_left": "",
             "detail_right": "",
@@ -195,44 +195,12 @@
             "detail_right": "",
             "detail_bottom": ""
           }
-        },
-        "right_col_block_TxrKdN": {
-          "type": "right_col_block",
-          "settings": {
-            "show_plus_right": true,
-            "title_right": "CRYSTAL PEARL HEADBAND",
-            "price_right": "$28",
-            "link_right": "shopify://products/crystal-diamond-headband",
-            "top_right": "3%",
-            "left_right": "50%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "",
-            "detail_bottom": ""
-          }
-        },
-        "right_col_block_7fUJGH": {
-          "type": "right_col_block",
-          "settings": {
-            "show_plus_right": true,
-            "title_right": "COCO GLITTER PURSE",
-            "price_right": "$36",
-            "link_right": "shopify://products/coco-glitter-purse",
-            "top_right": "62%",
-            "left_right": "61%",
-            "detail_top": "",
-            "detail_left": "",
-            "detail_right": "",
-            "detail_bottom": ""
-          }
         }
       },
       "block_order": [
         "left_col_block_Di4xef",
         "left_col_block_DafMfh",
-        "right_col_block_NpYtnK",
-        "right_col_block_TxrKdN",
-        "right_col_block_7fUJGH"
+        "right_col_block_NpYtnK"
       ],
       "settings": {
         "bg_image_left": "shopify://shop_images/LATB_WICKED_09242024_0646_03d7e3be-d360-4bf7-819c-c2e21685de6a.jpg",
