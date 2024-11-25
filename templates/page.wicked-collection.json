@@ -553,7 +553,7 @@
             "top_right": "90%",
             "left_right": "70%",
             "detail_top": "",
-            "detail_left": "",
+            "detail_left": "100%",
             "detail_right": "",
             "detail_bottom": "100%"
           }
