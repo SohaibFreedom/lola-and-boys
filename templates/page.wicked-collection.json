@@ -317,6 +317,21 @@
             "detail_right": "",
             "detail_bottom": ""
           }
+        },
+        "right_col_block_mgGpeh": {
+          "type": "right_col_block",
+          "settings": {
+            "show_plus_right": true,
+            "title_right": "Magical Butterfly Boots",
+            "price_right": "$78",
+            "link_right": "shopify://products/magical-butterfly-boots",
+            "top_right": "90%",
+            "left_right": "62%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": "100%"
+          }
         }
       },
       "block_order": [
@@ -325,7 +340,8 @@
         "right_col_block_MJrrgT",
         "right_col_block_jeWEEp",
         "right_col_block_ttWMWV",
-        "right_col_block_6Ge4ee"
+        "right_col_block_6Ge4ee",
+        "right_col_block_mgGpeh"
       ],
       "settings": {
         "bg_image_left": "shopify://shop_images/LATB_WICKED_09242024_0517.jpg",
