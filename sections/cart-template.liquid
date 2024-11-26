@@ -16,6 +16,10 @@
             opacity: 0.5;
             cursor: not-allowed;
         }
+  .cart-temp-header .page-title h1 {
+    margin-bottom: 10px;
+    margin-top: 3rem;
+}
     .product-custom-patch-details{
       display: flex;
       flex-direction: row;
@@ -118,6 +122,15 @@
         font-size: 15px !important;
         margin-top: 0 !important;
      }
+    cart-remove-button .button.button--tertiary {
+    font-size: 9px !important;
+}
+.cart-action-btn-flex-c button.wk-button.wk-align-center, .cart-action-btn-flex-c .heading-cart-change, .cart-action-btn-flex-c .quanitty-toggle-cart span.cancel-cart-btn {
+    font-size: 9px !important;
+}
+.cart-action-btn-flex-c {
+    gap: 10px !important;
+}
      .parent-item {
         width: 30% !important;
      }
@@ -125,11 +138,11 @@
 </style>
 <a name="pagecontent" id="pagecontent"></a>
 <div id="currency-format" data-money-format="{{ shop.money_format }}"></div>
-<div class="main-container">
+<div class="main-container cart-temp-header">
   <div class="row">
     <div class="wi-100">
       <div class="page-title">
-        <h1>{{ 'cart.general.title' | t }}</h1>
+        <h1>{{ 'cart.general.title' | t }} ({{ cartCount }})</h1>
       </div>
     </div>
   </div>
@@ -351,7 +364,53 @@
                       {% endif %}
                     </div>
 
-                    <div class="product-quantity-box left">
+                   
+
+                    <div class="cart-action-btn-flex-c">
+                    <cart-remove-button
+                      id="Remove-{{ item.index | plus: 1 }}"
+                      data-index="{{ item.index | plus: 1 }}"
+                      data-item-key="{{ item.key }}"
+                    >
+                      <a
+                        href="{{ item.url_to_remove }}"
+                        class="button button--tertiary"
+                        aria-label="{{ 'remove' | t: title: item.title }}"
+                        onclick="removeItem(event, '{{ item.url_to_remove }}')"
+                      >
+                        Remove
+                      </a>
+                    </cart-remove-button>
+
+
+                    {% assign product_handle_full = item.url %}
+
+{%- assign product_handle_no_query = product_handle_full | split: '?' | first -%}
+{%- assign product_handle_filtered = product_handle_no_query | remove: '/products/' -%}
+
+
+
+                    
+                    <wishlist-button-collection data-product-handle="{{ product_handle_filtered }}" show-icon="" icon="wishlist" align-self="center" align-content="center" floating="{&quot;reference&quot;:&quot;[wk-id=\&quot;PKfLVkO8BZyS1zm57EObx\&quot;]&quot;,&quot;position&quot;:{&quot;placement&quot;:&quot;top-end&quot;,&quot;inset&quot;:true}}" wk-loaded="" data-preorder-handle="mia-pink-fringe-dress"><!---->
+       
+                    
+                      <wk-button class="wk-floating" style="position: absolute; top: 0px; left: 0px; transition: none; transform: translate3d(216px, 0px, 0px);"><!---->
+     <button type="button" aria-label="Add to Wishlist" class="wk-button wk-align-center wk-align-content-center">
+     
+      Move to favourites
+   
+      </button>
+    </wk-button>
+      </wishlist-button-collection>
+<div class="heading-cart-change">Edit</div>
+          
+</div>
+
+                                <div class="change-btn-cart-flex">
+                      
+
+                        <div class="quanitty-toggle-cart">
+                           <div class="product-quantity-box left">
                       <span class="ss-icon product-minus js-change-quantity" data-func="minus"
                         ><span class="icon-minus"></span
                       ></span>
@@ -382,20 +441,14 @@
                         ><span class="icon-plus"></span
                       ></span>
                     </div>
-                    <cart-remove-button
-                      id="Remove-{{ item.index | plus: 1 }}"
-                      data-index="{{ item.index | plus: 1 }}"
-                      data-item-key="{{ item.key }}"
-                    >
-                      <a
-                        href="{{ item.url_to_remove }}"
-                        class="button button--tertiary"
-                        aria-label="{{ 'remove' | t: title: item.title }}"
-                        onclick="removeItem(event, '{{ item.url_to_remove }}')"
-                      >
-                        Remove
-                      </a>
-                    </cart-remove-button>
+                          <div class="cancel-quantity-toggle">
+                          <span class="cancel-cart-btn">Cancel</span>
+                          </div>
+                        </div>
+                        
+                        
+                      </div>
+                    
                   </div>
                 </div>
               {% endfor %}
@@ -905,6 +958,71 @@ if (item.emb === 'Embroidery'){
                 // Append the parentPatchProductDetailsDiv to the target div
                 customPatchCartData.appendChild(parentPatchProductDetailsDiv);
             });
+
+
+
+
+
+// Function to modify the button
+function modifyWishlistButton(button) {
+    if (button) {
+        // Remove the SVG
+        const svg = button.querySelector('svg');
+        if (svg) {
+            svg.remove();
+        }
+        // Add text "Move to Favourite"
+        button.textContent = 'Move to Favourites';
+    }
+}
+
+// Set up MutationObserver
+const observer = new MutationObserver((mutationsList) => {
+    mutationsList.forEach((mutation) => {
+        if (mutation.type === 'childList') {
+            mutation.addedNodes.forEach((node) => {
+                // Check if the added node is the desired button
+                if (node.nodeType === 1 && node.matches('button.wk-button')) {
+                    modifyWishlistButton(node);
+                }
+                
+                // If the added node is a parent containing multiple buttons
+                if (node.nodeType === 1) {
+                    const buttons = node.querySelectorAll('button.wk-button');
+                    buttons.forEach(modifyWishlistButton);
+                }
+            });
+        }
+    });
+});
+
+// Start observing the body for added elements
+observer.observe(document.body, {
+    childList: true,
+    subtree: true, // To catch changes deep in the DOM tree
+});
+
+
+document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('heading-cart-change')) {
+        // Add 'active' class
+        document.querySelectorAll('.cart-action-btn-flex-c, .change-btn-cart-flex')
+            .forEach(function(element) {
+                element.classList.add('active');
+            });
+    }
+
+    if (event.target.classList.contains('cancel-cart-btn')) {
+        // Remove 'active' class
+        document.querySelectorAll('.cart-action-btn-flex-c, .change-btn-cart-flex')
+            .forEach(function(element) {
+                element.classList.remove('active');
+            });
+    }
+});
+
+
+  
 </script>
 {% schema %}
 {
@@ -937,6 +1055,43 @@ if (item.emb === 'Embroidery'){
 {% endschema %}
 
 <style>
+
+
+button.wk-button.wk-align-center, .heading-cart-change, .quanitty-toggle-cart span.cancel-cart-btn {
+    font-family: Proxima Nova Rg;
+    text-decoration: underline;
+		font-size:12px !important;
+		text-transform: uppercase;
+		letter-spacing:1px !important;
+}
+
+.cart-action-btn-flex-c .wk-button.wk-align-center {
+    width: 100%;
+}
+.cart-action-btn-flex-c {
+    display: flex;
+    align-items: center;
+    clear: both;
+    gap: 18px;
+    padding-top: 20px !important;
+}
+
+.change-btn-cart-flex.active {
+	display:block;
+}
+.change-btn-cart-flex, .cart-action-btn-flex-c.active {
+	display:none;
+}
+.change-btn-cart-flex {
+	padding-top:25px;
+	clear:both;
+}
+.cart-action-btn-flex-c, .change-btn-cart-flex {
+	cursor:pointer;
+}
+
+
+  
     .container.main.content {
         width: 100%;
         max-width: 100%;
