@@ -543,6 +543,21 @@
             "detail_bottom": "100%"
           }
         },
+        "left_col_block_RnRM7p": {
+          "type": "left_col_block",
+          "settings": {
+            "show_plus_left": true,
+            "title_left": "Magical Butterfly Boots",
+            "price_left": "$78",
+            "link_left": "shopify://products/magical-butterfly-boots",
+            "top_left": "85%",
+            "left_left": "68%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": "100%"
+          }
+        },
         "right_col_block_CkEBi8": {
           "type": "right_col_block",
           "settings": {
@@ -596,6 +611,7 @@
         "left_col_block_gzNFKD",
         "left_col_block_LzqKQW",
         "left_col_block_MM7DG4",
+        "left_col_block_RnRM7p",
         "right_col_block_CkEBi8",
         "right_col_block_BGV7gL",
         "right_col_block_BFDGYD"
