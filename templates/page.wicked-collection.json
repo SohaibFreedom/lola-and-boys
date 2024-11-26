@@ -574,6 +574,21 @@
             "detail_bottom": "100%"
           }
         },
+        "left_col_block_dUWqjc": {
+          "type": "left_col_block",
+          "settings": {
+            "show_plus_left": true,
+            "title_left": "Bubble Gum Shimmer Boots",
+            "price_left": "$98",
+            "link_left": "shopify://products/light-pink-sparkle-boots",
+            "top_left": "88%",
+            "left_left": "38%",
+            "detail_top": "",
+            "detail_left": "",
+            "detail_right": "",
+            "detail_bottom": "100%"
+          }
+        },
         "right_col_block_CkEBi8": {
           "type": "right_col_block",
           "settings": {
@@ -628,6 +643,7 @@
         "left_col_block_LzqKQW",
         "left_col_block_MM7DG4",
         "left_col_block_RnRM7p",
+        "left_col_block_dUWqjc",
         "right_col_block_CkEBi8",
         "right_col_block_BGV7gL",
         "right_col_block_BFDGYD"
