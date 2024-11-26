@@ -539,7 +539,7 @@
             "left_left": "80%",
             "detail_top": "",
             "detail_left": "",
-            "detail_right": "",
+            "detail_right": "100%",
             "detail_bottom": "100%"
           }
         },
