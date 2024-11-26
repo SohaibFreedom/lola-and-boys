@@ -180,17 +180,32 @@
 
   </form>
 
-            <script>
-              $(document).ready(function () {
+  <script>
+  $(document).ready(function () {
     $(".swatch-element").on("click", function () {
-        // Check if the clicked element has the class .soldout
         if ($(this).hasClass("soldout")) {
-            // Hide the checkout button
             $(".checkout_btn_product")[0].style.display = "none";
         } else {
-            // Show the checkout button
             $(".checkout_btn_product")[0].style.display = "block";
         }
     });
-});
-            </script>
+    const addToCartButton = document.querySelector('.action_button.add_to_cart.liquid_ajax_cart');
+    const checkoutButton = document.querySelector('.checkout_btn_product');
+
+    if (addToCartButton && checkoutButton) {
+        // Function to toggle class on the checkout button
+        const toggleCheckoutButtonClass = () => {
+            if (addToCartButton.classList.contains('disabled')) {
+                checkoutButton.classList.add('hide-checkout-btn'); 
+            } else {
+                checkoutButton.classList.remove('hide-checkout-btn');
+            }
+        };
+        toggleCheckoutButtonClass();
+
+        // Observe changes to the 'Add to Cart' button's class and toggle accordingly
+        const observer = new MutationObserver(toggleCheckoutButtonClass);
+        observer.observe(addToCartButton, { attributes: true, attributeFilter: ['class'] });
+    }
+  });
+</script>
