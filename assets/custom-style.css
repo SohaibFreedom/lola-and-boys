@@ -2,6 +2,9 @@
   display: grid !important;
   grid-template-columns: 1fr 1fr 1fr;
 }
+.checkout_btn_product.hide-checkout-btn {
+  display: none;
+}
 
 @media screen and (max-width: 769px) {
   .search-template-section .container .one.column,
@@ -469,7 +472,7 @@ div#template--15401532719206__richtext_custom_UT9Bit .rich-text__blocks {
 .lookbooks_header ul {
   display: flex;
   align-items: center;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
   margin: 0 !important;
