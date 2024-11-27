@@ -991,7 +991,7 @@ document.querySelector('.customization-search-bar').addEventListener('input', fi
 
             const img = document.createElement('img');
             img.setAttribute('draggable', 'false');
-            img.src = item.image;
+            img.src = `${item.image}&width=100`;
             img.alt = item.name;
             img.classList.add('patch-image');
             img.setAttribute('crossorigin', 'anonymous');
@@ -1204,7 +1204,7 @@ function showPatches() {
 
       const img = document.createElement('img');
       img.setAttribute('draggable', 'false');
-      img.src = item.image;
+      img.src = `${item.image}&width=100`;
       img.alt = item.name;
       img.classList.add('patch-image');
       img.setAttribute('crossorigin', 'anonymous');
@@ -1545,7 +1545,7 @@ function closePopup() {
             title.textContent = item.alphabetname;
 
             const img = document.createElement('img');
-            img.src = item.image;
+            img.src = `${item.image}&width=100`;
             img.alt = item.name;
             img.classList.add('patch-image');
             img.setAttribute('crossorigin', 'anonymous');
