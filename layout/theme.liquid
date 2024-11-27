@@ -193,10 +193,14 @@ Delete
 
 
 
+{% if request.user_agent contains 'Mobile' %}
+  <!-- Don't include the script for mobile -->
+{% else %}
+  <script type="text/javascript" src="https://widget.instabot.io/jsapi/bot.js" crossorigin>
+    apiKey: "PVw/YWaNdaQf0eouTVUmWfK+7K4U/FBeBCXHWMGvAlk="
+  </script>
+{% endif %}
 
-  <script type="text/javascript" chatbot src="https://widget.instabot.io/jsapi/bot.js" crossorigin>
-	apiKey: "PVw/YWaNdaQf0eouTVUmWfK+7K4U/FBeBCXHWMGvAlk="
-</script>
 
 
 </head>
