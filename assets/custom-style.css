@@ -7,6 +7,9 @@
 }
 
 @media screen and (max-width: 769px) {
+   html.roko-instabot-position-bottom-right .roko-instabot-close-chat-button, html.roko-instabot-position-bottom-right .roko-instabot-widget, html.roko-instabot-position-bottom-right .roko-instabot-widget-button {
+    display: none;
+  }
   .search-template-section .container .one.column,
   .search-template-section .container .one.columns,
   .search-template-section .container .two.columns,
