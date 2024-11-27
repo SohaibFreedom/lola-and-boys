@@ -773,22 +773,16 @@ document.addEventListener("DOMContentLoaded", () => {
         if (widget) {
             if (window.innerWidth < 768) {
                 widget.style.display = "none";
-                console.log("Widget hidden due to small screen size."); // Log when hidden
             } else {
                 widget.style.display = ""; // Reset display in case conditions change
-                console.log("Widget displayed as conditions allow."); // Log when reset
             }
         }
     };
 
     // MutationObserver to handle dynamically added widgets with a delay
-    const observer = new MutationObserver((mutationsList) => {
+    const observer = new MutationObserver(() => {
         setTimeout(() => {
-            const widget = document.querySelector(widgetSelector);
-            if (widget) {
-                console.log("Widget dynamically loaded."); // Log when widget is loaded
-                hideWidget(); // Call hideWidget after delay
-            }
+            hideWidget(); // Delay before checking and hiding the widget
         }, 500); // 500ms delay
     });
 
@@ -802,14 +796,9 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("resize", hideWidget);
 
     // Initial check on page load
-    const initialWidget = document.querySelector(widgetSelector);
-    if (initialWidget) {
-        console.log("Widget found on page load."); // Log when widget is found on page load
-        hideWidget();
-    } else {
-        console.log("Widget not found on page load."); // Log if widget isn't found initially
-    }
+    hideWidget();
 });
+
 
   
 </script>
