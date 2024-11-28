@@ -1,7 +1,31 @@
 {% assign variant = product.selected_or_first_available_variant %}
 
 <style>
-
+  .patch-not-allowed{
+    height: 70px;
+    width: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    position: relative;
+    flex-direction: column;
+    cursor: not-allowed;
+  }
+  .patch-not-allowed:hover{
+   border-color:red !important; 
+  }
+   .patch-not-allowed > img {
+    height: 70% !important;
+    width: 70% !important;
+    object-fit: contain;
+}
+  .alphabets-toggle{
+   display: none;
+  }
+  .overlapping-error{
+    display:none;
+  }
     .size_variants_section_error_heading_wrapp{
     display:flex;
     gap:5px;
@@ -2113,8 +2137,9 @@
           </div>
           <div class="scrollbox">
             <div class="scrollboxInner">
-              <div class="patches"></div>
-            </div>
+              <div class="patches-toggle"><div class="patches" id="patches-wrapper"></div></div>
+              <div class="alphabets-toggle"><div id="alphabets-wrapper" class="patches"></div></div>
+           </div>
           </div>
         </div>
       </div>
