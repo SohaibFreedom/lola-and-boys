@@ -11,137 +11,10 @@
   endif
   assign cartData = cart.items
 %}
-<style>
-          .cart_delete-custom-product-button[disabled] {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-  .cart-temp-header .page-title h1 {
-    margin-bottom: 10px;
-    margin-top: 3rem;
-}
-    .product-custom-patch-details{
-      display: flex;
-      flex-direction: row;
-      margin: 30px -15px 0;
-      border-top: 1px solid #E4E4E4;
-      padding-top: 30px;
-    }
-    .parent-item{
-      width: 15%;
-      padding: 0 15px;
-      box-sizing: content-box;
-      display: inline-block;
-    }
-    .child-items{
-      order: 2;
-      width:85%;
-      padding: 0 15px;
-    }
-    .parent-image{
-      height: 260px !important;
-      object-fit: cover;
-      aspect-ratio: 2 / 3;
-      object-position: top;
-      width: 100%;
-    }
-    .child-item{
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      margin-bottom: 10px;
-    }
-    .child-item > p{
-      order: 2;
-      margin: 0;
-      font-size: 12px;
-      color: #747474;
-    }
-    .child-image{
-     height: 30px !important;
-      width: 30px !important;
-      object-fit: contain;
-    }
-    .parent-child-wrapper{
-      width: 85%;
-      padding: 0 15px;
-      display: flex;
-      flex-direction: column-reverse;
-      height: fit-content;
-    }
-    .parent-price-title > h3{
-      font-size: 16px;
-      margin-top: 20px;
-      text-transform: capitalize;
-      letter-spacing: 0;
-    }
-    .parent-price-title > p{
-      padding:0;
-    }
-    .parent-patch-product-details{
-      display: flex;
-      margin: 30px -15px 0;
-      border-top: 1px solid #E4E4E4;
-      padding-top: 30px;
-    }
-    .parent-price-title{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  }
-    }
-    .parent-price-title > p{
-      font-size: 14px;
-      font-weight: 600;
-      color: #000 !important;
-      line-height: 19px;
-      letter-spacing: 0.7px;
-      margin:0;
-    }
-   #currency-format{
-     display:none;
-   }
-    .cart_delete-custom-product-button{
-      cursor: pointer;
-      text-decoration: underline;
-      text-transform: uppercase;
-      font-size: 12px !important;
-      font-weight: 400;
-      letter-spacing: 1px;
-      line-height: 1.2;
-      width: fit-content;
-      min-height: 42px;
-      display: inline-flex;
-      align-items: center;
-    }
-    .back-image{
-      display:none;
-    }
-  @media screen and (max-width: 768px) {
-     .parent-price-title > h3 {
-        font-size: 15px !important;
-        margin-top: 0 !important;
-     }
-    cart-remove-button .button.button--tertiary {
-    font-size: 8px !important;
-}
-    .cart_content .product-quantity-box .quantity, #cart_form .product-quantity-box .quantity {
-    font-size: 10px !important;
-}
-.cart-action-btn-flex-c button.wk-button.wk-align-center, .cart-action-btn-flex-c .heading-cart-change, .cart-action-btn-flex-c .quanitty-toggle-cart span.cancel-cart-btn {
-    font-size: 8px !important;
-}
-    #cart_form .product-quantity-box, .cart_content .product-quantity-box {
-        width: 60% !important;
-    }
-.cart-action-btn-flex-c {
-    gap: 10px !important;
-}
-     .parent-item {
-        width: 30% !important;
-     }
-  }
-</style>
+
+
+{{ 'cart-custom.css' | asset_url | stylesheet_tag: preload: true }}
+
 <a name="pagecontent" id="pagecontent"></a>
 <div id="currency-format" data-money-format="{{ shop.money_format }}"></div>
 <div class="main-container cart-temp-header">
@@ -463,28 +336,37 @@
             <div class="five columns offset-by-one cart-right-section">
               <div class="section clearfix">
                 <div class="subtotal">
-                  <p class="cart_subtotal js-cart_subtotal">
-                    <span class="right">
-                      <span class="">
-                        <span class="saso-cart-original-total"
-                          ><span
-                            class="Bold-theme-hook-DO-NOT-DELETE bold_cart_total"
-                            style="display:none !important;"
-                          ></span
-                          ><span class="wh-original-cart-total"
-                            ><span class="ak-upsell-original-price">{{ totalPrice | money }}</span
-                            ><span class="ak-upsell-cart-total"></span></span
-                          ><span class="wh-cart-total"></span>
-                          <div class="additional-notes">
-                            <span class="wh-minimums-note"></span><span class="wh-extra-note"></span>
-                          </div>
+                  <h4 class="order-summery">Order Summery</h4>
+                  <div class="subtotal-top">
+                    <p class="cart_subtotal js-cart_subtotal">
+                      <span class="right">
+                        <span class="">
+                          <span class="saso-cart-original-total"
+                            ><span
+                              class="Bold-theme-hook-DO-NOT-DELETE bold_cart_total"
+                              style="display:none !important;"
+                            ></span
+                            ><span class="wh-original-cart-total"
+                              ><span class="ak-upsell-original-price">{{ totalPrice | money }}</span
+                              ><span class="ak-upsell-cart-total"></span></span
+                            ><span class="wh-cart-total"></span>
+                            <div class="additional-notes">
+                              <span class="wh-minimums-note"></span><span class="wh-extra-note"></span>
+                            </div>
+                          </span>
+                          <span class="saso-cart-total"></span>
                         </span>
-                        <span class="saso-cart-total"></span>
                       </span>
-                    </span>
-                    <span>{{ 'cart.general.subtotal' | t }}</span>
-                  </p>
-
+                      <span>{{ 'cart.general.subtotal' | t }} ({{ cart.item_count | t }}) </span>
+                      <span class="sale-tax">sales tax calculated at checkout.</span>
+                      <div class="payment-icons-custom">
+                        <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/afterpay-logo-cus.png?v=1732745014" height="auto" width="auto" />
+                        <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/paypal-custom_50349735-fce2-4c5c-b7b1-21da83415513.png?v=1732744318" height="auto" width="auto" />
+                        <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/shoppay-custom.png?v=1732821864" height="auto" width="auto" />
+                      </div>
+                    </p>
+                  </div>
+                  
                   {% if section.settings.display_savings %}
                     <p class="cart_savings sale">
                       {% if total_saving > 0 %}
@@ -495,7 +377,7 @@
                       {% endif %}
                     </p>
                   {% endif %}
-
+  
                   {% if settings.show_multiple_currencies %}
                     <p>
                       <small>
@@ -527,7 +409,7 @@
                     class="action_button add_to_cart checkout-cart-page"
                     id="checkout"
                     name="checkout"
-                    value="{{ 'cart.general.checkout' | t }}"
+                    value="proceed to checkout"
                   >
 
                   {% if section.settings.cart_message != blank %}
@@ -1027,8 +909,6 @@ document.addEventListener('click', function(event) {
     }
 });
 
-
-  
 </script>
 {% schema %}
 {
@@ -1059,55 +939,5 @@ document.addEventListener('click', function(event) {
   ]
 }
 {% endschema %}
-
-<style>
-
-
-button.wk-button.wk-align-center, .heading-cart-change, .quanitty-toggle-cart span.cancel-cart-btn {
-    font-family: Proxima Nova Rg;
-    text-decoration: underline;
-		font-size:12px !important;
-		text-transform: uppercase;
-		letter-spacing:1px !important;
-}
-
-.cart-action-btn-flex-c .wk-button.wk-align-center {
-    width: 100%;
-}
-.cart-action-btn-flex-c {
-    display: flex;
-    align-items: center;
-    clear: both;
-    gap: 18px;
-    padding-top: 20px !important;
-}
-
-.change-btn-cart-flex.active {
-	display:block;
-}
-.change-btn-cart-flex, .cart-action-btn-flex-c.active {
-	display:none;
-}
-.change-btn-cart-flex {
-	padding-top:25px;
-	clear:both;
-}
-.cart-action-btn-flex-c, .change-btn-cart-flex {
-	cursor:pointer;
-}
-
-
-  
-    .container.main.content {
-        width: 100%;
-        max-width: 100%;
-    }
-     .cart-temp_price .c-cart__itemPrice {
-      color: #000 !important;
-  }
-  .cart-temp_price .c-cart__itemPrice.c-cart__itemdiscountedprice {
-      color: red !important;
-  }
-</style>
 
 <!-- GPO installed -->
