@@ -7,7 +7,9 @@
   margin-bottom: 10px;
   margin-top: 3rem;
 }
-
+.cart-right-section .cart_subtotal.js-cart_subtotal > span:nth-child(2) {
+  display: none;
+}
 .product-custom-patch-details {
   display: flex;
   flex-direction: row;
