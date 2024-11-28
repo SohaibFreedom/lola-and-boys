@@ -764,6 +764,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <script>
 
+  // Check if the Screen Orientation API is available
+if (screen.orientation && screen.orientation.lock) {
+    // Check if the body contains the specific class
+    if (document.body.classList.contains('patch_customizer_main_page')) {
+        // Lock the orientation to portrait
+        screen.orientation.lock('portrait')
+            .then(() => {
+                console.log('Orientation locked to portrait for patch_customizer_main_page');
+            })
+            .catch((err) => {
+                console.error('Failed to lock orientation:', err);
+            });
+    }
+} else {
+    console.warn('Screen Orientation API not supported on this device.');
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
     const widgetSelector = ".roko-instabot-widget-button";
 
