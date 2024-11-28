@@ -770,7 +770,7 @@ if (screen.orientation && screen.orientation.lock) {
     // Function to lock orientation if class exists
     const checkAndLockOrientation = () => {
         if (document.body.classList.contains('patch_customizer_main_page')) {
-            screen.orientation.lock()
+            screen.orientation.lock('portrait') // Pass the desired orientation as an argument
                 .then(() => {
                     console.log('Orientation locked to portrait for patch_customizer_main_page');
                 })
@@ -790,7 +790,10 @@ if (screen.orientation && screen.orientation.lock) {
 
     // Observe body class changes
     observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+} else {
+    console.warn('Screen Orientation API not supported on this device.');
 }
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
