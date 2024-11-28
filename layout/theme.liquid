@@ -765,6 +765,32 @@ document.addEventListener('DOMContentLoaded', () => {
 <script>
 
 
+// Check if Screen Orientation API is available
+if (screen.orientation && screen.orientation.lock) {
+    // Function to lock orientation if class exists
+    const checkAndLockOrientation = () => {
+        if (document.body.classList.contains('patch_customizer_main_page')) {
+            screen.orientation.lock()
+                .then(() => {
+                    console.log('Orientation locked to portrait for patch_customizer_main_page');
+                })
+                .catch((err) => {
+                    console.error('Failed to lock orientation:', err);
+                });
+        }
+    };
+
+    // Initial check
+    checkAndLockOrientation();
+
+    // Observe for class changes
+    const observer = new MutationObserver(() => {
+        checkAndLockOrientation();
+    });
+
+    // Observe body class changes
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+}
 
 
 document.addEventListener("DOMContentLoaded", () => {
