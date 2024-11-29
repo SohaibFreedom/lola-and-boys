@@ -9,6 +9,12 @@
   display: none;
 }
 
+@media screen and (orientation: landscape) {
+  .patch_customizer_main_page wishlist-link-floating {
+    display: block !important;
+  }
+}
+
 @media screen and (max-width: 769px) {
   .search-template-section .container .one.column,
   .search-template-section .container .one.columns,
