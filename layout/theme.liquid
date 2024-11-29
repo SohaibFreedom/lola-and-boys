@@ -766,7 +766,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 screen.orientation.addEventListener("change", () => {
-  console.log(`The orientation of the screen is: ${screen.orientation}`);
+  console.log(`The orientation of the screen is: ${screen.orientation.type}`);
+  console.log(`The angle of the screen is: ${screen.orientation.angle}`);
 });
 
 
