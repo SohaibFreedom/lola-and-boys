@@ -5,6 +5,9 @@
 .checkout_btn_product.hide-checkout-btn {
   display: none;
 }
+.patch_customizer_main_page wishlist-link-floating {
+  display: none;
+}
 
 @media screen and (max-width: 769px) {
   .search-template-section .container .one.column,
