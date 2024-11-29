@@ -765,6 +765,19 @@ document.addEventListener('DOMContentLoaded', () => {
 <script>
 
 
+// Check if Screen Orientation API is supported
+if (screen.orientation && screen.orientation.lock) {
+    // Attempt to lock orientation to portrait
+    screen.orientation.lock('portrait')
+        .then(() => {
+            console.log("Screen orientation locked to portrait.");
+        })
+        .catch((err) => {
+            console.error("Failed to lock screen orientation:", err);
+        });
+} else {
+    console.warn("Screen Orientation API is not supported in this browser.");
+}
 
 
 
