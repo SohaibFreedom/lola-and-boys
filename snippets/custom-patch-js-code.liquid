@@ -2670,7 +2670,9 @@ let currentX = 0;
 let currentY = 0;
 
 function addPatchToCenterBox(patchSrc, patchId, height, width) {
-  
+  if (window.orientation === 90 || window.orientation === -90){
+    alert("Landscape mode");
+  }
   console.log('adding to front'); 
   console.log(height,width);
     var patchDiv = document.createElement('div');
