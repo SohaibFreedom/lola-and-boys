@@ -2670,7 +2670,7 @@ let currentX = 0;
 let currentY = 0;
 
 function addPatchToCenterBox(patchSrc, patchId, height, width) {
-  alert('Added pleade add more');
+  
   console.log('adding to front'); 
   console.log(height,width);
     var patchDiv = document.createElement('div');
@@ -2914,7 +2914,7 @@ else{
         patchDiv.style.height = halfHeight + 'px';
     }
  else if (window.matchMedia("(max-width: 768px)").matches) {
-      console.log('under mbile');
+     
         // Calculate half width and height
    var halfWidth = (width / 2) - 2;
 var halfHeight = (height / 2) - 2;
@@ -2979,7 +2979,6 @@ const product = {{ product | json }};
         patchDiv.style.height = halfHeight + 'px';
     }  
  else {
-   alert('landscape');
         patchDiv.style.width = width + 'px';
         patchDiv.style.height = height + 'px';
     }
