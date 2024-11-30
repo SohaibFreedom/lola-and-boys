@@ -1,6 +1,11 @@
 {% assign variant = product.selected_or_first_available_variant %}
 
 <style>
+  @media screen and (max-width: 1025px) and (orientation: landscape) {
+  .patch_customizer_main_page .variant-selector-sidebar-btn-main-wrapper {
+    display: none !important;
+  }
+}
   .patch-not-allowed{
     height: 70px;
     width: 70px;
