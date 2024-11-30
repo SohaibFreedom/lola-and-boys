@@ -3145,281 +3145,214 @@ function addPatchToBackcenterBox(patchSrc, patchId, height, width) {
         patchDiv.style.height = height + 'px';
     }
     else {
-        if (window.orientation === 90 || window.orientation === -90){
-            // Calculate half width and height
-       var halfWidth = (width / 2) - 2;
-    var halfHeight = (height / 2) - 2;
-    
-    
-            // Check if they are less than 20 and add 5px if true
-            if (halfWidth < 13) {
-                halfWidth += 8;
-            }
-            if (halfHeight < 13) {
-                halfHeight += 8;
-            }
-            if (halfWidth < 14) {
-                halfWidth += 7;
-            }
-            if (halfHeight < 14) {
-                halfHeight += 7;
-            }
-            if (halfWidth < 15) {
-                halfWidth += 6;
-            }
-            if (halfHeight < 15) {
-                halfHeight += 6;
-            }
-            if (halfWidth < 16) {
-                halfWidth += 5;
-            }
-            if (halfHeight < 16) {
-                halfHeight += 5;
-            }
-            if (halfWidth < 17) {
-                halfWidth += 4;
-            }
-            if (halfHeight < 17) {
-                halfHeight += 4;
-            }
-            if (halfWidth < 18) {
-                halfWidth += 8;
-            }
-            if (halfHeight < 18) {
-                halfHeight += 3;
-            }
-            if (halfWidth < 19) {
-                halfWidth += 3;
-            }
-            if (halfHeight < 19) {
-                halfHeight += 2;
-            }
-            if (halfWidth < 20) {
-                halfWidth += 1;
-            }
-            if (halfHeight < 20) {
-                halfHeight += 1;
-            }
-    const product = {{ product | json }};
-       if (product.tags.includes('customize-long-bag')){
-          halfHeight += 10;
-         halfWidth += 10;
-    }
-            // Set the patch dimensions
-            patchDiv.style.width = halfWidth + 'px';
-            patchDiv.style.height = halfHeight + 'px';
-        } 
-        else{
-            if (window.matchMedia("(min-width: 1024px) and (max-width: 1600px)").matches) {
-  
-                var halfWidth =width - 20;
-                var halfHeight = height - 20;
-        
-                // Check if they are less than 20 and add 5px if true
-                if (halfWidth < 13) {
-                    halfWidth += 8;
-                }
-                if (halfHeight < 13) {
-                    halfHeight += 8;
-                }
-                if (halfWidth < 14) {
-                    halfWidth += 7;
-                }
-                if (halfHeight < 14) {
-                    halfHeight += 7;
-                }
-                if (halfWidth < 15) {
-                    halfWidth += 6;
-                }
-                if (halfHeight < 15) {
-                    halfHeight += 6;
-                }
-                if (halfWidth < 16) {
-                    halfWidth += 5;
-                }
-                if (halfHeight < 16) {
-                    halfHeight += 5;
-                }
-                if (halfWidth < 17) {
-                    halfWidth += 4;
-                }
-                if (halfHeight < 17) {
-                    halfHeight += 4;
-                }
-                if (halfWidth < 18) {
-                    halfWidth += 8;
-                }
-                if (halfHeight < 18) {
-                    halfHeight += 3;
-                }
-                if (halfWidth < 19) {
-                    halfWidth += 3;
-                }
-                if (halfHeight < 19) {
-                    halfHeight += 2;
-                }
-                if (halfWidth < 20) {
-                    halfWidth += 1;
-                }
-                    else{
-               if (product.tags.includes('patch-it-bag')){
-               console.log('yes this patch-it-bag'); 
-               halfHeight += 25;
-               halfWidth += 25;
-                    }
-                      else {
-               halfHeight += 15;
-               halfWidth += 15;
-               }
-                  }
-                
-        
-                // Set the patch dimensions
-                patchDiv.style.width = halfWidth + 'px';
-                patchDiv.style.height = halfHeight + 'px';
-            }
-         else if (window.matchMedia("(min-width: 769px) and (max-width: 1024px)").matches) {
-          // Calculate half width and height
-                var halfWidth = width / 2;
-                var halfHeight = height / 2;
-        
-                // Check if they are less than 20 and add 5px if true
-                if (halfWidth < 13) {
-                    halfWidth += 8;
-                }
-                if (halfHeight < 13) {
-                    halfHeight += 8;
-                }
-                if (halfWidth < 14) {
-                    halfWidth += 7;
-                }
-                if (halfHeight < 14) {
-                    halfHeight += 7;
-                }
-                if (halfWidth < 15) {
-                    halfWidth += 6;
-                }
-                if (halfHeight < 15) {
-                    halfHeight += 6;
-                }
-                if (halfWidth < 16) {
-                    halfWidth += 5;
-                }
-                if (halfHeight < 16) {
-                    halfHeight += 5;
-                }
-                if (halfWidth < 17) {
-                    halfWidth += 4;
-                }
-                if (halfHeight < 17) {
-                    halfHeight += 4;
-                }
-                if (halfWidth < 18) {
-                    halfWidth += 8;
-                }
-                if (halfHeight < 18) {
-                    halfHeight += 3;
-                }
-                if (halfWidth < 19) {
-                    halfWidth += 3;
-                }
-                if (halfHeight < 19) {
-                    halfHeight += 2;
-                }
-                if (halfWidth < 20) {
-                    halfWidth += 1;
-                }
-                 else{
-                    if (product.tags.includes('patch-it-bag')){
-                    console.log('yes this patch-it-bag'); 
-               halfHeight += 5;
-               halfWidth += 5;
-                    }
-                      else if (product.tags.includes('customize-long-bag')){
-                            halfHeight += 25;
-               halfWidth += 25;
-                      }
-                      else {
-               halfHeight += 20;
-               halfWidth += 20;
-               }
-                  }
-        
-                // Set the patch dimensions
-                patchDiv.style.width = halfWidth + 'px';
-                patchDiv.style.height = halfHeight + 'px';
-            }
-         else if (window.matchMedia("(max-width: 768px)").matches) {
-              console.log('under mbile');
-                // Calculate half width and height
-                var halfWidth = (width / 2) - 2;
-        var halfHeight = (height / 2) - 2;
-        
-                // Check if they are less than 20 and add 5px if true
-                if (halfWidth < 13) {
-                    halfWidth += 8;
-                }
-                if (halfHeight < 13) {
-                    halfHeight += 8;
-                }
-                if (halfWidth < 14) {
-                    halfWidth += 7;
-                }
-                if (halfHeight < 14) {
-                    halfHeight += 7;
-                }
-                if (halfWidth < 15) {
-                    halfWidth += 6;
-                }
-                if (halfHeight < 15) {
-                    halfHeight += 6;
-                }
-                if (halfWidth < 16) {
-                    halfWidth += 5;
-                }
-                if (halfHeight < 16) {
-                    halfHeight += 5;
-                }
-                if (halfWidth < 17) {
-                    halfWidth += 4;
-                }
-                if (halfHeight < 17) {
-                    halfHeight += 4;
-                }
-                if (halfWidth < 18) {
-                    halfWidth += 8;
-                }
-                if (halfHeight < 18) {
-                    halfHeight += 3;
-                }
-                if (halfWidth < 19) {
-                    halfWidth += 3;
-                }
-                if (halfHeight < 19) {
-                    halfHeight += 2;
-                }
-                if (halfWidth < 20) {
-                    halfWidth += 1;
-                }
-                if (halfHeight < 20) {
-                    halfHeight += 1;
-                }
-        const product = {{ product | json }};
-           if (product.tags.includes('customize-long-bag')){
-              halfHeight += 10;
-             halfWidth += 10;
-        }
-                // Set the patch dimensions
-                patchDiv.style.width = halfWidth + 'px';
-                patchDiv.style.height = halfHeight + 'px';
-            }  
-         else {
-                patchDiv.style.width = width + 'px';
-                patchDiv.style.height = height + 'px';
-            }
-        }
           // Adjust width and height based on media query
+ if (window.matchMedia("(min-width: 1024px) and (max-width: 1600px)").matches) {
+  
+        var halfWidth =width - 20;
+        var halfHeight = height - 20;
 
+        // Check if they are less than 20 and add 5px if true
+        if (halfWidth < 13) {
+            halfWidth += 8;
+        }
+        if (halfHeight < 13) {
+            halfHeight += 8;
+        }
+        if (halfWidth < 14) {
+            halfWidth += 7;
+        }
+        if (halfHeight < 14) {
+            halfHeight += 7;
+        }
+        if (halfWidth < 15) {
+            halfWidth += 6;
+        }
+        if (halfHeight < 15) {
+            halfHeight += 6;
+        }
+        if (halfWidth < 16) {
+            halfWidth += 5;
+        }
+        if (halfHeight < 16) {
+            halfHeight += 5;
+        }
+        if (halfWidth < 17) {
+            halfWidth += 4;
+        }
+        if (halfHeight < 17) {
+            halfHeight += 4;
+        }
+        if (halfWidth < 18) {
+            halfWidth += 8;
+        }
+        if (halfHeight < 18) {
+            halfHeight += 3;
+        }
+        if (halfWidth < 19) {
+            halfWidth += 3;
+        }
+        if (halfHeight < 19) {
+            halfHeight += 2;
+        }
+        if (halfWidth < 20) {
+            halfWidth += 1;
+        }
+            else{
+       if (product.tags.includes('patch-it-bag')){
+       console.log('yes this patch-it-bag'); 
+       halfHeight += 25;
+       halfWidth += 25;
+            }
+              else {
+       halfHeight += 15;
+       halfWidth += 15;
+       }
+          }
+        
+
+        // Set the patch dimensions
+        patchDiv.style.width = halfWidth + 'px';
+        patchDiv.style.height = halfHeight + 'px';
+    }
+ else if (window.matchMedia("(min-width: 769px) and (max-width: 1024px)").matches) {
+  // Calculate half width and height
+        var halfWidth = width / 2;
+        var halfHeight = height / 2;
+
+        // Check if they are less than 20 and add 5px if true
+        if (halfWidth < 13) {
+            halfWidth += 8;
+        }
+        if (halfHeight < 13) {
+            halfHeight += 8;
+        }
+        if (halfWidth < 14) {
+            halfWidth += 7;
+        }
+        if (halfHeight < 14) {
+            halfHeight += 7;
+        }
+        if (halfWidth < 15) {
+            halfWidth += 6;
+        }
+        if (halfHeight < 15) {
+            halfHeight += 6;
+        }
+        if (halfWidth < 16) {
+            halfWidth += 5;
+        }
+        if (halfHeight < 16) {
+            halfHeight += 5;
+        }
+        if (halfWidth < 17) {
+            halfWidth += 4;
+        }
+        if (halfHeight < 17) {
+            halfHeight += 4;
+        }
+        if (halfWidth < 18) {
+            halfWidth += 8;
+        }
+        if (halfHeight < 18) {
+            halfHeight += 3;
+        }
+        if (halfWidth < 19) {
+            halfWidth += 3;
+        }
+        if (halfHeight < 19) {
+            halfHeight += 2;
+        }
+        if (halfWidth < 20) {
+            halfWidth += 1;
+        }
+         else{
+            if (product.tags.includes('patch-it-bag')){
+            console.log('yes this patch-it-bag'); 
+       halfHeight += 5;
+       halfWidth += 5;
+            }
+              else if (product.tags.includes('customize-long-bag')){
+                    halfHeight += 25;
+       halfWidth += 25;
+              }
+              else {
+       halfHeight += 20;
+       halfWidth += 20;
+       }
+          }
+
+        // Set the patch dimensions
+        patchDiv.style.width = halfWidth + 'px';
+        patchDiv.style.height = halfHeight + 'px';
+    }
+ else if (window.matchMedia("(max-width: 768px)").matches) {
+      console.log('under mbile');
+        // Calculate half width and height
+        var halfWidth = (width / 2) - 2;
+var halfHeight = (height / 2) - 2;
+
+        // Check if they are less than 20 and add 5px if true
+        if (halfWidth < 13) {
+            halfWidth += 8;
+        }
+        if (halfHeight < 13) {
+            halfHeight += 8;
+        }
+        if (halfWidth < 14) {
+            halfWidth += 7;
+        }
+        if (halfHeight < 14) {
+            halfHeight += 7;
+        }
+        if (halfWidth < 15) {
+            halfWidth += 6;
+        }
+        if (halfHeight < 15) {
+            halfHeight += 6;
+        }
+        if (halfWidth < 16) {
+            halfWidth += 5;
+        }
+        if (halfHeight < 16) {
+            halfHeight += 5;
+        }
+        if (halfWidth < 17) {
+            halfWidth += 4;
+        }
+        if (halfHeight < 17) {
+            halfHeight += 4;
+        }
+        if (halfWidth < 18) {
+            halfWidth += 8;
+        }
+        if (halfHeight < 18) {
+            halfHeight += 3;
+        }
+        if (halfWidth < 19) {
+            halfWidth += 3;
+        }
+        if (halfHeight < 19) {
+            halfHeight += 2;
+        }
+        if (halfWidth < 20) {
+            halfWidth += 1;
+        }
+        if (halfHeight < 20) {
+            halfHeight += 1;
+        }
+const product = {{ product | json }};
+   if (product.tags.includes('customize-long-bag')){
+      halfHeight += 10;
+     halfWidth += 10;
+}
+        // Set the patch dimensions
+        patchDiv.style.width = halfWidth + 'px';
+        patchDiv.style.height = halfHeight + 'px';
+    }  
+ else {
+        patchDiv.style.width = width + 'px';
+        patchDiv.style.height = height + 'px';
+    }
 
     }
 
