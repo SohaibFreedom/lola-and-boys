@@ -2689,13 +2689,9 @@ function addPatchToCenterBox(patchSrc, patchId, height, width) {
         height = parseInt(existingPatch.style.height);
         patchDiv.style.width = width + 'px';
         patchDiv.style.height = height + 'px';
-       if (window.orientation === 90 || window.orientation === -90) {
-    alert("Landscape mode");
-}
     }
     else {
        if (window.orientation === 90 || window.orientation === -90) {
-         alert("Landscape mode not exist");
         // Calculate half width and height
    var halfWidth = (width / 2) - 2;
 var halfHeight = (height / 2) - 2;
