@@ -2691,10 +2691,6 @@ function addPatchToCenterBox(patchSrc, patchId, height, width) {
         patchDiv.style.height = height + 'px';
     }
     else {
-      if ((window.orientation === 90 || window.orientation === -90) && window.innerWidth < 768) {
-    alert("Landscape mode detected on a mobile device!");
-}
-else {
        if (window.matchMedia("(min-width: 1031px) and (max-width: 1600px)").matches) {
   console.log('yes this is 1031px'); 
  const normalizedWidth = window.innerWidth / window.devicePixelRatio;
@@ -2985,8 +2981,6 @@ const product = {{ product | json }};
         patchDiv.style.width = width + 'px';
         patchDiv.style.height = height + 'px';
     }
-}
-
     }
 
 
