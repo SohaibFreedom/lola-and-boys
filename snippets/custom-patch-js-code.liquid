@@ -699,7 +699,7 @@ $(document).ready(function() {
     customizeButton.click(function() {
         isCustomizationActive = true;
         console.log('customize button clicked');
-
+         $('body').addClass('patch_customizer_main_page');
         // Hide the bannerLow if it already exists
         var bannerLow = document.querySelector('.yotpo-banner-low');
         if (bannerLow) {
@@ -950,27 +950,41 @@ fetchAllProducts().catch((error) => {
 });
            // Update DOM elements with fetched data
      const patchesContainer = document.querySelector('.patches');
+     const alphabetsContainer = document.querySelector('.alphabets-patches');
 
-document.querySelector('.customization-search-bar').addEventListener('input', filterPatches);
+document.querySelector('.customization-search-bar').addEventListener('input', function() {
+    if (document.querySelector('.alphabets-button').classList.contains('custom-patch-active')) {
+       filteralphabets();
+    } else {
+        filterPatches();
+    }
+});
+
+
+    
 
  function filterPatches() {
+   console.log('fileterrrrrr');
     // Get the input value from the search bar
     const inputValue = document.querySelector('.customization-search-bar').value;
     console.log(inputValue);
-    // Clear the patches container
-    $('.patches').empty();
 
+        $('.patches-toggle').show();
+    $('.alphabets-toggle').hide();
     // Determine which data to filter based on the active toggle button
-    const dataToFilter = document.querySelector('.alphabets-button').classList.contains('custom-patch-active') ? alphabets : patches;
+ const dataToFilter = patches;
+console.log(dataToFilter);
 
-    // Filter the data based on the search value
-    const filteredData = dataToFilter.filter(item => {
-        return (item.patchname && item.patchname.toLowerCase().includes(inputValue.toLowerCase())) || 
-               (item.alphabetname && item.alphabetname.toLowerCase().includes(inputValue.toLowerCase()));
-    });
+// Filter the data based on the search value
+const filteredData = dataToFilter.filter(item => {
+    return item.patchname && item.patchname.toLowerCase().includes(inputValue.toLowerCase());
+});
 
-    // Determine which container to append the results to
-    const containerClass = document.querySelector('.alphabets-button').classList.contains('custom-patch-active') ? '.patches-alphabets' : '.patches';
+console.log('filterdata',filteredData);
+
+if (filteredData.length > 0) {
+    // Clear the patches container only if there is data
+    $('#patches-wrapper').empty();
 
     // Loop through the filtered data and display patches
     filteredData.forEach(item => {
@@ -991,7 +1005,7 @@ document.querySelector('.customization-search-bar').addEventListener('input', fi
 
             const img = document.createElement('img');
             img.setAttribute('draggable', 'false');
-            img.src = item.image;
+            img.src = `${item.image}&width=100`;
             img.alt = item.name;
             img.classList.add('patch-image');
             img.setAttribute('crossorigin', 'anonymous');
@@ -1092,18 +1106,187 @@ document.querySelector('.customization-search-bar').addEventListener('input', fi
                 openPopup(item, imgHeight, imgWidth);
             });
 
-            $('.patches').append(div);
+            $('#patches-wrapper').append(div);
         }
     });
-
-    // If there are no matching results, display a message
-    if (filteredData.length === 0) {
+} 
+else {
+    // Show a "No matching data found" message
+    if (!document.querySelector('#patches-wrapper .no-data-message')) {
+       $('#patches-wrapper').empty();
         const noDataMessage = document.createElement('p');
         noDataMessage.textContent = 'No matching data found.';
-        patchesContainer.appendChild(noDataMessage);
+        noDataMessage.classList.add('no-data-message');
+        $('#patches-wrapper').append(noDataMessage);
     }
 }
 
+
+}
+ function filteralphabets() {
+   console.log('fileterrrrrr');
+    // Get the input value from the search bar
+    const inputValue = document.querySelector('.customization-search-bar').value;
+    console.log(inputValue);
+
+     $('.patches-toggle').hide();
+    $('.alphabets-toggle').show();
+    // Determine which data to filter based on the active toggle button
+ const dataToFilter = alphabets;
+console.log('dataToFilter',dataToFilter);
+
+// Filter the data based on the search value
+const filteredData = dataToFilter.filter(item => {
+    return item.alphabetname && item.alphabetname.toLowerCase().includes(inputValue.toLowerCase());
+});
+
+console.log('filterdata',filteredData);
+
+if (filteredData.length > 0) {
+  console.log('true');
+    // Clear the patches container only if there is data
+    $('#alphabets-wrapper').empty();
+
+    // Loop through the filtered data and display patches
+    filteredData.forEach(item => {
+        const availableVariant = availableVariants.find(variant =>
+            variant.productId === item.product_id && variant.variants.some(v => v.available)
+        );
+
+        // Only create the patch if an available variant is found
+        if (availableVariant) {
+            const div = document.createElement('div');
+            div.setAttribute('draggable', 'true');
+            const title = document.createElement('p');
+            title.setAttribute('draggable', 'false');
+            div.setAttribute('v-id', item.id);
+            div.classList.add('patch');
+            title.classList.add('patch-title');
+            title.textContent = item.patchname || item.alphabetname;
+
+            const img = document.createElement('img');
+            img.setAttribute('draggable', 'false');
+            img.src = `${item.image}&width=100`;
+            img.alt = item.name;
+            img.classList.add('patch-image');
+            img.setAttribute('crossorigin', 'anonymous');
+
+            // Get the height and width as integers
+            let imgHeight = parseInt(item.height, 10);
+            let imgWidth = parseInt(item.width, 10);
+
+            const product = {{ product | json }};
+            const variantname = document.querySelector('input[name="selective_variant_name"]').value.trim();
+            console.log('this is variantname', variantname);
+
+            // Adjust imgHeight and imgWidth based on variantname and productTags
+            if (variantname === '1' || variantname === '2' || variantname === '2/3' || variantname === '3/4' || variantname === '4/5' || variantname === '5/6' || 
+                variantname === '4' || variantname === '5' || variantname === '6') {
+                if (!productTags.includes("happ-velour-set")) {
+                    console.log('condition true');
+                    imgHeight += 20;
+                    imgWidth += 20;
+                } else {
+                    console.log('condition false');
+                    imgHeight -= 10;
+                    imgWidth -= 10;
+                   // Ensure imgWidth does not go below 20
+                    if (imgWidth < 20) {
+                        imgWidth = 20;
+                    }
+                }
+            } else if (variantname === '6/7' || variantname === '8' || variantname === '7/8' || variantname === '8/9' ||  
+                       variantname === '10' || variantname === '9/10' || variantname === '10/11' || variantname === '11/12' || variantname === '12' || 
+                       variantname === '14') {
+                if (!productTags.includes("happ-velour-set")) {
+                    console.log('condition true');
+                    imgHeight += 10;
+                    imgWidth += 10;
+                } else {
+                    console.log('condition false');
+                    imgHeight -= 15;
+                    imgWidth -= 15;
+                   // Ensure imgWidth does not go below 20
+                    if (imgWidth < 20) {
+                        imgWidth = 20;
+                    }
+                }
+            } else if (variantname === 'Small') {
+                console.log('condition true');
+                imgHeight += 30;
+                imgWidth += 30;
+            } else if (variantname === 'Medium') {
+                console.log('condition true');
+                imgHeight += 20;
+                imgWidth += 20;
+            } else if (variantname === 'Large') {
+                console.log('condition true');
+                imgHeight += 10;
+                imgWidth += 10;
+            }
+
+            if (Array.isArray(product.tags)) {
+                if (product.tags.includes('back-pack')) {
+                    imgHeight += 35;
+                    imgWidth += 35;
+                }
+                if (product.tags.includes('patch-it-bag')) {
+                    if (imgHeight < 30 && imgWidth < 30) {
+                        imgHeight += 45;
+                        imgWidth += 45;
+                    } else if (imgHeight > 30 && imgWidth < 30) {
+                        imgHeight += 75;
+                        imgWidth += 30;
+                    } else {
+                        imgHeight += 75;
+                        imgWidth += 75;
+                    }
+                }
+            }
+
+            img.height = imgHeight;
+            img.width = imgWidth;
+
+            const svgDiv = document.createElement('div');
+            svgDiv.classList.add('zoom');
+            const svgIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            svgIcon.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+            svgIcon.setAttribute('class', 'h-6 w-6');
+            svgIcon.setAttribute('fill', 'none');
+            svgIcon.setAttribute('viewBox', '0 0 24 24');
+            svgIcon.setAttribute('stroke', 'currentColor');
+            svgIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>';
+            svgDiv.appendChild(svgIcon);
+
+            div.appendChild(img);
+            div.appendChild(title);
+            div.appendChild(svgDiv);
+
+            // Add event listener to the SVG icon to open the pop-up
+            svgDiv.addEventListener('click', function() {
+                openPopup(item, imgHeight, imgWidth);
+            });
+
+            $('#alphabets-wrapper').append(div);
+        }
+    });
+} 
+else {
+    // Show a "No matching data found" message
+    if (!document.querySelector('.alphabets-patches .no-data-message')) {
+       $('#alphabets-wrapper').empty();
+        const noDataMessage = document.createElement('p');
+        noDataMessage.textContent = 'No matching data found.';
+        noDataMessage.classList.add('no-data-message');
+        $('#alphabets-wrapper').append(noDataMessage);
+    }
+}
+
+
+}
+// function filterPatches(){
+//   console.log('j');
+// }
 
       
        // showPatches();
@@ -1111,17 +1294,19 @@ document.querySelector('.customization-search-bar').addEventListener('input', fi
  $('#patches-button').click(function(){
      $(this).addClass('custom-patch-active'); 
      $('#alphabets-button').removeClass('custom-patch-active');
+    $('.customization-search-bar').attr('placeholder', 'Search Patches');
      showPatches();
-   filterPatches()
+   filterPatches();
  });
  
  // Event listener for the "Alphabets" button
  $('#alphabets-button').click(function(){
      $(this).addClass('custom-patch-active');
      $('#patches-button').removeClass('custom-patch-active');
+    $('.customization-search-bar').attr('placeholder', 'Search Alphabets');
 
      showAlphabets();
-   filterPatches()
+   filteralphabets();
  });
  
    // Function to show patches
@@ -1180,9 +1365,10 @@ document.querySelector('.customization-search-bar').addEventListener('input', fi
 // Step 3: Use availableVariants directly in showPatches
 function showPatches() {
   console.log('showPatches',availableVariants);
-  // Clear existing content in the patches container
-  $('.patches').empty();
+  // // Clear existing content in the patches container
 
+       $('.patches-toggle').show();
+    $('.alphabets-toggle').hide();
   // Loop through the patches data and display patches
   patches.forEach(item => {
     // Check if the item has a matching available variant
@@ -1204,7 +1390,7 @@ function showPatches() {
 
       const img = document.createElement('img');
       img.setAttribute('draggable', 'false');
-      img.src = item.image;
+      img.src = `${item.image}&width=100`;
       img.alt = item.name;
       img.classList.add('patch-image');
       img.setAttribute('crossorigin', 'anonymous');
@@ -1304,7 +1490,7 @@ function showPatches() {
           openPopup(item, imgHeight, imgWidth);
       });
 
-      $('.patches').append(patchDiv);
+      $('#patches-wrapper').append(patchDiv);
     }
     else{
       console.log('no this is not available');
@@ -1525,143 +1711,142 @@ function closePopup() {
    // Function to show alphabets
       // old alphabets
  function showAlphabets() {
-    // Clear existing content in the patches container
-    $('.patches').empty();
-
-    // Loop through the alphabets data and display alphabets
+console.log('showAlphabets',availableVariants);
+    // // Clear existing content in the patches container
+    // $('.patches').empty();
+  //   $('#patches-wrapper').css('visibility', 'hidden');
+  // $('.alphabets-patches').css('visibility', 'visible');
+        $('.patches-toggle').hide();
+    $('.alphabets-toggle').show();
+    // Loop through the patches data and display patches
     alphabets.forEach(item => {
-        const availableVariant = availableVariants.find(variant =>
-            variant.productId === item.product_id && variant.variants.some(v => v.available)
-        );
-
-        // Only create the alphabet if an available variant is found
-        if (availableVariant) {
-            const div = document.createElement('div');
-            const title = document.createElement('p');
-            div.setAttribute('v-id', item.id);
-            // div.setAttribute('draggable', 'true');
-            div.classList.add('patch');
-            title.classList.add('patch-title');
-            title.textContent = item.alphabetname;
-
-            const img = document.createElement('img');
-            img.src = item.image;
-            img.alt = item.name;
-            img.classList.add('patch-image');
-            img.setAttribute('crossorigin', 'anonymous');
-
-            let imgHeight = parseInt(item.height, 10);
-            let imgWidth = parseInt(item.width, 10);
-
-            const product = {{ product | json }};
-
-            if (Array.isArray(product.tags)) {
-                if (product.tags.includes('back-pack')) {
-                    imgHeight += 10;
-                    imgWidth += 10;
-                }
-                if (product.tags.includes('patch-it-bag')) {
-                    if (imgHeight < 30 && imgWidth < 30) {
-                        imgHeight += 45;
-                        imgWidth += 45;
-                    } else if (imgHeight > 30 && imgWidth < 30) {
-                        imgHeight += 75;
-                        imgWidth += 30;
-                    } else {
-                        imgHeight += 75;
-                        imgWidth += 75;   
-                    }
-                }
-            }
-
-            img.height = imgHeight;
-            img.width = imgWidth;
-
-            const svgDiv = document.createElement('div');
-            svgDiv.classList.add('zoom');
-            const svgIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-            svgIcon.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-            svgIcon.setAttribute('class', 'h-6 w-6');
-            svgIcon.setAttribute('fill', 'none');
-            svgIcon.setAttribute('viewBox', '0 0 24 24');
-            svgIcon.setAttribute('stroke', 'currentColor');
-            svgIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>';
-            svgDiv.appendChild(svgIcon);
-
-            div.appendChild(img);
-            div.appendChild(title);
-            div.appendChild(svgDiv);
-
-            // Add event listener to the SVG icon to open the pop-up
-            svgDiv.addEventListener('click', function() {
-                openPopup(item);
-            });
-
-            $('.patches').append(div);
-        }
+      // Check if the item has a matching available variant
+      const availableVariant = availableVariants.find(variant =>
+        variant.productId === item.product_id && variant.variants.some(v => v.available)
+      );
+  
+      // Only proceed if the variant is available
+      if (availableVariant) {
+        const patchDiv = document.createElement('div');
+        patchDiv.setAttribute('draggable', 'true');
+        patchDiv.setAttribute('v-id', item.id);
+        patchDiv.classList.add('patch');
+  
+        const title = document.createElement('p');
+        title.setAttribute('draggable', 'false');
+        title.classList.add('patch-title');
+        title.textContent = item.patchname;
+  
+        const img = document.createElement('img');
+        img.setAttribute('draggable', 'false');
+        img.src = `${item.image}&width=100`;
+        img.alt = item.name;
+        img.classList.add('patch-image');
+        img.setAttribute('crossorigin', 'anonymous');
+  
+       // Get the height and width as integers
+              let imgHeight = parseInt(item.height, 10);
+              let imgWidth = parseInt(item.width, 10);
+  
+              const product = {{ product | json }};
+              const variantname = document.querySelector('input[name="selective_variant_name"]').value.trim();
+              console.log('this is variantname', variantname);
+  
+              // Adjust imgHeight and imgWidth based on variantname and productTags
+              if (variantname === '1' || variantname === '2' || variantname === '2/3' || variantname === '3/4' || variantname === '4/5' || variantname === '5/6' || 
+                  variantname === '4' || variantname === '5' || variantname === '6') {
+                  if (!productTags.includes("happ-velour-set")) {
+                      console.log('condition true');
+                      imgHeight += 20;
+                      imgWidth += 20;
+                  } else {
+                      console.log('condition false');
+                      imgHeight -= 10;
+                      imgWidth -= 10;
+                     // Ensure imgWidth does not go below 20
+                      if (imgWidth < 20) {
+                          imgWidth = 20;
+                      }
+                  }
+              } else if (variantname === '6/7' || variantname === '8' || variantname === '7/8' || variantname === '8/9' ||  
+                         variantname === '10' || variantname === '9/10' || variantname === '10/11' || variantname === '11/12' || variantname === '12' || 
+                         variantname === '14') {
+                  if (!productTags.includes("happ-velour-set")) {
+                      console.log('condition true');
+                      imgHeight += 10;
+                      imgWidth += 10;
+                  } else {
+                      console.log('condition false');
+                      imgHeight -= 15;
+                      imgWidth -= 15;
+                     // Ensure imgWidth does not go below 20
+                      if (imgWidth < 20) {
+                          imgWidth = 20;
+                      }
+                  }
+              } else if (variantname === 'Small') {
+                  console.log('condition true');
+                  imgHeight += 30;
+                  imgWidth += 30;
+              } else if (variantname === 'Medium') {
+                  console.log('condition true');
+                  imgHeight += 20;
+                  imgWidth += 20;
+              } else if (variantname === 'Large') {
+                  console.log('condition true');
+                  imgHeight += 10;
+                  imgWidth += 10;
+              }
+  
+              if (Array.isArray(product.tags)) {
+                  if (product.tags.includes('back-pack')) {
+                      imgHeight += 35;
+                      imgWidth += 35;
+                  }
+                  if (product.tags.includes('patch-it-bag')) {
+                      if (imgHeight < 30 && imgWidth < 30) {
+                          imgHeight += 45;
+                          imgWidth += 45;
+                      } else if (imgHeight > 30 && imgWidth < 30) {
+                          imgHeight += 75;
+                          imgWidth += 30;
+                      } else {
+                          imgHeight += 75;
+                          imgWidth += 75;
+                      }
+                  }
+              }
+  
+              img.height = imgHeight;
+              img.width = imgWidth;
+        const svgDiv = document.createElement('div');
+        svgDiv.classList.add('zoom');
+        const svgIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svgIcon.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+        svgIcon.setAttribute('class', 'h-6 w-6');
+        svgIcon.setAttribute('fill', 'none');
+        svgIcon.setAttribute('viewBox', '0 0 24 24');
+        svgIcon.setAttribute('stroke', 'currentColor');
+        svgIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>';
+        svgDiv.appendChild(svgIcon);
+  
+        patchDiv.appendChild(img);
+        patchDiv.appendChild(title);
+        patchDiv.appendChild(svgDiv);
+  
+        // Add event listener to the SVG icon to open the pop-up
+        svgDiv.addEventListener('click', function() {
+            openPopup(item, imgHeight, imgWidth);
+        });
+  
+        $('#alphabets-wrapper').append(patchDiv);
+      }
+      else{
+        console.log('no this is not available');
+      }
     });
 }
 
-        function showAlphabets() {
-    // Clear existing content in the patches container
-    $('.patches').empty();
-
-    // Loop through the alphabets data and display alphabets
-    // alphabets.forEach(item => {
-    //     const div = document.createElement('div');
-    //     const title = document.createElement('p');
-    //     div.setAttribute('v-id', item.id);
-    //     // div.setAttribute('draggable', 'true');
-    //     div.classList.add('patch');
-    //     title.classList.add('patch-title');
-    //     title.textContent = item.alphabetname;
-
-    //     const img = document.createElement('img');
-    //     // img.src = item.image;
-    //     // img.alt = item.name;
-    //     // img.classList.add('patch-image');
-    //     // img.setAttribute('crossorigin', 'anonymous');
-
-    //     // Get the height and width as integers
-    //     let imgHeight = parseInt(item.height, 10);
-    //     let imgWidth = parseInt(item.width, 10);
-
-    //     // Check if the product contains the "back-pack" tag
-    //     console.log('product', {{ product | json }});
-    //     const product = {{ product | json }};
-
-    //     if (Array.isArray(product.tags) && product.tags.includes('back-pack')) {
-    //       console.log('back-pack')
-    //         imgHeight += 10;
-    //         imgWidth += 10;
-    //     }
-    //     console.log('alphabetsimgHeight',imgHeight)
-    //     // img.height = imgHeight;
-    //     // img.width = imgWidth;
-
-    //     const svgDiv = document.createElement('div');
-    //     svgDiv.classList.add('zoom');
-    //     const svgIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    //     svgIcon.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-    //     svgIcon.setAttribute('class', 'h-6 w-6');
-    //     svgIcon.setAttribute('fill', 'none');
-    //     svgIcon.setAttribute('viewBox', '0 0 24 24');
-    //     svgIcon.setAttribute('stroke', 'currentColor');
-    //     svgIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>';
-    //     svgDiv.appendChild(svgIcon);
-
-    //     div.appendChild(img);
-    //     div.appendChild(title);
-    //     div.appendChild(svgDiv);
-
-    //     // Add event listener to the SVG icon to open the pop-up
-    //     svgDiv.addEventListener('click', function() {
-    //         openPopup(item);
-    //     });
-
-    //     $('.patches').append(div);
-    // });
-}
  });
  
  
@@ -2022,31 +2207,6 @@ $('.size_variants').click(function() {
                 // Update hidden input value with the id of the clicked element
                $('#size_variants_data').val($(this).text());
             });
-
- //Function to show front image
-     //old front image
-
-//       function showFrontImage() {
-//    // Get the variant ID
-//    const variantId = "{{variant.id}}"; // Replace "{{variant.id}}" with your actual variant ID
-//  console.log('variantId',variantId);
-//    // Find the image data for the current variant
-//    // const currentImageData = imagesData.find(item => item.FproductId === variantId && item.direction === "Frontside");
-//      const currentImageData = imagesData.find(item => item.FproductId === variantId );
-   
-//    // Update the image source and CSS properties if data is found
-//    if (currentImageData) {
-//      const img = document.getElementById("Front-image");
-//      img.src = currentImageData.FProductImg;
- 
-//      // Update CSS properties of #centerBox
-//      const centerBox = document.getElementById("centerBox");
-// centerBox.style.height = currentImageData.FHeight + '%';
-// centerBox.style.width = currentImageData.FWidth + '%';
-// centerBox.style.top = currentImageData.FTop + '%';
-// centerBox.style.left = currentImageData.FLeft + '%';
-//    }
-//  }
   
      //new front image
 
@@ -2073,8 +2233,8 @@ $('.size_variants').click(function() {
     // Update the image source and CSS properties if data is found
     if (currentImageData) {
         const img = document.getElementById("Front-image");
-        img.src = currentImageData.FProductImg;
-
+       let originalUrl = currentImageData.FProductImg;
+img.src = currentImageData.FProductImg.replace('/upload/', '/upload/w_100/');
         // Update CSS properties of #centerBox
         const centerBox = document.getElementById("centerBox");
         centerBox.style.height = currentImageData.FHeight + '%';
@@ -2221,228 +2381,228 @@ let offsetX = 0;
 let offsetY = 0;
 
 
-function convertToPng() {
-    BackconvertToPng();
-    FrontconvertToPng();
-    // addTocartcustpatch(); // Call your function here
-}
+// function convertToPng() {
+//     BackconvertToPng();
+//     FrontconvertToPng();
+//     // addTocartcustpatch(); // Call your function here
+// }
 
-function BackconvertToPng() {
-    var imageDiv = document.getElementById('BackimageDiv');
-    var patches = imageDiv.querySelectorAll('.patch- img'); // Correct the query selector for patches
-    var canvas = document.createElement('canvas');
-    var ctx = canvas.getContext('2d');
+// function BackconvertToPng() {
+//     var imageDiv = document.getElementById('BackimageDiv');
+//     var patches = imageDiv.querySelectorAll('.patch- img'); // Correct the query selector for patches
+//     var canvas = document.createElement('canvas');
+//     var ctx = canvas.getContext('2d');
 
-    // Set canvas size to match the containing div's size
-    var imageDivRect = imageDiv.getBoundingClientRect();
-    canvas.width = imageDivRect.width;
-    canvas.height = imageDivRect.height;
+//     // Set canvas size to match the containing div's size
+//     var imageDivRect = imageDiv.getBoundingClientRect();
+//     canvas.width = imageDivRect.width;
+//     canvas.height = imageDivRect.height;
 
-    // Draw the main image on the canvas with object-fit: contain
-    var sourceImage = document.getElementById('Back-image');
-    if (!sourceImage) {
-        console.error('Source image not found');
-        return;
-    }
+//     // Draw the main image on the canvas with object-fit: contain
+//     var sourceImage = document.getElementById('Back-image');
+//     if (!sourceImage) {
+//         console.error('Source image not found');
+//         return;
+//     }
 
-    // Calculate dimensions and position based on object-fit: contain
-    var containerAspectRatio = canvas.width / canvas.height;
-    var imageAspectRatio = sourceImage.naturalWidth / sourceImage.naturalHeight;
+//     // Calculate dimensions and position based on object-fit: contain
+//     var containerAspectRatio = canvas.width / canvas.height;
+//     var imageAspectRatio = sourceImage.naturalWidth / sourceImage.naturalHeight;
 
-    var sourceWidth, sourceHeight, sourcePosX, sourcePosY;
+//     var sourceWidth, sourceHeight, sourcePosX, sourcePosY;
 
-    if (containerAspectRatio > imageAspectRatio) {
-        // Container is wider than image
-        sourceWidth = canvas.height * imageAspectRatio;
-        sourceHeight = canvas.height;
-        sourcePosX = (canvas.width - sourceWidth) / 2;
-        sourcePosY = 0;
-    } else {
-        // Container is taller than image
-        sourceWidth = canvas.width;
-        sourceHeight = canvas.width / imageAspectRatio;
-        sourcePosX = 0;
-        sourcePosY = (canvas.height - sourceHeight) / 2;
-    }
+//     if (containerAspectRatio > imageAspectRatio) {
+//         // Container is wider than image
+//         sourceWidth = canvas.height * imageAspectRatio;
+//         sourceHeight = canvas.height;
+//         sourcePosX = (canvas.width - sourceWidth) / 2;
+//         sourcePosY = 0;
+//     } else {
+//         // Container is taller than image
+//         sourceWidth = canvas.width;
+//         sourceHeight = canvas.width / imageAspectRatio;
+//         sourcePosX = 0;
+//         sourcePosY = (canvas.height - sourceHeight) / 2;
+//     }
 
-    ctx.drawImage(sourceImage, sourcePosX, sourcePosY, sourceWidth, sourceHeight);
+//     ctx.drawImage(sourceImage, sourcePosX, sourcePosY, sourceWidth, sourceHeight);
 
-    // Draw patches on the canvas
-    patches.forEach(function (patch) {
-        var patchRect = patch.getBoundingClientRect();
-        var patchDivRect = patch.parentElement.getBoundingClientRect();
+//     // Draw patches on the canvas
+//     patches.forEach(function (patch) {
+//         var patchRect = patch.getBoundingClientRect();
+//         var patchDivRect = patch.parentElement.getBoundingClientRect();
 
-        // Calculate the position of the patch relative to the image div
-        var patchPosX = patchDivRect.left - imageDivRect.left;
-        var patchPosY = patchDivRect.top - imageDivRect.top;
+//         // Calculate the position of the patch relative to the image div
+//         var patchPosX = patchDivRect.left - imageDivRect.left;
+//         var patchPosY = patchDivRect.top - imageDivRect.top;
 
      
 
-    var patchWidth = patch.getAttribute('height');
-        var patchHeight = patch.getAttribute('width');
+//     var patchWidth = patch.getAttribute('height');
+//         var patchHeight = patch.getAttribute('width');
 
-        console.log('patchWidth', patchWidth);
-        console.log('patchHeight', patchHeight);
-        // Get the rotation angle from the patch element's style
-        var rotationDegrees = 0;
-        var transform = patch.parentElement.style.transform;
-        if (transform) {
-            var match = transform.match(/rotate\(([-\d.]+)deg\)/);
-            if (match) {
-                rotationDegrees = parseFloat(match[1]);
-            }
-        }
+//         console.log('patchWidth', patchWidth);
+//         console.log('patchHeight', patchHeight);
+//         // Get the rotation angle from the patch element's style
+//         var rotationDegrees = 0;
+//         var transform = patch.parentElement.style.transform;
+//         if (transform) {
+//             var match = transform.match(/rotate\(([-\d.]+)deg\)/);
+//             if (match) {
+//                 rotationDegrees = parseFloat(match[1]);
+//             }
+//         }
 
-        // Calculate dimensions and position based on object-fit: contain
-        var patchAspectRatio = patch.naturalWidth / patch.naturalHeight;
-        var drawWidth, drawHeight, drawPosX, drawPosY;
+//         // Calculate dimensions and position based on object-fit: contain
+//         var patchAspectRatio = patch.naturalWidth / patch.naturalHeight;
+//         var drawWidth, drawHeight, drawPosX, drawPosY;
 
-        if (patchWidth / patchHeight > patchAspectRatio) {
-            // Container is wider than patch
-            drawWidth = patchHeight * patchAspectRatio;
-            drawHeight = patchHeight;
-            drawPosX = (patchWidth - drawWidth) / 2;
-            drawPosY = 0;
-        } else {
-            // Container is taller than patch
-            drawWidth = patchWidth;
-            drawHeight = patchWidth / patchAspectRatio;
-            drawPosX = 0;
-            drawPosY = (patchHeight - drawHeight) / 2;
-        }
+//         if (patchWidth / patchHeight > patchAspectRatio) {
+//             // Container is wider than patch
+//             drawWidth = patchHeight * patchAspectRatio;
+//             drawHeight = patchHeight;
+//             drawPosX = (patchWidth - drawWidth) / 2;
+//             drawPosY = 0;
+//         } else {
+//             // Container is taller than patch
+//             drawWidth = patchWidth;
+//             drawHeight = patchWidth / patchAspectRatio;
+//             drawPosX = 0;
+//             drawPosY = (patchHeight - drawHeight) / 2;
+//         }
 
-        // Apply rotation in degrees and draw the patch
-        ctx.save();
-        ctx.translate(patchPosX + patchWidth / 2, patchPosY + patchHeight / 2); // Move to the center of the patch
-        ctx.rotate(rotationDegrees * Math.PI / 180); // Rotate the canvas in degrees
-        ctx.drawImage(patch, -drawWidth / 2, -drawHeight / 2, drawWidth, drawHeight);
-        ctx.restore();
-    });
+//         // Apply rotation in degrees and draw the patch
+//         ctx.save();
+//         ctx.translate(patchPosX + patchWidth / 2, patchPosY + patchHeight / 2); // Move to the center of the patch
+//         ctx.rotate(rotationDegrees * Math.PI / 180); // Rotate the canvas in degrees
+//         ctx.drawImage(patch, -drawWidth / 2, -drawHeight / 2, drawWidth, drawHeight);
+//         ctx.restore();
+//     });
 
-    // Convert canvas to Blob
-    canvas.toBlob(function (blob) {
-        // Here, you have the image as a blob
-        // For example, to display the new blob image, convert blob to ObjectURL
-        var pngImageURL = URL.createObjectURL(blob);
+//     // Convert canvas to Blob
+//     canvas.toBlob(function (blob) {
+//         // Here, you have the image as a blob
+//         // For example, to display the new blob image, convert blob to ObjectURL
+//         var pngImageURL = URL.createObjectURL(blob);
 
-        // Upload the blob URL
-        uploadBlob(pngImageURL, 'input[name="customized_image_url_back"]');
+//         // Upload the blob URL
+//         uploadBlob(pngImageURL, 'input[name="customized_image_url_back"]');
 
-        // Display the new image
-        var outputDiv = document.getElementById('BackoutputDiv');
-        var newImg = document.createElement('img');
-        newImg.src = pngImageURL;
+//         // Display the new image
+//         var outputDiv = document.getElementById('BackoutputDiv');
+//         var newImg = document.createElement('img');
+//         newImg.src = pngImageURL;
 
-        outputDiv.innerHTML = ''; // Clear the output div before appending new image
-        outputDiv.appendChild(newImg);
-    }, 'image/png');
-}
-function FrontconvertToPng() {
-    var imageDiv = document.getElementById('imageDiv');
-    var patches = imageDiv.querySelectorAll('.patch- img');
-    var canvas = document.createElement('canvas');
-    var ctx = canvas.getContext('2d');
+//         outputDiv.innerHTML = ''; // Clear the output div before appending new image
+//         outputDiv.appendChild(newImg);
+//     }, 'image/png');
+// }
+// function FrontconvertToPng() {
+//     var imageDiv = document.getElementById('imageDiv');
+//     var patches = imageDiv.querySelectorAll('.patch- img');
+//     var canvas = document.createElement('canvas');
+//     var ctx = canvas.getContext('2d');
 
-    // Set canvas size to match the containing div's size
-    var imageDivRect = imageDiv.getBoundingClientRect();
-    canvas.width = imageDivRect.width;
-    canvas.height = imageDivRect.height;
+//     // Set canvas size to match the containing div's size
+//     var imageDivRect = imageDiv.getBoundingClientRect();
+//     canvas.width = imageDivRect.width;
+//     canvas.height = imageDivRect.height;
 
-    // Draw the main image on the canvas with object-fit: contain
-    var sourceImage = document.getElementById('Front-image');
-    if (!sourceImage) {
-        console.error('Source image not found');
-        return;
-    }
+//     // Draw the main image on the canvas with object-fit: contain
+//     var sourceImage = document.getElementById('Front-image');
+//     if (!sourceImage) {
+//         console.error('Source image not found');
+//         return;
+//     }
 
-    // Calculate dimensions and position based on object-fit: contain
-    var containerAspectRatio = canvas.width / canvas.height;
-    var imageAspectRatio = sourceImage.naturalWidth / sourceImage.naturalHeight;
+//     // Calculate dimensions and position based on object-fit: contain
+//     var containerAspectRatio = canvas.width / canvas.height;
+//     var imageAspectRatio = sourceImage.naturalWidth / sourceImage.naturalHeight;
 
-    var sourceWidth, sourceHeight, sourcePosX, sourcePosY;
+//     var sourceWidth, sourceHeight, sourcePosX, sourcePosY;
 
-    if (containerAspectRatio > imageAspectRatio) {
-        // Container is wider than image
-        sourceWidth = canvas.height * imageAspectRatio;
-        sourceHeight = canvas.height;
-        sourcePosX = (canvas.width - sourceWidth) / 2;
-        sourcePosY = 0;
-    } else {
-        // Container is taller than image
-        sourceWidth = canvas.width;
-        sourceHeight = canvas.width / imageAspectRatio;
-        sourcePosX = 0;
-        sourcePosY = (canvas.height - sourceHeight) / 2;
-    }
+//     if (containerAspectRatio > imageAspectRatio) {
+//         // Container is wider than image
+//         sourceWidth = canvas.height * imageAspectRatio;
+//         sourceHeight = canvas.height;
+//         sourcePosX = (canvas.width - sourceWidth) / 2;
+//         sourcePosY = 0;
+//     } else {
+//         // Container is taller than image
+//         sourceWidth = canvas.width;
+//         sourceHeight = canvas.width / imageAspectRatio;
+//         sourcePosX = 0;
+//         sourcePosY = (canvas.height - sourceHeight) / 2;
+//     }
 
-    ctx.drawImage(sourceImage, sourcePosX, sourcePosY, sourceWidth, sourceHeight);
+//     ctx.drawImage(sourceImage, sourcePosX, sourcePosY, sourceWidth, sourceHeight);
 
-    // Draw patches on the canvas
-    patches.forEach(function (patch) {
-        var patchRect = patch.getBoundingClientRect();
-        var patchDivRect = patch.parentElement.getBoundingClientRect();
-        var patchPosX = patchDivRect.left - imageDivRect.left;
-        var patchPosY = patchDivRect.top - imageDivRect.top;
-        var patchWidth = patch.getAttribute('height');
-        var patchHeight = patch.getAttribute('width');
+//     // Draw patches on the canvas
+//     patches.forEach(function (patch) {
+//         var patchRect = patch.getBoundingClientRect();
+//         var patchDivRect = patch.parentElement.getBoundingClientRect();
+//         var patchPosX = patchDivRect.left - imageDivRect.left;
+//         var patchPosY = patchDivRect.top - imageDivRect.top;
+//         var patchWidth = patch.getAttribute('height');
+//         var patchHeight = patch.getAttribute('width');
 
-        // Calculate dimensions and position based on object-fit: contain
-        var patchAspectRatio = patch.naturalWidth / patch.naturalHeight;
+//         // Calculate dimensions and position based on object-fit: contain
+//         var patchAspectRatio = patch.naturalWidth / patch.naturalHeight;
 
-        var drawWidth, drawHeight, drawPosX, drawPosY;
+//         var drawWidth, drawHeight, drawPosX, drawPosY;
 
-        if (patchWidth / patchHeight > patchAspectRatio) {
-            // Container is wider than patch
-            drawWidth = patchHeight * patchAspectRatio;
-            drawHeight = patchHeight;
-            drawPosX = patchPosX + (patchWidth - drawWidth) / 2;
-            drawPosY = patchPosY;
-        } else {
-            // Container is taller than patch
-            drawWidth = patchWidth;
-            drawHeight = patchWidth / patchAspectRatio;
-            drawPosX = patchPosX;
-            drawPosY = patchPosY + (patchHeight - drawHeight) / 2;
-        }
+//         if (patchWidth / patchHeight > patchAspectRatio) {
+//             // Container is wider than patch
+//             drawWidth = patchHeight * patchAspectRatio;
+//             drawHeight = patchHeight;
+//             drawPosX = patchPosX + (patchWidth - drawWidth) / 2;
+//             drawPosY = patchPosY;
+//         } else {
+//             // Container is taller than patch
+//             drawWidth = patchWidth;
+//             drawHeight = patchWidth / patchAspectRatio;
+//             drawPosX = patchPosX;
+//             drawPosY = patchPosY + (patchHeight - drawHeight) / 2;
+//         }
 
-        // Get the rotation angle from the patch element's style
-        var rotation = 0;
-        var transform = patch.parentElement.style.transform;
-        console.log('transform',transform)
-        if (transform) {
-            var match = transform.match(/rotate\(([-\d.]+)deg\)/);
-           console.log('match',match)
-            if (match) {
-              console.log('matched')
-                rotation = parseFloat(match[1]) * (Math.PI / 180); // Convert degrees to radians
-            }
-        }
+//         // Get the rotation angle from the patch element's style
+//         var rotation = 0;
+//         var transform = patch.parentElement.style.transform;
+//         console.log('transform',transform)
+//         if (transform) {
+//             var match = transform.match(/rotate\(([-\d.]+)deg\)/);
+//            console.log('match',match)
+//             if (match) {
+//               console.log('matched')
+//                 rotation = parseFloat(match[1]) * (Math.PI / 180); // Convert degrees to radians
+//             }
+//         }
 
-        // Apply rotation and draw the patch
-        ctx.save();
-        ctx.translate(patchPosX + patchWidth / 2, patchPosY + patchHeight / 2); // Move to the center of the patch
-        ctx.rotate(rotation); // Rotate the canvas
-        ctx.drawImage(patch, -drawWidth / 2, -drawHeight / 2, drawWidth, drawHeight); // Draw the patch
-        ctx.restore();
-    });
+//         // Apply rotation and draw the patch
+//         ctx.save();
+//         ctx.translate(patchPosX + patchWidth / 2, patchPosY + patchHeight / 2); // Move to the center of the patch
+//         ctx.rotate(rotation); // Rotate the canvas
+//         ctx.drawImage(patch, -drawWidth / 2, -drawHeight / 2, drawWidth, drawHeight); // Draw the patch
+//         ctx.restore();
+//     });
 
-    // Convert canvas to Blob
-    canvas.toBlob(function (blob) {
-        // Here, you have the image as a blob
-        // For example, to display the new blob image, convert blob to ObjectURL
-        var pngImageURL = URL.createObjectURL(blob);
+//     // Convert canvas to Blob
+//     canvas.toBlob(function (blob) {
+//         // Here, you have the image as a blob
+//         // For example, to display the new blob image, convert blob to ObjectURL
+//         var pngImageURL = URL.createObjectURL(blob);
 
-        uploadBlob(pngImageURL, 'input[name="customized_image_url_front"]');
+//         uploadBlob(pngImageURL, 'input[name="customized_image_url_front"]');
 
-        // Display the new image
-        var outputDiv = document.getElementById('outputDiv');
-        var newImg = document.createElement('img');
-        newImg.src = pngImageURL;
+//         // Display the new image
+//         var outputDiv = document.getElementById('outputDiv');
+//         var newImg = document.createElement('img');
+//         newImg.src = pngImageURL;
 
-        outputDiv.innerHTML = ''; // Clear the output div before appending new image
-        outputDiv.appendChild(newImg);
-    }, 'image/png');
-}
+//         outputDiv.innerHTML = ''; // Clear the output div before appending new image
+//         outputDiv.appendChild(newImg);
+//     }, 'image/png');
+// }
 
   function  selectpastchesodertidy(patchSrc,newPatchId){
     if (document.getElementById('Front-Area').style.visibility === 'visible') {
@@ -2519,9 +2679,19 @@ function addPatchToCenterBox(patchSrc, patchId, height, width) {
     patchDiv.style.position = 'absolute';
     patchDiv.style.top = currentY + 'px';
     patchDiv.style.left = currentX + 'px';
-
-    // Adjust width and height based on media query
- if (window.matchMedia("(min-width: 1031px) and (max-width: 1600px)").matches) {
+    var centerBox = document.querySelector('.centerBox');
+    var patchesContainer = centerBox.querySelector('.patches-container');
+    var existingPatch = patchesContainer.querySelector(`div[v-id="${patchId}"]`);
+  
+    if (existingPatch) {
+        console.log('Matching v-id found:', patchId);
+        width = parseInt(existingPatch.style.width);
+        height = parseInt(existingPatch.style.height);
+        patchDiv.style.width = width + 'px';
+        patchDiv.style.height = height + 'px';
+    }
+    else {
+       if (window.matchMedia("(min-width: 1031px) and (max-width: 1600px)").matches) {
   console.log('yes this is 1031px'); 
  const normalizedWidth = window.innerWidth / window.devicePixelRatio;
 console.log('Normalized Width is this:', normalizedWidth);
@@ -2812,6 +2982,8 @@ const product = {{ product | json }};
         patchDiv.style.width = width + 'px';
         patchDiv.style.height = height + 'px';
     }
+    }
+
 
     // Ensure the patch stays inside the parent container
     var centerBox = document.querySelector('.centerBox');
@@ -2845,7 +3017,14 @@ const product = {{ product | json }};
 
     // Add the patch to the patches array with its ID
     patches.push({ id: newPatchId, patchSrc, width, height });
-
+        initializePatch(
+        patchDiv,
+        width,         // Reference width
+        height,        // Reference height
+        containerWidth,
+        containerHeight
+    );
+  adjustPatches(true);
     // Update currentX and currentY for the next patch
     currentX += parseInt(patchDiv.style.width); // Add 10px gap between patches
     if (currentX + parseInt(patchDiv.style.width) > containerWidth) {
@@ -2875,64 +3054,7 @@ const product = {{ product | json }};
     tidyEditbtnfuncion();
 }
 
-//    function addPatchToBackcenterBox(patchSrc, patchId,height, width) {
 
-//     var patchDiv = document.createElement('div');
-//     patchDiv.setAttribute('v-id', patchId);
-//     patchDiv.classList.add('patch-');
-//     patchDiv.style.position = 'absolute';
-//     patchDiv.style.top = '50%';
-//     patchDiv.style.left = '50%';
-//     // patchDiv.style.transform = 'translate(-50%, -50%)';
-//      if (window.matchMedia("(max-width: 700px)").matches){
-//  patchDiv.style.width = (height / 2 + 15) + 'px';
-// patchDiv.style.height = (width / 2 + 15) + 'px';
-
-//      }
-//      else{
-//    patchDiv.style.width = width + 'px';
-//     patchDiv.style.height = height + 'px';
-// }
-
-//    var editTidyBtnwrapper = document.querySelector('.edit-tidy-btn-wrapp');
-// editTidyBtnwrapper.style.visibility = 'visible';
-//     // Generate a unique ID for the patch
-//     var patchId = 'patch_' + Math.random().toString(36).substr(2, 9);
-
-//     patchDiv.setAttribute('id', patchId);
-//     patchDiv.innerHTML = `<img src="${patchSrc}" alt="" class="patch-image" width="${width}" height="${height}" crossorigin="anonymous">`;
-//     var BackcenterBox = document.querySelector('.BackcenterBox');
-//     BackcenterBox.querySelector('.patches-containerr').appendChild(patchDiv);
-
-//     // Add the patch to the patches array with its ID
-//     patches.push({ id: patchId, patchSrc,  width, height });
-
-
-//     // Add click event listener to the dynamically created patch
-//     document.querySelectorAll('.patch-').forEach(patch1 => {
-
-//         patch1.addEventListener('dragstart', function (event) {
-           
-//             event.preventDefault();
-//             event.dataTransfer.setData('text/plain', patch1.querySelector('img').src);
-//             dragPatch1 = patch1;
-
-//             BackcenterBox.addEventListener('mousemove', mousemoveHandlerBack);
-//         });
-
-//         patch1.addEventListener('click', function () {
-//             dragPatch1 = patch1;
-//             var patchSrc = patch1.querySelector('img').src;
-//             updatePosition(patch1.id);
-//             BackcenterBox.removeEventListener('mousemove', mousemoveHandlerBack);
-
-//         });
-      
-       
-//     });
-  
-//  checkPatchallOverlapping(); 
-// }
 // Store the current position for placing patches
 let currentXBack = 0;
 let currentYBack = 0;
@@ -2945,8 +3067,19 @@ function addPatchToBackcenterBox(patchSrc, patchId, height, width) {
     // Position the patch
     patchDiv.style.top = currentYBack + 'px';
     patchDiv.style.left = currentXBack + 'px';
-
-    // Adjust width and height based on media query
+      var backcenterBox = document.querySelector('.BackcenterBox');
+    var patchesContainer = backcenterBox.querySelector('.patches-containerr');
+    var existingPatch = patchesContainer.querySelector(`div[v-id="${patchId}"]`);
+  
+    if (existingPatch) {
+        console.log('Matching v-id found:', patchId);
+        width = parseInt(existingPatch.style.width);
+        height = parseInt(existingPatch.style.height);
+        patchDiv.style.width = width + 'px';
+        patchDiv.style.height = height + 'px';
+    }
+    else {
+          // Adjust width and height based on media query
  if (window.matchMedia("(min-width: 1024px) and (max-width: 1600px)").matches) {
   
         var halfWidth =width - 20;
@@ -3155,6 +3288,8 @@ const product = {{ product | json }};
         patchDiv.style.height = height + 'px';
     }
 
+    }
+
     // Ensure the patch stays inside the parent container
     var BackcenterBox = document.querySelector('.BackcenterBox');
     var containerWidth = BackcenterBox.offsetWidth;
@@ -3187,7 +3322,14 @@ const product = {{ product | json }};
 
     // Add the patch to the patches array with its ID
     patches.push({ id: newPatchId, patchSrc, width, height });
-
+    initializePatch(
+        patchDiv,
+        width,         // Reference width
+        height,        // Reference height
+        containerWidth,
+        containerHeight
+    );
+  adjustPatches(true);
     // Update currentXBack and currentYBack for the next patch
     currentXBack += parseInt(patchDiv.style.width); // Add 10px gap between patches
     if (currentXBack + parseInt(patchDiv.style.width) > containerWidth) {
@@ -3218,17 +3360,8 @@ const product = {{ product | json }};
 }
 
 
-
-
-
-
-
-
-
-function dropPatchbydraggingFront(patchElement, x, y,height,width) {
-
-     var imageElement = patchElement.querySelector('img').src;
-  // var imageElement = patchElement.src;
+function dropPatchbydraggingFront(patchElement, x, y, height, width) {
+    var imageElement = patchElement.querySelector('img').src;
 
     var vId = patchElement.getAttribute('v-id');
     var patchDiv = document.createElement('div');
@@ -3237,37 +3370,31 @@ function dropPatchbydraggingFront(patchElement, x, y,height,width) {
     patchDiv.style.position = 'absolute';
     patchDiv.style.top = y + 'px';
     patchDiv.style.left = x + 'px';
- //   patchDiv.style.transform = 'translate(-50%, -50%)';
-    if (window.matchMedia("(min-width:  1024px) and (max-width: 1600px)").matches){
-     patchDiv.style.width = (width - 20 ) + 'px';
-        patchDiv.style.height = (height - 20  ) + 'px';
-  }
-   else {
-     patchDiv.style.width = width + 'px';
-     patchDiv.style.height = height + 'px';
-  }
-  
-    // patchDiv.style.width = width + 'px';
-    // patchDiv.style.height = height + 'px';
+
+    // Setting width and height
+    patchDiv.style.width = width + 'px';
+    patchDiv.style.height = height + 'px';
 
     // Generate a unique ID for the patch
     var patchId = 'patch_' + Math.random().toString(36).substr(2, 9);
-
     patchDiv.setAttribute('id', patchId);
-    patchDiv.innerHTML = `<img src="${imageElement}" alt="" class="patch-image" height="${height}" width="${width}" crossorigin="anonymous" >`;
+
+    // Add the image to the patch
+    patchDiv.innerHTML = `<img src="${imageElement}" alt="" class="patch-image" height="${height}" width="${width}" crossorigin="anonymous">`;
+
     var centerBox = document.querySelector('.centerBox');
     centerBox.querySelector('.patches-container').appendChild(patchDiv);
 
     // Add the patch to the patches array with its ID
     patches.push({ id: patchId, imageElement, x, y, width, height });
 
-   var editTidyBtnwrapper = document.querySelector('.edit-tidy-btn-wrapp');
-editTidyBtnwrapper.style.visibility = 'visible';
-    // Add click event listener to the dynamically created patch
+    // Show the edit/tidy button wrapper
+    var editTidyBtnwrapper = document.querySelector('.edit-tidy-btn-wrapp');
+    editTidyBtnwrapper.style.visibility = 'visible';
+
+    // Add event listeners to all dynamically created patches
     document.querySelectorAll('.patch-').forEach(patch1 => {
-
         patch1.addEventListener('dragstart', function (event) {
-
             event.preventDefault();
             event.dataTransfer.setData('text/plain', patch1.querySelector('img').src);
             dragPatch1 = patch1;
@@ -3280,13 +3407,10 @@ editTidyBtnwrapper.style.visibility = 'visible';
             var patchSrc = patch1.querySelector('img').src;
             updatePosition(patch1.id);
             centerBox.removeEventListener('mousemove', mousemoveHandler);
-
         });
     });
-
-
-
 }
+
 function dropPatchbydraggingBack(patchElement, x, y, height,width) {
 
     var imageElement = patchElement.querySelector('img').src;
@@ -3299,14 +3423,14 @@ function dropPatchbydraggingBack(patchElement, x, y, height,width) {
     patchDiv.style.top = y + 'px';
     patchDiv.style.left = x + 'px';
     // patchDiv.style.transform = 'translate(-50%, -50%)';
-    if (window.matchMedia("(min-width:  1024px) and (max-width: 1600px)").matches){
-     patchDiv.style.width = (width - 20 ) + 'px';
-        patchDiv.style.height = (height - 20  ) + 'px';
-  }
-  else {
+  //   if (window.matchMedia("(min-width:  1024px) and (max-width: 1600px)").matches){
+  //    patchDiv.style.width = (width - 20 ) + 'px';
+  //       patchDiv.style.height = (height - 20  ) + 'px';
+  // }
+  // else {
      patchDiv.style.width = width + 'px';
      patchDiv.style.height = height + 'px';
-  }
+  // }
    
 
     // Generate a unique ID for the patch
@@ -3388,27 +3512,30 @@ document.querySelector('.patches').addEventListener('dragstart', function (event
 
 
   
-document.querySelector('.patches').addEventListener('click', function (event) {
-    const patchTitle = event.target.closest('.patch-title');
+document.querySelectorAll('.patches').forEach(patchesDiv => {
+    patchesDiv.addEventListener('click', function (event) {
+        const patchTitle = event.target.closest('.patch-title');
 
-    if (!patchTitle) return; // If the event target isn't a patch title, ignore it
+        if (!patchTitle) return; // If the event target isn't a patch title, ignore it
 
-    const patch = patchTitle.closest('.patch');
-    const patchId = patch.getAttribute('v-id');
-    const patchImg = patch.querySelector('img');
-    const patchSrc = patchImg.src;
-    const height = patchImg.getAttribute('height'); // Get the height attribute
-    const width = patchImg.getAttribute('width');
+        const patch = patchTitle.closest('.patch');
+        const patchId = patch.getAttribute('v-id');
+        const patchImg = patch.querySelector('img');
+        const patchSrc = patchImg.src;
+        const height = patchImg.getAttribute('height'); // Get the height attribute
+        const width = patchImg.getAttribute('width');
 
-    if (document.getElementById('Front-Area').style.visibility === 'visible') {
-        addPatchToCenterBox(patchSrc, patchId, height, width);
-        dragPatch = patch;
-    } 
-    else if (document.getElementById('Back-area').style.visibility === 'visible') {
-        addPatchToBackcenterBox(patchSrc, patchId, height, width);
-        dragPatch = patch;
-    }
+        if (document.getElementById('Front-Area').style.visibility === 'visible') {
+            addPatchToCenterBox(patchSrc, patchId, height, width);
+            dragPatch = patch;
+        } 
+        else if (document.getElementById('Back-area').style.visibility === 'visible') {
+            addPatchToBackcenterBox(patchSrc, patchId, height, width);
+            dragPatch = patch;
+        }
+    });
 });
+
 
 
 
@@ -3419,29 +3546,48 @@ BackcenterBox.addEventListener('dragover', function (event) {
     event.preventDefault();
 });
 centerBox.addEventListener('drop', function (event) {
-  
     event.preventDefault();
+
+    const patchesContainer = centerBox.querySelector('.patches-container'); // Get patches container
+
     if (dragPatch) {
-        const patchImg = dragPatch.querySelector('img');
-        const height = patchImg.getAttribute('height'); // Get the height attribute
-        const width = patchImg.getAttribute('width');
+        const patchId = dragPatch.getAttribute('v-id'); // Get v-id of the dragged patch
+        const existingPatch = patchesContainer.querySelector(`div[v-id="${patchId}"]`); // Check if patch already exists
+
+        let height, width;
+
+        if (existingPatch) {
+          console.log('existing');
+            // Use the dimensions of the existing patch
+        width = parseInt(existingPatch.style.width);
+        height = parseInt(existingPatch.style.height);
+          console.log(width,height);
+
+        } 
+        else {
+            // Use the dimensions of the dragged patch
+            const patchImg = dragPatch.querySelector('img');
+            height = patchImg.getAttribute('height');
+            width = patchImg.getAttribute('width');
+        }
+
         const rect = centerBox.getBoundingClientRect();
         const mouseX = event.clientX - rect.left;
         const mouseY = event.clientY - rect.top;
 
-          // Calculate the position considering the center of the patch
-                const offsetX = width  / 2;
-                const offsetY = height / 2;
+        // Calculate position considering the center of the patch
+        const offsetX = width / 2;
+        const offsetY = height / 2;
 
-              const patchX = mouseX - offsetX;
-                const patchY = mouseY - offsetY;
-      
+        const patchX = mouseX - offsetX;
+        const patchY = mouseY - offsetY;
+
         if (document.getElementById('Front-Area').style.visibility === 'visible') {
-            console.log('drop at front')
-            dropPatchbydraggingFront(dragPatch, patchX, patchY,height,width);
+            console.log('drop at front');
+            dropPatchbydraggingFront(dragPatch, patchX, patchY, height, width);
         } else if (document.getElementById('Back-area').style.visibility === 'visible') {
-          console.log('drop at back')
-            dropPatchbydraggingBack(dragPatch, mouseX, mouseY,height,width);
+            console.log('drop at back');
+            dropPatchbydraggingBack(dragPatch, mouseX, mouseY, height, width);
         }
     } else {
         const rect = centerBox.getBoundingClientRect();
@@ -3449,23 +3595,36 @@ centerBox.addEventListener('drop', function (event) {
         const mouseY = event.clientY - rect.top;
 
         if (document.getElementById('Front-Area').style.visibility === 'visible') {
-            updatePosition(dragPatch1.id, mouseX, mouseY, height,width);
+            updatePosition(dragPatch1.id, mouseX, mouseY, height, width);
         } else if (document.getElementById('Back-area').style.visibility === 'visible') {
-            updatePosition(dragPatch1.id, mouseX, mouseY, height,width);
+            updatePosition(dragPatch1.id, mouseX, mouseY, height, width);
         }
 
         centerBox.removeEventListener('mousemove', mousemoveHandler);
         centerBox.removeEventListener('touchmove', mousemoveHandler); // Add this line
     }
 });
+
 BackcenterBox.addEventListener('drop', function (event) {
   
     event.preventDefault();
-  
+  const patchesContainer = BackcenterBox.querySelector('.patches-containerr'); // Get patches container
     if (dragPatch) {
         const patchImg = dragPatch.querySelector('img');
-        const height = patchImg.getAttribute('height'); // Get the height attribute
-        const width = patchImg.getAttribute('width');
+
+        const vId = dragPatch.getAttribute('v-id');
+        const existingPatch = patchesContainer.querySelector(`div[v-id="${vId}"]`);
+       let height, width;
+         if (existingPatch){
+         height = parseInt(existingPatch.style.height); // Get the height attribute
+         width =  parseInt(existingPatch.style.width);
+        console.log('existingPatch',height,width);
+         }
+         else{
+         height = patchImg.getAttribute('height'); // Get the height attribute
+         width = patchImg.getAttribute('width');
+         }
+       
         console.log( 'drag patch height',height,width)
         const rect = BackcenterBox.getBoundingClientRect();
         const mouseX = event.clientX - rect.left;
@@ -3488,18 +3647,20 @@ BackcenterBox.addEventListener('drop', function (event) {
 
 
 function updatePosition(patchId, x, y, width, height) {
-  console.log('updating');
+    console.log('updating');
+  adjustPatches(true);
     const frontArea = document.getElementById('Front-Area');
     const backArea = document.getElementById('Back-area');
-  let patchDiv = document.getElementById(patchId);
-patchDiv.classList.remove('patch-');
+    let patchDiv = document.getElementById(patchId);
+
+    patchDiv.classList.remove('patch-'); // Temporarily remove class for manipulation
 
     let isFrontAreaVisible = frontArea.style.visibility === 'visible';
     let isBackAreaVisible = backArea.style.visibility === 'visible';
 
     if (isFrontAreaVisible || isBackAreaVisible) {
-        // Determine if event is a touch event
-        if (event.type.startsWith('touch')) {
+        // Handle touch events if applicable
+        if (event.type && event.type.startsWith('touch')) {
             let touch = event.touches[0];
             x = touch.clientX;
             y = touch.clientY;
@@ -3508,6 +3669,7 @@ patchDiv.classList.remove('patch-');
         // Update the position of the patch
         patchDiv.style.top = (y - height / 2) + 'px';
         patchDiv.style.left = (x - width / 2) + 'px';
+
 
         // Update the patch position in the patches array
         let patchIndex = patches.findIndex(patch => patch.id === patchId);
@@ -3519,13 +3681,15 @@ patchDiv.classList.remove('patch-');
             let containerRect = isFrontAreaVisible ?
                 document.querySelector('.patches-container').getBoundingClientRect() :
                 document.querySelector('.patches-containerr').getBoundingClientRect();
-
-          patchDiv.classList.add('patch-');
         }
+
+        patchDiv.classList.add('patch-'); // Re-add class after manipulation
     }
-  checkPatchesPosition();
-   checkPatchDRAGGINGOverlapping();
+
+    checkPatchesPosition();
+    checkPatchDRAGGINGOverlapping();
 }
+
 
 function checkOverlapWithPatches(patchRect, patchClass) {
   console.log('enter function');
@@ -3618,237 +3782,15 @@ function checkOverlapWithPatches(patchRect, patchClass) {
             }
         });
   
-// centerBox.addEventListener('touchstart', function (event) {
-//     console.log('touch Start')
-//     if (event.touches.length === 1) {
-//         const touch = event.touches[0];
-//         const rect = centerBox.getBoundingClientRect();
-//         const mouseX = touch.clientX - rect.left;
-//         const mouseY = touch.clientY - rect.top;
 
-//         // Check if there's an existing patch at the touched position
-//         let existingPatchIndex = patches.findIndex(patch => {
-//             return mouseX >= patch.x - patch.width / 2 &&
-//                 mouseX <= patch.x + patch.width / 2 &&
-//                 mouseY >= patch.y - patch.height / 2 &&
-//                 mouseY <= patch.y + patch.height / 2;
-//         });
-
-//         if (existingPatchIndex !== -1) {
-//             // Existing patch found, set it as the dragPatch
-//             dragPatch1 = document.getElementById(patches[existingPatchIndex].id);
-
-//             // Calculate offset for smoother dragging
-//             offsetX = mouseX - patches[existingPatchIndex].x;
-//             offsetY = mouseY - patches[existingPatchIndex].y;
-
-//             // Prevent further propagation of the event
-//             event.preventDefault();
-//             event.stopPropagation();
-//         }
-//     }
-// });
 centerBox.addEventListener('touchstart', function (event) {
   ismainDragging = false;
     console.log('touch StartTT')
-//    if (!ismainDragging) {
-//         console.log('Element clicked mobile');
-  
-//         // Your click functionality here
-//     const patchElement = $(event.target).closest('.patch-');
-//  // patchElement.toggleClass('patch-open-editor');
-//           var $clickedPatch = $(this);
-//        console.log('this is clicked patch',$clickedPatch);
-//        if ($clickedPatch.hasClass('patch-action')) {
-//          console.log('patch-action exists')
-//      //             $('.patch-').removeClass('patch-action'); // Remove the class from all elements
-//      // $(this).addClass('patch-action');
-//          $('.selected-patch-for-customization').removeClass('patch-selected').find('.selected-patch-order').remove();
-//          $('.selected-patch-for-customization').removeClass('patch-selected-by-btn');
-//          $('.edit-btn-patch-selected').removeClass('patch-selected-by-both');
-//          $clickedPatch.removeClass('patch-action').removeAttr('order-data'); 
-//              var patchId = $clickedPatch.attr('id'); // Get the id attribute
-//         console.log("Clicked patch id: " + patchId); // Log the id attribute value
 
-//         // Use the attribute selector to find the element with the matching data-patch-id
-//         var $targetPatch = $('[data-patch-id="' + patchId + '"]');
-//         console.log("Target patch element:", $targetPatch); // Log the selected element
-//           if (document.getElementById('Front-Area').style.visibility === 'visible') {
-//             order=1;
-//             // Set the order for the clicked patch
-//             $targetPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + order + '</span>');
-//             $clickedPatch.addClass('patch-action').attr('order-data', order);
-//             order++;
-//              }
-//       else if (document.getElementById('Back-area').style.visibility === 'visible') {
-//              orderBack = 1;
-//             // Set the order for the clicked patch
-//             $targetPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + orderBack + '</span>');
-//             $clickedPatch.addClass('patch-action').attr('order-data', orderBack);
-//             orderBack++;
-//      }
-//        }
-//        else{
-//           var patchId = $clickedPatch.attr('id'); // Get the id attribute
-//         console.log("Clicked patch id: " + patchId); // Log the id attribute value
-
-//         // Use the attribute selector to find the element with the matching data-patch-id
-//         var $targetPatch = $('[data-patch-id="' + patchId + '"]');
-//         console.log("Target patch element:", $targetPatch); // Log the selected element
-
-//         // Check if the target element is found
-//         if ($targetPatch.length) {
-          
-//                    $('.selected-patch-for-customization').removeClass('patch-selected').find('.selected-patch-order').remove();
-//             $('.patch-').removeClass('patch-action').removeAttr('order-data');
-
-            
-         
-
-//   if (document.getElementById('Front-Area').style.visibility === 'visible') {
-//             order=1;
-//             // Set the order for the clicked patch
-//             $targetPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + order + '</span>');
-//             $clickedPatch.addClass('patch-action').attr('order-data', order);
-//             order++;
-//      changefillColors()
-//              }
-//       else if (document.getElementById('Back-area').style.visibility === 'visible') {
-//              orderBack = 1;
-//             // Set the order for the clicked patch
-//             $targetPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + orderBack + '</span>');
-//             $clickedPatch.addClass('patch-action').attr('order-data', orderBack);
-//             orderBack++;
-//         console.log('click on back image');
-//          changefillColors()
-//      }
-          
-//           // Check if the class was added
-//           if ($targetPatch.hasClass('patch-selected')) {
-//             console.log('Class patch-selected added to element with data-patch-id ' + patchId);
-//           } else {
-//             console.log('Class patch-selected not added to element with data-patch-id ' + patchId);
-//           }
-//         } else {
-//           console.log('No element found with data-patch-id ' + patchId);
-//         }
-//            $('.patch-').removeClass('patch-action'); // Remove the class from all elements
-//      $(this).addClass('patch-action');
-//        }
-       
-   
-//     // $targetPatch.removeClass('patch-selected-by-btn');
-    
-//     $('.patches-customization-editor').addClass('patches-customization-editor-active');
-//     $('.patches-customization-editor').css('display', 'block');
-//     $('.patches-editor-wrapper').css('display', 'none');
-//     $('.only-mobile-colors-wrapper').css('display', 'none');
-    
-//     if (window.matchMedia("(max-width: 768px)").matches){
-//        $('.only-mobile-tdy-header').css('display', 'block');
-//     }else{
-//        $('.only-mobile-tdy-header').css('display', 'none');  
-// }
-
-//       if (document.getElementById('Front-Area').style.visibility === 'visible') {
-//           $('.back-tdiy-patches-btn').removeClass('tdiy-patches-btn-active')
-//         $('.front-tdiy-patches-btn').addClass('tdiy-patches-btn-active')
-//         $('.select-patches-for-back').removeClass('select-patches-active')
-//         $('.select-patches-for-front').addClass('select-patches-active')
-//           $('.patches-container .patch-').each(function() {
-//         var patchId = $(this).attr('id');
-//        var actionPatch = $(this); // Assuming 'this' is a jQuery object
-// var patchActionElement = actionPatch.find('.patch-action');
-//   console.log('patchActionElement',patchActionElement);
-        
-//         // Check if the patch with the same ID already exists in .select-patches
-//         if (!$('.select-patches-for-front').find('[data-patch-id="' + patchId + '"]').length) {
-//             // Get image source
-//             var imageSrc = $(this).find('.patch-image').attr('src');
-
-//             // Create a new div with class .selected-patch-for-customization
-//             var selectedPatchDiv = $(`<div class="selected-patch-for-customization selected-patch-for-customization-for-front" id="${patchId}"></div>`);
-
-//             // Create an img element with the same src as the original image
-//             var imageElement = $('<img>').attr('src', imageSrc);
-
-//             // Append the image to the new div
-//             selectedPatchDiv.append(imageElement);
-
-//             // Append the patchId as a data attribute
-//             selectedPatchDiv.attr('data-patch-id', patchId);
-
-//             // Append the new div to .select-patches
-//             $('.select-patches-for-front').append(selectedPatchDiv);
-//         }
-//     });
-//     }
-//       else if (document.getElementById('Back-area').style.visibility === 'visible') {
-//         $('.front-tdiy-patches-btn').removeClass('tdiy-patches-btn-active')
-//         $('.back-tdiy-patches-btn').addClass('tdiy-patches-btn-active')
-//         $('.select-patches-for-front').removeClass('select-patches-active')
-//         $('.select-patches-for-back').addClass('select-patches-active')
-//         $('.patches-containerr .patch-').each(function() {
-//         var patchId = $(this).attr('id');
-        
-//         // Check if the patch with the same ID already exists in .select-patches
-//         if (!$('.select-patches-for-back').find('[data-patch-id="' + patchId + '"]').length) {
-//             // Get image source
-//             var imageSrc = $(this).find('.patch-image').attr('src');
-
-//             // Create a new div with class .selected-patch-for-customization
-//             var selectedPatchDiv = $(`<div class="selected-patch-for-customization selected-patch-for-customization-for-back" id="${patchId}"></div>`);
-
-//             // Create an img element with the same src as the original image
-//             var imageElement = $('<img>').attr('src', imageSrc);
-
-//             // Append the image to the new div
-//             selectedPatchDiv.append(imageElement);
-
-//             // Append the patchId as a data attribute
-//             selectedPatchDiv.attr('data-patch-id', patchId);
-
-//             // Append the new div to .select-patches
-//             $('.select-patches-for-back').append(selectedPatchDiv);
-//         }
-//     });
-     
-//      }
-
-//     setTimeout(function() {
-//         $('.patches-customization-editor').css('right', '0');
-//     }, 100);
-//         }
-//     if (event.touches.length === 1) {
-//         const touch = event.touches[0];
-//         const rect = centerBox.getBoundingClientRect();
-//         const mouseX = touch.clientX - rect.left;
-//         const mouseY = touch.clientY - rect.top;
-
-//         // Check if there's an existing patch at the touched position
-//         let existingPatchIndex = patches.findIndex(patch => {
-//             return mouseX >= patch.x - patch.width / 2 &&
-//                 mouseX <= patch.x + patch.width / 2 &&
-//                 mouseY >= patch.y - patch.height / 2 &&
-//                 mouseY <= patch.y + patch.height / 2;
-//         });
-
-//         if (existingPatchIndex !== -1) {
-//             // Existing patch found, set it as the dragPatch
-//             dragPatch1 = document.getElementById(patches[existingPatchIndex].id);
-
-//             // Calculate offset for smoother dragging
-//             offsetX = mouseX - patches[existingPatchIndex].x;
-//             offsetY = mouseY - patches[existingPatchIndex].y;
-
-//             // Prevent further propagation of the event
-//             event.preventDefault();
-//             event.stopPropagation();
-//         }
-      
-//     }
 });
 centerBox.addEventListener('touchmove', function (event) {
+  adjustPatches(true); // Deletes dataset values only
+
     let touchedElement = event.target;
  
      // Traverse up the DOM tree to find the div element with the specific class or attribute
@@ -4655,16 +4597,6 @@ var patchActionElement = actionPatch.find('.patch-action');
                 $clickedPatch.removeClass('patch-selected').find('.selected-patch-order').remove();
               console.log('removing patch action and patch selection');
               console.log(patchId);
-  // var $patchOpenEditor = $('.patch-open-editor');
-
-  //   // Check if the element has the class .patch-action
-  //   if ($patchOpenEditor.hasClass('patch-action')) {
-  //       // Remove the class .patch-action
-  //       $patchOpenEditor.removeClass('patch-action');
-  //       console.log('Removed .patch-action from .patch-open-editor');
-  //   } else {
-  //       console.log('.patch-open-editor does not have .patch-action');
-  //   }
 
 
                $('#' + patchId).removeClass('patch-action').removeAttr('order-data');
@@ -4823,11 +4755,7 @@ function setGapValue(value) {
 
 
 function getAlignmentFunction() {
-      //     if (document.getElementById('Front-Area').style.visibility === 'visible') {
-      //   const patchesContainer = document.querySelector('.patches-container');
-      // }else if(document.getElementById('Back-area').style.visibility === 'visible'){
-      //   const patchesContainer = document.querySelector('.patches-containerr');
-      // }
+   
     const patchesContainer = document.querySelector('.patches-container');
     const currentFunctionId = patchesContainer.getAttribute('data-function-id');
     const currentalignmentnId = patchesContainer.getAttribute('data-alignment-id');
@@ -4873,90 +4801,6 @@ function givingGap() {
 
 
 
-
-
-// Function to align patches horizontally
-      //before
-// function alignHorizontal() {
-
-
-
-//     const patchesContainer = document.querySelector('.patches-container');
-//     const patchesBackContainer = document.querySelector('.patches-containerr');
-//     let patchActionCount;
-//     if (document.getElementById('Front-Area').style.visibility === 'visible') {
-//         const patches = patchesContainer.querySelectorAll('.patch-action');
-
-//         // Count the number of .patch-action elements
-//         patchActionCount = patches.length;
-//         console.log(patchActionCount);
-//     } else {
-//         const patches = patchesBackContainer.querySelectorAll('.patch-action');
-
-//         // Count the number of .patch-action elements
-//         patchActionCount = patches.length;
-//         console.log(patchActionCount);
-//     }
-
-//     if (patchActionCount < 2) {
-//         return; // Exit the function if less than 2 patches have .patch-action
-//     }
-//     const sortedPatches = sortPatchesByOrder();
-
-//     patchesContainer.style.flexDirection = 'row';
-
-//     sortedPatches.forEach((patch, index) => {
-//         let leftPosition;
-
-//         if (window.matchMedia("(max-width: 700px)").matches) {
-//             leftPosition = index * (25 + gapValue);
-//         } else {
-//             leftPosition = index * (50 + gapValue);
-//         }
-
-//         // Set the position styles for each patch
-//         patch.style.top = '0';
-//         patch.style.left = `${leftPosition}px`;
-//     });
-
-//     checkPatchesPosition();
-//     checkPatchOverlapping();
-// }
-// function alignHorizontal() {
-//     const patchesContainer = document.querySelector('.patches-container');
-//     const patchesBackContainer = document.querySelector('.patches-containerr');
-//     let patchActionCount;
-//     if (document.getElementById('Front-Area').style.visibility === 'visible') {
-//         var patches = patchesContainer.querySelectorAll('.patch-action');
-//         patchActionCount = patches.length;
-//         console.log(patchActionCount);
-//     } else {
-//         var patches = patchesBackContainer.querySelectorAll('.patch-action');
-//         patchActionCount = patches.length;
-//         console.log(patchActionCount);
-//     }
-
-//     if (patchActionCount < 2) {
-//         return; // Exit the function if less than 2 patches have .patch-action
-//     }
-//     const sortedPatches = sortPatchesByOrder();
-//     patchesContainer.style.flexDirection = 'row';
-
-//     let leftPosition = 0;
-//     sortedPatches.forEach((patch, index) => {
-//         if (index > 0) {
-//             const previousPatch = sortedPatches[index - 1];
-//             const previousPatchWidth = previousPatch.getBoundingClientRect().width;
-//             leftPosition += previousPatchWidth + gapValue;
-//         }
-
-//         patch.style.top = '0';
-//         patch.style.left = `${leftPosition}px`;
-//     });
-
-//     checkPatchesPosition();
-//     checkPatchOverlapping();
-// }
 function alignHorizontal() {
     const patchesContainer = document.querySelector('.patches-container');
     const patchesBackContainer = document.querySelector('.patches-containerr');
@@ -5050,82 +4894,6 @@ function calculateMostCommonLeft(leftPositions) {
 
     return mostCommonLeft;
 }
-  // Function to align patches vertically
-// function alignVertical() {
-//    const patchesContainer = document.querySelector('.patches-container');
-//     const patchesBackContainer = document.querySelector('.patches-containerr');
-//     let patchActionCount;
-//     if (document.getElementById('Front-Area').style.visibility === 'visible') {
-//         const patches = patchesContainer.querySelectorAll('.patch-action');
-
-//         // Count the number of .patch-action elements
-//         patchActionCount = patches.length;
-//         console.log(patchActionCount);
-//     } else {
-//         const patches = patchesBackContainer.querySelectorAll('.patch-action');
-
-//         // Count the number of .patch-action elements
-//         patchActionCount = patches.length;
-//         console.log(patchActionCount);
-//     }
-
-//     if (patchActionCount < 2) {
-//         return; // Exit the function if less than 2 patches have .patch-action
-//     }
-//     const sortedPatches = sortPatchesByOrder();
-//     patchesContainer.style.flexDirection = 'column';
-
-//     sortedPatches.forEach((patch, index) => {
-//           let topPosition;
-        
-//         if (window.matchMedia("(max-width: 700px)").matches) {
-//             topPosition = index * (40 + gapValue);
-//         }
-//         else {
-//             topPosition = index * (50 + gapValue);
-//         } // Calculate the top position with the specified gap
-//         patch.style.top = index === 0 ? '0' : `${topPosition}px`;
-//         patch.style.left = '0';
-//     });
-
-//     checkPatchesPosition();
-//   checkPatchOverlapping();
-// }
-//   function alignVertical() {
-//     const patchesContainer = document.querySelector('.patches-container');
-//     const patchesBackContainer = document.querySelector('.patches-containerr');
-//     let patchActionCount;
-//     if (document.getElementById('Front-Area').style.visibility === 'visible') {
-//         var patches = patchesContainer.querySelectorAll('.patch-action');
-//         patchActionCount = patches.length;
-//         console.log(patchActionCount);
-//     } else {
-//         var patches = patchesBackContainer.querySelectorAll('.patch-action');
-//         patchActionCount = patches.length;
-//         console.log(patchActionCount);
-//     }
-
-//     if (patchActionCount < 2) {
-//         return; // Exit the function if less than 2 patches have .patch-action
-//     }
-//     const sortedPatches = sortPatchesByOrder();
-//     patchesContainer.style.flexDirection = 'column';
-
-//     let topPosition = 0;
-//     sortedPatches.forEach((patch, index) => {
-//         if (index > 0) {
-//             const previousPatch = sortedPatches[index - 1];
-//             const previousPatchHeight = previousPatch.getBoundingClientRect().height;
-//             topPosition += previousPatchHeight + gapValue;
-//         }
-
-//         patch.style.top = `${topPosition}px`;
-//         patch.style.left = '0';
-//     });
-
-//     checkPatchesPosition();
-//     checkPatchOverlapping();
-// }
 function alignVertical() {
     const patchesContainer = document.querySelector('.patches-container');
     const patchesBackContainer = document.querySelector('.patches-containerr');
@@ -5220,93 +4988,6 @@ function calculateMostCommonTop(topPositions) {
     return mostCommonTop;
 }
 
-// Function to align patches diagonally left
-// function alignDiagonalLeft() {
-//    const patchesContainer = document.querySelector('.patches-container');
-//     const patchesBackContainer = document.querySelector('.patches-containerr');
-//     let patchActionCount;
-//     if (document.getElementById('Front-Area').style.visibility === 'visible') {
-//         const patches = patchesContainer.querySelectorAll('.patch-action');
-
-//         // Count the number of .patch-action elements
-//         patchActionCount = patches.length;
-//         console.log(patchActionCount);
-//     } else {
-//         const patches = patchesBackContainer.querySelectorAll('.patch-action');
-
-//         // Count the number of .patch-action elements
-//         patchActionCount = patches.length;
-//         console.log(patchActionCount);
-//     }
-
-//     if (patchActionCount < 2) {
-//         return; // Exit the function if less than 2 patches have .patch-action
-//     }
-//     const sortedPatches = sortPatchesByOrder();
-//     patchesContainer.style.flexDirection = 'row';
-
-//     sortedPatches.forEach((patch, index) => {
-      
-        
-//         if (window.matchMedia("(max-width: 700px)").matches) {
-//               const leftValue = index === 0 ? '0px' : `${index * (40 + gapValue) }px`;
-//         patch.style.top = index === 0 ? '0' : `${index * (40 + gapValue) }px`;
-//         patch.style.left = leftValue;
-//         }
-//         else {
-//                   const leftValue = index === 0 ? '0px' : `${index * (50 + gapValue) }px`;
-//         patch.style.top = index === 0 ? '0' : `${index * (50 + gapValue) }px`;
-//         patch.style.left = leftValue;
-//         } // Calculate the top position with the specified gap
- 
- 
-//     });
-
-//     checkPatchesPosition();
-//   checkPatchOverlapping();
-// }
-//   function alignDiagonalLeft() {
-//     const patchesContainer = document.querySelector('.patches-container');
-//     const patchesBackContainer = document.querySelector('.patches-containerr');
-//     let patchActionCount;
-
-//     if (document.getElementById('Front-Area').style.visibility === 'visible') {
-//         var patches = patchesContainer.querySelectorAll('.patch-action');
-//         patchActionCount = patches.length;
-//         console.log(patchActionCount);
-//     } else {
-//         var patches = patchesBackContainer.querySelectorAll('.patch-action');
-//         patchActionCount = patches.length;
-//         console.log(patchActionCount);
-//     }
-
-//     if (patchActionCount < 2) {
-//         return; // Exit the function if less than 2 patches have .patch-action
-//     }
-    
-//     const sortedPatches = sortPatchesByOrder();
-//     patchesContainer.style.flexDirection = 'row';
-
-//     let leftPosition = 0;
-//     let topPosition = 0;
-
-//     sortedPatches.forEach((patch, index) => {
-//         if (index > 0) {
-//             const previousPatch = sortedPatches[index - 1];
-//             const previousPatchWidth = previousPatch.getBoundingClientRect().width;
-//             const previousPatchHeight = previousPatch.getBoundingClientRect().height;
-
-//             leftPosition += previousPatchWidth + gapValue;
-//             topPosition += previousPatchHeight + gapValue;
-//         }
-
-//         patch.style.left = `${leftPosition}px`;
-//         patch.style.top = `${topPosition}px`;
-//     });
-
-//     checkPatchesPosition();
-//     checkPatchOverlapping();
-// }
 function alignDiagonalLeft() {
     const patchesContainer = document.querySelector('.patches-container');
     const patchesBackContainer = document.querySelector('.patches-containerr');
@@ -5362,96 +5043,6 @@ function alignDiagonalLeft() {
     checkPatchOverlapping();
 }
 
-// Function to align patches diagonally right
-// function alignDiagonalRight() {
-//    const patchesContainer = document.querySelector('.patches-container');
-//     const patchesBackContainer = document.querySelector('.patches-containerr');
-//     let patchActionCount;
-//     if (document.getElementById('Front-Area').style.visibility === 'visible') {
-//         const patches = patchesContainer.querySelectorAll('.patch-action');
-
-//         // Count the number of .patch-action elements
-//         patchActionCount = patches.length;
-//         console.log(patchActionCount);
-//     } else {
-//         const patches = patchesBackContainer.querySelectorAll('.patch-action');
-
-//         // Count the number of .patch-action elements
-//         patchActionCount = patches.length;
-//         console.log(patchActionCount);
-//     }
-
-//     if (patchActionCount < 2) {
-//         return; // Exit the function if less than 2 patches have .patch-action
-//     }
-//     const sortedPatches = sortPatchesByOrder();
-//     console.log('this is  sorted ',sortedPatches)
-//     patchesContainer.style.flexDirection = 'row-reverse';
-
-//     sortedPatches.forEach((patch, index) => {
-//               if (window.matchMedia("(max-width: 700px)").matches) {
-//         const rightValue = index === 0 ? 0 : index * (40 + gapValue);
-//         patch.style.top = index === 0 ? '0' : `${index * (40 + gapValue) }px`;
-//         patch.style.right = `${rightValue}px`;
-//         patch.style.left = 'auto'; // Reset left property
-// }else{
-//         const rightValue = index === 0 ? 0 : index * (50 + gapValue);
-//         patch.style.top = index === 0 ? '0' : `${index * (50 + gapValue) }px`;
-//         patch.style.right = `${rightValue}px`;
-//         patch.style.left = 'auto'; // Reset left property
-// }
-      
-       
-//     });
-
-//     checkPatchesPosition();
-//   checkPatchOverlapping();
-// }
-
-// function alignDiagonalRight() {
-//     const patchesContainer = document.querySelector('.patches-container');
-//     const patchesBackContainer = document.querySelector('.patches-containerr');
-//     let patchActionCount;
-
-//     if (document.getElementById('Front-Area').style.visibility === 'visible') {
-//         var patches = patchesContainer.querySelectorAll('.patch-action');
-//         patchActionCount = patches.length;
-//         console.log(patchActionCount);
-//     } else {
-//         var patches = patchesBackContainer.querySelectorAll('.patch-action');
-//         patchActionCount = patches.length;
-//         console.log(patchActionCount);
-//     }
-
-//     if (patchActionCount < 2) {
-//         return; // Exit the function if less than 2 patches have .patch-action
-//     }
-
-//     const sortedPatches = sortPatchesByOrder();
-//     console.log('this is sorted', sortedPatches);
-//     patchesContainer.style.flexDirection = 'row-reverse';
-
-//     let rightPosition = 0;
-//     let topPosition = 0;
-
-//     sortedPatches.forEach((patch, index) => {
-//         if (index > 0) {
-//             const previousPatch = sortedPatches[index - 1];
-//             const previousPatchWidth = previousPatch.getBoundingClientRect().width;
-//             const previousPatchHeight = previousPatch.getBoundingClientRect().height;
-
-//             rightPosition += previousPatchWidth + gapValue;
-//             topPosition += previousPatchHeight + gapValue;
-//         }
-
-//         patch.style.right = `${rightPosition}px`;
-//         patch.style.top = `${topPosition}px`;
-//         patch.style.left = 'auto'; // Reset left property
-//     });
-
-//     checkPatchesPosition();
-//     checkPatchOverlapping();
-// }
 function alignDiagonalRight() {
     const patchesContainer = document.querySelector('.patches-container');
     const patchesBackContainer = document.querySelector('.patches-containerr');
@@ -5536,88 +5127,6 @@ function sortPatchesByOrder() {
     return sortedPatches; // Return sortedPatches here (outside of $(document).ready())
 }
 
-
-// Function to check if patches are outside the container and change border color accordingly
-// function checkPatchesPosition() {
-//    const product = {{ product | json }};
-
-//         if (Array.isArray(product.tags) && product.tags.includes('bag-bound-area')) 
-//         {
-//          console.log('checkPatchesPosition', checkPatchesPosition);
-//     const containerRect = patchesContainer.getBoundingClientRect();
-//     const patchActions = patchesContainer.querySelectorAll('.patch-');
-//     let patchesOutside = false;
-
-//     patchActions.forEach(patch => {
-//         const patchRect = patch.getBoundingClientRect();
-//         if (
-//             patchRect.right < containerRect.left ||
-//             patchRect.left > containerRect.right ||
-//             patchRect.bottom < containerRect.top ||
-//             patchRect.top > containerRect.bottom
-//         ) {
-//             patchesOutside = true;
-//             return; // Break out of the forEach loop
-//         }
-//     });
-
-//     if (patchesOutside) {
-//         console.log('Yes, at least one patch is outside');
-//         // patchesContainer.style.border = '2px solid red'; // Change border color to red
-//     } else {
-//         console.log('All patches are inside');
-//         patchesContainer.style.border = ''; // Reset border color
-//     }
-//         }
-//   else {
-//     console.log('this is shirt')
-//   }
-   
-// }
-// function checkPatchesPosition() {
-//     console.log('checkPatchesPosition', checkPatchesPosition);
-//     const containerRect = patchesContainer.getBoundingClientRect();
-//     const patchActions = patchesContainer.querySelectorAll('.patch-');
-//     let patchesOutside = false;
-
-//     patchActions.forEach(patch => {
-//         const patchRect = patch.getBoundingClientRect();
-        
-//         let moved = false;
-
-//         const patchStyle = window.getComputedStyle(patch);
-//         const patchLeft = parseFloat(patchStyle.left);
-//         const patchTop = parseFloat(patchStyle.top);
-
-//         if (patchRect.left < containerRect.left) {
-//             patch.style.left = `${patchLeft + (containerRect.left - patchRect.left)}px`;
-//             moved = true;
-//         } else if (patchRect.right > containerRect.right) {
-//             patch.style.left = `${patchLeft - (patchRect.right - containerRect.right)}px`;
-//             moved = true;
-//         }
-
-//         if (patchRect.top < containerRect.top) {
-//             patch.style.top = `${patchTop + (containerRect.top - patchRect.top)}px`;
-//             moved = true;
-//         } else if (patchRect.bottom > containerRect.bottom) {
-//             patch.style.top = `${patchTop - (patchRect.bottom - containerRect.bottom)}px`;
-//             moved = true;
-//         }
-
-//         if (moved) {
-//             patchesOutside = true;
-//         }
-//     });
-
-//     if (patchesOutside) {
-//         console.log('Yes, at least one patch is partially outside');
-//         patchesContainer.style.border = '2px solid red'; // Change border color to red
-//     } else {
-//         console.log('All patches are inside');
-//         patchesContainer.style.border = ''; // Reset border color
-//     }
-// }
 function checkPatchesPosition() {
   const product = {{ product | json }};
       if (Array.isArray(product.tags) && product.tags.includes('bag-bound-area')) 
@@ -5769,80 +5278,6 @@ function updateAlignment(buttonId) {
 <!-- code for patches positioning -->
 <script>
     
-//     function movePatch(direction) {
-//         deleteAlignment();
-//         // const patchesContainer = document.querySelector('.patches-container');
-//         // const patches = patchesContainer.querySelectorAll('.patch-action');
-//          let container;
-//     let patches;
-
-//     if (document.getElementById('Front-Area').style.visibility === 'visible') {
-//         patchesContainer = document.querySelector('.patches-container');
-//         patches = patchesContainer.querySelectorAll('.patch-action');
-//     } else if (document.getElementById('Back-area').style.visibility === 'visible') {
-//         patchesContainer = document.querySelector('.patches-containerr');
-//         patches = patchesContainer.querySelectorAll('.patch-action');
-//     }
-//         const currentFunctionId = patchesContainer.getAttribute('data-function-id');
-//         const increment = 10;
-//         patches.forEach(patch => {
-//             let top = parseInt(patch.style.top) || 0;
-//             let left = parseInt(patch.style.left) || 0;
-//             let right = parseInt(patch.style.right) || 0;
-// if(currentFunctionId == 'align-diagonal-right'){
-//               switch (direction) {
-//                 case 'top':
-//                     top -= increment;
-//                     break;
-//                 case 'left':
-//                     right += increment;
-//                     break;
-                
-//                 case 'right':
-//                     right -= increment;
-//                     break;
-                
-//                 case 'bottom':
-//                     top += increment;
-//                     break;
-//             }
-// }
-//           else{
-//                 switch (direction) {
-//                 case 'top':
-//                     top -= increment;
-//                     break;
-//                 case 'left':
-//                     left -= increment;
-//                 console.log('left',left)
-//                     break;
-                
-//                 case 'right':
-//                     left += increment;
-//                  console.log('right',left)
-//                     break;
-                
-//                 case 'bottom':
-//                     top += increment;
-//                     break;
-//             }
-// }
-
-
-            
-//           if(currentFunctionId == 'align-diagonal-right'){
-//             patch.style.top = `${top}px`;
-//             patch.style.left = `auto`;
-//             patch.style.right  = `${right}px`;
-//            }
-//           else{
-//             patch.style.top = `${top}px`;
-//             patch.style.left = `${left}px`;
-//           }
-            
-        
-//         });
-//     }
    function movePatch(direction) {
     deleteAlignment();
     let patchesContainer;
@@ -5867,71 +5302,7 @@ if (window.matchMedia("(max-width: 700px)").matches) {
     increment = 10;
 }
 
-  
 
-    // patches.forEach(patch => {
-    //     let top = parseInt(patch.style.top) || 0;
-    //     let left = parseInt(patch.style.left) || 0;
-    //     let right = parseInt(patch.style.right) || 0;
-
-    //     if (currentFunctionId === 'align-diagonal-right') {
-    //         switch (direction) {
-    //             case 'top':
-    //                 top -= increment;
-    //              checkPatchOverlapping();
-    //              checkPatchesPosition();
-    //                 break;
-    //             case 'left':
-    //                 right += increment;
-    //              checkPatchOverlapping();
-    //              checkPatchesPosition();
-    //                 break;
-    //             case 'right':
-    //                 right -= increment;
-    //              checkPatchOverlapping();
-    //             checkPatchesPosition();
-    //                 break;
-    //             case 'bottom':
-    //                 top += increment;
-    //              checkPatchOverlapping();
-    //              checkPatchesPosition();
-    //                 break;
-    //         }
-    //     } else {
-    //         switch (direction) {
-    //             case 'top':
-    //                 top -= increment;
-    //             checkPatchOverlapping();
-    //             checkPatchesPosition();
-    //                 break;
-    //             case 'left':
-    //                 left -= increment;
-    //               checkPatchOverlapping();
-    //              checkPatchesPosition();
-    //                 break;
-    //             case 'right':
-    //                 left += increment;
-    //               checkPatchOverlapping();
-    //              checkPatchesPosition();
-    //                 break;
-    //             case 'bottom':
-    //                 top += increment;
-    //               checkPatchOverlapping();
-    //              checkPatchesPosition();
-    //                 break;
-    //         }
-    //     }
-
-    //     if (currentFunctionId === 'align-diagonal-right') {
-    //         patch.style.top = `${top}px`;
-    //         patch.style.left = 'auto';
-    //         patch.style.right = `${right}px`;
-    //     } else {
-    //         patch.style.top = `${top}px`;
-    //         patch.style.left = `${left}px`;
-    //     }
-    // });
-// Function to get the computed border color of the container
 function getBorderColor(element) {
     const style = window.getComputedStyle(element);
     return style.borderColor;
@@ -6373,3 +5744,80 @@ function checkPatchallOverlapping() {
       orderBack=1;
   });
 </script>
+    <script>// Function to resize patches and adjust positions dynamically
+// Function to initialize the dataset for a patch
+function initializePatch(patch, referenceWidth, referenceHeight, containerWidth, containerHeight) {
+    if (!patch.dataset.originalWidth) {
+        // Use reference dimensions for initialization
+        patch.dataset.originalWidth = (patch.offsetWidth / containerWidth) * referenceWidth;
+        patch.dataset.originalHeight = (patch.offsetHeight / containerHeight) * referenceHeight;
+        patch.dataset.originalTop = (patch.offsetTop / containerHeight) * referenceHeight;
+        patch.dataset.originalLeft = (patch.offsetLeft / containerWidth) * referenceWidth;
+    }
+}
+
+// Main function to resize and reposition patches
+function adjustPatches(deleteDatasetOnly = false) {
+    const patchesContainer = document.querySelector(".patches-container");
+    const patches = document.querySelectorAll(".patch-");
+    const container = document.querySelector(".checkit");
+
+    if (patchesContainer && patches.length > 0 && container) {
+        const containerWidth = container.offsetWidth;
+        const containerHeight = container.offsetHeight;
+
+        const referenceWidth = 750; // Base width used during design
+        const referenceHeight = 704; // Base height used during design
+
+        console.log("Container Dimensions:", containerWidth, containerHeight);
+
+        patches.forEach(patch => {
+            if (deleteDatasetOnly) {
+                console.log("Deleting dataset values...");
+                delete patch.dataset.originalWidth;
+                delete patch.dataset.originalHeight;
+                delete patch.dataset.originalTop;
+                delete patch.dataset.originalLeft;
+                return; // Exit after deleting
+            }
+
+            // Ensure the patch has been initialized
+            initializePatch(patch, referenceWidth, referenceHeight, containerWidth, containerHeight);
+
+            // Retrieve original dimensions and positions
+            const originalWidth = parseFloat(patch.dataset.originalWidth);
+            const originalHeight = parseFloat(patch.dataset.originalHeight);
+            const originalTop = parseFloat(patch.dataset.originalTop);
+            const originalLeft = parseFloat(patch.dataset.originalLeft);
+
+            // Scale dimensions and positions based on container size
+            const widthScale = containerWidth / referenceWidth;
+            const heightScale = containerHeight / referenceHeight;
+
+            const newWidth = originalWidth * widthScale;
+            const newHeight = originalHeight * heightScale;
+            const newTop = originalTop * heightScale;
+            const newLeft = originalLeft * widthScale;
+
+            console.log(`Resizing Patch:
+                Original: ${originalWidth}x${originalHeight}, Top: ${originalTop}, Left: ${originalLeft}
+                Scaled: ${newWidth}x${newHeight}, Top: ${newTop}, Left: ${newLeft}`);
+
+            // Apply new dimensions and positions
+            patch.style.width = `${newWidth}px`;
+            patch.style.height = `${newHeight}px`;
+            patch.style.top = `${newTop}px`;
+            patch.style.left = `${newLeft}px`;
+        });
+    }
+}
+
+// Attach event listener for resizing
+window.addEventListener("resize", () => {
+    adjustPatches(false);
+});
+
+
+
+  </script>
+ 
