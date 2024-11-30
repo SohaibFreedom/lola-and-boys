@@ -2759,6 +2759,7 @@ const product = {{ product | json }};
         patchDiv.style.width = halfWidth + 'px';
         patchDiv.style.height = halfHeight + 'px';
     } 
+      else{
        if (window.matchMedia("(min-width: 1031px) and (max-width: 1600px)").matches) {
   console.log('yes this is 1031px'); 
  const normalizedWidth = window.innerWidth / window.devicePixelRatio;
@@ -3048,7 +3049,9 @@ const product = {{ product | json }};
  else {
         patchDiv.style.width = width + 'px';
         patchDiv.style.height = height + 'px';
-    }
+    } 
+      }
+       
     }
 
 
