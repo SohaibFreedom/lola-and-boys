@@ -1,18 +1,4 @@
 {% assign variant = product.selected_or_first_available_variant %}
-<script>// Check if the Screen Orientation API is available
-if (window.screen.orientation && window.screen.orientation.lock) {
-    // Attempt to lock the screen orientation to portrait
-    window.screen.orientation.lock("portrait")
-        .then(() => {
-            console.log("Orientation successfully locked to portrait.");
-        })
-        .catch((error) => {
-            console.error("Failed to lock orientation:", error);
-        });
-} else {
-    console.warn("Screen Orientation API is not supported in this browser.");
-}
-</script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
        console.log('gardient-color-before');
