@@ -2682,7 +2682,9 @@ function addPatchToCenterBox(patchSrc, patchId, height, width) {
     var centerBox = document.querySelector('.centerBox');
     var patchesContainer = centerBox.querySelector('.patches-container');
     var existingPatch = patchesContainer.querySelector(`div[v-id="${patchId}"]`);
-  
+   if (window.orientation === 90 || window.orientation === -90) {
+    alert("Landscape mode");
+}
     if (existingPatch) {
         console.log('Matching v-id found:', patchId);
         width = parseInt(existingPatch.style.width);
