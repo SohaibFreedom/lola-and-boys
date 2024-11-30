@@ -2912,7 +2912,10 @@ else{
         patchDiv.style.width = halfWidth + 'px';
         patchDiv.style.height = halfHeight + 'px';
     }
-
+ else if (window.matchMedia("(max-width: 768px)").matches && 
+    (window.orientation === 90 || window.orientation === -90)){
+   alert('landscape');
+    }
  else if (window.matchMedia("(max-width: 768px)").matches) {
       console.log('under mbile');
         // Calculate half width and height
