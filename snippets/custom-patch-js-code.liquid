@@ -2682,17 +2682,21 @@ function addPatchToCenterBox(patchSrc, patchId, height, width) {
     var centerBox = document.querySelector('.centerBox');
     var patchesContainer = centerBox.querySelector('.patches-container');
     var existingPatch = patchesContainer.querySelector(`div[v-id="${patchId}"]`);
-   if (window.orientation === 90 || window.orientation === -90) {
-    alert("Landscape mode");
-}
+  
     if (existingPatch) {
         console.log('Matching v-id found:', patchId);
         width = parseInt(existingPatch.style.width);
         height = parseInt(existingPatch.style.height);
         patchDiv.style.width = width + 'px';
         patchDiv.style.height = height + 'px';
+       if (window.orientation === 90 || window.orientation === -90) {
+    alert("Landscape mode");
+}
     }
     else {
+       if (window.orientation === 90 || window.orientation === -90) {
+    alert("Landscape mode");
+}
        if (window.matchMedia("(min-width: 1031px) and (max-width: 1600px)").matches) {
   console.log('yes this is 1031px'); 
  const normalizedWidth = window.innerWidth / window.devicePixelRatio;
