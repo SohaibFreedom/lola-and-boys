@@ -318,12 +318,16 @@
   {% include 'cross-sell' %}
 
     {% endif %}
+
+    {% if product.tags contains "patch-customizer" %}
 <div class="product-customization">
     {% render 'product-customize' %}
   </div> 
   <div class="embroidery-customization">
     {% render 'embroidery-customize' %}
   </div> 
+
+      {% endif %}
 <script>
   jdgmSettings.scrollTopOffset = 160;
 </script>
