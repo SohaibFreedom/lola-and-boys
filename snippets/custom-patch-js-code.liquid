@@ -3095,25 +3095,23 @@ const product = {{ product | json }};
   adjustPatches(true);
     // Update currentX and currentY for the next patch
 
- if (window.orientation === 90 || window.orientation === -90) {
+  if (window.orientation === 90 || window.orientation === -90) {
     alert('Landscape mode');
-
-    // Append the patch to the DOM first
-    centerBox.querySelector('.patches-container').appendChild(patchDiv);
-
-    // Use getBoundingClientRect to get the actual dimensions
-    let rect = patchDiv.getBoundingClientRect();
-    let patchWidth = rect.width;
-
-    // Update currentX
-    currentX += patchWidth;
-
-    alert('PatchDiv Width: ' + patchDiv.style.width);
-    alert('Computed Width: ' + patchWidth);
-    alert('Updated currentX in landscape: ' + currentX);
+    // Update width and currentX and currentY accordingly
+    alert(patchDiv.style.width);
+    const newX = parseInt(patchDiv.style.width);
+    alert('newX' + newX)
+    let current1X = 0;
+    let current1Y = 0;
+    current1X += newX;
+    alert('Updated currentX in landscape:'+ current1X);
+     patchDiv.style.left = current1X + 'px';
+    if (current1X + parseInt(patchDiv.style.width) > containerWidth) {
+    current1X = 0;
+    current1Y += parseInt(patchDiv.style.height) || 0;
+     patchDiv.style.left = current1Y + 'px';
 }
-
-
+}
 else{
   currentX += parseInt(patchDiv.style.width) || 0;
 if (currentX + parseInt(patchDiv.style.width) > containerWidth) {
