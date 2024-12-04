@@ -3099,7 +3099,9 @@ const product = {{ product | json }};
     alert('Landscape mode');
     // Update width and currentX and currentY accordingly
     alert(patchDiv.style.width);
-    currentX += parseInt(patchDiv.style.width) || 0;
+    const newX = parseInt(patchDiv.style.width);
+    alert('newX',newX)
+    currentX += newX;
     alert('Updated currentX in landscape:'+ currentX);
 }
 else{
