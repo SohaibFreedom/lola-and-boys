@@ -37,6 +37,7 @@
         },
         "image_U3EW4E": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image_mobile": "shopify://shop_images/40_CYBER.jpg",
             "mp4": "https://cdn.shopify.com/videos/c/o/v/12edc78ce2674308a7e07d53313cbe04.mp4",
