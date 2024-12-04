@@ -3098,7 +3098,6 @@ const product = {{ product | json }};
   if (window.orientation === 90 || window.orientation === -90) {
     alert('Landscape mode');
     // Update width and currentX and currentY accordingly
-    patchDiv.style.width = '40px';
     currentX += parseInt(patchDiv.style.width) || 0;
     alert('Updated currentX in landscape:'+ currentX);
 }
