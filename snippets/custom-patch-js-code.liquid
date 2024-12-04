@@ -2981,7 +2981,7 @@ else{
         patchDiv.style.width = halfWidth + 'px';
         patchDiv.style.height = halfHeight + 'px';
     }
-   else if (window.matchMedia("(min-width: 351px) and (max-width: 768px)") {
+   else if (window.matchMedia("(max-width: 375px)").matches) {
    console.log('under 350px');
         // Calculate half width and height
    var halfWidth = (width / 2) - 15;
@@ -3046,7 +3046,7 @@ const product = {{ product | json }};
         patchDiv.style.width = halfWidth + 'px';
         patchDiv.style.height = halfHeight + 'px';
     } 
- else if (window.matchMedia("(max-width: 768px)").matches) {
+ else if (window.matchMedia("(min-width: 376px) and (max-width: 768px)").matches) {
         // Calculate half width and height
    var halfWidth = (width / 2) - 2;
 var halfHeight = (height / 2) - 2;
@@ -3502,7 +3502,7 @@ else{
         patchDiv.style.width = halfWidth + 'px';
         patchDiv.style.height = halfHeight + 'px';
     }
-    else if (window.matchMedia("(max-width: 350px)").matches) {
+    else if (window.matchMedia("(max-width: 375px)").matches) {
    console.log('under 350px');
         // Calculate half width and height
    var halfWidth = (width / 2) - 15;
@@ -3567,7 +3567,7 @@ const product = {{ product | json }};
         patchDiv.style.width = halfWidth + 'px';
         patchDiv.style.height = halfHeight + 'px';
     } 
- else if (window.matchMedia("(min-width: 351px) and (max-width: 768px)").matches) {
+ else if (window.matchMedia("(min-width: 376px) and (max-width: 768px)").matches) {
         // Calculate half width and height
    var halfWidth = (width / 2) - 2;
 var halfHeight = (height / 2) - 2;
