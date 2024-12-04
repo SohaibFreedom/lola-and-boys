@@ -3098,14 +3098,17 @@ const product = {{ product | json }};
 
   if (window.orientation === 90 || window.orientation === -90) {
     alert('Landscape mode');
-    // Update width and currentX and currentY accordingly
- currentX += parseInt(patchDiv.style.width);
-    alert('currentX' + currentX);
-// if (currentX + parseInt(patchDiv.style.width) > containerWidth) {
-//     currentX = 0;
-//     currentY += parseInt(patchDiv.style.height);
-// }
+    
+    // Append the patch to the DOM first
+    patchesContainer.appendChild(patchDiv);
+
+    // Use getBoundingClientRect to get the actual dimensions
+    const rect = patchDiv.getBoundingClientRect();
+    currentX += rect.width; // Use rendered width
+
+    alert('Current X: ' + currentX);
 }
+
 
 else{
   currentX += parseInt(patchDiv.style.width) || 0;
