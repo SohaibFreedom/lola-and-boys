@@ -3096,13 +3096,13 @@ const product = {{ product | json }};
     // Update currentX and currentY for the next patch
    alert('parse: ' + parseInt(patchDiv.style.width));
     currentX += parseInt(patchDiv.style.width); // Add 10px gap between patches
-    alert('currentX', currentX);
+    alert('currentX' + currentX);
     // alert(currentX);
     if (currentX + parseInt(patchDiv.style.width) > containerWidth) {
         // Move to the next row if there's no space left in the current row
         currentX = 0;
         currentY += parseInt(patchDiv.style.height); // Add 10px gap between rows
-      alert('currentY', currentY);
+      alert('currentY' + currentY);
     }
 
     // Add click event listener to the dynamically created patch
