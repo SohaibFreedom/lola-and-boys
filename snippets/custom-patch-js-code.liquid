@@ -3725,7 +3725,42 @@ document.querySelector('.patches').addEventListener('dragstart', function (event
     event.dataTransfer.setDragImage(newImage, 20, 20);
   }
 });
+document.querySelector('#alphabets-wrapper').addEventListener('dragstart', function (event) {
+  console.log('drags Started dragging');
+  const patch = event.target.closest('.patch');
+  if (!patch) return; // If the event target isn't a patch, ignore it
 
+  // Get the original width and height of the image
+  const image = patch.querySelector('img');
+  const originalWidth = image.getAttribute('width');
+  const originalHeight = image.getAttribute('height');
+  const dragpatchDiv = document.querySelector('.dragpatchDiv');
+  // Store the patch being dragged
+  dragPatch = patch;
+
+  // Create a new Image element to be used as the custom dragging image
+  const newImage = new Image();
+  newImage.onload = function() {
+    // Once the image is loaded, set the drag image
+    event.dataTransfer.setDragImage(newImage, 20, 20);
+  };
+  newImage.crossOrigin = 'anonymous'; // Add crossorigin attribute
+  newImage.src = image.src;
+  newImage.width = originalWidth;
+  newImage.height = originalHeight;
+  newImage.style.position = 'absolute';
+  newImage.style.zIndex = '9999';
+  newImage.style.objectFit = 'contain';
+  newImage.style.opacity = '0.7'; // Optional transparency
+  
+  // document.body.appendChild(newImage); // Ensure the image is in the DOM to trigger the 'onload' event
+   dragpatchDiv.appendChild(newImage); // Ensure the image is in the DOM to trigger the 'onload' event
+
+  // Ensure the drag image is set even if the 'onload' event has already fired
+  if (newImage.complete) {
+    event.dataTransfer.setDragImage(newImage, 20, 20);
+  }
+});
 
   
 document.querySelectorAll('.patches').forEach(patchesDiv => {
