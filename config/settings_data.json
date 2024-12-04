@@ -3916,7 +3916,7 @@
         "settings": {
           "collection": "popular-products-header",
           "show_announcement_bar": true,
-          "show_countdown": true,
+          "show_countdown": false,
           "countdown_end_date": "2024-12-04T12:00:00Z",
           "bck_clr": "#f3a4dd",
           "Annouce_url": "https://lolaandtheboys.com/collections/cyber-monday",
