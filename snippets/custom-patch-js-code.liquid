@@ -3109,6 +3109,7 @@ const product = {{ product | json }};
 }
 else{
   currentX += parseInt(patchDiv.style.width) || 0;
+  alert('currentX' + currentX);
 if (currentX + parseInt(patchDiv.style.width) > containerWidth) {
     currentX = 0;
     currentY += parseInt(patchDiv.style.height) || 0;
