@@ -6068,9 +6068,6 @@ function adjustPatches(deleteDatasetOnly = false) {
 // Attach event listener for resizing
 let lastOrientation = window.orientation;
 
-// Debounce timer
-let resizeTimer;
-
 window.addEventListener("resize", () => {
     const currentOrientation = window.orientation;
 
@@ -6081,17 +6078,10 @@ window.addEventListener("resize", () => {
         return; // Skip the function call
     }
 
-    // Debounce the resize event
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-        // Ensure layout recalculations are complete
-        requestAnimationFrame(() => {
-            adjustPatches(false);
-            console.log("Screen resized. adjustPatches called.");
-        });
-    }, 100); // Adjust delay as needed
+    // Call the function if there's no orientation change
+    adjustPatches(false);
+    console.log("Screen resized. adjustPatches called.");
 });
-
 
 
 
