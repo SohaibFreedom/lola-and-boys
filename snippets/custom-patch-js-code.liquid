@@ -3094,15 +3094,22 @@ const product = {{ product | json }};
     );
   adjustPatches(true);
     // Update currentX and currentY for the next patch
-   alert('parse: ' + parseInt(patchDiv.style.width));
-currentX += parseInt(patchDiv.style.width) || 0;
-alert('currentX:' + currentX);
 
+  if (window.orientation === 90 || window.orientation === -90) {
+    alert('Landscape mode');
+    // Update width and currentX and currentY accordingly
+    patchDiv.style.width = '40px';
+    currentX += parseInt(patchDiv.style.width) || 0;
+    alert('Updated currentX in landscape:'+ currentX);
+}
+else{
+  currentX += parseInt(patchDiv.style.width) || 0;
 if (currentX + parseInt(patchDiv.style.width) > containerWidth) {
     currentX = 0;
     currentY += parseInt(patchDiv.style.height) || 0;
-    alert('currentY:' + currentY);
 }
+}
+
 
     // Add click event listener to the dynamically created patch
     patchDiv.addEventListener('dragstart', function(event) {
