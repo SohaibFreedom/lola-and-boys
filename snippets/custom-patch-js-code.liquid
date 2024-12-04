@@ -3107,12 +3107,12 @@ const product = {{ product | json }};
     const patchHeight = parseInt(patchDiv.style.height) || patchDiv.getBoundingClientRect().height || 0;
     alert(patchWidth);
     // Update currentX and currentY similar to the existing logic
-    currentX += patchWidth;
+    currentX = patchWidth;
     alert('Current X after adding patch: ' + currentX);
 
     if (currentX + patchWidth > containerWidth) {
         currentX = 0;
-        currentY += patchHeight;
+        currentY = patchHeight;
         alert('Moving to next row, Current Y: ' + currentY);
     }
 
