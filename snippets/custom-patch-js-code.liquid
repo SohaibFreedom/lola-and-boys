@@ -3094,7 +3094,7 @@ const product = {{ product | json }};
     );
   adjustPatches(true);
     // Update currentX and currentY for the next patch
-  
+    alert(parseInt(patchDiv.style.width));
     currentX += parseInt(patchDiv.style.width); // Add 10px gap between patches
     alert(currentX);
     if (currentX + parseInt(patchDiv.style.width) > containerWidth) {
