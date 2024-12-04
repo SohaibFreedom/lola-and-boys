@@ -3099,23 +3099,26 @@ const product = {{ product | json }};
  if (window.orientation === 90 || window.orientation === -90) {
     alert('Landscape mode');
 
-    // Append the patch to the DOM first
+    // Append the patch to the DOM first to ensure rendering
     patchesContainer.appendChild(patchDiv);
 
-    // Use getBoundingClientRect to get dimensions
-    const rect = patchDiv.getBoundingClientRect();
-    const containerRect = centerBox.getBoundingClientRect();
+    // Get the actual dimensions of the patch
+    const patchWidth = parseInt(patchDiv.style.width) || patchDiv.getBoundingClientRect().width || 0;
+    const patchHeight = parseInt(patchDiv.style.height) || patchDiv.getBoundingClientRect().height || 0;
 
-    // Prevent negative currentX
-    currentX = Math.max(0, currentX + rect.width);
+    // Update currentX and currentY similar to the existing logic
+    currentX += patchWidth;
+    alert('Current X after adding patch: ' + currentX);
 
-    // Ensure patch doesn't exceed container bounds
-    if (currentX + rect.width > containerRect.width) {
-        currentX = containerRect.width - rect.width; // Adjust to stay within bounds
+    if (currentX + patchWidth > containerWidth) {
+        currentX = 0;
+        currentY += patchHeight;
+        alert('Moving to next row, Current Y: ' + currentY);
     }
 
-    alert('PatchDiv Width: ' + rect.width);
-    alert('Current X: ' + currentX);
+    // Update patch position
+    patchDiv.style.left = currentX + 'px';
+    patchDiv.style.top = currentY + 'px';
 }
 
 
