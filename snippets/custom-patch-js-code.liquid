@@ -3107,6 +3107,7 @@ const product = {{ product | json }};
     alert('Updated currentX in landscape:'+ current1X);
      patchDiv.style.left = current1X + 'px';
     if (current1X + parseInt(patchDiv.style.width) > containerWidth) {
+    alert(current1Y);
     current1X = 0;
     current1Y += parseInt(patchDiv.style.height) || 0;
      patchDiv.style.left = current1Y + 'px';
