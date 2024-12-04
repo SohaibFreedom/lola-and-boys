@@ -3095,13 +3095,20 @@ const product = {{ product | json }};
   adjustPatches(true);
     // Update currentX and currentY for the next patch
 
-  if (window.orientation === 90 || window.orientation === -90) {
+ if (window.orientation === 90 || window.orientation === -90) {
     alert('Landscape mode');
-    // Update width and currentX and currentY accordingly
-    alert(patchDiv.style.width);
-     currentX += parseInt(patchDiv.style.width) || 0;
-    alert('Updated currentX in landscape:'+ currentX);
+    
+    // Get the computed width if style.width is not directly accessible
+    let patchWidth = parseInt(patchDiv.style.width) || parseInt(window.getComputedStyle(patchDiv).width) || 0;
+
+    // Update currentX with the computed width
+    currentX += patchWidth;
+    
+    alert('PatchDiv Width: ' + patchDiv.style.width);
+    alert('Computed Width: ' + patchWidth);
+    alert('Updated currentX in landscape: ' + currentX);
 }
+
 else{
   currentX += parseInt(patchDiv.style.width) || 0;
 if (currentX + parseInt(patchDiv.style.width) > containerWidth) {
