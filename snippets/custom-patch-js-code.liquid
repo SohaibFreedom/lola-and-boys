@@ -3125,15 +3125,13 @@ const product = {{ product | json }};
 
 else{
   currentX += parseInt(patchDiv.style.width) || 0;
-  alert(currentX);
+
 if (currentX + parseInt(patchDiv.style.width) > containerWidth) {
     currentX = 0;
     currentY += parseInt(patchDiv.style.height) || 0;
 }
 }
-
-
-    // Add click event listener to the dynamically created patch
+  // Add click event listener to the dynamically created patch
     patchDiv.addEventListener('dragstart', function(event) {
         ismainDragging = true;
         event.preventDefault();
