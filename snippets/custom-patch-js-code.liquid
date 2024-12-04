@@ -3096,41 +3096,13 @@ const product = {{ product | json }};
   adjustPatches(true);
     // Update currentX and currentY for the next patch
 
- if (window.orientation === 90 || window.orientation === -90) {
-    alert('Landscape mode');
-
-    // Append the patch to the DOM first to ensure rendering
-    patchesContainer.appendChild(patchDiv);
-
-    // Get the actual dimensions of the patch
-    const patchWidth = parseInt(patchDiv.style.width) || patchDiv.getBoundingClientRect().width || 0;
-    const patchHeight = parseInt(patchDiv.style.height) || patchDiv.getBoundingClientRect().height || 0;
-    alert(patchWidth);
-    // Update currentX and currentY similar to the existing logic
-    currentX += patchWidth;
-    alert('Current X after adding patch: ' + currentX);
-
-    if (currentX + patchWidth > containerWidth) {
-        currentX = 0;
-        currentY += patchHeight;
-        alert('Moving to next row, Current Y: ' + currentY);
-    }
-
-    // Update patch position
-    patchDiv.style.left = currentX + 'px';
-    patchDiv.style.top = currentY + 'px';
-}
-
-
-
-else{
   currentX += parseInt(patchDiv.style.width) || 0;
 
 if (currentX + parseInt(patchDiv.style.width) > containerWidth) {
     currentX = 0;
     currentY += parseInt(patchDiv.style.height) || 0;
 }
-}
+
   // Add click event listener to the dynamically created patch
     patchDiv.addEventListener('dragstart', function(event) {
         ismainDragging = true;
