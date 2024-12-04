@@ -6066,9 +6066,24 @@ function adjustPatches(deleteDatasetOnly = false) {
 }
 
 // Attach event listener for resizing
+let lastOrientation = window.orientation;
+
 window.addEventListener("resize", () => {
-    adjustPatches(false);
+    const currentOrientation = window.orientation;
+
+    // Check if orientation has changed
+    if (lastOrientation !== currentOrientation) {
+        // Orientation has changed, update lastOrientation
+        lastOrientation = currentOrientation;
+        console.log('Orientation changed:', currentOrientation);
+
+        // Only call adjustPatches if not in landscape
+        if (!(currentOrientation === 90 || currentOrientation === -90)) {
+            adjustPatches(false);
+        }
+    }
 });
+
 
 
 
