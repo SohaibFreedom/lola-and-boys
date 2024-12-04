@@ -2670,8 +2670,7 @@ let offsetY = 0;
   }
 let currentX = 0;
 let currentY = 0;
-    let current1X = 0;
-    let current1Y = 0;
+
 
 function addPatchToCenterBox(patchSrc, patchId, height, width) {
  
@@ -3100,17 +3099,12 @@ const product = {{ product | json }};
   if (window.orientation === 90 || window.orientation === -90) {
     alert('Landscape mode');
     // Update width and currentX and currentY accordingly
-    alert(patchDiv.style.width);
-    const newX = parseInt(patchDiv.style.width);
-    alert('newX' + newX)
-    current1X += newX;
-    alert('Updated currentX in landscape:'+ current1X);
-     patchDiv.style.left = current1X + 'px';
-    if (current1X + parseInt(patchDiv.style.width) > containerWidth) {
-    alert(current1Y);
-    current1X = 0;
-    current1Y += parseInt(patchDiv.style.height) || 0;
-     patchDiv.style.left = current1Y + 'px';
+ currentX += parseInt(patchDiv.style.width);
+    alert('currentX' + currentX);
+if (currentX + parseInt(patchDiv.style.width) > containerWidth) {
+    currentX = 0;
+    currentY += parseInt(patchDiv.style.height);
+}
 }
 }
 else{
