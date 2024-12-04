@@ -3095,9 +3095,9 @@ const product = {{ product | json }};
   adjustPatches(true);
     // Update currentX and currentY for the next patch
   
-    currentX += parseInt(patchDiv.style.width); // Add 10px gap between patches
+    // currentX += parseInt(patchDiv.style.width); // Add 10px gap between patches
     if (currentX + parseInt(patchDiv.style.width) > containerWidth) {
-      alert('centering');
+        currentX += parseInt(patchDiv.style.width); // Add 10px gap between patches
         // Move to the next row if there's no space left in the current row
         currentX = 0;
         currentY += parseInt(patchDiv.style.height); // Add 10px gap between rows
