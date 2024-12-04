@@ -3105,7 +3105,7 @@ const product = {{ product | json }};
     // Get the actual dimensions of the patch
     const patchWidth = parseInt(patchDiv.style.width) || patchDiv.getBoundingClientRect().width || 0;
     const patchHeight = parseInt(patchDiv.style.height) || patchDiv.getBoundingClientRect().height || 0;
-
+    alert(patchWidth);
     // Update currentX and currentY similar to the existing logic
     currentX += patchWidth;
     alert('Current X after adding patch: ' + currentX);
