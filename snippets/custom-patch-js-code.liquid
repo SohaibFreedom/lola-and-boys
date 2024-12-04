@@ -3097,17 +3097,22 @@ const product = {{ product | json }};
 
  if (window.orientation === 90 || window.orientation === -90) {
     alert('Landscape mode');
-    
-    // Get the computed width if style.width is not directly accessible
-    let patchWidth = parseInt(patchDiv.style.width) || parseInt(window.getComputedStyle(patchDiv).width) || 0;
 
-    // Update currentX with the computed width
+    // Append the patch to the DOM first
+    centerBox.querySelector('.patches-container').appendChild(patchDiv);
+
+    // Use getBoundingClientRect to get the actual dimensions
+    let rect = patchDiv.getBoundingClientRect();
+    let patchWidth = rect.width;
+
+    // Update currentX
     currentX += patchWidth;
-    
+
     alert('PatchDiv Width: ' + patchDiv.style.width);
     alert('Computed Width: ' + patchWidth);
     alert('Updated currentX in landscape: ' + currentX);
 }
+
 
 else{
   currentX += parseInt(patchDiv.style.width) || 0;
