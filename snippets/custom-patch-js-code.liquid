@@ -3104,6 +3104,8 @@ const product = {{ product | json }};
     let current1X = 0;
     current1X += newX;
     alert('Updated currentX in landscape:'+ current1X);
+     patchDiv.style.left = current1X + 'px';
+    patchDiv.style.top = currentY + 'px';
 }
 else{
   currentX += parseInt(patchDiv.style.width) || 0;
