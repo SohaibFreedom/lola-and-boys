@@ -3096,12 +3096,12 @@ const product = {{ product | json }};
     // Update currentX and currentY for the next patch
    alert('parse: ' + parseInt(patchDiv.style.width));
 currentX += parseInt(patchDiv.style.width) || 0;
-console.log('currentX:', currentX);
+alert('currentX:' + currentX);
 
 if (currentX + parseInt(patchDiv.style.width) > containerWidth) {
     currentX = 0;
     currentY += parseInt(patchDiv.style.height) || 0;
-    console.log('currentY:', currentY);
+    alert('currentY:' + currentY);
 }
 
     // Add click event listener to the dynamically created patch
