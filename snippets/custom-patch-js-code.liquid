@@ -6293,7 +6293,7 @@ window.addEventListener("resize", () => {
 
     // Check if the orientation has changed
     if (lastOrientation !== currentOrientation) {
-        alert("Orientation change detected. Skipping adjustPatches .");
+        console.log("Orientation change detected. Skipping adjustPatches .");
         lastOrientation = currentOrientation; // Update the last orientation
         return; // Skip the function call
     }
