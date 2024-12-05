@@ -15,6 +15,8 @@
 
 {{ 'cart-custom.css' | asset_url | stylesheet_tag: preload: true }}
 
+
+
 <a name="pagecontent" id="pagecontent"></a>
 <div id="currency-format" data-money-format="{{ shop.money_format }}"></div>
 <div class="main-container cart-temp-header">
@@ -105,7 +107,7 @@
 
                   <div class="seven columns omega cart_content_info">
                     <h3>
-                      <a href="{{ item.url }}"  class="cart-product-title-c">
+                      <a href="{{ item.url }}" class="cart-product-title-c">
                         {{- item.product.title }}
                         <span class="saso-cart-item-discount-notes" data-key="{{item.key}}"></span>
                         <span class="saso-cart-item-upsell-notes" data-key="{{item.key}}"></span>
@@ -455,7 +457,7 @@
     </div>
   </div>
 
-    <wishlist-page 
+  <wishlist-page 
   show-product-title  
   show-price
   show-vendor
@@ -465,7 +467,7 @@
   move-to-cart
   wishlist-empty-link="/collections/all"
 ></wishlist-page>
-
+  
   <!-- Cross sell integration -->
   {% include 'cross-sell' %}
 
@@ -862,15 +864,19 @@ if (item.emb === 'Embroidery'){
 
 
 
-// Function to modify the button
 function modifyWishlistButton(button) {
-    if (button) {
+    // Ensure the button is within a parent with the cart-section-left class and body has cart context
+    if (
+        button &&
+        document.body.classList.contains('cart') &&
+        button.closest('.cart-section-left')
+    ) {
         // Remove the SVG
         const svg = button.querySelector('svg');
         if (svg) {
             svg.remove();
         }
-        // Add text "Move to Favourite"
+        // Add text "Move to Favourites"
         button.textContent = 'Move to Favourites';
     }
 }
@@ -880,14 +886,19 @@ const observer = new MutationObserver((mutationsList) => {
     mutationsList.forEach((mutation) => {
         if (mutation.type === 'childList') {
             mutation.addedNodes.forEach((node) => {
-                // Check if the added node is the desired button
-                if (node.nodeType === 1 && node.matches('button.wk-button')) {
+                // Check if the added node is a button within cart-section-left
+                if (
+                    node.nodeType === 1 &&
+                    node.matches('.cart-section-left button.wk-button')
+                ) {
                     modifyWishlistButton(node);
                 }
-                
-                // If the added node is a parent containing multiple buttons
+
+                // If the added node is a parent containing cart-section-left
                 if (node.nodeType === 1) {
-                    const buttons = node.querySelectorAll('button.wk-button');
+                    const buttons = node.querySelectorAll(
+                        '.cart-section-left button.wk-button'
+                    );
                     buttons.forEach(modifyWishlistButton);
                 }
             });
@@ -900,6 +911,7 @@ observer.observe(document.body, {
     childList: true,
     subtree: true, // To catch changes deep in the DOM tree
 });
+
 
 
 document.addEventListener('click', function(event) {
@@ -919,6 +931,80 @@ document.addEventListener('click', function(event) {
             });
     }
 });
+
+
+
+  
+</script>
+
+<script>
+
+$(document).ready(function () {
+    const elementMap = {}; // Map to store `.cart_content_row` elements by their text
+
+    // Change the Wishlist title to "Your Favorites"
+    
+
+    // Step 1: Map `.cart-product-title-c` text to parent `.cart_content_row`
+    $('.cart-product-title-c').each(function () {
+        const text = $(this).text().trim();
+        elementMap[text] = $(this).closest('.cart_content_row');
+    });
+
+    // Step 2: MutationObserver to monitor dynamic elements
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.addedNodes && mutation.addedNodes.length > 0) {
+                $(mutation.addedNodes).find('a.wk-text-link').each(function () {
+                    handleDynamicElement($(this));
+                });
+            }
+        });
+    });
+
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+    });
+
+    // Step 3: Periodically check for dynamic elements
+    setInterval(() => {
+        $('a.wk-text-link').each(function () {
+            handleDynamicElement($(this));
+        });
+    }, 1000); // Check every 1 second
+
+    // Function to handle dynamic elements
+    function handleDynamicElement($element) {
+        const text = $element.text().trim();
+        const parentRow = elementMap[text];
+        if (parentRow) {
+            const button = parentRow.find('button.wk-button.wk-align-center.wk-align-content-center');
+            if (!button.hasClass('active-class')) {
+                button.addClass('active-class').text('Remove from Favourites');
+            }
+        }
+
+    
+
+        // Add click event for buttons with the active class
+        $('.wk-button.wk-align-center.wk-align-content-center.wk-selected.active-class').click(function (e) {
+            e.preventDefault(); // Prevent default action, if any
+          $(this).text('Move to Favorites');
+            console.log('Button with active class clicked. Page will reload in 3 seconds.');
+
+            // Set a timeout to reload the page after 3 seconds
+            // setTimeout(() => {
+            //     console.log('Reloading the page...');
+            //     location.reload();
+            // }, 1000); // 3000ms = 3 seconds
+        });
+    }
+
+    console.log('Script is running with MutationObserver and periodic checks.');
+});
+
+
 
 </script>
 {% schema %}
