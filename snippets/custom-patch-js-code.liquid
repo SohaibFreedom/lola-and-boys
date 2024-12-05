@@ -2698,7 +2698,7 @@ function addPatchToCenterBox(patchSrc, patchId, height, width) {
       const normalizedWidth = Math.min(screen.width, screen.height);
       alert(`Normalized Screen Widthh: ${normalizedWidth}px`);
 
-         if (normalizedWidth === "375") {
+         if (normalizedWidth <= 375)  {
    alert('under 350px');
         // Calculate half width and height
    var halfWidth = (width / 2) - 15;
