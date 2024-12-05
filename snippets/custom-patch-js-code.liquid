@@ -2695,7 +2695,7 @@ function addPatchToCenterBox(patchSrc, patchId, height, width) {
     }
     else {
        if (window.orientation === 90 || window.orientation === -90) {
-         alert('orientataion');
+        alert(`Orientation detected. Screen width: ${window.innerWidth}px`);
          if (window.matchMedia("(max-width: 375px)").matches) {
    alert('under 350px');
         // Calculate half width and height
