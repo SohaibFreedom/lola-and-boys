@@ -6284,6 +6284,45 @@ function adjustPatches(deleteDatasetOnly = false) {
         });
     }
 }
+function applyCustomCSS() {
+    // Create a new style element
+    const style = document.createElement('style');
+    style.type = 'text/css';
+    
+    // Add the CSS rules
+    style.innerHTML = `
+        .patches-customization-container {
+            display: none !important;    
+        }
+        .main__patches__wrapp {
+            height: 100vh !important;
+        }
+        #patches-customization-offcanvas-menu {
+            width: 100% !important;
+        }
+        .patches-customization-header {
+            display: none !important;  
+        }
+        .patch-customization-btn-wrap {
+            display: none !important; 
+        }
+    `;
+    
+    // Append the style element to the document head
+    document.head.appendChild(style);
+}
+function removeCustomCSS() {
+    // Find the style element containing the custom CSS
+    const styleElements = document.querySelectorAll('style');
+    styleElements.forEach(style => {
+        if (style.innerHTML.includes('.patches-customization-container')) {
+            // Remove the style element if it matches
+            style.parentNode.removeChild(style);
+        }
+    });
+}
+
+
 
 // Attach event listener for resizing
 let lastOrientation = window.orientation;
@@ -6295,9 +6334,11 @@ window.addEventListener("resize", () => {
     if (lastOrientation !== currentOrientation) {
         console.log("Orientation change detected. Skipping adjustPatches .");
         lastOrientation = currentOrientation; // Update the last orientation
+        // Call the function to apply the styles
+         applyCustomCSS();
         return; // Skip the function call
     }
-
+    removeCustomCSS();
     // Call the function if there's no orientation change
     adjustPatches(false);
     console.log("Screen resized. adjustPatches called.");
