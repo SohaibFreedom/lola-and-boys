@@ -6206,22 +6206,22 @@ function adjustPatches(deleteDatasetOnly = false) {
     }
 }
 
-// Attach event listener for resizing
-let lastOrientation = window.orientation;
-
+let lastOrientation = window.screen.orientation.angle; // Initial orientation angle
 window.addEventListener("resize", () => {
-    const currentOrientation = window.orientation;
-
-    // Check if the orientation has changed
+    const currentOrientation = window.screen.orientation.angle; // Get the current orientation angle
     if (lastOrientation !== currentOrientation) {
-        console.log("Orientation change detected. Skipping adjustPatches .");
+        console.log("Orientation change detected. Skipping adjustPatches.");
         lastOrientation = currentOrientation; // Update the last orientation
         return; // Skip the function call
     }
-
     // Call the function if there's no orientation change
     adjustPatches(false);
     console.log("Screen resized. adjustPatches called.");
+});
+// Optionally, you can also listen for explicit orientation changes
+window.addEventListener("orientationchange", () => {
+    lastOrientation = window.screen.orientation.angle;
+    console.log("Orientation changed. adjustPatches skipped.");
 });
 
 
