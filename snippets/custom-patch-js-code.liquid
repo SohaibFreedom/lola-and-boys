@@ -2696,9 +2696,9 @@ function addPatchToCenterBox(patchSrc, patchId, height, width) {
     else {
        if (window.orientation === 90 || window.orientation === -90) {
       const normalizedWidth = Math.min(screen.width, screen.height);
-alert(`Normalized Screen Width: ${normalizedWidth}px`);
+      alert(`Normalized Screen Width: ${normalizedWidth}px`);
 
-         if (window.matchMedia("(max-width: 375px)").matches) {
+         if (normalizedWidth === "375") {
    alert('under 350px');
         // Calculate half width and height
    var halfWidth = (width / 2) - 15;
@@ -2769,6 +2769,7 @@ const product = {{ product | json }};
         patchDiv.style.width = halfWidth + 'px';
         patchDiv.style.height = halfHeight + 'px';
     }
+         
          else {
             alert('up 350px');
               var halfWidth = (width / 2) - 2;
