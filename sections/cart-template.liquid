@@ -105,7 +105,7 @@
 
                   <div class="seven columns omega cart_content_info">
                     <h3>
-                      <a href="{{ item.url }}">
+                      <a href="{{ item.url }}"  class="cart-product-title-c">
                         {{- item.product.title }}
                         <span class="saso-cart-item-discount-notes" data-key="{{item.key}}"></span>
                         <span class="saso-cart-item-upsell-notes" data-key="{{item.key}}"></span>
@@ -454,6 +454,17 @@
       </div>
     </div>
   </div>
+
+    <wishlist-page 
+  show-product-title  
+  show-price
+  show-vendor
+  show-buy-all-button
+  cta-button="add-to-cart"
+  product-options="dropdowns"
+  move-to-cart
+  wishlist-empty-link="/collections/all"
+></wishlist-page>
 
   <!-- Cross sell integration -->
   {% include 'cross-sell' %}
