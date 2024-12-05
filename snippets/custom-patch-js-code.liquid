@@ -3065,6 +3065,12 @@ else{
     }
    else if (window.matchMedia("(max-width: 375px)").matches) {
    console.log('under 350px');
+      alert(`Screen Details:
+- window.innerWidth: ${window.innerWidth}px
+- window.innerHeight: ${window.innerHeight}px
+- Screen width: ${screen.width}px
+- Screen height: ${screen.height}px
+- Device pixel ratio: ${window.devicePixelRatio}`);
         // Calculate half width and height
    var halfWidth = (width / 2) - 15;
 var halfHeight = (height / 2) - 15;
@@ -3135,12 +3141,7 @@ const product = {{ product | json }};
         patchDiv.style.height = halfHeight + 'px';
     } 
  else if (window.matchMedia("(min-width: 376px) and (max-width: 768px)").matches) {
-   alert(`Screen Details:
-- window.innerWidth: ${window.innerWidth}px
-- window.innerHeight: ${window.innerHeight}px
-- Screen width: ${screen.width}px
-- Screen height: ${screen.height}px
-- Device pixel ratio: ${window.devicePixelRatio}`);
+  
         // Calculate half width and height
    var halfWidth = (width / 2) - 2;
 var halfHeight = (height / 2) - 2;
