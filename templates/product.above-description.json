@@ -36,7 +36,7 @@
         "display_type": false,
         "display_tags": false,
         "display_social_buttons": false,
-        "product_description_position": "bottom",
+        "product_description_position": "top",
         "display_related_products": true,
         "related_products_style": "slider",
         "related_products_limit": 20,
@@ -67,7 +67,9 @@
           }
         }
       },
-      "block_order": ["yotpo_product_reviews_ugc_reviews_MbrNNx"],
+      "block_order": [
+        "yotpo_product_reviews_ugc_reviews_MbrNNx"
+      ],
       "settings": {}
     }
   },
