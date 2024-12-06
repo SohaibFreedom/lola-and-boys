@@ -18,7 +18,7 @@
       "settings": {}
     },
     "main": {
-      "type": "product-template",
+      "type": "product-template-abdesc",
       "settings": {
         "gallery_arrows": true,
         "activate_zoom": false,
@@ -67,9 +67,7 @@
           }
         }
       },
-      "block_order": [
-        "yotpo_product_reviews_ugc_reviews_MbrNNx"
-      ],
+      "block_order": ["yotpo_product_reviews_ugc_reviews_MbrNNx"],
       "settings": {}
     }
   },
