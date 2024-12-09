@@ -1,0 +1,38 @@
+<script>
+   function handleOptions() {
+    setTimeout(() => {
+      const $select = $('#simple-bundles-io-options select');
+
+      if ($select.length) {
+        // Set the first option as selected
+        $select.find('option:first').prop('selected', true);
+
+        // Log each option's text
+        $select.find('option').each(function(index, option) {
+          console.log(`Option ${index}:`, $(option).text());
+        });
+      }
+    }, 1000); // Minimal delay to avoid blocking the main thread
+  }
+
+  // Initial call to handle options in case the element is already present
+  handleOptions();
+
+  // Set up a MutationObserver to watch for changes to #simple-bundles-io-options
+  const targetNode = document.getElementById('simple-bundles-io-options');
+  const observerConfig = { childList: true, subtree: true };
+
+  const observer = new MutationObserver((mutationsList) => {
+    setTimeout(() => {
+      for (let mutation of mutationsList) {
+        if (mutation.type === 'childList') {
+          handleOptions(); // Call the function when the element's children change
+        }
+      }
+    }, 0); // Delay the execution to prevent blocking
+  });
+
+  if (targetNode) {
+    observer.observe(targetNode, observerConfig);
+  }
+</script>
