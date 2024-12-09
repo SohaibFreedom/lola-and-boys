@@ -71,12 +71,14 @@
       {% endif %}
 
        {% unless product.tags contains 'patch-app-category' %}
+         {% unless product.tags contains 'quanity-hide' %}
       <div class="left product-quantity-box">
         <label for="quantity">{{ 'products.product.quantity' | t }}</label>
         <span class="ss-icon product-minus js-change-quantity" data-func="minus"><span class="icon-minus"></span></span>
         <input type="number" min="1" size="2" class="quantity" name="quantity" data-id="{{product.id}}" id="quantity" value="1" {% if settings.limit_quantity and variant.inventory_management != blank and variant.inventory_policy == "deny" %}max="{{ variant.inventory_quantity }}"{% endif %} />
         <span class="ss-icon product-plus js-change-quantity" data-func="plus"><span class="icon-plus"></span></span>
       </div>
+         {% endunless %}
          {% endunless %}
     {% endif %}
       
