@@ -3129,7 +3129,7 @@ const product = {{ product | json }};
         patchDiv.style.width = halfWidth + 'px';
         patchDiv.style.height = halfHeight + 'px';
     }  
-  else if (window.matchMedia("(max-width: 389px)").matches) {
+  else if (window.innerWidth <= 375) {
 console.log('below 375px');
         // Calculate half width and height
    var halfWidth = (width / 2) - 15;
