@@ -36,10 +36,21 @@
         "frontpage_grid_style": "full_width"
       }
     },
+    "featured_text_4M8hMx": {
+      "type": "featured-text",
+      "settings": {
+        "title": "Lola + The Boys Holiday Gift Guide",
+        "content": "<p>This holiday season, we’re here to make your shopping simple and joyful. From standout party outfits to everyday essentials with a touch of magic, our gift guide has it all. Perfect for boys and girls who love to express their style, Lola + The Boys brings you carefully selected pieces for every occasion.<br/><br/>Whether you’re planning holiday photos, looking for a memorable gift, or finding outfits for festive celebrations, we’ve got something special for everyone on your list. Explore the guide and make this season one to remember.<br/></p>",
+        "text_size": "featured_text",
+        "text_alignment": "center",
+        "button_label": "",
+        "button_link": ""
+      }
+    },
     "best_sellers_section_AVwV6R": {
       "type": "best-sellers-section",
       "settings": {
-        "title": "Holiday Gift Guide",
+        "title": "",
         "collection": "holiday-gift-guide",
         "collection_style": "slider",
         "collection_description": true,
@@ -134,26 +145,15 @@
         "products_per": 4,
         "products_limit": 5
       }
-    },
-    "featured_text_4M8hMx": {
-      "type": "featured-text",
-      "settings": {
-        "title": "Lola + The Boys Holiday Gift Guide",
-        "content": "<p>This holiday season, we’re here to make your shopping simple and joyful. From standout party outfits to everyday essentials with a touch of magic, our gift guide has it all. Perfect for boys and girls who love to express their style, Lola + The Boys brings you carefully selected pieces for every occasion.<br/><br/>Whether you’re planning holiday photos, looking for a memorable gift, or finding outfits for festive celebrations, we’ve got something special for everyone on your list. Explore the guide and make this season one to remember.<br/></p>",
-        "text_size": "featured_text",
-        "text_alignment": "center",
-        "button_label": "",
-        "button_link": ""
-      }
     }
   },
   "order": [
     "4554d133-7b06-424f-9e27-9a8d237e32e3",
+    "featured_text_4M8hMx",
     "best_sellers_section_AVwV6R",
     "image_text_txa7Pt",
     "image_text_hCX3mJ",
     "image_with_text_overlay_FjtJ8h",
-    "featured_collection_zrFyqR",
-    "featured_text_4M8hMx"
+    "featured_collection_zrFyqR"
   ]
 }
