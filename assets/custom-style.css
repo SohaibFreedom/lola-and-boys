@@ -9,6 +9,16 @@
   display: none;
 }
 
+div#shopify-section-template--15691089117286__featured_text_4M8hMx
+  .sixteen.columns {
+  width: 100% !important;
+}
+
+div#shopify-section-template--15691089117286__4554d133-7b06-424f-9e27-9a8d237e32e3
+  .featured-link--section {
+  margin-bottom: 0 !important;
+}
+
 @media screen and (max-width: 769px) {
   .search-template-section .container .one.column,
   .search-template-section .container .one.columns,
