@@ -8,6 +8,10 @@
 .patch_customizer_main_page wishlist-link-floating {
   display: none;
 }
+div#shopify-section-template--15691089117286__best_sellers_section_AVwV6R
+  .container.featured_products.product-slider {
+  padding: 0 !important;
+}
 
 div#shopify-section-template--15691089117286__featured_text_4M8hMx
   .sixteen.columns {
