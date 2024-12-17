@@ -2696,7 +2696,7 @@ function addPatchToCenterBox(patchSrc, patchId, height, width) {
         patchDiv.style.height = height + 'px';
     }
     else {
-       if ((window.orientation === 90 || window.orientation === -90) && window.innerWidth > window.innerHeight) {
+       if ((window.orientation === 90 || window.orientation === -90) && window.innerWidth > && window.innerWidth < 1024 ) {
          console.log('orientation');
       const normalizedWidth = Math.min(screen.width, screen.height);
 
