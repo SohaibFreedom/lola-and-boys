@@ -75,7 +75,7 @@
           >
       <div class="section product_section clearfix js-product_section {% if section.settings.product_images_position == 'right' %}align_right--images{% endif %}" data-rv-handle="{{ product.handle }}">
 
-        <div class="{% if sidebar %}seven{% else %}nine{% endif %} columns {% if section.settings.product_images_position == 'left' %}alpha{% else %}omega{% endif %}">
+        <div class="nine columns {% if section.settings.product_images_position == 'left' %}alpha{% else %}omega{% endif %}">
           {% include 'product-images' %}
           <div class="meta">
             {% if section.settings.display_social_buttons %}
@@ -84,7 +84,7 @@
           </div>
         </div>
 
-        <div class="{% if sidebar %}five{% else %}seven{% endif %} columns {% if section.settings.product_images_position == 'left' %}omega{% else %}alpha{% endif %}">
+        <div class="seven columns {% if section.settings.product_images_position == 'left' %}omega{% else %}alpha{% endif %}">
 
           {% assign collection_handles = product.collections | map: 'handle' %}
           {% assign variant = product.selected_or_first_available_variant %}
