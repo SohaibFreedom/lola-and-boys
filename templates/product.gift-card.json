@@ -11,16 +11,42 @@
   "sections": {
     "shogun-helper": {
       "type": "shogun-helper",
-      "settings": {
-      }
+      "settings": {}
     },
     "shogun-above": {
       "type": "shogun-above",
-      "settings": {
-      }
+      "settings": {}
     },
     "main": {
       "type": "product-template",
+      "blocks": {
+        "giftnote_gift_messages_cards_voucher_button_LJkc3X": {
+          "type": "shopify://apps/giftnote-gift-messages-cards/blocks/voucher-button/37eb4f2f-4979-41f3-a677-fa25a2a97659",
+          "settings": {
+            "button_label": "Send as a gift 🎁",
+            "font_size": 16,
+            "font": "inter_n4",
+            "button_type": "button",
+            "background_color": "#ffffff",
+            "border_color": "#000000",
+            "font_color": "#000000",
+            "border_radius": 6,
+            "alignment": "center",
+            "height": 50,
+            "width": 250,
+            "full_width": true,
+            "breakpoint": 740,
+            "mobile_alignment": "center",
+            "mobile_height": 50,
+            "mobile_width": 250,
+            "mobile_full_width": false,
+            "custom_styles": ""
+          }
+        }
+      },
+      "block_order": [
+        "giftnote_gift_messages_cards_voucher_button_LJkc3X"
+      ],
       "settings": {
         "gallery_arrows": true,
         "activate_zoom": false,
@@ -53,19 +79,17 @@
     },
     "shogun-below": {
       "type": "shogun-below",
-      "settings": {
-      }
+      "settings": {}
     },
     "shogun-optimizer": {
       "type": "shogun-optimizer",
-      "settings": {
-      }
+      "settings": {}
     },
     "17174489357573d6b9": {
       "type": "apps",
       "blocks": {
         "yotpo_product_reviews_ugc_reviews_MbrNNx": {
-          "type": "shopify://apps/yotpo-product-reviews-ugc/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
             "product": "{{product}}"
           }
@@ -74,8 +98,7 @@
       "block_order": [
         "yotpo_product_reviews_ugc_reviews_MbrNNx"
       ],
-      "settings": {
-      }
+      "settings": {}
     }
   },
   "order": [
