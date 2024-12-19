@@ -63,12 +63,9 @@
   {% endif %}
 
   <div class="product clearfix">
-    {% if sidebar %}
-      {% include 'sidebar' %}
-      <div class="twelve columns">
-    {% else %}
+
       <div class="sixteen columns">
-    {% endif %}
+ 
 
     <div  class="product-{{ product.id }}" itemscope itemtype="http://schema.org/Product"
           data-free-text="{{ settings.free_price_text }}"
