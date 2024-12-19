@@ -5565,11 +5565,6 @@
         "disabled": false,
         "settings": {}
       },
-      "7280966411886983154": {
-        "type": "shopify://apps/monk/blocks/app-embed/e949adb6-87ca-4b97-8f31-0e51bf507f2d",
-        "disabled": false,
-        "settings": {}
-      },
       "6305591592379254261": {
         "type": "shopify://apps/pixoo-taboola-pixel/blocks/pixoo_embed/d4575259-9a7f-46b5-bb21-03a4fc3b4b59",
         "disabled": true,
@@ -5607,6 +5602,11 @@
           "custom_css": "",
           "custom_js": ""
         }
+      },
+      "7280966411886983154": {
+        "type": "shopify://apps/monk/blocks/app-embed/e949adb6-87ca-4b97-8f31-0e51bf507f2d",
+        "disabled": true,
+        "settings": {}
       }
     }
   }
