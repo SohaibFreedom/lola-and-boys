@@ -5,6 +5,13 @@
 .checkout_btn_product.hide-checkout-btn {
   display: none;
 }
+.patch_customizer_main_page .roko-instabot-widget-button {
+  display: none !important;
+}
+
+giftnote-voucher-button #button {
+  width: 100% !important;
+}
 div#shopify-block-AT1FRMlFzdU5FcVU2T__giftnote_gift_messages_cards_voucher_button_EQK8Y8 {
   margin-bottom: 1rem;
 }
