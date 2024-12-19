@@ -2213,6 +2213,9 @@ html
     width: 12px !important;
     height: 12px !important;
   }
+  giftnote-voucher-button #button {
+    width: 100% !important;
+  }
   .container.location-columns {
     grid-template-columns: 1fr !important;
   }
