@@ -39,7 +39,7 @@
             "mobile_alignment": "center",
             "mobile_height": 50,
             "mobile_width": 250,
-            "mobile_full_width": false,
+            "mobile_full_width": true,
             "custom_styles": ""
           }
         }
