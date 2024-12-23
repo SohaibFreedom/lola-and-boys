@@ -1,6 +1,42 @@
 {% assign variant = product.selected_or_first_available_variant %}
 
 <style>
+  .mob-parent-div-for-front-back-btn{
+    display:none;
+  }
+  .front-back-btn-wrapp-only-mob{
+    visibility: hidden;
+    position: absolute;
+    right: 20px;
+    top: 100px;
+  }
+  .front-back-btn-wrapp-only-mob > .patches-customizations-btn {
+    padding: 2px 12px !important;
+  }
+  .front-back-btn-wrapp-only-desktop{
+  visibility: visible; 
+  }
+  .main-patch-action-div-del svg {
+    pointer-events: none;
+}
+
+  .main-patch-action-div-del {
+    z-index: 999999;
+    cursor: pointer;
+    visibility: hidden;
+    position: absolute;
+    background: #ffffff;
+    right: -50px;
+    top: -25px;
+    width: 40px;
+    border-radius: 5px;
+    height: 40px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+  }
+
   @media screen and (max-device-width: 768px) and (orientation: landscape) {
   .patches-customization-container {
         width: 0% !important;
@@ -77,8 +113,8 @@
       }
   .clear-btn-only-mobile{
             position: absolute;
-        top: 103px;
-        right: 18px;
+        top: 0px;
+        left: 18px;
        display:none !important;
     padding: 0px 27px !important;
   }
@@ -394,15 +430,19 @@
             .add-patches-info{
               display: flex;
               justify-content: space-between;
-              padding: 20px 40px;
+              width: 90%;
+              margin: 16px auto;
             }
             .add-patches-info-title{
               font-weight: 600;
+              text-transform: uppercase;
             }
             .patches-toggle-buttons{
             display: flex;
-            width: 85%;
+            width: 90%;
             margin: 0 auto;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
           }
 
             .patch-toggle-btn{
@@ -451,7 +491,7 @@
       padding: 20px 0;
       gap: 10px;
       justify-content: center;
-      width: 90%;
+      width: 100%;
       height: unset;
       overflow: hidden;
       margin: auto;
@@ -672,6 +712,7 @@
       border-bottom-right-radius: 20px;
       width: 60%;
       cursor: pointer;
+      font-size: 17px;
     }
     .variant-selector-sidebar-btn{
       margin: 12px 0;
@@ -877,14 +918,13 @@
     }
     .tidy-patches-wrraper{
       background: #f8f8f8;
-      padding: 20px 30px;
+      padding: 20px 5px;
     }
     .alignment-title{
       background: white;
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      padding-left: 30px;
       font-size: 15px;
       font-weight: 600;
     }
@@ -897,15 +937,18 @@
       justify-content: center;
       align-items: center;
       background: #e7e7e7;
-      width: 50px;
+      width: 25%;
       height: 50px;
       padding: 7px;
       cursor:pointer;
     }
+      .alignment-actions {
+        width: 60% !important;
+    }
     .tidy-patches-alignment-section{
       display: flex;
       background: white;
-      padding: 25px 20px;
+      padding: 25px 5px;
       border-bottom: 1px solid #e2e0e0;
       justify-content: space-between;
     }
@@ -1119,11 +1162,19 @@
       height: 554px !important;
 
   }
+   .variants-continue-btn {
+        font-size: 17px !important;
     }
+    }
+@media screen and (min-width: 377px) and (max-width: 767px) {
+    .variant-selector-sidebar-header {
+        padding: 20px !important;
+    }
+}
 
-      @media screen and (max-width: 768px) {
+      @media screen and (max-width: 767px) {
         .patches-customization-btns-wrapper {
-          bottom: 146px;;
+          bottom: 146px;
         }
         .variants-container {
           max-height: 200px !important;
@@ -1248,9 +1299,6 @@
         .tidy-patches-alignment-section{
               padding: 10px 20px;
         }
-        .variant-selector-sidebar-header{
-          padding: 20px !important;
-        }
             .tidy-patches-header {
             padding: 20px !important;
         }
@@ -1336,30 +1384,30 @@
               padding: 12px 15px;
         }
     }
-    @media screen and (max-width: 767px){
+    @media screen and (max-width: 768px){
+      .mob-parent-div-for-front-back-btn {
+        display:block;
+      }
+       .front-back-btn-wrapp-only-mob{
+       visibility: visible ;
+      }
+      .front-back-btn-wrapp-only-desktop{
+      visibility: hidden !important;
+     }
+       .main-patch-action-div-del{
+        right: -31px;
+        top: -15px;
+        width: 25px;
+        height: 25px;
+       }
        .patches-customization-btns-wrapper {
           bottom: 10px !important;
         }
-  }
-       @media screen and (max-width: 375px){
-         .variant-selector-sidebar-btn-main-wrapper > h2{
-          margin-bottom: 5px;
-        }
-             .checkit {
-            width: 200px !important;
-            height: 156px !important;
-             }
-         .patches-customization-header {
-            padding: 10px;
-        }
-             .patches-toggle-buttons {
-            margin: 5px auto;
-        }
-         .main__patches__wrapp {
-            position: relative;
-            height: calc(87% - 49px);
-        }
+       .tidy-patches-delete-btn{
+        padding: 4px 15px;
        }
+  }
+       
       @media screen and (max-width: 1024px){
 
         .messagefield {
@@ -1372,10 +1420,10 @@
           font-size: 10px;
         }
        .add-item{
-        padding: 12px 25px !important;
+        padding: 0px !important;
         }
         .tidy-patches-wrraper{
-       padding: 7px 12px;
+       padding: 7px 5px;
         }
         .select-patches{
           padding: 5px 0px;
@@ -1399,7 +1447,13 @@
          font-size: 12px;
     }
       }
-    @media screen and (min-width: 1025px) and (max-width: 9400px) {
+    @media screen and (min-width: 1025px) and (max-width: 1500px) {
+        .checkit {
+            width: 450px !important;
+            height: 404px !important;
+        }
+    }
+    @media screen and (min-width: 1501px) and (max-width: 9400px) {
         .checkit {
             width: 750px !important;
             height: 704px !important;
@@ -1424,7 +1478,7 @@
         .tidy-patches-alignment-section{
           gap: 10px;
           padding: 25px 0;
-          justify-content: flex-start;
+          justify-content: space-around;
         }
         .alignment-title{
           padding-left: 3px;
@@ -1436,6 +1490,7 @@
               font-size: 10px;
         }
       }
+
 </style>
 <style>
   .size_variants_section{
@@ -1519,6 +1574,62 @@
       display: none;
 
     }
+</style>
+<style>
+  @media screen and (max-width: 376px) {
+    .patches-toggle-buttons {
+        font-size: 12px !important;
+        margin: 5px auto;
+    }
+    .patch-toggle-btn {
+        padding: 0px !important;
+    }
+    .custom-patches-filter {
+        margin: 0px auto !important;
+    }
+    .variant-selector-sidebar-btn-main-wrapper > h2 {
+        margin-bottom: 5px;
+    }
+    .patches-customization-header {
+        padding: 10px;
+    }
+    .main__patches__wrapp {
+        position: relative;
+        height: calc(87% - 49px);
+    }
+    .color-variant {
+        height: 25px !important;
+        width: 25px !important;
+    }
+    .parent-variant-wrapper {
+        width: 25px !important;
+        height: 25px !important;
+    }
+    .variant-selector-sidebar-btn-main-wrapper > h2 {
+        margin-bottom: 0px !important;
+    }
+    .size_variants_circle {
+        font-size: 10px !important;
+        padding: 0px 10px !important;
+    }
+    .size_variants_swatches {
+          gap: 3px !important;
+    }
+    .patch {
+    height: 50px !important;
+    width: 50px !important;
+    }
+   .patches-customization-btns-wrapper {
+        bottom: 0px !important;
+    }
+    .front-back-btn-wrapp-only-mob{
+          top: 67px;
+    }
+        .variant-selector-sidebar-header {
+        padding: 10px !important;
+    }
+}
+
 </style>
 <div class="patches-customization-wrapper">
   <div class="patches-customization-container">
@@ -1642,9 +1753,21 @@
         </div>
       </div>
     </div>
-    <div class="patches-clear-btn clear-btn-only-mobile" id="clear-shirt-Btnn">Clear</div>
+    <div class="mob-parent-div-for-front-back-btn">
+      <div class="patches-customizations-btn-wrapper front-back-btn-wrapp-only-mob">
+        <div
+          class="patches-customizations-btn patches-customizations-front-btn patches-customization-btn-active"
+          id="showFrontBtnmob"
+        >
+          Front
+        </div>
+        <div class="patches-customizations-btn patches-customizations-back-btn" id="showBackBtnnmob">Back</div>
+      </div>
+    </div>
+     
+  
     <div class="patches-customization-btns-wrapper">
-      <div class="patches-customizations-btn-wrapper">
+     <div class="patches-customizations-btn-wrapper front-back-btn-wrapp-only-desktop">
         <div
           class="patches-customizations-btn patches-customizations-front-btn patches-customization-btn-active"
           id="showFrontBtn"
@@ -1653,7 +1776,7 @@
         </div>
         <div class="patches-customizations-btn patches-customizations-back-btn" id="showBackBtnn">Back</div>
       </div>
-
+     <div class="patches-clear-btn clear-btn-only-mobile" id="clear-shirt-Btnn">Clear</div>
       <div class="tidy-clear-btn-wrapp">
         <div class="patches-tidy-editor-btn onlymobile-screen">Tidy</div>
         <div class="patches-clear-btn clear-btn-only-desktop" id="clear-shirt-Btnn">Clear</div>
@@ -1790,7 +1913,9 @@
       </div>
       <div class="main__patches__wrapp">
         <div class="main__patches__wrapper">
-          <div class="tidy-patches-wrraper">
+          <div class="scrollbox">
+            <div class="scrollboxInner">
+              <div class="tidy-patches-wrraper">
             <div class="tidy-patches-content ">
               <span class="tidy-patches-heading">Select Patches To Tidy</span>
               <div class="front-tdiy-patches-btn tdiy-patches-btn-active">
@@ -1809,13 +1934,7 @@
             <div class="select-patches select-patches-for-front select-patches-active"></div>
             <div class="select-patches select-patches-for-back"></div>
           </div>
-          <div class="scrollbox">
-            <div class="scrollboxInner">
               <div class="tidy-patches-adjustment-wrapper">
-                <div class="tidy-patches-delete-btn-wrraper">
-                  <div class="tidy-patches-delete-title alignment-title">Delete Patch</div>
-                  <div class="tidy-patches-delete-btn">Delete</div>
-                </div>
                 <div class="tidy-patches-alignment-section">
                   <div class="alignment-title">
                     <span>Align</span>
@@ -1903,7 +2022,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="tidy-patches-alignment-section">
                   <div class="alignment-title">
                     <span>Space</span>
@@ -1916,7 +2034,7 @@
                         viewBox="0 0 33 10"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
-                        class="disabled"
+                        class="tidy-patches-svg"
                       >
                         <path class="custom_fill_path custom_fill" d="M6.76375 1.42858C6.07552 1.42902 5.45165 1.69638 4.99768 2.12807C4.5426 1.6979 3.91826 1.43205 3.22929 1.43286C1.83854 1.43428 0.712663 2.52077 0.713868 3.85856C0.717856 6.93256 5.00575 8.57143 5.00575 8.57143C5.00575 8.57143 9.28993 6.92265 9.28529 3.84786C9.28353 2.50998 8.15487 1.42706 6.76375 1.42858Z" fill="#ff6491"></path><line x1="18.5" y1="4.97501" x2="14.5" y2="4.97501" stroke="#393939" stroke-linecap="round"></line><line x1="18.5" y1="5.625" x2="18.5" y2="4.375" stroke="#393939" stroke-linecap="round"></line><line x1="14.5" y1="5.625" x2="14.5" y2="4.375" stroke="#393939" stroke-linecap="round"></line><path class="custom_fill_path custom_fill" d="M29.7638 1.42858C29.0755 1.42902 28.4516 1.69638 27.9977 2.12807C27.5426 1.6979 26.9183 1.43205 26.2293 1.43286C24.8385 1.43428 23.7127 2.52077 23.7139 3.85856C23.7179 6.93256 28.0057 8.57143 28.0057 8.57143C28.0057 8.57143 32.2899 6.92265 32.2853 3.84786C32.2835 2.50998 31.1549 1.42706 29.7638 1.42858Z" fill="#ff6491"></path>
                       </svg>
@@ -1928,7 +2046,7 @@
                         viewBox="0 0 38 10"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
-                        class="disabled"
+                        class="tidy-patches-svg"
                       >
                         <path  class="custom_fill_path custom_fill" d="M6.76375 1.42858C6.07552 1.42902 5.45165 1.69638 4.99768 2.12807C4.5426 1.6979 3.91826 1.43205 3.22929 1.43286C1.83854 1.43428 0.712663 2.52077 0.713868 3.85856C0.717856 6.93256 5.00575 8.57143 5.00575 8.57143C5.00575 8.57143 9.28993 6.92265 9.28529 3.84786C9.28353 2.50998 8.15487 1.42706 6.76375 1.42858Z" fill="#ff6491"></path><line x1="23.5" y1="4.97498" x2="14.5" y2="4.97498" stroke="#393939" stroke-linecap="round"></line><line x1="23.5" y1="5.625" x2="23.5" y2="4.375" stroke="#393939" stroke-linecap="round"></line><line x1="14.5" y1="5.625" x2="14.5" y2="4.375" stroke="#393939" stroke-linecap="round"></line><path class="custom_fill_path custom_fill" d="M34.7638 1.42858C34.0755 1.42902 33.4516 1.69638 32.9977 2.12807C32.5426 1.6979 31.9183 1.43205 31.2293 1.43286C29.8385 1.43428 28.7127 2.52077 28.7139 3.85856C28.7179 6.93256 33.0057 8.57143 33.0057 8.57143C33.0057 8.57143 37.2899 6.92265 37.2853 3.84786C37.2835 2.50998 36.1549 1.42706 34.7638 1.42858Z" fill="#ff6491"></path>
                       </svg>
@@ -1940,7 +2058,7 @@
                         viewBox="0 0 43 10"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
-                        class="disabled"
+                        class="tidy-patches-svg"
                       >
                         <path class="custom_fill_path custom_fill" d="M6.76375 1.42858C6.07552 1.42902 5.45165 1.69638 4.99768 2.12807C4.5426 1.6979 3.91826 1.43205 3.22929 1.43286C1.83854 1.43428 0.712663 2.52077 0.713868 3.85856C0.717856 6.93256 5.00575 8.57143 5.00575 8.57143C5.00575 8.57143 9.28993 6.92265 9.28529 3.84786C9.28353 2.50998 8.15487 1.42706 6.76375 1.42858Z" fill="#ff6491"></path><line x1="28.5" y1="4.9751" x2="14.5" y2="4.9751" stroke="#393939" stroke-linecap="round"></line><line x1="28.5" y1="5.625" x2="28.5" y2="4.375" stroke="#393939" stroke-linecap="round"></line><line x1="14.25" y1="5.625" x2="14.25" y2="4.375" stroke="#393939" stroke-linecap="round"></line><path class="custom_fill_path custom_fill" d="M39.7638 1.42858C39.0755 1.42902 38.4516 1.69638 37.9977 2.12807C37.5426 1.6979 36.9183 1.43205 36.2293 1.43286C34.8385 1.43428 33.7127 2.52077 33.7139 3.85856C33.7179 6.93256 38.0057 8.57143 38.0057 8.57143C38.0057 8.57143 42.2899 6.92265 42.2853 3.84786C42.2835 2.50998 41.1549 1.42706 39.7638 1.42858Z" fill="#ff6491"></path>
                       </svg>
@@ -1952,7 +2070,7 @@
                         viewBox="0 0 48 10"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
-                        class="disabled"
+                        class="tidy-patches-svg"
                       >
                         <path  class="custom_fill_path custom_fill" d="M6.76375 1.42858C6.07552 1.42902 5.45165 1.69638 4.99768 2.12807C4.5426 1.6979 3.91826 1.43205 3.22929 1.43286C1.83854 1.43428 0.712663 2.52077 0.713868 3.85856C0.717856 6.93256 5.00575 8.57143 5.00575 8.57143C5.00575 8.57143 9.28993 6.92265 9.28529 3.84786C9.28353 2.50998 8.15487 1.42706 6.76375 1.42858Z" fill="#ff6491"></path><line x1="33.5" y1="4.9751" x2="14.5" y2="4.9751" stroke="#393939" stroke-linecap="round"></line><line x1="33.5" y1="5.625" x2="33.5" y2="4.375" stroke="#393939" stroke-linecap="round"></line><line x1="14.5" y1="5.625" x2="14.5" y2="4.375" stroke="#393939" stroke-linecap="round"></line><path class="custom_fill_path custom_fill" d="M44.7638 1.42858C44.0755 1.42902 43.4516 1.69638 42.9977 2.12807C42.5426 1.6979 41.9183 1.43205 41.2293 1.43286C39.8385 1.43428 38.7127 2.52077 38.7139 3.85856C38.7179 6.93256 43.0057 8.57143 43.0057 8.57143C43.0057 8.57143 47.2899 6.92265 47.2853 3.84786C47.2835 2.50998 46.1549 1.42706 44.7638 1.42858Z" fill="#ff6491"></path>
                       </svg>
@@ -2061,6 +2179,10 @@
                       ></textarea>
                     </div>
                   </div>
+                </div>
+                <div class="tidy-patches-delete-btn-wrraper">
+                  <div class="tidy-patches-delete-title alignment-title">Delete Patch</div>
+                  <div class="tidy-patches-delete-btn">Delete</div>
                 </div>
              </div>
             </div>

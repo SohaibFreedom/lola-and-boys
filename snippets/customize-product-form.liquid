@@ -6,6 +6,10 @@
 <!-- {{ variant | json}} -->
 
 <style>
+  .span-content{
+    font-size: 20px !important;
+    text-transform: uppercase;
+  }
     .variants-container {
       display: none;
       position: absolute;
@@ -49,6 +53,7 @@
   .fotter-Summary-button{
     display: flex;
     align-items: center;
+    justify-content: center;
     font-weight:600;
     gap: 10px;
     padding: 12px 36px;
@@ -59,11 +64,15 @@
     cursor:pointer;
     width: 40%;
   }
+  .fotter-Summary-button > span {
+    font-size: 17px;
+  }
   .add-item{
     font-weight:600;
-    padding: 12px 71px;
+    padding: 12px;
     display: flex;
     align-items: center;
+    justify-content: center;
     background: #ffe2e8;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -109,6 +118,16 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+  @media screen and (max-width: 1024px){
+     .span-content {
+    font-size: 17px !important;
+    }
+  }
+  @media screen and (max-width: 376px){
+    .span-content {
+    font-size: 17px !important;
+    }
+  }
 </style>
 
 <div id="currency-format" data-money-format="{{ shop.money_format }}"></div>
@@ -154,7 +173,7 @@
       </svg>
     </div>
     <div class="add-item">
-      <span class="span-content">Add item</span>
+      <span class="span-content">Add to bag</span>
       <div class="loader-cart"></div>
     </div>
   </div>
