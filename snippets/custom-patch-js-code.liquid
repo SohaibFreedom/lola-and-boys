@@ -556,19 +556,7 @@ $(document).ready(function() {
     }, 100);
 });
 </script>
-<!--
-  <script>
-    $(document).ready(function() {
-      $('.edit-delete-btn').click(function() {
-        // Remove the class from all elements with the class edit-delete-btn
-        $('.edit-delete-btn').removeClass('patches-customization-tidy-delete-btn-active');
 
-        // Add the class to the clicked element
-        $(this).addClass('patches-customization-tidy-delete-btn-active');
-      });
-    });
-  </script>
--->
 <script>
   window.addEventListener('load', () => {
       const headingDiv = document.querySelector('.product-tile-for-selected');
@@ -587,7 +575,7 @@ $(document).ready(function() {
       var output = document.getElementById("demo");
       const decrementButton = document.getElementById('decrementButton');
       const incrementButton = document.getElementById('incrementButton');
-      // Display the default slider value
+     
       output.innerHTML = slider.value;
 
      function updateSliderValue() {
@@ -606,7 +594,7 @@ $(document).ready(function() {
           }
       }
    console.log('patchActions ',patchActions )
-      // Ensure patchActions is defined before using it
+    
       if (patchActions) {
           output.innerHTML = slider.value;
           var rotationValue = slider.value; // Use the slider value directly
@@ -632,25 +620,7 @@ $(document).ready(function() {
   // Call updateSliderValue initially
   updateSliderValue();
 </script>
-<!--
-  <script>
-    // Select the button with the class 'customize-button'
-    var customizeButton = document.querySelector('.customize-button');
 
-    // Select the div with the id 'shopify-block-yotpo_product_reviews_ugc_reviews_MbrNNx'
-    var bannerLow = document.querySelector('#shopify-block-yotpo_product_reviews_ugc_reviews_MbrNNx');
-
-    // Check if both the button and the div exist
-    if (customizeButton && bannerLow) {
-        // Add a click event listener to the button
-        customizeButton.addEventListener('click', function() {
-            console.log(bannerLow);
-            // Add the class 'hidedisplay' to the div
-            bannerLow.classList.add('hidedisplay');
-        });
-    }
-  </script>
--->
 
 <script>
   $(document).ready(function() {
@@ -6560,15 +6530,15 @@ function checkPatchOverlapping() {
     let patchDivs;
 
     if (document.getElementById('Front-Area').style.visibility === 'visible') {
-      console.log('front area overlapping');
-
+        console.log('front area overlapping');
         patchDivs = document.querySelectorAll('.centerBox > .patches-container > .patch-action');
     } else {
-       console.log('back area overlapping');
-      
+        console.log('back area overlapping');
         patchDivs = document.querySelectorAll('.BackcenterBox > .patches-containerr > .patch-action');
     } 
-    console.log(patchDivs)
+
+    console.log(patchDivs);
+
     patchDivs.forEach(patchDiv => {
         patchDiv.classList.remove('patch-');
         let patchRect = patchDiv.getBoundingClientRect();
@@ -6576,14 +6546,24 @@ function checkPatchOverlapping() {
         console.log('patchRect.left', patchRect.left);
         
         let isOverlapping = false;
-        
+
         for (let i = 0; i < patches.length; i++) {
             let otherPatchRect = patches[i].getBoundingClientRect();
-            if (patchRect.left < otherPatchRect.right &&
-                patchRect.right > otherPatchRect.left &&
-                patchRect.top < otherPatchRect.bottom &&
-                patchRect.bottom > otherPatchRect.top) {
-                console.log('overlappingggg');
+
+            // Calculate overlap dimensions
+            let overlapWidth = Math.max(0, Math.min(patchRect.right, otherPatchRect.right) - Math.max(patchRect.left, otherPatchRect.left));
+            let overlapHeight = Math.max(0, Math.min(patchRect.bottom, otherPatchRect.bottom) - Math.max(patchRect.top, otherPatchRect.top));
+
+            // Calculate overlap area
+            let overlapArea = overlapWidth * overlapHeight;
+
+            // Calculate area of each rectangle
+            let patchArea = (patchRect.right - patchRect.left) * (patchRect.bottom - patchRect.top);
+            let otherPatchArea = (otherPatchRect.right - otherPatchRect.left) * (otherPatchRect.bottom - otherPatchRect.top);
+
+            // Check if overlap area is at least 50% of the smaller rectangle's area
+            if (overlapArea >= 0.5 * Math.min(patchArea, otherPatchArea)) {
+                console.log('overlappingggg by 50% or more');
                 isOverlapping = true;
                 break;
             }
@@ -6602,6 +6582,7 @@ function checkPatchOverlapping() {
 
     return false;
 }
+
 
 function checkPatchallOverlapping() {
     console.log('checkPatchallOverlapping()');
