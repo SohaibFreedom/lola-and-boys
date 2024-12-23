@@ -1902,8 +1902,8 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
        console.log('yes this is ipad view'); 
      console.log('Window Width: ', window.innerWidth);
     // Calculate half width and height
-          var halfWidth = imgWidth / 2 + 5;
-          var halfHeight = imgHeight / 2 + 5;
+          var halfWidth = imgWidth / 2 - 4;
+          var halfHeight = imgHeight / 2 - 4;
           // Check if they are less than 20 and add 5px if true
           if (halfWidth < 13) {
               halfWidth += 8;
@@ -1978,8 +1978,8 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
     console.log('up 375px');
     console.log(window.innerWidth);
           // Calculate half width and height
-     var halfWidth = (imgWidth / 2) ;
-     var halfHeight = (imgHeight / 2) ;
+     var halfWidth = (imgWidth / 2) + 3 ;
+     var halfHeight = (imgHeight / 2) + 3 ;
           // Check if they are less than 20 and add 5px if true
           if (halfWidth < 13) {
               halfWidth += 8;
