@@ -1037,7 +1037,8 @@ if (filteredData.length > 0) {
                         imgWidth = 20;
                     }
                 }
-            } else if (variantname === '6/7' || variantname === '8' || variantname === '7/8' || variantname === '8/9' ||  
+            } 
+            else if (variantname === '6/7' || variantname === '8' || variantname === '7/8' || variantname === '8/9' ||  
                        variantname === '10' || variantname === '9/10' || variantname === '10/11' || variantname === '11/12' || variantname === '12' || 
                        variantname === '14') {
                 if (!productTags.includes("happ-velour-set")) {
@@ -1053,15 +1054,18 @@ if (filteredData.length > 0) {
                         imgWidth = 20;
                     }
                 }
-            } else if (variantname === 'Small') {
+            } 
+            else if (variantname === 'Small') {
                 console.log('condition true');
                 imgHeight += 30;
                 imgWidth += 30;
-            } else if (variantname === 'Medium') {
+            } 
+            else if (variantname === 'Medium') {
                 console.log('condition true');
                 imgHeight += 20;
                 imgWidth += 20;
-            } else if (variantname === 'Large') {
+            } 
+            else if (variantname === 'Large') {
                 console.log('condition true');
                 imgHeight += 10;
                 imgWidth += 10;
@@ -1086,8 +1090,455 @@ if (filteredData.length > 0) {
                 }
             }
 
-            img.height = imgHeight;
-            img.width = imgWidth;
+     let newimgHeight = 0;
+    let newimgWidth = 0;
+
+if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
+    console.log('yes this is 1250px'); 
+     var halfWidth = imgWidth;
+     var halfHeight = imgHeight;
+  
+          // Check if they are less than 20 and add 5px if true
+          if (halfWidth < 13) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 13) {
+              halfHeight += 8;
+          }
+          if (halfWidth < 14) {
+              halfWidth += 7;
+          }
+          if (halfHeight < 14) {
+              halfHeight += 7;
+          }
+          if (halfWidth < 15) {
+              halfWidth += 6;
+          }
+          if (halfHeight < 15) {
+              halfHeight += 6;
+          }
+          if (halfWidth < 16) {
+              halfWidth += 5;
+          }
+          if (halfHeight < 16) {
+              halfHeight += 5;
+          }
+          if (halfWidth < 17) {
+              halfWidth += 4;
+          }
+          if (halfHeight < 17) {
+              halfHeight += 4;
+          }
+          if (halfWidth < 18) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 18) {
+              halfHeight += 3;
+          }
+          if (halfWidth < 19) {
+              halfWidth += 3;
+          }
+          if (halfHeight < 19) {
+              halfHeight += 2;
+          }
+          if (halfWidth < 20) {
+              halfWidth += 1;
+          }
+          else{
+         if (product.tags.includes('patch-it-bag')){
+         console.log('yes this patch-it-bag'); 
+         halfHeight += 25;
+         halfWidth += 25;
+              }
+                else {
+         halfHeight += 7;
+         halfWidth += 7;
+         }
+            
+        
+          
+          // Set the patch dimensions
+          img.width =halfWidth;
+          img.height =halfHeight;
+
+          newimgHeight = halfHeight;
+          newimgWidth = halfWidth;
+  }
+         
+      }
+   else  if (window.matchMedia("(min-width: 1031px) and (max-width: 1500px)").matches) {
+    console.log('yes this is 1031px'); 
+   const normalizedWidth = window.innerWidth / window.devicePixelRatio;
+  console.log('Normalized Width is this:', normalizedWidth);
+  if (normalizedWidth >= 600 && normalizedWidth <= 1024) {
+      console.log('This is iPad Pro');
+         console.log('yes this is ipad view'); 
+     console.log('Window Width: ', window.innerWidth);
+    // Calculate half width and heigh
+          var halfWidth = imgWidth / 2.3;
+          var halfHeight = imgHeight / 2.3;
+          // Check if they are less than 20 and add 5px if true
+          if (halfWidth < 13) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 13) {
+              halfHeight += 8;
+          }
+          if (halfWidth < 14) {
+              halfWidth += 7;
+          }
+          if (halfHeight < 14) {
+              halfHeight += 7;
+          }
+          if (halfWidth < 15) {
+              halfWidth += 6;
+          }
+          if (halfHeight < 15) {
+              halfHeight += 6;
+          }
+          if (halfWidth < 16) {
+              halfWidth += 5;
+          }
+          if (halfHeight < 16) {
+              halfHeight += 5;
+          }
+          if (halfWidth < 17) {
+              halfWidth += 4;
+          }
+          if (halfHeight < 17) {
+              halfHeight += 4;
+          }
+          if (halfWidth < 18) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 18) {
+              halfHeight += 3;
+          }
+          if (halfWidth < 19) {
+              halfWidth += 3;
+          }
+          if (halfHeight < 19) {
+              halfHeight += 2;
+          }
+          if (halfWidth < 20) {
+              halfWidth += 1;
+          }
+            else{
+              if (product.tags.includes('patch-it-bag')){
+              console.log('yes this patch-it-bag'); 
+         halfHeight += 25;
+         halfWidth += 25;
+              }
+                else if (product.tags.includes('customize-long-bag')){
+                      halfHeight += 25;
+         halfWidth += 25;
+                }
+                else {
+         halfHeight += 15;
+         halfWidth += 15;
+         }
+            }
+          // Set the patch dimensions
+          img.width =halfWidth;
+          img.height =halfHeight;
+
+          newimgHeight = halfHeight;
+          newimgWidth = halfWidth;
+  }
+  else{
+          var halfWidth = imgWidth - 20;
+          var halfHeight = imgHeight - 20;
+          // Check if they are less than 20 and add 5px if true
+          if (halfWidth < 13) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 13) {
+              halfHeight += 8;
+          }
+          if (halfWidth < 14) {
+              halfWidth += 7;
+          }
+          if (halfHeight < 14) {
+              halfHeight += 7;
+          }
+          if (halfWidth < 15) {
+              halfWidth += 6;
+          }
+          if (halfHeight < 15) {
+              halfHeight += 6;
+          }
+          if (halfWidth < 16) {
+              halfWidth += 5;
+          }
+          if (halfHeight < 16) {
+              halfHeight += 5;
+          }
+          if (halfWidth < 17) {
+              halfWidth += 4;
+          }
+          if (halfHeight < 17) {
+              halfHeight += 4;
+          }
+          if (halfWidth < 18) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 18) {
+              halfHeight += 3;
+          }
+          if (halfWidth < 19) {
+              halfWidth += 3;
+          }
+          if (halfHeight < 19) {
+              halfHeight += 2;
+          }
+          if (halfWidth < 20) {
+              halfWidth += 1;
+          }
+          else{
+         if (product.tags.includes('patch-it-bag')){
+         console.log('yes this patch-it-bag'); 
+         halfHeight += 25;
+         halfWidth += 25;
+              }
+                else {
+         halfHeight += 15;
+         halfWidth += 15;
+         }
+            }
+        
+  
+          // Set the patch dimensions
+          img.width =halfWidth;
+          img.height =halfHeight;
+
+          newimgHeight = halfHeight;
+          newimgWidth = halfWidth;
+  }
+         
+      }
+   else if (window.matchMedia("(min-width: 769px) and (max-width: 1030px)").matches) {
+       console.log('yes this is ipad view'); 
+     console.log('Window Width: ', window.innerWidth);
+    // Calculate half width and height
+          var halfWidth = imgWidth / 2;
+          var halfHeight = imgHeight / 2;
+          // Check if they are less than 20 and add 5px if true
+          if (halfWidth < 13) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 13) {
+              halfHeight += 8;
+          }
+          if (halfWidth < 14) {
+              halfWidth += 7;
+          }
+          if (halfHeight < 14) {
+              halfHeight += 7;
+          }
+          if (halfWidth < 15) {
+              halfWidth += 6;
+          }
+          if (halfHeight < 15) {
+              halfHeight += 6;
+          }
+          if (halfWidth < 16) {
+              halfWidth += 5;
+          }
+          if (halfHeight < 16) {
+              halfHeight += 5;
+          }
+          if (halfWidth < 17) {
+              halfWidth += 4;
+          }
+          if (halfHeight < 17) {
+              halfHeight += 4;
+          }
+          if (halfWidth < 18) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 18) {
+              halfHeight += 3;
+          }
+          if (halfWidth < 19) {
+              halfWidth += 3;
+          }
+          if (halfHeight < 19) {
+              halfHeight += 2;
+          }
+          if (halfWidth < 20) {
+              halfWidth += 1;
+          }
+            else{
+              if (product.tags.includes('patch-it-bag')){
+              console.log('yes this patch-it-bag'); 
+         halfHeight += 25;
+         halfWidth += 25;
+              }
+                else if (product.tags.includes('customize-long-bag')){
+                      halfHeight += 25;
+         halfWidth += 25;
+                }
+                else {
+         halfHeight += 20;
+         halfWidth += 20;
+         }
+            }
+        
+  
+          // Set the patch dimensions
+          img.width =halfWidth;
+          img.height =halfHeight;
+
+          newimgHeight = halfHeight;
+          newimgWidth = halfWidth;
+      } 
+   else if (window.matchMedia("(min-width: 376px) and (max-width: 768px)").matches) {
+    console.log('up 375px');
+    console.log(window.innerWidth);
+          // Calculate half width and height
+     var halfWidth = (imgWidth / 2) - 2;
+     var halfHeight = (imgHeight / 2) - 2;
+          // Check if they are less than 20 and add 5px if true
+          if (halfWidth < 13) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 13) {
+              halfHeight += 8;
+          }
+          if (halfWidth < 14) {
+              halfWidth += 7;
+          }
+          if (halfHeight < 14) {
+              halfHeight += 7;
+          }
+          if (halfWidth < 15) {
+              halfWidth += 6;
+          }
+          if (halfHeight < 15) {
+              halfHeight += 6;
+          }
+          if (halfWidth < 16) {
+              halfWidth += 5;
+          }
+          if (halfHeight < 16) {
+              halfHeight += 5;
+          }
+          if (halfWidth < 17) {
+              halfWidth += 4;
+          }
+          if (halfHeight < 17) {
+              halfHeight += 4;
+          }
+          if (halfWidth < 18) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 18) {
+              halfHeight += 3;
+          }
+          if (halfWidth < 19) {
+              halfWidth += 3;
+          }
+          if (halfHeight < 19) {
+              halfHeight += 2;
+          }
+          if (halfWidth < 20) {
+              halfWidth += 1;
+          }
+          if (halfHeight < 20) {
+              halfHeight += 1;
+          }
+  const product = {{ product | json }};
+     if (product.tags.includes('customize-long-bag')){
+        halfHeight += 10;
+       halfWidth += 10;
+  }  else if (product.tags.includes('patch-it-bag')){
+              console.log('yes this patch-it-bag'); 
+         halfHeight -= 5;
+         halfWidth -= 5;
+              }
+          // Set the patch dimensions
+          img.width =halfWidth;
+          img.height =halfHeight;
+
+         newimgHeight = halfHeight;
+          newimgWidth = halfWidth;
+      }  
+    else if (window.innerWidth <= 375) {
+  console.log('below 375px');
+          // Calculate half width and height
+          var halfWidth = (imgWidth / 2) - 2;
+          var halfHeight = (imgHeight / 2) - 2;
+  
+  
+          // Check if they are less than 20 and add 5px if true
+          if (halfWidth < 13) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 13) {
+              halfHeight += 8;
+          }
+          if (halfWidth < 14) {
+              halfWidth += 7;
+          }
+          if (halfHeight < 14) {
+              halfHeight += 7;
+          }
+          if (halfWidth < 15) {
+              halfWidth += 6;
+          }
+          if (halfHeight < 15) {
+              halfHeight += 6;
+          }
+          if (halfWidth < 16) {
+              halfWidth += 5;
+          }
+          if (halfHeight < 16) {
+              halfHeight += 5;
+          }
+          if (halfWidth < 17) {
+              halfWidth += 4;
+          }
+          if (halfHeight < 17) {
+              halfHeight += 4;
+          }
+          if (halfWidth < 18) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 18) {
+              halfHeight += 3;
+          }
+          if (halfWidth < 19) {
+              halfWidth += 3;
+          }
+          if (halfHeight < 19) {
+              halfHeight += 2;
+          }
+          if (halfWidth < 20) {
+              halfWidth += 1;
+          }
+          if (halfHeight < 20) {
+              halfHeight += 1;
+          }
+  const product = {{ product | json }};
+     if (product.tags.includes('customize-long-bag')){
+        halfHeight += 15;
+       halfWidth += 15;
+  } else if (product.tags.includes('patch-it-bag')){
+              console.log('yes this patch-it-bag'); 
+       if (halfHeight > 20 && halfWidth > 20) {
+      halfHeight -= 10;
+      halfWidth -= 10;
+  }
+              }
+          // Set the patch dimensions
+          img.width =halfWidth;
+          img.height =halfHeight;
+
+           newimgHeight = halfHeight;
+          newimgWidth = halfWidth;
+      } 
+      newimgHeight = halfHeight;
+      newimgWidth = halfWidth;
 
             const svgDiv = document.createElement('div');
             svgDiv.classList.add('zoom');
@@ -1106,7 +1557,7 @@ if (filteredData.length > 0) {
 
             // Add event listener to the SVG icon to open the pop-up
             svgDiv.addEventListener('click', function() {
-                openPopup(item, imgHeight, imgWidth);
+                openPopup(item, newimgHeight, newimgWidth);
             });
 
             $('#patches-wrapper').append(div);
@@ -1198,7 +1649,8 @@ if (filteredData.length > 0) {
                         imgWidth = 20;
                     }
                 }
-            } else if (variantname === '6/7' || variantname === '8' || variantname === '7/8' || variantname === '8/9' ||  
+            } 
+            else if (variantname === '6/7' || variantname === '8' || variantname === '7/8' || variantname === '8/9' ||  
                        variantname === '10' || variantname === '9/10' || variantname === '10/11' || variantname === '11/12' || variantname === '12' || 
                        variantname === '14') {
                 if (!productTags.includes("happ-velour-set")) {
@@ -1214,15 +1666,18 @@ if (filteredData.length > 0) {
                         imgWidth = 20;
                     }
                 }
-            } else if (variantname === 'Small') {
+            } 
+            else if (variantname === 'Small') {
                 console.log('condition true');
                 imgHeight += 30;
                 imgWidth += 30;
-            } else if (variantname === 'Medium') {
+            } 
+            else if (variantname === 'Medium') {
                 console.log('condition true');
                 imgHeight += 20;
                 imgWidth += 20;
-            } else if (variantname === 'Large') {
+            }
+            else if (variantname === 'Large') {
                 console.log('condition true');
                 imgHeight += 10;
                 imgWidth += 10;
@@ -1247,8 +1702,455 @@ if (filteredData.length > 0) {
                 }
             }
 
-            img.height = imgHeight;
-            img.width = imgWidth;
+   let newimgHeight = 0;
+    let newimgWidth = 0;
+
+if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
+    console.log('yes this is 1250px'); 
+     var halfWidth = imgWidth;
+     var halfHeight = imgHeight;
+  
+          // Check if they are less than 20 and add 5px if true
+          if (halfWidth < 13) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 13) {
+              halfHeight += 8;
+          }
+          if (halfWidth < 14) {
+              halfWidth += 7;
+          }
+          if (halfHeight < 14) {
+              halfHeight += 7;
+          }
+          if (halfWidth < 15) {
+              halfWidth += 6;
+          }
+          if (halfHeight < 15) {
+              halfHeight += 6;
+          }
+          if (halfWidth < 16) {
+              halfWidth += 5;
+          }
+          if (halfHeight < 16) {
+              halfHeight += 5;
+          }
+          if (halfWidth < 17) {
+              halfWidth += 4;
+          }
+          if (halfHeight < 17) {
+              halfHeight += 4;
+          }
+          if (halfWidth < 18) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 18) {
+              halfHeight += 3;
+          }
+          if (halfWidth < 19) {
+              halfWidth += 3;
+          }
+          if (halfHeight < 19) {
+              halfHeight += 2;
+          }
+          if (halfWidth < 20) {
+              halfWidth += 1;
+          }
+          else{
+         if (product.tags.includes('patch-it-bag')){
+         console.log('yes this patch-it-bag'); 
+         halfHeight += 25;
+         halfWidth += 25;
+              }
+                else {
+         halfHeight += 7;
+         halfWidth += 7;
+         }
+            
+        
+          
+          // Set the patch dimensions
+          img.width =halfWidth;
+          img.height =halfHeight;
+
+          newimgHeight = halfHeight;
+          newimgWidth = halfWidth;
+  }
+         
+      }
+   else  if (window.matchMedia("(min-width: 1031px) and (max-width: 1500px)").matches) {
+    console.log('yes this is 1031px'); 
+   const normalizedWidth = window.innerWidth / window.devicePixelRatio;
+  console.log('Normalized Width is this:', normalizedWidth);
+  if (normalizedWidth >= 600 && normalizedWidth <= 1024) {
+      console.log('This is iPad Pro');
+         console.log('yes this is ipad view'); 
+     console.log('Window Width: ', window.innerWidth);
+    // Calculate half width and heigh
+          var halfWidth = imgWidth / 2.5;
+          var halfHeight = imgHeight / 2.5;
+          // Check if they are less than 20 and add 5px if true
+          if (halfWidth < 13) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 13) {
+              halfHeight += 8;
+          }
+          if (halfWidth < 14) {
+              halfWidth += 7;
+          }
+          if (halfHeight < 14) {
+              halfHeight += 7;
+          }
+          if (halfWidth < 15) {
+              halfWidth += 6;
+          }
+          if (halfHeight < 15) {
+              halfHeight += 6;
+          }
+          if (halfWidth < 16) {
+              halfWidth += 5;
+          }
+          if (halfHeight < 16) {
+              halfHeight += 5;
+          }
+          if (halfWidth < 17) {
+              halfWidth += 4;
+          }
+          if (halfHeight < 17) {
+              halfHeight += 4;
+          }
+          if (halfWidth < 18) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 18) {
+              halfHeight += 3;
+          }
+          if (halfWidth < 19) {
+              halfWidth += 3;
+          }
+          if (halfHeight < 19) {
+              halfHeight += 2;
+          }
+          if (halfWidth < 20) {
+              halfWidth += 1;
+          }
+            else{
+              if (product.tags.includes('patch-it-bag')){
+              console.log('yes this patch-it-bag'); 
+         halfHeight += 25;
+         halfWidth += 25;
+              }
+                else if (product.tags.includes('customize-long-bag')){
+                      halfHeight += 25;
+         halfWidth += 25;
+                }
+                else {
+         halfHeight += 15;
+         halfWidth += 15;
+         }
+            }
+          // Set the patch dimensions
+          img.width =halfWidth;
+          img.height =halfHeight;
+
+          newimgHeight = halfHeight;
+          newimgWidth = halfWidth;
+  }
+  else{
+          var halfWidth = imgWidth - 25;
+          var halfHeight = imgHeight - 25;
+          // Check if they are less than 20 and add 5px if true
+          if (halfWidth < 13) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 13) {
+              halfHeight += 8;
+          }
+          if (halfWidth < 14) {
+              halfWidth += 7;
+          }
+          if (halfHeight < 14) {
+              halfHeight += 7;
+          }
+          if (halfWidth < 15) {
+              halfWidth += 6;
+          }
+          if (halfHeight < 15) {
+              halfHeight += 6;
+          }
+          if (halfWidth < 16) {
+              halfWidth += 5;
+          }
+          if (halfHeight < 16) {
+              halfHeight += 5;
+          }
+          if (halfWidth < 17) {
+              halfWidth += 4;
+          }
+          if (halfHeight < 17) {
+              halfHeight += 4;
+          }
+          if (halfWidth < 18) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 18) {
+              halfHeight += 3;
+          }
+          if (halfWidth < 19) {
+              halfWidth += 3;
+          }
+          if (halfHeight < 19) {
+              halfHeight += 2;
+          }
+          if (halfWidth < 20) {
+              halfWidth += 1;
+          }
+          else{
+         if (product.tags.includes('patch-it-bag')){
+         console.log('yes this patch-it-bag'); 
+         halfHeight += 25;
+         halfWidth += 25;
+              }
+                else {
+         halfHeight += 15;
+         halfWidth += 15;
+         }
+            }
+        
+  
+          // Set the patch dimensions
+          img.width =halfWidth;
+          img.height =halfHeight;
+
+          newimgHeight = halfHeight;
+          newimgWidth = halfWidth;
+  }
+         
+      }
+   else if (window.matchMedia("(min-width: 769px) and (max-width: 1030px)").matches) {
+       console.log('yes this is ipad view'); 
+     console.log('Window Width: ', window.innerWidth);
+    // Calculate half width and height
+          var halfWidth = imgWidth / 2.3;
+          var halfHeight = imgHeight / 2.3;
+          // Check if they are less than 20 and add 5px if true
+          if (halfWidth < 13) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 13) {
+              halfHeight += 8;
+          }
+          if (halfWidth < 14) {
+              halfWidth += 7;
+          }
+          if (halfHeight < 14) {
+              halfHeight += 7;
+          }
+          if (halfWidth < 15) {
+              halfWidth += 6;
+          }
+          if (halfHeight < 15) {
+              halfHeight += 6;
+          }
+          if (halfWidth < 16) {
+              halfWidth += 5;
+          }
+          if (halfHeight < 16) {
+              halfHeight += 5;
+          }
+          if (halfWidth < 17) {
+              halfWidth += 4;
+          }
+          if (halfHeight < 17) {
+              halfHeight += 4;
+          }
+          if (halfWidth < 18) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 18) {
+              halfHeight += 3;
+          }
+          if (halfWidth < 19) {
+              halfWidth += 3;
+          }
+          if (halfHeight < 19) {
+              halfHeight += 2;
+          }
+          if (halfWidth < 20) {
+              halfWidth += 1;
+          }
+            else{
+              if (product.tags.includes('patch-it-bag')){
+              console.log('yes this patch-it-bag'); 
+         halfHeight += 25;
+         halfWidth += 25;
+              }
+                else if (product.tags.includes('customize-long-bag')){
+                      halfHeight += 25;
+         halfWidth += 25;
+                }
+                else {
+         halfHeight += 20;
+         halfWidth += 20;
+         }
+            }
+        
+  
+          // Set the patch dimensions
+          img.width =halfWidth;
+          img.height =halfHeight;
+
+          newimgHeight = halfHeight;
+          newimgWidth = halfWidth;
+      } 
+   else if (window.matchMedia("(min-width: 376px) and (max-width: 768px)").matches) {
+    console.log('up 375px');
+    console.log(window.innerWidth);
+          // Calculate half width and height
+     var halfWidth = (imgWidth / 2) - 4;
+     var halfHeight = (imgHeight / 2) - 4;
+          // Check if they are less than 20 and add 5px if true
+          if (halfWidth < 13) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 13) {
+              halfHeight += 8;
+          }
+          if (halfWidth < 14) {
+              halfWidth += 7;
+          }
+          if (halfHeight < 14) {
+              halfHeight += 7;
+          }
+          if (halfWidth < 15) {
+              halfWidth += 6;
+          }
+          if (halfHeight < 15) {
+              halfHeight += 6;
+          }
+          if (halfWidth < 16) {
+              halfWidth += 5;
+          }
+          if (halfHeight < 16) {
+              halfHeight += 5;
+          }
+          if (halfWidth < 17) {
+              halfWidth += 4;
+          }
+          if (halfHeight < 17) {
+              halfHeight += 4;
+          }
+          if (halfWidth < 18) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 18) {
+              halfHeight += 3;
+          }
+          if (halfWidth < 19) {
+              halfWidth += 3;
+          }
+          if (halfHeight < 19) {
+              halfHeight += 2;
+          }
+          if (halfWidth < 20) {
+              halfWidth += 1;
+          }
+          if (halfHeight < 20) {
+              halfHeight += 1;
+          }
+  const product = {{ product | json }};
+     if (product.tags.includes('customize-long-bag')){
+        halfHeight += 10;
+       halfWidth += 10;
+  }  else if (product.tags.includes('patch-it-bag')){
+              console.log('yes this patch-it-bag'); 
+         halfHeight -= 5;
+         halfWidth -= 5;
+              }
+          // Set the patch dimensions
+          img.width =halfWidth;
+          img.height =halfHeight;
+
+         newimgHeight = halfHeight;
+          newimgWidth = halfWidth;
+      }  
+    else if (window.innerWidth <= 375) {
+  console.log('below 375px');
+          // Calculate half width and height
+          var halfWidth = (imgWidth / 2) - 3;
+          var halfHeight = (imgHeight / 2) - 3;
+  
+  
+          // Check if they are less than 20 and add 5px if true
+          if (halfWidth < 13) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 13) {
+              halfHeight += 8;
+          }
+          if (halfWidth < 14) {
+              halfWidth += 7;
+          }
+          if (halfHeight < 14) {
+              halfHeight += 7;
+          }
+          if (halfWidth < 15) {
+              halfWidth += 6;
+          }
+          if (halfHeight < 15) {
+              halfHeight += 6;
+          }
+          if (halfWidth < 16) {
+              halfWidth += 5;
+          }
+          if (halfHeight < 16) {
+              halfHeight += 5;
+          }
+          if (halfWidth < 17) {
+              halfWidth += 4;
+          }
+          if (halfHeight < 17) {
+              halfHeight += 4;
+          }
+          if (halfWidth < 18) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 18) {
+              halfHeight += 3;
+          }
+          if (halfWidth < 19) {
+              halfWidth += 3;
+          }
+          if (halfHeight < 19) {
+              halfHeight += 2;
+          }
+          if (halfWidth < 20) {
+              halfWidth += 1;
+          }
+          if (halfHeight < 20) {
+              halfHeight += 1;
+          }
+  const product = {{ product | json }};
+     if (product.tags.includes('customize-long-bag')){
+        halfHeight += 15;
+       halfWidth += 15;
+  } else if (product.tags.includes('patch-it-bag')){
+              console.log('yes this patch-it-bag'); 
+       if (halfHeight > 20 && halfWidth > 20) {
+      halfHeight -= 10;
+      halfWidth -= 10;
+  }
+              }
+          // Set the patch dimensions
+          img.width =halfWidth;
+          img.height =halfHeight;
+
+           newimgHeight = halfHeight;
+          newimgWidth = halfWidth;
+      } 
+      newimgHeight = halfHeight;
+      newimgWidth = halfWidth; 
 
             const svgDiv = document.createElement('div');
             svgDiv.classList.add('zoom');
@@ -1267,7 +2169,7 @@ if (filteredData.length > 0) {
 
             // Add event listener to the SVG icon to open the pop-up
             svgDiv.addEventListener('click', function() {
-                openPopup(item, imgHeight, imgWidth);
+                openPopup(item, newimgHeight, newimgWidth);
             });
 
             $('#alphabets-wrapper').append(div);
@@ -1287,12 +2189,7 @@ else {
 
 
 }
-// function filterPatches(){
-//   console.log('j');
-// }
 
-      
-       // showPatches();
 
  $('#patches-button').click(function(){
      $(this).addClass('custom-patch-active'); 
@@ -1311,58 +2208,6 @@ else {
      showAlphabets();
    filteralphabets();
  });
- 
-   // Function to show patches
-      // old showpatches
-//   function showPatches() {
-//     // Clear existing content in the patches container
-//     $('.patches').empty();
-
-//     // Loop through the patches data and display patches
-//     patches.forEach(item => {
-//         const patchDiv = document.createElement('div');
-//         patchDiv.setAttribute('draggable', 'true');
-//         patchDiv.setAttribute('v-id', item.id);
-//         patchDiv.classList.add('patch');
-
-//         const title = document.createElement('p');
-//         title.setAttribute('draggable', 'false');
-//         title.classList.add('patch-title');
-//         title.textContent = item.patchname;
-
-//         const img = document.createElement('img');
-//         img.setAttribute('draggable', 'false');
-//         img.src = item.image;
-//         img.alt = item.name;
-//         img.classList.add('patch-image');
-//         img.setAttribute('crossorigin', 'anonymous');
-//         img.height = item.height;
-//         img.width = item.width;
-
-//         const svgDiv = document.createElement('div');
-//         svgDiv.classList.add('zoom');
-//         const svgIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-//         svgIcon.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-//         svgIcon.setAttribute('class', 'h-6 w-6');
-//         svgIcon.setAttribute('fill', 'none');
-//         svgIcon.setAttribute('viewBox', '0 0 24 24');
-//         svgIcon.setAttribute('stroke', 'currentColor');
-//         svgIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>';
-//         svgDiv.appendChild(svgIcon);
-
-//         patchDiv.appendChild(img);
-//         patchDiv.appendChild(title);
-//         patchDiv.appendChild(svgDiv);
-
-//         // Add event listener to the SVG icon to open the pop-up
-//         svgDiv.addEventListener('click', function() {
-//             openPopup(item);
-//         });
-
-//         $('.patches').append(patchDiv);
-//     });
-// }
-        // Get the value of Shopify.shop
 
 
 // Step 3: Use availableVariants directly in showPatches
@@ -1422,14 +2267,16 @@ function showPatches() {
                         imgWidth = 20;
                     }
                 }
-            } else if (variantname === '6/7' || variantname === '8' || variantname === '7/8' || variantname === '8/9' ||  
+            } 
+            else if (variantname === '6/7' || variantname === '8' || variantname === '7/8' || variantname === '8/9' ||  
                        variantname === '10' || variantname === '9/10' || variantname === '10/11' || variantname === '11/12' || variantname === '12' || 
                        variantname === '14') {
                 if (!productTags.includes("happ-velour-set")) {
                     console.log('condition true');
                     imgHeight += 10;
                     imgWidth += 10;
-                } else {
+                }
+                else {
                     console.log('condition false');
                     imgHeight -= 15;
                     imgWidth -= 15;
@@ -1438,15 +2285,18 @@ function showPatches() {
                         imgWidth = 20;
                     }
                 }
-            } else if (variantname === 'Small') {
+            } 
+            else if (variantname === 'Small') {
                 console.log('condition true');
                 imgHeight += 30;
                 imgWidth += 30;
-            } else if (variantname === 'Medium') {
+            } 
+            else if (variantname === 'Medium') {
                 console.log('condition true');
                 imgHeight += 20;
                 imgWidth += 20;
-            } else if (variantname === 'Large') {
+            } 
+            else if (variantname === 'Large') {
                 console.log('condition true');
                 imgHeight += 10;
                 imgWidth += 10;
@@ -1470,9 +2320,456 @@ function showPatches() {
                     }
                 }
             }
+console.log('Window Width: ', window.innerWidth);
+    let newimgHeight = 0;
+    let newimgWidth = 0;
 
-            img.height = imgHeight;
-            img.width = imgWidth;
+if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
+    console.log('yes this is 1250px'); 
+     var halfWidth = imgWidth;
+     var halfHeight = imgHeight;
+  
+          // Check if they are less than 20 and add 5px if true
+          if (halfWidth < 13) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 13) {
+              halfHeight += 8;
+          }
+          if (halfWidth < 14) {
+              halfWidth += 7;
+          }
+          if (halfHeight < 14) {
+              halfHeight += 7;
+          }
+          if (halfWidth < 15) {
+              halfWidth += 6;
+          }
+          if (halfHeight < 15) {
+              halfHeight += 6;
+          }
+          if (halfWidth < 16) {
+              halfWidth += 5;
+          }
+          if (halfHeight < 16) {
+              halfHeight += 5;
+          }
+          if (halfWidth < 17) {
+              halfWidth += 4;
+          }
+          if (halfHeight < 17) {
+              halfHeight += 4;
+          }
+          if (halfWidth < 18) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 18) {
+              halfHeight += 3;
+          }
+          if (halfWidth < 19) {
+              halfWidth += 3;
+          }
+          if (halfHeight < 19) {
+              halfHeight += 2;
+          }
+          if (halfWidth < 20) {
+              halfWidth += 1;
+          }
+          else{
+         if (product.tags.includes('patch-it-bag')){
+         console.log('yes this patch-it-bag'); 
+         halfHeight += 25;
+         halfWidth += 25;
+              }
+                else {
+         halfHeight += 7;
+         halfWidth += 7;
+         }
+            
+        
+          
+          // Set the patch dimensions
+          img.width =halfWidth;
+          img.height =halfHeight;
+
+          newimgHeight = halfHeight;
+          newimgWidth = halfWidth;
+  }
+         
+      }
+   else  if (window.matchMedia("(min-width: 1031px) and (max-width: 1500px)").matches) {
+    console.log('yes this is 1031px'); 
+   const normalizedWidth = window.innerWidth / window.devicePixelRatio;
+  console.log('Normalized Width is this:', normalizedWidth);
+  if (normalizedWidth >= 600 && normalizedWidth <= 1024) {
+      console.log('This is iPad Pro');
+         console.log('yes this is ipad view'); 
+     console.log('Window Width: ', window.innerWidth);
+    // Calculate half width and heigh
+          var halfWidth = imgWidth / 2.3;
+          var halfHeight = imgHeight / 2.3;
+          // Check if they are less than 20 and add 5px if true
+          if (halfWidth < 13) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 13) {
+              halfHeight += 8;
+          }
+          if (halfWidth < 14) {
+              halfWidth += 7;
+          }
+          if (halfHeight < 14) {
+              halfHeight += 7;
+          }
+          if (halfWidth < 15) {
+              halfWidth += 6;
+          }
+          if (halfHeight < 15) {
+              halfHeight += 6;
+          }
+          if (halfWidth < 16) {
+              halfWidth += 5;
+          }
+          if (halfHeight < 16) {
+              halfHeight += 5;
+          }
+          if (halfWidth < 17) {
+              halfWidth += 4;
+          }
+          if (halfHeight < 17) {
+              halfHeight += 4;
+          }
+          if (halfWidth < 18) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 18) {
+              halfHeight += 3;
+          }
+          if (halfWidth < 19) {
+              halfWidth += 3;
+          }
+          if (halfHeight < 19) {
+              halfHeight += 2;
+          }
+          if (halfWidth < 20) {
+              halfWidth += 1;
+          }
+            else{
+              if (product.tags.includes('patch-it-bag')){
+              console.log('yes this patch-it-bag'); 
+         halfHeight += 25;
+         halfWidth += 25;
+              }
+                else if (product.tags.includes('customize-long-bag')){
+                      halfHeight += 25;
+         halfWidth += 25;
+                }
+                else {
+         halfHeight += 15;
+         halfWidth += 15;
+         }
+            }
+          // Set the patch dimensions
+          img.width =halfWidth;
+          img.height =halfHeight;
+
+          newimgHeight = halfHeight;
+          newimgWidth = halfWidth;
+  }
+  else{
+          var halfWidth = imgWidth - 20;
+          var halfHeight = imgHeight - 20;
+          // Check if they are less than 20 and add 5px if true
+          if (halfWidth < 13) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 13) {
+              halfHeight += 8;
+          }
+          if (halfWidth < 14) {
+              halfWidth += 7;
+          }
+          if (halfHeight < 14) {
+              halfHeight += 7;
+          }
+          if (halfWidth < 15) {
+              halfWidth += 6;
+          }
+          if (halfHeight < 15) {
+              halfHeight += 6;
+          }
+          if (halfWidth < 16) {
+              halfWidth += 5;
+          }
+          if (halfHeight < 16) {
+              halfHeight += 5;
+          }
+          if (halfWidth < 17) {
+              halfWidth += 4;
+          }
+          if (halfHeight < 17) {
+              halfHeight += 4;
+          }
+          if (halfWidth < 18) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 18) {
+              halfHeight += 3;
+          }
+          if (halfWidth < 19) {
+              halfWidth += 3;
+          }
+          if (halfHeight < 19) {
+              halfHeight += 2;
+          }
+          if (halfWidth < 20) {
+              halfWidth += 1;
+          }
+          else{
+         if (product.tags.includes('patch-it-bag')){
+         console.log('yes this patch-it-bag'); 
+         halfHeight += 25;
+         halfWidth += 25;
+              }
+                else {
+         halfHeight += 15;
+         halfWidth += 15;
+         }
+            }
+        
+  
+          // Set the patch dimensions
+          img.width =halfWidth;
+          img.height =halfHeight;
+
+          newimgHeight = halfHeight;
+          newimgWidth = halfWidth;
+  }
+         
+      }
+   else if (window.matchMedia("(min-width: 769px) and (max-width: 1030px)").matches) {
+       console.log('yes this is ipad view'); 
+     console.log('Window Width: ', window.innerWidth);
+    // Calculate half width and height
+          var halfWidth = imgWidth / 2;
+          var halfHeight = imgHeight / 2;
+          // Check if they are less than 20 and add 5px if true
+          if (halfWidth < 13) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 13) {
+              halfHeight += 8;
+          }
+          if (halfWidth < 14) {
+              halfWidth += 7;
+          }
+          if (halfHeight < 14) {
+              halfHeight += 7;
+          }
+          if (halfWidth < 15) {
+              halfWidth += 6;
+          }
+          if (halfHeight < 15) {
+              halfHeight += 6;
+          }
+          if (halfWidth < 16) {
+              halfWidth += 5;
+          }
+          if (halfHeight < 16) {
+              halfHeight += 5;
+          }
+          if (halfWidth < 17) {
+              halfWidth += 4;
+          }
+          if (halfHeight < 17) {
+              halfHeight += 4;
+          }
+          if (halfWidth < 18) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 18) {
+              halfHeight += 3;
+          }
+          if (halfWidth < 19) {
+              halfWidth += 3;
+          }
+          if (halfHeight < 19) {
+              halfHeight += 2;
+          }
+          if (halfWidth < 20) {
+              halfWidth += 1;
+          }
+            else{
+              if (product.tags.includes('patch-it-bag')){
+              console.log('yes this patch-it-bag'); 
+         halfHeight += 25;
+         halfWidth += 25;
+              }
+                else if (product.tags.includes('customize-long-bag')){
+                      halfHeight += 25;
+         halfWidth += 25;
+                }
+                else {
+         halfHeight += 20;
+         halfWidth += 20;
+         }
+            }
+        
+  
+          // Set the patch dimensions
+          img.width =halfWidth;
+          img.height =halfHeight;
+
+          newimgHeight = halfHeight;
+          newimgWidth = halfWidth;
+      } 
+   else if (window.matchMedia("(min-width: 376px) and (max-width: 768px)").matches) {
+    console.log('up 375px');
+    console.log(window.innerWidth);
+          // Calculate half width and height
+     var halfWidth = (imgWidth / 2) - 2;
+     var halfHeight = (imgHeight / 2) - 2;
+          // Check if they are less than 20 and add 5px if true
+          if (halfWidth < 13) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 13) {
+              halfHeight += 8;
+          }
+          if (halfWidth < 14) {
+              halfWidth += 7;
+          }
+          if (halfHeight < 14) {
+              halfHeight += 7;
+          }
+          if (halfWidth < 15) {
+              halfWidth += 6;
+          }
+          if (halfHeight < 15) {
+              halfHeight += 6;
+          }
+          if (halfWidth < 16) {
+              halfWidth += 5;
+          }
+          if (halfHeight < 16) {
+              halfHeight += 5;
+          }
+          if (halfWidth < 17) {
+              halfWidth += 4;
+          }
+          if (halfHeight < 17) {
+              halfHeight += 4;
+          }
+          if (halfWidth < 18) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 18) {
+              halfHeight += 3;
+          }
+          if (halfWidth < 19) {
+              halfWidth += 3;
+          }
+          if (halfHeight < 19) {
+              halfHeight += 2;
+          }
+          if (halfWidth < 20) {
+              halfWidth += 1;
+          }
+          if (halfHeight < 20) {
+              halfHeight += 1;
+          }
+  const product = {{ product | json }};
+     if (product.tags.includes('customize-long-bag')){
+        halfHeight += 10;
+       halfWidth += 10;
+  }  else if (product.tags.includes('patch-it-bag')){
+              console.log('yes this patch-it-bag'); 
+         halfHeight -= 5;
+         halfWidth -= 5;
+              }
+          // Set the patch dimensions
+          img.width =halfWidth;
+          img.height =halfHeight;
+
+         newimgHeight = halfHeight;
+          newimgWidth = halfWidth;
+      }  
+    else if (window.innerWidth <= 375) {
+  console.log('below 375px');
+          // Calculate half width and height
+          var halfWidth = (imgWidth / 2) - 2;
+          var halfHeight = (imgHeight / 2) - 2;
+  
+  
+          // Check if they are less than 20 and add 5px if true
+          if (halfWidth < 13) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 13) {
+              halfHeight += 8;
+          }
+          if (halfWidth < 14) {
+              halfWidth += 7;
+          }
+          if (halfHeight < 14) {
+              halfHeight += 7;
+          }
+          if (halfWidth < 15) {
+              halfWidth += 6;
+          }
+          if (halfHeight < 15) {
+              halfHeight += 6;
+          }
+          if (halfWidth < 16) {
+              halfWidth += 5;
+          }
+          if (halfHeight < 16) {
+              halfHeight += 5;
+          }
+          if (halfWidth < 17) {
+              halfWidth += 4;
+          }
+          if (halfHeight < 17) {
+              halfHeight += 4;
+          }
+          if (halfWidth < 18) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 18) {
+              halfHeight += 3;
+          }
+          if (halfWidth < 19) {
+              halfWidth += 3;
+          }
+          if (halfHeight < 19) {
+              halfHeight += 2;
+          }
+          if (halfWidth < 20) {
+              halfWidth += 1;
+          }
+          if (halfHeight < 20) {
+              halfHeight += 1;
+          }
+  const product = {{ product | json }};
+     if (product.tags.includes('customize-long-bag')){
+        halfHeight += 15;
+       halfWidth += 15;
+  } else if (product.tags.includes('patch-it-bag')){
+              console.log('yes this patch-it-bag'); 
+       if (halfHeight > 20 && halfWidth > 20) {
+      halfHeight -= 10;
+      halfWidth -= 10;
+  }
+              }
+          // Set the patch dimensions
+          img.width =halfWidth;
+          img.height =halfHeight;
+
+           newimgHeight = halfHeight;
+          newimgWidth = halfWidth;
+      } 
+      newimgHeight = halfHeight;
+      newimgWidth = halfWidth;
       const svgDiv = document.createElement('div');
       svgDiv.classList.add('zoom');
       const svgIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -1490,7 +2787,7 @@ function showPatches() {
 
       // Add event listener to the SVG icon to open the pop-up
       svgDiv.addEventListener('click', function() {
-          openPopup(item, imgHeight, imgWidth);
+          openPopup(item, newimgHeight, newimgWidth);
       });
 
       $('#patches-wrapper').append(patchDiv);
@@ -1616,40 +2913,7 @@ $('.variants-continue-btn').click(function() {
 
 
 
-// function openPopup(item) {
-//     console.log("Opening popup for item:", item);
-//      const popup = document.querySelector('.popup');
-//     if (popup) {
-//         popup.classList.add('active');
-//         return; // Popup is already open, no need to create a new one
-//     }
 
-//     // Create the pop-up content
-//     const popupContent = `
-//         <div class="popup active">
-//            <div class="popup-close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="30" height="30"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></div>
-//             <div class="patch-pop_up-image-wrapper">
-//             <img src="${item.image}" alt="${item.name}"  class="popup-image" />
-//             </div>
-//             <p class="popup-name">${item.patchname || item.alphabetname}</p>
-//            <div class="add-patch-pop-up-btn" data-patch-src-popup="${item.image}" data-patch-id-popup="${item.id}" data-patch-height-popup="${item.height}" data-patch-width-popup="${item.width}">Add Patch</div>
-
-//         </div>
-//     `;
-
-//     // Append the pop-up content to the body
-//     document.body.insertAdjacentHTML('beforeend', popupContent);
-
-//     // Add event listener to close the pop-up when clicking on the close button
-//     document.querySelector('.popup-close').addEventListener('click', function() {
-//         console.log("Close button clicked");
-//         closePopup();
-//     });
-
-
-
-
-// }
 
 function openPopup(item,imgHeight,imgWidth) {
     console.log("Opening popup for item:", item,imgHeight,imgWidth);
@@ -1715,10 +2979,6 @@ function closePopup() {
       // old alphabets
  function showAlphabets() {
 console.log('showAlphabets',availableVariants);
-    // // Clear existing content in the patches container
-    // $('.patches').empty();
-  //   $('#patches-wrapper').css('visibility', 'hidden');
-  // $('.alphabets-patches').css('visibility', 'visible');
         $('.patches-toggle').hide();
     $('.alphabets-toggle').show();
     // Loop through the patches data and display patches
@@ -1771,7 +3031,8 @@ console.log('showAlphabets',availableVariants);
                           imgWidth = 20;
                       }
                   }
-              } else if (variantname === '6/7' || variantname === '8' || variantname === '7/8' || variantname === '8/9' ||  
+              } 
+              else if (variantname === '6/7' || variantname === '8' || variantname === '7/8' || variantname === '8/9' ||  
                          variantname === '10' || variantname === '9/10' || variantname === '10/11' || variantname === '11/12' || variantname === '12' || 
                          variantname === '14') {
                   if (!productTags.includes("happ-velour-set")) {
@@ -1787,15 +3048,18 @@ console.log('showAlphabets',availableVariants);
                           imgWidth = 20;
                       }
                   }
-              } else if (variantname === 'Small') {
+              }
+              else if (variantname === 'Small') {
                   console.log('condition true');
                   imgHeight += 30;
                   imgWidth += 30;
-              } else if (variantname === 'Medium') {
+              } 
+              else if (variantname === 'Medium') {
                   console.log('condition true');
                   imgHeight += 20;
                   imgWidth += 20;
-              } else if (variantname === 'Large') {
+              } 
+              else if (variantname === 'Large') {
                   console.log('condition true');
                   imgHeight += 10;
                   imgWidth += 10;
@@ -1820,8 +3084,455 @@ console.log('showAlphabets',availableVariants);
                   }
               }
   
-              img.height = imgHeight;
-              img.width = imgWidth;
+    let newimgHeight = 0;
+    let newimgWidth = 0;
+
+if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
+    console.log('yes this is 1250px'); 
+     var halfWidth = imgWidth;
+     var halfHeight = imgHeight;
+  
+          // Check if they are less than 20 and add 5px if true
+          if (halfWidth < 13) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 13) {
+              halfHeight += 8;
+          }
+          if (halfWidth < 14) {
+              halfWidth += 7;
+          }
+          if (halfHeight < 14) {
+              halfHeight += 7;
+          }
+          if (halfWidth < 15) {
+              halfWidth += 6;
+          }
+          if (halfHeight < 15) {
+              halfHeight += 6;
+          }
+          if (halfWidth < 16) {
+              halfWidth += 5;
+          }
+          if (halfHeight < 16) {
+              halfHeight += 5;
+          }
+          if (halfWidth < 17) {
+              halfWidth += 4;
+          }
+          if (halfHeight < 17) {
+              halfHeight += 4;
+          }
+          if (halfWidth < 18) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 18) {
+              halfHeight += 3;
+          }
+          if (halfWidth < 19) {
+              halfWidth += 3;
+          }
+          if (halfHeight < 19) {
+              halfHeight += 2;
+          }
+          if (halfWidth < 20) {
+              halfWidth += 1;
+          }
+          else{
+         if (product.tags.includes('patch-it-bag')){
+         console.log('yes this patch-it-bag'); 
+         halfHeight += 25;
+         halfWidth += 25;
+              }
+                else {
+         halfHeight += 7;
+         halfWidth += 7;
+         }
+            
+        
+          
+          // Set the patch dimensions
+          img.width =halfWidth;
+          img.height =halfHeight;
+
+          newimgHeight = halfHeight;
+          newimgWidth = halfWidth;
+  }
+         
+      }
+   else  if (window.matchMedia("(min-width: 1031px) and (max-width: 1500px)").matches) {
+    console.log('yes this is 1031px'); 
+   const normalizedWidth = window.innerWidth / window.devicePixelRatio;
+  console.log('Normalized Width is this:', normalizedWidth);
+  if (normalizedWidth >= 600 && normalizedWidth <= 1024) {
+      console.log('This is iPad Pro');
+         console.log('yes this is ipad view'); 
+     console.log('Window Width: ', window.innerWidth);
+    // Calculate half width and heigh
+          var halfWidth = imgWidth / 2.5;
+          var halfHeight = imgHeight / 2.5;
+          // Check if they are less than 20 and add 5px if true
+          if (halfWidth < 13) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 13) {
+              halfHeight += 8;
+          }
+          if (halfWidth < 14) {
+              halfWidth += 7;
+          }
+          if (halfHeight < 14) {
+              halfHeight += 7;
+          }
+          if (halfWidth < 15) {
+              halfWidth += 6;
+          }
+          if (halfHeight < 15) {
+              halfHeight += 6;
+          }
+          if (halfWidth < 16) {
+              halfWidth += 5;
+          }
+          if (halfHeight < 16) {
+              halfHeight += 5;
+          }
+          if (halfWidth < 17) {
+              halfWidth += 4;
+          }
+          if (halfHeight < 17) {
+              halfHeight += 4;
+          }
+          if (halfWidth < 18) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 18) {
+              halfHeight += 3;
+          }
+          if (halfWidth < 19) {
+              halfWidth += 3;
+          }
+          if (halfHeight < 19) {
+              halfHeight += 2;
+          }
+          if (halfWidth < 20) {
+              halfWidth += 1;
+          }
+            else{
+              if (product.tags.includes('patch-it-bag')){
+              console.log('yes this patch-it-bag'); 
+         halfHeight += 25;
+         halfWidth += 25;
+              }
+                else if (product.tags.includes('customize-long-bag')){
+                      halfHeight += 25;
+         halfWidth += 25;
+                }
+                else {
+         halfHeight += 15;
+         halfWidth += 15;
+         }
+            }
+          // Set the patch dimensions
+          img.width =halfWidth;
+          img.height =halfHeight;
+
+          newimgHeight = halfHeight;
+          newimgWidth = halfWidth;
+  }
+  else{
+          var halfWidth = imgWidth - 25;
+          var halfHeight = imgHeight - 25;
+          // Check if they are less than 20 and add 5px if true
+          if (halfWidth < 13) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 13) {
+              halfHeight += 8;
+          }
+          if (halfWidth < 14) {
+              halfWidth += 7;
+          }
+          if (halfHeight < 14) {
+              halfHeight += 7;
+          }
+          if (halfWidth < 15) {
+              halfWidth += 6;
+          }
+          if (halfHeight < 15) {
+              halfHeight += 6;
+          }
+          if (halfWidth < 16) {
+              halfWidth += 5;
+          }
+          if (halfHeight < 16) {
+              halfHeight += 5;
+          }
+          if (halfWidth < 17) {
+              halfWidth += 4;
+          }
+          if (halfHeight < 17) {
+              halfHeight += 4;
+          }
+          if (halfWidth < 18) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 18) {
+              halfHeight += 3;
+          }
+          if (halfWidth < 19) {
+              halfWidth += 3;
+          }
+          if (halfHeight < 19) {
+              halfHeight += 2;
+          }
+          if (halfWidth < 20) {
+              halfWidth += 1;
+          }
+          else{
+         if (product.tags.includes('patch-it-bag')){
+         console.log('yes this patch-it-bag'); 
+         halfHeight += 25;
+         halfWidth += 25;
+              }
+                else {
+         halfHeight += 15;
+         halfWidth += 15;
+         }
+            }
+        
+  
+          // Set the patch dimensions
+          img.width =halfWidth;
+          img.height =halfHeight;
+
+          newimgHeight = halfHeight;
+          newimgWidth = halfWidth;
+  }
+         
+      }
+   else if (window.matchMedia("(min-width: 769px) and (max-width: 1030px)").matches) {
+       console.log('yes this is ipad view'); 
+     console.log('Window Width: ', window.innerWidth);
+    // Calculate half width and height
+          var halfWidth = imgWidth / 2.3;
+          var halfHeight = imgHeight / 2.3;
+          // Check if they are less than 20 and add 5px if true
+          if (halfWidth < 13) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 13) {
+              halfHeight += 8;
+          }
+          if (halfWidth < 14) {
+              halfWidth += 7;
+          }
+          if (halfHeight < 14) {
+              halfHeight += 7;
+          }
+          if (halfWidth < 15) {
+              halfWidth += 6;
+          }
+          if (halfHeight < 15) {
+              halfHeight += 6;
+          }
+          if (halfWidth < 16) {
+              halfWidth += 5;
+          }
+          if (halfHeight < 16) {
+              halfHeight += 5;
+          }
+          if (halfWidth < 17) {
+              halfWidth += 4;
+          }
+          if (halfHeight < 17) {
+              halfHeight += 4;
+          }
+          if (halfWidth < 18) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 18) {
+              halfHeight += 3;
+          }
+          if (halfWidth < 19) {
+              halfWidth += 3;
+          }
+          if (halfHeight < 19) {
+              halfHeight += 2;
+          }
+          if (halfWidth < 20) {
+              halfWidth += 1;
+          }
+            else{
+              if (product.tags.includes('patch-it-bag')){
+              console.log('yes this patch-it-bag'); 
+         halfHeight += 25;
+         halfWidth += 25;
+              }
+                else if (product.tags.includes('customize-long-bag')){
+                      halfHeight += 25;
+         halfWidth += 25;
+                }
+                else {
+         halfHeight += 20;
+         halfWidth += 20;
+         }
+            }
+        
+  
+          // Set the patch dimensions
+          img.width =halfWidth;
+          img.height =halfHeight;
+
+          newimgHeight = halfHeight;
+          newimgWidth = halfWidth;
+      } 
+   else if (window.matchMedia("(min-width: 376px) and (max-width: 768px)").matches) {
+    console.log('up 375px');
+    console.log(window.innerWidth);
+          // Calculate half width and height
+     var halfWidth = (imgWidth / 2) - 4;
+     var halfHeight = (imgHeight / 2) - 4;
+          // Check if they are less than 20 and add 5px if true
+          if (halfWidth < 13) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 13) {
+              halfHeight += 8;
+          }
+          if (halfWidth < 14) {
+              halfWidth += 7;
+          }
+          if (halfHeight < 14) {
+              halfHeight += 7;
+          }
+          if (halfWidth < 15) {
+              halfWidth += 6;
+          }
+          if (halfHeight < 15) {
+              halfHeight += 6;
+          }
+          if (halfWidth < 16) {
+              halfWidth += 5;
+          }
+          if (halfHeight < 16) {
+              halfHeight += 5;
+          }
+          if (halfWidth < 17) {
+              halfWidth += 4;
+          }
+          if (halfHeight < 17) {
+              halfHeight += 4;
+          }
+          if (halfWidth < 18) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 18) {
+              halfHeight += 3;
+          }
+          if (halfWidth < 19) {
+              halfWidth += 3;
+          }
+          if (halfHeight < 19) {
+              halfHeight += 2;
+          }
+          if (halfWidth < 20) {
+              halfWidth += 1;
+          }
+          if (halfHeight < 20) {
+              halfHeight += 1;
+          }
+  const product = {{ product | json }};
+     if (product.tags.includes('customize-long-bag')){
+        halfHeight += 10;
+       halfWidth += 10;
+  }  else if (product.tags.includes('patch-it-bag')){
+              console.log('yes this patch-it-bag'); 
+         halfHeight -= 5;
+         halfWidth -= 5;
+              }
+          // Set the patch dimensions
+          img.width =halfWidth;
+          img.height =halfHeight;
+
+         newimgHeight = halfHeight;
+          newimgWidth = halfWidth;
+      }  
+    else if (window.innerWidth <= 375) {
+  console.log('below 375px');
+          // Calculate half width and height
+          var halfWidth = (imgWidth / 2) - 3;
+          var halfHeight = (imgHeight / 2) - 3;
+  
+  
+          // Check if they are less than 20 and add 5px if true
+          if (halfWidth < 13) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 13) {
+              halfHeight += 8;
+          }
+          if (halfWidth < 14) {
+              halfWidth += 7;
+          }
+          if (halfHeight < 14) {
+              halfHeight += 7;
+          }
+          if (halfWidth < 15) {
+              halfWidth += 6;
+          }
+          if (halfHeight < 15) {
+              halfHeight += 6;
+          }
+          if (halfWidth < 16) {
+              halfWidth += 5;
+          }
+          if (halfHeight < 16) {
+              halfHeight += 5;
+          }
+          if (halfWidth < 17) {
+              halfWidth += 4;
+          }
+          if (halfHeight < 17) {
+              halfHeight += 4;
+          }
+          if (halfWidth < 18) {
+              halfWidth += 8;
+          }
+          if (halfHeight < 18) {
+              halfHeight += 3;
+          }
+          if (halfWidth < 19) {
+              halfWidth += 3;
+          }
+          if (halfHeight < 19) {
+              halfHeight += 2;
+          }
+          if (halfWidth < 20) {
+              halfWidth += 1;
+          }
+          if (halfHeight < 20) {
+              halfHeight += 1;
+          }
+  const product = {{ product | json }};
+     if (product.tags.includes('customize-long-bag')){
+        halfHeight += 15;
+       halfWidth += 15;
+  } else if (product.tags.includes('patch-it-bag')){
+              console.log('yes this patch-it-bag'); 
+       if (halfHeight > 20 && halfWidth > 20) {
+      halfHeight -= 10;
+      halfWidth -= 10;
+  }
+              }
+          // Set the patch dimensions
+          img.width =halfWidth;
+          img.height =halfHeight;
+
+           newimgHeight = halfHeight;
+          newimgWidth = halfWidth;
+      } 
+      newimgHeight = halfHeight;
+      newimgWidth = halfWidth; 
         const svgDiv = document.createElement('div');
         svgDiv.classList.add('zoom');
         const svgIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -1835,11 +3546,11 @@ console.log('showAlphabets',availableVariants);
   
         patchDiv.appendChild(img);
         patchDiv.appendChild(title);
-        patchDiv.appendChild(svgDiv);
+        // patchDiv.appendChild(svgDiv);
   
         // Add event listener to the SVG icon to open the pop-up
         svgDiv.addEventListener('click', function() {
-            openPopup(item, imgHeight, imgWidth);
+            openPopup(item, newimgHeight, newimgWidth);
         });
   
         $('#alphabets-wrapper').append(patchDiv);
@@ -2163,45 +3874,6 @@ function createVariantDivs(colorTitle) {
   });
 }
 
-
-//        function showSizeVariants() {
-//     console.log('This is size variants');
-
-//     const product = {{ product | json }};
-
-//     // Clear any existing hidden classes
-//     document.getElementById('small_variant').classList.remove("hide_size_variants");
-//     document.getElementById('medium_variant').classList.remove("hide_size_variants");
-//     document.getElementById('large_variant').classList.remove("hide_size_variants");
-//     document.getElementById('extra_large_variant').classList.remove("hide_size_variants");
-
-//     // Iterate over the product variants
-//     product.variants.forEach(variant => {
-//         console.log('Variant ID:', variant.id);
-
-//         // Check each sizeVariant against the current product variant
-//         sizeVariants.forEach(sizeVariant => {
-//             if (sizeVariant.id.toString() === variant.id.toString()) {
-//                 if (sizeVariant.Smalll === "false") {
-//                     const small = document.getElementById('small_variant');
-//                     small.classList.add("hide_size_variants");
-//                 }
-//                 if (sizeVariant.Medium === "false") {
-//                     const medium = document.getElementById('medium_variant');
-//                     medium.classList.add("hide_size_variants");
-//                 }
-//                 if (sizeVariant.Large === "false") {
-//                     const large = document.getElementById('large_variant');
-//                     large.classList.add("hide_size_variants");
-//                 }
-//                 if (sizeVariant.Extra_Large === "false") {
-//                     const extraLarge = document.getElementById('extra_large_variant');
-//                     extraLarge.classList.add("hide_size_variants");
-//                 }
-//             }
-//         });
-//     });
-// }
 $('.size_variants').click(function() {
                 // Remove 'size_variants_active' class from all elements with 'size_variants' class
                 $('.size_variants').removeClass('size_variants_active');
@@ -2246,40 +3918,6 @@ img.src = currentImageData.FProductImg.replace('/upload/', '/upload/w_100/');
         centerBox.style.left = currentImageData.FLeft + '%';
     }
 }
-
-  //old back image   
-// function showBackImage() {
-//    // Get the variant ID
-//    const variantId = "{{variant.id}}"; // Replace "{{variant.id}}" with your actual variant ID
-
-//    // Find the image data for the current variant
-//    const currentImageData = imagesData.find(item => item.FproductId === variantId);
-
-//    // Update the image source and CSS properties if data is found
-//    if (currentImageData) {
-//      const img = document.getElementById("Back-image");
-//      img.src = currentImageData.Backimg;
-
-//      // Check if Backimg is empty and hide the div if it is
-//      const patchesWrapper = document.querySelector(".patches-customizations-btn-wrapper");
-//      const sizevariantscontaier = document.querySelector(".size_variants_section");
-//      if (!currentImageData.Backimg) {
-//        patchesWrapper.style.visibility = "hidden";
-//        sizevariantscontaier.style.visibility = "hidden";
-//      } else {
-//        patchesWrapper.style.visibility = "visible";
-//        sizevariantscontaier.style.visibility = "visible";
-//      }
-
-//      // Update CSS properties of #centerBox
-//      const centerBox = document.getElementById("BackcenterBox");
-//      centerBox.style.height = currentImageData.BHeight + '%';
-//      centerBox.style.width = currentImageData.BWidth + '%';
-//      centerBox.style.top = currentImageData.BTop + '%';
-//      centerBox.style.left = currentImageData.BLeft + '%';
-//    }
-// }
- //new back image
 function showBackImage() {
    // Get the variant ID
    const variantId = "{{variant.id}}"; // Replace "{{variant.id}}" with your actual variant ID
@@ -2304,7 +3942,7 @@ function showBackImage() {
 
      // Check if Backimg is empty and hide the div if it is
        const productTags = {{ product.tags | json }};
-     const patchesWrapper = document.querySelector(".patches-customizations-btn-wrapper");
+     const patchesWrapper = document.querySelector(".front-back-btn-wrapp-only-desktop");
      const sizevariantscontaier = document.querySelector(".size_variants_section");
       if (productTags.includes("happ-velour-set")){
           patchesWrapper.style.visibility = "hidden"; 
@@ -2337,39 +3975,6 @@ function showBackImage() {
    });
 </script>
 
-<!--
-  <script>
-    async function uploadBlob(pngImageURL, inputSelector) {
-      // Fetch the image URL
-      const response = await fetch(pngImageURL);
-
-      // Convert the fetched response to a blob
-      const blob = await response.blob();
-
-      // Use FormData to prepare the data for sending
-      const formData = new FormData();
-      formData.append('image', blob, 'upload.png');
-
-      // Send the FormData to the server
-      const result = await fetch('http://localhost:3900/check', {
-        method: 'POST',
-        body: formData
-      });
-
-      // Assuming the server responds with JSON
-      const jsonResponse = await result.json();
-      console.log(jsonResponse);
-
-      // Update the value of the input field with the file URL
-      if (jsonResponse && jsonResponse.fileUrl) {
-        document.querySelector(inputSelector).value = jsonResponse.fileUrl;
-      } else {
-        console.error('File URL not found in the response');
-      }
-    }
-  </script>
--->
-<!-- drag and drop code -->
 <script>
 const canvas = document.getElementById('imageDiv');
 const centerBox = document.getElementById('centerBox');
@@ -2384,230 +3989,8 @@ let offsetX = 0;
 let offsetY = 0;
 
 
-// function convertToPng() {
-//     BackconvertToPng();
-//     FrontconvertToPng();
-//     // addTocartcustpatch(); // Call your function here
-// }
-
-// function BackconvertToPng() {
-//     var imageDiv = document.getElementById('BackimageDiv');
-//     var patches = imageDiv.querySelectorAll('.patch- img'); // Correct the query selector for patches
-//     var canvas = document.createElement('canvas');
-//     var ctx = canvas.getContext('2d');
-
-//     // Set canvas size to match the containing div's size
-//     var imageDivRect = imageDiv.getBoundingClientRect();
-//     canvas.width = imageDivRect.width;
-//     canvas.height = imageDivRect.height;
-
-//     // Draw the main image on the canvas with object-fit: contain
-//     var sourceImage = document.getElementById('Back-image');
-//     if (!sourceImage) {
-//         console.error('Source image not found');
-//         return;
-//     }
-
-//     // Calculate dimensions and position based on object-fit: contain
-//     var containerAspectRatio = canvas.width / canvas.height;
-//     var imageAspectRatio = sourceImage.naturalWidth / sourceImage.naturalHeight;
-
-//     var sourceWidth, sourceHeight, sourcePosX, sourcePosY;
-
-//     if (containerAspectRatio > imageAspectRatio) {
-//         // Container is wider than image
-//         sourceWidth = canvas.height * imageAspectRatio;
-//         sourceHeight = canvas.height;
-//         sourcePosX = (canvas.width - sourceWidth) / 2;
-//         sourcePosY = 0;
-//     } else {
-//         // Container is taller than image
-//         sourceWidth = canvas.width;
-//         sourceHeight = canvas.width / imageAspectRatio;
-//         sourcePosX = 0;
-//         sourcePosY = (canvas.height - sourceHeight) / 2;
-//     }
-
-//     ctx.drawImage(sourceImage, sourcePosX, sourcePosY, sourceWidth, sourceHeight);
-
-//     // Draw patches on the canvas
-//     patches.forEach(function (patch) {
-//         var patchRect = patch.getBoundingClientRect();
-//         var patchDivRect = patch.parentElement.getBoundingClientRect();
-
-//         // Calculate the position of the patch relative to the image div
-//         var patchPosX = patchDivRect.left - imageDivRect.left;
-//         var patchPosY = patchDivRect.top - imageDivRect.top;
-
-     
-
-//     var patchWidth = patch.getAttribute('height');
-//         var patchHeight = patch.getAttribute('width');
-
-//         console.log('patchWidth', patchWidth);
-//         console.log('patchHeight', patchHeight);
-//         // Get the rotation angle from the patch element's style
-//         var rotationDegrees = 0;
-//         var transform = patch.parentElement.style.transform;
-//         if (transform) {
-//             var match = transform.match(/rotate\(([-\d.]+)deg\)/);
-//             if (match) {
-//                 rotationDegrees = parseFloat(match[1]);
-//             }
-//         }
-
-//         // Calculate dimensions and position based on object-fit: contain
-//         var patchAspectRatio = patch.naturalWidth / patch.naturalHeight;
-//         var drawWidth, drawHeight, drawPosX, drawPosY;
-
-//         if (patchWidth / patchHeight > patchAspectRatio) {
-//             // Container is wider than patch
-//             drawWidth = patchHeight * patchAspectRatio;
-//             drawHeight = patchHeight;
-//             drawPosX = (patchWidth - drawWidth) / 2;
-//             drawPosY = 0;
-//         } else {
-//             // Container is taller than patch
-//             drawWidth = patchWidth;
-//             drawHeight = patchWidth / patchAspectRatio;
-//             drawPosX = 0;
-//             drawPosY = (patchHeight - drawHeight) / 2;
-//         }
-
-//         // Apply rotation in degrees and draw the patch
-//         ctx.save();
-//         ctx.translate(patchPosX + patchWidth / 2, patchPosY + patchHeight / 2); // Move to the center of the patch
-//         ctx.rotate(rotationDegrees * Math.PI / 180); // Rotate the canvas in degrees
-//         ctx.drawImage(patch, -drawWidth / 2, -drawHeight / 2, drawWidth, drawHeight);
-//         ctx.restore();
-//     });
-
-//     // Convert canvas to Blob
-//     canvas.toBlob(function (blob) {
-//         // Here, you have the image as a blob
-//         // For example, to display the new blob image, convert blob to ObjectURL
-//         var pngImageURL = URL.createObjectURL(blob);
-
-//         // Upload the blob URL
-//         uploadBlob(pngImageURL, 'input[name="customized_image_url_back"]');
-
-//         // Display the new image
-//         var outputDiv = document.getElementById('BackoutputDiv');
-//         var newImg = document.createElement('img');
-//         newImg.src = pngImageURL;
-
-//         outputDiv.innerHTML = ''; // Clear the output div before appending new image
-//         outputDiv.appendChild(newImg);
-//     }, 'image/png');
-// }
-// function FrontconvertToPng() {
-//     var imageDiv = document.getElementById('imageDiv');
-//     var patches = imageDiv.querySelectorAll('.patch- img');
-//     var canvas = document.createElement('canvas');
-//     var ctx = canvas.getContext('2d');
-
-//     // Set canvas size to match the containing div's size
-//     var imageDivRect = imageDiv.getBoundingClientRect();
-//     canvas.width = imageDivRect.width;
-//     canvas.height = imageDivRect.height;
-
-//     // Draw the main image on the canvas with object-fit: contain
-//     var sourceImage = document.getElementById('Front-image');
-//     if (!sourceImage) {
-//         console.error('Source image not found');
-//         return;
-//     }
-
-//     // Calculate dimensions and position based on object-fit: contain
-//     var containerAspectRatio = canvas.width / canvas.height;
-//     var imageAspectRatio = sourceImage.naturalWidth / sourceImage.naturalHeight;
-
-//     var sourceWidth, sourceHeight, sourcePosX, sourcePosY;
-
-//     if (containerAspectRatio > imageAspectRatio) {
-//         // Container is wider than image
-//         sourceWidth = canvas.height * imageAspectRatio;
-//         sourceHeight = canvas.height;
-//         sourcePosX = (canvas.width - sourceWidth) / 2;
-//         sourcePosY = 0;
-//     } else {
-//         // Container is taller than image
-//         sourceWidth = canvas.width;
-//         sourceHeight = canvas.width / imageAspectRatio;
-//         sourcePosX = 0;
-//         sourcePosY = (canvas.height - sourceHeight) / 2;
-//     }
-
-//     ctx.drawImage(sourceImage, sourcePosX, sourcePosY, sourceWidth, sourceHeight);
-
-//     // Draw patches on the canvas
-//     patches.forEach(function (patch) {
-//         var patchRect = patch.getBoundingClientRect();
-//         var patchDivRect = patch.parentElement.getBoundingClientRect();
-//         var patchPosX = patchDivRect.left - imageDivRect.left;
-//         var patchPosY = patchDivRect.top - imageDivRect.top;
-//         var patchWidth = patch.getAttribute('height');
-//         var patchHeight = patch.getAttribute('width');
-
-//         // Calculate dimensions and position based on object-fit: contain
-//         var patchAspectRatio = patch.naturalWidth / patch.naturalHeight;
-
-//         var drawWidth, drawHeight, drawPosX, drawPosY;
-
-//         if (patchWidth / patchHeight > patchAspectRatio) {
-//             // Container is wider than patch
-//             drawWidth = patchHeight * patchAspectRatio;
-//             drawHeight = patchHeight;
-//             drawPosX = patchPosX + (patchWidth - drawWidth) / 2;
-//             drawPosY = patchPosY;
-//         } else {
-//             // Container is taller than patch
-//             drawWidth = patchWidth;
-//             drawHeight = patchWidth / patchAspectRatio;
-//             drawPosX = patchPosX;
-//             drawPosY = patchPosY + (patchHeight - drawHeight) / 2;
-//         }
-
-//         // Get the rotation angle from the patch element's style
-//         var rotation = 0;
-//         var transform = patch.parentElement.style.transform;
-//         console.log('transform',transform)
-//         if (transform) {
-//             var match = transform.match(/rotate\(([-\d.]+)deg\)/);
-//            console.log('match',match)
-//             if (match) {
-//               console.log('matched')
-//                 rotation = parseFloat(match[1]) * (Math.PI / 180); // Convert degrees to radians
-//             }
-//         }
-
-//         // Apply rotation and draw the patch
-//         ctx.save();
-//         ctx.translate(patchPosX + patchWidth / 2, patchPosY + patchHeight / 2); // Move to the center of the patch
-//         ctx.rotate(rotation); // Rotate the canvas
-//         ctx.drawImage(patch, -drawWidth / 2, -drawHeight / 2, drawWidth, drawHeight); // Draw the patch
-//         ctx.restore();
-//     });
-
-//     // Convert canvas to Blob
-//     canvas.toBlob(function (blob) {
-//         // Here, you have the image as a blob
-//         // For example, to display the new blob image, convert blob to ObjectURL
-//         var pngImageURL = URL.createObjectURL(blob);
-
-//         uploadBlob(pngImageURL, 'input[name="customized_image_url_front"]');
-
-//         // Display the new image
-//         var outputDiv = document.getElementById('outputDiv');
-//         var newImg = document.createElement('img');
-//         newImg.src = pngImageURL;
-
-//         outputDiv.innerHTML = ''; // Clear the output div before appending new image
-//         outputDiv.appendChild(newImg);
-//     }, 'image/png');
-// }
-
   function  selectpastchesodertidy(patchSrc,newPatchId){
+    console.log('selectpastchesodertidy calledd')
     if (document.getElementById('Front-Area').style.visibility === 'visible') {
           $('.back-tdiy-patches-btn').removeClass('tdiy-patches-btn-active')
         $('.front-tdiy-patches-btn').addClass('tdiy-patches-btn-active')
@@ -2676,7 +4059,7 @@ let currentY = 0;
 
 function addPatchToCenterBox(patchSrc, patchId, height, width) {
  
-  console.log('adding to frontt'); 
+  console.log('adding to front'); 
   console.log(height,width);
     var patchDiv = document.createElement('div');
     patchDiv.setAttribute('v-id', patchId);
@@ -2687,7 +4070,21 @@ function addPatchToCenterBox(patchSrc, patchId, height, width) {
     var centerBox = document.querySelector('.centerBox');
     var patchesContainer = centerBox.querySelector('.patches-container');
     var existingPatch = patchesContainer.querySelector(`div[v-id="${patchId}"]`);
-  
+  let mainPatchActionDivDel = document.createElement('div');
+mainPatchActionDivDel.classList.add('main-patch-action-div-del');
+    let svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+svgElement.setAttribute("width", "20");
+svgElement.setAttribute("height", "21");
+svgElement.setAttribute("viewBox", "0 0 20 21");
+svgElement.setAttribute("fill", "none");
+svgElement.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+svgElement.innerHTML = `
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M3.3335 6.38072C3.3335 5.59174 3.93045 4.95215 4.66683 4.95215H15.3335C16.0699 4.95215 16.6668 5.59174 16.6668 6.38072V19.2379C16.6668 20.0268 16.0699 20.6664 15.3335 20.6664H4.66683C3.93045 20.6664 3.3335 20.0268 3.3335 19.2379V6.38072ZM4.66683 6.38072V19.2379H15.3335V6.38072H4.66683Z" fill="#393939"></path>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M7.07699 6.38086V3.52372C7.07699 3.12923 7.37546 2.80943 7.74365 2.80943H12.2565C12.6247 2.80943 12.9231 3.12923 12.9231 3.52372V6.38086H14.2565V3.52372C14.2565 2.34025 13.361 1.38086 12.2565 1.38086H7.74365C6.63908 1.38086 5.74365 2.34025 5.74365 3.52372V6.38086H7.07699Z" fill="#393939"></path>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M0.666748 5.66643C0.666748 5.27195 0.965225 4.95215 1.33341 4.95215L18.6667 4.95215C19.0349 4.95215 19.3334 5.27195 19.3334 5.66644C19.3334 6.06093 19.0349 6.38072 18.6667 6.38072L1.33341 6.38072C0.965225 6.38072 0.666748 6.06092 0.666748 5.66643Z" fill="#393939"></path>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M8.00008 7.80957C8.36827 7.80957 8.66675 8.12937 8.66675 8.52386L8.66675 17.0953C8.66675 17.4898 8.36827 17.8096 8.00008 17.8096C7.63189 17.8096 7.33341 17.4898 7.33341 17.0953L7.33341 8.52386C7.33341 8.12937 7.63189 7.80957 8.00008 7.80957Z" fill="#393939"></path>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0001 7.80957C12.3683 7.80957 12.6667 8.12937 12.6667 8.52386L12.6667 17.0953C12.6667 17.4898 12.3683 17.8096 12.0001 17.8096C11.6319 17.8096 11.3334 17.4898 11.3334 17.0953L11.3334 8.52386C11.3334 8.12937 11.6319 7.80957 12.0001 7.80957Z" fill="#393939"></path>
+`;
     if (existingPatch) {
         console.log('Matching v-id found:', patchId);
         width = parseInt(existingPatch.style.width);
@@ -2696,17 +4093,15 @@ function addPatchToCenterBox(patchSrc, patchId, height, width) {
         patchDiv.style.height = height + 'px';
     }
     else {
-       const normalizedWidth = window.innerWidth / window.devicePixelRatio;
-   console.log('window.innerWidth is this:', window.innerWidth);
-       if ((window.orientation === 90 || window.orientation === -90) && window.innerWidth < 1024) {
+    if ((window.orientation === 90 || window.orientation === -90) && window.innerWidth < 1024) {
          console.log('orientation');
       const normalizedWidth = Math.min(screen.width, screen.height);
 
          if (normalizedWidth <= 375)  {
  
         // Calculate half width and height
-   var halfWidth = (width / 2) - 2;
-var halfHeight = (height / 2) - 2;
+   var halfWidth = (width / 2) - 15;
+var halfHeight = (height / 2) - 15;
 
 
         // Check if they are less than 20 and add 5px if true
@@ -2777,7 +4172,7 @@ const product = {{ product | json }};
          else {
             
               var halfWidth = (width / 2) - 2;
-var halfHeight = (height / 2) - 2;
+              var halfHeight = (height / 2) - 2;
 
 
         // Check if they are less than 20 and add 5px if true
@@ -2841,451 +4236,10 @@ var halfHeight = (height / 2) - 2;
         // Calculate half width and height
 
     } 
-      else{
-        console.log('not orientation');
-        
-       if (window.matchMedia("(min-width: 1250px) and (max-width: 1600px)").matches) {
-  console.log('yes this is 1250px'); 
-   var halfWidth =width - 10;
-        var halfHeight = height - 10;
-
-        // Check if they are less than 20 and add 5px if true
-        if (halfWidth < 13) {
-            halfWidth += 8;
-        }
-        if (halfHeight < 13) {
-            halfHeight += 8;
-        }
-        if (halfWidth < 14) {
-            halfWidth += 7;
-        }
-        if (halfHeight < 14) {
-            halfHeight += 7;
-        }
-        if (halfWidth < 15) {
-            halfWidth += 6;
-        }
-        if (halfHeight < 15) {
-            halfHeight += 6;
-        }
-        if (halfWidth < 16) {
-            halfWidth += 5;
-        }
-        if (halfHeight < 16) {
-            halfHeight += 5;
-        }
-        if (halfWidth < 17) {
-            halfWidth += 4;
-        }
-        if (halfHeight < 17) {
-            halfHeight += 4;
-        }
-        if (halfWidth < 18) {
-            halfWidth += 8;
-        }
-        if (halfHeight < 18) {
-            halfHeight += 3;
-        }
-        if (halfWidth < 19) {
-            halfWidth += 3;
-        }
-        if (halfHeight < 19) {
-            halfHeight += 2;
-        }
-        if (halfWidth < 20) {
-            halfWidth += 1;
-        }
-        else{
-       if (product.tags.includes('patch-it-bag')){
-       console.log('yes this patch-it-bag'); 
-       halfHeight += 25;
-       halfWidth += 25;
-            }
-              else {
-       halfHeight += 15;
-       halfWidth += 15;
-       }
-          
-      
-
-        // Set the patch dimensions
-        patchDiv.style.width = halfWidth + 'px';
-        patchDiv.style.height = halfHeight + 'px';
-}
-       
-    }
- else  if (window.matchMedia("(min-width: 1031px) and (max-width: 1249px)").matches) {
-  console.log('yes this is 1031px'); 
- const normalizedWidth = window.innerWidth / window.devicePixelRatio;
-console.log('Normalized Width is this:', normalizedWidth);
-if (normalizedWidth >= 600 && normalizedWidth <= 1024) {
-    console.log('This is iPad Pro');
-       console.log('yes this is ipad view'); 
-   console.log('Window Width: ', window.innerWidth);
-  // Calculate half width and height
-        var halfWidth = width / 2;
-        var halfHeight = height / 2;
-
-        // Check if they are less than 20 and add 5px if true
-        if (halfWidth < 13) {
-            halfWidth += 8;
-        }
-        if (halfHeight < 13) {
-            halfHeight += 8;
-        }
-        if (halfWidth < 14) {
-            halfWidth += 7;
-        }
-        if (halfHeight < 14) {
-            halfHeight += 7;
-        }
-        if (halfWidth < 15) {
-            halfWidth += 6;
-        }
-        if (halfHeight < 15) {
-            halfHeight += 6;
-        }
-        if (halfWidth < 16) {
-            halfWidth += 5;
-        }
-        if (halfHeight < 16) {
-            halfHeight += 5;
-        }
-        if (halfWidth < 17) {
-            halfWidth += 4;
-        }
-        if (halfHeight < 17) {
-            halfHeight += 4;
-        }
-        if (halfWidth < 18) {
-            halfWidth += 8;
-        }
-        if (halfHeight < 18) {
-            halfHeight += 3;
-        }
-        if (halfWidth < 19) {
-            halfWidth += 3;
-        }
-        if (halfHeight < 19) {
-            halfHeight += 2;
-        }
-        if (halfWidth < 20) {
-            halfWidth += 1;
-        }
-          else{
-            if (product.tags.includes('patch-it-bag')){
-            console.log('yes this patch-it-bag'); 
-       halfHeight += 25;
-       halfWidth += 25;
-            }
-              else if (product.tags.includes('customize-long-bag')){
-                    halfHeight += 25;
-       halfWidth += 25;
-              }
-              else {
-       halfHeight += 15;
-       halfWidth += 15;
-       }
-          }
-      
-
-        // Set the patch dimensions
-        patchDiv.style.width = halfWidth + 'px';
-        patchDiv.style.height = halfHeight + 'px';
-}
-else{
-   var halfWidth =width - 20;
-        var halfHeight = height - 20;
-
-        // Check if they are less than 20 and add 5px if true
-        if (halfWidth < 13) {
-            halfWidth += 8;
-        }
-        if (halfHeight < 13) {
-            halfHeight += 8;
-        }
-        if (halfWidth < 14) {
-            halfWidth += 7;
-        }
-        if (halfHeight < 14) {
-            halfHeight += 7;
-        }
-        if (halfWidth < 15) {
-            halfWidth += 6;
-        }
-        if (halfHeight < 15) {
-            halfHeight += 6;
-        }
-        if (halfWidth < 16) {
-            halfWidth += 5;
-        }
-        if (halfHeight < 16) {
-            halfHeight += 5;
-        }
-        if (halfWidth < 17) {
-            halfWidth += 4;
-        }
-        if (halfHeight < 17) {
-            halfHeight += 4;
-        }
-        if (halfWidth < 18) {
-            halfWidth += 8;
-        }
-        if (halfHeight < 18) {
-            halfHeight += 3;
-        }
-        if (halfWidth < 19) {
-            halfWidth += 3;
-        }
-        if (halfHeight < 19) {
-            halfHeight += 2;
-        }
-        if (halfWidth < 20) {
-            halfWidth += 1;
-        }
-        else{
-       if (product.tags.includes('patch-it-bag')){
-       console.log('yes this patch-it-bag'); 
-       halfHeight += 25;
-       halfWidth += 25;
-            }
-              else {
-       halfHeight += 15;
-       halfWidth += 15;
-       }
-          }
-      
-
-        // Set the patch dimensions
-        patchDiv.style.width = halfWidth + 'px';
-        patchDiv.style.height = halfHeight + 'px';
-}
-       
-    }
- else if (window.matchMedia("(min-width: 769px) and (max-width: 1024px)").matches) {
-     console.log('yes this is ipad view'); 
-   console.log('Window Width: ', window.innerWidth);
-  // Calculate half width and height
-        var halfWidth = width / 2;
-        var halfHeight = height / 2;
-
-        // Check if they are less than 20 and add 5px if true
-        if (halfWidth < 13) {
-            halfWidth += 8;
-        }
-        if (halfHeight < 13) {
-            halfHeight += 8;
-        }
-        if (halfWidth < 14) {
-            halfWidth += 7;
-        }
-        if (halfHeight < 14) {
-            halfHeight += 7;
-        }
-        if (halfWidth < 15) {
-            halfWidth += 6;
-        }
-        if (halfHeight < 15) {
-            halfHeight += 6;
-        }
-        if (halfWidth < 16) {
-            halfWidth += 5;
-        }
-        if (halfHeight < 16) {
-            halfHeight += 5;
-        }
-        if (halfWidth < 17) {
-            halfWidth += 4;
-        }
-        if (halfHeight < 17) {
-            halfHeight += 4;
-        }
-        if (halfWidth < 18) {
-            halfWidth += 8;
-        }
-        if (halfHeight < 18) {
-            halfHeight += 3;
-        }
-        if (halfWidth < 19) {
-            halfWidth += 3;
-        }
-        if (halfHeight < 19) {
-            halfHeight += 2;
-        }
-        if (halfWidth < 20) {
-            halfWidth += 1;
-        }
-          else{
-            if (product.tags.includes('patch-it-bag')){
-            console.log('yes this patch-it-bag'); 
-       halfHeight += 25;
-       halfWidth += 25;
-            }
-              else if (product.tags.includes('customize-long-bag')){
-                    halfHeight += 25;
-       halfWidth += 25;
-              }
-              else {
-       halfHeight += 20;
-       halfWidth += 20;
-       }
-          }
-      
-
-        // Set the patch dimensions
-        patchDiv.style.width = halfWidth + 'px';
-        patchDiv.style.height = halfHeight + 'px';
-    } 
- else if (window.matchMedia("(min-width: 376px) and (max-width: 768px)").matches) {
-  console.log('up 375px');
-  console.log(window.innerWidth);
-        // Calculate half width and height
-   var halfWidth = (width / 2) - 2;
-var halfHeight = (height / 2) - 2;
-
-
-        // Check if they are less than 20 and add 5px if true
-        if (halfWidth < 13) {
-            halfWidth += 8;
-        }
-        if (halfHeight < 13) {
-            halfHeight += 8;
-        }
-        if (halfWidth < 14) {
-            halfWidth += 7;
-        }
-        if (halfHeight < 14) {
-            halfHeight += 7;
-        }
-        if (halfWidth < 15) {
-            halfWidth += 6;
-        }
-        if (halfHeight < 15) {
-            halfHeight += 6;
-        }
-        if (halfWidth < 16) {
-            halfWidth += 5;
-        }
-        if (halfHeight < 16) {
-            halfHeight += 5;
-        }
-        if (halfWidth < 17) {
-            halfWidth += 4;
-        }
-        if (halfHeight < 17) {
-            halfHeight += 4;
-        }
-        if (halfWidth < 18) {
-            halfWidth += 8;
-        }
-        if (halfHeight < 18) {
-            halfHeight += 3;
-        }
-        if (halfWidth < 19) {
-            halfWidth += 3;
-        }
-        if (halfHeight < 19) {
-            halfHeight += 2;
-        }
-        if (halfWidth < 20) {
-            halfWidth += 1;
-        }
-        if (halfHeight < 20) {
-            halfHeight += 1;
-        }
-const product = {{ product | json }};
-   if (product.tags.includes('customize-long-bag')){
-      halfHeight += 10;
-     halfWidth += 10;
-}  else if (product.tags.includes('patch-it-bag')){
-            console.log('yes this patch-it-bag'); 
-       halfHeight -= 5;
-       halfWidth -= 5;
-            }
-        // Set the patch dimensions
-        patchDiv.style.width = halfWidth + 'px';
-        patchDiv.style.height = halfHeight + 'px';
-    }  
-  else if (window.innerWidth <= 375) {
-console.log('below 375px');
-        // Calculate half width and height
-   var halfWidth = (width / 2) - 2;
-var halfHeight = (height / 2) - 2;
-
-
-        // Check if they are less than 20 and add 5px if true
-        if (halfWidth < 13) {
-            halfWidth += 8;
-        }
-        if (halfHeight < 13) {
-            halfHeight += 8;
-        }
-        if (halfWidth < 14) {
-            halfWidth += 7;
-        }
-        if (halfHeight < 14) {
-            halfHeight += 7;
-        }
-        if (halfWidth < 15) {
-            halfWidth += 6;
-        }
-        if (halfHeight < 15) {
-            halfHeight += 6;
-        }
-        if (halfWidth < 16) {
-            halfWidth += 5;
-        }
-        if (halfHeight < 16) {
-            halfHeight += 5;
-        }
-        if (halfWidth < 17) {
-            halfWidth += 4;
-        }
-        if (halfHeight < 17) {
-            halfHeight += 4;
-        }
-        if (halfWidth < 18) {
-            halfWidth += 8;
-        }
-        if (halfHeight < 18) {
-            halfHeight += 3;
-        }
-        if (halfWidth < 19) {
-            halfWidth += 3;
-        }
-        if (halfHeight < 19) {
-            halfHeight += 2;
-        }
-        if (halfWidth < 20) {
-            halfWidth += 1;
-        }
-        if (halfHeight < 20) {
-            halfHeight += 1;
-        }
-const product = {{ product | json }};
-   if (product.tags.includes('customize-long-bag')){
-      halfHeight += 15;
-     halfWidth += 15;
-} else if (product.tags.includes('patch-it-bag')){
-            console.log('yes this patch-it-bag'); 
-     if (halfHeight > 20 && halfWidth > 20) {
-    halfHeight -= 10;
-    halfWidth -= 10;
-}
-            }
-        // Set the patch dimensions
-        patchDiv.style.width = halfWidth + 'px';
-        patchDiv.style.height = halfHeight + 'px';
-    } 
- else {
-        patchDiv.style.width = width + 'px';
-        patchDiv.style.height = height + 'px';
-    } 
-      }
-       
     }
 
-
+     patchDiv.style.width = width + 'px';
+    patchDiv.style.height = height + 'px';
     // Ensure the patch stays inside the parent container
     var centerBox = document.querySelector('.centerBox');
     var containerWidth = centerBox.offsetWidth;
@@ -3314,7 +4268,10 @@ const product = {{ product | json }};
 
     patchDiv.setAttribute('id', newPatchId);
     patchDiv.innerHTML = `<img src="${patchSrc}" alt="" class="patch-image" width="${width}" height="${height}" crossorigin="anonymous">`;
+    mainPatchActionDivDel.appendChild(svgElement);
+    patchDiv.appendChild(mainPatchActionDivDel);
     centerBox.querySelector('.patches-container').appendChild(patchDiv);
+    
 
     // Add the patch to the patches array with its ID
     patches.push({ id: newPatchId, patchSrc, width, height });
@@ -3337,6 +4294,8 @@ if (currentX + parseInt(patchDiv.style.width) > containerWidth) {
 
   // Add click event listener to the dynamically created patch
     patchDiv.addEventListener('dragstart', function(event) {
+        patchDiv.style.filter = "drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))";
+        patchDiv.style.setProperty("filter", "drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))", "important");
         ismainDragging = true;
         event.preventDefault();
         event.dataTransfer.setData('text/plain', patchDiv.querySelector('img').src);
@@ -3372,7 +4331,21 @@ function addPatchToBackcenterBox(patchSrc, patchId, height, width) {
       var backcenterBox = document.querySelector('.BackcenterBox');
     var patchesContainer = backcenterBox.querySelector('.patches-containerr');
     var existingPatch = patchesContainer.querySelector(`div[v-id="${patchId}"]`);
-  
+    let mainPatchActionDivDel = document.createElement('div');
+mainPatchActionDivDel.classList.add('main-patch-action-div-del');
+    let svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+svgElement.setAttribute("width", "20");
+svgElement.setAttribute("height", "21");
+svgElement.setAttribute("viewBox", "0 0 20 21");
+svgElement.setAttribute("fill", "none");
+svgElement.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+svgElement.innerHTML = `
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M3.3335 6.38072C3.3335 5.59174 3.93045 4.95215 4.66683 4.95215H15.3335C16.0699 4.95215 16.6668 5.59174 16.6668 6.38072V19.2379C16.6668 20.0268 16.0699 20.6664 15.3335 20.6664H4.66683C3.93045 20.6664 3.3335 20.0268 3.3335 19.2379V6.38072ZM4.66683 6.38072V19.2379H15.3335V6.38072H4.66683Z" fill="#393939"></path>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M7.07699 6.38086V3.52372C7.07699 3.12923 7.37546 2.80943 7.74365 2.80943H12.2565C12.6247 2.80943 12.9231 3.12923 12.9231 3.52372V6.38086H14.2565V3.52372C14.2565 2.34025 13.361 1.38086 12.2565 1.38086H7.74365C6.63908 1.38086 5.74365 2.34025 5.74365 3.52372V6.38086H7.07699Z" fill="#393939"></path>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M0.666748 5.66643C0.666748 5.27195 0.965225 4.95215 1.33341 4.95215L18.6667 4.95215C19.0349 4.95215 19.3334 5.27195 19.3334 5.66644C19.3334 6.06093 19.0349 6.38072 18.6667 6.38072L1.33341 6.38072C0.965225 6.38072 0.666748 6.06092 0.666748 5.66643Z" fill="#393939"></path>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M8.00008 7.80957C8.36827 7.80957 8.66675 8.12937 8.66675 8.52386L8.66675 17.0953C8.66675 17.4898 8.36827 17.8096 8.00008 17.8096C7.63189 17.8096 7.33341 17.4898 7.33341 17.0953L7.33341 8.52386C7.33341 8.12937 7.63189 7.80957 8.00008 7.80957Z" fill="#393939"></path>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0001 7.80957C12.3683 7.80957 12.6667 8.12937 12.6667 8.52386L12.6667 17.0953C12.6667 17.4898 12.3683 17.8096 12.0001 17.8096C11.6319 17.8096 11.3334 17.4898 11.3334 17.0953L11.3334 8.52386C11.3334 8.12937 11.6319 7.80957 12.0001 7.80957Z" fill="#393939"></path>
+`;
     if (existingPatch) {
         console.log('Matching v-id found:', patchId);
         width = parseInt(existingPatch.style.width);
@@ -3381,10 +4354,10 @@ function addPatchToBackcenterBox(patchSrc, patchId, height, width) {
         patchDiv.style.height = height + 'px';
     }
     else {
-       if (window.orientation === 90 || window.orientation === -90) {
+        if ((window.orientation === 90 || window.orientation === -90) && window.innerWidth < 1024) {
         // Calculate half width and height
-   var halfWidth = (width / 2) - 2;
-var halfHeight = (height / 2) - 2;
+       var halfWidth = (width / 2) - 2;
+      var halfHeight = (height / 2) - 2;
 
 
         // Check if they are less than 20 and add 5px if true
@@ -3445,436 +4418,10 @@ const product = {{ product | json }};
         patchDiv.style.width = halfWidth + 'px';
         patchDiv.style.height = halfHeight + 'px';
     } 
-      else{
-         if (window.matchMedia("(min-width: 1250px) and (max-width: 1600px)").matches) {
-  console.log('yes this is 1250px'); 
-   var halfWidth =width - 10;
-        var halfHeight = height - 10;
-
-        // Check if they are less than 20 and add 5px if true
-        if (halfWidth < 13) {
-            halfWidth += 8;
-        }
-        if (halfHeight < 13) {
-            halfHeight += 8;
-        }
-        if (halfWidth < 14) {
-            halfWidth += 7;
-        }
-        if (halfHeight < 14) {
-            halfHeight += 7;
-        }
-        if (halfWidth < 15) {
-            halfWidth += 6;
-        }
-        if (halfHeight < 15) {
-            halfHeight += 6;
-        }
-        if (halfWidth < 16) {
-            halfWidth += 5;
-        }
-        if (halfHeight < 16) {
-            halfHeight += 5;
-        }
-        if (halfWidth < 17) {
-            halfWidth += 4;
-        }
-        if (halfHeight < 17) {
-            halfHeight += 4;
-        }
-        if (halfWidth < 18) {
-            halfWidth += 8;
-        }
-        if (halfHeight < 18) {
-            halfHeight += 3;
-        }
-        if (halfWidth < 19) {
-            halfWidth += 3;
-        }
-        if (halfHeight < 19) {
-            halfHeight += 2;
-        }
-        if (halfWidth < 20) {
-            halfWidth += 1;
-        }
-        else{
-       if (product.tags.includes('patch-it-bag')){
-       console.log('yes this patch-it-bag'); 
-       halfHeight += 25;
-       halfWidth += 25;
-            }
-              else {
-       halfHeight += 15;
-       halfWidth += 15;
-       }
-          
-      
-
-        // Set the patch dimensions
-        patchDiv.style.width = halfWidth + 'px';
-        patchDiv.style.height = halfHeight + 'px';
-}
        
     }
-   else if (window.matchMedia("(min-width: 1031px) and (max-width: 1249px)").matches) {
-  console.log('yes this is 1031px'); 
- const normalizedWidth = window.innerWidth / window.devicePixelRatio;
-console.log('Normalized Width is this:', normalizedWidth);
-if (normalizedWidth >= 600 && normalizedWidth <= 1024) {
-    console.log('This is iPad Pro');
-       console.log('yes this is ipad view'); 
-   console.log('Window Width: ', window.innerWidth);
-  // Calculate half width and height
-        var halfWidth = width / 2;
-        var halfHeight = height / 2;
-
-        // Check if they are less than 20 and add 5px if true
-        if (halfWidth < 13) {
-            halfWidth += 8;
-        }
-        if (halfHeight < 13) {
-            halfHeight += 8;
-        }
-        if (halfWidth < 14) {
-            halfWidth += 7;
-        }
-        if (halfHeight < 14) {
-            halfHeight += 7;
-        }
-        if (halfWidth < 15) {
-            halfWidth += 6;
-        }
-        if (halfHeight < 15) {
-            halfHeight += 6;
-        }
-        if (halfWidth < 16) {
-            halfWidth += 5;
-        }
-        if (halfHeight < 16) {
-            halfHeight += 5;
-        }
-        if (halfWidth < 17) {
-            halfWidth += 4;
-        }
-        if (halfHeight < 17) {
-            halfHeight += 4;
-        }
-        if (halfWidth < 18) {
-            halfWidth += 8;
-        }
-        if (halfHeight < 18) {
-            halfHeight += 3;
-        }
-        if (halfWidth < 19) {
-            halfWidth += 3;
-        }
-        if (halfHeight < 19) {
-            halfHeight += 2;
-        }
-        if (halfWidth < 20) {
-            halfWidth += 1;
-        }
-          else{
-            if (product.tags.includes('patch-it-bag')){
-            console.log('yes this patch-it-bag'); 
-       halfHeight += 20;
-       halfWidth += 20;
-            }
-              else if (product.tags.includes('customize-long-bag')){
-                    halfHeight += 25;
-       halfWidth += 25;
-              }
-              else {
-       halfHeight += 15;
-       halfWidth += 15;
-       }
-          }
-      
-
-        // Set the patch dimensions
-        patchDiv.style.width = halfWidth + 'px';
-        patchDiv.style.height = halfHeight + 'px';
-}
-else{
-   var halfWidth =width - 20;
-        var halfHeight = height - 20;
-
-        // Check if they are less than 20 and add 5px if true
-        if (halfWidth < 13) {
-            halfWidth += 8;
-        }
-        if (halfHeight < 13) {
-            halfHeight += 8;
-        }
-        if (halfWidth < 14) {
-            halfWidth += 7;
-        }
-        if (halfHeight < 14) {
-            halfHeight += 7;
-        }
-        if (halfWidth < 15) {
-            halfWidth += 6;
-        }
-        if (halfHeight < 15) {
-            halfHeight += 6;
-        }
-        if (halfWidth < 16) {
-            halfWidth += 5;
-        }
-        if (halfHeight < 16) {
-            halfHeight += 5;
-        }
-        if (halfWidth < 17) {
-            halfWidth += 4;
-        }
-        if (halfHeight < 17) {
-            halfHeight += 4;
-        }
-        if (halfWidth < 18) {
-            halfWidth += 8;
-        }
-        if (halfHeight < 18) {
-            halfHeight += 3;
-        }
-        if (halfWidth < 19) {
-            halfWidth += 3;
-        }
-        if (halfHeight < 19) {
-            halfHeight += 2;
-        }
-        if (halfWidth < 20) {
-            halfWidth += 1;
-        }
-        else{
-       if (product.tags.includes('patch-it-bag')){
-       console.log('yes this patch-it-bag'); 
-       halfHeight += 25;
-       halfWidth += 25;
-            }
-              else {
-       halfHeight += 15;
-       halfWidth += 15;
-       }
-          }
-      
-
-        // Set the patch dimensions
-        patchDiv.style.width = halfWidth + 'px';
-        patchDiv.style.height = halfHeight + 'px';
-}
-       
-    }
- else if (window.matchMedia("(min-width: 769px) and (max-width: 1024px)").matches) {
-     console.log('yes this is ipad view'); 
-   console.log('Window Width: ', window.innerWidth);
-  // Calculate half width and height
-        var halfWidth = width / 2;
-        var halfHeight = height / 2;
-
-        // Check if they are less than 20 and add 5px if true
-        if (halfWidth < 13) {
-            halfWidth += 8;
-        }
-        if (halfHeight < 13) {
-            halfHeight += 8;
-        }
-        if (halfWidth < 14) {
-            halfWidth += 7;
-        }
-        if (halfHeight < 14) {
-            halfHeight += 7;
-        }
-        if (halfWidth < 15) {
-            halfWidth += 6;
-        }
-        if (halfHeight < 15) {
-            halfHeight += 6;
-        }
-        if (halfWidth < 16) {
-            halfWidth += 5;
-        }
-        if (halfHeight < 16) {
-            halfHeight += 5;
-        }
-        if (halfWidth < 17) {
-            halfWidth += 4;
-        }
-        if (halfHeight < 17) {
-            halfHeight += 4;
-        }
-        if (halfWidth < 18) {
-            halfWidth += 8;
-        }
-        if (halfHeight < 18) {
-            halfHeight += 3;
-        }
-        if (halfWidth < 19) {
-            halfWidth += 3;
-        }
-        if (halfHeight < 19) {
-            halfHeight += 2;
-        }
-        if (halfWidth < 20) {
-            halfWidth += 1;
-        }
-          else{
-            if (product.tags.includes('patch-it-bag')){
-            console.log('yes this patch-it-baggg'); 
-       halfHeight += 20;
-       halfWidth += 20;
-            }
-              else if (product.tags.includes('customize-long-bag')){
-                    halfHeight += 25;
-       halfWidth += 25;
-              }
-              else {
-       halfHeight += 20;
-       halfWidth += 20;
-       }
-          }
-      
-
-        // Set the patch dimensions
-        patchDiv.style.width = halfWidth + 'px';
-        patchDiv.style.height = halfHeight + 'px';
-    }
- else if (window.matchMedia("(min-width: 376px) and (max-width: 768px)").matches) {
-        // Calculate half width and height
-   var halfWidth = (width / 2) - 2;
-var halfHeight = (height / 2) - 2;
-
-
-        // Check if they are less than 20 and add 5px if true
-        if (halfWidth < 13) {
-            halfWidth += 8;
-        }
-        if (halfHeight < 13) {
-            halfHeight += 8;
-        }
-        if (halfWidth < 14) {
-            halfWidth += 7;
-        }
-        if (halfHeight < 14) {
-            halfHeight += 7;
-        }
-        if (halfWidth < 15) {
-            halfWidth += 6;
-        }
-        if (halfHeight < 15) {
-            halfHeight += 6;
-        }
-        if (halfWidth < 16) {
-            halfWidth += 5;
-        }
-        if (halfHeight < 16) {
-            halfHeight += 5;
-        }
-        if (halfWidth < 17) {
-            halfWidth += 4;
-        }
-        if (halfHeight < 17) {
-            halfHeight += 4;
-        }
-        if (halfWidth < 18) {
-            halfWidth += 8;
-        }
-        if (halfHeight < 18) {
-            halfHeight += 3;
-        }
-        if (halfWidth < 19) {
-            halfWidth += 3;
-        }
-        if (halfHeight < 19) {
-            halfHeight += 2;
-        }
-        if (halfWidth < 20) {
-            halfWidth += 1;
-        }
-        if (halfHeight < 20) {
-            halfHeight += 1;
-        }
-const product = {{ product | json }};
-   if (product.tags.includes('customize-long-bag')){
-      halfHeight += 10;
-     halfWidth += 10;
-}
-        // Set the patch dimensions
-        patchDiv.style.width = halfWidth + 'px';
-        patchDiv.style.height = halfHeight + 'px';
-    }  
-    else if (window.innerWidth <= 375) {
-   console.log('under 350px');
-        // Calculate half width and height
-   var halfWidth = (width / 2) - 2;
-var halfHeight = (height / 2) - 2;
-
-
-        // Check if they are less than 20 and add 5px if true
-        if (halfWidth < 13) {
-            halfWidth += 8;
-        }
-        if (halfHeight < 13) {
-            halfHeight += 8;
-        }
-        if (halfWidth < 14) {
-            halfWidth += 7;
-        }
-        if (halfHeight < 14) {
-            halfHeight += 7;
-        }
-        if (halfWidth < 15) {
-            halfWidth += 6;
-        }
-        if (halfHeight < 15) {
-            halfHeight += 6;
-        }
-        if (halfWidth < 16) {
-            halfWidth += 5;
-        }
-        if (halfHeight < 16) {
-            halfHeight += 5;
-        }
-        if (halfWidth < 17) {
-            halfWidth += 4;
-        }
-        if (halfHeight < 17) {
-            halfHeight += 4;
-        }
-        if (halfWidth < 18) {
-            halfWidth += 8;
-        }
-        if (halfHeight < 18) {
-            halfHeight += 3;
-        }
-        if (halfWidth < 19) {
-            halfWidth += 3;
-        }
-        if (halfHeight < 19) {
-            halfHeight += 2;
-        }
-        if (halfWidth < 20) {
-            halfWidth += 1;
-        }
-        if (halfHeight < 20) {
-            halfHeight += 1;
-        }
-const product = {{ product | json }};
-   if (product.tags.includes('customize-long-bag')){
-      halfHeight += 5;
-     halfWidth += 5;
-}
-        // Set the patch dimensions
-        patchDiv.style.width = halfWidth + 'px';
-        patchDiv.style.height = halfHeight + 'px';
-    } 
- else {
-        patchDiv.style.width = width + 'px';
-        patchDiv.style.height = height + 'px';
-    } 
-      }
-       
-    }
-
+       patchDiv.style.width = width + 'px';
+    patchDiv.style.height = height + 'px';
     // Ensure the patch stays inside the parent container
     var BackcenterBox = document.querySelector('.BackcenterBox');
     var containerWidth = BackcenterBox.offsetWidth;
@@ -3903,8 +4450,10 @@ const product = {{ product | json }};
 
     patchDiv.setAttribute('id', newPatchId);
     patchDiv.innerHTML = `<img src="${patchSrc}" alt="" class="patch-image" width="${width}" height="${height}" crossorigin="anonymous">`;
+    
+    mainPatchActionDivDel.appendChild(svgElement);
+    patchDiv.appendChild(mainPatchActionDivDel);
     BackcenterBox.querySelector('.patches-containerr').appendChild(patchDiv);
-
     // Add the patch to the patches array with its ID
     patches.push({ id: newPatchId, patchSrc, width, height });
     initializePatch(
@@ -3925,6 +4474,8 @@ const product = {{ product | json }};
 
     // Add click event listener to the dynamically created patch
     patchDiv.addEventListener('dragstart', function(event) {
+        patchDiv.style.filter = "drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))";
+        patchDiv.style.setProperty("filter", "drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))", "important");
         ismainDragging = true;
         event.preventDefault();
         event.dataTransfer.setData('text/plain', patchDiv.querySelector('img').src);
@@ -3955,7 +4506,21 @@ function dropPatchbydraggingFront(patchElement, x, y, height, width) {
     patchDiv.style.position = 'absolute';
     patchDiv.style.top = y + 'px';
     patchDiv.style.left = x + 'px';
-
+    let mainPatchActionDivDel = document.createElement('div');
+mainPatchActionDivDel.classList.add('main-patch-action-div-del');
+    let svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+svgElement.setAttribute("width", "20");
+svgElement.setAttribute("height", "21");
+svgElement.setAttribute("viewBox", "0 0 20 21");
+svgElement.setAttribute("fill", "none");
+svgElement.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+svgElement.innerHTML = `
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M3.3335 6.38072C3.3335 5.59174 3.93045 4.95215 4.66683 4.95215H15.3335C16.0699 4.95215 16.6668 5.59174 16.6668 6.38072V19.2379C16.6668 20.0268 16.0699 20.6664 15.3335 20.6664H4.66683C3.93045 20.6664 3.3335 20.0268 3.3335 19.2379V6.38072ZM4.66683 6.38072V19.2379H15.3335V6.38072H4.66683Z" fill="#393939"></path>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M7.07699 6.38086V3.52372C7.07699 3.12923 7.37546 2.80943 7.74365 2.80943H12.2565C12.6247 2.80943 12.9231 3.12923 12.9231 3.52372V6.38086H14.2565V3.52372C14.2565 2.34025 13.361 1.38086 12.2565 1.38086H7.74365C6.63908 1.38086 5.74365 2.34025 5.74365 3.52372V6.38086H7.07699Z" fill="#393939"></path>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M0.666748 5.66643C0.666748 5.27195 0.965225 4.95215 1.33341 4.95215L18.6667 4.95215C19.0349 4.95215 19.3334 5.27195 19.3334 5.66644C19.3334 6.06093 19.0349 6.38072 18.6667 6.38072L1.33341 6.38072C0.965225 6.38072 0.666748 6.06092 0.666748 5.66643Z" fill="#393939"></path>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M8.00008 7.80957C8.36827 7.80957 8.66675 8.12937 8.66675 8.52386L8.66675 17.0953C8.66675 17.4898 8.36827 17.8096 8.00008 17.8096C7.63189 17.8096 7.33341 17.4898 7.33341 17.0953L7.33341 8.52386C7.33341 8.12937 7.63189 7.80957 8.00008 7.80957Z" fill="#393939"></path>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0001 7.80957C12.3683 7.80957 12.6667 8.12937 12.6667 8.52386L12.6667 17.0953C12.6667 17.4898 12.3683 17.8096 12.0001 17.8096C11.6319 17.8096 11.3334 17.4898 11.3334 17.0953L11.3334 8.52386C11.3334 8.12937 11.6319 7.80957 12.0001 7.80957Z" fill="#393939"></path>
+`;
     // Setting width and height
     patchDiv.style.width = width + 'px';
     patchDiv.style.height = height + 'px';
@@ -3968,6 +4533,8 @@ function dropPatchbydraggingFront(patchElement, x, y, height, width) {
     patchDiv.innerHTML = `<img src="${imageElement}" alt="" class="patch-image" height="${height}" width="${width}" crossorigin="anonymous">`;
 
     var centerBox = document.querySelector('.centerBox');
+      mainPatchActionDivDel.appendChild(svgElement);
+    patchDiv.appendChild(mainPatchActionDivDel);
     centerBox.querySelector('.patches-container').appendChild(patchDiv);
 
     // Add the patch to the patches array with its ID
@@ -3980,6 +4547,9 @@ function dropPatchbydraggingFront(patchElement, x, y, height, width) {
     // Add event listeners to all dynamically created patches
     document.querySelectorAll('.patch-').forEach(patch1 => {
         patch1.addEventListener('dragstart', function (event) {
+            patch1.style.filter = "drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))";
+            patch1.style.setProperty("filter", "drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))", "important");
+            console.log(patch1);
             event.preventDefault();
             event.dataTransfer.setData('text/plain', patch1.querySelector('img').src);
             dragPatch1 = patch1;
@@ -3994,6 +4564,8 @@ function dropPatchbydraggingFront(patchElement, x, y, height, width) {
             centerBox.removeEventListener('mousemove', mousemoveHandler);
         });
     });
+  
+selectpastchesodertidy(imageElement, patchId);
 }
 
 function dropPatchbydraggingBack(patchElement, x, y, height,width) {
@@ -4007,12 +4579,21 @@ function dropPatchbydraggingBack(patchElement, x, y, height,width) {
     patchDiv.style.position = 'absolute';
     patchDiv.style.top = y + 'px';
     patchDiv.style.left = x + 'px';
-    // patchDiv.style.transform = 'translate(-50%, -50%)';
-  //   if (window.matchMedia("(min-width:  1024px) and (max-width: 1600px)").matches){
-  //    patchDiv.style.width = (width - 20 ) + 'px';
-  //       patchDiv.style.height = (height - 20  ) + 'px';
-  // }
-  // else {
+     let mainPatchActionDivDel = document.createElement('div');
+mainPatchActionDivDel.classList.add('main-patch-action-div-del');
+    let svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+svgElement.setAttribute("width", "20");
+svgElement.setAttribute("height", "21");
+svgElement.setAttribute("viewBox", "0 0 20 21");
+svgElement.setAttribute("fill", "none");
+svgElement.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+svgElement.innerHTML = `
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M3.3335 6.38072C3.3335 5.59174 3.93045 4.95215 4.66683 4.95215H15.3335C16.0699 4.95215 16.6668 5.59174 16.6668 6.38072V19.2379C16.6668 20.0268 16.0699 20.6664 15.3335 20.6664H4.66683C3.93045 20.6664 3.3335 20.0268 3.3335 19.2379V6.38072ZM4.66683 6.38072V19.2379H15.3335V6.38072H4.66683Z" fill="#393939"></path>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M7.07699 6.38086V3.52372C7.07699 3.12923 7.37546 2.80943 7.74365 2.80943H12.2565C12.6247 2.80943 12.9231 3.12923 12.9231 3.52372V6.38086H14.2565V3.52372C14.2565 2.34025 13.361 1.38086 12.2565 1.38086H7.74365C6.63908 1.38086 5.74365 2.34025 5.74365 3.52372V6.38086H7.07699Z" fill="#393939"></path>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M0.666748 5.66643C0.666748 5.27195 0.965225 4.95215 1.33341 4.95215L18.6667 4.95215C19.0349 4.95215 19.3334 5.27195 19.3334 5.66644C19.3334 6.06093 19.0349 6.38072 18.6667 6.38072L1.33341 6.38072C0.965225 6.38072 0.666748 6.06092 0.666748 5.66643Z" fill="#393939"></path>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M8.00008 7.80957C8.36827 7.80957 8.66675 8.12937 8.66675 8.52386L8.66675 17.0953C8.66675 17.4898 8.36827 17.8096 8.00008 17.8096C7.63189 17.8096 7.33341 17.4898 7.33341 17.0953L7.33341 8.52386C7.33341 8.12937 7.63189 7.80957 8.00008 7.80957Z" fill="#393939"></path>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0001 7.80957C12.3683 7.80957 12.6667 8.12937 12.6667 8.52386L12.6667 17.0953C12.6667 17.4898 12.3683 17.8096 12.0001 17.8096C11.6319 17.8096 11.3334 17.4898 11.3334 17.0953L11.3334 8.52386C11.3334 8.12937 11.6319 7.80957 12.0001 7.80957Z" fill="#393939"></path>
+`;
      patchDiv.style.width = width + 'px';
      patchDiv.style.height = height + 'px';
   // }
@@ -4024,6 +4605,8 @@ function dropPatchbydraggingBack(patchElement, x, y, height,width) {
     patchDiv.setAttribute('id', patchId);
     patchDiv.innerHTML = `<img src="${imageElement}" alt="" class="patch-image " height="${height}" width="${width}" crossorigin="anonymous" >`;
     var BackcenterBox = document.querySelector('.BackcenterBox');
+   mainPatchActionDivDel.appendChild(svgElement);
+    patchDiv.appendChild(mainPatchActionDivDel);
     BackcenterBox.querySelector('.patches-containerr').appendChild(patchDiv);
 
     // Add the patch to the patches array with its ID
@@ -4036,7 +4619,8 @@ editTidyBtnwrapper.style.visibility = 'visible';
     document.querySelectorAll('.patch-').forEach(patch1 => {
 
         patch1.addEventListener('dragstart', function (event) {
-
+            patch1.style.filter = "drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))";
+            patch1.style.setProperty("filter", "drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))", "important");
             event.preventDefault();
             event.dataTransfer.setData('text/plain', patch1.querySelector('img').src);
             dragPatch1 = patch1;
@@ -4053,7 +4637,7 @@ editTidyBtnwrapper.style.visibility = 'visible';
         });
     });
 
-
+selectpastchesodertidy(imageElement, patchId);
 
 }
 // Add event listener to the container of patch elements
@@ -4171,25 +4755,12 @@ centerBox.addEventListener('drop', function (event) {
     const patchesContainer = centerBox.querySelector('.patches-container'); // Get patches container
 
     if (dragPatch) {
-        const patchId = dragPatch.getAttribute('v-id'); // Get v-id of the dragged patch
-        const existingPatch = patchesContainer.querySelector(`div[v-id="${patchId}"]`); // Check if patch already exists
-
-        let height, width;
-
-        if (existingPatch) {
-          console.log('existing');
-            // Use the dimensions of the existing patch
-        width = parseInt(existingPatch.style.width);
-        height = parseInt(existingPatch.style.height);
-          console.log(width,height);
-
-        } 
-        else {
+     
             // Use the dimensions of the dragged patch
             const patchImg = dragPatch.querySelector('img');
             height = patchImg.getAttribute('height');
             width = patchImg.getAttribute('width');
-        }
+
 
         const rect = centerBox.getBoundingClientRect();
         const mouseX = event.clientX - rect.left;
@@ -4232,18 +4803,10 @@ BackcenterBox.addEventListener('drop', function (event) {
     if (dragPatch) {
         const patchImg = dragPatch.querySelector('img');
 
-        const vId = dragPatch.getAttribute('v-id');
-        const existingPatch = patchesContainer.querySelector(`div[v-id="${vId}"]`);
-       let height, width;
-         if (existingPatch){
-         height = parseInt(existingPatch.style.height); // Get the height attribute
-         width =  parseInt(existingPatch.style.width);
-        console.log('existingPatch',height,width);
-         }
-         else{
+      
          height = patchImg.getAttribute('height'); // Get the height attribute
          width = patchImg.getAttribute('width');
-         }
+        
        
         console.log( 'drag patch height',height,width)
         const rect = BackcenterBox.getBoundingClientRect();
@@ -4272,7 +4835,8 @@ function updatePosition(patchId, x, y, width, height) {
     const frontArea = document.getElementById('Front-Area');
     const backArea = document.getElementById('Back-area');
     let patchDiv = document.getElementById(patchId);
-
+    patchDiv.style.removeProperty("filter");
+    console.log('removed');
     patchDiv.classList.remove('patch-'); // Temporarily remove class for manipulation
 
     let isFrontAreaVisible = frontArea.style.visibility === 'visible';
@@ -4341,41 +4905,6 @@ function checkOverlapWithPatches(patchRect, patchClass) {
 }
 
 
-
-
-// centerBox.addEventListener('mousedown', function (event) {
-
-//     const rect = centerBox.getBoundingClientRect();
-//     const mouseX = event.clientX - rect.left;
-//     const mouseY = event.clientY - rect.top;
-
-//     // Check if there's an existing patch at the clicked position
-//     let existingPatchIndex = patches.findIndex(patch => {
-
-//         return mouseX >= patch.x - patch.width / 2 &&
-//             mouseX <= patch.x + patch.width / 2 &&
-//             mouseY >= patch.y - patch.height / 2 &&
-//             mouseY <= patch.y + patch.height / 2;
-//     });
-
-//     // console.log("Existing patch index:", existingPatchIndex);
-
-//     if (existingPatchIndex !== -1) {
-//         // Existing patch found, set it as the dragPatch
-//         dragPatch = patches[existingPatchIndex].patchDiv;
-
-//         // Calculate offset for smoother dragging
-//         offsetX = mouseX - patches[existingPatchIndex].x;
-//         offsetY = mouseY - patches[existingPatchIndex].y;
-
-//         // Prevent further propagation of the event
-//         event.stopPropagation();
-//         //   console.log('found');
-//     } else {
-//         //  console.log('not found');
-//     }
-// });
-
  centerBox.addEventListener('mousedown', function (event) {
             const rect = centerBox.getBoundingClientRect();
             const mouseX = event.clientX - rect.left;
@@ -4421,6 +4950,9 @@ centerBox.addEventListener('touchmove', function (event) {
      if (touchedElement && touchedElement.classList.contains('patch-')) {
          var dragPatch1 = touchedElement;
          console.log('Touched element saved in dragpatch1:', dragPatch1);
+         dragPatch1.style.filter = "drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))";
+         dragPatch1.style.setProperty("filter", "drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))", "important");
+
      }
     console.log('nunder');
 console.log(dragPatch1);
@@ -4456,43 +4988,15 @@ console.log(dragPatch1);
 
 centerBox.addEventListener('touchend', function (event) {
     // Reset dragPatch1
+  const patchDivs = document.querySelectorAll('.patch-');
+  patchDivs.forEach(div => {
+    div.style.removeProperty("filter");
+   });
+
     dragPatch1 = null;
   
 });
 
-// BackcenterBox.addEventListener('mousedown', function (event) {
-//     const rect = BackcenterBox.getBoundingClientRect();
-//     const mouseX = event.clientX - rect.left;
-//     const mouseY = event.clientY - rect.top;
-
-//     // console.log("Mouse X:", mouseX, "Mouse Y:", mouseY);
-
-//     // Check if there's an existing patch at the clicked position
-//     let existingPatchIndex = patches.findIndex(patch => {
-
-//         return mouseX >= patch.x - patch.width / 2 &&
-//             mouseX <= patch.x + patch.width / 2 &&
-//             mouseY >= patch.y - patch.height / 2 &&
-//             mouseY <= patch.y + patch.height / 2;
-//     });
-
-//     // console.log("Existing patch index:", existingPatchIndex);
-
-//     if (existingPatchIndex !== -1) {
-//         // Existing patch found, set it as the dragPatch
-//         dragPatch = patches[existingPatchIndex].patchDiv;
-
-//         // Calculate offset for smoother dragging
-//         offsetX = mouseX - patches[existingPatchIndex].x;
-//         offsetY = mouseY - patches[existingPatchIndex].y;
-
-//         // Prevent further propagation of the event
-//         event.stopPropagation();
-//         //   console.log('found');
-//     } else {
-//         //  console.log('not found');
-//     }
-// });
 
     BackcenterBox.addEventListener('mousedown', function (event) {
             const rect = centerBox.getBoundingClientRect();
@@ -4522,33 +5026,6 @@ centerBox.addEventListener('touchend', function (event) {
 
 BackcenterBox.addEventListener('touchstart', function (event) {
     console.log('touch Start')
-    // if (event.touches.length === 1) {
-    //     const touch = event.touches[0];
-    //     const rect = BackcenterBox.getBoundingClientRect();
-    //     const mouseX = touch.clientX - rect.left;
-    //     const mouseY = touch.clientY - rect.top;
-
-    //     // Check if there's an existing patch at the touched position
-    //     let existingPatchIndex = patches.findIndex(patch => {
-    //         return mouseX >= patch.x - patch.width / 2 &&
-    //             mouseX <= patch.x + patch.width / 2 &&
-    //             mouseY >= patch.y - patch.height / 2 &&
-    //             mouseY <= patch.y + patch.height / 2;
-    //     });
-
-    //     if (existingPatchIndex !== -1) {
-    //         // Existing patch found, set it as the dragPatch
-    //         dragPatch1 = document.getElementById(patches[existingPatchIndex].id);
-
-    //         // Calculate offset for smoother dragging
-    //         offsetX = mouseX - patches[existingPatchIndex].x;
-    //         offsetY = mouseY - patches[existingPatchIndex].y;
-
-    //         // Prevent further propagation of the event
-    //         event.preventDefault();
-    //         event.stopPropagation();
-    //     }
-    // }
 });
 
 BackcenterBox.addEventListener('touchmove', function (event) {
@@ -4562,6 +5039,8 @@ BackcenterBox.addEventListener('touchmove', function (event) {
     if (touchedElement && touchedElement.classList.contains('patch-')) {
         var dragPatch1 = touchedElement;
         console.log('Touched element saved in dragpatch1:', dragPatch1);
+        dragPatch1.style.filter = "drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))";
+        dragPatch1.style.setProperty("filter", "drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))", "important");
     }
    console.log('nunder');
     if (event.touches.length === 1 && dragPatch1) {
@@ -4595,41 +5074,15 @@ BackcenterBox.addEventListener('touchmove', function (event) {
 
 BackcenterBox.addEventListener('touchend', function (event) {
     // Reset dragPatch1
+    const patchDivs = document.querySelectorAll('.patch-');
+
+    patchDivs.forEach(div => {
+      div.style.removeProperty("filter");
+     });
+
     dragPatch1 = null;
 });
 
-// mousemoveHandler function remains unchanged
-// function mousemoveHandler(event) {
-//     if (dragPatch1) {
-        
-//         const rect = centerBox.getBoundingClientRect();
-//         let mouseX, mouseY;
-
-//         if (event.type.startsWith('touch')) {
-//             const touch = event.touches[0];
-//             mouseX = touch.clientX - rect.left;
-//             mouseY = touch.clientY - rect.top;
-//         } else {
-//             mouseX = event.clientX - rect.left;
-//             mouseY = event.clientY - rect.top;
-//         }
-
-//         // Calculate new position considering offset
-//         const newLeft = mouseX - offsetX;
-//         const newTop = mouseY - offsetY;
-
-//         // Update the position of the dragged patch
-//         dragPatch1.style.left = newLeft + 'px';
-//         dragPatch1.style.top = newTop + 'px';
-
-//         // Update the position in the patches array
-//         const patchIndex = patches.findIndex(patch => patch.id === dragPatch1.id);
-//         if (patchIndex !== -1) {
-//             patches[patchIndex].x = newLeft;
-//             patches[patchIndex].y = newTop;
-//         }
-//     }
-// }
 
   function mousemoveHandler(event) {
             if (dragPatch1) {
@@ -4654,36 +5107,6 @@ centerBox.addEventListener('mouseup', function (event) {
     isDragging = false;
 });
 
-// function mousemoveHandlerBack(event) {
-//     if (dragPatch1) {
-//         const rect = BackcenterBox.getBoundingClientRect();
-//         let mouseX, mouseY;
-
-//         if (event.type.startsWith('touch')) {
-//             const touch = event.touches[0];
-//             mouseX = touch.clientX - rect.left;
-//             mouseY = touch.clientY - rect.top;
-//         } else {
-//             mouseX = event.clientX - rect.left;
-//             mouseY = event.clientY - rect.top;
-//         }
-
-//         // Calculate new position considering offset
-//         const newLeft = mouseX - offsetX;
-//         const newTop = mouseY - offsetY;
-
-//         // Update the position of the dragged patch
-//         dragPatch1.style.left = newLeft + 'px';
-//         dragPatch1.style.top = newTop + 'px';
-
-//         // Update the position in the patches array
-//         const patchIndex = patches.findIndex(patch => patch.id === dragPatch1.id);
-//         if (patchIndex !== -1) {
-//             patches[patchIndex].x = newLeft;
-//             patches[patchIndex].y = newTop;
-//         }
-//     }
-// }
 
         function  mousemoveHandlerBack(event) {
             if (dragPatch1) {
@@ -4713,22 +5136,6 @@ BackcenterBox.addEventListener('mouseup', function (event) {
       $(document).on('click', function(event) {
         const patchElement = $(event.target).closest('.patch-');
 
-        // if ($(event.target).hasClass('tidy-patches-delete-btn') && $('.patch-action').length) {
-        //   const elementsToDelete = $('.patch-action, .patch-selected');
-        //   elementsToDelete.each(function() {
-        //     $(this).remove();
-        //   });
-        //     order = 1;
-        // }
-  //     if ($(event.target).hasClass('patches-customizations-clear-btn')) {
-  //     const elementsToDelete = $('.patch-, .selected-patch-for-customization');
-  //     elementsToDelete.each(function() {
-  //         $(this).remove();
-  //         $('.patches-customization-clear-alert-pop-up').css('display', 'none');
-  //         checkPatchesPosition();
-  //     });
-  // }
-  // order = 1;
       });
     });
 </script>
@@ -4736,6 +5143,7 @@ BackcenterBox.addEventListener('mouseup', function (event) {
 <script>
     $(document).ready(function() {
        function showBackOrFront(event) {
+          $('.main-patch-action-div-del').css('visibility', 'hidden');
         if (event.target.id === 'showFrontBtn') {
           $('#Front-Area').removeClass('image-hidden').css('visibility', 'visible');
           $('#showBackBtnn').removeClass('patches-customization-btn-active');
@@ -4855,7 +5263,8 @@ BackcenterBox.addEventListener('mouseup', function (event) {
     // Event delegation for dynamically created .patch- elements
   
  $(document).on('click', '.patch-', function(event) {
-   if (!ismainDragging) {
+   console.log(ismainDragging);
+  if (!ismainDragging) {
         console.log('Element clicked');
   
         // Your click functionality here
@@ -4900,17 +5309,17 @@ BackcenterBox.addEventListener('mouseup', function (event) {
         // Check if the target element is found
         if ($targetPatch.length) {
           
-                   $('.selected-patch-for-customization').removeClass('patch-selected').find('.selected-patch-order').remove();
+            $('.selected-patch-for-customization').removeClass('patch-selected').find('.selected-patch-order').remove();
             $('.patch-').removeClass('patch-action').removeAttr('order-data');
+            $('.main-patch-action-div-del').css('visibility', 'hidden');
 
-            
-         
 
   if (document.getElementById('Front-Area').style.visibility === 'visible') {
             order=1;
             // Set the order for the clicked patch
             $targetPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + order + '</span>');
             $clickedPatch.addClass('patch-action').attr('order-data', order);
+             $clickedPatch.find('.main-patch-action-div-del').css('visibility', 'visible');
             order++;
      changefillColors()
              }
@@ -4919,6 +5328,7 @@ BackcenterBox.addEventListener('mouseup', function (event) {
             // Set the order for the clicked patch
             $targetPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + orderBack + '</span>');
             $clickedPatch.addClass('patch-action').attr('order-data', orderBack);
+             $clickedPatch.find('.main-patch-action-div-del').css('visibility', 'visible');
             orderBack++;
         console.log('click on back image');
          changefillColors()
@@ -4930,8 +5340,11 @@ BackcenterBox.addEventListener('mouseup', function (event) {
           } else {
             console.log('Class patch-selected not added to element with data-patch-id ' + patchId);
           }
-        } else {
+        } 
+        else {
           console.log('No element found with data-patch-id ' + patchId);
+          $('.main-patch-action-div-del').css('visibility', 'hidden');
+           $clickedPatch.find('.main-patch-action-div-del').css('visibility', 'visible');
         }
            $('.patch-').removeClass('patch-action'); // Remove the class from all elements
      $(this).addClass('patch-action');
@@ -4952,6 +5365,7 @@ BackcenterBox.addEventListener('mouseup', function (event) {
 }
 
       if (document.getElementById('Front-Area').style.visibility === 'visible') {
+        
           $('.back-tdiy-patches-btn').removeClass('tdiy-patches-btn-active')
         $('.front-tdiy-patches-btn').addClass('tdiy-patches-btn-active')
         $('.select-patches-for-back').removeClass('select-patches-active')
@@ -5192,6 +5606,7 @@ var patchActionElement = actionPatch.find('.patch-action');
      // var orderBack = 1;
 
         $(document).on('click', '.selected-patch-for-customization-for-front', function(event) {
+           $('.main-patch-action-div-del').css('visibility', 'hidden');
             var $clickedPatch = $(this);
             var patchId = $clickedPatch.data('patch-id');
 
@@ -5249,7 +5664,7 @@ var patchActionElement = actionPatch.find('.patch-action');
             }
         });
         $(document).on('click', '.selected-patch-for-customization-for-back', function(event) {
-          console.log('kr diya ,mgy click')
+          $('.main-patch-action-div-del').css('visibility', 'hidden');
                  
             var $clickedPatch = $(this);
             var patchId = $clickedPatch.data('patch-id');
@@ -5758,12 +6173,13 @@ function checkPatchesPosition() {
 
    patchActions.forEach(patch => {
        const patchRect = patch.getBoundingClientRect();
-       
+       console.log(patch);
        let moved = false;
 
        const patchStyle = window.getComputedStyle(patch);
        const patchLeft = parseFloat(patchStyle.left);
        const patchTop = parseFloat(patchStyle.top);
+       
 
        if (patchRect.left < containerRect.left) {
            patch.style.left = `${patchLeft + (containerRect.left - patchRect.left)}px`;
@@ -5790,13 +6206,25 @@ function checkPatchesPosition() {
            patch.classList.remove('out-of-bounds');
        }
    });
+   
+   
 
    if (patchesOutside) {
        console.log('Yes, at least one patch is partially outside Now');
        patchesContainer.style.border = '2px solid red'; // Change border color to red
+       const patchDivs = document.querySelectorAll('.patch-');
+
+   patchDivs.forEach(div => {
+    div.style.removeProperty("filter");
+   });
    } else {
-       console.log('All patches are inside');
+       console.log('All patches are insideee');
        patchesContainer.style.border = ''; // Reset border color
+     const patchDivs = document.querySelectorAll('.patch-');
+
+   patchDivs.forEach(div => {
+    div.style.removeProperty("filter");
+   });
    }
  }
  else {
@@ -5811,7 +6239,7 @@ function checkPatchesPosition() {
       patchActions.forEach(patch => {
           const patchRect = patch.getBoundingClientRect();
           let moved = false;
-
+           
           const patchStyle = window.getComputedStyle(patch);
           const patchLeft = parseFloat(patchStyle.left);
           const patchTop = parseFloat(patchStyle.top);
@@ -6133,10 +6561,7 @@ function checkPatchOverlapping() {
 
     if (document.getElementById('Front-Area').style.visibility === 'visible') {
       console.log('front area overlapping');
-//         backPatches = document.querySelectorAll('.BackcenterBox > .patches-containerr > .patch-action');
-//       backPatches.forEach(patch => {
-//   patch.style.display = 'none';
-// });
+
         patchDivs = document.querySelectorAll('.centerBox > .patches-container > .patch-action');
     } else {
        console.log('back area overlapping');
@@ -6226,47 +6651,7 @@ function checkPatchallOverlapping() {
     patchesBackContainer.removeAttribute('data-alignment-id');
     
 }
-// before
-// function centerPatches() {
-//      deleteAlignment();
-//     const container = document.querySelector('.patches-container');
-//     const patches = container.querySelectorAll('.patch-action');
 
-//     // Get the bounding box of the container
-//     const containerRect = container.getBoundingClientRect();
-//     const containerCenterX = containerRect.left + containerRect.width / 2;
-//     const containerCenterY = containerRect.top + containerRect.height / 2;
-
-//     // Find the bounding box that surrounds all patches
-//     let minX = Infinity;
-//     let maxX = -Infinity;
-//     let minY = Infinity;
-//     let maxY = -Infinity;
-//     patches.forEach(patch => {
-//         const rect = patch.getBoundingClientRect();
-//         minX = Math.min(minX, rect.left);
-//         maxX = Math.max(maxX, rect.right);
-//         minY = Math.min(minY, rect.top);
-//         maxY = Math.max(maxY, rect.bottom);
-//     });
-
-//     // Calculate the offset to center the patches within the container
-//     const offsetX = containerCenterX - ((minX + maxX) / 2);
-//     const offsetY = containerCenterY - ((minY + maxY) / 2);
-
-//     patches.forEach(patch => {
-//         const prevLeft = parseFloat(window.getComputedStyle(patch).getPropertyValue('left'));
-//         const prevTop = parseFloat(window.getComputedStyle(patch).getPropertyValue('top'));
-
-//         // Calculate the new left and top positions for each patch
-//         const newLeft = prevLeft + offsetX;
-//         const newTop = prevTop + offsetY;
-
-//         // Apply the new positions
-//         patch.style.left = `${newLeft}px`;
-//         patch.style.top = `${newTop}px`;
-//     });
-// }
   function centerPatches() {
     deleteAlignment();
      
@@ -6376,13 +6761,25 @@ function initializePatch(patch, referenceWidth, referenceHeight, containerWidth,
     }
 }
 
-// Main function to resize and reposition patches
+function initializeImage(image, referenceWidth, referenceHeight, containerWidth, containerHeight) {
+    if (!image.dataset.originalWidth) {
+        // Use the image's width and height attributes for initialization
+        const attrWidth = parseFloat(image.getAttribute("width")) || image.naturalWidth;
+        const attrHeight = parseFloat(image.getAttribute("height")) || image.naturalHeight;
+
+        image.dataset.originalWidth = (attrWidth / containerWidth) * referenceWidth;
+        image.dataset.originalHeight = (attrHeight / containerHeight) * referenceHeight;
+    }
+}
+
+// Main function to resize and reposition patches and images
 function adjustPatches(deleteDatasetOnly = false) {
     const patchesContainer = document.querySelector(".patches-container");
     const patches = document.querySelectorAll(".patch-");
+    const images = document.querySelectorAll(".patch-image"); // Select all patch-images
     const container = document.querySelector(".checkit");
 
-    if (patchesContainer && patches.length > 0 && container) {
+    if (patchesContainer && container) {
         const containerWidth = container.offsetWidth;
         const containerHeight = container.offsetHeight;
 
@@ -6391,9 +6788,10 @@ function adjustPatches(deleteDatasetOnly = false) {
 
         console.log("Container Dimensions:", containerWidth, containerHeight);
 
+        // Adjust patches
         patches.forEach(patch => {
             if (deleteDatasetOnly) {
-                console.log("Deleting dataset values...");
+                console.log("Deleting dataset values for patches...");
                 delete patch.dataset.originalWidth;
                 delete patch.dataset.originalHeight;
                 delete patch.dataset.originalTop;
@@ -6419,7 +6817,7 @@ function adjustPatches(deleteDatasetOnly = false) {
             const newTop = originalTop * heightScale;
             const newLeft = originalLeft * widthScale;
 
-            console.log(`Resizing Patch:
+            console.log(`Resizinggg Patch:
                 Original: ${originalWidth}x${originalHeight}, Top: ${originalTop}, Left: ${originalLeft}
                 Scaled: ${newWidth}x${newHeight}, Top: ${newTop}, Left: ${newLeft}`);
 
@@ -6428,6 +6826,38 @@ function adjustPatches(deleteDatasetOnly = false) {
             patch.style.height = `${newHeight}px`;
             patch.style.top = `${newTop}px`;
             patch.style.left = `${newLeft}px`;
+        });
+         console.log(images);
+        // Adjust images
+        images.forEach(image => {
+            if (deleteDatasetOnly) {
+                console.log("Deleting dataset values for images...");
+                delete image.dataset.originalWidth;
+                delete image.dataset.originalHeight;
+                return; // Exit after deleting
+            }
+
+            // Ensure the image has been initialized
+            initializeImage(image, referenceWidth, referenceHeight, containerWidth, containerHeight);
+
+            // Retrieve original dimensions
+            const originalWidth = parseFloat(image.dataset.originalWidth);
+            const originalHeight = parseFloat(image.dataset.originalHeight);
+
+            // Scale dimensions based on container size
+            const widthScale = containerWidth / referenceWidth;
+            const heightScale = containerHeight / referenceHeight;
+
+            const newWidth = originalWidth * widthScale;
+            const newHeight = originalHeight * heightScale;
+
+            console.log(`Resizing Image:
+                Original: ${originalWidth}x${originalHeight}
+                Scaled: ${newWidth}x${newHeight}`);
+
+            // Update width and height attributes
+            image.setAttribute("width", newWidth);
+            image.setAttribute("height", newHeight);
         });
     }
 }
@@ -6459,4 +6889,50 @@ window.addEventListener("resize", () => {
 
 
   </script>
- 
+ <script> $(document).on('click', function(event) {
+        // Check if the clicked target has the class 'tidy-patches-delete-btn'
+        if ($(event.target).hasClass('main-patch-action-div-del') && $('.patch-action').length) {
+          console.log('delete icon clickedd');
+            // Select elements with classes 'patch-action' and 'patch-selected'
+            const elementsToDelete = $('.patch-action, .patch-selected, .patch-selected-by-btn, .patch-selected-by-both, .selected-patch-for-customization');
+
+            // Remove each of the selected elements
+            elementsToDelete.each(function() {
+                $(this).remove();
+            });
+
+            // Reset the order variable
+            order = 1;
+            orderBack = 1;
+        }
+    });</script>
+<script>
+    $(document).ready(function() {
+       function showBackOrFront(event) {
+          $('.main-patch-action-div-del').css('visibility', 'hidden');
+        if (event.target.id === 'showFrontBtnmob') {
+          $('#Front-Area').removeClass('image-hidden').css('visibility', 'visible');
+          $('#showBackBtnnmob').removeClass('patches-customization-btn-active');
+          $('#showFrontBtnmob').addClass('patches-customization-btn-active');
+         $('#Back-area').css('visibility', 'hidden');
+        } else if (event.target.id === 'showBackBtnnmob') {
+            var backArea = document.getElementById('Back-area');
+             backArea.style.top = '0px';
+          // Hide front image and show back image
+          $('#showFrontBtnmob').removeClass('patches-customization-btn-active');
+          $('#showBackBtnnmob').addClass('patches-customization-btn-active');
+          $('#Front-Area').addClass('image-hidden').css('visibility', 'hidden');
+          $('#Back-area').removeClass('image-hidden').css('visibility', 'visible');
+          const backPatches = document.querySelectorAll('.BackcenterBox > .patches-containerr > .patch-action');
+
+  backPatches.forEach(patch => {
+    patch.style.display = 'block';
+  });
+
+        }
+      }
+      $('#showFrontBtnmob').click(showBackOrFront);
+      $('#showBackBtnnmob').click(showBackOrFront);
+      $('#Front-Area').removeClass('image-hidden').css('visibility', 'visible');
+    });
+</script>
