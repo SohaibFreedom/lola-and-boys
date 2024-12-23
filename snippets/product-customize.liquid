@@ -1,6 +1,24 @@
 {% assign variant = product.selected_or_first_available_variant %}
 
 <style>
+   @media screen and (max-device-width: 768px) and (orientation: landscape) {
+  .patches-customization-container {
+        width: 0% !important;
+       /* display: none !important;   */
+  }
+    .main__patches__wrapp{
+          height: 100vh !important;
+    }
+    #patches-customization-offcanvas-menu{
+          width: 100% !important ;
+    }
+    .patches-customization-header{
+     display: none !important;  
+    }
+    .patch-customization-btn-wrap{
+      display: none !important; 
+    }
+}
   .mob-parent-div-for-front-back-btn{
     display:none;
   }
@@ -37,24 +55,7 @@
 }
   }
 
-  @media screen and (max-device-width: 768px) and (orientation: landscape) {
-  .patches-customization-container {
-        width: 0% !important;
-       /* display: none !important;   */
-  }
-    .main__patches__wrapp{
-          height: 100vh !important;
-    }
-    #patches-customization-offcanvas-menu{
-          width: 100% !important ;
-    }
-    .patches-customization-header{
-     display: none !important;  
-    }
-    .patch-customization-btn-wrap{
-      display: none !important; 
-    }
-}
+ 
   .patch-not-allowed{
     height: 70px;
     width: 70px;
