@@ -6723,6 +6723,8 @@ function checkPatchallOverlapping() {
     $('.selected-patch-for-customization-for-front').removeClass('patch-selected');
     $('.selected-patch-for-customization-for-front').removeClass('patch-selected-by-both');
     $('.selected-patch-for-customization-for-front > .selected-patch-order').remove();
+    // Select all divs with the class "main-patch-action-div-del" and set their visibility to hidden
+   $('.main-patch-action-div-del').css('visibility', 'hidden');
     console.log('this is order',order)
     order=1;
     console.log('this is new order',order)
