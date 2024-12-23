@@ -2078,8 +2078,8 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
     else if (window.innerWidth <= 375) {
   console.log('below 375px');
           // Calculate half width and height
-          var halfWidth = (imgWidth / 2) ;
-          var halfHeight = (imgHeight / 2) ;
+          var halfWidth = (imgWidth / 2) + 2 ;
+          var halfHeight = (imgHeight / 2) + 2;
   
   
           // Check if they are less than 20 and add 5px if true
