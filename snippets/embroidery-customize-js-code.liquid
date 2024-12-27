@@ -222,8 +222,13 @@
 
        function showFrontImage() {
     console.log('emb front area');
+         
     const product = {{ product | json }};
-    
+         const productTags = {{ product.tags | json }};
+    if (productTags.includes("no-back-image")) {
+       
+      $('.patches-customizations-btn-wrapper').css('visibility', 'hidden');
+    }
     // Iterate over the variants to find the relevant image data
     let currentImageData = null;
 
