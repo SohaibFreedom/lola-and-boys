@@ -499,7 +499,7 @@ function showthreadcolors(threadColors) {
         newDiv.textContent = inputField.value;
              newDiv.textContent = inputField.value;
       if (inputField.value.length <= 7) {
-  newDiv.style.fontSize = '45px';
+  newDiv.style.setProperty('font-size', '45px', 'important');
 } 
       else {
   if (window.innerWidth < 769) {
