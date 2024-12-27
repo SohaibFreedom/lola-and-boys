@@ -45,7 +45,6 @@
     } else {
         // If no .size_variants_circle has .size_variants_active, show the error div
         $('.size_variants_errors').css('display', 'block');
-        alert('non size product');
     }
 });
 
@@ -115,6 +114,8 @@
 
         // Select all elements with the hide-for-customization class and hide them
         $('.hide-for-customization').hide();
+        $('.yotpo-widget-clear').hide();
+        $('.yotpo-reviews-list').hide();
         $('#shopify-block-yotpo_product_reviews_ugc_reviews_MbrNNx').hide();
 
         $('.footer').hide();
@@ -401,7 +402,7 @@ function showthreadcolors(threadColors) {
      // Check if Backimg is empty and hide the div if it is
      const patchesWrapper = document.querySelector(".patches-customizations-btn-wrapper");
      const sizevariantscontaier = document.querySelector(".size_variants_section");
-      if (productTags.includes("no-back-image")) {
+     if (!productTags.includes("none-size-products")) {
        patchesWrapper.style.visibility = "hidden";
        sizevariantscontaier.style.visibility = "hidden";
      } else {
