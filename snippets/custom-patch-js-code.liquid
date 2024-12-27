@@ -3919,11 +3919,10 @@ function showBackImage() {
           sizevariantscontaier.style.visibility = "visible";
       }
      else{
-            if (productTags.includes("no-back-image")) {
+            if (!currentImageData.Backimg) {
     patchesWrapper.style.visibility = "hidden";
     sizevariantscontaier.style.visibility = "hidden";
-} 
-            else {
+} else {
     patchesWrapper.style.visibility = "visible";
     sizevariantscontaier.style.visibility = "visible";
 }
