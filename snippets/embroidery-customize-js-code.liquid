@@ -26,11 +26,7 @@
 
     const productTags = {{ product.tags | json }};
         if (productTags.includes("no-back-image")) {
-          $('.wordsletter_inputs_btn_wrapper').hide();
-          $('.front_input_heading').hide();
-          $('.FRarminput').hide();
-          $('.front_input_heading').hide();
-          $('.FLarminput').hide();
+        
              // Show the sidebar by setting visibility to 'visible'
         $('#emb_variants-selected-sidebar').css('visibility', 'visible');
         $('#emb_variants-selected-sidebar').css('display', 'flex');
