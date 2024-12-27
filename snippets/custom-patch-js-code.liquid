@@ -699,7 +699,7 @@ $(document).ready(function() {
         // Add a class to cartButton to make it visible
         cartButton.addClass('customize-cart-button-visible');
          const productTags = {{ product.tags | json }};
-        if  (productTags.includes("no-back-image")) {
+        if  (productTags.includes("none-size-products")) {
     $('.size_variants_section').hide();
 }
     });
