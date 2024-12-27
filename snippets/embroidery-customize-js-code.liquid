@@ -24,7 +24,31 @@
      embroidercontimuebutton.on('click', function() {
     console.log('back color btn clicked');
 
-    // Check if any .size_variants_circle has the .size_variants_active class
+    const productTags = {{ product.tags | json }};
+        if (productTags.includes("no-back-image")) {
+          $('.wordsletter_inputs_btn_wrapper').hide();
+          $('.front_input_heading').hide();
+          $('.FRarminput').hide();
+          $('.front_input_heading').hide();
+          $('.FLarminput').hide();
+             // Show the sidebar by setting visibility to 'visible'
+        $('#emb_variants-selected-sidebar').css('visibility', 'visible');
+        $('#emb_variants-selected-sidebar').css('display', 'flex');
+        $('#emb_variants-selected-sidebar').css('flex-direction', 'column');
+        
+        // Handle visibility for smaller screens
+        if (window.innerWidth < 769) {
+            $('.emb-only-mobile-for-colors').css('display', 'block');
+            $('.emb-only-mobile-for-styles').css('display', 'none');
+        }
+
+        // Show the continue button
+        // $('.variants-continue-btn-invisible').css('display', 'block');
+
+        // Hide the embroider continue button
+        embroidercontimuebutton.css('visibility', 'hidden');
+        } else {
+          // Check if any .size_variants_circle has the .size_variants_active class
     if ($('.size_variants_circle').hasClass('size_variants_active')) {
         // Show the sidebar by setting visibility to 'visible'
         $('#emb_variants-selected-sidebar').css('visibility', 'visible');
@@ -42,10 +66,13 @@
 
         // Hide the embroider continue button
         embroidercontimuebutton.css('visibility', 'hidden');
-    } else {
+    } 
+    else {
         // If no .size_variants_circle has .size_variants_active, show the error div
         $('.size_variants_errors').css('display', 'block');
-    }
+    } 
+        }
+   
 });
 
      embroidercontimuebackbutton.on('click', function() {
@@ -114,6 +141,8 @@
 
         // Select all elements with the hide-for-customization class and hide them
         $('.hide-for-customization').hide();
+        $('.yotpo-widget-clear').hide();
+        $('.yotpo-reviews-list').hide();
         $('#shopify-block-yotpo_product_reviews_ugc_reviews_MbrNNx').hide();
 
         $('.footer').hide();
@@ -400,7 +429,7 @@ function showthreadcolors(threadColors) {
      // Check if Backimg is empty and hide the div if it is
      const patchesWrapper = document.querySelector(".patches-customizations-btn-wrapper");
      const sizevariantscontaier = document.querySelector(".size_variants_section");
-     if (!currentImageData.Backimg) {
+     if (!productTags.includes("none-size-products")) {
        patchesWrapper.style.visibility = "hidden";
        sizevariantscontaier.style.visibility = "hidden";
      } else {
