@@ -1353,9 +1353,13 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
          halfWidth += 25;
               }
                 else if (product.tags.includes('customize-long-bag')){
-                      halfHeight += 25;
+        halfHeight += 25;
          halfWidth += 25;
                 }
+                  else if (!productTags.includes("happ-velour-set")){
+                  halfHeight += 20;
+         halfWidth += 20;
+                  }
                 else {
          halfHeight += 20;
          halfWidth += 20;
