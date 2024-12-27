@@ -702,6 +702,10 @@ $(document).ready(function() {
         if  (productTags.includes("none-size-products")) {
     $('.size_variants_section').hide();
 }
+        if  (productTags.includes("happ-velour-set")) {
+   document.querySelector('.size_variants_section').style.setProperty('visibility', 'visible', 'important');
+
+}
     });
 
     // Add click event listener to the neverMindBtn button
