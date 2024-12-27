@@ -244,6 +244,10 @@
 
     // Update the image source and CSS properties if data is found
     if (currentImageData) {
+           const productTags = {{ product.tags | json }};
+        if (productTags.includes("no-back-image")) {
+          $('.patches-customizations-btn-wrapper').hide();
+        }
         // const img = document.getElementById("emb-Front-image");
         // img.src = currentImageData.FProductImg;
 
