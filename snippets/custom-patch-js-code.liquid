@@ -698,6 +698,9 @@ $(document).ready(function() {
 
         // Add a class to cartButton to make it visible
         cartButton.addClass('customize-cart-button-visible');
+        if  (productTags.includes("no-back-image")) {
+    $('.size_variants_section').hide();
+}
     });
 
     // Add click event listener to the neverMindBtn button
