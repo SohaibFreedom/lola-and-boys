@@ -26,23 +26,7 @@
 
     const productTags = {{ product.tags | json }};
         if (productTags.includes("no-back-image")) {
-        
-             // Show the sidebar by setting visibility to 'visible'
-        $('#emb_variants-selected-sidebar').css('visibility', 'visible');
-        $('#emb_variants-selected-sidebar').css('display', 'flex');
-        $('#emb_variants-selected-sidebar').css('flex-direction', 'column');
-        
-        // Handle visibility for smaller screens
-        if (window.innerWidth < 769) {
-            $('.emb-only-mobile-for-colors').css('display', 'block');
-            $('.emb-only-mobile-for-styles').css('display', 'none');
-        }
-
-        // Show the continue button
-        // $('.variants-continue-btn-invisible').css('display', 'block');
-
-        // Hide the embroider continue button
-        embroidercontimuebutton.css('visibility', 'hidden');
+   
         } else {
           // Check if any .size_variants_circle has the .size_variants_active class
     if ($('.size_variants_circle').hasClass('size_variants_active')) {
