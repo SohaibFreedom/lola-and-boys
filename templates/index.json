@@ -60,9 +60,8 @@
         "image_zPL6aM": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/HOME_PAGE_BANNER_desktop-15_1.jpg",
-            "image_mobile": "shopify://shop_images/homepage_mobile_banner_1250_x_1280_px_-6_1.jpg",
-            "mp4": "",
+            "image_mobile": "shopify://shop_images/Lola_Outerwear_HP_mob_1.jpg",
+            "mp4": "https://cdn.shopify.com/videos/c/o/v/beb5c6f2c4b749098494c09f68f7619b.mp4",
             "mobilevideo": "",
             "pretext": "",
             "title": "",
