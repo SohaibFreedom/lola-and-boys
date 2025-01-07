@@ -343,7 +343,7 @@
         "image_fph4tc": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/PHOTo_2.jpg",
+            "image": "shopify://shop_images/LATB_11062024_00734.jpg",
             "link": "https://lolaandtheboys.com/collections/shoes2022",
             "title1": "Shoes",
             "customclass": "shoes-img-fix",
@@ -443,7 +443,7 @@
         "image_wedKWc": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/LATB_Holiday25_10292024_00670_1.jpg",
+            "image": "shopify://shop_images/LATB_08082024_2V2A1615.jpg",
             "link": "https://lolaandtheboys.com/collections/girls-dresses-1",
             "title": "Dresses",
             "text": "",
@@ -504,8 +504,8 @@
     "best_sellers_section_bDD7BB": {
       "type": "best-sellers-section",
       "settings": {
-        "title": "The Holiday Shop",
-        "collection": "holiday-shop",
+        "title": "The Valentine's Day Shop",
+        "collection": "valentines-day",
         "collection_style": "slider",
         "collection_description": false,
         "products_per": 5,
