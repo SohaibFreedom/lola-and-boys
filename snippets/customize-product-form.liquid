@@ -266,7 +266,7 @@
    
       $('.toggle-summary-svg').toggleClass('toggle-summary-svg-active');
 const container = $('.complete-overly-wrapper');
-    if (container.css('display') === 'none') {
+  if (!container.is(':visible')) {
         container.css('display', 'block');
     } else {
         container.css('display', 'none');
