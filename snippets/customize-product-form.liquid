@@ -6,6 +6,16 @@
 <!-- {{ variant | json}} -->
 
 <style>
+  .patch-not-allowed{
+    height: 70px;
+    width: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    position: relative;
+    flex-direction: column;
+  }
   .span-content{
     font-size: 20px !important;
     text-transform: uppercase;
@@ -709,13 +719,13 @@ const container = $('.complete-overly-wrapper');
  const loader = document.querySelector('.loader-cart');
  const spanDiv = document.querySelector('.span-content');
 addCartItemButton.addEventListener('click', async function (event) {
-   // const patchDivs = document.querySelectorAll('.patch');
+   const patchDivs = document.querySelectorAll('.patch');
 
-   //  patchDivs.forEach(function (div) {
-   //      div.classList.remove('patch'); // Remove the `.patch` class
-   //      div.classList.add('patch-not-allowed'); // Add the `.patch-not-allowed` class
-   //    div.setAttribute('draggable', 'false');
-   //  });
+    patchDivs.forEach(function (div) {
+        div.classList.remove('patch'); // Remove the `.patch` class
+        div.classList.add('patch-not-allowed'); // Add the `.patch-not-allowed` class
+      div.setAttribute('draggable', 'false');
+    });
   if ($('.overlapping-error').css('visibility') === 'visible') {
     $('.overlapping-correction-error').css('display', 'block');
   }else{
