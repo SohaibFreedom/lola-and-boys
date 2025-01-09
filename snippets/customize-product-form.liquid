@@ -721,30 +721,37 @@ const container = $('.complete-overly-wrapper');
 addCartItemButton.addEventListener('click', async function (event) {
    const patchDivs = document.querySelectorAll('.patch');
 
-    patchDivs.forEach(function (div) {
-        div.classList.remove('patch'); // Remove the `.patch` class
-        div.classList.add('patch-not-allowed'); // Add the `.patch-not-allowed` class
-      div.setAttribute('draggable', 'false');
-    });
-  if ($('.overlapping-error').css('visibility') === 'visible') {
-    $('.overlapping-correction-error').css('display', 'block');
-  }else{
-console.log('added');
-loader.style.display = 'block';
-spanDiv.style.display = 'none';
-addCartItemButton.style.pointerEvents = 'none';
-addCartItemButton.style.opacity = '0.5';
-addCartItemButton.style.backgroundColor = '#dfdfdf';
+   patchDivs.forEach(function (div) {
+       div.classList.remove('patch'); // Remove the `.patch` class
+       div.classList.add('patch-not-allowed'); // Add the `.patch-not-allowed` class
+       div.setAttribute('draggable', 'false');
+   });
 
-// Perform the necessary actions before calling the function
-$('.overlapping-correction-error').css('visibility', 'hidden');
+   if ($('.overlapping-error').css('visibility') === 'visible') {
+       $('.overlapping-correction-error').css('display', 'block');
+   } else {
+       console.log('added');
 
-// Use a small timeout to ensure styles are applied
-setTimeout(() => {
-    captureAndCombineScreenshots();
-}, 1);
-    }
+       // Immediate style updates
+       loader.style.display = 'block';
+       spanDiv.style.display = 'none';
+       addCartItemButton.style.pointerEvents = 'none';
+       addCartItemButton.style.opacity = '0.5';
+       addCartItemButton.style.backgroundColor = '#dfdfdf';
+
+       // Force reflow for immediate style application
+       loader.offsetHeight;
+
+       // Perform the necessary actions
+       $('.overlapping-correction-error').css('visibility', 'hidden');
+
+       // Slightly delay the function to prioritize style updates
+       setTimeout(() => {
+           captureAndCombineScreenshots();
+       }, 100);
+   }
 });
+
 
 //  function loadCartSection(response) {
   
