@@ -928,39 +928,7 @@ async function addcartfiles() {
       const response = await addToCart(variants, customizedImageUrl, customizedPrice, sizeVariants, messagaeData, customizedBackImageUrl);
       console.log('Cart Response:', response);
    if (response.status === 422) {
-  const outOfStockDiv = document.getElementById('Out-of-stock-error');
-  console.log(outOfStockDiv);
-  if (outOfStockDiv) {
-    const addItemDiv = document.querySelector('.add-item');
-    if (addItemDiv) {
-      addItemDiv.style.background = '#ffe2e8';
-      addItemDiv.style.opacity = '1';
-      addItemDiv.style.pointerEvents = '';
-    }
-
-    // Display .span-content div
-    const spanContentDiv = document.querySelector('.span-content');
-    if (spanContentDiv) {
-      spanContentDiv.style.display = 'block';
-    }
-    
-    const loaderCartDiv = document.querySelector('.loader-cart');
-    if (loaderCartDiv) {
-      loaderCartDiv.style.display = 'none';
-    }
-    
-    console.log('yes exists');
-    outOfStockDiv.style.display = 'block'; // Display the div
-    outOfStockDiv.style.visibility = 'visible';
-    outOfStockDiv.textContent = response.message; // Set the content to the error message
-    
-    // Call the function to hide the outOfStockDiv after 5 seconds
-    hideOutOfStockDivAfterDelay();
-  }
-}else {
-    // Redirect to cart if the response is successful
-    window.location.href = '/cart';
-  }
+     console.log('out of stock');
     } 
     catch (error) {
       console.error('Error adding items to cart:', error);
