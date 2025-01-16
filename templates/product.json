@@ -61,7 +61,7 @@
       "type": "apps",
       "blocks": {
         "yotpo_product_reviews_ugc_reviews_MbrNNx": {
-          "type": "shopify://apps/yotpo-product-reviews-ugc/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
             "product": "{{product}}"
           }
@@ -71,12 +71,28 @@
         "yotpo_product_reviews_ugc_reviews_MbrNNx"
       ],
       "settings": {}
+    },
+    "786f03410aa34f55c8da": {
+      "type": "apps",
+      "blocks": {
+        "df355749-cf02-4e2e-a46e-86876f87eb83": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "df355749-cf02-4e2e-a46e-86876f87eb83"
+      ],
+      "settings": {}
     }
   },
   "order": [
     "shogun-helper",
     "shogun-above",
     "main",
+    "786f03410aa34f55c8da",
     "shogun-below",
     "shogun-optimizer",
     "17174489357573d6b9"
