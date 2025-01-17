@@ -1,3 +1,48 @@
+.collection_items .relative.product_image.swap-false {
+    overflow: hidden;
+}
+
+.irina-fav-tag {
+	position: absolute;
+    left: -36px !important;
+    bottom: 31px;
+    background: #F474C2 !important;
+    padding: 8px 55px 8px 28px;
+    text-transform: uppercase;
+    font-size: 15px;
+	font-weight:600 !important;
+	letter-spacing:0.5px;
+	color:#fff;
+    clip-path: polygon(0 0, 100% 0, 76% 100%, 12% 98%);
+    transform: rotate(35deg);
+}
+
+.irina-fav-tag img {
+    width: 20px !important;
+    height:auto !important;
+}
+
+
+@media only screen and (max-width: 768px) {
+	.irina-fav-tag {
+		font-size:8px;
+		padding: 4px 40px 4px 23px;
+		left: -24px !important;
+        bottom: 15px;
+		clip-path: polygon(0 0, 100% 0, 73% 100%, 12% 98%);
+	}
+
+    .irina-fav-tag img {
+      width: 11px !important;
+    }
+
+  .product-tag.irina-fav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+}
+
 .header .main_nav_wrapper .main_nav .logo .logo-inner-main {
   display: grid !important;
   grid-template-columns: 1fr 1fr 1fr;
