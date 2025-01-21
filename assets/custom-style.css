@@ -5,6 +5,10 @@
   display:none !important;
 }
 
+.relative.product_image.swap-false {
+  overflow:hidden;
+}
+
 .irina-fav-tag {
 	position: absolute;
     left: -36px !important;
