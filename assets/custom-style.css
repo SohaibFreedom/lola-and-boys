@@ -43,6 +43,10 @@
     padding: 4px 45px 4px 31px;
     font-size: 9px;
   }
+
+  .irina-fav-tag img {
+      width: 11px !important;
+    }
 }
 
 @media only screen and (max-width: 768px) {
