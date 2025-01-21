@@ -1,6 +1,9 @@
 .collection_items .relative.product_image.swap-false {
     overflow: hidden;
 }
+.collection_items .thumbnail-overlay .quick_shop {
+  display:none !important;
+}
 
 .irina-fav-tag {
 	position: absolute;
