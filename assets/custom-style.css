@@ -35,6 +35,15 @@
   gap: 10px;
 }
 
+@media only screen and (max-width: 1024px) {
+  .irina-fav-tag {
+    position: absolute;
+    left: -36px!important;
+    bottom: 24px;
+    padding: 4px 45px 4px 31px;
+    font-size: 9px;
+  }
+}
 
 @media only screen and (max-width: 768px) {
 	.irina-fav-tag {
