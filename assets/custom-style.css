@@ -25,6 +25,12 @@
     height:auto !important;
 }
 
+.product-tag.irina-fav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 
 @media only screen and (max-width: 768px) {
 	.irina-fav-tag {
