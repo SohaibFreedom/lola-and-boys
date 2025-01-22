@@ -69,6 +69,15 @@
   }
 }
 
+@media only screen and (max-width: 480px) {
+    .irina-fav-tag {
+        font-size: 7px;
+        padding: 2px 35px 2px 23px;
+        left: -24px !important;
+        bottom: 10px;
+    }
+}
+
 .header .main_nav_wrapper .main_nav .logo .logo-inner-main {
   display: grid !important;
   grid-template-columns: 1fr 1fr 1fr;
