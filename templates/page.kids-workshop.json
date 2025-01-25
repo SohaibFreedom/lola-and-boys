@@ -73,31 +73,6 @@
         "Image_size": 50
       }
     },
-    "image_text_qMPA3z": {
-      "type": "image-text",
-      "blocks": {
-        "image_jCKYBm": {
-          "type": "image",
-          "settings": {
-            "title": "10 February 2025",
-            "text": "<p>Promotion description appears here.</p>",
-            "button_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_jCKYBm"
-      ],
-      "settings": {
-        "containerClass": "",
-        "customClass": "",
-        "featured_links_per_row": "1",
-        "frontpage_text_align": "left",
-        "frontpage_image_position": "left",
-        "frontpage_grid_style": "full_width"
-      }
-    },
     "liquid_text_YH6gC7": {
       "type": "liquid-text",
       "settings": {
@@ -113,7 +88,6 @@
     "shogun-optimizer",
     "image_with_text_overlay_VXgdjT",
     "richtext_custom_MLQjH6",
-    "image_text_qMPA3z",
     "liquid_text_YH6gC7"
   ]
 }
