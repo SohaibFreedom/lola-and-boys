@@ -101,9 +101,9 @@
     "liquid_text_YH6gC7": {
       "type": "liquid-text",
       "settings": {
-        "heading": "sanan",
+        "heading": "10 February 2025",
         "description": "Your description here.",
-        "liquid_code": "{% raw %}{% if product %}{{ product.title }}{% endif %}{% endraw %}"
+        "liquid_code": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d344343.1659875752!2d-88.06153032415246!3d41.833750983111194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e2c3cd0f4cbed%3A0xafe0a6ad09c0c000!2sChicago%2C%20IL%2C%20USA!5e1!3m2!1sen!2s!4v1737842471253!5m2!1sen!2s\" width=\"500\" height=\"350\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
       }
     }
   },
