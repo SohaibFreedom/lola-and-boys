@@ -109,23 +109,11 @@
             "description_size": "16",
             "textClass": ""
           }
-        },
-        "button_pndt3p": {
-          "type": "button",
-          "settings": {
-            "button_label": "Grab a Ticket for Your Child",
-            "button_link": "#",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
         }
       },
       "block_order": [
         "heading_hQnptf",
-        "text_cTP4Kq",
-        "button_pndt3p"
+        "text_cTP4Kq"
       ],
       "settings": {
         "desktop_content_position": "center",
@@ -178,8 +166,8 @@
         "heading_color": "white",
         "text_color": "white",
         "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52,
+        "padding_top": 0,
+        "padding_bottom": 72,
         "Image_size": 50
       }
     }
