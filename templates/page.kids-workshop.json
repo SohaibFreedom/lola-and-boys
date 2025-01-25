@@ -41,12 +41,70 @@
         "button2_link": "",
         "button2_highlight": false
       }
+    },
+    "richtext_custom_MLQjH6": {
+      "type": "richtext-custom",
+      "blocks": {
+        "heading_qQnF7k": {
+          "type": "heading",
+          "settings": {
+            "heading": "Event  Details",
+            "txtClass": "",
+            "heading_align": "center",
+            "heading_size": "38"
+          }
+        }
+      },
+      "block_order": [
+        "heading_qQnF7k"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "custom_class": "workshop-details",
+        "custom_id": "",
+        "display_flex": false,
+        "gap_between": "",
+        "content_alignment": "center",
+        "heading_color": "white",
+        "text_color": "white",
+        "full_width": true,
+        "padding_top": 72,
+        "padding_bottom": 52,
+        "Image_size": 50
+      }
+    },
+    "image_text_qMPA3z": {
+      "type": "image-text",
+      "blocks": {
+        "image_jCKYBm": {
+          "type": "image",
+          "settings": {
+            "title": "10 February 2025",
+            "text": "<p>Promotion description appears here.</p>",
+            "button_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_jCKYBm"
+      ],
+      "settings": {
+        "containerClass": "",
+        "customClass": "",
+        "featured_links_per_row": "1",
+        "frontpage_text_align": "left",
+        "frontpage_image_position": "left",
+        "frontpage_grid_style": "full_width"
+      }
     }
   },
   "order": [
     "shogun-helper",
     "main",
     "shogun-optimizer",
-    "image_with_text_overlay_VXgdjT"
+    "image_with_text_overlay_VXgdjT",
+    "richtext_custom_MLQjH6",
+    "image_text_qMPA3z"
   ]
 }
