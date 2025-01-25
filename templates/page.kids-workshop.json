@@ -97,6 +97,14 @@
         "frontpage_image_position": "left",
         "frontpage_grid_style": "full_width"
       }
+    },
+    "liquid_text_YH6gC7": {
+      "type": "liquid-text",
+      "settings": {
+        "heading": "sanan",
+        "description": "Your description here.",
+        "liquid_code": "{% raw %}{% if product %}{{ product.title }}{% endif %}{% endraw %}"
+      }
     }
   },
   "order": [
@@ -105,6 +113,7 @@
     "shogun-optimizer",
     "image_with_text_overlay_VXgdjT",
     "richtext_custom_MLQjH6",
-    "image_text_qMPA3z"
+    "image_text_qMPA3z",
+    "liquid_text_YH6gC7"
   ]
 }
