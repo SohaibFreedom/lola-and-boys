@@ -10,7 +10,8 @@
  font-family: "FuzzyBUbbles" !important;
 	background-color:transparent !important;
       font-size: 36px  !important;
-  color:#fad52f  !important;
+  color:#000  !important;
+  font-weight:bold  !important;
 }
 
 .collection_items .relative.product_image.swap-false {
