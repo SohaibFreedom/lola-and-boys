@@ -22,11 +22,24 @@
       "type": "shogun-optimizer",
       "settings": {}
     },
-    "custom_imgbanner_bR99yW": {
-      "type": "custom-imgbanner",
+    "image_with_text_overlay_VXgdjT": {
+      "type": "image-with-text-overlay",
       "settings": {
-        "image": "shopify://shop_images/FullSizeRender_c4fb3add-5c68-4ef6-abd9-4003bec05dcf.jpg",
-        "text": "Join Our Fun Kids Workshop at Lola and the Boys!"
+        "customClass": "",
+        "image": "shopify://shop_images/DALL_E_2025-01-25_23.38.31_-_A_vibrant_and_playful_background_for_a_kids_workshop_event_banner._The_background_features_bright_pastel_colors_like_pink_yellow_blue_and_green_in.webp",
+        "pretext": "",
+        "title": "Join Our Fun Kids Workshop at Lola and the Boys!",
+        "subtitle": "<p>An exciting afternoon of creativity, friendship, and shopping for girls ages 4-12!</p>",
+        "caption_background": false,
+        "caption_background_transparency": true,
+        "text_position": "center",
+        "text_align": "center",
+        "button1": "Reserve Your Spot Now",
+        "button1_link": "",
+        "button1_highlight": true,
+        "button2": "",
+        "button2_link": "",
+        "button2_highlight": false
       }
     }
   },
@@ -34,6 +47,6 @@
     "shogun-helper",
     "main",
     "shogun-optimizer",
-    "custom_imgbanner_bR99yW"
+    "image_with_text_overlay_VXgdjT"
   ]
 }
