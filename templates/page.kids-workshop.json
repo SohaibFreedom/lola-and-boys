@@ -9,22 +9,31 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "page",
-      "settings": {}
-    },
     "shogun-helper": {
       "type": "shogun-helper",
+      "settings": {}
+    },
+    "main": {
+      "type": "page",
+      "disabled": true,
       "settings": {}
     },
     "shogun-optimizer": {
       "type": "shogun-optimizer",
       "settings": {}
+    },
+    "custom_imgbanner_bR99yW": {
+      "type": "custom-imgbanner",
+      "settings": {
+        "image": "shopify://shop_images/FullSizeRender_c4fb3add-5c68-4ef6-abd9-4003bec05dcf.jpg",
+        "text": "Join Our Fun Kids Workshop at Lola and the Boys!"
+      }
     }
   },
   "order": [
     "shogun-helper",
     "main",
-    "shogun-optimizer"
+    "shogun-optimizer",
+    "custom_imgbanner_bR99yW"
   ]
 }
