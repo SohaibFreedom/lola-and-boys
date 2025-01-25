@@ -6,7 +6,10 @@
   font-style: normal;
   font-display: swap;
 }
-
+.kids-workshop-hero .headline h1{
+ font-family: "FuzzyBUbbles";
+	background-color:transparent !important;
+}
 
 .collection_items .relative.product_image.swap-false {
     overflow: hidden;
