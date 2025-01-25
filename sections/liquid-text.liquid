@@ -15,11 +15,11 @@
       "default": "Your description here."
     },
     {
-      "type": "textarea",
-      "label": "Liquid Code",
-      "id": "liquid_code",
-      "default": "{% raw %}{% if product %}{{ product.title }}{% endif %}{% endraw %}"
-    }
+  "type": "liquid",
+  "label": "Liquid Code",
+  "id": "liquid_code"
+}
+
   ],
    "presets": [{
     "name": "Liquid with text"
@@ -31,7 +31,7 @@
 <div class="kids-workshop-columns">
   <div class="column-left">
     <div class="liquid-code">
-      {{ settings.liquid_code | raw }}
+     {{ settings.liquid_code }}
     </div>
   </div>
 
@@ -40,6 +40,7 @@
     <p>{{ settings.description }}</p>
   </div>
 </div>
+
 
 <style>
   .kids-workshop-columns {
