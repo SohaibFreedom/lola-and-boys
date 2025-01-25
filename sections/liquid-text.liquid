@@ -1,263 +1,74 @@
-{% comment %}
-  ** Image with text (half and half view) - homepage partial **
-  - Draggable section
-  - Uses blocks
-{% endcomment %}
-<div class="imgtxt-main-container {{ section.settings.containerClass }}">
-  {% if section.settings.frontpage_grid_style == 'standard' %}
-    <div class="container ">
-  {% endif %}
-  <div
-    class="
-      featured_collections {{ section.settings.customClass }}
-      clearfix across-{{section.settings.featured_links_per_row}} image-align--{{ section.settings.frontpage_image_position }}
-    "
-  >
-    {% if section.blocks.size > 0 %}
-      {% for block in section.blocks %}
-        <section
-          class="featured-link--section featured-link--image section-{{ forloop.index }}"
-          {{ block.shopify_attributes }}
-        >
-          <div class="featured-link--half featured-link--image featured-link--margin">
-            <div class="featured-link--wrap">
-              <a
-                {% if block.settings.link != blank %}
-                  href="{{ block.settings.link }}"
-                {% endif %}
-                title="{{ block.settings.title }}"
-              >
-                {% if block.settings.image %}
-                  {{ block.settings.image }}
-                {% else %}
-                  {% capture i %}{% cycle "1", "2", "3", "4", "5", "6" %}{% endcapture %}
-                  {{ 'collection-' | append: i | placeholder_svg_tag: 'placeholder-svg placeholder-svg--promotions' }}
-                {% endif %}
-              </a>
-            </div>
-          </div>
-          <div class="featured-link--half">
-            <div class="info text-align--{{section.settings.frontpage_text_align}}">
-              {% if block.settings.rightImg %}
-                {{ block.settings.rightImg }}
-              {% endif %}
-              <a
-                {% if block.settings.link != blank %}
-                  href="{{ block.settings.link }}"
-                {% endif %}
-                class="collection_title"
-              >
-                {{ block.settings.title }}
-              </a>
-              {% if block.settings.text != blank %}
-                <div class="description">{{ block.settings.text }}</div>
-              {% endif %}
-              {% if block.settings.button_label != blank %}
-                <a
-                  {% if block.settings.link != blank %}
-                    href="{{ block.settings.link }}"
-                  {% endif %}
-                  class="button"
-                >
-                  {{ block.settings.button_label }}
-                </a>
-              {% endif %}
-            </div>
-          </div>
-        </section>
-      {% endfor %}
-    {% endif %}
-  </div>
-  {% if section.settings.frontpage_grid_style == 'standard' %}
+{% schema %}
+{
+  "name": "Kids Workshop Columns",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Heading",
+      "id": "heading",
+      "default": "Your Heading Here"
+    },
+    {
+      "type": "textarea",
+      "label": "Description",
+      "id": "description",
+      "default": "Your description here."
+    },
+    {
+      "type": "textarea",
+      "label": "Liquid Code",
+      "id": "liquid_code",
+      "default": "{% raw %}{% if product %}{{ product.title }}{% endif %}{% endraw %}"
+    }
+  ],
+   "presets": [{
+    "name": "Liquid with text"
+  }]
+
+}
+{% endschema %}
+
+<div class="kids-workshop-columns">
+  <div class="column-left">
+    <div class="liquid-code">
+      {{ settings.liquid_code | raw }}
     </div>
-  {% endif %}
+  </div>
+
+  <div class="column-right">
+    <h2>{{ settings.heading }}</h2>
+    <p>{{ settings.description }}</p>
+  </div>
 </div>
 
 <style>
-  {% if section.settings.frontpage_grid_style == 'standard' and section.settings.featured_links_per_row == '1' %}
-    .featured-link--section {
-      margin-bottom: 3%;
-    }
-    @media only screen and (max-width: 480px) {
-      .featured-link--section {
-        margin-bottom: 10%;
-      }
-    }
-    .featured-link--half {
-      width: 45%;
-    }
-    .featured-link--margin {
-      {% if section.settings.frontpage_image_position == 'right' %}
-        margin-left: 3%;
-      {% else %}
-        margin-left: 0%;
-        margin-right: 3%;
-      {% endif %}
-    }
-    .featured-link--section:nth-child(even) .featured-link--margin {
-      {% if section.settings.frontpage_image_position == 'right' %}
-        margin-left: 0%;
-        margin-right: 3%;
-      {% else %}
-        margin-left: 3%;
-        margin-right: 0%;
-      {% endif %}
-    }
-  {% elsif section.settings.frontpage_grid_style == 'standard' and section.settings.featured_links_per_row == '2' %}
-    @media only screen and (max-width: 480px) {
-      .featured-link--section {
-        margin-bottom: 10%;
-      }
-    }
-    .featured-link--margin {
-      margin-right: 0%;
-      margin-left: 0%;
-    }
-    .featured-link--section:nth-child(even) .featured-link--margin {
-      margin-left: 0%;
-      margin-right: 0%;
-    }
-  {% endif %}
-</style>
+  .kids-workshop-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
 
-{% schema %}
-{
-  "name": "Image with text",
-  "class": "image-with-text-section",
-  "max_blocks": 16,
-  "settings": [
-     {
-          "type": "text",
-          "id": "containerClass",
-          "label": "container Class"
-        },
-       {
-          "type": "text",
-          "id": "customClass",
-          "label": "custom Class"
-        },
-    {
-      "type": "select",
-      "id": "featured_links_per_row",
-      "label": "Images per row",
-      "options": [
-        {
-          "value": "1",
-          "label": "1"
-        },
-        {
-          "value": "2",
-          "label": "2"
-        }
-      ]
-    },
-    {
-      "type": "select",
-      "id": "frontpage_text_align",
-      "label": "Text alignment",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ]
-    },
-    {
-      "type": "select",
-      "id": "frontpage_image_position",
-      "label": "First image position",
-      "info": "Subsequent images will appear staggered",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ]
-    },
-    {
-      "type": "select",
-      "id": "frontpage_grid_style",
-      "label": "Grid style",
-      "options": [
-        {
-          "value": "standard",
-          "label": "Standard"
-        },
-        {
-          "value": "full_width",
-          "label": "Full width"
-        }
-      ],
-      "default": "full_width"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "liquid",
-      "name": "Custom Liquid Block",
-      "settings": [
-        {
-          "type": "liquid",
-          "id": "image",
-          "label": "Custom Liquid"
-        },
-        {
-          "type": "liquid",
-          "id": "rightImg",
-          "label": "Right Image Liquid"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Heading",
-          "default": "Your headline"
-        },
-        {
-          "type": "richtext",
-          "id": "text",
-          "label": "Text",
-          "default": "<p>Promotion description appears here.</p>"
-        },
-        {
-          "type": "text",
-          "id": "button_label",
-          "label": "Button label",
-          "default": "View all"
-        },
-        {
-          "type": "url",
-          "id": "link",
-          "label": "Button link"
-        }
-      ]
-    }
-  ],
-  "presets": [{
-    "name": "Liquid with text",
-    "settings": {
-      "featured_links_per_row": "1",
-      "frontpage_text_align": "left"
-    },
-    "blocks": [
-      {
-        "type": "liquid"
-      },
-      {
-        "type": "liquid"
-      }
-    ]
-  }]
-}
-{% endschema %}
+  .kids-workshop-columns .column-left, 
+  .kids-workshop-columns .column-right {
+    padding: 20px;
+  }
+
+  .kids-workshop-columns .column-left {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+  }
+
+  .kids-workshop-columns .column-right {
+    background-color: #fff;
+    border: 1px solid #ddd;
+  }
+
+  .kids-workshop-columns h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .kids-workshop-columns p {
+    font-size: 16px;
+  }
+</style>
