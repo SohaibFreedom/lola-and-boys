@@ -69,7 +69,7 @@
         "text_color": "white",
         "full_width": true,
         "padding_top": 72,
-        "padding_bottom": 52,
+        "padding_bottom": 24,
         "Image_size": 50
       }
     },
