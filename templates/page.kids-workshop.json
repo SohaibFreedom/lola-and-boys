@@ -145,9 +145,42 @@
     "custom_liquid_8FGR4h": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<table class=\"workshop-pricing-table\">\n  <thead>\n    <tr>\n      <th>Ticket Type</th>\n      <th>Price</th>\n      <th>Details</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>General Admission</td>\n      <td>$50</td>\n      <td>Access to all general areas</td>\n    </tr>\n    <tr>\n      <td>VIP</td>\n      <td>$150</td>\n      <td class=\"highlight\">Includes priority seating and free refreshments</td>\n    </tr>\n    <tr>\n      <td>Student</td>\n      <td>$30</td>\n      <td>Requires valid student ID</td>\n    </tr>\n    <tr>\n      <td>Child</td>\n      <td>$20</td>\n      <td>For ages 5-12</td>\n    </tr>\n  </tbody>\n</table>\n\n\n<style>\n    .workshop-pricing-table {\n      width: 100%;\n      max-width: 800px;\n      margin: 0 auto;\n      border-collapse: collapse;\n      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\n      border-radius: 10px;\n      overflow: hidden;\n    }\n\n    .workshop-pricing-table th, .workshop-pricing-table td {\n      padding: 15px;\n      text-align: center;\n    }\n\n    .workshop-pricing-table th {\n      background-color: #DC143C;\n      color: #fff;\n      text-transform: uppercase;\n      font-size: 16px;\n      letter-spacing: 1px;\n    }\n\n    .workshop-pricing-table tr:nth-child(even) {\n      background-color: #f2f2f2;\n    }\n\n    .workshop-pricing-table tr:hover {\n      background-color: #e6f7ff;\n    }\n\n    .workshop-pricing-table td {\n      font-size: 14px;\n      color: #333;\n    }\n\n  \n  </style>",
+        "custom_liquid": "<table class=\"workshop-pricing-table\">\n  <thead>\n    <tr>\n      <th>Ticket Type</th>\n      <th>Price</th>\n      <th>Details</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>General Admission</td>\n      <td>$50</td>\n      <td>Access to all general areas</td>\n    </tr>\n    <tr>\n      <td>VIP</td>\n      <td>$150</td>\n      <td class=\"highlight\">Includes priority seating and free refreshments</td>\n    </tr>\n    <tr>\n      <td>Student</td>\n      <td>$30</td>\n      <td>Requires valid student ID</td>\n    </tr>\n    <tr>\n      <td>Child</td>\n      <td>$20</td>\n      <td>For ages 5-12</td>\n    </tr>\n  </tbody>\n</table>\n\n\n<style>\n    .workshop-pricing-table {\n      width: 100%;\n      max-width: 800px;\n      margin: 0 auto;\n      border-collapse: collapse;\n      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\n      border-radius: 10px;\n      overflow: hidden;\n    }\n\n    .workshop-pricing-table th, .workshop-pricing-table td {\n      padding: 15px;\n      text-align: center;\n    }\n\n    .workshop-pricing-table th {\n      background-color: #f3a216;\n      color: #fff;\n      text-transform: uppercase;\n      font-size: 16px;\n      letter-spacing: 1px;\n    }\n\n    .workshop-pricing-table tr:nth-child(even) {\n      background-color: #f2f2f2;\n    }\n\n    .workshop-pricing-table tr:hover {\n      background-color: #e6f7ff;\n    }\n\n    .workshop-pricing-table td {\n      font-size: 14px;\n      color: #333;\n    }\n\n  \n  </style>",
         "padding_top": 40,
         "padding_bottom": 52
+      }
+    },
+    "richtext_custom_gQRMwL": {
+      "type": "richtext-custom",
+      "blocks": {
+        "button_kRzBj6": {
+          "type": "button",
+          "settings": {
+            "button_label": "Grab a Ticket for Your Child",
+            "button_link": "#",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "button_kRzBj6"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "custom_class": "workshop-details",
+        "custom_id": "",
+        "display_flex": false,
+        "gap_between": "",
+        "content_alignment": "center",
+        "heading_color": "white",
+        "text_color": "white",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52,
+        "Image_size": 50
       }
     }
   },
@@ -160,6 +193,7 @@
     "richtext_custom_MLQjH6",
     "liquid_text_YH6gC7",
     "richtext_custom_zpDgL3",
-    "custom_liquid_8FGR4h"
+    "custom_liquid_8FGR4h",
+    "richtext_custom_gQRMwL"
   ]
 }
