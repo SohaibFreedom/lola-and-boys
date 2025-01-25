@@ -6,6 +6,11 @@
   font-style: normal;
   font-display: swap;
 }
+.banner.kids-workshop-hero img{
+height: 80vh;
+    object-fit: cover;
+	object-position:center !important;
+}
 .kids-workshop-hero .caption h1{
  font-family: "FuzzyBUbbles" !important;
 	background-color:transparent !important;
@@ -19,6 +24,7 @@
       font-size: 16px  !important;
   color:#000  !important;
 }
+
 
 .collection_items .relative.product_image.swap-false {
     overflow: hidden;
