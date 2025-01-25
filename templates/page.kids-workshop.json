@@ -88,6 +88,59 @@
         "description": "<b>What to Expect:</b>\n<ul>\n  <li>👕 Customizable Hoodie or T-Shirt with 5 patches</li>\n  <li>💫 Friendship bracelet-making.</li>\n  <li>🎉 25% off shopping in-store.</li>\n  <li>🍿 Snacks and drinks included.</li>\n</ul>",
         "liquid_code": "<iframe style=\"border-radius:25px;\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d344343.1659875752!2d-88.06153032415246!3d41.833750983111194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e2c3cd0f4cbed%3A0xafe0a6ad09c0c000!2sChicago%2C%20IL%2C%20USA!5e1!3m2!1sen!2s!4v1737842471253!5m2!1sen!2s\" width=\"500\" height=\"350\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
       }
+    },
+    "richtext_custom_zpDgL3": {
+      "type": "richtext-custom",
+      "blocks": {
+        "heading_hQnptf": {
+          "type": "heading",
+          "settings": {
+            "heading": "Parents, We've Got You Covered!",
+            "txtClass": "",
+            "heading_align": "center",
+            "heading_size": "38"
+          }
+        },
+        "text_cTP4Kq": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Stay and watch your little ones create magic in the workshop, or take some well-deserved me-time to shop our exclusive deals.</p>",
+            "text_align": "center",
+            "description_size": "16",
+            "textClass": ""
+          }
+        },
+        "button_pndt3p": {
+          "type": "button",
+          "settings": {
+            "button_label": "Grab a Ticket for Your Child",
+            "button_link": "#",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_hQnptf",
+        "text_cTP4Kq",
+        "button_pndt3p"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "custom_class": "workshop-details",
+        "custom_id": "",
+        "display_flex": false,
+        "gap_between": "",
+        "content_alignment": "center",
+        "heading_color": "white",
+        "text_color": "white",
+        "full_width": true,
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "Image_size": 50
+      }
     }
   },
   "order": [
@@ -97,6 +150,7 @@
     "image_with_text_overlay_VXgdjT",
     "custom_liquid_t9T3h7",
     "richtext_custom_MLQjH6",
-    "liquid_text_YH6gC7"
+    "liquid_text_YH6gC7",
+    "richtext_custom_zpDgL3"
   ]
 }
