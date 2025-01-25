@@ -42,6 +42,14 @@
         "button2_highlight": false
       }
     },
+    "custom_liquid_t9T3h7": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<img src=\"https://cdn.shopify.com/s/files/1/0002/0647/1226/files/output-onlinepngtools.png?v=1737848014\" />",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "richtext_custom_MLQjH6": {
       "type": "richtext-custom",
       "blocks": {
@@ -87,6 +95,7 @@
     "main",
     "shogun-optimizer",
     "image_with_text_overlay_VXgdjT",
+    "custom_liquid_t9T3h7",
     "richtext_custom_MLQjH6",
     "liquid_text_YH6gC7"
   ]
