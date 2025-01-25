@@ -1,3 +1,4 @@
+/* Kids Workshop Page CSS */
 @font-face {
   font-family: "FuzzyBUbbles";
   src: url("https://cdn.shopify.com/s/files/1/0002/0647/1226/files/FuzzyBubbles-Regular.ttf?v=1737836536");
@@ -25,6 +26,12 @@ height: 80vh;
   color:#000  !important;
 }
 
+.kids-workshop-hero .subtitle a{
+    background-color: #000000;
+    border-color: #000;
+    color: #ffffff;
+}
+/* Kids Workshop Page CSS */
 
 .collection_items .relative.product_image.swap-false {
     overflow: hidden;
