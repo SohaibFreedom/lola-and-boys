@@ -32,6 +32,36 @@ height: 80vh;
     color: #ffffff;
   font-family: "FuzzyBUbbles" !important;
 }
+.workshop-bookingform{
+max-width:1100px;
+}
+.workshop-details h2{
+font-family: "FuzzyBUbbles" !important;
+	font-weight:bold;
+	letter-spacing:0;
+	color:#DC143C;
+}
+
+.workshop-details a{
+font-family: "FuzzyBUbbles" !important;
+    background-color: #DC143C !important;
+    border-color: #DC143C !important;
+    color: #ffffff;
+}
+
+.workshop-details a:hover{
+    background-color: #000 !important;
+    border-color: #000 !important;
+    color: #ffffff;
+}
+
+.kids-workshop-columns{
+box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+border-radius:25px;
+	padding:40px;
+	background: #e38f8f4a;
+}
+
 /* Kids Workshop Page CSS */
 
 .collection_items .relative.product_image.swap-false {
