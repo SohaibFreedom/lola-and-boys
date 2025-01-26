@@ -170,6 +170,10 @@
         "padding_bottom": 72,
         "Image_size": 50
       }
+    },
+    "montage_AjRK7h": {
+      "type": "montage",
+      "settings": {}
     }
   },
   "order": [
@@ -182,6 +186,7 @@
     "liquid_text_YH6gC7",
     "richtext_custom_zpDgL3",
     "custom_liquid_8FGR4h",
-    "richtext_custom_gQRMwL"
+    "richtext_custom_gQRMwL",
+    "montage_AjRK7h"
   ]
 }
