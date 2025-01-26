@@ -79,10 +79,11 @@ font-size:28px !important;
     height: 60vh !important;
 }
   .caption.position-center {
-        left: 0 !important;
-        top: 120px !important;
-        position: absolute !important;
-    }
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
 
   
 }
