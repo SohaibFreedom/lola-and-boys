@@ -72,6 +72,9 @@ font-size:28px !important;
   .workshop-map{
   width: 100% !important;
   }
+  .kids-workshop-columns {
+    padding: 15px !important;
+}
 .workshop-details h2{
 font-size:28px !important;
 }
