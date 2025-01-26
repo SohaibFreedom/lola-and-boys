@@ -63,6 +63,9 @@ border-radius:25px;
 	background: #e38f8f4a;
 }
 @media screen and (max-width: 769px) {
+  .kids-workshop-hero .caption h1{
+font-size:28px !important;
+}
     .kids-workshop-columns {
     grid-template-columns: 1fr !important;
 }
