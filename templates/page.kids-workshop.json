@@ -174,6 +174,45 @@
     "montage_AjRK7h": {
       "type": "montage",
       "settings": {}
+    },
+    "richtext_custom_GHrxpU": {
+      "type": "richtext-custom",
+      "blocks": {
+        "heading_HnML9E": {
+          "type": "heading",
+          "settings": {
+            "heading": "Booking",
+            "txtClass": "",
+            "heading_align": "center",
+            "heading_size": "38"
+          }
+        }
+      },
+      "block_order": [
+        "heading_HnML9E"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "custom_class": "workshop-details",
+        "custom_id": "",
+        "display_flex": false,
+        "gap_between": "",
+        "content_alignment": "center",
+        "heading_color": "white",
+        "text_color": "white",
+        "full_width": true,
+        "padding_top": 72,
+        "padding_bottom": 0,
+        "Image_size": 50
+      }
+    },
+    "custom_liquid_djMbyc": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<script type=\"text/javascript\" src=\"https://form.jotform.com/jsform/250247067592460\"></script>",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
@@ -187,6 +226,8 @@
     "richtext_custom_zpDgL3",
     "custom_liquid_8FGR4h",
     "richtext_custom_gQRMwL",
-    "montage_AjRK7h"
+    "montage_AjRK7h",
+    "richtext_custom_GHrxpU",
+    "custom_liquid_djMbyc"
   ]
 }
