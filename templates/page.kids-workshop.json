@@ -209,7 +209,7 @@
     "custom_liquid_djMbyc": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<script type=\"text/javascript\" src=\"https://form.jotform.com/jsform/250247067592460\"></script>",
+        "custom_liquid": "<div class=\"workshop-bookingform\">\n<script type=\"text/javascript\" src=\"https://form.jotform.com/jsform/250247067592460\"></script>\n</div>",
         "padding_top": 40,
         "padding_bottom": 52
       }
