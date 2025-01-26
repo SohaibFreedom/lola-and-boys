@@ -66,6 +66,9 @@ border-radius:25px;
     .kids-workshop-columns {
     grid-template-columns: 1fr !important;
 }
+  .workshop-map{
+    width:auto !important;
+  }
 }
 
 /* Kids Workshop Page CSS */
