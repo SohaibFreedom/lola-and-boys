@@ -1,6 +1,66 @@
+<div class="montage-wrapper">
+  <div class="montage-content">
+    <img src="https://lolaandtheboys.com/cdn/shop/files/099A0205_3_dce3579c-4139-471b-b025-c24af1d3d9ce_600x.png?v=1713399598" alt="Image 1">
+  </div>
+  <div class="montage-content">
+    <img src="https://lolaandtheboys.com/cdn/shop/files/099A0205_1_323fd36f-adda-4404-992e-48537c450ac4_600x.png?v=1713399495" alt="Image 2">
+  </div>
+  <div class="montage-content">
+    <img src="https://lolaandtheboys.com/cdn/shop/files/LATB_01152024_00829_600x.png?v=1706217600" alt="Image 3">
+  </div>
+  <div class="montage-content">
+    <img src="https://lolaandtheboys.com/cdn/shop/files/099A0238_1_700x.png?v=1706122344" alt="Image 4">
+  </div>
+  <div class="montage-content">
+    <img src="https://lolaandtheboys.com/cdn/shop/files/LOLAANDTHEBOYS_July23__V2A5549.png?v=1706134412" alt="Image 5">
+  </div>
+  <div class="montage-content">
+    <img src="https://lolaandtheboys.com/cdn/shop/files/LOLAANDTHEBOYS_July23__V2A7054.png?v=1706134411" alt="Image 6">
+  </div>
+</div>
+
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Montage section",
+  "settings": [],
+  "presets":[
+    {
+      "name": "Montage section"
+    }
+  ]
+}
 {% endschema %}
+
+<style>
+  .montage-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .montage-content {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+  }
+
+  .montage-content img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 1024px) {
+    .montage-wrapper {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .montage-wrapper {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
