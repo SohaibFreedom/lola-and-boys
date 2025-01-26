@@ -63,6 +63,10 @@ border-radius:25px;
 	background: #e38f8f4a;
 }
 @media screen and (max-width: 769px) {
+.workshoppricing-wrapper{
+  margin:10px !important;
+}
+  
     .kids-workshop-columns {
    gap:0 !important;
 }
@@ -80,7 +84,7 @@ font-size:28px !important;
   }
   .kids-workshop-columns {
     padding: 15px !important;
-    margin:10px;
+    margin:10px !important;
 }
 .workshop-details h2{
 font-size:28px !important;
