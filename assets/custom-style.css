@@ -72,7 +72,14 @@ border-radius:25px;
 .workshop-details h2{
 font-size:28px !important;
 }
-
+.banner.kids-workshop-hero img {
+    height: 45vh !important;
+}
+  .caption.position-center {
+        left: 0 !important;
+        top: 120px !important;
+        position: absolute !important;
+    }
 
   
 }
