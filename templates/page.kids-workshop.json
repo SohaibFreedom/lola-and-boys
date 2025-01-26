@@ -145,7 +145,7 @@
           "type": "button",
           "settings": {
             "button_label": "Grab a Ticket for Your Child",
-            "button_link": "#",
+            "button_link": "#request-workshop-booking",
             "button_style_secondary": false,
             "button_label_2": "",
             "button_link_2": "",
