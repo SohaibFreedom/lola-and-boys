@@ -70,7 +70,7 @@ font-size:28px !important;
     grid-template-columns: 1fr !important;
 }
   .workshop-map{
-    width:auto !important;
+  width: 100% !important;
   }
 .workshop-details h2{
 font-size:28px !important;
