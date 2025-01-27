@@ -72,6 +72,11 @@ display:none;
 
 @media screen and (max-width: 769px) {
 
+  .kids-workshop-hero .action_button {
+    width: auto !important;
+    font-size: 12px !important;
+}
+
   .kids-workshop-hero.desktop{
 display:none;
 }
