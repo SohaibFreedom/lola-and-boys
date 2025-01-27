@@ -25,8 +25,28 @@
     "image_with_text_overlay_VXgdjT": {
       "type": "image-with-text-overlay",
       "settings": {
-        "customClass": "kids-workshop-hero",
+        "customClass": "kids-workshop-hero desktop",
         "image": "shopify://shop_images/highcompress_Untitled_design_34.jpg",
+        "pretext": "",
+        "title": "Join Our Fun Kids Workshop at Lola and the Boys!",
+        "subtitle": "<p>An exciting afternoon of creativity, friendship, and shopping for girls ages 4-12!</p>",
+        "caption_background": false,
+        "caption_background_transparency": true,
+        "text_position": "center",
+        "text_align": "center",
+        "button1": "Reserve Your Spot Now",
+        "button1_link": "#request-workshop-booking",
+        "button1_highlight": true,
+        "button2": "",
+        "button2_link": "",
+        "button2_highlight": false
+      }
+    },
+    "image_with_text_overlay_AcAjME": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "customClass": "kids-workshop-hero mobile",
+        "image": "shopify://shop_images/highcompress_Untitled_design_35.jpg",
         "pretext": "",
         "title": "Join Our Fun Kids Workshop at Lola and the Boys!",
         "subtitle": "<p>An exciting afternoon of creativity, friendship, and shopping for girls ages 4-12!</p>",
@@ -220,6 +240,7 @@
     "main",
     "shogun-optimizer",
     "image_with_text_overlay_VXgdjT",
+    "image_with_text_overlay_AcAjME",
     "custom_liquid_t9T3h7",
     "richtext_custom_MLQjH6",
     "liquid_text_YH6gC7",

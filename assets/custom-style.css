@@ -62,7 +62,25 @@ border-radius:25px;
 	padding:40px;
 	background: #e38f8f4a;
 }
+
+
+.kids-workshop-hero.mobile{
+display:none;
+}
+
+
+
 @media screen and (max-width: 769px) {
+
+  .kids-workshop-hero.desktop{
+display:none;
+}
+
+.kids-workshop-hero.mobile{
+display:block !important;
+}
+
+  
 .workshoppricing-wrapper{
   margin:10px !important;
 }
