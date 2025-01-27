@@ -93,6 +93,7 @@ display:block !important;
 }
   .kids-workshop-hero .caption h1{
 font-size:20px !important;
+    font-weight:bold;
 }
     .kids-workshop-columns {
     grid-template-columns: 1fr !important;
