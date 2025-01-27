@@ -108,7 +108,7 @@ font-size:28px !important;
 font-size:28px !important;
 }
 .banner.kids-workshop-hero img {
-    height: 60vh !important;
+    height: auto !important;
 }
   .caption.position-center {
     position: absolute;
