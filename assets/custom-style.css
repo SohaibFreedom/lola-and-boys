@@ -92,7 +92,7 @@ display:block !important;
     margin: 0 !important;
 }
   .kids-workshop-hero .caption h1{
-font-size:28px !important;
+font-size:20px !important;
 }
     .kids-workshop-columns {
     grid-template-columns: 1fr !important;
@@ -107,6 +107,11 @@ font-size:28px !important;
 .workshop-details h2{
 font-size:28px !important;
 }
+.kids-workshop-hero .subtitle p {
+    font-size: 14px !important;
+}
+
+  
 .banner.kids-workshop-hero img {
     height: auto !important;
 }
