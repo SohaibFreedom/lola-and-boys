@@ -176,7 +176,7 @@ font-size:28px !important;
     left: -36px!important;
     bottom: 21px;
     padding: 0px 45px 0px 31px;
-    font-size: 7.5px;
+    font-size: 8px;
   }
 
   .irina-fav-tag img {
@@ -186,8 +186,8 @@ font-size:28px !important;
 
 @media only screen and (max-width: 768px) {
 	.irina-fav-tag {
-		font-size:8px;
-		padding: 4px 40px 4px 23px;
+		font-size:7px;
+		padding: 0px 40px 0px 23px;
 		left: -24px !important;
         bottom: 15px;
 		clip-path: polygon(0 0, 100% 0, 73% 100%, 12% 98%);
@@ -206,8 +206,8 @@ font-size:28px !important;
 
 @media only screen and (max-width: 480px) {
     .irina-fav-tag {
-        font-size: 7px;
-        padding: 2px 35px 2px 23px;
+        font-size: 6px;
+        padding: 0px 35px 0px 23px;
         left: -24px !important;
         bottom: 10px;
     }
