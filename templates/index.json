@@ -122,10 +122,10 @@
         },
         "image_zPL6aM": {
           "type": "image",
-          "disabled": true,
           "settings": {
-            "image_mobile": "shopify://shop_images/Lola_Outerwear_HP_mob_1.jpg",
-            "mp4": "https://cdn.shopify.com/videos/c/o/v/beb5c6f2c4b749098494c09f68f7619b.mp4",
+            "image": "shopify://shop_images/Lola_Spring_Banner_HP.jpg",
+            "image_mobile": "shopify://shop_images/Lola_Spring_Banner_Mob.jpg",
+            "mp4": "",
             "mobilevideo": "",
             "pretext": "",
             "title": "",
@@ -135,7 +135,7 @@
             "caption_background": false,
             "caption_background_transparency": false,
             "button1": "",
-            "button1_link": "https://lolaandtheboys.com/collections/fall-outerwear",
+            "button1_link": "https://lolaandtheboys.com/collections/spring-25",
             "button1_highlight": false,
             "button2": "",
             "button2_link": "",
