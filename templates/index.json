@@ -58,6 +58,7 @@
         },
         "image_U3EW4E": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/HOME_PAGE_BANNER_desktop-18.jpg",
             "image_mobile": "shopify://shop_images/HOME_PAGE_BANNER_MOBILE-2.jpg",
