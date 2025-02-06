@@ -9,22 +9,157 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "page",
-      "settings": {}
-    },
     "shogun-helper": {
       "type": "shogun-helper",
+      "disabled": true,
+      "settings": {}
+    },
+    "main": {
+      "type": "page",
+      "disabled": true,
       "settings": {}
     },
     "shogun-optimizer": {
       "type": "shogun-optimizer",
+      "disabled": true,
       "settings": {}
+    },
+    "banner_full_section_3JhbdN": {
+      "type": "banner-full-section",
+      "settings": {
+        "image": "shopify://shop_images/new-banner-img.png",
+        "link": "#"
+      }
+    },
+    "patch_event_highlight_aNVKRc": {
+      "type": "patch_event_highlight",
+      "settings": {
+        "heading": "KIDS <span>creative customize <br> patch</span> EVENT!",
+        "paragraph": "<p>Bring your kids to our showroom <br> for a fun creative customize patch class!</p>",
+        "image": "shopify://shop_images/girl-img-1.png"
+      }
+    },
+    "custom_jacket_details_gm8WdN": {
+      "type": "custom-jacket-details",
+      "blocks": {
+        "custom_jacket_list_item_n6EpUx": {
+          "type": "custom_jacket_list_item",
+          "settings": {
+            "list_text": "Creation of a customized <br> Denim Jacket with 5 Patches"
+          }
+        },
+        "custom_jacket_list_item_6Fz38A": {
+          "type": "custom_jacket_list_item",
+          "settings": {
+            "list_text": "Friendship bracelet making"
+          }
+        },
+        "custom_jacket_list_item_JPhGLM": {
+          "type": "custom_jacket_list_item",
+          "settings": {
+            "list_text": "<b>25% OFF</b> all in store <br> shopping"
+          }
+        },
+        "custom_jacket_list_item_ib9hPr": {
+          "type": "custom_jacket_list_item",
+          "settings": {
+            "list_text": "Small Snacks & Drinks <br> Included"
+          }
+        }
+      },
+      "block_order": [
+        "custom_jacket_list_item_n6EpUx",
+        "custom_jacket_list_item_6Fz38A",
+        "custom_jacket_list_item_JPhGLM",
+        "custom_jacket_list_item_ib9hPr"
+      ],
+      "settings": {
+        "left-col-img": "shopify://shop_images/denim-jacket.png",
+        "heading": "What to expect:"
+      }
+    },
+    "custom_img_grid_w6Tahi": {
+      "type": "custom_img_grid",
+      "disabled": true,
+      "settings": {}
+    },
+    "book_your_spot_KHJMGf": {
+      "type": "book-your-spot",
+      "settings": {
+        "left-image": "shopify://shop_images/img-new-left.png",
+        "event_schedule": "<p><strong>February 15th</strong></p><p>10am-12pm <br/>2pm- 4pm</p>",
+        "event_address": "<p>919 N Larrabee st <br>Chicago IL 60610</p>",
+        "right-image": "shopify://shop_images/book-spot-img.png",
+        "button_title": "Patch Party Sign Up",
+        "button_url": "#"
+      }
+    },
+    "banner_full_section_yAAWqJ": {
+      "type": "banner-full-section",
+      "settings": {
+        "image": "shopify://shop_images/new-banner-two.png",
+        "link": "#"
+      }
+    },
+    "banner_full_section_DcKUFb": {
+      "type": "banner-full-section",
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/new-banner-img.png",
+        "link": "#"
+      }
+    },
+    "customize_product_patches_PHgbB8": {
+      "type": "customize-product-patches",
+      "settings": {
+        "custom_class": "customize-product-patches",
+        "left-col-img": "shopify://shop_images/prod_patch_1.png",
+        "heading": "Step 1",
+        "button_title": "Shop",
+        "button_url": "#",
+        "paragraph": "Choose from any of our <br> customizable products.",
+        "right-col-img": "shopify://shop_images/img-new-left.png"
+      }
+    },
+    "customize_product_patches_JDqbER": {
+      "type": "customize-product-patches",
+      "settings": {
+        "custom_class": "customize-product-patches customize_step_2",
+        "left-col-img": "shopify://shop_images/prod_patch_2-removebg.png",
+        "heading": "Step 2",
+        "button_title": "Design",
+        "button_url": "#",
+        "paragraph": "Select from hundreds of <br> letters and illustration <br> patches.",
+        "right-col-img": "shopify://shop_images/girl-img-1-removebg.png"
+      }
+    },
+    "customize_now_section_iaHhdF": {
+      "type": "customize-now-section",
+      "settings": {}
+    },
+    "banner_full_section_wCePjq": {
+      "type": "banner-full-section",
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/new-banner-two.png",
+        "link": "#"
+      }
     }
   },
   "order": [
     "shogun-helper",
     "main",
-    "shogun-optimizer"
+    "shogun-optimizer",
+    "banner_full_section_3JhbdN",
+    "patch_event_highlight_aNVKRc",
+    "custom_jacket_details_gm8WdN",
+    "custom_img_grid_w6Tahi",
+    "book_your_spot_KHJMGf",
+    "banner_full_section_yAAWqJ",
+    "banner_full_section_DcKUFb",
+    "customize_product_patches_PHgbB8",
+    "customize_product_patches_JDqbER",
+    "customize_now_section_iaHhdF",
+    "banner_full_section_wCePjq"
   ]
 }
