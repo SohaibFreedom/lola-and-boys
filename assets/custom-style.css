@@ -1,3 +1,39 @@
+.page-customize-landing h1,
+.page-customize-landing h2,
+.page-customize-landing h3,
+.page-customize-landing h4,
+.page-customize-landing h5,
+.page-customize-landing h6,
+.page-customize-landing p,
+.page-customize-landing a,
+.page-customize-landing span {
+  font-family: 'Sofia Pro', sans-serif !important;
+}
+
+
+@font-face {
+  font-family: 'Sofia Pro';
+  src: url('https://cdn.shopify.com/s/files/1/0917/3729/3086/files/Sofia_Pro_Regular_Az.otf?v=1738354657') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sofia-Pro-Bold';
+  src: url('https://cdn.shopify.com/s/files/1/0917/3729/3086/files/Sofia-Pro-Bold-Az.otf?v=1738618650') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noto Serif Display' , sans-serif;
+  src: url('https://cdn.shopify.com/s/files/1/0917/3729/3086/files/NotoSerif-VariableFont_wdth_wght.ttf?v=1738623026') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
 /* Kids Workshop Page CSS */
 @font-face {
   font-family: "FuzzyBUbbles";
