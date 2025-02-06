@@ -1,6 +1,47 @@
+<div class="patch-event-highlight-wrap">
+  <div class="container">
+      <div class="inner-text">
+        {% if section.settings.heading != blank %}
+          <h3 class="heading">{{ section.settings.heading | newline_to_br }}</h3>
+        {% endif %}
+        
+        {% if section.settings.paragraph %}
+          {{ section.settings.paragraph }}
+        {% endif %}
+
+        <div class="right-col-img">
+          {% if section.settings.image %}
+            <img class="right-img-custom" src="{{ section.settings.image | image_url }}" alt="" width="auto" height="auto">
+          {% endif %}
+        </div>
+      </div>
+    </div>
+</div>
+
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Patch Event Highlight",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph",
+      "label": "Paragraph"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Patch Event Highlight"
+    }
+  ]
+}
 {% endschema %}
