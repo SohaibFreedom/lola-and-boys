@@ -2641,7 +2641,9 @@ html
 .page-customize-landing .event-info {
   text-align: center;
 }
-
+.page-customize-landing .img-grid-custom {
+    margin-top: -100px;
+}
 .page-customize-landing .event-info p {
   font-size: 35px;
   line-height: 45px;
