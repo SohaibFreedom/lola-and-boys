@@ -1,0 +1,77 @@
+<div class="book-event-wrap">
+  <div class="container">
+    <div class="event-layout-grid narrow-container-custom">
+      <div class="event-info">
+        {% if section.settings.left-image %}
+          <img class="event-left-image" src="{{ section.settings.left-image | image_url }}" alt="" width="auto" height="auto">
+        {% endif %}
+
+        {% if section.settings.event_schedule != blank %}
+          <div class="event-schedule">{{ section.settings.event_schedule }}</div>
+        {% endif %}
+
+        {% if section.settings.event_address %}
+          <div class="event-location">{{ section.settings.event_address }}</div>
+        {% endif %}
+      </div>
+
+      <div class="event-right-image">
+        {% if section.settings.right-image %}
+          <img src="{{ section.settings.right-image | image_url }}" alt="" width="auto" height="auto">
+        {% endif %}
+      </div>
+    </div>
+
+    {% if section.settings.button_title and section.settings.button_url %}
+      <div class="event-cta-button">
+        <a href="{{ section.settings.button_url }}">
+          {{ section.settings.button_title }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "book your spot",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "left-image",
+      "label": "Left Image"
+    },
+    {
+      "type": "richtext",
+      "id": "event_schedule",
+      "label": "Event Schedule"
+    },
+    {
+      "type": "textarea",
+      "id": "event_address",
+      "label": "Event Address"
+    },
+    {
+      "type": "image_picker",
+      "id": "right-image",
+      "label": "Right Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "button_title",
+      "label": "Button Title"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button Link URL"
+    }
+
+  ],
+  "presets": [
+    {
+      "name": "book your spot"
+    }
+  ]
+}
+{% endschema %}
