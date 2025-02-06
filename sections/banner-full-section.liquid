@@ -1,6 +1,28 @@
+<div class="new-banner-full">
+    <a href="{{ section.settings.link }}">
+      <img class="banner-full-img" src="{{ section.settings.image | image_url }}" alt="" width="auto" height="auto">
+    </a>
+</div>
+
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Banner Full Width",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Banner Image"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Banner Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner Full Width"
+    }
+  ]
+}
 {% endschema %}
