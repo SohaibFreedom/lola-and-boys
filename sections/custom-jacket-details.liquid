@@ -1,0 +1,67 @@
+<div class="custom-jacket-wrap">
+  <div class="container">
+    <div class="narrow-container-custom">
+      <div class="jacket-grid-section">
+      <div class="left-col-img">
+        {% if section.settings.left-col-img %}
+          <img src="{{ section.settings.left-col-img | image_url }}" alt="{{ section.settings.heading }}" width="auto" height="auto">
+        {% endif %}
+      </div>
+      <div class="right-col-img">
+        {% if section.settings.heading != blank %}
+          <h3>{{ section.settings.heading }}</h3>
+        {% endif %}
+
+        {% if section.blocks.size > 0 %}
+          <ul class="list-details">
+            {% for block in section.blocks %}
+              {% if block.settings.list_text != '' %}
+                <li class="list-item">{{ block.settings.list_text }}</li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+    <div class="img-grid-custom">
+      <img class="custom-group-img" src="https://cdn.shopify.com/s/files/1/0917/3729/3086/files/img-grid-update.png?v=1738869496" height="auto" width="auto" />
+    </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Jacket Details",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "left-col-img",
+      "label": "Left Col Img"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "List Item",
+      "type": "custom_jacket_list_item",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "list_text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Jacket Details"
+    }
+  ]
+}
+{% endschema %}
