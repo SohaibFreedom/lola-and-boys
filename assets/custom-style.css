@@ -2698,8 +2698,8 @@ html
 }
 
 .page-customize-landing .prod-patch-grid .prod-top-text h3 {
-  font-size: 45px;
-  line-height: 45px;
+  font-size: 50px;
+  line-height: 50px;
   letter-spacing: 0;
   text-transform: capitalize;
   margin: 0;
@@ -2710,15 +2710,15 @@ html
 }
 
 .page-customize-landing .customize-product-patches .prod-patch-grid a {
-  font-size: 24px;
+  font-size: 30px;
   font-weight: 700;
   display:block;
 }
 
 .page-customize-landing .customize-product-patches .prod-patch-grid p {
-  font-size: 24px;
-  line-height: 32px;
-  margin:20px 0 0;
+  font-size: 30px;
+  line-height: 38px;
+  margin:30px 0 0;
   color: #000;
 }
 
