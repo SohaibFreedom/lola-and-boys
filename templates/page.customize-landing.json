@@ -19,7 +19,7 @@
     "patch_event_highlight_aNVKRc": {
       "type": "patch_event_highlight",
       "settings": {
-        "heading": "KIDS creative customize  patch EVENT!",
+        "heading": "KIDS <span>creative customize <br> patch </span> EVENT!",
         "paragraph": "<p>Bring your kids to our showroom <br> for a fun creative customize patch class!</p>",
         "image": "shopify://shop_images/girl-img-1-removebg.webp"
       }
