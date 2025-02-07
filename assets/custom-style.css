@@ -2878,6 +2878,9 @@ html
   .page-customize-landing .patch-event-highlight-wrap h3 span {
     font-size: 30px;
   }
+  .page-customize-landing .img-grid-custom {
+    margin-top: 0px;
+}
 
   .page-customize-landing .patch-event-highlight-wrap .inner-text p {
     font-size: 25px;
