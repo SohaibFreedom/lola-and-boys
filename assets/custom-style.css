@@ -2766,8 +2766,8 @@ html
 }
 
 .page-customize-landing .customize-now-wrap h3 {
-  font-size: 32px;
-  line-height: 32px;
+  font-size: 50px;
+  line-height: 50px;
   text-align: center;
   letter-spacing:0;
   font-weigh: 700 !important;
@@ -2776,11 +2776,12 @@ html
   font-style: italic;
   display: inline-block;
   margin:0;
+  text-transform:capitalize;
 }
 
 .page-customize-landing .customize-now-wrap .customize-top-content {
   position:relative;
-  padding-bottom:30px;
+  padding-bottom:50px;
   text-align:center;
 }
 
