@@ -9,8 +9,6 @@
  */
 {
   "sections": {
-    
-
     "banner_full_section_3JhbdN": {
       "type": "banner-full-section",
       "settings": {
@@ -125,7 +123,7 @@
     "banner_full_section_wCePjq": {
       "type": "banner-full-section",
       "settings": {
-        "image": "shopify://shop_images/new-banner-two.webp",
+        "image": "shopify://shop_images/width_1600_e312dc33-755b-4ddb-8d13-88e430d32512.webp",
         "link": "#"
       }
     }
