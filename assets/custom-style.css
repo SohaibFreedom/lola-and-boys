@@ -108,6 +108,11 @@ display:none;
 
 @media screen and (max-width: 769px) {
 
+  .patch-party-signup{
+            padding: 5px 30px;
+        font-size: 15px;
+  }
+
   .kids-workshop-hero .action_button {
     width: auto !important;
     font-size: 10px !important;
