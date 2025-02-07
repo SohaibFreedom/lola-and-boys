@@ -81,6 +81,7 @@
     },
     "banner_full_section_yAAWqJ": {
       "type": "banner-full-section",
+      "disabled": true,
       "settings": {
         "link": "#"
       }
