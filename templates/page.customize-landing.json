@@ -73,7 +73,7 @@
       "settings": {
         "left-image": "shopify://shop_images/img-new-left.png",
         "event_schedule": "<p><strong>February 15th</strong></p><p>10am-12pm <br/>2pm- 4pm</p>",
-        "event_address": "<p>919 N Larrabee st <br>Chicago IL 60610</p>\n<a style=\"background-color:#fd85c0;color:#fff;padding: 15px 40px; display:inline-block;font-size:18px;margin-top:25px\" href=\"#\">Patch Party Sign Up</a>",
+        "event_address": "<p>919 N Larrabee st <br>Chicago IL 60610</p>\n<a class=\"patch-party-signup\" style=\"background-color:#fd85c0;color:#fff;padding: 15px 40px; display:inline-block;font-size:18px;margin-top:25px\" href=\"#\">Patch Party Sign Up</a>",
         "right-image": "shopify://shop_images/book-spot-img.webp",
         "button_title": "Patch Party Sign Up",
         "button_url": "#"
