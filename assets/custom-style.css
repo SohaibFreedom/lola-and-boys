@@ -2619,7 +2619,7 @@ html
 }
 
 .page-customize-landing .book-event-wrap {
-  padding:40px 0;
+  padding:20px 0 30px;
 }
   
 .page-customize-landing .book-event-wrap img {
@@ -2887,10 +2887,6 @@ html
   .page-customize-landing .patch-event-highlight-wrap .inner-text p {
     font-size: 25px;
     line-height: 33px !important;
-  }
-
-  .page-customize-landing .book-event-wrap {
-    padding:30px 0;
   }
 
   .page-customize-landing .event-info p {
