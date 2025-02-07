@@ -1,6 +1,68 @@
+<div class="customize-now-wrap">
+  <div class="container">
+    <div class="customize-now-section narrow-container-custom">
+      <div class="customize-top-content">
+        <h3 class="new-style-heading">Reserve Your Spot</h3>
+        <img class="customize-position-img" src="https://cdn.shopify.com/s/files/1/0917/3729/3086/files/customize_top_img.png?v=1738859292" height="auto" width="auto"/>
+      </div>
+      <div class="customize-now-grid">
+        <div class="customize-row">
+          <div class="video-holder">
+            <video class="first-img video-element" width="auto" height="auto" preload="metadata" poster="https://cdn.shopify.com/s/files/1/0917/3729/3086/files/customize-now-1.png?v=1738861112">
+              <source src="https://cdn.shopify.com/videos/c/o/v/2989e00073b3418cb995ca84cbe8c0d9.mp4" type="video/mp4">
+            </video>
+            <svg class="play-icon" width="70px" height="70px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" fill="white"/>
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M10.6935 15.8458L15.4137 13.059C16.1954 12.5974 16.1954 11.4026 15.4137 10.941L10.6935 8.15419C9.93371 7.70561 9 8.28947 9 9.21316V14.7868C9 15.7105 9.93371 16.2944 10.6935 15.8458Z" fill="black"/>
+            </svg>
+          </div>
+          <img class="third-img" src="https://cdn.shopify.com/s/files/1/0917/3729/3086/files/customize-now-3.png?v=1738859858" height="auto" width="auto">
+        </div>
+        <div class="customize-now">
+         <img class="second-img" src="https://cdn.shopify.com/s/files/1/0917/3729/3086/files/customize-now-2.png?v=1738859633" height="auto" width="auto">
+          <div class="video-holder">
+            <video class="fourth-img video-element" width="auto" height="auto" preload="metadata" poster="https://cdn.shopify.com/s/files/1/0917/3729/3086/files/customize-now-4.png?v=1738859628">
+              <source src="https://cdn.shopify.com/videos/c/o/v/881f64ebdaf04807b1ba2cebd1b01881.mp4" type="video/mp4">
+            </video>
+            <svg class="play-icon" width="70px" height="70px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" fill="white"/>
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M10.6935 15.8458L15.4137 13.059C16.1954 12.5974 16.1954 11.4026 15.4137 10.941L10.6935 8.15419C9.93371 7.70561 9 8.28947 9 9.21316V14.7868C9 15.7105 9.93371 16.2944 10.6935 15.8458Z" fill="black"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="customize-bottom-content">
+         <h3 class="new-style-heading">Customize Now</h3>
+        <img class="customize-position-img" src="https://cdn.shopify.com/s/files/1/0917/3729/3086/files/customize__2_update.png?v=1738862412" height="auto" width="auto"/>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% schema %}
   {
-    "name": "Section name",
-    "settings": []
+    "name": "Customize Now",
+    "settings": [],
+    "presets": [
+    {
+      "name": "Customize Now"
+    }
+    ]
   }
 {% endschema %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const playButtons = document.querySelectorAll(".play-icon");
+    const videos = document.querySelectorAll(".video-element");
+
+    playButtons.forEach((button, index) => {
+        button.addEventListener("click", function() {
+            let video = videos[index]; // Select corresponding video
+            video.setAttribute("controls", ""); // Add controls dynamically
+            video.play(); // Start playing the video
+            button.classList.add("hidden"); // Hide play button
+        });
+    });
+});
+</script>

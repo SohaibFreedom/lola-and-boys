@@ -95,6 +95,7 @@
     },
     "customize_product_patches_PHgbB8": {
       "type": "customize-product-patches",
+      "disabled": true,
       "settings": {
         "custom_class": "customize-product-patches",
         "left-col-img": "shopify://shop_images/prod_patch_1.webp",
@@ -107,6 +108,7 @@
     },
     "customize_product_patches_JDqbER": {
       "type": "customize-product-patches",
+      "disabled": true,
       "settings": {
         "custom_class": "customize-product-patches customize_step_2",
         "left-col-img": "shopify://shop_images/prod_patch_2-removebg.webp",
