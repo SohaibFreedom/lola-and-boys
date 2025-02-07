@@ -2643,6 +2643,8 @@ html
 }
 .page-customize-landing .img-grid-custom {
     margin-top: -100px;
+    position:relative;
+    z-index:-1;
 }
 .page-customize-landing .event-info p {
   font-size: 35px;
