@@ -2629,7 +2629,7 @@ html
     
 .page-customize-landing .event-left-image {
   margin: 0 auto;
-  width: 100px;
+  width: 120px;
 }
     
 .page-customize-landing .event-layout-grid {
@@ -2647,8 +2647,8 @@ html
     z-index:-1;
 }
 .page-customize-landing .event-info p {
-  font-size: 35px;
-  line-height: 45px;
+  font-size: 40px;
+  line-height: 50px;
   margin: 0;
 }
     
