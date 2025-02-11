@@ -505,8 +505,8 @@
     "best_sellers_section_bDD7BB": {
       "type": "best-sellers-section",
       "settings": {
-        "title": "The Valentine's Day Shop",
-        "collection": "valentines-day",
+        "title": "The Spring Shop",
+        "collection": "spring-25",
         "collection_style": "slider",
         "collection_description": false,
         "products_per": 5,
