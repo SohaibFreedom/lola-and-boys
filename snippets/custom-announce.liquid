@@ -1,3 +1,4 @@
+{{ 'custom-announce-css.css' | asset_url | stylesheet_tag }}
 <div class="annoucment-bar-top">
   {% if section.settings.show_announcement_bar %}
     {% if section.settings.text %}
@@ -5,8 +6,11 @@
         <div class="announcement-bar" style="background-color: {{ section.settings.bck_clr }};">
           <div class="announcement-bar-text" style="color: {{ section.settings.txt_clr }};">
             <span id="close_announcement_bar" style="display:none;">X</span>
-            {{ section.settings.text }}
             {% if section.settings.show_countdown %}<div class="countdown"></div>{% endif %}
+            <div class="shop-now-text">
+              {{ section.settings.text }}
+              <p class="details">SHOP NOW</p>
+            </div>
           </div>
         </div>
       </a>
@@ -40,13 +44,11 @@
 
               countdownElement.innerHTML = `
                 <div class="countdown-wrapper">
-                  <div>Ends in</div>
                   <div class="countdown-number">
-                    <div class="hours-number">${formattedHours} :</div>
-                    <div class="hours-number">${formattedMinutes} :</div>
-                    <div class="hours-number">${formattedSeconds}</div>
+                    <div class="hours-number">${formattedHours} <br> <p>Hrs</p></div>
+                    <div class="hours-number">${formattedMinutes} <br> <p>Min</p></div>
+                    <div class="hours-number">${formattedSeconds} <br> <p>Sec</p></div>
                   </div>
-                  <div class="details">Shop Now</div>
                 </div>`;
 
               // Stop the countdown if the remaining time reaches zero
@@ -58,67 +60,7 @@
           }, 2000); // 2000 milliseconds = 2 seconds
         </script>
       {% endif %}
-      {% style %}
-                                                   .announcement-bar .announcement-bar-text {
-                     font-size: 16px !important;
-                     letter-spacing: 0;
-                     font-weight: 400 !important;
-                     font-family: 'Roboto';
-                }
-                 .announcement-bar {
-                       padding: .5em 1em;
-                }
-                .countdown-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        	    padding-top: 8px;
-            gap: 10px;
-        }
-                 span#countdown {
-                     position: static !important;
-                     height: auto !important;
-                     transform: none !important;
-                     font-size: 16px !important;
-                }
-                 .countdown-wrapper .details {
-                     text-decoration:underline;
-                }
-                 #countdown {
-                     margin: 0 auto;
-                     margin-top: 12px;
-                     margin-bottom: 6px;
-                }
-                 .hours-number {
-                     display: flex;
-                     flex-direction: column;
-                     justify-content: center;
-                     align-items: center;
-                     background: none;
-                     color: #000 !important;
-                     padding: 0;
-                     font-size: 22px;
-                     font-weight: 400 !important;
-                }
-                 .countdown-number {
-                     display: flex;
-                     align-items: center;
-                     font-size:20px;
-                     color:#fff;
-                     gap:3px;
-                     justify-content: center;
-                }
-                 @media only screen and (max-width:479px) and (min-width:320px){
-                     .announcement-bar .announcement-bar-text, span#countdown {
-                         font-size: 9px !important;
-                    }
-                }
-                 @media only screen and (max-width:767px) and (min-width:480px){
-                     .announcement-bar .announcement-bar-text {
-                         font-size: 11px !important;
-                    }
-                }
-      {% endstyle %}
+   
     {% endif %}
   {% endif %}
 </div>
