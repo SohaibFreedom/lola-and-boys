@@ -112,11 +112,13 @@ span#countdown {
 
 @media only screen and (max-width: 480px) {
   .announcement-bar p {
-    font-size: 9px;
+    font-size: 7px;
     line-height: 9px;
     padding: 1px 0 0;
   }
-
+  .shop-now-text {
+    gap: 6px;
+  }
   .shop-now-text b {
     font-size: 7px;
   }
