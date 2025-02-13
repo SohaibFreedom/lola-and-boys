@@ -44,6 +44,7 @@ span#countdown {
   text-transform: uppercase;
   text-decoration: underline;
   font-size: 15px;
+  font-family: Roboto;
   line-height: 15px;
 }
 
