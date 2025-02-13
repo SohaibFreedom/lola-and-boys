@@ -36,6 +36,7 @@
         },
         "image_V87qeG": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image_mobile": "shopify://shop_images/Lola_VDay_HP_banner_mob_ea7be48a-22aa-4551-b29d-1bfa60b7d878.jpg",
             "mp4": "https://cdn.shopify.com/videos/c/o/v/19a531d95bff49a4b312239914a26cf7.mp4",
