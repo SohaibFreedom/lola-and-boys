@@ -34,14 +34,17 @@ span#countdown {
   margin-top: 12px;
   margin-bottom: 6px;
 }
+.shop-now-text br {
+  display: none;
+}
 
 .announcement-bar p {
-  padding: 3px 0 0;
+  padding: 6px 0 0;
   font-weight: 700;
   text-transform: uppercase;
   text-decoration: underline;
-  font-size: 13px;
-  line-height: 13px;
+  font-size: 15px;
+  line-height: 15px;
 }
 
 .shop-now-text b {
@@ -50,7 +53,7 @@ span#countdown {
   text-transform: uppercase;
 }
 
-.hours-number {
+.countdown-numbrs {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -58,13 +61,14 @@ span#countdown {
   background: none;
   color: #000 !important;
   padding: 0;
-  font-size: 20px;
+  font-size: 25px;
   line-height: 18px !important;
   font-weight: 400 !important;
   background-color: #fbf5f5;
   padding: 11px 9px 8px !important;
   border-radius: 3px;
   margin-right: 3px;
+  font-family: Alias-Didot-Light !important;
 }
 .countdown-number {
   display: flex;
@@ -81,6 +85,7 @@ span#countdown {
   text-decoration: none;
   text-transform: capitalize;
   line-height: 12px !important;
+  font-family: Alias-Didot-Light !important;
   text-align: center;
 }
 
@@ -97,14 +102,21 @@ span#countdown {
     line-height: 11px;
   }
 
+  .shop-now-text br {
+    display: block;
+  }
+  .shop-now-text {
+    line-height: 1.5 !important;
+  }
+
   .shop-now-text b {
     font-size: 11px;
   }
 
-  .hours-number {
-    font-size: 15px;
+  .countdown-numbrs {
+    font-size: 20px;
     line-height: 13px !important;
-    padding: 6px 6px 3px !important;
+    padding: 10px 9px 3px !important;
     border-radius: 2px;
     margin-right: 3px;
   }
@@ -112,21 +124,22 @@ span#countdown {
 
 @media only screen and (max-width: 480px) {
   .announcement-bar p {
-    font-size: 7px;
+    font-size: 11px;
     line-height: 9px;
-    padding: 1px 0 0;
+    padding: 5px 0 0;
   }
   .shop-now-text {
     gap: 6px;
   }
   .shop-now-text b {
-    font-size: 7px;
+    font-size: 9.5px;
   }
-
-  .hours-number {
-    font-size: 11px;
-    line-height: 11px !important;
-    margin-right: 2px;
+  .countdown-numbrs {
+    font-size: 18px;
+    line-height: 13px !important;
+    padding: 7px 7px 3px !important;
+    border-radius: 2px;
+    margin-right: 3px;
   }
 
   .annoucment-bar-top .announcement-bar .announcement-bar-text,

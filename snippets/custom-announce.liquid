@@ -15,51 +15,55 @@
         </div>
       </a>
       {% if section.settings.show_countdown %}
-        <script>
-          // Function to format numbers with leading zeros
-          const formatWithZero = (num) => `${num}`.padStart(2, '0');
+  <script>
+    // Function to format numbers with leading zeros
+    const formatWithZero = (num) => `${num}`.padStart(2, '0');
 
-          // Delay initialization of countdown by 2 seconds
-          setTimeout(function() {
-            // Retrieve the fixed target end date from Liquid variable
-            const fixedTargetDate = new Date('{{ section.settings.countdown_end_date }}').getTime();
+    // Delay initialization of countdown by 2 seconds
+    setTimeout(function() {
+      // Retrieve the fixed target end date from Liquid variable
+      const fixedTargetDate = new Date('{{ section.settings.countdown_end_date }}').getTime();
 
-            // Update the countdown every second
-            const countdownTimer = setInterval(function () {
-              // Calculate the remaining time in seconds
-              const remainingTime = Math.floor((fixedTargetDate - new Date().getTime()) / 1000);
+      // Update the countdown every second
+      const countdownTimer = setInterval(function () {
+        // Calculate the remaining time in seconds
+        const remainingTime = Math.floor((fixedTargetDate - new Date().getTime()) / 1000);
 
-              // Calculate the remaining time in hours, minutes, and seconds
-              const hours = Math.floor(remainingTime / 3600);
-              const minutes = Math.floor((remainingTime % 3600) / 60);
-              const seconds = remainingTime % 60;
+        // Calculate the remaining time in days, hours, minutes, and seconds
+        const days = Math.floor(remainingTime / 86400); // 86400 seconds in a day
+        const hours = Math.floor((remainingTime % 86400) / 3600);
+        const minutes = Math.floor((remainingTime % 3600) / 60);
+        const seconds = remainingTime % 60;
 
-              // Format hours, minutes, and seconds with leading zeros
-              const formattedHours = formatWithZero(hours);
-              const formattedMinutes = formatWithZero(minutes);
-              const formattedSeconds = formatWithZero(seconds);
+        // Format days, hours, minutes, and seconds with leading zeros
+        const formattedDays = formatWithZero(days);
+        const formattedHours = formatWithZero(hours);
+        const formattedMinutes = formatWithZero(minutes);
+        const formattedSeconds = formatWithZero(seconds);
 
-              // Display the remaining time
-              const countdownElement = document.querySelector('.countdown');
+        // Display the remaining time
+        const countdownElement = document.querySelector('.countdown');
 
-              countdownElement.innerHTML = `
-                <div class="countdown-wrapper">
-                  <div class="countdown-number">
-                    <div class="hours-number">${formattedHours} <br> <p>Hrs</p></div>
-                    <div class="hours-number">${formattedMinutes} <br> <p>Min</p></div>
-                    <div class="hours-number">${formattedSeconds} <br> <p>Sec</p></div>
-                  </div>
-                </div>`;
+        countdownElement.innerHTML = `
+          <div class="countdown-wrapper">
+            <div class="countdown-number">
+              <div class="days-number countdown-numbrs">${formattedDays} <br> <p>Days</p></div>
+              <div class="hours-number countdown-numbrs">${formattedHours} <br> <p>Hrs</p></div>
+              <div class="minutes-number countdown-numbrs">${formattedMinutes} <br> <p>Min</p></div>
+              <div class="seconds-number countdown-numbrs">${formattedSeconds} <br> <p>Sec</p></div>
+            </div>
+          </div>`;
 
-              // Stop the countdown if the remaining time reaches zero
-              if (remainingTime <= 0) {
-                clearInterval(countdownTimer);
-                countdownElement.textContent = "Countdown is over!";
-              }
-            }, 100);
-          }, 2000); // 2000 milliseconds = 2 seconds
-        </script>
-      {% endif %}
+        // Stop the countdown if the remaining time reaches zero
+        if (remainingTime <= 0) {
+          clearInterval(countdownTimer);
+          countdownElement.textContent = "Countdown is over!";
+        }
+      }, 1000); // Update every second
+    }, 2000); // 2000 milliseconds = 2 seconds
+  </script>
+{% endif %}
+
    
     {% endif %}
   {% endif %}
