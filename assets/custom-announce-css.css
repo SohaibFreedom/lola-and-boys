@@ -37,14 +37,16 @@ span#countdown {
 .shop-now-text br {
   display: none;
 }
-
+.countdown-numbrs p {
+  font-family: "Roboto" !important;
+}
 .announcement-bar p {
   padding: 6px 0 0;
   font-weight: 700;
   text-transform: uppercase;
   text-decoration: underline;
   font-size: 15px;
-  font-family: "Roboto" !important;
+
   line-height: 15px;
 }
 
