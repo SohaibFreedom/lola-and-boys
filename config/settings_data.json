@@ -3921,7 +3921,7 @@
           "bck_clr": "#f3a4dd",
           "Annouce_url": "",
           "txt_clr": "#000000",
-          "text": "<b> President's Day SALE 25% OFF (Excludes NEW Drops)\n</b>",
+          "text": "<b> President's Day SALE 25% OFF <br>(Excludes NEW Drops)\n</b>",
           "phone_number": "",
           "top_bar_menu": "help",
           "cart_icon": "cart",
