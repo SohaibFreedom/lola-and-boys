@@ -88,8 +88,10 @@ span#countdown {
   text-decoration: none;
   text-transform: capitalize;
   line-height: 12px !important;
-  font-family: Alias-Didot-Light !important;
   text-align: center;
+}
+.countdown-number {
+  font-family: Alias-Didot-Light !important;
 }
 
 .announcement-bar-text {
