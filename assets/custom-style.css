@@ -18,7 +18,25 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: "Montserrat-Regular", sans-serif;
+  src: url("https://cdn.shopify.com/s/files/1/0002/0647/1226/files/Montserrat-Regular.woff2?v=1739895535")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/0002/0647/1226/files/Montserrat-Regular.woff?v=1739895142")
+      format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 
+@font-face {
+  font-family: "Montserrat-Bold", sans-serif;
+  src: url("https://cdn.shopify.com/s/files/1/0002/0647/1226/files/Montserrat-Bold.woff2?v=1739895535")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/0002/0647/1226/files/Montserrat-Bold.woff?v=1739895141")
+      format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 @font-face {
   font-family: "Sofia Pro";
   src: url("https://cdn.shopify.com/s/files/1/0917/3729/3086/files/Sofia_Pro_Regular_Az.otf?v=1738354657")
