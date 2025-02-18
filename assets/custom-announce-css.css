@@ -71,7 +71,7 @@ span#countdown {
   padding: 11px 9px 8px !important;
   border-radius: 3px;
   margin-right: 3px;
-  font-family: Alias-Didot-Light !important;
+  font-family: "Montserrat-Regular", sans-serif;
 }
 .countdown-number {
   display: flex;
