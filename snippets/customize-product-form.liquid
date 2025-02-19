@@ -1049,7 +1049,6 @@ async function addcartfiles() {
           return html2canvas(document.getElementById(id), {
               allowTaint: true,
               useCORS: true,
-              scale: 0.7,  // Reduce quality for speed
               logging: false,
               backgroundColor: null,
               ignoreElements: (el) => el.classList.contains('ignore-in-canvas'),
