@@ -56,7 +56,6 @@
                     <div class="c-cart__itemImageBox c-drawer__itemImg">
                       {% if item.properties._customized_image_url_front %}
                         <img src="{{ item.properties._customized_image_url_front }}" alt="{{ item.title | escape }}">
-                        <img src="{{ item.properties._customized_image_url_back }}" alt="{{ item.title | escape }}">
                       {% else %}
                         <img src="{{ item | img_url: 'master' }}" alt="{{ item.title | escape }}">
                       {% endif %}
