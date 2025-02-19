@@ -811,7 +811,7 @@ addCartItemButton.addEventListener('click', async function (event) {
 
     // Use FormData to prepare the data for sending
     const formData = new FormData();
-    formData.append('image', blob, 'screenshot.jpg');
+    formData.append('image', blob, 'upload.png');
 
     // Send the FormData to the server
     const result = await fetch('https://heroic-frangipane-c8c826.netlify.app/.netlify/functions/getdata/check', {
@@ -1046,17 +1046,11 @@ async function addcartfiles() {
   function captureAndCombineScreenshots() {
 
       function captureDiv(id) {
-    const element = document.getElementById(id);
-    if (!element) return null;
-
-    return await html2canvas(element, {
-        useCORS: true, 
-        scale: 0.7,  // Reduce quality for speed
-        logging: false,
-        backgroundColor: null,
-        ignoreElements: (el) => el.classList.contains('ignore-in-canvas'), // Ignore hidden elements
-    });
-}
+          return html2canvas(document.getElementById(id), {
+              allowTaint: true,
+              useCORS: true
+          });
+      }
 
       if (document.getElementById('Front-Area').style.visibility === 'visible') {
           var backArea = document.getElementById('Back-area');
