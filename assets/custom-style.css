@@ -245,6 +245,12 @@
     bottom: 15px;
     clip-path: polygon(0 0, 100% 0, 73% 100%, 12% 98%);
   }
+  .featured-promotions-new-section .slick-slide:first-child {
+    padding: 0 !important;
+  }
+  .featured-promotions-new-section .container {
+    padding-left: 10px !important;
+  }
 
   .irina-fav-tag img {
     width: 9px !important;
