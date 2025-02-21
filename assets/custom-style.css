@@ -245,12 +245,6 @@
     bottom: 15px;
     clip-path: polygon(0 0, 100% 0, 73% 100%, 12% 98%);
   }
-  .featured-promotions-new-section .slick-slide:first-child {
-    padding: 0 !important;
-  }
-  .featured-promotions-new-section .container {
-    padding-left: 10px !important;
-  }
 
   .irina-fav-tag img {
     width: 9px !important;
@@ -1553,6 +1547,12 @@ html
   }
 }
 @media only screen and (max-width: 768px) {
+  .featured-promotions-new-section .slick-slide:first-child {
+    padding: 0 !important;
+  }
+  .featured-promotions-new-section .container {
+    padding-left: 10px !important;
+  }
   .collection-specific-tags {
     font-size: 9px;
     padding: 0 9px;
