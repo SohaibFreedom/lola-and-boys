@@ -1936,7 +1936,7 @@ html
   .featured-promotions-new-section .slick-slide {
     padding-left: 15px !important;
   }
-  .featured-promotions-new-section .slick-slide:first-child {
+  .featured-promotions-new-section .slick-slide:nth-child(2) {
     padding-left: 0 !important;
   }
 
