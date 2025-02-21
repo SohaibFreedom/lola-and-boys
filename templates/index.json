@@ -715,106 +715,6 @@
         "text": ""
       }
     },
-    "logo_bar_JPBrgt": {
-      "type": "logo-bar",
-      "blocks": {
-        "logo_image_GRaRLR": {
-          "type": "logo_image",
-          "settings": {
-            "image": "shopify://shop_images/Harper_s_Bazaar_Logo_svg_3bfaef6c-a18b-48c5-84bd-91b509d16695.png",
-            "link": ""
-          }
-        },
-        "logo_image_VxDrFA": {
-          "type": "logo_image",
-          "settings": {
-            "image": "shopify://shop_images/e34f3e61-dbda-47cf-be4b-3a7447ff0c00.png",
-            "link": ""
-          }
-        },
-        "logo_image_9xx3A3": {
-          "type": "logo_image",
-          "settings": {
-            "image": "shopify://shop_images/abc-7-2-logo-png-transparent_967ee0b7-ec43-44ff-a1c4-8fd31d5ab0f0.png",
-            "link": ""
-          }
-        },
-        "logo_image_QegyyP": {
-          "type": "logo_image",
-          "settings": {
-            "image": "shopify://shop_images/vanity-fair-logo_29057420-44b9-4c02-a48b-6e4a5cfdb97c.png",
-            "link": ""
-          }
-        },
-        "logo_image_kzFE3c": {
-          "type": "logo_image",
-          "settings": {
-            "image": "shopify://shop_images/forbes.com_logo.png",
-            "link": ""
-          }
-        },
-        "logo_image_4PY487": {
-          "type": "logo_image",
-          "settings": {
-            "image": "shopify://shop_images/us-weekly_90424067-95c0-418e-9dc1-fa342c8867c7.png",
-            "link": ""
-          }
-        },
-        "logo_image_pBVKhe": {
-          "type": "logo_image",
-          "settings": {
-            "image": "shopify://shop_images/download_1f871b81-ad50-4dd5-ba17-56c444004cc8.png",
-            "link": ""
-          }
-        },
-        "logo_image_K3feVF": {
-          "type": "logo_image",
-          "settings": {
-            "image": "shopify://shop_images/ok-magazine-logo-D6F257F7C7-seeklogo.com_6a0809d5-05e6-4b9c-9da8-4f0cbd3112a2.png",
-            "link": ""
-          }
-        },
-        "logo_image_jNqL8Q": {
-          "type": "logo_image",
-          "settings": {
-            "image": "shopify://shop_images/RealSimple_svg_0f508d5b-cdaf-4834-b078-d48ddb8b3ee3.png",
-            "link": ""
-          }
-        },
-        "logo_image_Tyjifi": {
-          "type": "logo_image",
-          "settings": {
-            "image": "shopify://shop_images/d8e7cb11-eeb2-46ee-892c-8baf95351b47.png",
-            "link": ""
-          }
-        },
-        "logo_image_yRm4wa": {
-          "type": "logo_image",
-          "settings": {
-            "image": "shopify://shop_images/logo.svg",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "logo_image_GRaRLR",
-        "logo_image_VxDrFA",
-        "logo_image_9xx3A3",
-        "logo_image_QegyyP",
-        "logo_image_kzFE3c",
-        "logo_image_4PY487",
-        "logo_image_pBVKhe",
-        "logo_image_K3feVF",
-        "logo_image_jNqL8Q",
-        "logo_image_Tyjifi",
-        "logo_image_yRm4wa"
-      ],
-      "disabled": true,
-      "settings": {
-        "class": "logos-main-wrapper",
-        "title": "AS SEEN IN"
-      }
-    },
     "image_with_text_overlay_RXmeiN": {
       "type": "image-with-text-overlay",
       "settings": {
@@ -861,14 +761,13 @@
     "collection_mobile_list_FGTnEz",
     "featured_promotions_new_arrivals_wkUrRN",
     "grid_featured_collections_RWChAF",
+    "announce_marquee_XqhL6w",
     "custom_liquid_h7RxMK",
     "featured_promotions_zDnTpN",
     "shell_of_percentage_YbqUwK",
     "best_sellers_section_bDD7BB",
     "collection_new_Ah8hzk",
     "text_columns_with_images_9x8WgE",
-    "announce_marquee_XqhL6w",
-    "logo_bar_JPBrgt",
     "image_with_text_overlay_RXmeiN",
     "image_with_text_overlay_jBjqqw"
   ]
