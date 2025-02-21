@@ -1044,7 +1044,7 @@ async function addcartfiles() {
 </script>
 <script>
   function captureAndCombineScreenshots() {
-
+console.log("Total elements in the DOM before capture:", document.querySelectorAll('*').length);
       function captureDiv(id) {
           return html2canvas(document.getElementById(id), {
               allowTaint: true,
