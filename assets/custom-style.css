@@ -1936,6 +1936,9 @@ html
   .featured-promotions-new-section .slick-slide {
     padding-left: 15px !important;
   }
+  .featured-promotions-new-section .slick-slide:first-child {
+    padding-left: 0 !important;
+  }
 
   .gf-top_one .gf-block-content {
     background-color: #fff !important;
