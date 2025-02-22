@@ -994,7 +994,7 @@ if (filteredData.length > 0) {
             // Get the height and width as integers
             let imgHeight = parseInt(item.height, 10);
             let imgWidth = parseInt(item.width, 10);
-
+            let patchName = item.patchname;
             const product = {{ product | json }};
             const variantname = document.querySelector('input[name="selective_variant_name"]').value.trim();
             console.log('this is variantname', variantname);
@@ -1002,7 +1002,7 @@ if (filteredData.length > 0) {
             // Adjust imgHeight and imgWidth based on variantname and productTags
             if (variantname === '1' || variantname === '2' || variantname === '2/3' || variantname === '3/4' || variantname === '4/5' || variantname === '5/6' || 
                 variantname === '4' || variantname === '5' || variantname === '6') {
-                if (!productTags.includes("happ-velour-set")) {
+                if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit")) {
                     console.log('condition true');
                     imgHeight += 20;
                     imgWidth += 20;
@@ -1019,7 +1019,7 @@ if (filteredData.length > 0) {
             else if (variantname === '6/7' || variantname === '8' || variantname === '7/8' || variantname === '8/9' ||  
                        variantname === '10' || variantname === '9/10' || variantname === '10/11' || variantname === '11/12' || variantname === '12' || 
                        variantname === '14') {
-                if (!productTags.includes("happ-velour-set")) {
+                if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit")) {
                     console.log('condition true');
                     imgHeight += 10;
                     imgWidth += 10;
@@ -1028,7 +1028,7 @@ if (filteredData.length > 0) {
                     imgHeight -= 15;
                     imgWidth -= 15;
                    // Ensure imgWidth does not go below 20
-                    if (imgWidth < 20) {
+                 if (imgWidth < 20 || patchName === "Colorful Bear") {
                         imgWidth = 20;
                     }
                 }
@@ -1440,6 +1440,10 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
                   halfHeight += 10;
          halfWidth += 10;
                   }
+      else if (product.tags.includes("Bella-Hologram-Swimsuit")){
+                  halfHeight += 8;
+         halfWidth += 8;
+                  }
           // Set the patch dimensions
           img.width =halfWidth;
           img.height =halfHeight;
@@ -1518,6 +1522,10 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
       else if (product.tags.includes("happ-velour-set")){
                   halfHeight += 10;
          halfWidth += 10;
+                  }
+      else if (product.tags.includes("Bella-Hologram-Swimsuit")){
+                  halfHeight += 7;
+         halfWidth += 7;
                   }
           // Set the patch dimensions
           img.width =halfWidth;
@@ -1625,7 +1633,7 @@ if (filteredData.length > 0) {
             // Adjust imgHeight and imgWidth based on variantname and productTags
             if (variantname === '1' || variantname === '2' || variantname === '2/3' || variantname === '3/4' || variantname === '4/5' || variantname === '5/6' || 
                 variantname === '4' || variantname === '5' || variantname === '6') {
-                if (!productTags.includes("happ-velour-set")) {
+                if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit")) {
                     console.log('condition true');
                     imgHeight += 20;
                     imgWidth += 20;
@@ -1642,7 +1650,7 @@ if (filteredData.length > 0) {
             else if (variantname === '6/7' || variantname === '8' || variantname === '7/8' || variantname === '8/9' ||  
                        variantname === '10' || variantname === '9/10' || variantname === '10/11' || variantname === '11/12' || variantname === '12' || 
                        variantname === '14') {
-                if (!productTags.includes("happ-velour-set")) {
+                if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit")) {
                     console.log('condition true');
                     imgHeight += 10;
                     imgWidth += 10;
@@ -2062,6 +2070,10 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
                   halfHeight += 10;
          halfWidth += 10;
                   }
+     else if (product.tags.includes("Bella-Hologram-Swimsuit")){
+                  halfHeight += 8;
+         halfWidth += 8;
+                  }
           // Set the patch dimensions
           img.width =halfWidth;
           img.height =halfHeight;
@@ -2129,13 +2141,18 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
      if (product.tags.includes('customize-long-bag')){
         halfHeight += 15;
        halfWidth += 15;
-  } else if (product.tags.includes('patch-it-bag')){
+  }
+     else if (product.tags.includes('patch-it-bag')){
               console.log('yes this patch-it-bag'); 
        if (halfHeight > 20 && halfWidth > 20) {
       halfHeight -= 10;
       halfWidth -= 10;
   }
               }
+        else if (product.tags.includes("Bella-Hologram-Swimsuit")){
+                  halfHeight += 7;
+         halfWidth += 7;
+                  }
           // Set the patch dimensions
           img.width =halfWidth;
           img.height =halfHeight;
@@ -2241,6 +2258,7 @@ function showPatches() {
             let imgHeight = parseInt(item.height, 10);
             let imgWidth = parseInt(item.width, 10);
 
+            let patchName = item.patchname;
             const product = {{ product | json }};
             const variantname = document.querySelector('input[name="selective_variant_name"]').value.trim();
             console.log('this is variantname', variantname);
@@ -2248,7 +2266,7 @@ function showPatches() {
             // Adjust imgHeight and imgWidth based on variantname and productTags
             if (variantname === '1' || variantname === '2' || variantname === '2/3' || variantname === '3/4' || variantname === '4/5' || variantname === '5/6' || 
                 variantname === '4' || variantname === '5' || variantname === '6') {
-                if (!productTags.includes("happ-velour-set")) {
+                if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit")) {
                     console.log('condition true');
                     imgHeight += 20;
                     imgWidth += 20;
@@ -2257,15 +2275,16 @@ function showPatches() {
                     imgHeight -= 10;
                     imgWidth -= 10;
                    // Ensure imgWidth does not go below 20
-                    if (imgWidth < 20) {
-                        imgWidth = 20;
-                    }
+                    if (imgWidth < 20 ) {
+                     imgWidth = 20;
+                   }
+
                 }
             } 
             else if (variantname === '6/7' || variantname === '8' || variantname === '7/8' || variantname === '8/9' ||  
                        variantname === '10' || variantname === '9/10' || variantname === '10/11' || variantname === '11/12' || variantname === '12' || 
                        variantname === '14') {
-                if (!productTags.includes("happ-velour-set")) {
+                if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit")) {
                     console.log('condition true');
                     imgHeight += 10;
                     imgWidth += 10;
@@ -2275,7 +2294,7 @@ function showPatches() {
                     imgHeight -= 15;
                     imgWidth -= 15;
                    // Ensure imgWidth does not go below 20
-                    if (imgWidth < 20) {
+                    if (imgWidth < 20 || patchName === "Colorful Bear") {
                         imgWidth = 20;
                     }
                 }
@@ -2446,6 +2465,7 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
               halfHeight += 2;
           }
           if (halfWidth < 20) {
+            console.log(halfWidth,'under 20');
               halfWidth += 1;
           }
             else{
@@ -2459,6 +2479,7 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
          halfWidth += 25;
                 }
                 else {
+                  console.log(halfHeight,'here');
          halfHeight += 15;
          halfWidth += 15;
          }
@@ -2686,6 +2707,10 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
                   halfHeight += 10;
          halfWidth += 10;
                   }
+     else if (product.tags.includes("Bella-Hologram-Swimsuit")){
+                  halfHeight += 8;
+         halfWidth += 8;
+                  }
           // Set the patch dimensions
           img.width =halfWidth;
           img.height =halfHeight;
@@ -2764,6 +2789,10 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
       else if (product.tags.includes("happ-velour-set")){
                   halfHeight += 10;
          halfWidth += 10;
+                  }
+      else if (product.tags.includes("Bella-Hologram-Swimsuit")){
+                  halfHeight += 7;
+         halfWidth += 7;
                   }
           // Set the patch dimensions
           img.width =halfWidth;
