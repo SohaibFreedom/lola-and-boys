@@ -3388,6 +3388,7 @@ function showBackImage() {
 
      // Check if Backimg is empty and hide the div if it is
        const productTags = {{ product.tags | json }};
+     const patchesWrapperMob = document.querySelector(".front-back-btn-wrapp-only-mob");
      const patchesWrapper = document.querySelector(".front-back-btn-wrapp-only-desktop");
      const sizevariantscontaier = document.querySelector(".size_variants_section");
       if (productTags.includes("happ-velour-set")){
@@ -3397,6 +3398,7 @@ function showBackImage() {
         else if (productTags.includes("Bella-Hologram-Swimsuit")){
           patchesWrapper.style.visibility = "hidden"; 
           sizevariantscontaier.style.visibility = "visible";
+          patchesWrapperMob.style.visibility = "hidden";
       }
      else{
             if (!currentImageData.Backimg) {
