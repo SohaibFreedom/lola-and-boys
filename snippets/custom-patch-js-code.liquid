@@ -3511,7 +3511,19 @@ let currentY = 0;
 
 
 function addPatchToCenterBox(patchSrc, patchId, height, width) {
- 
+ if (product.tags.includes('Bella-Hologram-Swimsuit')) {
+    let patchElements = document.querySelectorAll('.patch-');
+
+    if (patchElements.length >= 1) {
+        let errorDiv = document.querySelector('.overlapping-error');
+        if (errorDiv) {
+            errorDiv.textContent = "You can just add 1 patch"; // Update the text
+            errorDiv.style.visibility = "visible"; // Make it visible
+        }
+        return; // Stop the function execution
+    }
+}
+  
   console.log('adding to front'); 
   console.log(height,width);
     var patchDiv = document.createElement('div');
@@ -4204,7 +4216,18 @@ BackcenterBox.addEventListener('dragover', function (event) {
 });
 centerBox.addEventListener('drop', function (event) {
     event.preventDefault();
+if (product.tags.includes('Bella-Hologram-Swimsuit')) {
+    let patchElements = document.querySelectorAll('.patch-');
 
+    if (patchElements.length >= 1) {
+        let errorDiv = document.querySelector('.overlapping-error');
+        if (errorDiv) {
+            errorDiv.textContent = "You can add just 1 patch"; // Update the text
+            errorDiv.style.visibility = "visible"; // Make it visible
+        }
+        return; // Stop the function execution
+    }
+}
     const patchesContainer = centerBox.querySelector('.patches-container'); // Get patches container
 
     if (dragPatch) {
