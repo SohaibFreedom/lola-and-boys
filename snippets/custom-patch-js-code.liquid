@@ -1151,6 +1151,9 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
     // Calculate half width and heigh
           var halfWidth = imgWidth / 2.3;
           var halfHeight = imgHeight / 2.3;
+    if (halfWidth < 20 || patchName === "Colorful Bear") {
+                        halfWidth += 15;
+                    }
           // Check if they are less than 20 and add 5px if true
           if (halfWidth < 13) {
               halfWidth += 8;
@@ -2414,6 +2417,9 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
     // Calculate half width and heigh
           var halfWidth = imgWidth / 2.3;
           var halfHeight = imgHeight / 2.3;
+    if (halfWidth < 20 || patchName === "Colorful Bear") {
+                        halfWidth += 15;
+                    }
           // Check if they are less than 20 and add 5px if true
           if (halfWidth < 13) {
               halfWidth += 8;
