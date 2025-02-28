@@ -49,6 +49,36 @@
         "toggle": false
       }
     },
+    "ca363c135d32a883479e": {
+      "type": "apps",
+      "blocks": {
+        "e442a5fe-96b4-42ee-9e46-1cf5c24a1182": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "e442a5fe-96b4-42ee-9e46-1cf5c24a1182"
+      ],
+      "settings": {}
+    },
+    "786f03410aa34f55c8da": {
+      "type": "apps",
+      "blocks": {
+        "df355749-cf02-4e2e-a46e-86876f87eb83": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "df355749-cf02-4e2e-a46e-86876f87eb83"
+      ],
+      "settings": {}
+    },
     "shogun-below": {
       "type": "shogun-below",
       "settings": {}
@@ -72,41 +102,29 @@
       ],
       "settings": {}
     },
-    "786f03410aa34f55c8da": {
-      "type": "apps",
+    "shop_with_us_QhEfNV": {
+      "type": "shop-with-us",
       "blocks": {
-        "df355749-cf02-4e2e-a46e-86876f87eb83": {
-          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+        "column_nWMabc": {
+          "type": "column",
           "settings": {
-            "product": "{{product}}"
+            "description": ""
           }
         }
       },
       "block_order": [
-        "df355749-cf02-4e2e-a46e-86876f87eb83"
+        "column_nWMabc"
       ],
-      "settings": {}
-    },
-    "ca363c135d32a883479e": {
-      "type": "apps",
-      "blocks": {
-        "e442a5fe-96b4-42ee-9e46-1cf5c24a1182": {
-          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-          "settings": {
-            "product": "{{product}}"
-          }
-        }
-      },
-      "block_order": [
-        "e442a5fe-96b4-42ee-9e46-1cf5c24a1182"
-      ],
-      "settings": {}
+      "settings": {
+        "heading": ""
+      }
     }
   },
   "order": [
     "shogun-helper",
     "shogun-above",
     "main",
+    "shop_with_us_QhEfNV",
     "ca363c135d32a883479e",
     "786f03410aa34f55c8da",
     "shogun-below",
