@@ -102,29 +102,62 @@
       ],
       "settings": {}
     },
-    "shop_with_us_QhEfNV": {
+ "shop_with_us_4cNKDq": {
       "type": "shop-with-us",
       "blocks": {
-        "column_nWMabc": {
+        "column_JmB7CG": {
           "type": "column",
           "settings": {
-            "description": ""
+            "image": "shopify://shop_images/Asset-11.png",
+            "description": "Over 1 Million <br> Happy Customers"
+          }
+        },
+        "column_NGamrN": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Asset-13.png",
+            "description": "Designed For <br> Fun & Comfort"
+          }
+        },
+        "column_PyActA": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Asset-16.png",
+            "description": "Celebrity <br> Loved"
+          }
+        },
+        "column_DHFxyh": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Asset-14.png",
+            "description": "Super Soft <br> Fabrics"
+          }
+        },
+        "column_4JXNU6": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Asset-12.png",
+            "description": "Mom-Owned, <br> Kid-Approved"
           }
         }
       },
       "block_order": [
-        "column_nWMabc"
+        "column_JmB7CG",
+        "column_NGamrN",
+        "column_PyActA",
+        "column_DHFxyh",
+        "column_4JXNU6"
       ],
       "settings": {
-        "heading": ""
+        "heading": "Why Shop with Us?"
       }
-    }
+    },
   },
   "order": [
     "shogun-helper",
     "shogun-above",
     "main",
-    "shop_with_us_QhEfNV",
+    "shop_with_us_4cNKDq",
     "ca363c135d32a883479e",
     "786f03410aa34f55c8da",
     "shogun-below",
