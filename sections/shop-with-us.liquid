@@ -1,6 +1,162 @@
-{% schema %}
-  {
-    "name": "Section name",
-    "settings": []
+<div class="shop-with-us-wrap">
+  <div class="shop-with-us-main">
+    {% if section.settings.heading != blank %}
+        <h3>{{ section.settings.heading }}</h3>
+    {% endif %}
+    <div class="shop-with-inner">
+      {% for block in section.blocks %}
+        <div class="single-item">
+          {% if block.settings.image != blank %}
+            <img src="{{ block.settings.image | img_url: '' }}"alt="" width="auto" height="auto">
+          {% endif %}
+          {% if block.settings.description != blank %}
+            <p>{{ block.settings.description }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .shop-with-us-wrap {
+    padding: 80px 0;
+    text-align:center;
+    background-color: #F8F8F8;
   }
+
+  .shop-with-us-main {
+    max-width:1400px;
+    margin:0 auto;
+    padding:0 20px;
+  }
+
+  .shop-with-us-wrap h3 {
+    font-size:22px;
+    font-weight:600;
+    color:#000;
+    margin:0;
+    position:relative;
+    display:inline-block;
+    z-index:99;
+  }
+
+  .shop-with-us-wrap h3:after {
+    background-color: #F8F8F8;
+    bottom: 10%;
+    content: "";
+    display: block;
+    height: 12px;
+    left: -5%;
+    position: absolute;
+    width: 110%;
+    z-index: -1;
+  }
+
+  .shop-with-inner {
+    margin: 50px 0 0;
+    display: flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+
+  .shop-with-inner .single-item {
+    width:20%;
+  }
+  
+  .shop-with-inner img {
+    width: 80px;
+    height: 70px;
+    margin: 0 auto 20px;
+    object-fit: contain;
+  }
+
+  .shop-with-inner p {
+    font-size:13px;
+    line-height:18px;
+    font-weight:600;
+    text-transform:uppercase;
+    color:#000;
+    margin:0;
+  }
+
+  @media only screen and (max-width: 1024px) {
+    .shop-with-inner p {
+        font-size:11px;
+        line-height:16px;
+    }
+
+    .shop-with-us-wrap h3 {
+        font-size:18px;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .shop-with-us-wrap {
+      padding: 30px 0;
+      background-color: transparent;
+    }
+
+    .shop-with-us-wrap .shop-with-us-main {
+      max-width: 640px;
+      margin: 0 auto 0 0;
+      padding: 0 !important;
+    }
+
+    .shop-with-inner {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 15px;
+      margin:25px 0 0;
+    }
+
+    .shop-with-inner .single-item {
+      padding: 50px 0;
+      flex: 0 0 60%;
+      background-color:#F8F8F8;
+    }
+  }
+  
+</style>
+
+{% schema %}
+{
+  "name": "Shop With Us",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Add block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop With Us",
+      "blocks": [
+        {
+          "type": "column"
+        }
+      ]
+    }
+  ]
+}
 {% endschema %}
