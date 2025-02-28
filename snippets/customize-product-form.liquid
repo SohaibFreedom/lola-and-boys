@@ -814,7 +814,7 @@ addCartItemButton.addEventListener('click', async function (event) {
     formData.append('image', blob, 'screenshot.jpg');
 
     // Send the FormData to the server
-    const result = await fetch('https://heroic-frangipane-c8c826.netlify.app/.netlify/functions/getdata/check', {
+    const result = await fetch('https://6ch1pxqng1.execute-api.ap-south-1.amazonaws.com/check', {
       method: 'POST',
       body: formData
     });
