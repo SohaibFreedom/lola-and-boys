@@ -49,60 +49,7 @@
         "toggle": false
       }
     },
-    "ca363c135d32a883479e": {
-      "type": "apps",
-      "blocks": {
-        "e442a5fe-96b4-42ee-9e46-1cf5c24a1182": {
-          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-          "settings": {
-            "product": "{{product}}"
-          }
-        }
-      },
-      "block_order": [
-        "e442a5fe-96b4-42ee-9e46-1cf5c24a1182"
-      ],
-      "settings": {}
-    },
-    "786f03410aa34f55c8da": {
-      "type": "apps",
-      "blocks": {
-        "df355749-cf02-4e2e-a46e-86876f87eb83": {
-          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-          "settings": {
-            "product": "{{product}}"
-          }
-        }
-      },
-      "block_order": [
-        "df355749-cf02-4e2e-a46e-86876f87eb83"
-      ],
-      "settings": {}
-    },
-    "shogun-below": {
-      "type": "shogun-below",
-      "settings": {}
-    },
-    "shogun-optimizer": {
-      "type": "shogun-optimizer",
-      "settings": {}
-    },
-    "17174489357573d6b9": {
-      "type": "apps",
-      "blocks": {
-        "yotpo_product_reviews_ugc_reviews_MbrNNx": {
-          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-          "settings": {
-            "product": "{{product}}"
-          }
-        }
-      },
-      "block_order": [
-        "yotpo_product_reviews_ugc_reviews_MbrNNx"
-      ],
-      "settings": {}
-    },
- "shop_with_us_4cNKDq": {
+    "shop_with_us_4cNKDq": {
       "type": "shop-with-us",
       "blocks": {
         "column_JmB7CG": {
@@ -152,6 +99,29 @@
         "heading": "Why Shop with Us?"
       }
     },
+    "ca363c135d32a883479e": {
+      "type": "apps",
+      "blocks": {
+        "e442a5fe-96b4-42ee-9e46-1cf5c24a1182": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "e442a5fe-96b4-42ee-9e46-1cf5c24a1182"
+      ],
+      "settings": {}
+    },
+    "shogun-below": {
+      "type": "shogun-below",
+      "settings": {}
+    },
+    "shogun-optimizer": {
+      "type": "shogun-optimizer",
+      "settings": {}
+    }
   },
   "order": [
     "shogun-helper",
@@ -159,9 +129,7 @@
     "main",
     "shop_with_us_4cNKDq",
     "ca363c135d32a883479e",
-    "786f03410aa34f55c8da",
     "shogun-below",
-    "shogun-optimizer",
-    "17174489357573d6b9"
+    "shogun-optimizer"
   ]
 }
