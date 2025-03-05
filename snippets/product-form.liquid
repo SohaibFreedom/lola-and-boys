@@ -102,6 +102,80 @@
 
 
       {% unless product.tags contains 'patch-app-category' %}
+               {% if product.tags contains 'name-field' %}
+            {% assign field_label = "Name" %}
+{% assign placeholder_text = "Enter your name" %}
+{% assign required_field = true %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    let form = document.querySelector("form[action*='/cart/add']"); 
+    if (form && !document.querySelector("#custom-name")) { // Check if input already exists
+        let fieldGroup = document.createElement("div");
+        fieldGroup.classList.add("product-form__controls-group");
+
+        let label = document.createElement("label");
+        label.innerHTML = "{{ field_label }} {% if required_field %}<span class='required'>*</span>{% endif %}";
+        label.classList.add("product-form__label");
+        label.setAttribute("for", "custom-name");
+
+        let input = document.createElement("input");
+        input.setAttribute("type", "text");
+        input.setAttribute("id", "custom-name");
+        input.setAttribute("name", "properties[{{ field_label }}]");
+        input.setAttribute("placeholder", "{{ placeholder_text }}");
+        {% if required_field %}input.setAttribute("required", "true");{% endif %}
+        input.classList.add("product-form__input");
+
+        fieldGroup.appendChild(label);
+        fieldGroup.appendChild(input);
+
+          // Insert after .product-quantity-box
+        let quantityBox = form.querySelector(".swatch_options");
+        if (quantityBox) {
+            quantityBox.parentNode.insertBefore(fieldGroup, quantityBox.nextSibling);
+        }
+    }
+});
+</script>
+
+
+
+
+<style>
+    .product-form__controls-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .product-form__label[for="custom-name"] {
+        font-weight: 600;
+        margin-bottom: 4px;
+        display: block;
+    }
+
+    .product-form__input#custom-name {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        outline: none;
+        transition: border 0.2s ease-in-out;
+    }
+
+    .product-form__input#custom-name:focus {
+        border-color: #000;
+    }
+
+    .product-form__controls-group .required {
+        color: red;
+    }
+</style>
+           {% endif %}
           <div class="product_cart_btns">
 
 
