@@ -421,193 +421,6 @@
         "promo_text_on_image_enabled": true
       }
     },
-    "custom_liquid_h7RxMK": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "<div class=\"instagrid-css-link-c\" style=\"background-color:#F8F8F8;\"><div class=\"container\"><div class=\"c-insta-grid-wrapper\"><h2 class=\"title\" style=\"text-align:center;\">SHOP OUR INSTAGRAM</h2><a class=\"c-grid-desk\" href=\"https://www.instagram.com/lolaandtheboys/\">@LolaandtheBoys</a></div>\n\n<script src=\"//foursixty.com/media/scripts/fs.slider.v2.5.js\" data-feed-id=\"lola-and-the-boys_1\" data-theme=\"slider_v2_5\" data-open-links-in-same-page=\"true\" data-cell-size=\"25%\"></script>\n<style>.fs-has-links::after { padding:10px 15px;background-color:#fff;color:rgba(0, 0, 0, 0.8);content:\"SHOP IT\"; } .fs-wrapper { height:auto; } .fs-slider_v2_5  .fs-entry-container { height:0 !important;width:25%!important;padding-top:25%!important; } .fs-wrapper div.fs-text-container .fs-entry-title, div.fs-detail-title { font-family:Times New Roman, serif;font-style:normal;font-weight:normal;font-size:14px; } div.fs-text-container .fs-entry-date, div.fs-detail-container .fs-post-info, div.fs-wrapper div.fs-has-links::after, .fs-text-product, .fs-overlink-text { font-family:Helvetica Neue, Helvetica, Arial, sans-serif;font-style:normal;font-weight:normal;font-size:14px; } .fs-slider-next-button, .fs-slider-prev-button { opacity:1; } .fs-wrapper { margin:auto;width:calc(100% - 120px); } .fs-wrapper div.fs-text-container * { color:#fff; } .fs-wrapper div.fs-text-container { background-color:rgba(0, 0, 0, 0.8);margin:0px; } div.fs-entry-date { display:none; } div.fs-entry-title { display:none; } .fs-slider_v2_5 .fs-wrapper div.fs-timeline-entry { margin:7px; } </style>\n<a class=\"c-grid-mob\" href=\"https://www.instagram.com/lolaandtheboys/\">@LolaandtheBoys</a></div>",
-        "padding_top": 0,
-        "padding_bottom": 28
-      }
-    },
-    "featured_promotions_zDnTpN": {
-      "type": "featured-promotions",
-      "blocks": {
-        "image_9Qgf3d": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/SWIM_SWIM_SWIm.jpg",
-            "link": "https://lolaandtheboys.com/collections/swimwear",
-            "title": "Swimwear",
-            "text": "",
-            "button_label": "shop now",
-            "button_link": "shopify://collections/valentines-day"
-          }
-        },
-        "image_wedKWc": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/DRESSES_55dc0858-a4d5-4d52-b403-7a069b8f91fc.jpg",
-            "link": "https://lolaandtheboys.com/collections/girls-dresses-1",
-            "title": "Dresses",
-            "text": "",
-            "button_label": "shop now",
-            "button_link": "shopify://collections/girls-dresses-1"
-          }
-        },
-        "image_FjkpWA": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/archive_1000_x_1500_px.jpg",
-            "link": "shopify://collections/archivesale",
-            "title": "Archive Sale",
-            "text": "",
-            "button_label": "shop now",
-            "button_link": "shopify://collections/archivesale"
-          }
-        },
-        "image_hUpHCc": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/BEST_SELLERS_3c162c31-7339-4ed6-8b11-4f1b83aa0ab3.jpg",
-            "link": "shopify://collections/best-sellers",
-            "title": "BEST SELLERS",
-            "text": "",
-            "button_label": "shop now",
-            "button_link": "shopify://collections/best-sellers"
-          }
-        }
-      },
-      "block_order": [
-        "image_9Qgf3d",
-        "image_wedKWc",
-        "image_FjkpWA",
-        "image_hUpHCc"
-      ],
-      "settings": {
-        "featured_promos_per_row": 2,
-        "featured_promos_grid": "standard",
-        "featured_links_animation": "",
-        "feature_style": "square",
-        "promo_text_on_image_enabled": true
-      }
-    },
-    "shell_of_percentage_YbqUwK": {
-      "type": "shell-of-percentage",
-      "settings": {
-        "sale_link": "https://lolaandtheboys.com/collections/summer-sale",
-        "title": "Sale",
-        "description": "Youre favorite style are up to",
-        "title_sale": "65% OFF!",
-        "button_link": "https://lolaandtheboys.com/collections/summer-sale",
-        "button_text": "SHOP THE SALE",
-        "image": "shopify://shop_images/SALE_65_OFF.jpg",
-        "mobile_image": "shopify://shop_images/SALE_65_OFF_mob.jpg"
-      }
-    },
-    "best_sellers_section_bDD7BB": {
-      "type": "best-sellers-section",
-      "settings": {
-        "title": "The Spring Shop",
-        "collection": "spring-25",
-        "collection_style": "slider",
-        "collection_description": false,
-        "products_per": 5,
-        "products_limit": 20
-      }
-    },
-    "collection_new_Ah8hzk": {
-      "type": "collection-new",
-      "blocks": {
-        "image_MKtq7p": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/LATB_11062024_00895.jpg",
-            "link": "https://lolaandtheboys.com/collections/eras-tour",
-            "title1": "Eras Tour",
-            "text": "",
-            "button_label": "Shop Now",
-            "button_link": "https://lolaandtheboys.com/collections/eras-tour"
-          }
-        },
-        "image_xkDgQ7": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/LATB_Holiday25_10292024_00041_1.jpg",
-            "link": "https://lolaandtheboys.com/collections/loungewear",
-            "title1": "Lounge Sets",
-            "text": "",
-            "button_label": "Shop now",
-            "button_link": "https://lolaandtheboys.com/collections/fall-outerwear"
-          }
-        },
-        "image_h4Vwnh": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/CG4A4230_1.jpg",
-            "link": "shopify://collections/mommy-me-1",
-            "title1": "Mommy + Me",
-            "text": "",
-            "button_label": "Shop now",
-            "button_link": "shopify://collections/mommy-me-1"
-          }
-        }
-      },
-      "block_order": [
-        "image_MKtq7p",
-        "image_xkDgQ7",
-        "image_h4Vwnh"
-      ],
-      "settings": {
-        "featured_promos_per_row": 3,
-        "featured_promos_grid": "full_width",
-        "featured_links_animation": "fadeInDown",
-        "feature_style": "square",
-        "promo_text_on_image_enabled": true
-      }
-    },
-    "text_columns_with_images_9x8WgE": {
-      "type": "text-columns-with-images",
-      "blocks": {
-        "text_block_33BgeT": {
-          "type": "text_block",
-          "settings": {
-            "enable_image": true,
-            "image": "shopify://shop_images/099A2700_2_9b9b5d29-c21c-4860-8bb9-9af42ce62e36.jpg",
-            "title": "Meet Our Founder",
-            "code": "",
-            "heading_size": "regular_text",
-            "text": "<p>Irina Ovrustky, the founder of Lola and the Boys, creates fashion that celebrates the joy and whimsy of childhood. Each doodle, patch, stitch, and sequin is inspired by her own little ones, Lola, Shia, and Julian. Lola and the Boys is a love story to her children and a testament to the belief that kids' apparel can and should be as dynamic as their imaginations.</p>",
-            "align_text": "center",
-            "button_label": "",
-            "button_link": "",
-            "border_style": "none"
-          }
-        },
-        "text_block_QWRgTJ": {
-          "type": "text_block",
-          "settings": {
-            "enable_image": true,
-            "image": "shopify://shop_images/unciron-cropped.png",
-            "title": "Visit Our Stores",
-            "code": "",
-            "heading_size": "regular_text",
-            "text": "<p>Live the charm of Lola and the Boys IRL! Visit a world where unicorns prance and rainbows embellish every corner without ever leaving Chicago. Each visit promises to be a memorable experience for kids and parents alike.</p>",
-            "align_text": "center",
-            "button_label": "",
-            "button_link": "",
-            "border_style": "none"
-          }
-        }
-      },
-      "block_order": [
-        "text_block_33BgeT",
-        "text_block_QWRgTJ"
-      ],
-      "settings": {
-        "title": "",
-        "cClass": "visit-founder-home"
-      }
-    },
     "announce_marquee_XqhL6w": {
       "type": "announce-marquee",
       "blocks": {
@@ -713,6 +526,197 @@
       "settings": {
         "heading": "",
         "text": ""
+      }
+    },
+    "custom_liquid_h7RxMK": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"instagrid-css-link-c\" style=\"background-color:#F8F8F8;\"><div class=\"container\"><div class=\"c-insta-grid-wrapper\"><h2 class=\"title\" style=\"text-align:center;\">SHOP OUR INSTAGRAM</h2><a class=\"c-grid-desk\" href=\"https://www.instagram.com/lolaandtheboys/\">@LolaandtheBoys</a></div>\n\n<script src=\"//foursixty.com/media/scripts/fs.slider.v2.5.js\" data-feed-id=\"lola-and-the-boys_1\" data-theme=\"slider_v2_5\" data-open-links-in-same-page=\"true\" data-cell-size=\"25%\"></script>\n<style>.fs-has-links::after { padding:10px 15px;background-color:#fff;color:rgba(0, 0, 0, 0.8);content:\"SHOP IT\"; } .fs-wrapper { height:auto; } .fs-slider_v2_5  .fs-entry-container { height:0 !important;width:25%!important;padding-top:25%!important; } .fs-wrapper div.fs-text-container .fs-entry-title, div.fs-detail-title { font-family:Times New Roman, serif;font-style:normal;font-weight:normal;font-size:14px; } div.fs-text-container .fs-entry-date, div.fs-detail-container .fs-post-info, div.fs-wrapper div.fs-has-links::after, .fs-text-product, .fs-overlink-text { font-family:Helvetica Neue, Helvetica, Arial, sans-serif;font-style:normal;font-weight:normal;font-size:14px; } .fs-slider-next-button, .fs-slider-prev-button { opacity:1; } .fs-wrapper { margin:auto;width:calc(100% - 120px); } .fs-wrapper div.fs-text-container * { color:#fff; } .fs-wrapper div.fs-text-container { background-color:rgba(0, 0, 0, 0.8);margin:0px; } div.fs-entry-date { display:none; } div.fs-entry-title { display:none; } .fs-slider_v2_5 .fs-wrapper div.fs-timeline-entry { margin:7px; } </style>\n<a class=\"c-grid-mob\" href=\"https://www.instagram.com/lolaandtheboys/\">@LolaandtheBoys</a></div>",
+        "padding_top": 0,
+        "padding_bottom": 28
+      }
+    },
+    "featured_promotions_zDnTpN": {
+      "type": "featured-promotions",
+      "blocks": {
+        "image_9Qgf3d": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SWIM_SWIM_SWIm.jpg",
+            "link": "https://lolaandtheboys.com/collections/swimwear",
+            "title": "Swimwear",
+            "text": "",
+            "button_label": "shop now",
+            "button_link": "shopify://collections/valentines-day"
+          }
+        },
+        "image_wedKWc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DRESSES_55dc0858-a4d5-4d52-b403-7a069b8f91fc.jpg",
+            "link": "https://lolaandtheboys.com/collections/girls-dresses-1",
+            "title": "Dresses",
+            "text": "",
+            "button_label": "shop now",
+            "button_link": "shopify://collections/girls-dresses-1"
+          }
+        },
+        "image_FjkpWA": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/archive_1000_x_1500_px.jpg",
+            "link": "shopify://collections/archivesale",
+            "title": "Archive Sale",
+            "text": "",
+            "button_label": "shop now",
+            "button_link": "shopify://collections/archivesale"
+          }
+        },
+        "image_hUpHCc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/BEST_SELLERS_3c162c31-7339-4ed6-8b11-4f1b83aa0ab3.jpg",
+            "link": "shopify://collections/best-sellers",
+            "title": "BEST SELLERS",
+            "text": "",
+            "button_label": "shop now",
+            "button_link": "shopify://collections/best-sellers"
+          }
+        }
+      },
+      "block_order": [
+        "image_9Qgf3d",
+        "image_wedKWc",
+        "image_FjkpWA",
+        "image_hUpHCc"
+      ],
+      "settings": {
+        "featured_promos_per_row": 2,
+        "featured_promos_grid": "standard",
+        "featured_links_animation": "",
+        "feature_style": "square",
+        "promo_text_on_image_enabled": true
+      }
+    },
+    "shell_of_percentage_YbqUwK": {
+      "type": "shell-of-percentage",
+      "settings": {
+        "sale_link": "https://lolaandtheboys.com/collections/summer-sale",
+        "title": "Sale",
+        "description": "Youre favorite style are up to",
+        "title_sale": "65% OFF!",
+        "button_link": "https://lolaandtheboys.com/collections/summer-sale",
+        "button_text": "SHOP THE SALE",
+        "image": "shopify://shop_images/SALE_65_OFF.jpg",
+        "mobile_image": "shopify://shop_images/SALE_65_OFF_mob.jpg"
+      }
+    },
+    "best_sellers_section_bDD7BB": {
+      "type": "best-sellers-section",
+      "disabled": true,
+      "settings": {
+        "title": "The Spring Shop",
+        "collection": "spring-25",
+        "collection_style": "slider",
+        "collection_description": false,
+        "products_per": 5,
+        "products_limit": 20
+      }
+    },
+    "collection_new_Ah8hzk": {
+      "type": "collection-new",
+      "blocks": {
+        "image_MKtq7p": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/LATB_11062024_00895.jpg",
+            "link": "https://lolaandtheboys.com/collections/eras-tour",
+            "title1": "Eras Tour",
+            "text": "",
+            "button_label": "Shop Now",
+            "button_link": "https://lolaandtheboys.com/collections/eras-tour"
+          }
+        },
+        "image_xkDgQ7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/LATB_Holiday25_10292024_00041_1.jpg",
+            "link": "https://lolaandtheboys.com/collections/loungewear",
+            "title1": "Lounge Sets",
+            "text": "",
+            "button_label": "Shop now",
+            "button_link": "https://lolaandtheboys.com/collections/fall-outerwear"
+          }
+        },
+        "image_h4Vwnh": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CG4A4230_1.jpg",
+            "link": "shopify://collections/mommy-me-1",
+            "title1": "Mommy + Me",
+            "text": "",
+            "button_label": "Shop now",
+            "button_link": "shopify://collections/mommy-me-1"
+          }
+        }
+      },
+      "block_order": [
+        "image_MKtq7p",
+        "image_xkDgQ7",
+        "image_h4Vwnh"
+      ],
+      "custom_css": [
+        ".promotions-grid-full_width{padding-top:60px;}"
+      ],
+      "settings": {
+        "featured_promos_per_row": 3,
+        "featured_promos_grid": "full_width",
+        "featured_links_animation": "fadeInDown",
+        "feature_style": "square",
+        "promo_text_on_image_enabled": true
+      }
+    },
+    "text_columns_with_images_9x8WgE": {
+      "type": "text-columns-with-images",
+      "blocks": {
+        "text_block_33BgeT": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify://shop_images/099A2700_2_9b9b5d29-c21c-4860-8bb9-9af42ce62e36.jpg",
+            "title": "Meet Our Founder",
+            "code": "",
+            "heading_size": "regular_text",
+            "text": "<p>Irina Ovrustky, the founder of Lola and the Boys, creates fashion that celebrates the joy and whimsy of childhood. Each doodle, patch, stitch, and sequin is inspired by her own little ones, Lola, Shia, and Julian. Lola and the Boys is a love story to her children and a testament to the belief that kids' apparel can and should be as dynamic as their imaginations.</p>",
+            "align_text": "center",
+            "button_label": "",
+            "button_link": "",
+            "border_style": "none"
+          }
+        },
+        "text_block_QWRgTJ": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify://shop_images/unciron-cropped.png",
+            "title": "Visit Our Stores",
+            "code": "",
+            "heading_size": "regular_text",
+            "text": "<p>Live the charm of Lola and the Boys IRL! Visit a world where unicorns prance and rainbows embellish every corner without ever leaving Chicago. Each visit promises to be a memorable experience for kids and parents alike.</p>",
+            "align_text": "center",
+            "button_label": "",
+            "button_link": "",
+            "border_style": "none"
+          }
+        }
+      },
+      "block_order": [
+        "text_block_33BgeT",
+        "text_block_QWRgTJ"
+      ],
+      "settings": {
+        "title": "",
+        "cClass": "visit-founder-home"
       }
     },
     "image_with_text_overlay_RXmeiN": {
