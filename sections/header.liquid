@@ -182,7 +182,7 @@
     {% comment %}
     {% include 'iwish_v2' with 'iwishlink' %}
     {% endcomment %}
-      <a class="fa fa-heart-o" href="/apps/wishlist"> <div id="wishlist-count1"><span id="wishlist-count1-value"></span></div></a>
+      <div class="fa fa-heart-o wishlist-mobile-container wishlist-container" > <div id="wishlist-count1"><span id="wishlist-count1-value"></span></div></div>
     
         {% if section.settings.show_cart %}
       <div class="cart_container">
@@ -384,7 +384,7 @@
           
 
               
-              <li class="wish_link"> <a class="fa fa-heart-o" href="https://lolaandtheboys.com/apps/wishlist"> <div id="wishlist-count2"><span id="wishlist-count2-value"></span></div></a></li>
+              <li class="wish_link"> <div class="wishlist-container fa fa-heart-o" > <div id="wishlist-count2"><span id="wishlist-count2-value"></span></div></a></li>
               <li class="cart_link">
                 {% if section.settings.show_cart %}
         <div class="cart_container">
