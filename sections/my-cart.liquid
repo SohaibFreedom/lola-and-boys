@@ -11,7 +11,7 @@
   <div class="c-cart c-drawer">
     <div data-ajax-cart-section="">
       <div class="c-drawer__header">
-        <h3 class="c-drawer__title">My bag</h3>
+        <h3 class="c-drawer__title">My Shopping Cart</h3>
         <span class="c-offcanvas__close c-drawer__close" aria-label="Close Menu" aria-hidden="true">
           <svg
             width="16px"
@@ -33,6 +33,16 @@
       </div>
 
       <div id="" class="c-drawer__body" data-cart-view="data-cart-view" rules="all">
+        {% if section.settings.enable_free_shipping_bar and cart.item_count > 0 %}
+          {% render 'free-shipping-progress',
+            progress_msg_text: section.settings.progress_msg_text,
+            free_shipping_threshold: section.settings.free_shipping_threshold,
+            progress_msg_success_text: section.settings.progress_msg_success_text,
+            progress_bar_bg_color: section.settings.progress_bar_bg_color,
+            progress_bar_fill_color: section.settings.progress_bar_fill_color,
+          %}
+        {% endif %}
+
         <div class="cart__productList-main">
           {% if cartCount != 0 %}
             <div class="c-cart__productList">
@@ -367,8 +377,45 @@
 </script>
 {% schema %}
 {
-  "name": "Section name",
-  "settings": []
+  "name": "Cart Drawer",
+  "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_free_shipping_bar",
+        "label": "Enable Free Shipping Bar",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "progress_msg_text",
+        "label": "Progress Message Text",
+        "default": "ALMOST THERE! Add ${{amount}} to Unlock FREE SHIPPING"
+      },
+      {
+        "type": "number",
+        "id": "free_shipping_threshold",
+        "label": "Free Shipping Amount",
+        "default": 180
+      },
+      {
+        "type": "text",
+        "id": "progress_msg_success_text",
+        "label": "Free Shipping Success Message",
+        "default": "Congratulations! You qualify for free shipping!"
+      },
+      {
+        "type": "color",
+        "id": "progress_bar_bg_color",
+        "label": "Progress Bar Background Color",
+        "default": "#F3A4DD"
+      },
+      {
+        "type": "color",
+        "id": "progress_bar_fill_color",
+        "label": "Progress Bar Fill Color",
+        "default": "#F3A4DD"
+      },
+  ]
 }
 {% endschema %}
 
