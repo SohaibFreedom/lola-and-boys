@@ -4904,12 +4904,12 @@
       "my-cart": {
         "type": "my-cart",
         "settings": {
-          "enable_free_shipping_bar": false,
+          "enable_free_shipping_bar": true,
           "progress_msg_text": "ALMOST THERE! Add ${{amount}} to Unlock FREE SHIPPING",
           "free_shipping_threshold": 180,
           "progress_msg_success_text": "Congratulations! You qualify for free shipping!",
-          "progress_bar_bg_color": "#F3A4DD",
-          "progress_bar_fill_color": "#F3A4DD"
+          "progress_bar_bg_color": "#f3a4dd",
+          "progress_bar_fill_color": "#f3a4dd"
         }
       },
       "blog-template-2": {
@@ -5388,6 +5388,10 @@
           "button2_link": "",
           "button2_highlight": false
         }
+      },
+      "wishlist-drawer": {
+        "type": "wishlist-drawer",
+        "settings": {}
       }
     },
     "content_for_index": [
