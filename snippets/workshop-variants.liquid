@@ -1,0 +1,208 @@
+            {% assign field_label = "Name" %}
+{% assign placeholder_text = "Enter your name" %}
+{% assign required_field = true %}
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+    let form = document.querySelector("form[action*='/cart/add']"); 
+    if (form && !document.querySelector("#custom-name")) { 
+        let fieldGroup = document.createElement("div");
+        fieldGroup.classList.add("product-form__controls-group");
+
+        let label = document.createElement("label");
+        label.innerHTML = "Name <span class='required'>*</span>";
+        label.classList.add("product-form__label");
+        label.setAttribute("for", "custom-name");
+
+        let input = document.createElement("input");
+        input.setAttribute("type", "text");
+        input.setAttribute("id", "custom-name");
+        input.setAttribute("name", "properties[Name]");
+        input.setAttribute("placeholder", "Enter your name");
+        input.required = true;
+        input.classList.add("product-form__input");
+
+        fieldGroup.appendChild(label);
+        fieldGroup.appendChild(input);
+
+        let quantityBox = form.querySelector(".swatch_options");
+        if (quantityBox) {
+            quantityBox.parentNode.insertBefore(fieldGroup, quantityBox.nextSibling);
+        }
+    }
+
+    function createColorOptions(options) {
+        let colorGroup = document.createElement("div");
+        colorGroup.classList.add("product-form__controls-group", "color-options");
+        
+        let colorLabel = document.createElement("span");
+        colorLabel.innerHTML = "Select Color:";
+        colorLabel.classList.add("product-form__label-color");
+
+        
+        let selectedColorName = document.createElement("span");
+        selectedColorName.classList.add("selected-color-name");
+        selectedColorName.style.fontWeight = "bold";
+        selectedColorName.style.marginLeft = "10px";
+
+        let colorContainer = document.createElement("div");
+        colorContainer.classList.add("color-button-group");
+
+        let hiddenInput = document.createElement("input");
+        hiddenInput.setAttribute("type", "hidden");
+        hiddenInput.setAttribute("name", "properties[Color]");
+        colorGroup.appendChild(hiddenInput);
+
+        
+        let colorHexMap = {
+            "Pink": "#ffc0cb",
+            "White": "#ffffff",
+            "Lavender": "#e6e6fa",
+            "Light Denim": "#8d8cc4",
+            "Dark Denim": "#1d1c7b"
+        };
+
+        options.forEach((color, index) => {
+            let button = document.createElement("button");
+            button.type = "button";
+            button.classList.add("color-button");
+            button.setAttribute("data-value", color);
+            button.style.backgroundColor = colorHexMap[color] || color; 
+            
+            // Add a border for visibility
+            button.style.width = "30px";
+            button.style.height = "30px";
+            button.style.borderRadius = "50%";
+            button.style.border = "1px solid #e2e2e2";
+            button.style.margin = "5px";
+            button.style.cursor = "pointer";
+
+            if (index === 0) {
+                button.classList.add("selected");
+                hiddenInput.value = color;
+                button.style.border = "1px solid black"; 
+                selectedColorName.textContent = color; 
+            }
+
+            button.addEventListener("click", function () {
+                document.querySelectorAll(".color-button").forEach(btn => {
+                    btn.classList.remove("selected");
+                    btn.style.border = "1px solid #e2e2e2";
+                });
+                button.classList.add("selected");
+                button.style.border = "1px solid black"; 
+                hiddenInput.value = color;
+                selectedColorName.textContent = color; 
+            });
+
+            colorContainer.appendChild(button);
+        });
+
+        colorGroup.appendChild(colorLabel);
+        colorGroup.appendChild(selectedColorName); // Append color name next to heading
+        colorGroup.appendChild(colorContainer);
+
+        return colorGroup;
+    }
+
+    function updateColorOptions() {
+        let customProductSwatch = document.querySelector(".swatch[data-option-index='1']");
+        if (!customProductSwatch) return;
+
+        let selectedProduct = customProductSwatch.querySelector("input:checked");
+        let existingColorOptions = document.querySelector(".color-options");
+        if (existingColorOptions) existingColorOptions.remove();
+        
+        if (selectedProduct) {
+            let colorOptions;
+            if (selectedProduct.value === "Custom Hoodie") {
+                colorOptions = ["Pink", "White", "Lavender"];
+            } else if (selectedProduct.value === "Custom Denim Jacket") {
+                colorOptions = ["Light Denim", "Dark Denim"];
+            }
+            
+            if (colorOptions) {
+                let newColorGroup = createColorOptions(colorOptions);
+                customProductSwatch.appendChild(newColorGroup);
+            }
+        }
+    }
+
+    document.querySelectorAll(".swatch[data-option-index='1'] input").forEach(input => {
+        input.addEventListener("change", updateColorOptions);
+    });
+
+    updateColorOptions();
+});
+
+</script>
+
+
+
+
+<style>
+  button.color-button:hover {
+    border: #e2e2e2 1px solid;
+}
+    .product-form__controls-group.color-options {
+            display: grid;
+        grid-template-columns: 1fr 5fr;
+        gap: 6px;
+        width: 100%;
+        margin-bottom: 10px;
+      font-size:13px !important;
+      font-weight:700 !important;
+    }
+.color-button-group{
+grid-column: span 2;
+  
+}
+.selected-color-name{
+  margin:0 !important;
+}
+
+  
+    .product-form__label[for="custom-name"] {
+        font-weight: 600;
+        margin-bottom: 4px;
+        display: block;
+    }
+
+    .product-form__input#custom-name {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        outline: none;
+        transition: border 0.2s ease-in-out;
+    }
+
+    .product-form__input#custom-name:focus {
+        border-color: #000;
+    }
+
+    .product-form__controls-group .required {
+        color: red;
+    }
+
+.color-button.selected{
+  border-color:#000 !important;
+}
+
+
+.product-form__label-color{
+  text-align:left !important;
+  padding: 0 !important;
+}
+
+@media screen and (max-width: 769px) {
+    .product-form__controls-group.color-options {
+        grid-template-columns: 1fr 4fr !important;
+    }
+}
+
+  
+  
+</style>
