@@ -4903,7 +4903,14 @@
       },
       "my-cart": {
         "type": "my-cart",
-        "settings": {}
+        "settings": {
+          "enable_free_shipping_bar": false,
+          "progress_msg_text": "ALMOST THERE! Add ${{amount}} to Unlock FREE SHIPPING",
+          "free_shipping_threshold": 180,
+          "progress_msg_success_text": "Congratulations! You qualify for free shipping!",
+          "progress_bar_bg_color": "#F3A4DD",
+          "progress_bar_fill_color": "#F3A4DD"
+        }
       },
       "blog-template-2": {
         "type": "blog-template-2",
