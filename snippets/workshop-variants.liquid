@@ -1,9 +1,8 @@
-            {% assign field_label = "Name" %}
+         {% assign field_label = "Name" %}
 {% assign placeholder_text = "Enter your name" %}
 {% assign required_field = true %}
 
 <script>
-
 document.addEventListener("DOMContentLoaded", function () {
     let form = document.querySelector("form[action*='/cart/add']"); 
     if (form && !document.querySelector("#custom-name")) { 
@@ -141,6 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+
 <style>
   button.color-button:hover {
     border: #e2e2e2 1px solid;
@@ -196,6 +196,12 @@ grid-column: span 2;
   text-align:left !important;
   padding: 0 !important;
 }
+.checkout_btn_product .checkmark{
+
+  display:none !important;
+}
+
+  
 
 @media screen and (max-width: 769px) {
     .product-form__controls-group.color-options {
