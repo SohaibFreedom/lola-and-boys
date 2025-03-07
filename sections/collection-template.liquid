@@ -79,6 +79,7 @@
               <a href="/collections/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}" title="{{ collection.title | escape }}" itemprop="item" class="breadcrumb_link">
                 <span itemprop="name">{{ collection.title }}</span>
               </a>
+              <meta itemprop="position" content="2" />
             </span>
           {% endif %}
           {% if current_tags %}
