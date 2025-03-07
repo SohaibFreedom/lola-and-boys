@@ -16,8 +16,8 @@
           "type": "image",
           "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/President_day_sale_25decd1c-0946-4675-95fa-48ebedcc0978.jpg",
-            "image_mobile": "shopify://shop_images/756x890.png",
+            "image": "shopify://shop_images/Womens_day_sale_3.jpg",
+            "image_mobile": "shopify://shop_images/Womens_day_sale_HP_Mob_3.png",
             "mp4": "",
             "mobilevideo": "",
             "pretext": "",
@@ -666,7 +666,7 @@
         "image_h4Vwnh"
       ],
       "custom_css": [
-        ".promotions-grid-full_width{padding-top:60px;}"
+        ".promotions-grid-full_width {padding-top: 60px;}"
       ],
       "settings": {
         "featured_promos_per_row": 3,
