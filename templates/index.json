@@ -14,7 +14,6 @@
       "blocks": {
         "image_V87qeG": {
           "type": "image",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Womens_day_sale_3.jpg",
             "image_mobile": "shopify://shop_images/Womens_day_sale_HP_Mob_3.png",
