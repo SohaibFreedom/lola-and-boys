@@ -90,6 +90,7 @@
                   <a href="/collections/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag | handleize }}" title="{{ tag | escape }}" itemprop="item">
                     <span itemprop="name">{{ tag }}</span>
                   </a>
+                   <meta itemprop="position" content="2" />
                 </span>
               {% endunless %}
             {% endfor %}
