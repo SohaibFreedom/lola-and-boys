@@ -3,32 +3,61 @@
 {% assign required_field = true %}
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+
+  document.addEventListener("DOMContentLoaded", function () {
     let form = document.querySelector("form[action*='/cart/add']"); 
-    if (form && !document.querySelector("#custom-name")) { 
-        let fieldGroup = document.createElement("div");
-        fieldGroup.classList.add("product-form__controls-group");
+    if (!form) return;
+
+    let referenceElement = document.querySelector(".swatch[data-option-index='0']");
+    if (!referenceElement) return;
+
+    function createButtonSelection(labelText, options, name, defaultValue) {
+        let group = document.createElement("div");
+        group.classList.add("product-form__controls-group");
 
         let label = document.createElement("label");
-        label.innerHTML = "Name <span class='required'>*</span>";
+        label.textContent = labelText;
         label.classList.add("product-form__label");
-        label.setAttribute("for", "custom-name");
 
-        let input = document.createElement("input");
-        input.setAttribute("type", "text");
-        input.setAttribute("id", "custom-name");
-        input.setAttribute("name", "properties[Name]");
-        input.setAttribute("placeholder", "Enter your name");
-        input.required = true;
-        input.classList.add("product-form__input");
+        let buttonContainer = document.createElement("div");
+        buttonContainer.classList.add("button-group", name.replace(/\s+/g, "-").toLowerCase()); // Unique class for each group
 
-        fieldGroup.appendChild(label);
-        fieldGroup.appendChild(input);
+        let hiddenInput = document.createElement("input");
+        hiddenInput.setAttribute("type", "hidden");
+        hiddenInput.setAttribute("name", `properties[${name}]`);
+        hiddenInput.value = defaultValue;
 
-        let quantityBox = form.querySelector(".swatch_options");
-        if (quantityBox) {
-            quantityBox.parentNode.insertBefore(fieldGroup, quantityBox.nextSibling);
-        }
+        options.forEach((option) => {
+            let button = document.createElement("button");
+            button.type = "button";
+            button.textContent = option;
+            button.classList.add("option-button");
+
+            if (option === defaultValue) {
+                button.classList.add("selected");
+            }
+
+            button.addEventListener("click", function () {
+                // Only clear selection for buttons within the same group
+                buttonContainer.querySelectorAll(".option-button").forEach(btn => {
+                    btn.classList.remove("selected");
+                });
+
+                button.classList.add("selected");
+                hiddenInput.value = option;
+
+                if (name === "Product Type") {
+                    updateColorOptions(option);
+                }
+            });
+
+            buttonContainer.appendChild(button);
+        });
+
+        group.appendChild(label);
+        group.appendChild(buttonContainer);
+        group.appendChild(hiddenInput);
+        return group;
     }
 
     function createColorOptions(options) {
@@ -39,7 +68,6 @@ document.addEventListener("DOMContentLoaded", function () {
         colorLabel.innerHTML = "Select Color:";
         colorLabel.classList.add("product-form__label-color");
 
-        
         let selectedColorName = document.createElement("span");
         selectedColorName.classList.add("selected-color-name");
         selectedColorName.style.fontWeight = "bold";
@@ -53,7 +81,6 @@ document.addEventListener("DOMContentLoaded", function () {
         hiddenInput.setAttribute("name", "properties[Color]");
         colorGroup.appendChild(hiddenInput);
 
-        
         let colorHexMap = {
             "Pink": "#ffc0cb",
             "White": "#ffffff",
@@ -68,8 +95,6 @@ document.addEventListener("DOMContentLoaded", function () {
             button.classList.add("color-button");
             button.setAttribute("data-value", color);
             button.style.backgroundColor = colorHexMap[color] || color; 
-            
-            // Add a border for visibility
             button.style.width = "30px";
             button.style.height = "30px";
             button.style.borderRadius = "50%";
@@ -99,41 +124,41 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         colorGroup.appendChild(colorLabel);
-        colorGroup.appendChild(selectedColorName); // Append color name next to heading
+        colorGroup.appendChild(selectedColorName);
         colorGroup.appendChild(colorContainer);
 
         return colorGroup;
     }
 
-    function updateColorOptions() {
-        let customProductSwatch = document.querySelector(".swatch[data-option-index='1']");
-        if (!customProductSwatch) return;
-
-        let selectedProduct = customProductSwatch.querySelector("input:checked");
-        let existingColorOptions = document.querySelector(".color-options");
-        if (existingColorOptions) existingColorOptions.remove();
-        
-        if (selectedProduct) {
-            let colorOptions;
-            if (selectedProduct.value === "Custom Hoodie") {
-                colorOptions = ["Pink", "White", "Lavender"];
-            } else if (selectedProduct.value === "Custom Denim Jacket") {
-                colorOptions = ["Light Denim", "Dark Denim"];
-            }
-            
-            if (colorOptions) {
-                let newColorGroup = createColorOptions(colorOptions);
-                customProductSwatch.appendChild(newColorGroup);
-            }
-        }
+    function insertAfter(newElement, referenceElement) {
+        referenceElement.parentNode.insertBefore(newElement, referenceElement.nextSibling);
     }
 
-    document.querySelectorAll(".swatch[data-option-index='1'] input").forEach(input => {
-        input.addEventListener("change", updateColorOptions);
-    });
+    let productTypeField = createButtonSelection("Select Product Type:", ["Custom Hoodie", "Custom Denim Jacket"], "Product Type", "Custom Hoodie");
+    let sizeField = createButtonSelection("Select Size:", ["2", "4", "6", "8", "10", "12", "14"], "Size", "2");
+    let colorField = createColorOptions(["Pink", "White", "Lavender"]);
 
-    updateColorOptions();
+    insertAfter(productTypeField, referenceElement);
+    insertAfter(colorField, productTypeField);
+    insertAfter(sizeField, colorField);
+
+    let nameField = document.createElement("div");
+    nameField.classList.add("product-form__controls-group");
+    nameField.innerHTML = `
+        <label for="custom-name" class="product-form__label">Name <span class='required'>*</span></label>
+        <input type="text" id="custom-name" name="properties[Name]" placeholder="Enter your name" required class="product-form__input">
+    `;
+    insertAfter(nameField, sizeField);
+
+    function updateColorOptions(selectedProduct) {
+        let newColors = selectedProduct === "Custom Hoodie" ? ["Pink", "White", "Lavender"] : ["Light Denim", "Dark Denim"];
+        let newColorField = createColorOptions(newColors);
+        colorField.replaceWith(newColorField);
+        colorField = newColorField;
+        insertAfter(colorField, productTypeField);
+    }
 });
+
 
 </script>
 
@@ -142,6 +167,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 <style>
+
+  .option-button {
+    background-color: #fff;
+    color: #000;
+    border: #e2e2e2 1px solid;
+    border-radius:3px;
+    margin: 0 8px 8px 0;
+}
+.option-button:hover {
+    background-color: #fff;
+    color: #000;
+   border: #e2e2e2 1px solid;
+}
+
+  
+  .option-button.selected {
+    background-color: #000;
+    color: #fff;
+}
+  
+  
   button.color-button:hover {
     border: #e2e2e2 1px solid;
 }
