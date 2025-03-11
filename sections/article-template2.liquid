@@ -32,13 +32,13 @@
                 <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"
                   ><a href="{{ shop.url }}" title="{{ shop.name | escape }}" itemprop="item"
                     ><span itemprop="name">{{ 'general.breadcrumbs.home' | t }}</span></a
-                  ></span
+                  > <meta itemprop="position" content="1" /></span
                 >
                 &nbsp;<span class="icon-slash">/</span>
                 <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"
                   ><a href="{{ blog.url }}" title="{{ blog.title | escape }}" itemprop="item"
                     ><span itemprop="name">{{ blog.title }}</span></a
-                  ></span
+                  > <meta itemprop="position" content="2" /></span
                 >
               </div>
             {% endif %}
