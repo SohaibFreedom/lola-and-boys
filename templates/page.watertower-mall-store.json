@@ -1,29 +1,26 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "shogun-helper": {
       "type": "shogun-helper",
-      "settings": {
-      }
+      "settings": {}
     },
     "main": {
       "type": "page",
       "disabled": true,
-      "settings": {
-      }
+      "settings": {}
     },
     "shogun-optimizer": {
       "type": "shogun-optimizer",
-      "settings": {
-      }
+      "settings": {}
     },
     "featured_text_wfkTX3": {
       "type": "featured-text",
@@ -42,13 +39,13 @@
         "image_iyCnKY": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/UNICORN_WORLD.jpg",
+            "image": "shopify://shop_images/UNICORN_WORLD.jpg",
             "colorbg": "",
             "Class": "locationstore-text",
             "title": "Unicorn World at Water Tower",
-            "text": "<p><strong>Watertower Mall - 2nd Floor 835 Michigan Ave Chicago, IL 60611<\/strong><\/p><p><strong>Email:<\/strong> <a href=\"mailto:Uwchicago@Lolaandtheboys.com\" title=\"mailto:Uwchicago@Lolaandtheboys.com\">Uwchicago@Lolaandtheboys.com<\/a><\/p><p>Monday - Thursday: 11:00 AM - 7:00 PM<br\/>Friday - Saturday: 1:00 AM - 8:00 PM<br\/>Sunday: 12:00 PM - 6:00 PM<\/p><p><\/p>",
+            "text": "<p><strong>Watertower Mall - 2nd Floor 835 Michigan Ave Chicago, IL 60611</strong></p><p><strong>Email:</strong> <a href=\"mailto:Uwchicago@Lolaandtheboys.com\" title=\"mailto:Uwchicago@Lolaandtheboys.com\">Uwchicago@Lolaandtheboys.com</a></p><p><strong>Phone:</strong> <a href=\"tel:(312) 945-2693\" title=\"tel:(312) 945-2693\">(312) 945-2693</a></p><p>Monday - Thursday: 11:00 AM - 7:00 PM<br/>Friday - Saturday: 1:00 AM - 8:00 PM<br/>Sunday: 12:00 PM - 6:00 PM</p><p></p>",
             "button_label": "Get Directions",
-            "link": "https:\/\/www.google.com\/maps\/dir\/\/Unicorn+World+by+Lola+%2B+The+Boys,+Water+Tower+Second+Floor,+Michigan+Avenue,+Chicago,+IL\/@41.898177,-87.6644504,13z\/data=!3m2!4b1!5s0x880fd354648d5def:0x3333a570d956e015!4m8!4m7!1m0!1m5!1m1!1s0x880fd34c5310f71b:0x4b45993002f39eb8!2m2!1d-87.623251!2d41.8981844?entry=ttu"
+            "link": "https://www.google.com/maps/dir//Unicorn+World+by+Lola+%2B+The+Boys,+Water+Tower+Second+Floor,+Michigan+Avenue,+Chicago,+IL/@41.898177,-87.6644504,13z/data=!3m2!4b1!5s0x880fd354648d5def:0x3333a570d956e015!4m8!4m7!1m0!1m5!1m1!1s0x880fd34c5310f71b:0x4b45993002f39eb8!2m2!1d-87.623251!2d41.8981844?entry=ttu"
           }
         }
       },
@@ -70,7 +67,7 @@
           "type": "button",
           "settings": {
             "button_label": "BACK TO STORES",
-            "button_link": "https:\/\/lolaandtheboys.com\/pages\/locations",
+            "button_link": "https://lolaandtheboys.com/pages/locations",
             "button_style_secondary": false,
             "button_label_2": "",
             "button_link_2": "",
