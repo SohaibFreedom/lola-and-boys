@@ -9,6 +9,17 @@
 .page-customize-landing span {
   font-family: "Sofia Pro", sans-serif !important;
 }
+.shopify-section.collection-template-section > .container > .collection_items > #load-more {
+  display: none;
+}
+  @media only screen and (max-width: 767px) {
+  .shopify-section.collection-template-section > .container > .collection_items > .twelve > .section > .paginate {
+    display: none;
+  }
+    .shopify-section.collection-template-section > .container > .collection_items > #load-more {
+  display: block !important;
+}
+}
 @font-face {
   font-family: "Alias-Didot-Light";
   src: url("https://cdn.shopify.com/s/files/1/0002/0647/1226/files/Alias_Didot_W00_Light.woff2?v=1739466885")
