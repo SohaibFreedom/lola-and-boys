@@ -1,29 +1,26 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "shogun-helper": {
       "type": "shogun-helper",
-      "settings": {
-      }
+      "settings": {}
     },
     "main": {
       "type": "page",
       "disabled": true,
-      "settings": {
-      }
+      "settings": {}
     },
     "shogun-optimizer": {
       "type": "shogun-optimizer",
-      "settings": {
-      }
+      "settings": {}
     },
     "featured_text_wfkTX3": {
       "type": "featured-text",
@@ -42,13 +39,13 @@
         "image_iyCnKY": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/lola-04_800x_96660dfc-8311-4dce-bc1c-e3b2313d4f3f.webp",
+            "image": "shopify://shop_images/lola-04_800x_96660dfc-8311-4dce-bc1c-e3b2313d4f3f.webp",
             "colorbg": "",
             "Class": "locationstore-text",
             "title": "The Showroom",
-            "text": "<p><strong>919 N Larrabee St. Chicago IL 60610<\/strong><\/p><p><strong>Email:  <\/strong><a href=\"mailto:Uwlarrabee@Lolaandtheboys.com\" title=\"mailto:Uwlarrabee@Lolaandtheboys.com\">Uwlarrabee@Lolaandtheboys.com<\/a><\/p><p>Monday - Saturday: 10:00 AM - 6:00 PM<br\/>Sunday: Closed<\/p><p><\/p><p><\/p>",
+            "text": "<p><strong>919 N Larrabee St. Chicago IL 60610</strong></p><p><strong>Email:  </strong><a href=\"mailto:Uwlarrabee@Lolaandtheboys.com\" title=\"mailto:Uwlarrabee@Lolaandtheboys.com\">Uwlarrabee@Lolaandtheboys.com</a></p><p><strong>Phone:</strong> <a href=\"tel:(312) 546-9759\" title=\"tel:(312) 546-9759\">(312) 546-9759</a></p><p>Monday - Saturday: 10:00 AM - 5:00 PM<br/>Sunday: Closed</p><p></p><p></p>",
             "button_label": "Get Directions",
-            "link": "https:\/\/www.google.com\/maps\/dir\/\/Lola+And+The+Boys,+North+Larrabee+Street,+Chicago,+IL\/@41.8992678,-87.7251367,12z\/data=!4m8!4m7!1m0!1m5!1m1!1s0x880fd3298f90c8db:0x20c1955049d52db2!2m2!1d-87.6427359!2d41.8992973?entry=ttu"
+            "link": "https://www.google.com/maps/dir//Lola+And+The+Boys,+North+Larrabee+Street,+Chicago,+IL/@41.8992678,-87.7251367,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x880fd3298f90c8db:0x20c1955049d52db2!2m2!1d-87.6427359!2d41.8992973?entry=ttu"
           }
         }
       },
@@ -70,7 +67,7 @@
           "type": "button",
           "settings": {
             "button_label": "BACK TO STORES",
-            "button_link": "https:\/\/lolaandtheboys.com\/pages\/locations",
+            "button_link": "https://lolaandtheboys.com/pages/locations",
             "button_style_secondary": false,
             "button_label_2": "",
             "button_link_2": "",
