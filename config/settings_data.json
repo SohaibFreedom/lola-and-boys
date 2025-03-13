@@ -3280,7 +3280,7 @@
     "mega_menu_5": false,
     "search_option": "products",
     "mobile_products_per_row": "2",
-    "pagination_type": "load_more",
+    "pagination_type": "basic_pagination",
     "align_height": true,
     "collection_height": 360,
     "thumbnail_hover_enabled": false,
