@@ -720,52 +720,41 @@ const container = $('.complete-overly-wrapper');
  const spanDiv = document.querySelector('.span-content');
  const product = {{ product | json }};
 addCartItemButton.addEventListener('click', async function (event) {
-     if (Array.isArray(product.tags) && product.tags.includes('test-product-customize')) {
-alert('customize-product new');
-          loader.style.display = 'block';
-       spanDiv.style.display = 'none';
-       addCartItemButton.style.pointerEvents = 'none';
-       addCartItemButton.style.opacity = '0.5';
-       addCartItemButton.style.backgroundColor = '#dfdfdf';
+    const patchDivs = document.querySelectorAll('.patch');
 
-       // Force reflow for immediate style application
-       loader.offsetHeight;
+    patchDivs.forEach(function (div) {
+        div.classList.remove('patch');
+        div.classList.add('patch-not-allowed');
+        div.setAttribute('draggable', 'false');
+    });
 
-       // Perform the necessary actions
-       $('.overlapping-correction-error').css('visibility', 'hidden');
-        }
-   const patchDivs = document.querySelectorAll('.patch');
+    if ($('.overlapping-error').css('visibility') === 'visible') {
+        $('.overlapping-correction-error').css('display', 'block');
+    } else {
+        console.log('added');
 
-   patchDivs.forEach(function (div) {
-       div.classList.remove('patch'); // Remove the `.patch` class
-       div.classList.add('patch-not-allowed'); // Add the `.patch-not-allowed` class
-       div.setAttribute('draggable', 'false');
-   });
+        // Immediate style updates
+        loader.style.display = 'block';
+        spanDiv.style.display = 'none';
+        addCartItemButton.style.pointerEvents = 'none';
+        addCartItemButton.style.opacity = '0.5';
+        addCartItemButton.style.backgroundColor = '#dfdfdf';
 
-   if ($('.overlapping-error').css('visibility') === 'visible') {
-       $('.overlapping-correction-error').css('display', 'block');
-   } else {
-       console.log('added');
+        // Force a reflow to apply styles
+        loader.offsetHeight;
 
-       // Immediate style updates
-       loader.style.display = 'block';
-       spanDiv.style.display = 'none';
-       addCartItemButton.style.pointerEvents = 'none';
-       addCartItemButton.style.opacity = '0.5';
-       addCartItemButton.style.backgroundColor = '#dfdfdf';
+        // Perform UI updates in the next animation frame
+        requestAnimationFrame(() => {
+            $('.overlapping-correction-error').css('visibility', 'hidden');
 
-       // Force reflow for immediate style application
-       loader.offsetHeight;
-
-       // Perform the necessary actions
-       $('.overlapping-correction-error').css('visibility', 'hidden');
-
-       // Slightly delay the function to prioritize style updates
-       setTimeout(() => {
-           captureAndCombineScreenshots();
-       }, 1);
-   }
+            // Delay screenshot capture slightly to ensure UI updates are processed
+            setTimeout(() => {
+                captureAndCombineScreenshots();
+            }, 10);
+        });
+    }
 });
+
 
 
 //  function loadCartSection(response) {
