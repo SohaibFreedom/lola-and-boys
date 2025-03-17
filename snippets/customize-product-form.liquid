@@ -718,7 +718,11 @@ const container = $('.complete-overly-wrapper');
  const addCartItemButton = document.querySelector('.add-item');
  const loader = document.querySelector('.loader-cart');
  const spanDiv = document.querySelector('.span-content');
+ const product = {{ product | json }};
 addCartItemButton.addEventListener('click', async function (event) {
+     if (Array.isArray(product.tags) && product.tags.includes('test-product-customize')) {
+alert('customize-product');
+        }
    const patchDivs = document.querySelectorAll('.patch');
 
    patchDivs.forEach(function (div) {
