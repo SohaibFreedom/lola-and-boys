@@ -721,7 +721,18 @@ const container = $('.complete-overly-wrapper');
  const product = {{ product | json }};
 addCartItemButton.addEventListener('click', async function (event) {
      if (Array.isArray(product.tags) && product.tags.includes('test-product-customize')) {
-alert('customize-product');
+alert('customize-product new');
+          loader.style.display = 'block';
+       spanDiv.style.display = 'none';
+       addCartItemButton.style.pointerEvents = 'none';
+       addCartItemButton.style.opacity = '0.5';
+       addCartItemButton.style.backgroundColor = '#dfdfdf';
+
+       // Force reflow for immediate style application
+       loader.offsetHeight;
+
+       // Perform the necessary actions
+       $('.overlapping-correction-error').css('visibility', 'hidden');
         }
    const patchDivs = document.querySelectorAll('.patch');
 
