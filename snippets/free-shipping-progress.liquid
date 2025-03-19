@@ -5,11 +5,7 @@
 
 <div class="free-shipping-progress">
   {% assign threshold = free_shipping_threshold | default: 180 %}
-  {% assign progress_percentage = totalPrice
-    | times: 100
-    | divided_by: free_shipping_threshold
-    | divided_by: 100
-  %}
+  {% assign progress_percentage = totalPrice | times: 100 | divided_by: free_shipping_threshold | divided_by: 100 %}
 
   {% assign remaining_percentage = 100 | minus: progress_percentage %}
   {% assign remaining_amount = remaining_percentage | times: free_shipping_threshold | divided_by: 100 %}
@@ -32,46 +28,45 @@
 </div>
 
 <style>
-  .free-shipping-progress {
-    margin: 10px 0 2rem 0 !important;
-    padding: 0 25px !important;
-    display: flex;
-    flex-direction: column-reverse;
-    gap: 7px;
-  }
+    .free-shipping-progress {
+      margin: 10px 0 2rem 0 !important;
+      padding: 0 25px !important;
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 7px;
+    }
 
-  .progress-bg-bar {
-    background: {{ progress_bar_bg_color }};
-    border-radius: 33px;
-  }
+    .progress-bg-bar {
+      background: {{ progress_bar_bg_color }};
+      border-radius: 33px;
+    }
 
-  .progress-bar {
-    display: block !important;
-    height: 12px;
-    background-color: {{ progress_bar_fill_color }};
-    border-radius: 33px;
-  }
+    .progress-bar {
+      display: block !important;
+      height: 12px;
+      background-color: {{ progress_bar_fill_color }};
+      border-radius: 33px;
+    }
 
-  .progress-msg {
-    text-align: center;
-    color: {{ settings.progress_msg_color }};
-  }
+    .progress-msg {
+      text-align: center;
+      color: {{ settings.progress_msg_color }};
+    }
 
-  .progress-msg p {
-    margin-bottom: 5px !important;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 14px;
-  }
+    .progress-msg p {
+      margin-bottom: 5px !important;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
 
-  .free-shipping-msg {
-    font-size: 15px;
-  }
-@media only screen and (max-width: 768px) {
-  .progress-msg p {
+    .free-shipping-msg {
+      font-size: 15px;
+    }
+  @media only screen and (max-width: 768px) {
+    .progress-msg p {
 
-    font-size: 9px;
-}
-}
-  
+      font-size: 9px;
+  }
+  }
 </style>
