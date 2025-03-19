@@ -1583,22 +1583,33 @@ else {
 }
  function filteralphabets() {
    console.log('fileterrrrrr');
-    // Get the input value from the search bar
-    const inputValue = document.querySelector('.customization-search-bar').value;
-    console.log(inputValue);
 
-     $('.patches-toggle').hide();
-    $('.alphabets-toggle').show();
-    // Determine which data to filter based on the active toggle button
- const dataToFilter = alphabets;
-console.log('dataToFilter',dataToFilter);
+// Get the input value from the search bar
+const inputValue = document.querySelector('.customization-search-bar').value;
+console.log(inputValue);
 
-// Filter the data based on the search value
+$('.patches-toggle').hide();
+$('.alphabets-toggle').show();
+
+// Determine which data to filter based on the active toggle button
+const dataToFilter = alphabets;
+console.log('dataToFilter', dataToFilter);
+
+// Check if productTags includes "Bella-Hologram-Swimsuit"
+const isBellaSwimsuit = productTags.includes("Bella-Hologram-Swimsuit");
+
+// Filter the data based on the search value and the new condition
 const filteredData = dataToFilter.filter(item => {
-    return item.alphabetname && item.alphabetname.toLowerCase().includes(inputValue.toLowerCase());
+    const matchesSearch = item.alphabetname && item.alphabetname.toLowerCase().includes(inputValue.toLowerCase());
+    
+    // If "Bella-Hologram-Swimsuit" is in productTags, exclude items starting with "pearl"
+    const excludePearl = isBellaSwimsuit && item.alphabetname.toLowerCase().startsWith("pearl");
+
+    // Return item only if it matches the search value and does not start with "pearl" (if applicable)
+    return matchesSearch && !(excludePearl);
 });
 
-console.log('filterdata',filteredData);
+console.log('filterdata', filteredData);
 
 if (filteredData.length > 0) {
   console.log('true');
