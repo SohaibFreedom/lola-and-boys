@@ -9,16 +9,27 @@
 .page-customize-landing span {
   font-family: "Sofia Pro", sans-serif !important;
 }
-.shopify-section.collection-template-section > .container > .collection_items > #load-more {
+.shopify-section.collection-template-section
+  > .container
+  > .collection_items
+  > #load-more {
   display: none;
 }
-  @media only screen and (max-width: 767px) {
-  .shopify-section.collection-template-section > .container > .collection_items > .twelve > .section > .paginate {
+@media only screen and (max-width: 767px) {
+  .shopify-section.collection-template-section
+    > .container
+    > .collection_items
+    > .twelve
+    > .section
+    > .paginate {
     display: none;
   }
-    .shopify-section.collection-template-section > .container > .collection_items > #load-more {
-  display: block !important;
-}
+  .shopify-section.collection-template-section
+    > .container
+    > .collection_items
+    > #load-more {
+    display: block !important;
+  }
 }
 @font-face {
   font-family: "Alias-Didot-Light";
@@ -597,7 +608,8 @@ div#birthday-wrapper .label {
   padding: 0 20px;
 }
 .c-drawer .cart__productList-main {
-  height: calc(120vh - 265px) !important;
+  height: 100vh !important;
+  padding-bottom: 440px !important;
 }
 .salepify-free-gift-box,
 .salepify-free-gift-modal-wrapper {
@@ -1136,8 +1148,17 @@ cart-remove-button .button.button--tertiary {
 .addtocart-form,
 .c-drawer__body,
 .cart__productList-main {
-  height: calc(120vh - 220px) !important;
+  height: auto !important;
 }
+.drawer__subTotal-all {
+  position: fixed;
+  bottom: 0;
+  background: #ffff;
+  z-index: 9999999;
+  width: 100% !important;
+  height: auto;
+}
+
 .main_nav,
 .dropdown {
   background: #fff !important;
@@ -2264,6 +2285,9 @@ html
   .instagrid-css-link-c .fs-mobile div.fs-entry-container {
     width: calc(100vw - 80px) !important;
   }
+  .c-drawer .cart__productList-main {
+    padding-bottom: 550px !important;
+  }
 
   .collection-template-section div#gf-products {
     grid-template-columns: 1fr 1fr;
@@ -2431,11 +2455,7 @@ html
   div#gf-products .twelve.columns {
     width: 100% !important;
   }
-  .addtocart-form,
-  .c-drawer__body,
-  .cart__productList-main {
-    height: calc(120vh - 290px) !important;
-  }
+
   .product-template .nine.columns,
   .product-template .seven.columns {
     width: 100% !important;
