@@ -1156,7 +1156,7 @@ cart-remove-button .button.button--tertiary {
   background: #ffffff !important;
   z-index: 999999999999 !important;
   width: 100% !important;
-  height: auto;
+  height: 300px;
 }
 
 .main_nav,
