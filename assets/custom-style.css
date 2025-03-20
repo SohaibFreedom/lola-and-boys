@@ -1163,15 +1163,7 @@ cart-remove-button .button.button--tertiary {
   height: auto;
   visibility: visible !important;
 }
-.c-cart__itemPrice {
-  font-size: 11px;
-}
-.c-cart__itemImageBox {
-  width: 30% !important;
-}
-.c-cart__itemInfoBox {
-  width: 70% !important;
-}
+
 .main_nav,
 .dropdown {
   background: #fff !important;
@@ -1592,6 +1584,15 @@ html
   }
 }
 @media only screen and (max-width: 768px) {
+  .c-cart__itemPrice {
+    font-size: 11px;
+  }
+  .c-cart__itemImageBox {
+    width: 30% !important;
+  }
+  .c-cart__itemInfoBox {
+    width: 70% !important;
+  }
   .featured-promotions-new-section .slick-slide:first-child {
     padding: 0 !important;
   }
