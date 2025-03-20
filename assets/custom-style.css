@@ -1153,6 +1153,8 @@ cart-remove-button .button.button--tertiary {
 .drawer__subTotal-all {
   position: fixed;
   bottom: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   background: #ffff;
   z-index: 999999999999;
   width: 100% !important;
