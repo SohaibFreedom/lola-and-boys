@@ -1163,6 +1163,9 @@ cart-remove-button .button.button--tertiary {
   height: auto;
   visibility: visible !important;
 }
+.c-cart__itemPrice {
+  font-size: 11px;
+}
 .c-cart__itemImageBox {
   width: 30% !important;
 }
