@@ -2474,14 +2474,14 @@ html
     .cart-section-left
     .cart_content_row
     .cart_content_img {
-    width: 45%;
+    width: 40%;
   }
   #cart_form
     .cart-section-row
     .cart-section-left
     .cart_content_row
     .cart_content_info {
-    width: 55% !important;
+    width: 60% !important;
   }
   .cart_content_img img {
     height: 135px;
