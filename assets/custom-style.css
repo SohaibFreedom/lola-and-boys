@@ -1585,7 +1585,12 @@ html
 }
 @media only screen and (max-width: 768px) {
   .c-cart__itemPrice {
-    font-size: 11px !important;
+    font-size: 12px !important;
+  }
+  .c-cart__itemQuantityBox {
+    width: 100% !important;
+    max-width: 100px !important;
+    margin: 0 !important;
   }
   .c-cart__itemImageBox {
     width: 30% !important;
