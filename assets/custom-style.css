@@ -2474,10 +2474,17 @@ html
     .cart-section-left
     .cart_content_row
     .cart_content_img {
-    width: 25%;
+    width: 40%;
+  }
+  #cart_form
+    .cart-section-row
+    .cart-section-left
+    .cart_content_row
+    .cart_content_info {
+    width: 60% !important;
   }
   .cart_content_img img {
-    height: 145px;
+    height: 130px;
   }
   .cart-section-row .cart_content_info p {
     margin: 5px 0 !important;
