@@ -1151,6 +1151,7 @@ cart-remove-button .button.button--tertiary {
   height: auto !important;
 }
 .cart-drawer-overlay {
+  position: relative;
   overflow: visible !important;
 }
 .drawer__subTotal-all {
