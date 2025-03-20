@@ -1157,6 +1157,7 @@ cart-remove-button .button.button--tertiary {
   z-index: 999999999999 !important;
   width: 100% !important;
   height: auto;
+  visibility: visible !important;
 }
 
 .main_nav,
