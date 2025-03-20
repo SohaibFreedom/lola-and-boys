@@ -380,6 +380,23 @@
        
 });
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    var shopifySection = document.querySelector(".shopify-section .shop-with-us-wrap");
+    var relatedContainer = document.querySelector(".container .related-products__title")?.parentNode; 
+    var relatedProducts = document.querySelector(".related-products");
+
+    if (shopifySection && relatedContainer && relatedProducts) {
+        // Move the Shopify section before the related container
+        relatedContainer.parentNode.insertBefore(shopifySection, relatedContainer);
+
+        // Move the related container before the related products
+        relatedProducts.parentNode.insertBefore(relatedContainer, relatedProducts);
+    }
+});
+
+</script>
 <style>
   .selectt {
   display: none !important;
