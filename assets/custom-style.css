@@ -1154,7 +1154,7 @@ cart-remove-button .button.button--tertiary {
   position: fixed;
   bottom: 0;
   background: #ffff;
-  z-index: 9999999;
+  z-index: 999999999999;
   width: 100% !important;
   height: auto;
 }
