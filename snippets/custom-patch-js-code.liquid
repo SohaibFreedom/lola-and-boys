@@ -711,33 +711,8 @@ $(document).ready(function() {
 
     // Add click event listener to the neverMindBtn button
     neverMindBtn.click(function() {
-        isCustomizationActive = false;
-        console.log('never mind button clicked');
-
-        // Show the bannerLow if it exists
-        var bannerLow = document.querySelector('.yotpo-banner-low');
-        if (bannerLow) {
-            bannerLow.style.display = '';
-        }
-
-        // Show all elements that were hidden for customization
-        $('.hide-for-customization').show();
-
-        $('.footer').show();
-        $('.annoucment-bar-top').show();
-        $('#header').show();
-        $('#some-id').show();
-        // $('.yotpo-banner-low').show();
-
-        // Hide the product customization div
-        $('.product-customization').hide();
-
-        // Show the original elements
-        $('.announce-bar-slide-wrapper, .header-background--solid, .content').show();
-        $('.customize-cart-button').show();
-
-        // Remove the class from cartButton
-        cartButton.removeClass('customize-cart-button-visible');
+        $('.all-sidebar-cross-alert').removeClass('all-sidebar-cross-alert-visble');
+       $('.patches-customization-container-overly').css('display', 'none');
     });
 
     // Clear neverMindBtn click event listener
