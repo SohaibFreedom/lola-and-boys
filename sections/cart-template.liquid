@@ -278,7 +278,7 @@
                       <wk-button class="wk-floating" style="position: absolute; top: 0px; left: 0px; transition: none; transform: translate3d(216px, 0px, 0px);"><!---->
      <button type="button" aria-label="Add to Wishlist" class="wk-button wk-align-center wk-align-content-center">
      
-     Favorites
+      Move to favorites
    
       </button>
     </wk-button>
@@ -876,8 +876,8 @@ function modifyWishlistButton(button) {
         if (svg) {
             svg.remove();
         }
-        // Add text "Move to Favourites"
-        button.textContent = 'Move to Favourites';
+        // Add text "Move to Favorites"
+        button.textContent = 'Move to Favorites';
     }
 }
 
@@ -981,7 +981,7 @@ $(document).ready(function () {
         if (parentRow) {
             const button = parentRow.find('button.wk-button.wk-align-center.wk-align-content-center');
             if (!button.hasClass('active-class')) {
-                button.addClass('active-class').text('Remove from Favourites');
+                button.addClass('active-class').text('Remove from Favorites');
             }
         }
 
@@ -990,7 +990,7 @@ $(document).ready(function () {
         // Add click event for buttons with the active class
         $('.wk-button.wk-align-center.wk-align-content-center.wk-selected.active-class').click(function (e) {
             e.preventDefault(); // Prevent default action, if any
-          $(this).text('Favorites');
+          $(this).text('Move to Favorites');
             console.log('Button with active class clicked. Page will reload in 3 seconds.');
 
             // Set a timeout to reload the page after 3 seconds
