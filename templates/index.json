@@ -15,8 +15,8 @@
         "image_V87qeG": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Easter_Shop_HP_1.jpg",
-            "image_mobile": "shopify://shop_images/Easter_Sale_HP_Mob.jpg",
+            "image": "shopify://shop_images/Easter_Sale_HP.png",
+            "image_mobile": "shopify://shop_images/Easter_Sale_HP_Mob.png",
             "mp4": "",
             "mobilevideo": "",
             "pretext": "",
