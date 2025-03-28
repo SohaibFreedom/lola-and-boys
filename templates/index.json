@@ -59,6 +59,7 @@
         },
         "image_zPL6aM": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Lola_Spring_Banner_HP.jpg",
             "image_mobile": "shopify://shop_images/756x890-2.png",
