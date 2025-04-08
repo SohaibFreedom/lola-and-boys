@@ -36,7 +36,6 @@
         },
         "image_V87qeG": {
           "type": "image",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Easter_Sale_HP.png",
             "image_mobile": "shopify://shop_images/Easter_Sale_HP_Mob.png",
