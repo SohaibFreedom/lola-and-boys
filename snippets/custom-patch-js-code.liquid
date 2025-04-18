@@ -2263,7 +2263,12 @@ function showPatches() {
                     console.log('condition true');
                     imgHeight += 20;
                     imgWidth += 20;
-                } else {
+                }
+                  else if (productTags.includes("Customizable-Patch-Soft-Hoodie")) {
+                   imgHeight -= 15;
+                   imgWidth -= 15;
+                 }
+                else {
                     console.log('condition false');
                     imgHeight -= 10;
                     imgWidth -= 10;
