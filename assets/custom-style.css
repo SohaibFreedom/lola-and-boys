@@ -9,6 +9,12 @@
 .page-customize-landing span {
   font-family: "Sofia Pro", sans-serif !important;
 }
+.wishlist-container svg {
+  fill: transparent !important;
+  stroke: #000 !important;
+  stroke-width: 4px;
+}
+
 .shopify-section.collection-template-section
   > .container
   > .collection_items
@@ -3185,3 +3191,39 @@ html
 }
 
 /* Customize Landing Page CSS End */
+
+.header-search-main .wishlist-container {
+  display: flex;
+  align-items: center;
+}
+
+.header-search-main .wishlist-container svg {
+  height: 17px;
+  width: 17px;
+  display: inline-block;
+  vertical-align: middle;
+  overflow: visible;
+}
+
+.header-search-main #wishlist-count2-value {
+  margin-left: 8px !important;
+  position: relative;
+  top: 1px;
+}
+
+@media only screen and (max-width: 768px) {
+  .wishlist-mobile-container svg {
+    height: 25px;
+    width: 25px;
+    display: inline-block;
+    vertical-align: middle;
+    overflow: visible;
+  }
+
+  .wishlist-mobile-container #wishlist-count1 {
+    padding-left: 7px;
+    font-size: 12px;
+    position: relative;
+    bottom: -3px;
+  }
+}
