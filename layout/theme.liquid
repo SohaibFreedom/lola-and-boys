@@ -805,6 +805,23 @@ document.addEventListener("DOMContentLoaded", () => {
     hideWidget();
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    // Wait for Attentive to render the button
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            const btn = document.querySelector('#attn-waitlist-trigger button');
+            if (btn) {
+                btn.textContent = "Text me when it’s back";  // Change this text as you like
+                observer.disconnect();  // Stop observing once done
+            }
+        });
+    });
+
+    observer.observe(document.getElementById('attn-waitlist-trigger'), {
+        childList: true,
+        subtree: true
+    });
+});
 
   
 </script>
