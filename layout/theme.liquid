@@ -821,6 +821,12 @@ document.addEventListener("DOMContentLoaded", function() {
         childList: true,
         subtree: true
     });
+
+      const waitlistButton = document.querySelector('#lowProductButton .osf_inline_button');
+    if (waitlistButton) {
+        waitlistButton.textContent = "Email me when it’s back";
+    }
+  
 });
 
   
