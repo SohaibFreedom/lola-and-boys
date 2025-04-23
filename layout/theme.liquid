@@ -806,28 +806,41 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-    // Wait for Attentive to render the button
-    const observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-            const btn = document.querySelector('#attn-waitlist-trigger button');
-            if (btn) {
-                btn.textContent = "Text me when it’s back";  // Change this text as you like
-                observer.disconnect();  // Stop observing once done
-            }
-        });
-    });
+    // Function to change button text
+    function updateButtonText() {
+        const attnBtn = document.querySelector('#attn-waitlist-trigger button');
+        const lowProductBtn = document.querySelector('#lowProductButton .osf_inline_button');
 
-    observer.observe(document.getElementById('attn-waitlist-trigger'), {
-        childList: true,
-        subtree: true
-    });
-
-      const waitlistButton = document.querySelector('#lowProductButton .osf_inline_button');
-    if (waitlistButton) {
-        waitlistButton.textContent = "Email me when it’s back";
+        if (attnBtn) {
+            attnBtn.textContent = "Email me when it’s back";
+        }
+        if (lowProductBtn) {
+            lowProductBtn.textContent = "Email me when it’s back";
+        }
     }
-  
+
+    // Initial check in case buttons are already loaded
+    updateButtonText();
+
+    // Observer for Attentive button
+    const attnTrigger = document.getElementById('attn-waitlist-trigger');
+    if (attnTrigger) {
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function() {
+                updateButtonText();
+                if (document.querySelector('#attn-waitlist-trigger button')) {
+                    observer.disconnect();  // Stop observing once button is found
+                }
+            });
+        });
+
+        observer.observe(attnTrigger, {
+            childList: true,
+            subtree: true
+        });
+    }
 });
+
 
   
 </script>
