@@ -190,6 +190,7 @@
 
           {% unless collection_handles contains 'coming-soon' %}
             {% include 'product-form' with 'product' %}
+            {% include 'attentive-waitlist' %}
                     {% if product.tags contains "patch-customizer" %}
  <div class="customize-button">
   <span>Customize With Patches</span> 
