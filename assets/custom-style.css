@@ -16,7 +16,7 @@
 }
 button#attn-waitlist-trigger-btn {
   width: 100% !important;
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 .shopify-section.collection-template-section
   > .container
