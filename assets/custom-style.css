@@ -14,7 +14,10 @@
   stroke: #000 !important;
   stroke-width: 4px;
 }
-
+button#attn-waitlist-trigger-btn {
+  width: 100% !important;
+  margin-bottom: 10px;
+}
 .shopify-section.collection-template-section
   > .container
   > .collection_items
