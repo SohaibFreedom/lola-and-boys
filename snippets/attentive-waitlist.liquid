@@ -1,0 +1,17 @@
+<script id="attn-waitlist-eligibility" type="application/json">{
+{%- liquid
+for variant in product.variants
+assign eligibility = 'false'
+if variant.inventory_quantity <= 0
+assign eligibility = 'true'
+endif
+assign entry = '"' | append: variant.id | append: '":' | append: eligibility
+unless forloop.last
+assign entry = entry | append: ','
+endunless
+
+echo entry
+endfor
+-%}
+}</script>
+<div id="attn-waitlist-trigger"></div>
