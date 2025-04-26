@@ -1,0 +1,80 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "search-template",
+      "settings": {
+        "para_text": "Tip: Try rephrasing your search term,  or using a related term.",
+        "search_breadcrumb": true,
+        "products_per_row": 5,
+        "pagination_limit": 20,
+        "blog_author": false,
+        "read_more_link": true,
+        "blog_date": false,
+        "toggle": false
+      }
+    },
+    "collection_list_XDeiFL": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_chLc9z": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "accessories-1",
+            "collection_title": "Accessories",
+            "image": "shopify:\/\/shop_images\/GIRLS_a7ed4d1d-264e-4e94-a6fc-4591f409f420.jpg"
+          }
+        },
+        "collection_Twq8NT": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "backpacks",
+            "collection_title": "Backpacks",
+            "image": "shopify:\/\/shop_images\/SHOES_79c0be8f-0e8f-4456-89c0-9325b80b3f14.jpg"
+          }
+        },
+        "collection_df7QQN": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "backpacks-by-lola-the-boys",
+            "collection_title": "Backpacks by Lola + The Boys",
+            "image": "shopify:\/\/shop_images\/LATB_BTS24_00702.jpg"
+          }
+        },
+        "collection_w6AcUt": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "birthday",
+            "collection_title": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_chLc9z",
+        "collection_Twq8NT",
+        "collection_df7QQN",
+        "collection_w6AcUt"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Looking for more?",
+        "description": "",
+        "button_link": "",
+        "button_text": "",
+        "frontpage_collections_per_row": 3
+      }
+    }
+  },
+  "order": [
+    "main",
+    "collection_list_XDeiFL"
+  ]
+}
