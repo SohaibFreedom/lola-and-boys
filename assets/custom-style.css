@@ -3,7 +3,9 @@
 .product-list.usf-grid .relative.product_image.swap-false {
   overflow: hidden;
 }
-
+.usf-sr-container .usf-views {
+  display: none !important;
+}
 .usf-facets__wrapper .usf-btn:hover {
   border: none !important;
 }
