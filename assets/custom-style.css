@@ -1,3 +1,200 @@
+/* product filters custom Start */
+
+.product-list.usf-grid .relative.product_image.swap-false {
+  overflow: hidden;
+}
+
+.usf-facets__wrapper .usf-btn:hover {
+  border: none !important;
+}
+
+.usf-mobile .usf-filters.usf-has-filters:after {
+  display: none;
+}
+
+#usf_container #selected-size-display {
+  margin-top: 20px;
+  font-weight: bold;
+  width: 100%;
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  #usf_container #selected-size-display {
+    display: none !important;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .usf-facets__wrapper .usf-label.usf-btn .usf-value {
+    display: none !important;
+  }
+}
+
+.collection-collection-with-banner .page_banner {
+  margin-bottom: 1rem;
+}
+.usf-sr-product {
+  width: 100% !important;
+  margin: 0 !important;
+}
+.usf-results.usf-grid:before {
+  content: none !important;
+}
+.usf-results.usf-grid .thumbnail img {
+  width: 100% !important;
+}
+.usf-results.usf-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 20px;
+  column-gap: 15px;
+}
+.product-list.usf-grid .collection-specific-tags .product-tag img {
+  width: 11px !important;
+}
+.usf-facet-values.usf-scrollbar.usf-facet-values--List {
+  max-height: 100% !important;
+}
+#usf-sr-top-loader:empty {
+  display: none !important;
+}
+
+.product-list.usf-grid .relative.product_image.swap-true {
+  overflow: hidden;
+}
+
+.product-list.usf-grid .irina-fav-tag {
+  position: absolute;
+  left: -31px !important;
+  bottom: 31px;
+  background: #f474c2 !important;
+  padding: 6px 55px 6px 28px;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px;
+  color: #fff;
+  clip-path: polygon(0 0, 100% 0, 76% 100%, 11% 98%);
+  transform: rotate(35deg);
+}
+
+.product-list.usf-grid .irina-fav-tag img {
+  width: 20px !important;
+  height: auto !important;
+}
+
+.product-list.usf-grid .usf-views {
+  display: none;
+}
+
+.product-list.usf-grid .usf-mobile .usf-views {
+  display: none;
+}
+
+.product-list.usf-grid .usf-sr-container .product-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.product-list.usf-grid .usf-sr-container .product-list::before {
+  display: none;
+}
+
+.product-list.usf-grid .usf-sr-container .product-list img {
+  width: 100%;
+}
+
+.product-list.usf-grid .usf-sr-product.thumbnail {
+  margin: 0 !important;
+}
+
+@media only screen and (max-width: 1200px) {
+  .product-list.usf-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+
+  .product-list.usf-grid .irina-fav-tag {
+    font-size: 11px;
+    bottom: 28px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .product-list.usf-grid .image__container img {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .product-list.usf-grid .irina-fav-tag {
+    left: -31px !important;
+    bottom: 20px;
+    padding: 6px 40px 6px 30px;
+    font-size: 10px;
+  }
+
+  .product-list.usf-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 1450px) and (min-width: 768px) {
+  .collection-template-section .container {
+    padding: 0 40px !important;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .product-list.usf-grid .irina-fav-tag {
+    font-size: 10px;
+    padding: 3px 45px 3px 25px;
+    left: -26px !important;
+    bottom: 19px;
+    clip-path: polygon(0 0, 100% 0, 73% 100%, 12% 98%);
+  }
+
+  .product-list.usf-grid .irina-fav-tag img {
+    width: 11px !important;
+  }
+
+  .product-list.usf-grid .product-tag.irina-fav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .product-list.usf-grid .collection-specific-tags {
+    font-size: 11px;
+    padding: 0 10px;
+  }
+
+  .product-list.usf-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  /* .product-list.usf-grid .thumbnail, .slider-gallery .thumbnail, .list-collections .thumbnail {
+	width: 100%;
+  } */
+}
+
+@media only screen and (max-width: 800px) {
+  .product-list.usf-grid
+    .thumbnail
+    .product-wrap
+    .product_image
+    .image__container
+    img {
+    width: 100% !important;
+  }
+}
+
+/* product filters custom end */
+
 .page-customize-landing h1,
 .page-customize-landing h2,
 .page-customize-landing h3,
