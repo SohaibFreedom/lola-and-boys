@@ -3,6 +3,9 @@
 .product-list.usf-grid .relative.product_image.swap-false {
   overflow: hidden;
 }
+.usf-sr-summary {
+  text-align: left;
+}
 .usf-results.usf-grid .thumbnail img {
   width: 100% !important;
   object-position: top;
