@@ -805,6 +805,47 @@ document.addEventListener("DOMContentLoaded", () => {
     hideWidget();
 });
 
+
+  $(document).ready(function() {
+    const displayDiv = $('<div id="selected-size-display"></div>');
+    $('.usf-sr-config__mobile-filters-wrapper').after(displayDiv);
+
+    function getSizeFromURL() {
+        const params = new URLSearchParams(window.location.search);
+        for (const [key, value] of params) {
+            if (key.includes('Size')) return value;
+        }
+        return '';
+    }
+
+    function showSelectedSize() {
+        const sizeValue = getSizeFromURL();
+        if (sizeValue) {
+            $('#selected-size-display').text('Selected Size: ' + sizeValue).show();
+            console.log("URL Selected Size:", sizeValue);
+        } else {
+            $('#selected-size-display').hide();
+        }
+    }
+
+    showSelectedSize();
+
+    new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+            if ($(mutation.target).hasClass('usf-facet-value') && $(mutation.target).hasClass('usf-selected')) {
+                const selectedSize = $(mutation.target).find('.usf-label > span').first().text().trim();
+                $('#selected-size-display').text('Selected Size: ' + selectedSize).show();
+                console.log("Changed Selected Size:", selectedSize);
+                $('.usf-facets.usf-facets--mobile').removeClass('usf-on');
+            }
+        });
+    }).observe(document.body, { attributes: true, subtree: true, attributeFilter: ['class'] });
+
+    $('.usf-sr-config__mobile-filters-wrapper .usf-btn').filter(function() {
+        return $(this).text().trim() === 'Filters';
+    }).text('Filter by Size');
+});
+
 document.addEventListener("DOMContentLoaded", function() {
     // Wait for Attentive to render the button
     const observer = new MutationObserver(function(mutations) {
