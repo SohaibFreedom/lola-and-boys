@@ -1,3 +1,7 @@
+
+
+
+
 {% include 'shogun-products', content: collection %}
 {{collection.metafields.shogun.above}}
 {% comment %}
@@ -71,7 +75,6 @@
             <a href="{{ shop.url }}" title="{{ shop.name | escape }}" itemprop="item" class="breadcrumb_link">
               <span itemprop="name">{{ 'general.breadcrumbs.home' | t }}</span>
             </a>
-             <meta itemprop="position" content="1" />
           </span>
           {% if collection.title != blank %}  
             <span class="breadcrumb-divider">/</span>
@@ -79,7 +82,6 @@
               <a href="/collections/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}" title="{{ collection.title | escape }}" itemprop="item" class="breadcrumb_link">
                 <span itemprop="name">{{ collection.title }}</span>
               </a>
-              <meta itemprop="position" content="2" />
             </span>
           {% endif %}
           {% if current_tags %}
@@ -90,7 +92,6 @@
                   <a href="/collections/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag | handleize }}" title="{{ tag | escape }}" itemprop="item">
                     <span itemprop="name">{{ tag }}</span>
                   </a>
-                   <meta itemprop="position" content="2" />
                 </span>
               {% endunless %}
             {% endfor %}
@@ -371,6 +372,8 @@ $(document).ready(function(){
       
       
       
+
+
 
 {% schema %}
 
