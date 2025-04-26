@@ -3,6 +3,9 @@
 .product-list.usf-grid .relative.product_image.swap-false {
   overflow: hidden;
 }
+.usf-vert-layout #usf_container.usf-zone {
+  margin: 0 !important;
+}
 .usf-facets--mobile .usf-facet-values .usf-facet-value .usf-value {
   display: none !important;
 }
