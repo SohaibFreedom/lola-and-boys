@@ -3,6 +3,10 @@
 .product-list.usf-grid .relative.product_image.swap-false {
   overflow: hidden;
 }
+.usf-results.usf-grid .thumbnail img {
+  width: 100% !important;
+  object-position: top;
+}
 .usf-vert-layout #usf_container.usf-zone {
   margin: 0 !important;
 }
