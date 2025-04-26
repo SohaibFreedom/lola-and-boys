@@ -398,6 +398,13 @@ usf.templates = {
         </div>
     </div>
 
+      <div v-if="product.tags.includes('personalize-badge')" class="collection-specific-tags">
+        <div class="product-tag personalize-badge">
+            <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/Icon_Smile.png?v=1742919149" width="20" alt="personalize-badge">
+            <span>Personalize it</span>
+        </div>
+    </div>
+
     <div v-if="product.tags.includes('Selling-fast-badge')" class="collection-specific-tags">
         <div class="product-tag selling-fast">
             <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/lightning.png?v=1721673293" width="20" alt="Selling Fast">
