@@ -1,4 +1,4 @@
-/* USF file - DO NOT MODIFY THIS FILE. THIS FILE IS REGULARLY CHANGED BY USF APP AND **ANY DIRECT CHANGES WILL BE LOST**. Use our in-app customization if you need to update CSS and JS code. Auto modified at: 4/26/2025 1:47:16 PM*/
+/* USF file - DO NOT MODIFY THIS FILE. THIS FILE IS REGULARLY CHANGED BY USF APP AND **ANY DIRECT CHANGES WILL BE LOST**. Use our in-app customization if you need to update CSS and JS code. Auto modified at: 4/26/2025 1:48:13 PM*/
 /* Begin custom theme code */
 // define templates for the Turbo theme - 5.0
 window.USF_FILTER_AVOID_STICKY_HEADER_HORZ_DESKTOP = window.USF_FILTER_AVOID_STICKY_HEADER_VERT_DESKTOP  = ['.main_nav_wrapper.sticky_nav'];
@@ -357,6 +357,11 @@ usf.templates = {
                 >
             </div>
 
+
+
+                
+
+
                 <!-- Wishlist -->
                 <usf-plugin name="searchResultsProductWishList" :data="pluginData"></usf-plugin>
 
@@ -379,7 +384,35 @@ usf.templates = {
             <div v-if="_col_handle.new" class="new_banner thumbnail_banner" v-html="_usfNew"></div>
             <div v-if="_col_handle.pre_order" class="preorder_banner thumbnail_banner" v-html="_usfPreOrder"></div>
         </div>
-       
+        
+           <!-- Conditional rendering for specific tags -->
+    <div v-if="product.tags.includes('best-selling-badge')" class="collection-specific-tags">
+        <div class="product-tag best-selling">
+            <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/heart.png?v=1721673293" width="20" alt="Best Seller">
+            <span>Best Seller</span>
+        </div>
+    </div>
+
+    <div v-if="product.tags.includes('just-in-badge')" class="collection-specific-tags">
+        <div class="product-tag just-in">
+            <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/Star.png?v=1721673294" width="20" alt="Just In">
+            <span>Just In</span>
+        </div>
+    </div>
+
+    <div v-if="product.tags.includes('Selling-fast-badge')" class="collection-specific-tags">
+        <div class="product-tag selling-fast">
+            <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/lightning.png?v=1721673293" width="20" alt="Selling Fast">
+            <span>Selling Fast</span>
+        </div>
+    </div>
+
+    <div v-if="product.tags.includes('irina-fav-badge')" class="irina-fav-tag">
+        <div class="product-tag irina-fav">
+             <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/star-tag-img.png?v=1737144658" width="20" height="auto">
+             <span>Irina's Favourite</span>
+        </div>
+    </div>
     </div>
     <a v-if="!_usfSettingGlobal.thumbnail_hover_enabled" class="product-info__caption " :href="productUrl">
         `+ _usfProductInfoTpl + `
