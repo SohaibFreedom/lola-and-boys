@@ -166,7 +166,7 @@
 
 @media only screen and (max-width: 768px) {
   .collection-template-section div#usf_container {
-    padding-top: 1rem !important;
+    padding-top: 0 !important;
   }
   .product-list.usf-grid .irina-fav-tag {
     font-size: 10px;
