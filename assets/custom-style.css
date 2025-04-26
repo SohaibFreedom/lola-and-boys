@@ -3,6 +3,9 @@
 .product-list.usf-grid .relative.product_image.swap-false {
   overflow: hidden;
 }
+.collection-template-section div#usf_container {
+  padding-top: 3rem !important;
+}
 .usf-sr-summary {
   text-align: left;
 }
