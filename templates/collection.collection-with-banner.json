@@ -1,1 +1,53 @@
-{"sections":{"collection-banner":{"type":"collection-banner","blocks":{"f6766607-e6fd-4ca2-88e4-dec0f4a0fbb2":{"type":"filter","settings":{"filter_name":"Size","filter_tags":"2,4,6,8,10,12,14\/16,\n12\/18 months5.5 (21) PREORDER- SHIPS 12\/15,\n6C(22) PREORDER SHIPS 12\/15,\n7C (23) PREORDER - SHIPS 12\/15,\n8C (24) PREORDER - SHIPS 12\/15,\n9C (25) PREORDER - SHIPS 12\/15,\n9.5 (26) PREORDER - SHIPS 12\/15,\n10C (27) PREORDER - SHIPS 12\/15,\n11C (28) PREORDER - SHIPS 12\/15,\n11.5 (29) PREORDER - SHIPS 12\/15,\n12C (30)- PREORDER - SHIPS 12\/15,\n13C (31) PREORDER - SHIPS 12\/15,\n1Y (32) PREORDER- SHIPS 12\/15,\n2Y (33) PREORDER - SHIPS 12\/15,\n3Y (34),\n4Y (35),\n5Y (36),\n6Y (37)","enable_filter_swatches":true}},"76dad89a-5e08-40f1-8292-188841345ea3":{"type":"filter-block","settings":{"title":"size","filter_content":"2,4,6,8,10,12,14,16"}}},"block_order":["f6766607-e6fd-4ca2-88e4-dec0f4a0fbb2","76dad89a-5e08-40f1-8292-188841345ea3"],"settings":{"title":"","description":"","products_per_row":4,"pagination_limit":50,"display_collection_title":false,"collection_breadcrumb":true,"collection_tags":true,"collection_sort":true,"featured_collection_image":true,"image_darken":false,"toggle":false}}},"order":["collection-banner"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "collection-template": {
+      "type": "collection-template",
+      "blocks": {
+        "f6766607-e6fd-4ca2-88e4-dec0f4a0fbb2": {
+          "type": "filter",
+          "settings": {
+            "filter_name": "Size",
+            "filter_tags": "2,4,6,8,10,12,14/16,\n12/18 months5.5 (21) PREORDER- SHIPS 12/15,\n6C(22) PREORDER SHIPS 12/15,\n7C (23) PREORDER - SHIPS 12/15,\n8C (24) PREORDER - SHIPS 12/15,\n9C (25) PREORDER - SHIPS 12/15,\n9.5 (26) PREORDER - SHIPS 12/15,\n10C (27) PREORDER - SHIPS 12/15,\n11C (28) PREORDER - SHIPS 12/15,\n11.5 (29) PREORDER - SHIPS 12/15,\n12C (30)- PREORDER - SHIPS 12/15,\n13C (31) PREORDER - SHIPS 12/15,\n1Y (32) PREORDER- SHIPS 12/15,\n2Y (33) PREORDER - SHIPS 12/15,\n3Y (34),\n4Y (35),\n5Y (36),\n6Y (37)",
+            "enable_filter_swatches": true
+          }
+        },
+        "76dad89a-5e08-40f1-8292-188841345ea3": {
+          "type": "filter-block",
+          "settings": {
+            "title": "size",
+            "filter_content": "2,4,6,8,10,12,14,16"
+          }
+        }
+      },
+      "block_order": [
+        "f6766607-e6fd-4ca2-88e4-dec0f4a0fbb2",
+        "76dad89a-5e08-40f1-8292-188841345ea3"
+      ],
+      "settings": {
+        "title": "",
+        "description": "",
+        "products_per_row": 5,
+        "pagination_limit": 50,
+        "display_collection_title": false,
+        "collection_breadcrumb": true,
+        "collection_tags": true,
+        "collection_sort": true,
+        "featured_collection_image": true,
+        "image_darken": false,
+        "toggle": false
+      }
+    }
+  },
+  "order": [
+    "collection-template"
+  ]
+}
