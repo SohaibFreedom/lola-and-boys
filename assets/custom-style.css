@@ -3,7 +3,8 @@
 .product-list.usf-grid .relative.product_image.swap-false {
   overflow: hidden;
 }
-.usf-sr-summary {
+.usf-sr-summary,
+.usf-c-select__input-value.usf-btn {
   display: none !important;
 }
 .collection-template-section div#usf_container {
