@@ -183,8 +183,8 @@
   .collection-template-section div#usf_container {
     padding-top: 0 !important;
   }
-  .usf-results.usf-grid {
-    padding-top: 2rem !important;
+  .usf-mobile .usf-sr-config {
+    margin-bottom: 2rem !important;
   }
   .product-list.usf-grid .irina-fav-tag {
     font-size: 10px;
