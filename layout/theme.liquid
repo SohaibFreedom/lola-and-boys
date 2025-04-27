@@ -844,24 +844,39 @@ $(document).ready(function() {
         });
     }).observe(document.body, { attributes: true, subtree: true, attributeFilter: ['class'] });
 
-    // Observer for Button Text Change
-    const buttonObserver = new MutationObserver(() => {
+    // Observer for Button Text & Header Title
+    const uiObserver = new MutationObserver(() => {
+        // Change Button Text
         $('.usf-sr-config__mobile-filters-wrapper .usf-btn').each(function() {
+            if ($(this).text().trim() === 'Filters') {
+                $(this).text('Sort by Size');
+            }
+        });
+
+        // Change Header Title Text
+        $('.usf-header .usf-title').each(function() {
             if ($(this).text().trim() === 'Filters') {
                 $(this).text('Sort by Size');
             }
         });
     });
 
-    buttonObserver.observe(document.body, { childList: true, subtree: true });
+    uiObserver.observe(document.body, { childList: true, subtree: true });
 
-    // Run once in case it's already loaded
+    // Run once initially
     $('.usf-sr-config__mobile-filters-wrapper .usf-btn').each(function() {
         if ($(this).text().trim() === 'Filters') {
             $(this).text('Sort by Size');
         }
     });
+
+    $('.usf-header .usf-title').each(function() {
+        if ($(this).text().trim() === 'Filters') {
+            $(this).text('Sort by Size');
+        }
+    });
 });
+
 
 
 document.addEventListener("DOMContentLoaded", function() {
