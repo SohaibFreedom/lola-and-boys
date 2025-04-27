@@ -4,7 +4,7 @@
   overflow: hidden;
 }
 .usf-sr-summary,
-.usf-c-select__input-value.usf-btn {
+.usf-sr-config .usf-c-select__input-value.usf-btn {
   display: none !important;
 }
 .collection-template-section div#usf_container {
