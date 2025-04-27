@@ -820,40 +820,43 @@ $(document).ready(function() {
         return '';
     }
 
-    function showSelectedSize() {
-        const sizeValue = getSizeFromURL();
+    function showSelectedSize(sizeValue) {
         if (sizeValue) {
             $('#selected-size-display').text('Selected Size: ' + sizeValue).show();
-            console.log("URL Selected Size:", sizeValue);
+            console.log("Selected Size:", sizeValue);
         } else {
             $('#selected-size-display').hide();
         }
     }
 
-    showSelectedSize();
+    // 1️⃣ Check URL Parameter
+    showSelectedSize(getSizeFromURL());
 
-    // Observer for Size Selection
+    // 2️⃣ Check if any Size is Pre-selected on Page Load
+    const preSelected = $('.usf-facet-value.usf-selected .usf-label > span').first().text().trim();
+    if (preSelected) {
+        showSelectedSize(preSelected);
+    }
+
+    // 3️⃣ Observer for Dynamic Size Selection
     new MutationObserver(mutations => {
         mutations.forEach(mutation => {
             if ($(mutation.target).hasClass('usf-facet-value') && $(mutation.target).hasClass('usf-selected')) {
                 const selectedSize = $(mutation.target).find('.usf-label > span').first().text().trim();
-                $('#selected-size-display').text('Selected Size: ' + selectedSize).show();
-                console.log("Changed Selected Size:", selectedSize);
+                showSelectedSize(selectedSize);
                 $('.usf-facets.usf-facets--mobile').removeClass('usf-on');
             }
         });
     }).observe(document.body, { attributes: true, subtree: true, attributeFilter: ['class'] });
 
-    // Observer for Button Text & Header Title
+    // 4️⃣ Observer for Button Text & Header Title
     const uiObserver = new MutationObserver(() => {
-        // Change Button Text
         $('.usf-sr-config__mobile-filters-wrapper .usf-btn').each(function() {
             if ($(this).text().trim() === 'Filters') {
                 $(this).text('Sort by Size');
             }
         });
 
-        // Change Header Title Text
         $('.usf-header .usf-title').each(function() {
             if ($(this).text().trim() === 'Filters') {
                 $(this).text('Sort by Size');
@@ -863,19 +866,14 @@ $(document).ready(function() {
 
     uiObserver.observe(document.body, { childList: true, subtree: true });
 
-    // Run once initially
-    $('.usf-sr-config__mobile-filters-wrapper .usf-btn').each(function() {
-        if ($(this).text().trim() === 'Filters') {
-            $(this).text('Sort by Size');
-        }
-    });
-
-    $('.usf-header .usf-title').each(function() {
+    // Run once initially for UI Text Changes
+    $('.usf-sr-config__mobile-filters-wrapper .usf-btn, .usf-header .usf-title').each(function() {
         if ($(this).text().trim() === 'Filters') {
             $(this).text('Sort by Size');
         }
     });
 });
+
 
 
 
