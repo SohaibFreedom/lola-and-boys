@@ -4904,7 +4904,7 @@
       "my-cart": {
         "type": "my-cart",
         "settings": {
-          "enable_free_shipping_bar": true,
+          "enable_free_shipping_bar": false,
           "progress_msg_text": "ALMOST THERE! Add ${{amount}} to Unlock FREE SHIPPING",
           "free_shipping_threshold": 180,
           "progress_msg_success_text": "Congratulations! You qualify for free shipping!",
