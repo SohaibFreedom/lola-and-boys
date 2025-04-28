@@ -3,6 +3,9 @@
 .product-list.usf-grid .relative.product_image.swap-false {
   overflow: hidden;
 }
+.swatch-element[data-value="Peach"] label {
+  background: #edc3cc !important;
+}
 .usf-sr-summary,
 .usf-sr-config .usf-c-select__input-value.usf-btn {
   display: none !important;
