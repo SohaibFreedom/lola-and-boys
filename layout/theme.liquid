@@ -808,71 +808,72 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-$(document).ready(function() {
-    const displayDiv = $('<div id="selected-size-display"></div>');
-    $('.usf-sr-config__mobile-filters-wrapper').after(displayDiv);
+// Usf Selected Size Code Start
 
-    function getSizeFromURL() {
-        const params = new URLSearchParams(window.location.search);
-        for (const [key, value] of params) {
-            if (key.includes('Size')) return value;
-        }
-        return '';
-    }
+jQuery(document).ready(function($) {
+    const waitForUSF = setInterval(function() {
+        if ($('.usf-sr-config__mobile-filters-wrapper').length > 0) {
+            clearInterval(waitForUSF);
 
-    function showSelectedSize(sizeValue) {
-        if (sizeValue) {
-            $('#selected-size-display').text('Selected Size: ' + sizeValue).show();
-            console.log("Selected Size:", sizeValue);
-        } else {
-            $('#selected-size-display').hide();
-        }
-    }
+            // Append hidden div
+            const displayDiv = $('<div id="selected-size-display"></div>');
+            $('.usf-sr-config__mobile-filters-wrapper').after(displayDiv);
 
-    // 1️⃣ Check URL Parameter
-    showSelectedSize(getSizeFromURL());
-
-    // 2️⃣ Check if any Size is Pre-selected on Page Load
-    const preSelected = $('.usf-facet-value.usf-selected .usf-label > span').first().text().trim();
-    if (preSelected) {
-        showSelectedSize(preSelected);
-    }
-
-    // 3️⃣ Observer for Dynamic Size Selection
-    new MutationObserver(mutations => {
-        mutations.forEach(mutation => {
-            if ($(mutation.target).hasClass('usf-facet-value') && $(mutation.target).hasClass('usf-selected')) {
-                const selectedSize = $(mutation.target).find('.usf-label > span').first().text().trim();
-                showSelectedSize(selectedSize);
-                $('.usf-facets.usf-facets--mobile').removeClass('usf-on');
+            // Get Size Parameter from URL
+            function getSizeFromURL() {
+                const params = new URLSearchParams(window.location.search);
+                let sizeParam = '';
+                params.forEach((value, key) => {
+                    if (key.includes('Size')) {
+                        sizeParam = value;
+                    }
+                });
+                return sizeParam;
             }
-        });
-    }).observe(document.body, { attributes: true, subtree: true, attributeFilter: ['class'] });
 
-    // 4️⃣ Observer for Button Text & Header Title
-    const uiObserver = new MutationObserver(() => {
-        $('.usf-sr-config__mobile-filters-wrapper .usf-btn').each(function() {
-            if ($(this).text().trim() === 'Filters') {
-                $(this).text('Sort by Size');
+            // Display Selected Size
+            function showSelectedSize() {
+                const sizeValue = getSizeFromURL();
+                if (sizeValue) {
+                    $('#selected-size-display').text('Selected Size: ' + sizeValue).show();
+                    console.log("URL Selected Size:", sizeValue);
+                } else {
+                    $('#selected-size-display').hide();
+                }
             }
-        });
 
-        $('.usf-header .usf-title').each(function() {
-            if ($(this).text().trim() === 'Filters') {
-                $(this).text('Sort by Size');
-            }
-        });
-    });
+            // Delay to let USF apply filters from URL
+            setTimeout(showSelectedSize, 100);
 
-    uiObserver.observe(document.body, { childList: true, subtree: true });
+            // MutationObserver for dynamic selection changes
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.target.classList.contains('usf-facet-value') && 
+                        mutation.target.classList.contains('usf-selected')) {
+                        
+                        const selectedSize = $(mutation.target).find('.usf-label > span').first().text().trim();
+                        $('#selected-size-display').text('Selected Size: ' + selectedSize).show();
+                        console.log("Changed Selected Size:", selectedSize);
 
-    // Run once initially for UI Text Changes
-    $('.usf-sr-config__mobile-filters-wrapper .usf-btn, .usf-header .usf-title').each(function() {
-        if ($(this).text().trim() === 'Filters') {
-            $(this).text('Sort by Size');
+                        // Close the filter popup by removing the class
+                        $('.usf-facets.usf-facets--mobile').removeClass('usf-on');
+                    }
+                });
+            });
+
+            observer.observe(document.body, { attributes: true, subtree: true, attributeFilter: ['class'] });
+
+            // Change Filters button text
+            $('.usf-sr-config__mobile-filters-wrapper .usf-btn').each(function() {
+                if ($(this).text().trim() === 'Filters') {
+                    $(this).text('Sort by Size');
+                }
+            });
         }
-    });
+    }, 200);
 });
+
+// Usf Selected Size Code End
 
 
 
