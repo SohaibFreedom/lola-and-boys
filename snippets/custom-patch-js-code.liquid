@@ -1,3 +1,4 @@
+
 {% assign variant = product.selected_or_first_available_variant %}
 <script>
 console.log("check patch js code load rwquests");
@@ -978,11 +979,15 @@ if (filteredData.length > 0) {
             // Adjust imgHeight and imgWidth based on variantname and productTags
             if (variantname === '1' || variantname === '2' || variantname === '2/3' || variantname === '3/4' || variantname === '4/5' || variantname === '5/6' || 
                 variantname === '4' || variantname === '5' || variantname === '6') {
-                if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit")) {
+                if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit")&& !productTags.includes("Customizable-Patch-Soft-Hoodie")) {
                     console.log('condition true');
                     imgHeight += 20;
                     imgWidth += 20;
-                } else {
+                } else if (productTags.includes("Customizable-Patch-Soft-Hoodie")) {
+                   console.log("Customizable-Patch-Soft-Hoodie condition");
+                   imgHeight -= 25;
+                   imgWidth -= 25;
+                 } else {
                     console.log('condition false');
                     imgHeight -= 10;
                     imgWidth -= 10;
@@ -995,11 +1000,15 @@ if (filteredData.length > 0) {
             else if (variantname === '6/7' || variantname === '8' || variantname === '7/8' || variantname === '8/9' ||  
                        variantname === '10' || variantname === '9/10' || variantname === '10/11' || variantname === '11/12' || variantname === '12' || 
                        variantname === '14') {
-                if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit")) {
+                if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit") && !productTags.includes("Customizable-Patch-Soft-Hoodie")) {
                     console.log('condition true');
                     imgHeight += 10;
                     imgWidth += 10;
-                } else {
+                }else if (productTags.includes("Customizable-Patch-Soft-Hoodie")) {
+                   console.log("Customizable-Patch-Soft-Hoodie condition");
+                   imgHeight -= 25;
+                   imgWidth -= 25;
+                 } else {
                     console.log('condition false');
                     imgHeight -= 15;
                     imgWidth -= 15;
@@ -1104,8 +1113,17 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
          halfHeight += 7;
          halfWidth += 7;
          }
-            
-        
+            if (product.tags.includes('Customizable-Patch-Soft-Hoodie')){
+              
+                   if (patchName === "Roller Skates") {
+                     // alert('Roller Skates');
+        halfWidth += 7;
+      halfHeight += 7;
+
+    
+             }
+                   
+                 }
           
           // Set the patch dimensions
           img.width =halfWidth;
@@ -1198,6 +1216,8 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
          halfWidth += 15;
          }
             }
+
+       
           // Set the patch dimensions
           img.width =halfWidth;
           img.height =halfHeight;
@@ -1268,6 +1288,26 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
         
   
           // Set the patch dimensions
+           if (product.tags.includes('Customizable-Patch-Soft-Hoodie')){
+                  
+                   if (patchName === "Roller Skates") {
+                     // alert('Roller Skates');
+        halfWidth -= 5;
+      halfHeight -= 5;
+
+    
+             }
+                   if (patchName === "Boom") {
+                    if (Number(variantname) < 7) {
+                       
+                        halfWidth += 10;
+                        halfHeight += 10;
+}
+      
+
+    
+             }
+                 }
           img.width =halfWidth;
           img.height =halfHeight;
 
@@ -1345,7 +1385,17 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
          }
             }
         
-  
+           if (product.tags.includes('Customizable-Patch-Soft-Hoodie')){
+                  
+                   if (patchName === "Roller Skates") {
+                     // alert('Roller Skates');
+        halfWidth -= 8;
+      halfHeight -= 8;
+
+    
+             }
+                   
+                 }
           // Set the patch dimensions
           img.width =halfWidth;
           img.height =halfHeight;
@@ -1421,6 +1471,21 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
       else if (product.tags.includes("happ-velour-set")){
                   halfHeight += 10;
          halfWidth += 10;
+                  }
+      else if (product.tags.includes("Customizable-Patch-Soft-Hoodie")){
+       console.log('Customizable-Patch-Soft-Hoodie under 375')
+         if (patchName === "Roller Skates") {
+                     // alert('Roller Skates');
+        halfWidth += 2;
+      halfHeight += 2;
+
+    
+             } 
+       else{
+        halfHeight += 7;
+         halfWidth += 7;
+       }
+           
                   }
       else if (product.tags.includes("Bella-Hologram-Swimsuit")){
                   halfHeight += 8;
@@ -1504,6 +1569,18 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
       else if (product.tags.includes("happ-velour-set")){
                   halfHeight += 10;
          halfWidth += 10;
+                  }
+       else if (product.tags.includes("Customizable-Patch-Soft-Hoodie")){
+          console.log('under 375px')
+         if (patchName === "Roller Skates") {  
+      halfWidth += 5;
+      halfHeight += 5;
+} 
+       else{
+      halfWidth += 10;
+      halfHeight += 10;
+
+}
                   }
       else if (product.tags.includes("Bella-Hologram-Swimsuit")){
                   halfHeight += 7;
@@ -1626,11 +1703,18 @@ if (filteredData.length > 0) {
             // Adjust imgHeight and imgWidth based on variantname and productTags
             if (variantname === '1' || variantname === '2' || variantname === '2/3' || variantname === '3/4' || variantname === '4/5' || variantname === '5/6' || 
                 variantname === '4' || variantname === '5' || variantname === '6') {
-                if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit")) {
+                if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit")&& !productTags.includes("Customizable-Patch-Soft-Hoodie")) {
                     console.log('condition true');
                     imgHeight += 16;
                     imgWidth += 16;
-                } else {
+                }
+                else if (productTags.includes("Customizable-Patch-Soft-Hoodie")) {
+                   console.log("Customizable-Patch-Soft-Hoodie condition");
+                   imgHeight -= 15;
+                   imgWidth -= 15;
+                  
+                 }
+             else {
                     console.log('condition false');
                     imgHeight -= 10;
                     imgWidth -= 10;
@@ -1643,11 +1727,16 @@ if (filteredData.length > 0) {
             else if (variantname === '6/7' || variantname === '8' || variantname === '7/8' || variantname === '8/9' ||  
                        variantname === '10' || variantname === '9/10' || variantname === '10/11' || variantname === '11/12' || variantname === '12' || 
                        variantname === '14') {
-                if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit")) {
+                if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit")&& !productTags.includes("Customizable-Patch-Soft-Hoodie")) {
                     console.log('condition true');
                     imgHeight += 8;
                     imgWidth += 8;
-                } else {
+                } else if (productTags.includes("Customizable-Patch-Soft-Hoodie")) {
+                    console.log('Customizable-Patch-Soft-Hoodie');
+                   console.log("Customizable-Patch-Soft-Hoodie condition");
+                   imgHeight -= 20;
+                   imgWidth -= 20;
+                 } else {
                     console.log('condition false');
                     imgHeight -= 15;
                     imgWidth -= 15;
@@ -1835,6 +1924,11 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
                       halfHeight += 25;
          halfWidth += 25;
                 }
+                else if (product.tags.includes('Customizable-Patch-Soft-Hoodie')){
+                      halfHeight += 10;
+         halfWidth += 10;
+                }
+                  
                 else {
          halfHeight += 15;
          halfWidth += 15;
@@ -2283,11 +2377,17 @@ function showPatches() {
             else if (variantname === '6/7' || variantname === '8' || variantname === '7/8' || variantname === '8/9' ||  
                        variantname === '10' || variantname === '9/10' || variantname === '10/11' || variantname === '11/12' || variantname === '12' || 
                        variantname === '14') {
-                if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit")) {
-                    console.log('condition true');
+                if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit")&& !productTags.includes("Customizable-Patch-Soft-Hoodie")) {
+                    alert('condition true');
                     imgHeight += 10;
                     imgWidth += 10;
                 }
+                else if (productTags.includes("Customizable-Patch-Soft-Hoodie")) {
+                    console.log('Customizable-Patch-Soft-Hoodie');
+                   console.log("Customizable-Patch-Soft-Hoodie condition");
+                   imgHeight -= 30;
+                   imgWidth -= 30;
+                 }
                 else {
                     console.log('condition false');
                     imgHeight -= 15;
@@ -2396,7 +2496,17 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
          }
             
         
-          
+            if (product.tags.includes('Customizable-Patch-Soft-Hoodie')){
+              
+                   if (patchName === "Roller Skates") {
+                     // alert('Roller Skates');
+        halfWidth += 7;
+      halfHeight += 7;
+
+    
+             }
+                   
+                 }
           // Set the patch dimensions
           img.width =halfWidth;
           img.height =halfHeight;
@@ -2420,17 +2530,7 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
           var halfHeight = imgHeight / 2;
     
                     }
-          //        if (product.tags.includes('Customizable-Patch-Soft-Hoodie')){
-                   
-          //          if (patchName === "Roller Skates") {
-          //            alert('Roller Skates');
-          // var halfWidth = imgWidth / 3;
-          // var halfHeight = imgHeight / 3;
-    
-          //    }
-          //        }
-         
-               
+            
     else {
         var halfWidth = imgWidth / 2.3;
         var halfHeight = imgHeight / 2.3;
@@ -2499,6 +2599,26 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
          }
             }
           // Set the patch dimensions
+            if (product.tags.includes('Customizable-Patch-Soft-Hoodie')){
+                  
+                   if (patchName === "Roller Skates") {
+                     // alert('Roller Skates');
+        halfWidth -= 8;
+      halfHeight -= 8;
+
+    
+             }
+                   if (patchName === "Boom") {
+                    if (Number(variantname) < 7) {
+                       
+                        halfWidth += 10;
+                        halfHeight += 10;
+}
+      
+
+    
+             }
+                 }
           img.width =halfWidth;
           img.height =halfHeight;
 
@@ -2566,7 +2686,7 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
          }
             }
         
-  
+           
           // Set the patch dimensions
           img.width =halfWidth;
           img.height =halfHeight;
@@ -2643,7 +2763,17 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
          halfWidth += 20;
          }
             }
-        
+           if (product.tags.includes('Customizable-Patch-Soft-Hoodie')){
+                  
+                   if (patchName === "Roller Skates") {
+                     // alert('Roller Skates');
+        halfWidth -= 8;
+      halfHeight -= 8;
+
+    
+             }
+                   
+                 }
   
           // Set the patch dimensions
           img.width =halfWidth;
@@ -2724,13 +2854,24 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
                   }
      else if (product.tags.includes("Customizable-Patch-Soft-Hoodie")){
        console.log('Customizable-Patch-Soft-Hoodie under 375')
-                  halfHeight += 7;
+         if (patchName === "Roller Skates") {
+                     // alert('Roller Skates');
+        halfWidth += 2;
+      halfHeight += 2;
+
+    
+             } 
+       else{
+        halfHeight += 7;
          halfWidth += 7;
+       }
+           
                   }
      else if (product.tags.includes("Bella-Hologram-Swimsuit")){
                   halfHeight += 8;
          halfWidth += 8;
                   }
+    
           // Set the patch dimensions
           img.width =halfWidth;
           img.height =halfHeight;
@@ -2810,9 +2951,17 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
                   halfHeight += 10;
          halfWidth += 10;
                   }
-        else if (product.tags.includes(" Customizable-Patch-Soft-Hoodie")){
-                  halfHeight += 10;
-         halfWidth += 10;
+        else if (product.tags.includes("Customizable-Patch-Soft-Hoodie")){
+          console.log('under 375px')
+         if (patchName === "Roller Skates") {  
+      halfWidth += 5;
+      halfHeight += 5;
+} 
+       else{
+      halfWidth += 10;
+      halfHeight += 10;
+
+}
                   }
       else if (product.tags.includes("Bella-Hologram-Swimsuit")){
                   halfHeight += 7;
