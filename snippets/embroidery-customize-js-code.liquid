@@ -889,6 +889,15 @@ function displayFonts(fontVariants) {
             // Add the fontFamily as a class to the .emb-font-type-area div
             embFontArea.classList.add(fontFamily);
 
+
+             var embBackArea = document.querySelector('.emb-back-type-area');
+            
+            // Remove all classes except the default .emb-font-type-area class
+            embBackArea.className = 'emb-back-type-area';
+            
+            // Add the fontFamily as a class to the .emb-font-type-area div
+            embBackArea.classList.add(fontFamily);
+
           // Front arms embroidery area
              var embFontRarmArea = document.querySelector('.Rarm-emb-font-type-area');
             
