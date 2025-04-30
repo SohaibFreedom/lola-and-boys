@@ -1437,28 +1437,32 @@ document.getElementById('instantSearchInput').addEventListener('input', function
                 collectionResultsContainer.innerHTML = '';
 
                 // Display product results (limit to 4)
-                if (data.resources.results.products.length > 0) {
-                    data.resources.results.products.slice(0, 4).forEach(product => {
-                        const currency = product.currency || 'USD'; // Default to USD if currency is not specified
+              const filteredProducts = data.resources.results.products
+    .slice(0, 4)
+    .filter(product => !product.tags.includes('Doodle-Tote-Bag-FREE-GIFT'));
 
-const formattedPrice = Shopify.formatMoney(product.price, "{{ shop.money_format }}");
+if (filteredProducts.length > 0) {
+    filteredProducts.forEach(product => {
+        const currency = product.currency || 'USD'; // Default to USD if currency is not specified
+        const formattedPrice = Shopify.formatMoney(product.price, "{{ shop.money_format }}");
 
+        const productHtml = `
+            <div class="search-result-item product-item">
+                <a href="${product.url}">
+                    <img class="product-img" src="${product.image.replace(/(\.[^.]*)$/, '_400x$1')}" alt="${product.title}" />
+                    <h4><a class="product-title" href="${product.url}">${product.title}</a></h4>
+                    <p class="product-price">${formattedPrice}</p>
+                </a>
+            </div>
+        `;
+        searchResultsContainer.innerHTML += productHtml;
+    });
+} 
+else {
+    searchResultsContainer.innerHTML = '<p>No products found</p>';
+    viewAllResultsButton.style.display = 'none';
+}
 
-                        const productHtml = `
-                            <div class="search-result-item product-item">
-                                <a href="${product.url}">
-                                    <img class="product-img" src="${product.image.replace(/(\.[^.]*)$/, '_400x$1')}" alt="${product.title}" />
-                                    <h4><a class="product-title" href="${product.url}">${product.title}</a></h4>
-                                    <p class="product-price">${formattedPrice}</p>
-                                </a>
-                            </div>
-                        `;
-                        searchResultsContainer.innerHTML += productHtml;
-                    });
-                } else {
-                    searchResultsContainer.innerHTML = '<p>No products found</p>';
-                  viewAllResultsButton.style.display = 'none';
-                }
 
                 // Display collection results (limit to 4)
                 if (data.resources.results.collections.length > 0) {
