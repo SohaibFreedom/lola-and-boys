@@ -1437,9 +1437,9 @@ document.getElementById('instantSearchInput').addEventListener('input', function
                 collectionResultsContainer.innerHTML = '';
 
                 // Display product results (limit to 4)
-              const filteredProducts = data.resources.results.products
+                const filteredProducts = data.resources.results.products
     .slice(0, 4)
-    .filter(product => !product.tags.includes('Doodle-Tote-Bag-FREE-GIFT'));
+    .filter(product => !product.tags.includes('hide-from-search'));
 
 if (filteredProducts.length > 0) {
     filteredProducts.forEach(product => {
