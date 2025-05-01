@@ -6,6 +6,9 @@
 .swatch-element[data-value="Peach"] label {
   background: #edc3cc !important;
 }
+.usf-sr-container.usf-no-facets.usf-empty .usf-results.usf-grid {
+  display: block !important;
+}
 .usf-sr-summary,
 .usf-sr-config .usf-c-select__input-value.usf-btn {
   display: none !important;
