@@ -1047,6 +1047,10 @@ if (filteredData.length > 0) {
                         imgWidth += 75;
                     }
                 }
+                 if (product.tags.includes('customize-patch-cap')){
+                   imgHeight += 100;
+                   imgWidth += 100; 
+                }
             }
 
      let newimgHeight = 0;
@@ -1779,6 +1783,10 @@ if (filteredData.length > 0) {
                         imgWidth += 75;
                     }
                 }
+                if (product.tags.includes('customize-patch-cap')){
+                   imgHeight += 100;
+                   imgWidth += 100; 
+                }
             }
 
    let newimgHeight = 0;
@@ -2427,6 +2435,10 @@ function showPatches() {
                         imgHeight += 75;
                         imgWidth += 75;
                     }
+                }
+                if (product.tags.includes('customize-patch-cap')){
+                   imgHeight += 100;
+                   imgWidth += 100; 
                 }
             }
 console.log('Window Width: ', window.innerWidth);
