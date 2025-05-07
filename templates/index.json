@@ -14,7 +14,6 @@
       "blocks": {
         "image_U3EW4E": {
           "type": "image",
-          "disabled": true,
           "settings": {
             "image_mobile": "shopify://shop_images/Mother_s_Day_HP_Mob.jpg",
             "mp4": "https://cdn.shopify.com/videos/c/o/v/8f2e3d1bc27048d7a6440db81f2a1b81.mp4",
@@ -36,6 +35,7 @@
         },
         "image_V87qeG": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image_mobile": "shopify://shop_images/Lola_Birthday_9_HP_Mob_1.jpg",
             "mp4": "https://cdn.shopify.com/videos/c/o/v/2737fc55c45b452bb330f6325fff7811.mp4",
