@@ -190,7 +190,7 @@
 
           {% unless collection_handles contains 'coming-soon' %}
             
-            {% unless product.tags contains 'preOrder' %}
+            {% unless product.tags contains 'PreOrder' %}
     {% include 'attentive-waitlist' %}
   {% endunless %}
             {% include 'product-form' with 'product' %}
