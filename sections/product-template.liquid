@@ -189,7 +189,10 @@
           {% endif %}
 
           {% unless collection_handles contains 'coming-soon' %}
-            {% include 'attentive-waitlist' %}
+            
+            {% unless product.tags contains 'preOrder' %}
+    {% include 'attentive-waitlist' %}
+  {% endunless %}
             {% include 'product-form' with 'product' %}
             
                     {% if product.tags contains "patch-customizer" %}
