@@ -12,27 +12,6 @@
     "slideshow_nB6m8V": {
       "type": "slideshow",
       "blocks": {
-        "image_U3EW4E": {
-          "type": "image",
-          "settings": {
-            "image_mobile": "shopify://shop_images/Mother_s_Day_HP_Mob.jpg",
-            "mp4": "https://cdn.shopify.com/videos/c/o/v/8f2e3d1bc27048d7a6440db81f2a1b81.mp4",
-            "mobilevideo": "",
-            "pretext": "",
-            "title": "",
-            "subtitle": "",
-            "text_position": "center",
-            "text_align": "center",
-            "caption_background": false,
-            "caption_background_transparency": false,
-            "button1": "",
-            "button1_link": "https://lolaandtheboys.com/collections/mothersday",
-            "button1_highlight": false,
-            "button2": "",
-            "button2_link": "",
-            "button2_highlight": false
-          }
-        },
         "image_zPL6aM": {
           "type": "image",
           "settings": {
@@ -48,6 +27,27 @@
             "caption_background_transparency": false,
             "button1": "",
             "button1_link": "https://lolaandtheboys.com/collections/my-little-pony-collab",
+            "button1_highlight": false,
+            "button2": "",
+            "button2_link": "",
+            "button2_highlight": false
+          }
+        },
+        "image_U3EW4E": {
+          "type": "image",
+          "settings": {
+            "image_mobile": "shopify://shop_images/Mother_s_Day_HP_Mob.jpg",
+            "mp4": "https://cdn.shopify.com/videos/c/o/v/8f2e3d1bc27048d7a6440db81f2a1b81.mp4",
+            "mobilevideo": "",
+            "pretext": "",
+            "title": "",
+            "subtitle": "",
+            "text_position": "center",
+            "text_align": "center",
+            "caption_background": false,
+            "caption_background_transparency": false,
+            "button1": "",
+            "button1_link": "https://lolaandtheboys.com/collections/mothersday",
             "button1_highlight": false,
             "button2": "",
             "button2_link": "",
@@ -188,8 +188,8 @@
         }
       },
       "block_order": [
-        "image_U3EW4E",
         "image_zPL6aM",
+        "image_U3EW4E",
         "image_V87qeG",
         "image_KD9mi6",
         "image_9rViCJ",
