@@ -1,6 +1,9 @@
 {% assign variant = product.selected_or_first_available_variant %}
 
 <style>
+  .arms___emb_area_display_none{
+    display:none;
+  }
   @font-face {
     font-family: 'charlotte';
     src: url('https://cdn.shopify.com/s/files/1/0790/2419/3819/files/charlotte.woff2?v=1726082930') format('woff2'),
@@ -1441,10 +1444,12 @@ border-color: #ffe2e8 !important;
       <div id="back_inputs">
       <span  class="front_input_heading">Back Side</span>
       <input type="text" name="Fchestinput" class="Bchestinput"   value="" maxlength="10" />
+        <div class="arms___emb_area_display_none">
       <span class="front_input_heading">Right Arm</span>
       <input type="text" name="FRarminput"  class="BRarminput" value="" maxlength="10" />
        <span class="front_input_heading">Left arm</span>
       <input type="text" name="FLarminput" class="BLarminput"  value="" maxlength="10" />
+           </div>
         </div>
       </div>
       <div id="Monogram_inputs">
