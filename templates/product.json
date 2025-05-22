@@ -37,7 +37,7 @@
         "display_tags": false,
         "display_social_buttons": false,
         "product_description_position": "bottom",
-        "display_related_products": true,
+        "display_related_products": false,
         "related_products_style": "slider",
         "related_products_limit": 20,
         "products_per": 5,
