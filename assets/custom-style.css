@@ -3,6 +3,10 @@
 .product-list.usf-grid .relative.product_image.swap-false {
   overflow: hidden;
 }
+[data-rebuy-component="cart-items"] .rebuy-cart__flyout-item-media img,
+[data-rebuy-component="cart-items"] .rebuy-cart__flyout-item-media video {
+  object-fit: contain !important;
+}
 .swatch-element[data-value="Peach"] label {
   background: #edc3cc !important;
 }
