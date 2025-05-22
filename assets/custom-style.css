@@ -7,6 +7,9 @@
 [data-rebuy-component="cart-items"] .rebuy-cart__flyout-item-media video {
   object-fit: contain !important;
 }
+#rebuy-widget-207160 .rebuy-product-image img {
+  object-fit: contain !important;
+}
 .swatch-element[data-value="Peach"] label {
   background: #edc3cc !important;
 }
