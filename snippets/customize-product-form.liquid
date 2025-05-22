@@ -154,7 +154,7 @@
 >
   Please correct overlapping error first
 </div>
- <div class="overlapping-correction-error" id="Out-of-stock-error"></div>
+<div class="overlapping-correction-error" id="Out-of-stock-error"></div>
 <div class="patch-customization-btn-wrap">
   <div class="complete-overly-wrapper"></div>
   <div id="variantsContainer" class="variants-container"></div>
@@ -980,7 +980,7 @@ async function addcartfiles() {
   }
 }else {
     // Redirect to cart if the response is successful
-    window.location.href = '/cart';
+    // window.location.href = '/cart';
   }
     } 
     catch (error) {
@@ -1047,71 +1047,71 @@ async function addcartfiles() {
 }
 </script>
 <script>
-  function captureAndCombineScreenshots() {
-console.log("Total elements in the DOM before capture:", document.querySelectorAll('*').length);
-      function captureDiv(id) {
-          return html2canvas(document.getElementById(id), {
-              allowTaint: true,
-              useCORS: true,
-              logging: false,
-              backgroundColor: null,
-              ignoreElements: (el) => el.classList.contains('ignore-in-canvas'),
-          });
-      }
+    function captureAndCombineScreenshots() {
+  console.log("Total elements in the DOM before capture:", document.querySelectorAll('*').length);
+        function captureDiv(id) {
+            return html2canvas(document.getElementById(id), {
+                allowTaint: true,
+                useCORS: true,
+                logging: false,
+                backgroundColor: null,
+                ignoreElements: (el) => el.classList.contains('ignore-in-canvas'),
+            });
+        }
 
-      if (document.getElementById('Front-Area').style.visibility === 'visible') {
-          var backArea = document.getElementById('Back-area');
-          backArea.style.visibility = 'visible';
-          backArea.style.zIndex = 0;
-           backArea.style.top = '-9999px';
-      } else {
-          document.getElementById('Front-Area').style.visibility = 'visible';
-          document.getElementById('Back-area').style.visibility = 'visible';
+        if (document.getElementById('Front-Area').style.visibility === 'visible') {
+            var backArea = document.getElementById('Back-area');
+            backArea.style.visibility = 'visible';
+            backArea.style.zIndex = 0;
+             backArea.style.top = '-9999px';
+        } else {
+            document.getElementById('Front-Area').style.visibility = 'visible';
+            document.getElementById('Back-area').style.visibility = 'visible';
 
-      }
+        }
 
-      Promise.all([
-          captureDiv('Front-Area'),
-          captureDiv('Back-area')
-      ]).then(function(canvases) {
-          var canvas1 = canvases[0];
-          var canvas2 = canvases[1];
+        Promise.all([
+            captureDiv('Front-Area'),
+            captureDiv('Back-area')
+        ]).then(function(canvases) {
+            var canvas1 = canvases[0];
+            var canvas2 = canvases[1];
 
-          console.log('Canvas 1 dimensions:', canvas1.width, canvas1.height);
-          console.log('Canvas 2 dimensions:', canvas2.width, canvas2.height);
+            console.log('Canvas 1 dimensions:', canvas1.width, canvas1.height);
+            console.log('Canvas 2 dimensions:', canvas2.width, canvas2.height);
 
-          var combinedCanvas = document.createElement('canvas');
-          var ctx = combinedCanvas.getContext('2d');
+            var combinedCanvas = document.createElement('canvas');
+            var ctx = combinedCanvas.getContext('2d');
 
-          combinedCanvas.width = Math.max(canvas1.width, canvas2.width);
-          combinedCanvas.height = canvas1.height + canvas2.height;
+            combinedCanvas.width = Math.max(canvas1.width, canvas2.width);
+            combinedCanvas.height = canvas1.height + canvas2.height;
 
-          console.log('Combined canvas dimensions:', combinedCanvas.width, combinedCanvas.height);
+            console.log('Combined canvas dimensions:', combinedCanvas.width, combinedCanvas.height);
 
-          ctx.drawImage(canvas1, 0, 0);
-          ctx.drawImage(canvas2, 0, canvas1.height);
+            ctx.drawImage(canvas1, 0, 0);
+            ctx.drawImage(canvas2, 0, canvas1.height);
 
-          var combinedImageURL = combinedCanvas.toDataURL('image/png');
-          var counter = 2;
-          uploadBlob(combinedImageURL, 'input[name="customized_image_url_front"]', counter);
+            var combinedImageURL = combinedCanvas.toDataURL('image/png');
+            var counter = 2;
+            uploadBlob(combinedImageURL, 'input[name="customized_image_url_front"]', counter);
 
-          // var combinedScreenshotContainer = document.getElementById('combined-screenshot');
-          // combinedScreenshotContainer.innerHTML = ''; // Clear previous content
+            // var combinedScreenshotContainer = document.getElementById('combined-screenshot');
+            // combinedScreenshotContainer.innerHTML = ''; // Clear previous content
 
-          var img = new Image();
-          img.src = combinedImageURL;
+            var img = new Image();
+            img.src = combinedImageURL;
 
-          img.onload = function() {
-              console.log('Combined image loaded successfully.');
-          };
+            img.onload = function() {
+                console.log('Combined image loaded successfully.');
+            };
 
-          img.onerror = function() {
-              console.error('Error loading combined image.');
-          };
+            img.onerror = function() {
+                console.error('Error loading combined image.');
+            };
 
-          // combinedScreenshotContainer.appendChild(img);
-      }).catch(function(error) {
-          console.error('Error capturing divs:', error);
-      });
-  }
+            // combinedScreenshotContainer.appendChild(img);
+        }).catch(function(error) {
+            console.error('Error capturing divs:', error);
+        });
+    }
 </script>
