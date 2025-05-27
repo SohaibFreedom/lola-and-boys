@@ -8,7 +8,7 @@
   object-fit: contain !important;
 }
 #rebuy-widget-207164 .flickity-button {
-  top: -515px;
+  top: -515px !important;
 }
 div#rebuy-widget-207164 {
   max-width: 1140px;
