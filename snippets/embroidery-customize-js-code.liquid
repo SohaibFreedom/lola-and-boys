@@ -1535,6 +1535,20 @@ async function embaddcartfiles() {
     // Redirect to cart if the response is successful
     // window.location.href = '/cart';
      console.log('done');
+     // Hide the loader
+  $('#emb-loader-cart').hide();
+
+  // Show the cart button
+  $('#emb_cart_btn').show();
+
+  // Remove the disabled styles from the customization button
+  $('#emb-patches-customization-form-btn').css({
+    'pointer-events': 'auto',
+    'opacity': '1',
+    'background-color': '',
+    'padding': '',
+    'border-radius': ''
+  });
   }
     } catch (error) {
       console.error('Error adding items to cart:', error);
