@@ -7,6 +7,9 @@
 [data-rebuy-component="cart-items"] .rebuy-cart__flyout-item-media video {
   object-fit: contain !important;
 }
+#rebuy-widget-207164 .flickity-button {
+  top: -515px;
+}
 div#rebuy-widget-207164 {
   max-width: 1140px;
   margin: 0 auto 0;
