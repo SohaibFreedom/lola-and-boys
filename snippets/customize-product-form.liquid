@@ -981,6 +981,17 @@ async function addcartfiles() {
 }else {
     // Redirect to cart if the response is successful
     // window.location.href = '/cart';
+       $('.loader-cart').hide();
+
+  // Show the cart button
+  $('.span-content').show();
+
+  // Remove the disabled styles from the customization button
+  $('.add-item').css({
+    'pointer-events': 'auto',
+    'opacity': '1',
+    'background-color': '',
+  });
   }
     } 
     catch (error) {
