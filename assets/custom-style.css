@@ -7,6 +7,10 @@
 [data-rebuy-component="cart-items"] .rebuy-cart__flyout-item-media video {
   object-fit: contain !important;
 }
+div#rebuy-widget-207164 {
+  max-width: 1140px;
+  margin: 0 auto 0;
+}
 #rebuy-widget-207160 .rebuy-product-image img {
   object-fit: contain !important;
 }
