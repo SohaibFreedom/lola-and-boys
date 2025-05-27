@@ -1364,14 +1364,14 @@ const spanDiv = document.querySelector('.span-content');
 addembCartItemButton.addEventListener('click', async function (event) {
    // Target specific inputs by their name attributes
     const Fchestinput = document.getElementsByName('Fchestinput')[0];
-    const FRarminput = document.getElementsByName('FRarminput')[0];
-    const FLarminput = document.getElementsByName('FLarminput')[0];
+    const FRarminput = document.getElementById('Bchestinput');
+   
 
     // Check if all input values are empty
     if (
         Fchestinput.value.trim() === '' && 
         FRarminput.value.trim() === '' && 
-        FLarminput.value.trim() === ''
+      
     ) {
         // Display the error div if all inputs are empty
         document.querySelector('.emb-texterror-wrapper').style.display = 'block';
