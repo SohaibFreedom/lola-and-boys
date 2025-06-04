@@ -3915,7 +3915,7 @@
         ],
         "settings": {
           "collection": "popular-products-header",
-          "show_announcement_bar": true,
+          "show_announcement_bar": false,
           "show_countdown": true,
           "countdown_end_date": "2025-06-04T13:00",
           "bck_clr": "#f3a4dd",
