@@ -865,7 +865,7 @@ function displayFonts(fontVariants) {
          const fontDiv = document.createElement('div');
         fontDiv.className = 'font_emb';
         fontDiv.setAttribute('font_family', font.fontName);
-
+        const fontTitle = font.fontTitle;
         // Create the img element
         const img = document.createElement('img');
         img.src = font.FeatureImagefont;
@@ -931,7 +931,7 @@ function displayFonts(fontVariants) {
             
             // Add the fontFamily as a class to the .emb-font-type-area div
             BembFontLarmArea.classList.add(fontFamily);
-            document.querySelector('#selected_font_style').textContent = fontFamily;
+            document.querySelector('#selected_font_style').textContent = fontTitle;
             console.log('Font family added as class:', fontFamily);
 
             const embFontInput = document.querySelector('#selective_emb_font');
