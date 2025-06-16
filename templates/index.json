@@ -14,10 +14,9 @@
       "blocks": {
         "image_V87qeG": {
           "type": "image",
-          "disabled": true,
           "settings": {
-            "image_mobile": "shopify://shop_images/Lola_Children_s_Day_HP_Mob_1.jpg",
-            "mp4": "https://cdn.shopify.com/videos/c/o/v/01876e615c2d459c957a97cb1325f02c.mp4",
+            "image_mobile": "shopify://shop_images/4_July_Outfit_Inspo_mob_2.jpg",
+            "mp4": "https://cdn.shopify.com/videos/c/o/v/35ae62992b9f40339ea399e011ff6fd1.mp4",
             "mobilevideo": "",
             "pretext": "",
             "title": "",
@@ -27,7 +26,7 @@
             "caption_background": false,
             "caption_background_transparency": false,
             "button1": "",
-            "button1_link": "https://lolaandtheboys.com/collections/childrens-day-flash-sale",
+            "button1_link": "https://lolaandtheboys.com/collections/usa-collection",
             "button1_highlight": false,
             "button2": "",
             "button2_link": "",
