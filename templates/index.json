@@ -12,27 +12,6 @@
     "slideshow_nB6m8V": {
       "type": "slideshow",
       "blocks": {
-        "image_V87qeG": {
-          "type": "image",
-          "settings": {
-            "image_mobile": "shopify://shop_images/4_July_Outfit_Inspo_mob_2.jpg",
-            "mp4": "https://cdn.shopify.com/videos/c/o/v/35ae62992b9f40339ea399e011ff6fd1.mp4",
-            "mobilevideo": "",
-            "pretext": "",
-            "title": "",
-            "subtitle": "",
-            "text_position": "center",
-            "text_align": "center",
-            "caption_background": false,
-            "caption_background_transparency": false,
-            "button1": "",
-            "button1_link": "https://lolaandtheboys.com/collections/usa-collection",
-            "button1_highlight": false,
-            "button2": "",
-            "button2_link": "",
-            "button2_highlight": false
-          }
-        },
         "image_U3EW4E": {
           "type": "image",
           "settings": {
@@ -49,6 +28,27 @@
             "caption_background_transparency": false,
             "button1": "",
             "button1_link": "https://lolaandtheboys.com/collections/best-of-spring-summer",
+            "button1_highlight": false,
+            "button2": "",
+            "button2_link": "",
+            "button2_highlight": false
+          }
+        },
+        "image_V87qeG": {
+          "type": "image",
+          "settings": {
+            "image_mobile": "shopify://shop_images/4_July_Outfit_Inspo_mob_2.jpg",
+            "mp4": "https://cdn.shopify.com/videos/c/o/v/35ae62992b9f40339ea399e011ff6fd1.mp4",
+            "mobilevideo": "",
+            "pretext": "",
+            "title": "",
+            "subtitle": "",
+            "text_position": "center",
+            "text_align": "center",
+            "caption_background": false,
+            "caption_background_transparency": false,
+            "button1": "",
+            "button1_link": "https://lolaandtheboys.com/collections/usa-collection",
             "button1_highlight": false,
             "button2": "",
             "button2_link": "",
@@ -188,8 +188,8 @@
         }
       },
       "block_order": [
-        "image_V87qeG",
         "image_U3EW4E",
+        "image_V87qeG",
         "image_zPL6aM",
         "image_KD9mi6",
         "image_9rViCJ",
