@@ -1,4 +1,4 @@
-/* USF file - DO NOT MODIFY THIS FILE. THIS FILE IS REGULARLY CHANGED BY USF APP AND **ANY DIRECT CHANGES WILL BE LOST**. Use our in-app customization if you need to update CSS and JS code. Auto modified at: 4/26/2025 2:07:47 PM*/
+/* USF file - DO NOT MODIFY THIS FILE. THIS FILE IS REGULARLY CHANGED BY USF APP AND **ANY DIRECT CHANGES WILL BE LOST**. Use our in-app customization if you need to update CSS and JS code. Auto modified at: 6/19/2025 1:27:05 PM*/
 /* Begin custom theme code */
 // define templates for the Turbo theme - 5.0
 window.USF_FILTER_AVOID_STICKY_HEADER_HORZ_DESKTOP = window.USF_FILTER_AVOID_STICKY_HEADER_VERT_DESKTOP  = ['.main_nav_wrapper.sticky_nav'];
@@ -417,7 +417,7 @@ usf.templates = {
     <div v-if="product.tags.includes('irina-fav-badge')" class="irina-fav-tag">
         <div class="product-tag irina-fav">
              <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/star-tag-img.png?v=1737144658" width="20" height="auto">
-             <span>Irina's Favourite</span>
+             <span>Irina's Favorites</span>
         </div>
     </div>
     </div>

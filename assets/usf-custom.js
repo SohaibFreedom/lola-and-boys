@@ -415,7 +415,7 @@ usf.templates = {
     <div v-if="product.tags.includes('irina-fav-badge')" class="irina-fav-tag">
         <div class="product-tag irina-fav">
              <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/star-tag-img.png?v=1737144658" width="20" height="auto">
-             <span>Irina's Favourite</span>
+             <span>Irina's Favorites</span>
         </div>
     </div>
     </div>
