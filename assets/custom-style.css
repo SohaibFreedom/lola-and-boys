@@ -120,7 +120,7 @@ div#rebuy-widget-207164 {
 .product-list.usf-grid .irina-fav-tag {
   position: absolute;
     left: -31px !important;
-    bottom: 27px;
+    bottom: 26px;
     background: #f474c2 !important;
     padding: 2px 45px 3px 28px;
     text-transform: uppercase;
@@ -170,10 +170,10 @@ div#rebuy-widget-207164 {
     gap: 15px;
   }
 
-  .product-list.usf-grid .irina-fav-tag {
+  /* .product-list.usf-grid .irina-fav-tag {
     font-size: 11px;
     bottom: 28px;
-  }
+  } */
 }
 
 @media only screen and (max-width: 1024px) {
@@ -182,12 +182,12 @@ div#rebuy-widget-207164 {
     margin: 0 !important;
   }
 
-  .product-list.usf-grid .irina-fav-tag {
+  /* .product-list.usf-grid .irina-fav-tag {
     left: -31px !important;
     bottom: 20px;
     padding: 6px 40px 6px 30px;
     font-size: 10px;
-  }
+  } */
 
   .product-list.usf-grid {
     grid-template-columns: repeat(2, 1fr);
