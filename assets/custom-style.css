@@ -182,12 +182,15 @@ div#rebuy-widget-207164 {
     margin: 0 !important;
   }
 
-  /* .product-list.usf-grid .irina-fav-tag {
-    left: -31px !important;
-    bottom: 20px;
-    padding: 6px 40px 6px 30px;
-    font-size: 10px;
-  } */
+  .product-list.usf-grid .irina-fav-tag {
+    bottom: 23px;
+    font-size: 9px;
+    line-height: 20px;
+  }
+
+  .product-list.usf-grid .irina-fav-tag img {
+    width: 12px !important;
+  }
 
   .product-list.usf-grid {
     grid-template-columns: repeat(2, 1fr);
