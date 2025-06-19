@@ -11,6 +11,9 @@
   "sections": {
     "banner_full_section_DCRara": {
       "type": "banner-full-section",
+      "custom_css": [
+        ".new-banner-full img{width: 100%;}"
+      ],
       "name": "Banner Full Width",
       "settings": {
         "image": "shopify://shop_images/1500_X_500_OPTION_3.png",
