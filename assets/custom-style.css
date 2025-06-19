@@ -119,21 +119,22 @@ div#rebuy-widget-207164 {
 
 .product-list.usf-grid .irina-fav-tag {
   position: absolute;
-  left: -31px !important;
-  bottom: 31px;
-  background: #f474c2 !important;
-  padding: 6px 55px 6px 28px;
-  text-transform: uppercase;
-  font-size: 13px;
-  font-weight: 600 !important;
-  letter-spacing: 0.5px;
-  color: #fff;
-  clip-path: polygon(0 0, 100% 0, 76% 100%, 11% 98%);
-  transform: rotate(35deg);
+    left: -31px !important;
+    bottom: 27px;
+    background: #f474c2 !important;
+    padding: 2px 45px 3px 28px;
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 600 !important;
+    letter-spacing: .5px;
+    color: #fff;
+    clip-path: polygon(0 0, 100% 0, 76% 100%, 11% 98%);
+    transform: rotate(35deg);
+    line-height: 22px;
 }
 
 .product-list.usf-grid .irina-fav-tag img {
-  width: 20px !important;
+  width: 15px !important;
   height: auto !important;
 }
 
@@ -522,7 +523,7 @@ button#attn-waitlist-trigger-btn {
 .product-tag.irina-fav {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 @media only screen and (max-width: 1024px) {
