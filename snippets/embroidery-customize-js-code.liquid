@@ -190,16 +190,24 @@
        showcolorVariants();
       
        displayFonts(fontVariants);
-       $('#emb_fonts_monogram_btn').click(function() {
+           $('#emb_fonts_monogram_btn').click(function() {
     // Call the displayMonogramsFonts function with fontVariants as a parameter
     displayMonogramsFonts(fontVariants);
           $('.emb_fonts_words_btn_active').removeClass('emb_fonts_words_btn_active');
 
     // Add the class to the clicked button
     $(this).addClass('emb_fonts_words_btn_active');
+         var inputValue = $('.Fmonograminput').val();
+  $('.emb-font-type-area').text(inputValue);
+         var inputValue = $('.Bmonograminput').val();
+  $('.emb-back-type-area').text(inputValue);
     showmonogramfrontembinputs();
   });
       $('#emb_fonts_words_btn').click(function() {
+              var inputValue = $('.Fchestinput').val();
+  $('.emb-font-type-area').text(inputValue);
+         var inputValue = $('.Bchestinput').val();
+  $('.emb-back-type-area').text(inputValue);
     // Call the displayFonts function with fontVariants as a parameter
     displayFonts(fontVariants);
 
