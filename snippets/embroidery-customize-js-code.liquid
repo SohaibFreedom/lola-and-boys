@@ -191,8 +191,24 @@
       
        displayFonts(fontVariants);
            $('#emb_fonts_monogram_btn').click(function() {
+
     // Call the displayMonogramsFonts function with fontVariants as a parameter
     displayMonogramsFonts(fontVariants);
+          if ($('#monogram_front_inputs_btn').hasClass('front_inputs_btn_active')) {
+            
+    // Show Front Area, Hide Back Area
+    $('#emb-Front-Area').css({
+      'visibility': 'visible',
+      'top': '0px',
+      'left': '0px'
+    });
+    $('#emb-Back-area').css('visibility', 'hidden');
+  } else {
+            
+    // Show Back Area, Hide Front Area
+    $('#emb-Back-area').css('visibility', 'visible');
+    $('#emb-Front-Area').css('visibility', 'hidden');
+  }
           $('.emb_fonts_words_btn_active').removeClass('emb_fonts_words_btn_active');
 
     // Add the class to the clicked button
@@ -204,6 +220,17 @@
     showmonogramfrontembinputs();
   });
       $('#emb_fonts_words_btn').click(function() {
+                 if ($('#front_inputs_btn').hasClass('front_inputs_btn_active')) {
+          
+    // Show Front Area, Hide Back Area
+    $('#emb-Front-Area').css('visibility', 'visible');
+    $('#emb-Back-area').css('visibility', 'hidden');
+  } else {
+           
+    // Show Back Area, Hide Front Area
+    $('#emb-Back-area').css('visibility', 'visible');
+    $('#emb-Front-Area').css('visibility', 'hidden');
+  }
               var inputValue = $('.Fchestinput').val();
   $('.emb-font-type-area').text(inputValue);
          var inputValue = $('.Bchestinput').val();
