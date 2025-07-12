@@ -3917,7 +3917,7 @@
           "collection": "popular-products-header",
           "show_announcement_bar": true,
           "show_countdown": true,
-          "countdown_end_date": "2025-07-12T05:00",
+          "countdown_end_date": "2025-07-13T05:00",
           "bck_clr": "#f3a4dd",
           "Annouce_url": "",
           "txt_clr": "#000000",
@@ -5413,10 +5413,10 @@
         "type": "shopify://apps/wrapped/blocks/app-embed/1714fc7d-e525-4a14-8c3e-1b6ed95734c5",
         "disabled": false,
         "settings": {
+          "border_radius": 0,
           "font_color": "#000000",
           "background_color": "#ffffff",
-          "border_color": "#000000",
-          "border_radius": 0
+          "border_color": "#000000"
         }
       },
       "6097499278999377719": {
