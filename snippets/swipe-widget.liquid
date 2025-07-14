@@ -1,0 +1,23 @@
+<script>
+    window.cartItems = {{ cart.items | json }};
+    window.cartAmount = {{ cart.items_subtotal_price | money_without_currency }};
+    window.postMoneyFomat = '{{ shop.money_format }}';
+</script>
+
+<div class="post-protect_cart" data-shop="{{ shop.id }}" style="display:none;">
+    <div class="post-protect_container ">
+
+        <div class="pp-toggle-wrapper">
+            <form class="pp-checkbox">
+                <input type="checkbox" id="post_protection_checkbox" /><label
+                    for="post_protection_checkbox">Toggle</label>
+            </form>
+            <div class="pp-price " data-money="{{ shop.money_format }}"></div>
+        </div>
+    </div>
+
+</div> 
+
+
+<script src="{{ 'app.js' | asset_url }}" defer="defer"></script>
+
