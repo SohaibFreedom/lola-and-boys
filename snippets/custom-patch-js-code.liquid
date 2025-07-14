@@ -1,59 +1,58 @@
-
 {% assign variant = product.selected_or_first_available_variant %}
 <script>
-console.log("check patch js code load rwquests");
-  
-    document.addEventListener('DOMContentLoaded', function () {
-       console.log('gardient-color-before');
-        const product = {{ product | json }};
-                 console.log(product.available);
-         if (!product.available) {
-        // Hide the button if the product is not available
-        $('.customize-button').hide();
-           console.log('PRODUCT IS OUT OF STOCK');
-    }
-        if (Array.isArray(product.tags) && product.tags.includes('gardient-color')) {
-        
-            $('.size_variants_section_color_heading').css('display', 'none');
-            $('.variant-selector-sidebar-btn').css('display', 'none');
-            $('.size_variants_section').css('margin-top', '0px');
-        }
-    });
+  console.log("check patch js code load rwquests");
+
+      document.addEventListener('DOMContentLoaded', function () {
+         console.log('gardient-color-before');
+          const product = {{ product | json }};
+                   console.log(product.available);
+           if (!product.available) {
+          // Hide the button if the product is not available
+          $('.customize-button').hide();
+             console.log('PRODUCT IS OUT OF STOCK');
+      }
+          if (Array.isArray(product.tags) && product.tags.includes('gardient-color')) {
+
+              $('.size_variants_section_color_heading').css('display', 'none');
+              $('.variant-selector-sidebar-btn').css('display', 'none');
+              $('.size_variants_section').css('margin-top', '0px');
+          }
+      });
 </script>
 
 <script>
-$(document).ready(function() {
-    $('.patches-back-button-relaod').click(function() {
-        console.log('#patches-back-button clicked');
-        location.reload();
-    });
-});
-
-
-   console.log('product',{{product | json}})
-  var product = {{product | json}};
-  if (product.tags && product.tags.includes('patch-customizer')) {
-      console.log('hide the zakeke customiz bnm')
-      var button = document.querySelector('#zakeke-product-button-custom');
-      if (button) {
-        button.style.display = 'none';
-      }
-    }
   $(document).ready(function() {
-      $('#small_variant').click(function() {
-        console.log('change-text');
-          $('.size_selector_heading').text('Small');
-      });
-      $('#medium_variant').click(function() {
-          $('.size_selector_heading').text('Medium');
-      });
-      $('#large_variant').click(function() {
-          $('.size_selector_heading').text('Large');
-      });
-      $('#extra_large_variant').click(function() {
-          $('.size_selector_heading').text('Extra Large');
+      $('.patches-back-button-relaod').click(function() {
+          console.log('#patches-back-button clicked');
+          location.reload();
       });
   });
+
+
+     console.log('product',{{product | json}})
+    var product = {{product | json}};
+    if (product.tags && product.tags.includes('patch-customizer')) {
+        console.log('hide the zakeke customiz bnm')
+        var button = document.querySelector('#zakeke-product-button-custom');
+        if (button) {
+          button.style.display = 'none';
+        }
+      }
+    $(document).ready(function() {
+        $('#small_variant').click(function() {
+          console.log('change-text');
+            $('.size_selector_heading').text('Small');
+        });
+        $('#medium_variant').click(function() {
+            $('.size_selector_heading').text('Medium');
+        });
+        $('#large_variant').click(function() {
+            $('.size_selector_heading').text('Large');
+        });
+        $('#extra_large_variant').click(function() {
+            $('.size_selector_heading').text('Extra Large');
+        });
+    });
 </script>
 <script>
    function tidyEditbtnfuncion() {
@@ -576,7 +575,7 @@ $(document).ready(function() {
       var output = document.getElementById("demo");
       const decrementButton = document.getElementById('decrementButton');
       const incrementButton = document.getElementById('incrementButton');
-     
+
       output.innerHTML = slider.value;
 
      function updateSliderValue() {
@@ -595,7 +594,7 @@ $(document).ready(function() {
           }
       }
    console.log('patchActions ',patchActions )
-    
+
       if (patchActions) {
           output.innerHTML = slider.value;
           var rotationValue = slider.value; // Use the slider value directly
@@ -622,110 +621,109 @@ $(document).ready(function() {
   updateSliderValue();
 </script>
 
-
 <script>
-  $(document).ready(function() {
-    // Select the button using its class
-    var customizeButton = $('.customize-button');
-    var cartButton = $('.customize-cart-button');
-    var neverMindBtn = $('.all-sidebar-cross-neverMind-button');
-    var clearneverMindBtn = $('.patches-customizations-nevr-btn');
+    $(document).ready(function() {
+      // Select the button using its class
+      var customizeButton = $('.customize-button');
+      var cartButton = $('.customize-cart-button');
+      var neverMindBtn = $('.all-sidebar-cross-neverMind-button');
+      var clearneverMindBtn = $('.patches-customizations-nevr-btn');
 
-    // Flag to indicate whether customization mode is active
-    var isCustomizationActive = false;
+      // Flag to indicate whether customization mode is active
+      var isCustomizationActive = false;
 
-    // Callback function to execute when mutations are observed
-    var callback = function(mutationsList, observer) {
-        for (var mutation of mutationsList) {
-            if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-                mutation.addedNodes.forEach(function(node) {
-                    if (node.classList && node.classList.contains('yotpo-banner-low')) {
-                        if (isCustomizationActive) {
-                            // Hide the element if customization is active
-                            node.style.display = 'none';
-                            console.log('.yotpo-banner-low is now hidden.');
-                        }
-                    }
-                });
-            } else if (mutation.type === 'attributes' && mutation.target.classList.contains('yotpo-banner-low')) {
-                if (isCustomizationActive) {
-                    // Hide the element if customization is active
-                    mutation.target.style.display = 'none';
-                    console.log('.yotpo-banner-low is now hidden (attribute change).');
-                }
-            }
-        }
-    };
+      // Callback function to execute when mutations are observed
+      var callback = function(mutationsList, observer) {
+          for (var mutation of mutationsList) {
+              if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                  mutation.addedNodes.forEach(function(node) {
+                      if (node.classList && node.classList.contains('yotpo-banner-low')) {
+                          if (isCustomizationActive) {
+                              // Hide the element if customization is active
+                              node.style.display = 'none';
+                              console.log('.yotpo-banner-low is now hidden.');
+                          }
+                      }
+                  });
+              } else if (mutation.type === 'attributes' && mutation.target.classList.contains('yotpo-banner-low')) {
+                  if (isCustomizationActive) {
+                      // Hide the element if customization is active
+                      mutation.target.style.display = 'none';
+                      console.log('.yotpo-banner-low is now hidden (attribute change).');
+                  }
+              }
+          }
+      };
 
-    // Create an observer instance linked to the callback function
-    var observer = new MutationObserver(callback);
+      // Create an observer instance linked to the callback function
+      var observer = new MutationObserver(callback);
 
-    // Configuration of the observer:
-    // We want to observe additions of nodes (childList) and attribute changes
-    var config = { attributes: true, childList: true, subtree: true };
+      // Configuration of the observer:
+      // We want to observe additions of nodes (childList) and attribute changes
+      var config = { attributes: true, childList: true, subtree: true };
 
-    // Start observing the document's body for configured mutations
-    observer.observe(document.body, config);
+      // Start observing the document's body for configured mutations
+      observer.observe(document.body, config);
 
-    // Add a click event listener to the button
-    customizeButton.click(function() {
-        isCustomizationActive = true;
-        console.log('customize button clicked');
-         $('body').addClass('patch_customizer_main_page');
-        // Hide the bannerLow if it already exists
-        var bannerLow = document.querySelector('.yotpo-banner-low');
-        if (bannerLow) {
-            bannerLow.style.display = 'none';
-        }
+      // Add a click event listener to the button
+      customizeButton.click(function() {
+          isCustomizationActive = true;
+          console.log('customize button clicked');
+           $('body').addClass('patch_customizer_main_page');
+          // Hide the bannerLow if it already exists
+          var bannerLow = document.querySelector('.yotpo-banner-low');
+          if (bannerLow) {
+              bannerLow.style.display = 'none';
+          }
 
-        // Select all elements with the hide-for-customization class and hide them
-        $('.hide-for-customization').hide();
-        $('.yotpo-widget-clear').hide();
-        $('.yotpo-reviews-list').hide();
-        $('#shopify-block-yotpo_product_reviews_ugc_reviews_MbrNNx').hide();
-        $('#shopify-section-template--15691086168166__shop_with_us_4cNKDq').hide();
+          // Select all elements with the hide-for-customization class and hide them
+          $('.hide-for-customization').hide();
+          $('.yotpo-widget-clear').hide();
+          $('.yotpo-reviews-list').hide();
+          $('#shopify-block-yotpo_product_reviews_ugc_reviews_MbrNNx').hide();
+          $('#shopify-section-template--15691086168166__shop_with_us_4cNKDq').hide();
 
-        $('.footer').hide();
-        $('.annoucment-bar-top').hide();
-        $('#header').hide();
-        $('#some-id').hide();
-        // $('.yotpo-banner-low').hide();
+          $('.footer').hide();
+          $('.annoucment-bar-top').hide();
+          $('#header').hide();
+          $('#some-id').hide();
+          // $('.yotpo-banner-low').hide();
 
-        // Show the product customization div
-        $('.product-customization').show();
+          // Show the product customization div
+          $('.product-customization').show();
 
-        // Add classes to make other elements visible
-        $('.announce-bar-slide-wrapper, .header-background--solid, .content').hide();
-        $('.customize-cart-button').hide();
+          // Add classes to make other elements visible
+          $('.announce-bar-slide-wrapper, .header-background--solid, .content').hide();
+          $('.customize-cart-button').hide();
 
-        // Add a class to cartButton to make it visible
-        cartButton.addClass('customize-cart-button-visible');
-         const productTags = {{ product.tags | json }};
-        if  (productTags.includes("none-size-products")) {
-    $('.size_variants_section').hide();
-}
-        if  (productTags.includes("happ-velour-set")) {
-   document.querySelector('.size_variants_section').style.setProperty('visibility', 'visible', 'important');
+          // Add a class to cartButton to make it visible
+          cartButton.addClass('customize-cart-button-visible');
+           const productTags = {{ product.tags | json }};
+          if  (productTags.includes("none-size-products")) {
+      $('.size_variants_section').hide();
+  }
+          if  (productTags.includes("happ-velour-set")) {
+     document.querySelector('.size_variants_section').style.setProperty('visibility', 'visible', 'important');
 
-}
+  }
+      });
+
+      // Add click event listener to the neverMindBtn button
+      neverMindBtn.click(function() {
+          $('.all-sidebar-cross-alert').removeClass('all-sidebar-cross-alert-visble');
+         $('.patches-customization-container-overly').css('display', 'none');
+      });
+
+      // Clear neverMindBtn click event listener
+      // clearneverMindBtn.click(function() {
+      //     // Reload the page
+      //     location.reload();
+      // });
     });
-
-    // Add click event listener to the neverMindBtn button
-    neverMindBtn.click(function() {
-        $('.all-sidebar-cross-alert').removeClass('all-sidebar-cross-alert-visble');
-       $('.patches-customization-container-overly').css('display', 'none');
-    });
-
-    // Clear neverMindBtn click event listener
-    // clearneverMindBtn.click(function() {
-    //     // Reload the page
-    //     location.reload();
-    // });
-  });
 </script>
 
 <script>
- 
+
 
 
 
@@ -820,7 +818,8 @@ async function fetchAllProducts() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-Shopify-Storefront-Access-Token': '17418121749abfc8793ce070963ebf5d',
+        // 'X-Shopify-Storefront-Access-Token': '17418121749abfc8793ce070963ebf5d',
+        'X-Shopify-Storefront-Access-Token': 'c41c7dd94fd50634aa7899556f558015',
           'Cache-Control': 'no-cache',
        'Pragma': 'no-cache',  // Add this to force no-cache behavior
         'Expires': '0',        // Set this to ensure the response is always fresh
@@ -4906,12 +4905,12 @@ BackcenterBox.addEventListener('mouseup', function (event) {
 </script>
 <!-- pop up open,close and patch-delete code -->
 <script>
-    $(document).ready(function() {
-      $(document).on('click', function(event) {
-        const patchElement = $(event.target).closest('.patch-');
+  $(document).ready(function() {
+    $(document).on('click', function(event) {
+      const patchElement = $(event.target).closest('.patch-');
 
-      });
     });
+  });
 </script>
 <!-- back and front button code -->
 <script>
@@ -5377,155 +5376,155 @@ var patchActionElement = actionPatch.find('.patch-action');
   });
 </script>
 <script>
-    $(document).ready(function() {
-     // var order = 1; // Initialize order counter
-     // var orderBack = 1;
+  $(document).ready(function() {
+   // var order = 1; // Initialize order counter
+   // var orderBack = 1;
 
-        $(document).on('click', '.selected-patch-for-customization-for-front', function(event) {
-           $('.main-patch-action-div-del').css('visibility', 'hidden');
-            var $clickedPatch = $(this);
-            var patchId = $clickedPatch.data('patch-id');
+      $(document).on('click', '.selected-patch-for-customization-for-front', function(event) {
+         $('.main-patch-action-div-del').css('visibility', 'hidden');
+          var $clickedPatch = $(this);
+          var patchId = $clickedPatch.data('patch-id');
 
-           console.log('order',order)
-            if (!$clickedPatch.hasClass('patch-selected')) {
+         console.log('order',order)
+          if (!$clickedPatch.hasClass('patch-selected')) {
+            if (!$clickedPatch.hasClass('edit-btn-patch-selected')){
+                   // If not selected, add order and class
+
+              $clickedPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + order + '</span>');
+              var $targetPatch = $('[data-patch-id="' + patchId + '"]');
+               $targetPatch.addClass('patch-selected-by-both')
+               // $targetPatch.removeClass('patch-transparent-border')
+               // $('#' + patchId).removeClass('patch-transparent-border');
+              $('#' + patchId).addClass('patch-action').attr('order-data', order);
+
+              order++;
+              changefillColors();
+            }
+
+          } else {
+              // If already selected, remove from selection and order
+
+              $clickedPatch.removeClass('patch-selected').find('.selected-patch-order').remove();
+            console.log('removing patch action and patch selection');
+            console.log(patchId);
+
+
+             $('#' + patchId).removeClass('patch-action').removeAttr('order-data');
+                  // Update orders of other selected patches
+              var currentOrder = 1;
+
+                var $targetPatch = $('[data-patch-id="' + patchId + '"]');
+               $targetPatch.removeClass('patch-selected-by-both')
+
+              $('.selected-patch-for-customization-for-front.patch-selected').each(function() {
+                  var $patch = $(this);
+                   var patchId = $patch.data('patch-id');
+                  $patch.find('.selected-patch-order').text(currentOrder);
+                     $('#' + patchId).addClass('patch-action').attr('order-data', currentOrder);
+                  currentOrder++;
+              });
+
+              order--; // Decrement the order counter
+             changefillColors();
+          }
+
+          // Log the target .patch- element to the console
+
+
+          event.stopPropagation(); // Prevent click event from bubbling up
+          if ($('.edit-btn-patch-selected').hasClass('patch-selected-by-both')) {
+              $('.delete-patches-wrapper-sidebar > .tidy-patches-delete-btn-wrraper').show();
+          } else {
+              $('.delete-patches-wrapper-sidebar > .tidy-patches-delete-btn-wrraper').hide();
+          }
+      });
+      $(document).on('click', '.selected-patch-for-customization-for-back', function(event) {
+        $('.main-patch-action-div-del').css('visibility', 'hidden');
+
+          var $clickedPatch = $(this);
+          var patchId = $clickedPatch.data('patch-id');
+          if (!$clickedPatch.hasClass('patch-selected')) {
+              // // If not selected, add order and class
+              // $clickedPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + orderBack + '</span>');
+              // $('#' + patchId).addClass('patch-action').attr('order-data', orderBack);
+              // orderBack++;
+
               if (!$clickedPatch.hasClass('edit-btn-patch-selected')){
-                     // If not selected, add order and class
+                   // If not selected, add order and class
 
-                $clickedPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + order + '</span>');
-                var $targetPatch = $('[data-patch-id="' + patchId + '"]');
-                 $targetPatch.addClass('patch-selected-by-both')
-                 // $targetPatch.removeClass('patch-transparent-border')
-                 // $('#' + patchId).removeClass('patch-transparent-border');
-                $('#' + patchId).addClass('patch-action').attr('order-data', order);
-
-                order++;
-                changefillColors();
-              }
-
-            } else {
-                // If already selected, remove from selection and order
-
-                $clickedPatch.removeClass('patch-selected').find('.selected-patch-order').remove();
-              console.log('removing patch action and patch selection');
-              console.log(patchId);
-
-
-               $('#' + patchId).removeClass('patch-action').removeAttr('order-data');
-                    // Update orders of other selected patches
-                var currentOrder = 1;
-
-                  var $targetPatch = $('[data-patch-id="' + patchId + '"]');
-                 $targetPatch.removeClass('patch-selected-by-both')
-
-                $('.selected-patch-for-customization-for-front.patch-selected').each(function() {
-                    var $patch = $(this);
-                     var patchId = $patch.data('patch-id');
-                    $patch.find('.selected-patch-order').text(currentOrder);
-                       $('#' + patchId).addClass('patch-action').attr('order-data', currentOrder);
-                    currentOrder++;
-                });
-
-                order--; // Decrement the order counter
-               changefillColors();
+              $clickedPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + orderBack + '</span>');
+              var $targetPatch = $('[data-patch-id="' + patchId + '"]');
+               $targetPatch.addClass('patch-selected-by-both')
+              $('#' + patchId).addClass('patch-action').attr('order-data', orderBack);
+              orderBack++;
+                  changefillColors();
             }
 
-            // Log the target .patch- element to the console
+          } else {
+              // If already selected, remove from selection and order
+              $clickedPatch.removeClass('patch-selected').find('.selected-patch-order').remove();
+             $('#' + patchId).removeClass('patch-action').removeAttr('order-data');
+                  // Update orders of other selected patches
+              var currentOrder = 1;
+                var $targetPatch = $('[data-patch-id="' + patchId + '"]');
+               $targetPatch.removeClass('patch-selected-by-both')
+              $('.selected-patch-for-customization-for-back.patch-selected').each(function() {
+                  var $patch = $(this);
+                   var patchId = $patch.data('patch-id');
+                  $patch.find('.selected-patch-order').text(currentOrder);
+                    $('#' + patchId).addClass('patch-action').attr('order-data', currentOrder);
+                  currentOrder++;
+              });
+
+              orderBack--; // Decrement the order counter
+             changefillColors();
+          }
+
+          // Log the target .patch- element to the console
 
 
-            event.stopPropagation(); // Prevent click event from bubbling up
+          event.stopPropagation(); // Prevent click event from bubbling up
+      });
+
+        $(document).on('click', '.patches-customizations-clear-btn', function(event) {
+          const elementsToDelete = $('.patch-, .selected-patch-for-customization');
+          elementsToDelete.each(function() {
+              $(this).remove();
+              $('.patches-customization-clear-alert-pop-up').css('display', 'none');
+               $('.patches-customization-container-overly').css('display', 'none');
+              $('.patches-editor-wrapper').css('display', 'block');
+            $('.delete-patches-wrapper-sidebar').css('display', 'none');
+            $('.patches-customization-editor').css('display', 'none');
+              checkPatchesPosition();
+          });
+
+          // Reset the order counter to 1
+          order = 1;
+          orderBack = 1;
             if ($('.edit-btn-patch-selected').hasClass('patch-selected-by-both')) {
-                $('.delete-patches-wrapper-sidebar > .tidy-patches-delete-btn-wrraper').show();
-            } else {
-                $('.delete-patches-wrapper-sidebar > .tidy-patches-delete-btn-wrraper').hide();
-            }
-        });
-        $(document).on('click', '.selected-patch-for-customization-for-back', function(event) {
-          $('.main-patch-action-div-del').css('visibility', 'hidden');
-                 
-            var $clickedPatch = $(this);
-            var patchId = $clickedPatch.data('patch-id');
-            if (!$clickedPatch.hasClass('patch-selected')) {
-                // // If not selected, add order and class
-                // $clickedPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + orderBack + '</span>');
-                // $('#' + patchId).addClass('patch-action').attr('order-data', orderBack);
-                // orderBack++;
+              $('.delete-patches-wrapper-sidebar > .tidy-patches-delete-btn-wrraper').show();
+          } else {
+              $('.delete-patches-wrapper-sidebar > .tidy-patches-delete-btn-wrraper').hide();
+          }
+      });
+    $(document).on('click', function(event) {
+      // Check if the clicked target has the class 'tidy-patches-delete-btn'
+      if ($(event.target).hasClass('tidy-patches-delete-btn') && $('.patch-action').length) {
+          // Select elements with classes 'patch-action' and 'patch-selected'
+          const elementsToDelete = $('.patch-action, .patch-selected, .patch-selected-by-btn, .patch-selected-by-both');
 
-                if (!$clickedPatch.hasClass('edit-btn-patch-selected')){
-                     // If not selected, add order and class
+          // Remove each of the selected elements
+          elementsToDelete.each(function() {
+              $(this).remove();
+          });
 
-                $clickedPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + orderBack + '</span>');
-                var $targetPatch = $('[data-patch-id="' + patchId + '"]');
-                 $targetPatch.addClass('patch-selected-by-both')
-                $('#' + patchId).addClass('patch-action').attr('order-data', orderBack);
-                orderBack++;
-                    changefillColors();
-              }
+          // Reset the order variable
+          order = 1;
+          orderBack = 1;
+      }
+  });
 
-            } else {
-                // If already selected, remove from selection and order
-                $clickedPatch.removeClass('patch-selected').find('.selected-patch-order').remove();
-               $('#' + patchId).removeClass('patch-action').removeAttr('order-data');
-                    // Update orders of other selected patches
-                var currentOrder = 1;
-                  var $targetPatch = $('[data-patch-id="' + patchId + '"]');
-                 $targetPatch.removeClass('patch-selected-by-both')
-                $('.selected-patch-for-customization-for-back.patch-selected').each(function() {
-                    var $patch = $(this);
-                     var patchId = $patch.data('patch-id');
-                    $patch.find('.selected-patch-order').text(currentOrder);
-                      $('#' + patchId).addClass('patch-action').attr('order-data', currentOrder);
-                    currentOrder++;
-                });
-
-                orderBack--; // Decrement the order counter
-               changefillColors();
-            }
-
-            // Log the target .patch- element to the console
-
-
-            event.stopPropagation(); // Prevent click event from bubbling up
-        });
-
-          $(document).on('click', '.patches-customizations-clear-btn', function(event) {
-            const elementsToDelete = $('.patch-, .selected-patch-for-customization');
-            elementsToDelete.each(function() {
-                $(this).remove();
-                $('.patches-customization-clear-alert-pop-up').css('display', 'none');
-                 $('.patches-customization-container-overly').css('display', 'none');
-                $('.patches-editor-wrapper').css('display', 'block');
-              $('.delete-patches-wrapper-sidebar').css('display', 'none');
-              $('.patches-customization-editor').css('display', 'none');
-                checkPatchesPosition();
-            });
-
-            // Reset the order counter to 1
-            order = 1;
-            orderBack = 1;
-              if ($('.edit-btn-patch-selected').hasClass('patch-selected-by-both')) {
-                $('.delete-patches-wrapper-sidebar > .tidy-patches-delete-btn-wrraper').show();
-            } else {
-                $('.delete-patches-wrapper-sidebar > .tidy-patches-delete-btn-wrraper').hide();
-            }
-        });
-      $(document).on('click', function(event) {
-        // Check if the clicked target has the class 'tidy-patches-delete-btn'
-        if ($(event.target).hasClass('tidy-patches-delete-btn') && $('.patch-action').length) {
-            // Select elements with classes 'patch-action' and 'patch-selected'
-            const elementsToDelete = $('.patch-action, .patch-selected, .patch-selected-by-btn, .patch-selected-by-both');
-
-            // Remove each of the selected elements
-            elementsToDelete.each(function() {
-                $(this).remove();
-            });
-
-            // Reset the order variable
-            order = 1;
-            orderBack = 1;
-        }
-    });
-
-    });
+  });
 </script>
 {% comment %} <!-- code of alignments patches--> {% endcomment %}
 <script>
@@ -6496,49 +6495,49 @@ function checkPatchallOverlapping() {
 }
 </script>
 <script>
-    $(document).on('click', '.front-selected-patches-select', function() {
-      // Add the 'patch-selected' class to all elements with the class 'selected-patch-for-customization-for-front'
-      $('.selected-patch-for-customization-for-front').addClass('patch-selected-by-btn');
-      $('.centerBox > .patches-container > .patch-').addClass('patch-action');
+      $(document).on('click', '.front-selected-patches-select', function() {
+        // Add the 'patch-selected' class to all elements with the class 'selected-patch-for-customization-for-front'
+        $('.selected-patch-for-customization-for-front').addClass('patch-selected-by-btn');
+        $('.centerBox > .patches-container > .patch-').addClass('patch-action');
+        changefillColors();
+    });
+
+    $(document).on('click', '.front-selected-patches-unselect', function() {
+        // Remove the 'patch-selected' class from all elements with the class 'selected-patch-for-customization-for-front'
+        $('.selected-patch-for-customization-for-front').removeClass('patch-selected-by-btn');
+      $('.centerBox > .patches-container > .patch-').removeClass('patch-action');
+      $('.selected-patch-for-customization-for-front').removeClass('patch-selected');
+      $('.selected-patch-for-customization-for-front').removeClass('patch-selected-by-both');
+      $('.selected-patch-for-customization-for-front > .selected-patch-order').remove();
+      // Select all divs with the class "main-patch-action-div-del" and set their visibility to hidden
+     $('.main-patch-action-div-del').css('visibility', 'hidden');
+      console.log('this is order',order)
+      order=1;
+      console.log('this is new order',order)
       changefillColors();
-  });
+    });
+      $(document).on('click', '.back-selected-patches-select', function() {
+        // Add the 'patch-selected' class to all elements with the class 'selected-patch-for-customization-for-front'
+        $('.selected-patch-for-customization-for-back').addClass('patch-selected-by-btn');
+        $('.BackcenterBox > .patches-containerr > .patch-').addClass('patch-action');
 
-  $(document).on('click', '.front-selected-patches-unselect', function() {
-      // Remove the 'patch-selected' class from all elements with the class 'selected-patch-for-customization-for-front'
-      $('.selected-patch-for-customization-for-front').removeClass('patch-selected-by-btn');
-    $('.centerBox > .patches-container > .patch-').removeClass('patch-action');
-    $('.selected-patch-for-customization-for-front').removeClass('patch-selected');
-    $('.selected-patch-for-customization-for-front').removeClass('patch-selected-by-both');
-    $('.selected-patch-for-customization-for-front > .selected-patch-order').remove();
-    // Select all divs with the class "main-patch-action-div-del" and set their visibility to hidden
-   $('.main-patch-action-div-del').css('visibility', 'hidden');
-    console.log('this is order',order)
-    order=1;
-    console.log('this is new order',order)
-    changefillColors();
-  });
-    $(document).on('click', '.back-selected-patches-select', function() {
-      // Add the 'patch-selected' class to all elements with the class 'selected-patch-for-customization-for-front'
-      $('.selected-patch-for-customization-for-back').addClass('patch-selected-by-btn');
-      $('.BackcenterBox > .patches-containerr > .patch-').addClass('patch-action');
+        changefillColors();
+    });
 
+    $(document).on('click', '.back-selected-patches-unselect', function() {
+        // Remove the 'patch-selected' class from all elements with the class 'selected-patch-for-customization-for-front'
+        $('.selected-patch-for-customization-for-back').removeClass('patch-selected-by-btn');
+      $('.BackcenterBox > .patches-containerr > .patch-').removeClass('patch-action');
+        $('.BackcenterBox > .patches-containerr > .patch-').removeClass('patch-selected');
+          $('.selected-patch-for-customization-for-back').removeClass('patch-selected');
+      $('.selected-patch-for-customization-for-back').removeClass('patch-selected-by-both');
+      $('.selected-patch-for-customization-for-back > .selected-patch-order').remove();
+  $('.main-patch-action-div-del').css('visibility', 'hidden');
       changefillColors();
-  });
-
-  $(document).on('click', '.back-selected-patches-unselect', function() {
-      // Remove the 'patch-selected' class from all elements with the class 'selected-patch-for-customization-for-front'
-      $('.selected-patch-for-customization-for-back').removeClass('patch-selected-by-btn');
-    $('.BackcenterBox > .patches-containerr > .patch-').removeClass('patch-action');
-      $('.BackcenterBox > .patches-containerr > .patch-').removeClass('patch-selected');
-        $('.selected-patch-for-customization-for-back').removeClass('patch-selected');
-    $('.selected-patch-for-customization-for-back').removeClass('patch-selected-by-both');
-    $('.selected-patch-for-customization-for-back > .selected-patch-order').remove();
-$('.main-patch-action-div-del').css('visibility', 'hidden');
-    changefillColors();
-      orderBack=1;
-  });
+        orderBack=1;
+    });
 </script>
-    <script>// Function to resize patches and adjust positions dynamically
+<script>// Function to resize patches and adjust positions dynamically
 // Function to initialize the dataset for a patch
 function initializePatch(patch, referenceWidth, referenceHeight, containerWidth, containerHeight) {
     if (!patch.dataset.originalWidth) {
@@ -6672,29 +6671,26 @@ window.addEventListener("resize", () => {
     adjustPatches(false);
     console.log("Screen resized. adjustPatches called.");
 });
+</script>
+<script>
+  $(document).on('click', function(event) {
+      // Check if the clicked target has the class 'tidy-patches-delete-btn'
+      if ($(event.target).hasClass('main-patch-action-div-del') && $('.patch-action').length) {
+        console.log('delete icon clickedd');
+          // Select elements with classes 'patch-action' and 'patch-selected'
+          const elementsToDelete = $('.patch-action, .patch-selected, .patch-selected-by-btn, .patch-selected-by-both, .selected-patch-for-customization');
 
+          // Remove each of the selected elements
+          elementsToDelete.each(function() {
+              $(this).remove();
+          });
 
-
-
-
-  </script>
- <script> $(document).on('click', function(event) {
-        // Check if the clicked target has the class 'tidy-patches-delete-btn'
-        if ($(event.target).hasClass('main-patch-action-div-del') && $('.patch-action').length) {
-          console.log('delete icon clickedd');
-            // Select elements with classes 'patch-action' and 'patch-selected'
-            const elementsToDelete = $('.patch-action, .patch-selected, .patch-selected-by-btn, .patch-selected-by-both, .selected-patch-for-customization');
-
-            // Remove each of the selected elements
-            elementsToDelete.each(function() {
-                $(this).remove();
-            });
-
-            // Reset the order variable
-            order = 1;
-            orderBack = 1;
-        }
-    });</script>
+          // Reset the order variable
+          order = 1;
+          orderBack = 1;
+      }
+  });
+</script>
 <script>
     $(document).ready(function() {
        function showBackOrFront(event) {
