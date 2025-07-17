@@ -199,15 +199,17 @@
     // Show Front Area, Hide Back Area
     $('#emb-Front-Area').css({
       'visibility': 'visible',
-      'top': '0px',
-      'left': '0px'
+      // 'top': '0px',
+      // 'left': '0px'
     });
     $('#emb-Back-area').css('visibility', 'hidden');
+    $('#emb-Front-Area').removeClass('image-hidden');        
   } else {
             
     // Show Back Area, Hide Front Area
     $('#emb-Back-area').css('visibility', 'visible');
     $('#emb-Front-Area').css('visibility', 'hidden');
+    $('#emb-Back-area').removeClass('image-hidden');
   }
           $('.emb_fonts_words_btn_active').removeClass('emb_fonts_words_btn_active');
 
@@ -225,11 +227,13 @@
     // Show Front Area, Hide Back Area
     $('#emb-Front-Area').css('visibility', 'visible');
     $('#emb-Back-area').css('visibility', 'hidden');
+    $('#emb-Front-Area').removeClass('image-hidden');
   } else {
            
     // Show Back Area, Hide Front Area
     $('#emb-Back-area').css('visibility', 'visible');
     $('#emb-Front-Area').css('visibility', 'hidden');
+    $('#emb-Front-Area').removeClass('image-hidden');  
   }
               var inputValue = $('.Fchestinput').val();
   $('.emb-font-type-area').text(inputValue);
