@@ -288,7 +288,7 @@
         "image_eJCjKd": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/024A8778.jpg",
+            "image": "shopify://shop_images/LATB_BTS25_01296.jpg",
             "link": "shopify://collections/newarrivals",
             "title": "",
             "title_n": "123",
@@ -331,7 +331,7 @@
         "image_YKz689": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/024A9150.jpg",
+            "image": "shopify://shop_images/LATB_BTS25_01912.jpg",
             "link": "https://lolaandtheboys.com/collections/girls-1",
             "title1": "Girls",
             "customclass": "",
@@ -343,7 +343,7 @@
         "image_fph4tc": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/SHOES_1.jpg",
+            "image": "shopify://shop_images/LATB_BTS25_00135.jpg",
             "link": "https://lolaandtheboys.com/collections/shoes2022",
             "title1": "Shoes",
             "customclass": "shoes-img-fix",
@@ -355,7 +355,7 @@
         "image_q8RiTa": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Lola_The_Boys_21_0008.jpg",
+            "image": "shopify://shop_images/LATB_BTS25_01474.jpg",
             "link": "https://lolaandtheboys.com/collections/boys-1",
             "title1": "Boys",
             "customclass": "",
@@ -379,7 +379,7 @@
         "image_DP4QiN": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/SETS_f4a8728c-cfd8-485d-967d-f23be2378d21.jpg",
+            "image": "shopify://shop_images/LATB_BTS25_00202.jpg",
             "link": "shopify://collections/sets",
             "title1": "SETS",
             "customclass": "",
@@ -391,7 +391,7 @@
         "image_BdmfEw": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/CUSTOMIZE_PHOTO.jpg",
+            "image": "shopify://shop_images/Photoroom_20250718_123257.jpg",
             "link": "shopify://collections/customize-patch-products",
             "title1": "Customize It",
             "customclass": "",
@@ -539,18 +539,18 @@
         "image_9Qgf3d": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/SWIM_SWIM_SWIm.jpg",
-            "link": "https://lolaandtheboys.com/collections/swimwear",
-            "title": "Swimwear",
+            "image": "shopify://shop_images/LATB_BTS25_00635.jpg",
+            "link": "shopify://collections/activewear",
+            "title": "ACTIVEWEAR",
             "text": "",
             "button_label": "shop now",
-            "button_link": "shopify://collections/valentines-day"
+            "button_link": "shopify://collections/activewear"
           }
         },
         "image_wedKWc": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/024A1320.jpg",
+            "image": "shopify://shop_images/LATB_BTS25_01861.jpg",
             "link": "https://lolaandtheboys.com/collections/girls-dresses-1",
             "title": "Dresses",
             "text": "",
@@ -637,18 +637,18 @@
         "image_xkDgQ7": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/LATB_Holiday25_10292024_00041_1.jpg",
-            "link": "https://lolaandtheboys.com/collections/loungewear",
-            "title1": "Lounge Sets",
+            "image": "shopify://shop_images/LATB_Lookbook_12092024_0939.jpg",
+            "link": "shopify://collections/silk-sets",
+            "title1": "SILK SETS",
             "text": "",
             "button_label": "Shop now",
-            "button_link": "https://lolaandtheboys.com/collections/fall-outerwear"
+            "button_link": "shopify://collections/silk-sets"
           }
         },
         "image_h4Vwnh": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Lola_The_Boys_39_0054.jpg",
+            "image": "shopify://shop_images/1_102_1.jpg",
             "link": "shopify://collections/mommy-me-1",
             "title1": "Mommy + Me",
             "text": "",
