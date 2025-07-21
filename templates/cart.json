@@ -18,22 +18,22 @@
         "cart_message": ""
       }
     },
-    "17480266166557474c": {
+    "17531262362d0c5fd0": {
       "type": "apps",
       "blocks": {
-        "swipe_post_protect_Q4Gfr3": {
+        "swipe_post_protect_Vhi3mp": {
           "type": "shopify://apps/swipe/blocks/post_protect/c8ef0120-cac7-4dcf-9bf1-52b5c97da31d",
           "settings": {}
         }
       },
       "block_order": [
-        "swipe_post_protect_Q4Gfr3"
+        "swipe_post_protect_Vhi3mp"
       ],
       "settings": {}
     }
   },
   "order": [
     "cart-template",
-    "17480266166557474c"
+    "17531262362d0c5fd0"
   ]
 }
