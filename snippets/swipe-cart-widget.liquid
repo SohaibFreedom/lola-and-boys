@@ -954,6 +954,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const cartObserver = new MutationObserver(() => {
       // re-run your function so currentFormattedTotal is refreshed
       replaceNativeWithCustom();
+      injectGlobalPopup();
     });
 
     cartObserver.observe(rebuy, {
