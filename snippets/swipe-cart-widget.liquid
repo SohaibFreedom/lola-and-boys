@@ -838,6 +838,14 @@ function injectGlobalPopup() {
 
  */
 async function replaceNativeWithCustom() {
+ let formattedTotal = "";
+  try {
+    const cart = await getCartItem();
+    formattedTotal = formatCentsToMoney(cart.items_subtotal_price);
+  } catch (e) {
+    console.error("Cart fetch failed", e);
+  }
+  
     const currentFormattedTotal = await fetchAndFormatCartTotal();
   const { tier } = await computeProtectionTier();
     const protectionPrice = tier ? tier.title : "$0.00"; // Default to $0.00 if no tier matches
@@ -860,7 +868,7 @@ async function replaceNativeWithCustom() {
                 // Call the separate update function for this.
                 const btn = origEl.nextElementSibling?.querySelector(".swipe-btn-protection");
                 if (btn) {
-                     btn.textContent = `Checkout + ${protectionPrice}`;
+                     btn.textContent = `Checkout + ${formattedTotal} + ${protectionPrice}`;
                 }
                 return; 
             }
@@ -890,7 +898,7 @@ async function replaceNativeWithCustom() {
                     Checkout without package protection
                 </a>
                 <button class="swipe-btn-protection" style="padding:.5rem 1rem; border:none; border-radius:4px; cursor:pointer;">
-                    Checkout + ${protectionPrice}
+                    Checkout + ${formattedTotal} + ${protectionPrice}
                 </button>`;
 
             origEl.insertAdjacentElement("afterend", box);
