@@ -20,6 +20,15 @@
     },
     "17480266166557474c": {
       "type": "apps",
+      "blocks": {
+        "swipe_post_protect_Q4Gfr3": {
+          "type": "shopify://apps/swipe/blocks/post_protect/c8ef0120-cac7-4dcf-9bf1-52b5c97da31d",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "swipe_post_protect_Q4Gfr3"
+      ],
       "settings": {}
     },
     "174802662754b715c8": {
