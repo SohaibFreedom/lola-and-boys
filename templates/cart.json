@@ -30,34 +30,10 @@
         "swipe_post_protect_Q4Gfr3"
       ],
       "settings": {}
-    },
-    "174802662754b715c8": {
-      "type": "apps",
-      "blocks": {
-        "swipe_post_protect_LVjaA8": {
-          "type": "shopify://apps/swipe/blocks/post_protect/c8ef0120-cac7-4dcf-9bf1-52b5c97da31d",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "swipe_post_protect_LVjaA8"
-      ],
-      "settings": {}
-    },
-    "1748027783f32e5368": {
-      "type": "apps",
-      "settings": {}
-    },
-    "1748027792858f91c5": {
-      "type": "apps",
-      "settings": {}
     }
   },
   "order": [
     "cart-template",
-    "17480266166557474c",
-    "174802662754b715c8",
-    "1748027783f32e5368",
-    "1748027792858f91c5"
+    "17480266166557474c"
   ]
 }
