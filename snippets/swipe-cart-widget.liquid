@@ -67,7 +67,8 @@ let postProtectedProduct = null; // existing protection line item, if any
 
 // Helper to replace "{{amount}}" in the shop’s money format
 const moneyFormat = (amount) => {
-    return window.postMoneyFomat.replace("{{amount}}", amount);
+  const cleanAmount = parseFloat(amount).toFixed(2);
+  return window.postMoneyFomat.replace("{{amount}}", cleanAmount);
 };
 
 // Build fetch params for JSON calls
@@ -738,16 +739,6 @@ const popupHTML = `<section class="swipe-popup">
 
 
 
-// Function to fetch the cart total and format it
-async function fetchAndFormatCartTotal() {
-    try {
-        const cart = await getCartItem();
-        return '$' + (cart.items_subtotal_price / 100).toFixed(2);
-    } catch (e) {
-        console.error("Cart fetch failed for total update:", e);
-        return "$0.00"; // Fallback
-    }
-}
 
 // Helper to remove any existing Swipe protection before plain checkout:
 async function removeExistingProtectionIfAny() {
@@ -838,17 +829,28 @@ function injectGlobalPopup() {
 
  */
 async function replaceNativeWithCustom() {
- let formattedTotal = "";
-  try {
-    const cart = await getCartItem();
-    formattedTotal = formatCentsToMoney(cart.items_subtotal_price);
-  } catch (e) {
-    console.error("Cart fetch failed", e);
+  const cart = await getCartItem();
+  const { tier, postProtectedProduct: existing } = await computeProtectionTier();
+
+  // start with the raw subtotal (this _does_ include protection if it’s there)
+  let baseSubtotal = cart.items_subtotal_price / 100;
+
+  // if there _is_ a protection line, knock it off so we don't double‑count:
+  if (existing && existing.final_line_price) {
+    baseSubtotal -= existing.final_line_price / 100;
   }
-  
-    const currentFormattedTotal = await fetchAndFormatCartTotal();
-  const { tier } = await computeProtectionTier();
-    const protectionPrice = tier ? tier.title : "$0.00"; // Default to $0.00 if no tier matches
+
+  const protectionAmount = tier
+    ? parseFloat(tier.title.replace(/[^0-9.-]/g, ""))
+    : 0;
+  const totalWithProtection = baseSubtotal + protectionAmount;
+ const formattedTotal = new Intl.NumberFormat(navigator.language, {
+    style:    "currency",
+    currency: cart.currency,     // e.g. "USD", "EUR", etc.
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  }).format(totalWithProtection);
+
 
     const checkoutSelectors = [
         'a[href$="/checkout"]',
@@ -868,7 +870,7 @@ async function replaceNativeWithCustom() {
                 // Call the separate update function for this.
                 const btn = origEl.nextElementSibling?.querySelector(".swipe-btn-protection");
                 if (btn) {
-                     btn.textContent = `Checkout + ${formattedTotal} + ${protectionPrice}`;
+                     btn.textContent = `Checkout + ${formattedTotal}`;
                 }
                 return; 
             }
@@ -898,7 +900,7 @@ async function replaceNativeWithCustom() {
                     Checkout without package protection
                 </a>
                 <button class="swipe-btn-protection" style="padding:.5rem 1rem; border:none; border-radius:4px; cursor:pointer;">
-                    Checkout + ${formattedTotal} + ${protectionPrice}
+                    Checkout + ${formattedTotal}
                 </button>`;
 
             origEl.insertAdjacentElement("afterend", box);
