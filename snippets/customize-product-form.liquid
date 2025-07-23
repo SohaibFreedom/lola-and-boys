@@ -1041,6 +1041,10 @@ async function addcartfiles() {
                 });
 
                 return await response.json();
+                 // After adding, check & remove stitching fee if needed
+        await removeStitchingFeeIfNeeded();
+
+        console.log('Products added and stitching fee checked.');
             } catch (error) {
                 console.error('Error adding items to cart:', error);
                 throw error; // Re-throw the error for further handling
