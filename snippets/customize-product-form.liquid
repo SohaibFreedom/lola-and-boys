@@ -998,54 +998,95 @@ async function addcartfiles() {
       console.error('Error adding items to cart:', error);
       // Handle error
     }
-    async function addToCart(variants, customizedImageUrl, customizedPrice,sizeVariants,messagaeData,customizedBackImageUrl) {
-            try {
-                // Prepare data for adding to cart
-                const items = variants.map(variant => {
-                    const item = {
-                        id: variant.name,
-                        image: customizedImageUrl,
-                        quantity: 1
-                    };
+    async function addToCart(variants, customizedImageUrl, customizedPrice, sizeVariants, messagaeData, customizedBackImageUrl) {
+    try {
+        // Prepare data for adding to cart
+        const items = variants.map(variant => {
+            const item = {
+                id: variant.name, // if this should really be variant.id, update it!
+                image: customizedImageUrl,
+                quantity: 1
+            };
 
-                    // Define properties based on variant ID
-                    if (variant.name ===  variantID) {
-                        item.properties = {
-                            "Product Name": '{{ product.title }}',
-                            _customized_image_url_front: customizedImageUrl,
-                            _customized_image_url_back:customizedBackImageUrl,
-                            _size:sizeVariants,
-                            _info:messagaeData,
-                            _patches_price: customizedPrice,
-                           _Timestamp: Date.now().toString()
-                        };
-                    } else {
-                        item.properties = {
-                            name: 'Custom Product',
-                            _parent_variant:  variantID,
-                            _Timestamp: Date.now().toString(),
-                            _Unique: `${variant.id}_${Date.now()}`
-                        };
-                    }
-                    return item;
-                });
+            // Define properties based on variant ID
+            if (variant.name === variantID) {
+                item.properties = {
+                    "Product Name": '{{ product.title }}',
+                    _customized_image_url_front: customizedImageUrl,
+                    _customized_image_url_back: customizedBackImageUrl,
+                    _size: sizeVariants,
+                    _info: messagaeData,
+                    _patches_price: customizedPrice,
+                    _Timestamp: Date.now().toString()
+                };
+            } else {
+                item.properties = {
+                    name: 'Custom Product',
+                    _parent_variant: variantID,
+                    _Timestamp: Date.now().toString(),
+                    _Unique: `${variant.id}_${Date.now()}`
+                };
+            }
+            return item;
+        });
 
-                const formData = { items };
+        const formData = { items };
 
-                const response = await fetch(window.Shopify.routes.root + 'cart/add.js', {
+        // Add items to cart
+        const response = await fetch(window.Shopify.routes.root + 'cart/add.js', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        });
+
+        await response.json();
+
+        // After adding, check & remove stitching fee if needed
+        await removeStitchingFeeIfNeeded();
+
+        console.log('Products added and stitching fee checked.');
+    } catch (error) {
+        console.error('Error adding items to cart:', error);
+        throw error; // Re-throw the error for further handling
+    }
+}
+
+async function removeStitchingFeeIfNeeded() {
+    try {
+        // Get current cart
+        const cartResponse = await fetch('/cart.js');
+        const cart = await cartResponse.json();
+
+        // Check if any item has _embroideryProduct: 'Embroidery Product'
+        const hasEmbroideryProduct = cart.items.some(item =>
+            item.properties && item.properties._embroideryProduct === 'Embroidery Product'
+        );
+
+        if (!hasEmbroideryProduct) {
+            // Find stitching fee item by variant_id
+            const stitchingFeeItem = cart.items.find(item =>
+                item.variant_id === 42085140430950
+            );
+
+            if (stitchingFeeItem) {
+                // Remove it by setting quantity to 0
+                await fetch('/cart/change.js', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(formData)
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        id: stitchingFeeItem.key,
+                        quantity: 0
+                    })
                 });
-
-                return await response.json();
-            } catch (error) {
-                console.error('Error adding items to cart:', error);
-                throw error; // Re-throw the error for further handling
+                console.log('Stitching fee removed from cart.');
             }
         }
+    } catch (error) {
+        console.error('Error removing stitching fee:', error);
+    }
+}
 }
    function hideOutOfStockDivAfterDelay() {
   setTimeout(() => {
