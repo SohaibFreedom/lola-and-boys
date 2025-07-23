@@ -1,5 +1,8 @@
 /* product filters custom Start */
-
+.product-swipe .rebuy-cart__flyout-item-quantity {
+    display: none;
+    visibility: hidden;
+}
 .product-list.usf-grid .relative.product_image.swap-false {
   overflow: hidden;
 }
