@@ -5,7 +5,7 @@
 }
 .product-swipe .rebuy-cart__flyout-item-price{
 
-  width:100%;
+  width:100% !important;
 }
 .product-list.usf-grid .relative.product_image.swap-false {
   overflow: hidden;
