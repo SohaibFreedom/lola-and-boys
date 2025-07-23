@@ -7,6 +7,9 @@
 
   width:100% !important;
 }
+[data-id="7219455066214"] .product-quantity-box.left {
+    display: none !important;
+}
 .product-list.usf-grid .relative.product_image.swap-false {
   overflow: hidden;
 }
