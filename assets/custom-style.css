@@ -3,6 +3,10 @@
     display: none;
     visibility: hidden;
 }
+.product-swipe .rebuy-cart__flyout-item-price{
+
+  width:100%;
+}
 .product-list.usf-grid .relative.product_image.swap-false {
   overflow: hidden;
 }
