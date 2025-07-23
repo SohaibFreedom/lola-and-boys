@@ -1046,6 +1046,40 @@ async function addcartfiles() {
                 throw error; // Re-throw the error for further handling
             }
         }
+  async function removeStitchingFeeIfNeeded() {
+    try {
+        // Get current cart
+        const cartResponse = await fetch('/cart.js');
+        const cart = await cartResponse.json();
+
+        // Check if any item has _embroideryProduct: 'Embroidery Product'
+        const hasEmbroideryProduct = cart.items.some(item =>
+            item.properties && item.properties._embroideryProduct === 'Embroidery Product'
+        );
+
+        if (!hasEmbroideryProduct) {
+            // Find stitching fee item by variant_id
+            const stitchingFeeItem = cart.items.find(item =>
+                item.variant_id === 42085140430950
+            );
+
+            if (stitchingFeeItem) {
+                // Remove it by setting quantity to 0
+                await fetch('/cart/change.js', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        id: stitchingFeeItem.key,
+                        quantity: 0
+                    })
+                });
+                console.log('Stitching fee removed from cart.');
+            }
+        }
+    } catch (error) {
+        console.error('Error removing stitching fee:', error);
+    }
+}
 }
    function hideOutOfStockDivAfterDelay() {
   setTimeout(() => {
