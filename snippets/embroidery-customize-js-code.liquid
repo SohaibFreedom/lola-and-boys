@@ -1601,46 +1601,58 @@ async function embaddcartfiles() {
       console.error('Error adding items to cart:', error);
       // Handle error
     }
-    async function embaddToCart(customizedImageUrl, variantID,selectedfont,selectedfontcolor ) {
-   try {
-    // Prepare the first item to add to the cart
-    const item1 = {
-        id: variantID,  // Use the provided variant ID for the first item
-        quantity: 1,  // Specify the quantity for the first item
-        properties: {
-             _embroideryProduct: 'Embroidery Product',
-            _customized_image_url_front: customizedImageUrl,
-            "Font": selectedfont,
-             "Font Color": selectedfontcolor,
-            _Timestamp: Date.now().toString(),
-           _stichingvariantID: 42085140430950,
-        }
-    };
+   async function embaddToCart(customizedImageUrl, variantID, selectedfont, selectedfontcolor) {
+    try {
+        // First: check the current cart to see if stitching fee product is already there
+        const cartResponse = await fetch('/cart.js');
+        const cart = await cartResponse.json();
 
-    // Prepare the second item to add to the cart
-    const item2 = {
-        id: 42085140430950,  // The second product's variant ID
-        quantity: 1,  // Specify the quantity for the second item
-        properties: {
-          _Timestamp: Date.now().toString()
-        }  // You can add custom properties here if needed
-    };
+        const stitchingFeeExists = cart.items.some(item =>
+            item.variant_id === 42085140430950
+        );
 
-    const formData = { items: [item1, item2] };
+        // Always add the embroidery product
+        const item1 = {
+            id: variantID,
+            quantity: 1,
+            properties: {
+                _embroideryProduct: 'Embroidery Product',
+                _customized_image_url_front: customizedImageUrl,
+                "Font": selectedfont,
+                "Font Color": selectedfontcolor,
+                _Timestamp: Date.now().toString(),
+                _stichingvariantID: 42085140430950
+            }
+        };
 
-    // Send the request to add both items to the cart
-    const response = await fetch(window.Shopify.routes.root + 'cart/add.js', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-    });
+        // If stitching fee doesn't exist, also add it
+        const itemsToAdd = stitchingFeeExists
+            ? [item1]
+            : [
+                item1,
+                {
+                    id: 42085140430950,
+                    quantity: 1,
+                    properties: {
+                        _Timestamp: Date.now().toString()
+                    }
+                }
+            ];
 
-    return await response.json();  // Return the response from Shopify
-} catch (error) {
+        const formData = { items: itemsToAdd };
+
+        // Send request to add the items
+        const response = await fetch(window.Shopify.routes.root + 'cart/add.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        });
+
+        return await response.json();  // Return the Shopify response
+
+    } catch (error) {
         console.error('Error adding item to cart:', error);
-        throw error; // Re-throw the error for further handling
+        throw error; // Re-throw for further handling
     }
 }
 
