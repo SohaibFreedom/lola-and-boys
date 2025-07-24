@@ -149,6 +149,12 @@ async function applyProtectionVariant() {
 
         // Already have a protection item at correct tier? Just update displayed price (if needed)
         if (existing && existing.variant_title === tier.title) {
+          if (existing.quantity > 1) {
+        await fetch(
+          "/cart/update.js",
+          prepParams("POST", { updates: { [existing.id]: 1 } })
+        );
+    }
             return; // nothing to do
         }
 
