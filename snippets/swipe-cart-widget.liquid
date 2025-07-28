@@ -37,7 +37,12 @@ input[name="checkout"],
 [data-rebuy-component=cart-items] .rebuy-cart__flyout-item.product-swipe {
     display: none !important;
 }
-
+.swipe-custom-box {
+  overflow: visible !important;
+}
+body:has(.swipe-custom-box) {
+  overflow-y: auto !important;
+}
    .open-popup {
    display: flex;
      justify-content:flex-start;
