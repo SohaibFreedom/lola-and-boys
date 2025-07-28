@@ -963,7 +963,7 @@ const formattedTotal = new Intl.NumberFormat(navigator.language, {
     attachPopupListeners();
 }
 
-window.addEventListener("pageshow", () => {
+document.addEventListener("DOMContentLoaded", () => {
   const bootstrap = new MutationObserver((_, obs) => {
     const rebuy = document.querySelector('[data-rebuy-cart-anchor="body"]');
     if (!rebuy) return;
