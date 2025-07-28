@@ -956,22 +956,19 @@ const formattedTotal = new Intl.NumberFormat(navigator.language, {
     attachPopupListeners();
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  // 1) Bootstrap: wait for #rebuy-cart to be injected
+window.addEventListener("pageshow", () => {
   const bootstrap = new MutationObserver((_, obs) => {
     const rebuy = document.querySelector('[data-rebuy-cart-anchor="body"]');
     if (!rebuy) return;
 
-    // Stop the bootstrap observer
     obs.disconnect();
 
-    // 2) Initial run
-    replaceNativeWithCustom();    // computes currentFormattedTotal
-    injectGlobalPopup();
+    setTimeout(() => {
+      replaceNativeWithCustom();
+      injectGlobalPopup();
+    }, 100);
 
-    // 3) Now watch for *any* changes inside #rebuy-cart
     const cartObserver = new MutationObserver(() => {
-      // re-run your function so currentFormattedTotal is refreshed
       replaceNativeWithCustom();
       injectGlobalPopup();
     });
