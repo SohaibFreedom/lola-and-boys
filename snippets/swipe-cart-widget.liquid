@@ -529,46 +529,46 @@ async function computeProtectionTier() {
 // Add or update the Swipe protection variant to match the computed tier.
 // 1) Fetch Swipe product data, 2) compute tier & existing line item,
 // 3) find matching variant by title, 4) build updates, 5) POST to /cart/update.js.
-// async function applyProtectionVariant() {
-//     try {
-//         const { tier, postProtectedProduct: existing } =
-//             await computeProtectionTier();
-//         if (!tier) {
-//             console.warn("No protection tier matches the cart subtotal.");
-//             return;
-//         }
+async function applyProtectionVariant() {
+    try {
+        const { tier, postProtectedProduct: existing } =
+            await computeProtectionTier();
+        if (!tier) {
+            console.warn("No protection tier matches the cart subtotal.");
+            return;
+        }
 
-//         // Already have a protection item at correct tier? Just update displayed price (if needed)
-//         if (existing && existing.variant_title === tier.title) {
-//           if (existing.quantity > 1) {
-//         await fetch(
-//           "/cart/update.js",
-//           prepParams("POST", { updates: { [existing.id]: 1 } })
-//         );
-//     }
-//             return; // nothing to do
-//         }
+        // Already have a protection item at correct tier? Just update displayed price (if needed)
+        if (existing && existing.variant_title === tier.title) {
+          if (existing.quantity > 1) {
+        await fetch(
+          "/cart/update.js",
+          prepParams("POST", { updates: { [existing.id]: 1 } })
+        );
+    }
+            return; // nothing to do
+        }
 
-//         // Fetch productData (Swipe) so we can find the variant whose title === tier.title
-//         const swipe = await getSwipeProductData();
-//         const matching = swipe.variants.filter((v) => v.title === tier.title);
-//         if (!matching.length) {
-//             console.warn(`Could not find Swipe variant titled "${tier.title}".`);
-//             return;
-//         }
-//         const chosenVariant = matching[0];
+        // Fetch productData (Swipe) so we can find the variant whose title === tier.title
+        const swipe = await getSwipeProductData();
+        const matching = swipe.variants.filter((v) => v.title === tier.title);
+        if (!matching.length) {
+            console.warn(`Could not find Swipe variant titled "${tier.title}".`);
+            return;
+        }
+        const chosenVariant = matching[0];
 
-//         // Build updates: set chosenVariant.id=1; if existing, existing.id=0
-//         const updates = { [chosenVariant.id]: 1 };
-//         if (existing && existing.id) {
-//             updates[existing.id] = 0;
-//         }
+        // Build updates: set chosenVariant.id=1; if existing, existing.id=0
+        const updates = { [chosenVariant.id]: 1 };
+        if (existing && existing.id) {
+            updates[existing.id] = 0;
+        }
 
-//         await fetch("/cart/update.js", prepParams("POST", { updates }));
-//     } catch (err) {
-//         console.error("applyProtectionVariant error:", err);
-//     }
-// }
+        await fetch("/cart/update.js", prepParams("POST", { updates }));
+    } catch (err) {
+        console.error("applyProtectionVariant error:", err);
+    }
+}
 
 // ——————————————————————————————————————————————————————————————————————————
 // 2) Render Cart Block + “Learn More” Popup
@@ -937,7 +937,7 @@ async function replaceNativeWithCustom() {
                 e.preventDefault();
                 showLoadingOnElement(btn);
                 try {
-                    // await applyProtectionVariant();
+                    await applyProtectionVariant();
                 } catch (err) {
                     console.error("Error applying protection:", err);
                 }
