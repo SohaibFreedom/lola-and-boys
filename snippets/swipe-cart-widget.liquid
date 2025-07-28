@@ -855,7 +855,8 @@ async function replaceNativeWithCustom() {
   const protectionAmount = tier
     ? parseFloat(tier.title.replace(/[^0-9.-]/g, ""))
     : 0;
-  const totalWithProtection = baseSubtotal + protectionAmount;
+  // const totalWithProtection = baseSubtotal + protectionAmount;
+  const totalWithProtection = baseSubtotal;
  const formattedTotal = new Intl.NumberFormat(navigator.language, {
     style:    "currency",
     currency: cart.currency,     // e.g. "USD", "EUR", etc.
