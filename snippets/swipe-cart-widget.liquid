@@ -934,7 +934,7 @@ const formattedTotal = new Intl.NumberFormat(navigator.language, {
                 } catch (err) {
                     console.error("Error removing protection:", err);
                 }
-                setTimeout(() => window.top.location.href = "/checkout", 2500);
+                setTimeout(() => window.top.location.href = "/checkout", 1500);
             });
 
             // override button: add protection then checkout
@@ -946,7 +946,7 @@ const formattedTotal = new Intl.NumberFormat(navigator.language, {
                 } catch (err) {
                     console.error("Error applying protection:", err);
                 }
-                setTimeout(() => window.top.location.href = "/checkout", 300);
+                setTimeout(() => window.top.location.href = "/checkout", 1500);
             });
         });
     });
