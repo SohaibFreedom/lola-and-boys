@@ -858,7 +858,7 @@ const protectionAmount = tier
 
 const totalWithProtection = existing
   ? cart.total_price / 100
-  : baseSubtotal + protectionAmount;
+  : baseSubtotal;
 
 const formattedTotal = new Intl.NumberFormat(navigator.language, {
   style: "currency",
