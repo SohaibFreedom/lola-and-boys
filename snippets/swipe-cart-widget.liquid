@@ -852,17 +852,21 @@ async function replaceNativeWithCustom() {
     baseSubtotal -= existing.final_line_price / 100;
   }
 
-  const protectionAmount = tier
-    ? parseFloat(tier.title.replace(/[^0-9.-]/g, ""))
-    : 0;
-  // const totalWithProtection = baseSubtotal + protectionAmount;
-  const totalWithProtection = baseSubtotal;
- const formattedTotal = new Intl.NumberFormat(navigator.language, {
-    style:    "currency",
-    currency: cart.currency,     // e.g. "USD", "EUR", etc.
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2
-  }).format(totalWithProtection);
+const protectionAmount = tier
+  ? parseFloat(tier.title.replace(/[^0-9.-]/g, ""))
+  : 0;
+
+const totalWithProtection = existing
+  ? cart.total_price / 100
+  : baseSubtotal + protectionAmount;
+
+const formattedTotal = new Intl.NumberFormat(navigator.language, {
+  style: "currency",
+  currency: cart.currency,
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+}).format(totalWithProtection);
+
 
 
     const checkoutSelectors = [
