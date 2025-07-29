@@ -757,8 +757,25 @@ width:100% !important;
     
 }
 
-  .full-width-overlay {
-  display: none;
+.full-width-overlay {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.full-width-overlay.active {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+.full-width-overlay {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -770,6 +787,7 @@ width:100% !important;
   align-items: flex-start;
   overflow-y: auto;
 }
+
 
 .overlay-content {
     width: 100%;
@@ -1353,24 +1371,31 @@ setInterval(function () {
 
 
 function openFullWidthSearch() {
+  const overlay = document.querySelector(".full-width-overlay");
+  const searchInput = document.getElementById("instantSearchInput");
+
+  // Make visible without 'display: none' for better mobile behavior
+  overlay.classList.add("active"); // Use CSS to show it (avoid direct display change)
+
+  // Focus immediately
+  if (searchInput) {
+    searchInput.focus();
+
+    // Fallback: re-focus in 150ms to handle delayed rendering
     setTimeout(() => {
-        const searchInput = document.getElementById("instantSearchInput");
-        if (searchInput) {
-            searchInput.focus();
-        }
-    }, 100); 
+      searchInput.focus();
+    }, 150);
+  }
 
-  document.querySelector(".full-width-overlay").style.display = "flex";
-  document.querySelector(".full-width-overlay").classList.add("mobilesearch-overflowhidden");
-
+  document.documentElement.classList.add("mobilesearch-overflowhidden");
 }
+
 
 function closeFullWidthSearch() {
-
-  document.querySelector(".full-width-overlay").style.display = "none";
-  document.querySelector(".full-width-overlay").classList.remove("mobilesearch-overflowhidden");
-
+  document.querySelector(".full-width-overlay").classList.remove("active");
+  document.documentElement.classList.remove("mobilesearch-overflowhidden");
 }
+
 
 
 
