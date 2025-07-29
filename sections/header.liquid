@@ -1371,24 +1371,10 @@ setInterval(function () {
 
 
 function openFullWidthSearch() {
-  const overlay = document.querySelector(".full-width-overlay");
-  const searchInput = document.getElementById("instantSearchInput");
-
-  // Make visible without 'display: none' for better mobile behavior
-  overlay.classList.add("active"); // Use CSS to show it (avoid direct display change)
-
-  // Focus immediately
-  if (searchInput) {
-    searchInput.focus();
-
-    // Fallback: re-focus in 150ms to handle delayed rendering
-    setTimeout(() => {
-      searchInput.focus();
-    }, 150);
-  }
-
+  document.querySelector(".full-width-overlay").classList.add("active");
   document.documentElement.classList.add("mobilesearch-overflowhidden");
 }
+
 
 
 function closeFullWidthSearch() {
