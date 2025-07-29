@@ -20,6 +20,7 @@
 #rebuy-widget-207164 .rebuy-product-image img {
     max-height: 380px !important;
 }
+
 .shopify-policy__container .shopify-policy__body .rte p {
     word-break: inherit !important;
 }
@@ -727,6 +728,9 @@ li.search_container {
     max-width: 220px !important;
     width: 100% !important;
   }
+  .footer-section .footer .container .top-footer-section .four {
+    border-right: 0;
+}
 }
 
 .logo-bar-section.container.logos-main-wrapper {
