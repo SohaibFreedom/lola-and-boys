@@ -251,10 +251,7 @@
  <ul id="some-id">
     {%- for link in linklists.mobile-menu.links -%}
       <li>
-        <a href="{{ link.url }}" {% if link.active %}aria-current="page"{% endif %} onclick="gtag('event', 'navbar_click', {
-  nav_area: 'top',
-  link_text: '{{ link.title }}'
-});">
+        <a href="{{ link.url }}" {% if link.active %}aria-current="page"{% endif %}>
           {{ link.title }}
         </a>
 

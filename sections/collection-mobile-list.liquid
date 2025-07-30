@@ -3,10 +3,7 @@
     {%- for block in section.blocks -%}
     	{%- if block.type == 'collection_list' -%}
     		{%- if block.settings.linktext != blank and block.settings.collection_link != blank -%}
-    		<li><a href="{{ block.settings.collection_link }}" onclick="gtag('event', 'navbar_click', {
-  nav_area: 'secondary',
-  link_text: '{{ block.settings.linktext }}'
-});">{{ block.settings.linktext }}</a></li>
+    		<li><a href="{{ block.settings.collection_link }}">{{ block.settings.linktext }}</a></li>
     		{%- endif -%}
     	{%- endif -%}
     {%- endfor -%}
