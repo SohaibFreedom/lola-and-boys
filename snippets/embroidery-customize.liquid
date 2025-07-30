@@ -1,6 +1,10 @@
 {% assign variant = product.selected_or_first_available_variant %}
 
 <style>
+  .size_variants_circle{
+    height: 50px;
+    font-size: 14px;
+    }
   .arms___emb_area_display_none{
     display:none;
   }
@@ -237,6 +241,21 @@
  .emb-continue-footer{
    width: 30% !important;
  }
+      .variants-selected-sidebar {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+  .variant-selector-sidebar-foter {
+    position: relative !important;
+        width: 100% !important;
+  }
+  .emb-continue-footer{
+    width:100% !important;
+  }
+      .scrolbar__color_size_wrap {
+        overflow: auto;
+    }
     .emb-texterror-wrapper{
     display: none;
     color: rgb(221, 34, 75);
@@ -708,21 +727,19 @@ border-color: #ffe2e8 !important;
     }
     .color-variant{
       cursor:pointer;
-      height:45px;
-      width:45px;
+      height:52px !important;
+      width:52px !important;
       border-radius: 3px;
-      border:1px solid transparent;
+      border:2px solid transparent;
       transition: background-color 0.3s ease;
+       transition: transform 0.3s ease;
     }
-.color-variant:not(.selected-variant):hover {
-  transform: scale(1.1);
-}
     .selected-variant{
       border: 2px solid #ff6491;
       }
     .parent-variant-wrapper{
-      width: 45px;
-      height: 45px;
+      width: 52px !important;
+      height: 52px !important;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -746,7 +763,7 @@ border-color: #ffe2e8 !important;
 </style>
 <style>
     .variants-continue-btn-invisible{
-      display:none;
+      visibility: hidden;
     }
     .all-sidebar-cross-alert{
       position:absolute;
@@ -921,9 +938,7 @@ border-color: #ffe2e8 !important;
 <!-- media queries -->
 <style>
   @media screen and (min-width: 769px) and (max-width: 1300px){
-    .emb-continue-footer{
-   width: 35% !important;
- }
+ 
    #all_threads_colors > div{
      width: 50px;
     height: 50px;
@@ -978,13 +993,25 @@ border-color: #ffe2e8 !important;
      
       .checkit {
 
-      width: 490px;
-      height: 454px;
+      width: 590px;
+      height: 554px;
 
   }
 
     }
       @media screen and (max-width: 768px) {
+        .variants-selected-sidebar {
+             display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+        }
+        .variant-selector-sidebar-foter {
+          position: relative;
+        }
+        .scrolbar__color_size_wrap{
+          overflow: auto;
+        }
+    
             .emb-continue-footer{
    width: 100% !important;
  }
@@ -1048,29 +1075,34 @@ border-color: #ffe2e8 !important;
         width: 30px;
     }
         .variant-selector-sidebar-btn-main-wrapper > h2{
-          margin-bottom: 10px;
+          margin: 5px 0px;
         }
          .product-tile-for-selected{
-        font-size: 16px !important;
+        font-size: 25px !important;
         margin-bottom: 0px;
         }
         .size_variants_section_heading{
-          font-size: 12px !important;
+          font-size: 20px !important;
         }
-        .parent-variant-wrapper {
-        width: 30px;
-        height: 30px;
-        }
-        .color-variant{
-        height: 30px;
-        width: 30px;
-        }
-        .size_variants_section_heading{
-              font-size: 12px !important;
-        }
+   .parent-variant-wrapper {
+  width: 50px !important;
+  height: 50px !important;
+}
+
+.color-variant {
+  width: 50px !important;
+  height: 50px !important;
+  box-sizing: border-box;                       /* important */
+  transition: border 0.2s ease, transform 0.2s ease;
+}
+
+.selected-variant {
+  border: 2px solid #ff6491;
+}
+
         .variant-selector-sidebar-btn {
         margin: 6px 0;
-            gap: 3px;
+            gap: 6px !important;
         }
           .overlapping-correction-error{
        font-size: 12px;
@@ -1079,7 +1111,7 @@ border-color: #ffe2e8 !important;
               font-size: 15px;
         }
         .size_variants_section_heading{
-              font-size: 15px !important;
+              font-size: 20px !important;
         }
        
         .size_variants_section {
@@ -1109,6 +1141,7 @@ border-color: #ffe2e8 !important;
             position: absolute;
             bottom: 0;
         }
+      
         .patches-editor-wrapper {
         position: absolute;
         bottom: 0;
@@ -1244,8 +1277,18 @@ border-color: #ffe2e8 !important;
             height: calc(87% - 49px);
         }
        }
+  @media (min-width: 768px) {
+  .color-variant:not(.selected-variant):hover {
+    transform: scale(1.1);
+  }
+    .size_variants:not(.size_variants_active):hover {
+  transform: scale(1.1);
+}
+}
       @media screen and (max-width: 1024px){
-
+        .size_variants_swatches{
+          gap:6px !important;
+        }
         .messagefield {
               font-size: 16px;
         }
@@ -1283,7 +1326,7 @@ border-color: #ffe2e8 !important;
     @media screen and (min-width: 1500px) and (max-width: 9400px) {
         .checkit {
             width: 750px;
-            height: 604px;
+            height: 704px;
         }
     }
 
@@ -1328,8 +1371,9 @@ border-color: #ffe2e8 !important;
   }
   .size_variants_swatches{
     display: flex;
-    gap: 5px;
+    gap: 10px;
     margin-top: 5px;
+    padding: 20px 0px;
   }
 
   .size_variants_active{
@@ -1448,6 +1492,7 @@ border-color: #ffe2e8 !important;
   </div>
   <div id="patches-customization-offcanvas-menu" class="patches-offacnavs-customization emb_offcanvas">
     <div class="variants-selected-sidebar" id="emb_size_color_selector_sidebar">
+      <div class="scrolbar__color_size_wrap">
       <div class="variant-selector-sidebar-header only-desktop">
         <div class="patches-back-button patches-back-button-relaod " id="patches-back-button">
           <svg
@@ -1475,6 +1520,8 @@ border-color: #ffe2e8 !important;
           </svg>
         </div>
       </div>
+    
+      
       <div class="variant-selector-sidebar-btn-main-wrapper">
         <h2 class="product-tile-for-selected">{{ product.title }} </h2>
         <span class="size_variants_section_heading size_variants_section_color_heading">Select Color : <small class="emb-color_selector_heading small_selected_heading"></small></span>
@@ -1488,7 +1535,7 @@ border-color: #ffe2e8 !important;
 
         <div id="emb-variants-containers" class="size_variants_swatches"></div>
       </div>
-      
+      </div>
       
       <div class="variant-selector-sidebar-foter emb-continue-footer">
         <div class="patches-customization-form-buttons">
