@@ -734,7 +734,7 @@
       $('.only-mobile').css('display', 'none');
   }
       $('.only-mobile-colors-wrapper').css('display', 'none');
-
+  $('.size_variants_section').css('visibility', 'visible');
   });
    $('.close-variant-selector-editor').click(function() {
       // Remove the class from any element that has it
@@ -3123,7 +3123,7 @@ $('.variants-continue-btn').click(function() {
     // Check if the product has 'none-size-products' tag
     if (Array.isArray(product.tags) && product.tags.includes('none-size-products')) {
         // Skip size variant checks and directly show the loader
-        showPatches();
+        
         console.log('continue to next moment');
 
         // Show the loader
@@ -3132,9 +3132,10 @@ $('.variants-continue-btn').click(function() {
         // Hide the continue button and change the background color of the wrapper
         $('.variants-continue-btn').css('display', 'none');
         $('.variants-continue-btn-wrapper').css('background-color', 'rgb(223, 223, 223)');
-
+         
         // Set a timeout for 1 second for the loader to be visible
         setTimeout(function() {
+          showPatches();
             // Hide the loader after 1 second
             $('.loader-cart-contiune').css('display', 'none');
 
@@ -3170,23 +3171,15 @@ $('.variants-continue-btn').click(function() {
                 $('.only-mobile-colors-wrapper').css('display', 'none');
             }
 
-        }, 1000); // 1 second delay for loader
+        }, 50); // 1 second delay for loader
 
     } else {
         // Check if size variants are active only if product doesn't have 'none-size-products' tag
         if ($('.size_variants_circle').hasClass('size_variants_active')) {
-            showPatches();
+            
             console.log('continue to next moment');
-
-            // Show the loader
-            $('.loader-cart-contiune').css('display', 'block');
-
-            // Hide the continue button and change the background color of the wrapper
-            $('.variants-continue-btn').css('display', 'none');
-            $('.variants-continue-btn-wrapper').css('background-color', 'rgb(223, 223, 223)');
-
-            // Set a timeout for 1 second for the loader to be visible
             setTimeout(function() {
+              showPatches();
                 // Hide the loader after 1 second
                 $('.loader-cart-contiune').css('display', 'none');
 
@@ -3221,8 +3214,18 @@ $('.variants-continue-btn').click(function() {
                 } else {
                     $('.only-mobile-colors-wrapper').css('display', 'none');
                 }
+$('.size_variants_section').css('visibility', 'hidden');
+            }, 50); // 1 second delay for loader
+            // Show the loader
+            $('.loader-cart-contiune').css('display', 'block');
 
-            }, 1000); // 1 second delay for loader
+            // Hide the continue button and change the background color of the wrapper
+            $('.variants-continue-btn').css('display', 'none');
+            $('.variants-continue-btn-wrapper').css('background-color', 'rgb(223, 223, 223)');
+            
+            // Set a timeout for 1 second for the loader to be visible
+            
+             
         } else {
             // Show the error div if no active size variant is selected
             $('.size_variants_errors').css('display', 'block');

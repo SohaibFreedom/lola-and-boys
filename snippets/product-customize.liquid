@@ -88,6 +88,7 @@
     }
     .small_selected_heading{
       font-size: 70%;
+      color: #797676;
     }
     .hidedisplay{
       display: none !important;
@@ -188,7 +189,7 @@
       }
       .product-tile-for-selected{
         text-transform: capitalize;
-        font-size: 30px !important;
+        font-size: 25px !important;
 
       }
       .tidy-patches-changes-btn-wrraper{
@@ -490,7 +491,7 @@
       .patches{
       display: flex;
       flex-wrap: wrap;
-      padding: 20px 0;
+         padding: 40px;
       gap: 10px;
       justify-content: center;
       width: 100%;
@@ -503,8 +504,8 @@
       overflow: hidden;
       }
           .patch{
-            height: 70px;
-            width: 70px;
+            height: 100px;
+            width: 100px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1159,10 +1160,19 @@
 </style>
 <!-- media queries -->
 <style>
+  @media (min-width: 1024px) and (max-width: 1300px) {
+  .patches{
+        padding: 20px 0px;
+  }
+    .patch {
+    height: 70px;
+    width: 70px;
+    }
+}
       @media screen and (max-width: 1024px) {
         .checkit {
-        width: 490px !important;
-        height: 454px !important;
+        width: 590px !important;
+        height: 554px !important;
 
     }
      .variants-continue-btn {
@@ -1202,10 +1212,9 @@
           .edit-tidy-btn-wrapp{
             display:none !important;
           }
-          .color-variant:hover {
-          height: 30px;
-          width: 30px;
-      }
+          /* .color-variant:hover {
+              scale: 1.1;
+      } */
           .variant-selector-sidebar-btn-main-wrapper > h2{
             margin-bottom: 10px;
           }
@@ -1389,6 +1398,7 @@
           }
       }
       @media screen and (max-width: 768px){
+
           .variant-selector-sidebar-foter{
         width: 100% !important;
       }
@@ -1423,7 +1433,13 @@
     }
 
         @media screen and (max-width: 1024px){
-
+        .patch{
+              height: 70px;
+    width: 70px;
+        }
+        .patches {
+              padding: 20px 0;
+        }
           .messagefield {
                 font-size: 16px;
           }
@@ -1470,7 +1486,7 @@
       @media screen and (min-width: 1501px) and (max-width: 9400px) {
           .checkit {
               width: 750px !important;
-              height: 604px !important;
+              height: 704px !important;
           }
       }
 
@@ -1540,7 +1556,12 @@
   }
    .size_variants{
      cursor: pointer;
+     transition: transform 0.3s ease;
     }
+
+  .size_variants_active {
+    border: 2px solid #ff6491;
+}
 </style>
 <style>
     /* .patches-customization-tidy-delete-btn-active{
@@ -1829,6 +1850,7 @@
       </div>
     </div>
     <div class="variants-selected-sidebar">
+      <div class="scrolbar__color_size_wrap"> 
       <div class="variant-selector-sidebar-header only-desktop">
         <div class="patches-back-button patches-back-button-relaod" id="patches-back-button">
           <svg
@@ -1856,6 +1878,8 @@
           </svg>
         </div>
       </div>
+        
+          
       <div class="variant-selector-sidebar-btn-main-wrapper">
         <h2 class="product-tile-for-selected">{{ product.title }}</h2>
         <span class="size_variants_section_heading size_variants_section_color_heading"
@@ -1881,7 +1905,8 @@
         -->
         <div id="variants-containers" class="size_variants_swatches"></div>
       </div>
-
+</div>
+        
       <div class="variant-selector-sidebar-foter">
         <div class="patches-customization-form-buttons">
           <div class="complete-overly-wrapper"></div>
