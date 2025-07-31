@@ -934,29 +934,29 @@ const formattedTotal = new Intl.NumberFormat(navigator.language, {
             const link = box.querySelector(".swipe-link-no-protection");
             const btn = box.querySelector(".swipe-btn-protection");
 
-            // // override link: plain checkout
-            // link.addEventListener("click", async e => {
-            //     e.preventDefault();
-            //     showLoadingOnElement(link);
-            //     try {
-            //         await removeExistingProtectionIfAny();
-            //     } catch (err) {
-            //         console.error("Error removing protection:", err);
-            //     }
-            //     setTimeout(() => window.top.location.href = "/checkout", 1500);
-            // });
+            // override link: plain checkout
+            link.addEventListener("click", async e => {
+                e.preventDefault();
+                showLoadingOnElement(link);
+                try {
+                    await removeExistingProtectionIfAny();
+                } catch (err) {
+                    console.error("Error removing protection:", err);
+                }
+                setTimeout(() => window.top.location.href = "/checkout", 500);
+            });
 
-            // // override button: add protection then checkout
-            // btn.addEventListener("click", async e => {
-            //     e.preventDefault();
-            //     showLoadingOnElement(btn);
-            //     try {
-            //         await applyProtectionVariant();
-            //     } catch (err) {
-            //         console.error("Error applying protection:", err);
-            //     }
-            //     setTimeout(() => window.top.location.href = "/checkout", 1500);
-            // });
+            // override button: add protection then checkout
+            btn.addEventListener("click", async e => {
+                e.preventDefault();
+                showLoadingOnElement(btn);
+                try {
+                    await applyProtectionVariant();
+                } catch (err) {
+                    console.error("Error applying protection:", err);
+                }
+                setTimeout(() => window.top.location.href = "/checkout", 500);
+            });
         });
     });
     // Crucial: After potentially adding new "pw-learn-more" elements, re-attach popup listeners.
