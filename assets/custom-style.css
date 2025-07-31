@@ -5,6 +5,9 @@
    width: 100% !important;
     border: 1px solid var(--usf-border-color) !important;
 }
+.usf-sr-container .usf-sr-config {
+    display: none;
+}
 /* product filters custom Start */
 .product-swipe .rebuy-cart__flyout-item-quantity {
     display: none;
