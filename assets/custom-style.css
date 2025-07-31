@@ -43,10 +43,7 @@ div#rebuy-widget-207164 {
 .usf-sr-container.usf-no-facets.usf-empty .usf-results.usf-grid {
   display: block !important;
 }
-.usf-sr-summary,
-.usf-sr-config .usf-c-select__input-value.usf-btn {
-  display: none !important;
-}
+
 .collection-template-section div#usf_container {
   padding-top: 3rem !important;
 }
