@@ -628,7 +628,25 @@ async function renderCartBlock() {
     }
 }
 
+// Check and remove Swipe if no other products are in cart
+async function removeSwipeIfCartEmpty() {
+  const cart = await getCartItem();
+  const items = cart.items || [];
 
+  const hasNonSwipeItems = items.some(
+    item => item.product_title !== "Swipe" && item.product_title !== "Swipe Package Protection"
+  );
+
+  if (!hasNonSwipeItems) {
+    const swipeItem = items.find(
+      item => item.product_title === "Swipe" || item.product_title === "Swipe Package Protection"
+    );
+
+    if (swipeItem && swipeItem.id) {
+      await fetch("/cart/update.js", prepParams("POST", { updates: { [swipeItem.id]: 0 } }));
+    }
+  }
+}
 
 
 
@@ -851,6 +869,8 @@ function injectGlobalPopup() {
  */
 async function replaceNativeWithCustom() {
   const cart = await getCartItem();
+    await removeSwipeIfCartEmpty(); // <-- Add this line here
+
   const { tier, postProtectedProduct: existing } = await computeProtectionTier();
 
   // start with the raw subtotal (this _does_ include protection if it’s there)
