@@ -3,7 +3,7 @@
 }
 .usf-sr-config__mobile-filters-wrapper .usf-filters {
    width: 100% !important;
-    border: 1px solid var(--usf-border-color);
+    border: 1px solid var(--usf-border-color) !important;
 }
 /* product filters custom Start */
 .product-swipe .rebuy-cart__flyout-item-quantity {
