@@ -46,6 +46,9 @@ div#rebuy-widget-207164 {
 .usf-sr-config .usf-sr-summary {
     display: none !important;
 }
+.usf-sr-config {
+    justify-content: end !important;
+}
 .collection-template-section div#usf_container {
   padding-top: 3rem !important;
 }
