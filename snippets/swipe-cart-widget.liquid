@@ -947,16 +947,24 @@ const formattedTotal = new Intl.NumberFormat(navigator.language, {
             });
 
             // override button: add protection then checkout
-            btn.addEventListener("click", async e => {
-                e.preventDefault();
-                showLoadingOnElement(btn);
-                try {
-                    await applyProtectionVariant();
-                } catch (err) {
-                    console.error("Error applying protection:", err);
-                }
-                setTimeout(() => window.top.location.href = "/checkout", 100);
-            });
+           btn.addEventListener("click", async e => {
+  e.preventDefault();
+
+  // 1) mark that checkout is happening
+  isCheckoutInitiated = true;
+
+  // 2) stop observing further mutations
+  if (cartObserver) cartObserver.disconnect();
+
+  // 3) proceed with the existing logic
+  showLoadingOnElement(btn);
+  try {
+    await applyProtectionVariant();
+  } catch (err) {
+    console.error("Error applying protection:", err);
+  }
+  setTimeout(() => window.top.location.href = "/checkout", 100);
+});
         });
     });
     // Crucial: After potentially adding new "pw-learn-more" elements, re-attach popup listeners.
