@@ -869,7 +869,7 @@ function injectGlobalPopup() {
  */
 async function replaceNativeWithCustom() {
   const cart = await getCartItem();
-    await removeSwipeIfCartEmpty(); // <-- Add this line here
+ 
 
   const { tier, postProtectedProduct: existing } = await computeProtectionTier();
 
