@@ -3516,6 +3516,18 @@ html
     vertical-align: middle;
     overflow: visible;
   }
+  #rebuy-widget-207165 .rebuy-bundle__images {
+    width: 95% !important;
+    padding: 0 10px;
+}
+#rebuy-widget-207165 .rebuy-bundle__items {
+    width: 90%;
+    margin: 1rem auto 0;
+    padding: 0 20px;
+}
+body.product {
+    overflow-x: hidden !important;
+}
 
   .wishlist-mobile-container #wishlist-count1 {
     padding-left: 7px;
