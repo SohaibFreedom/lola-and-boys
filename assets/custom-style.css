@@ -17,7 +17,9 @@
 
   width:100% !important;
 }
-
+.usf-sr-more .usf-title {
+    display: none;
+}
 
 [data-id="7219455066214"] .product-quantity-box.left {
     display: none !important;
