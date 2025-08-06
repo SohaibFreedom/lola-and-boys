@@ -17,7 +17,7 @@
 
   width:100% !important;
 }
-.usf-sr-more .usf-title {
+.usf-sr-more .usf-title, .usf-sr-more .usf-progress {
     display: none;
 }
 
