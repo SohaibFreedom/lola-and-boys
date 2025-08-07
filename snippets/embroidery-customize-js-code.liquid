@@ -1740,26 +1740,15 @@ async function embaddcartfiles() {
 <script>
 function getResponsiveMaxSize() {
   const width = window.innerWidth;
-  let maxSize;
-
-  // Determine base max size based on screen width
   if (width <= 480) {
-    maxSize = 40;
+    // Mobile
+    return 35;
   } else if (width <= 1300) {
-    maxSize = 60;
+    // Tablet
+    return 35;
   } else {
-    maxSize = 100;
-  }
-
-  // Check for .Künstlerschreibschrift inside .emb-font-type-area
-  const specialFontExists = document.querySelector('.emb-font-type-area .Künstlerschreibschrift');
-
-  if (specialFontExists) {
-    // If the specific class exists, max is 30
-    return Math.min(maxSize, 30);
-  } else {
-    // Global max is 35
-    return Math.min(maxSize, 35);
+    // Desktop
+    return 35;
   }
 }
 
