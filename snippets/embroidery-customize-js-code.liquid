@@ -1738,10 +1738,28 @@ async function embaddcartfiles() {
   }
 </script>
 <script>
- // Default font size
-// Function to update font size
+function getResponsiveMaxSize() {
+  const width = window.innerWidth;
+  if (width <= 480) {
+    // Mobile
+    return 40;
+  } else if (width <= 1300) {
+    // Tablet
+    return 60;
+  } else {
+    // Desktop
+    return 100;
+  }
+}
+
 function updateFontSize(newSize) {
+  const maxSize = getResponsiveMaxSize();
   const embText = document.querySelector('.emb-font-type-area');
+  
+  // Clamp newSize within range
+  if (newSize < 1) newSize = 1;
+  if (newSize > maxSize) newSize = maxSize;
+
   embText.style.fontSize = newSize + 'px';
   fontSizeInput.value = newSize;
 }
@@ -1760,30 +1778,53 @@ increaseFont.addEventListener('click', () => {
 // Decrease font
 decreaseFont.addEventListener('click', () => {
   let currentSize = parseInt(fontSizeInput.value);
-  if (currentSize > 1) {
-    updateFontSize(currentSize - 1);
-  }
+  updateFontSize(currentSize - 1);
 });
 
 // Manual input
 fontSizeInput.addEventListener('input', () => {
   let newSize = parseInt(fontSizeInput.value);
-  if (!isNaN(newSize) && newSize > 0) {
+  if (!isNaN(newSize)) {
     updateFontSize(newSize);
   }
 });
+
 
 
 </script>
 <script>
  // Default font size
 // Function to update font size
-function updateFontBackSize(newSize) {
+{% comment %} function updateFontBackSize(newSize) {
   const embText = document.querySelector('.emb-back-type-area');
   embText.style.fontSize = newSize + 'px';
   fontSizeBackInput.value = newSize;
+} {% endcomment %}
+function getResponsiveBackMaxSize() {
+  const width = window.innerWidth;
+  if (width <= 480) {
+    // Mobile
+    return 40;
+  } else if (width <= 1300) {
+    // Tablet
+    return 60;
+  } else {
+    // Desktop
+    return 100;
+  }
 }
 
+function updateFontBackSize(newSize) {
+  const maxSize = getResponsiveBackMaxSize();
+  const embText = document.querySelector('.emb-back-type-area');
+  
+  // Clamp newSize within range
+  if (newSize < 1) newSize = 1;
+  if (newSize > maxSize) newSize = maxSize;
+
+  embText.style.fontSize = newSize + 'px';
+  fontSizeBackInput.value = newSize;
+}
 // Initialize
 const fontSizeBackInput = document.getElementById('fontSizeBackInput');
 const increaseBackFont = document.getElementById('increaseBackFont');
