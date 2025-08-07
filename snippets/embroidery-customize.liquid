@@ -8,6 +8,44 @@
   .arms___emb_area_display_none{
     display:none;
   }
+    .fonts_colors_heading::selection {
+  background: white !important;
+      color: #797676 !important;
+  }
+  .font_toggle_arrow_icons{
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    background: #ffffff;
+}
+.increase_dexrease_front_wrapper{
+       display: flex;
+    height: fit-content;
+    align-items: center;
+    border: 1px solid;
+}
+.font-size-controls{
+    display: flex;
+    width: fit-content;
+    padding-top:5px;
+}
+
+#fontSizeInput, #fontSizeBackInput{
+    margin: 0;
+    margin-top:0 !important;
+    text-align: center;
+    border: none;
+    font-weight: bold;
+    color: black;
+    height: 40px !important;
+    min-height: 40px !important;
+}
+#front_inputs div input{
+      border-radius: 30px;
+    margin-top: 10px;
+}
   @font-face {
     font-family: 'charlotte';
     src: url('https://cdn.shopify.com/s/files/1/0790/2419/3819/files/charlotte.woff2?v=1726082930') format('woff2'),
@@ -978,7 +1016,7 @@ border-color: #ffe2e8 !important;
   }
   @media screen and (min-width: 1024px) and (max-width: 1300px) {
       .emb-font-type-area, .emb-back-type-area{
-            font-size: 17px !important;
+            font-size: 17px ;
       }
       .Rarm-emb-font-type-area, .Larm-emb-font-type-area{
                   font-size: 5px;    
@@ -1039,7 +1077,7 @@ border-color: #ffe2e8 !important;
     width: 100% !important;
 }
         .emb-font-type-area, .emb-back-type-area{
-          font-size: 20px !important;
+          font-size: 20px ;
 }
         .Rarm-emb-font-type-area, .Larm-emb-font-type-area{
               font-size: 4px !important;
@@ -1634,6 +1672,21 @@ border-color: #ffe2e8 !important;
       <div id="front_inputs">
       <span  class="front_input_heading">Front Side</span>
       <input type="text" name="Fchestinput" class="Fchestinput"   value="" maxlength="10" />
+       <div>
+<div class="font-size-heading">
+  <span class="front_input_heading">Font Size</span>
+</div>
+   <div class="font-size-controls">
+  
+  
+  <div class="increase_dexrease_front_wrapper">
+   <span id="increaseFont" class="font_toggle_arrow_icons upper___arrow" style="cursor: pointer;"><svg width="8" height="14" viewBox="0 0 8 14" fill="#5d5d5d" xmlns="http://www.w3.org/2000/svg" class="patches-arrow-top change_svg_color"> <path d="M7 13L1 7" stroke="#958f8f" stroke-width="2" stroke-linecap="round"></path><path d="M1 7.00002L6.99994 1.00002" stroke="#958f8f" stroke-width="2" stroke-linecap="round"></path></svg></span>
+   <input type="number" id="fontSizeInput" value="15" min="1" style="width: 50px;"> 
+  <span id="decreaseFont" class="font_toggle_arrow_icons" style="cursor: pointer;"><svg width="8" height="14" viewBox="0 0 8 14" fill="#5d5d5d" xmlns="http://www.w3.org/2000/svg" class="patches-arrow-left change_svg_color"> <path d="M7 13L1 7" stroke="#958f8f" stroke-width="2" stroke-linecap="round"></path><path d="M1 7.00002L6.99994 1.00002" stroke="#958f8f" stroke-width="2" stroke-linecap="round"></path></svg></span>
+  </div>
+ 
+</div>
+</div>
       <div class="arms___emb_area_display_none">
        <span class="front_input_heading">Right Arm</span>
       <input type="text" name="FRarminput"  class="FRarminput" value="" maxlength="10" />
@@ -1644,6 +1697,21 @@ border-color: #ffe2e8 !important;
       <div id="back_inputs">
       <span  class="front_input_heading">Back Side</span>
       <input type="text" name="Fchestinput" class="Bchestinput" id="Bchestinput"  value="" maxlength="10" />
+             <div>
+<div class="font-size-heading">
+  <span class="front_input_heading">Font Size</span>
+</div>
+   <div class="font-size-controls">
+  
+  
+  <div class="increase_dexrease_front_wrapper">
+   <span id="increaseBackFont" class="font_toggle_arrow_icons upper___arrow" style="cursor: pointer;"><svg width="8" height="14" viewBox="0 0 8 14" fill="#5d5d5d" xmlns="http://www.w3.org/2000/svg" class="patches-arrow-top change_svg_color"> <path d="M7 13L1 7" stroke="#958f8f" stroke-width="2" stroke-linecap="round"></path><path d="M1 7.00002L6.99994 1.00002" stroke="#958f8f" stroke-width="2" stroke-linecap="round"></path></svg></span>
+   <input type="number" id="fontSizeBackInput" value="15" min="1" style="width: 50px;"> 
+  <span id="decreaseBackFont" class="font_toggle_arrow_icons" style="cursor: pointer;"><svg width="8" height="14" viewBox="0 0 8 14" fill="#5d5d5d" xmlns="http://www.w3.org/2000/svg" class="patches-arrow-left change_svg_color"> <path d="M7 13L1 7" stroke="#958f8f" stroke-width="2" stroke-linecap="round"></path><path d="M1 7.00002L6.99994 1.00002" stroke="#958f8f" stroke-width="2" stroke-linecap="round"></path></svg></span>
+  </div>
+ 
+</div>
+</div>
         <div class="arms___emb_area_display_none">
       <span class="front_input_heading">Right Arm</span>
       <input type="text" name="FRarminput"  class="BRarminput" value="" maxlength="10" />
