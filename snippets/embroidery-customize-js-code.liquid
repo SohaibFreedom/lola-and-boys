@@ -1737,3 +1737,79 @@ async function embaddcartfiles() {
       });
   }
 </script>
+<script>
+ // Default font size
+// Function to update font size
+function updateFontSize(newSize) {
+  const embText = document.querySelector('.emb-font-type-area');
+  embText.style.fontSize = newSize + 'px';
+  fontSizeInput.value = newSize;
+}
+
+// Initialize
+const fontSizeInput = document.getElementById('fontSizeInput');
+const increaseFont = document.getElementById('increaseFont');
+const decreaseFont = document.getElementById('decreaseFont');
+
+// Increase font
+increaseFont.addEventListener('click', () => {
+  let currentSize = parseInt(fontSizeInput.value);
+  updateFontSize(currentSize + 1);
+});
+
+// Decrease font
+decreaseFont.addEventListener('click', () => {
+  let currentSize = parseInt(fontSizeInput.value);
+  if (currentSize > 1) {
+    updateFontSize(currentSize - 1);
+  }
+});
+
+// Manual input
+fontSizeInput.addEventListener('input', () => {
+  let newSize = parseInt(fontSizeInput.value);
+  if (!isNaN(newSize) && newSize > 0) {
+    updateFontSize(newSize);
+  }
+});
+
+
+</script>
+<script>
+ // Default font size
+// Function to update font size
+function updateFontBackSize(newSize) {
+  const embText = document.querySelector('.emb-back-type-area');
+  embText.style.fontSize = newSize + 'px';
+  fontSizeBackInput.value = newSize;
+}
+
+// Initialize
+const fontSizeBackInput = document.getElementById('fontSizeBackInput');
+const increaseBackFont = document.getElementById('increaseBackFont');
+const decreaseBackFont = document.getElementById('decreaseBackFont');
+
+// Increase font
+increaseBackFont.addEventListener('click', () => {
+  let currentSize = parseInt(fontSizeBackInput.value);
+  updateFontBackSize(currentSize + 1);
+});
+
+// Decrease font
+decreaseBackFont.addEventListener('click', () => {
+  let currentSize = parseInt(fontSizeBackInput.value);
+  if (currentSize > 1) {
+    updateFontBackSize(currentSize - 1);
+  }
+});
+
+// Manual input
+fontSizeBackInput.addEventListener('input', () => {
+  let newSize = parseInt(fontSizeBackInput.value);
+  if (!isNaN(newSize) && newSize > 0) {
+    updateFontBackSize(newSize);
+  }
+});
+
+
+</script>
