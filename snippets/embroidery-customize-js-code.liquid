@@ -352,7 +352,7 @@
       inputField.addEventListener('input', function() {
       // Set the content of the dynamically created .emb-font-type-area div
       newDiv.textContent = inputField.value;
-    if (inputField.value.length <= 5) {
+    {% comment %} if (inputField.value.length <= 5) {
   newDiv.style.setProperty('font-size', '15px', 'important');
 } 
       else {
@@ -363,7 +363,7 @@
   } else {
      newDiv.style.fontSize = '15px';
   }
-}
+} {% endcomment %}
      });
          
       const Fmonograminput = document.querySelector('.Fmonograminput');
