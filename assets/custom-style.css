@@ -9,6 +9,13 @@
     display: none;
 }
 /* product filters custom Start */
+
+
+
+.swatch-element.color.baby-blue-swatch label {
+    background-color: #E6D4EC !important;
+}
+
 .product-swipe .rebuy-cart__flyout-item-quantity {
     display: none;
     visibility: hidden;
