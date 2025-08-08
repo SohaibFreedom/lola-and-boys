@@ -5622,7 +5622,7 @@
           "checkout-selector": ".swipe-link-no-protection, .swipe-btn-protection",
           "replace-checkout-button": false,
           "cart-details": true,
-          "preserve-cart": false,
+          "preserve-cart": true,
           "available-credit-bar-label": "in available credit",
           "available-credit-bar-mobile-label": "credit",
           "bar-value-font-size": "15",
