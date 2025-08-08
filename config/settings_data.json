@@ -5615,7 +5615,7 @@
       },
       "5888675206956468567": {
         "type": "shopify://apps/loop-returns-exchanges/blocks/onstore/e32ccd84-40d6-4b16-98bf-b6b9da010afd",
-        "disabled": false,
+        "disabled": true,
         "settings": {
           "show-onstore-bar": true,
           "api-key": "ae4139fef106940950d339c1c07a65f89e0cd7fb",
