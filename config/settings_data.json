@@ -5439,26 +5439,6 @@
         "disabled": false,
         "settings": {}
       },
-      "5888675206956468567": {
-        "type": "shopify://apps/loop-returns-exchanges/blocks/onstore/e32ccd84-40d6-4b16-98bf-b6b9da010afd",
-        "disabled": true,
-        "settings": {
-          "show-onstore-bar": false,
-          "api-key": "test-key",
-          "checkout-selector": "#checkout",
-          "replace-checkout-button": false,
-          "preserve-cart": false,
-          "available-credit-bar-label": "in available credit",
-          "bar-value-font-size": "15",
-          "bar-label-font-size": "10",
-          "bar-button-font-size": "10",
-          "bottom-bar-alignment": "full",
-          "bar-color": "rgb(0,0,0)",
-          "bar-text-color": "rgb(255,255,255)",
-          "bump-side-cart": false,
-          "side-cart-selector": ".sidecart"
-        }
-      },
       "14197025361042770389": {
         "type": "shopify://apps/wishlist-king/blocks/app-settings-main/194f5011-a43c-4b22-b12e-eaf20dc4506a",
         "disabled": false,
@@ -5632,6 +5612,28 @@
         "type": "shopify://apps/triplewhale/blocks/triple_pixel_snippet/483d496b-3f1a-4609-aea7-8eee3b6b7a2a",
         "disabled": false,
         "settings": {}
+      },
+      "5888675206956468567": {
+        "type": "shopify://apps/loop-returns-exchanges/blocks/onstore/e32ccd84-40d6-4b16-98bf-b6b9da010afd",
+        "disabled": false,
+        "settings": {
+          "show-onstore-bar": true,
+          "api-key": "ae4139fef106940950d339c1c07a65f89e0cd7fb",
+          "checkout-selector": ".swipe-link-no-protection, .swipe-btn-protection",
+          "replace-checkout-button": false,
+          "cart-details": true,
+          "preserve-cart": false,
+          "available-credit-bar-label": "in available credit",
+          "available-credit-bar-mobile-label": "credit",
+          "bar-value-font-size": "15",
+          "bar-label-font-size": "10",
+          "bar-button-font-size": "10",
+          "bottom-bar-alignment": "full",
+          "bar-color": "#000000",
+          "bar-text-color": "#ffffff",
+          "bump-side-cart": false,
+          "side-cart-selector": ".sidecart"
+        }
       }
     }
   }
