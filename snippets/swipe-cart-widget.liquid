@@ -998,7 +998,7 @@ btn.addEventListener("click", async e => {
 
 window.addEventListener("pageshow", () => {
   const bootstrap = new MutationObserver((_, obs) => {
-    const rebuy = document.querySelector('[data-rebuy-cart-anchor="body"]');
+    const rebuy = document.querySelector('[data-rebuy-cart-anchor="body"],.body');
     if (skipSwipeMutation) {
      // we just added Swipe—ignore this batch of mutations
      skipSwipeMutation = false;
