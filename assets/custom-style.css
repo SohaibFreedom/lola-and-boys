@@ -8,17 +8,17 @@
 
 /* product filters custom Start */
 
-.accordian-toggle .right.icon-down-arrow {
+.footer .accordian-toggle .right.icon-down-arrow {
     position: relative;
     display: block !important;
     width: 10px;
     height: 10px;
 }
-.accordian-toggle .right.icon-down-arrow svg {
+.footer .accordian-toggle .right.icon-down-arrow svg {
     display: none !important; 
 }
 
-.accordian-toggle span.right.icon-down-arrow:before {
+.footer .accordian-toggle span.right.icon-down-arrow:before {
     top: 50%;
     left: 0;
     width: 100%;
@@ -30,7 +30,13 @@
     background: #fff;
     transition: 0.3s ease;
 }
-.accordian-toggle span.right.icon-down-arrow:after {
+.footer .accordian-toggle h6 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 15px !important;
+}
+.footer .accordian-toggle span.right.icon-down-arrow:after {
   top: 0;
   left: 50%;
   width: 1px;
