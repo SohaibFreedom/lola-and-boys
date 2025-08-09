@@ -8,6 +8,37 @@
 
 /* product filters custom Start */
 
+.accordian-toggle .right.icon-down-arrow {
+    position: relative;
+    display: block !important;
+    width: 10px;
+    height: 10px;
+}
+
+.accordian-toggle span.right.icon-down-arrow:before {
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    transform: translateY(-50%);
+    content: '';
+    position: absolute;
+    background: black;
+    transition: 0.3s ease;
+}
+.accordian-toggle span.right.icon-down-arrow:after {
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  transform: translateX(-50%);
+  content: '';
+  position: absolute;
+  background: black;
+  transition: 0.3s ease;
+}
+
+
 .rebuy-cart__flyout {
   z-index: 9999999999999 !important;
 }
