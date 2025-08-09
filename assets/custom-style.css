@@ -10,7 +10,7 @@
 
 .footer .accordian-toggle .right.icon-down-arrow {
     position: relative;
-    display: none !important;
+    display: block !important;
     width: 10px;
     height: 10px;
 }
