@@ -292,6 +292,13 @@ div#rebuy-widget-207164 {
   .collection-template-section div#usf_container {
     padding-top: 0 !important;
   }
+  .footer_newsletter {
+    display: none !important;
+}
+.footer-section .footer .container .bottom-footer-section .footer_credits {
+    margin-top: 0 !important;
+    padding-bottom: 6px;
+}
   .footer .accordian-toggle .right.icon-down-arrow {
     display: block !important;
 }
