@@ -1739,15 +1739,12 @@ async function embaddcartfiles() {
 </script>
 <script>
 function getResponsiveMaxSize() {
-  const width = window.innerWidth;
-  if (width <= 480) {
-    // Mobile
-    return 35;
-  } else if (width <= 1300) {
-    // Tablet
-    return 35;
+  const embText = document.querySelector('.emb-font-type-area');
+  const textLength = embText.textContent.length;
+
+  if (textLength >= 7) {
+    return 25;
   } else {
-    // Desktop
     return 35;
   }
 }
@@ -1755,7 +1752,7 @@ function getResponsiveMaxSize() {
 function updateFontSize(newSize) {
   const maxSize = getResponsiveMaxSize();
   const embText = document.querySelector('.emb-font-type-area');
-  
+
   // Clamp newSize within range
   if (newSize < 1) newSize = 1;
   if (newSize > maxSize) newSize = maxSize;
@@ -1788,32 +1785,21 @@ fontSizeInput.addEventListener('input', () => {
     updateFontSize(newSize);
   }
 });
-
-
-
 </script>
+
 <script>
  // Default font size
 // Function to update font size
-{% comment %} function updateFontBackSize(newSize) {
-  const embText = document.querySelector('.emb-back-type-area');
-  embText.style.fontSize = newSize + 'px';
-  fontSizeBackInput.value = newSize;
-} {% endcomment %}
 function getResponsiveBackMaxSize() {
-  const width = window.innerWidth;
-  if (width <= 480) {
-    // Mobile
-    return 35;
-  } else if (width <= 1300) {
-    // Tablet
-    return 35;
+  const embText = document.querySelector('.emb-back-type-area');
+  const textLength = embText.textContent.length;
+
+  if (textLength >= 7) {
+    return 25;
   } else {
-    // Desktop
     return 35;
   }
 }
-
 function updateFontBackSize(newSize) {
   const maxSize = getResponsiveBackMaxSize();
   const embText = document.querySelector('.emb-back-type-area');
@@ -1853,4 +1839,34 @@ fontSizeBackInput.addEventListener('input', () => {
 });
 
 
+</script>
+<script>
+document.querySelector('.Fchestinput').addEventListener('input', function () {
+    const charCount = this.value.length;
+    const embText = document.querySelector('.emb-font-type-area');
+    const fontSizeInput = document.getElementById('fontSizeInput');
+
+    if (charCount > 7) {
+        let currentFontSize = parseInt(window.getComputedStyle(embText).fontSize);
+        if (currentFontSize > 25) {
+            embText.style.fontSize = '25px';
+            fontSizeInput.value = 25;
+        }
+    }
+});
+</script>
+<script>
+document.querySelector('.Bchestinput').addEventListener('input', function () {
+    const charCount = this.value.length;
+    const embText = document.querySelector('.emb-back-type-area');
+    const fontSizeInput = document.getElementById('fontSizeBackInput');
+
+    if (charCount > 7) {
+        let currentFontSize = parseInt(window.getComputedStyle(embText).fontSize);
+        if (currentFontSize > 25) {
+            embText.style.fontSize = '25px';
+            fontSizeInput.value = 25;
+        }
+    }
+});
 </script>
