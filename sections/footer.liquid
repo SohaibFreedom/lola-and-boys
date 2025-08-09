@@ -67,7 +67,7 @@
   <div class="container footer-menu-wrap">
   <div class="top-footer-section">
       {% for block in section.blocks %}
-        <div class="{{ block.settings.customClass }} {% if forloop.length >= 5 %}three columns{% elsif forloop.length == 4 %}four columns{% elsif forloop.length == 3 %}one-third column{% elsif forloop.length == 2 %}eight columns{% endif %}" {{ block.shopify_attributes }}>
+        <div class="{% if block.type == 'newsletter' %}newsletter-col{% endif %}{{ block.settings.customClass }} {% if forloop.length >= 5 %}three columns{% elsif forloop.length == 4 %}four columns{% elsif forloop.length == 3 %}one-third column{% elsif forloop.length == 2 %}eight columns{% endif %}" {{ block.shopify_attributes }}>
           {% if block.type == 'logo' %}
             <div class="text-align--{{block.settings.text_align}}">
               {% if block.settings.image %}
