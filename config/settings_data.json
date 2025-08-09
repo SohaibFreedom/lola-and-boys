@@ -3969,7 +3969,7 @@
               "menu": "subpages",
               "customClass": "accordian-toggle",
               "accordian-active": true,
-              "social_icons_footer": true
+              "social_icons_footer": false
             }
           },
           "fb2ecc9d-e7f5-4096-b058-26c9043bb448": {
