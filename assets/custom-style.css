@@ -14,6 +14,9 @@
     width: 10px;
     height: 10px;
 }
+.accordian-toggle .right.icon-down-arrow svg {
+    display: none !important; 
+}
 
 .accordian-toggle span.right.icon-down-arrow:before {
     top: 50%;
