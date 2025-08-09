@@ -7,6 +7,12 @@
 }
 
 /* product filters custom Start */
+    #mobile-custom-linklist ul#some-id {
+        padding: 4px 15px !important;
+    }
+    #mobile-custom-linklist ul#some-id li a {
+        font-size: 15px !important;
+    }
 
 .footer .accordian-toggle .right.icon-down-arrow {
     position: relative;
