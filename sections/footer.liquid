@@ -93,7 +93,7 @@
             {% elsif block.type == 'text' %}
               <div class="footer_content">
                 {% if block.settings.title != blank %}
-                  <h6>{{ block.settings.title }}<span class="right icon-down-arrow"></span></h6>
+                  <h6 {% if block.settings.accordian-active %}active{% endif %}>{{ block.settings.title }}<span class="right icon-down-arrow"></span></h6>
                   <div class="toggle_content">
                     {{ block.settings.content }}
                   </div>
@@ -394,6 +394,12 @@
       "id" : "customClass",
       "label" : "Custom Class"
     },
+    {
+          "type": "checkbox",
+          "id": "accordian-active",
+          "label": "Accordian active",
+          "default": false
+        },
         {
           "type": "checkbox",
           "id": "social_icons_footer",
