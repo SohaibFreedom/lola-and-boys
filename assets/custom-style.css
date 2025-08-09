@@ -36,7 +36,6 @@
     position: absolute;
     margin:0;
     background: #fff;
-    transition: 0.3s ease;
 }
 .footer .accordian-toggle h6 {
     display: flex;
