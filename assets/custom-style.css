@@ -10,7 +10,7 @@
 
 .footer .accordian-toggle .right.icon-down-arrow {
     position: relative;
-    display: block !important;
+    display: none !important;
     width: 10px;
     height: 10px;
     cursor: pointer;
@@ -287,6 +287,9 @@ div#rebuy-widget-207164 {
   .collection-template-section div#usf_container {
     padding-top: 0 !important;
   }
+  .footer .accordian-toggle .right.icon-down-arrow {
+    display: block !important;
+}
   .usf-mobile .usf-sr-config {
     margin-bottom: 2rem !important;
   }
