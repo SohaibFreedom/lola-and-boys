@@ -93,7 +93,7 @@
             {% elsif block.type == 'text' %}
               <div class="footer_content">
                 {% if block.settings.title != blank %}
-                  <h6 {% if block.settings.accordian-active %}class="active"{% endif %}>{{ block.settings.title }}<span class="right icon-down-arrow"></span></h6>
+                  <h6>{{ block.settings.title }}<span class="right icon-down-arrow"></span></h6>
                   <div class="toggle_content">
                     {{ block.settings.content }}
                   </div>
@@ -117,7 +117,7 @@
           {% elsif block.type == 'link_list' %}
             <div class="footer_menu">
               {% if block.settings.menu != blank %}
-                <h6>{{ linklists[block.settings.menu].title }}<span class="right icon-down-arrow"></span></h6>
+                <h6  {% if block.settings.accordian-active %}class="active"{% endif %}>{{ linklists[block.settings.menu].title }}<span class="right icon-down-arrow"></span></h6>
                 <div class="toggle_content">
                   <ul>
                     {% for link in linklists[block.settings.menu].links %}
