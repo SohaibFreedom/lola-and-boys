@@ -5,9 +5,7 @@
    width: 100% !important;
     border: 1px solid var(--usf-border-color) !important;
 }
-.usf-sr-container .usf-sr-config {
-    display: none;
-}
+
 /* product filters custom Start */
 
 .rebuy-cart__flyout {
