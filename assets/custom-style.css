@@ -16,7 +16,7 @@
 }
 .footer .accordian-toggle li {
     text-align: left !important;
-    display: none !important;
+    display: block !important;
 }
 .footer .accordian-toggle .right.icon-down-arrow svg {
     display: none !important; 
