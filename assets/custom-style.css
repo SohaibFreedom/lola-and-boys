@@ -5,18 +5,14 @@
    width: 100% !important;
     border: 1px solid var(--usf-border-color) !important;
 }
-
-/* product filters custom Start */
-    #mobile-custom-linklist ul#some-id {
-        padding: 4px 15px !important;
-    }
-    #mobile-custom-linklist ul#some-id li a {
-        font-size: 15px !important;
-    }
-
-    .usf-sr-config .usf-c-select {
+.usf-sr-config .usf-c-select {
     display: none;
 }
+
+/* product filters custom Start */
+  
+
+
 
 .footer .accordian-toggle .right.icon-down-arrow {
     position: relative;
@@ -305,6 +301,12 @@ div#rebuy-widget-207164 {
   .collection-template-section div#usf_container {
     padding-top: 0 !important;
   }
+    #mobile-custom-linklist ul#some-id {
+        padding: 4px 15px !important;
+    }
+    #mobile-custom-linklist ul#some-id li a {
+        font-size: 15px !important;
+    }
   .footer .newsletter-col{
     display: none !important;
 }
