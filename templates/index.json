@@ -718,6 +718,7 @@
     },
     "image_with_text_overlay_RXmeiN": {
       "type": "image-with-text-overlay",
+      "disabled": true,
       "settings": {
         "customClass": "desktop-party-banner",
         "image": "shopify://shop_images/Lola_Let_s_Party_Banner_1.jpg",
@@ -738,6 +739,7 @@
     },
     "image_with_text_overlay_jBjqqw": {
       "type": "image-with-text-overlay",
+      "disabled": true,
       "settings": {
         "customClass": "mobile-party-banner",
         "image": "shopify://shop_images/Lola_Let_s_Party_Banner_mob.jpg",
