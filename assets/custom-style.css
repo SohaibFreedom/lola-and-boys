@@ -14,6 +14,10 @@
         font-size: 15px !important;
     }
 
+    .usf-sr-config .usf-c-select {
+    display: none;
+}
+
 .footer .accordian-toggle .right.icon-down-arrow {
     position: relative;
     display: none !important;
