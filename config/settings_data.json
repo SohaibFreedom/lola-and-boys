@@ -3967,8 +3967,8 @@
             "type": "link_list",
             "settings": {
               "menu": "subpages",
-              "customClass": "",
-              "accordian-active": false,
+              "customClass": "accordian-toggle",
+              "accordian-active": true,
               "social_icons_footer": true
             }
           },
