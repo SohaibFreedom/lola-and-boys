@@ -40,9 +40,7 @@
     align-items: center;
     justify-content: space-between;
 }
-.footer .accordian-toggle .active span.right.icon-down-arrow:after {
-  transform: translateX(-50%) scaleY(0);
-}
+
 .footer .accordian-toggle span.right.icon-down-arrow:after {
   top: 0;
   left: 50%;
