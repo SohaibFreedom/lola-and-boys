@@ -117,7 +117,7 @@
           {% elsif block.type == 'link_list' %}
             <div class="footer_menu">
               {% if block.settings.menu != blank %}
-                <h6  {% if block.settings.accordian-active %}class="active"{% endif %}>{{ linklists[block.settings.menu].title }}<span class="right icon-down-arrow"></span></h6>
+                <h6  class="menu-list-header-acc {% if block.settings.accordian-active %}active{% endif %}">{{ linklists[block.settings.menu].title }}<span class="right icon-down-arrow"></span></h6>
                 <div class="toggle_content">
                   <ul>
                     {% for link in linklists[block.settings.menu].links %}
