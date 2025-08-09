@@ -3959,6 +3959,7 @@
             "settings": {
               "menu": "footer",
               "customClass": "accordian-toggle",
+              "accordian-active": true,
               "social_icons_footer": false
             }
           },
@@ -3967,6 +3968,7 @@
             "settings": {
               "menu": "subpages",
               "customClass": "",
+              "accordian-active": false,
               "social_icons_footer": true
             }
           },
