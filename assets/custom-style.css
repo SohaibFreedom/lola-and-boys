@@ -20,7 +20,7 @@
     display: block !important;
 }
 .footer .accordian-toggle h6:not(.active) span.right.icon-down-arrow:after {
-    display: none !important; 
+    content: none !important; 
 }
 .footer .accordian-toggle .right.icon-down-arrow svg {
     display: none !important; 
