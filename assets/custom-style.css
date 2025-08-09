@@ -14,6 +14,10 @@
     width: 10px;
     height: 10px;
 }
+.footer .accordian-toggle li {
+    text-align: left !important;
+    display: block !important;
+}
 .footer .accordian-toggle .right.icon-down-arrow svg {
     display: none !important; 
 }
