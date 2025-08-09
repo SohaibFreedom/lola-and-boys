@@ -1743,9 +1743,9 @@ function getResponsiveMaxSize() {
   const textLength = embText.textContent.length;
 
   if (textLength >= 7) {
-    return 25;
+    return 15;
   } else {
-    return 35;
+    return 20;
   }
 }
 
@@ -1848,9 +1848,9 @@ document.querySelector('.Fchestinput').addEventListener('input', function () {
 
     if (charCount > 7) {
         let currentFontSize = parseInt(window.getComputedStyle(embText).fontSize);
-        if (currentFontSize > 25) {
-            embText.style.fontSize = '25px';
-            fontSizeInput.value = 25;
+        if (currentFontSize > 15) {
+            embText.style.fontSize = '15px';
+            fontSizeInput.value = 15;
         }
     }
 });
