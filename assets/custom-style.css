@@ -15,6 +15,9 @@
     height: 10px;
     cursor: pointer;
 }
+.footer .accordian-toggle {
+    margin-bottom: 24px !important;
+}
 .footer .accordian-toggle li {
     text-align: left !important;
     display: block !important;
