@@ -772,6 +772,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <script>
 
+document.querySelectorAll('.menu-list-header-acc').forEach(el => {
+    el.addEventListener('click', () => {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+});
 
 
 
