@@ -5309,6 +5309,11 @@ var patchActionElement = actionPatch.find('.patch-action');
         console.log('this is order',order);
         $('.selected-patch-for-customization-for-front').removeClass('patch-selected');  
         $('.selected-patch-for-customization-for-back').removeClass('patch-selected');  
+        $('.main-patch-action-div-del').css('visibility', 'hidden');       
+        console.log('this is order',order)       
+        order=1;       
+        console.log('this is new order',order)       
+        changefillColors();
         $('.selected-patch-for-customization-for-front > .selected-patch-order').remove();
         $('.selected-patch-for-customization-for-back > .selected-patch-order').remove();
         $('.selected-patch-for-customization').removeClass('patch-selected-by-btn ');
