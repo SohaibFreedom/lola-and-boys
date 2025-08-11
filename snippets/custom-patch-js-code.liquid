@@ -5306,7 +5306,7 @@ var patchActionElement = actionPatch.find('.patch-action');
 
     // Click event listener for closing the editor
     $('.close-patches-customization-editor').click(function() {
-       
+        $('.selected-patch-for-customization').removeClass('patch-selected-by-btn ');
         $('.main-patch-action-div-del').css('visibility', 'hidden');
         $('.patches-customization-editor').removeClass('patches-customization-editor-active');
         $('.edit-left-btn').removeClass('patches-customization-tidy-delete-btn-active');
