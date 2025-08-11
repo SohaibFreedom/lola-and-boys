@@ -1392,7 +1392,7 @@ const overlayContent = document.querySelector('.overlay-content');
 
 
 function closeOverlay() {
-  overlay.style.display = 'none'; 
+  overlay.classList.remove('active');
 }
 overlay.addEventListener('click', function (event) {
 
