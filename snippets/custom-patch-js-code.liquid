@@ -5308,7 +5308,9 @@ var patchActionElement = actionPatch.find('.patch-action');
     $('.close-patches-customization-editor').click(function() {
         console.log('this is order',order);
         $('.selected-patch-for-customization-for-front').removeClass('patch-selected');  
+        $('.selected-patch-for-customization-for-front').removeClass('patch-selected');  
         $('.selected-patch-for-customization-for-front > .selected-patch-order').remove();
+        $('.selected-patch-for-customization-for-back > .selected-patch-order').remove();
         $('.selected-patch-for-customization').removeClass('patch-selected-by-btn ');
         $('.main-patch-action-div-del').css('visibility', 'hidden');
         $('.patches-customization-editor').removeClass('patches-customization-editor-active');
