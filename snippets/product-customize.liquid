@@ -1,6 +1,8 @@
 {% assign variant = product.selected_or_first_available_variant %}
 
 <style>
+   .patch .patch-image { opacity: 0; transition: opacity .25s ease; }
+.patch-image.is-loaded { opacity: 1; }
   .patch-not-allowed{
     height:100px !important;
     width:100px !important;
