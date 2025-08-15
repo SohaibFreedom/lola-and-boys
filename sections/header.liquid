@@ -1419,7 +1419,11 @@ document.addEventListener('keydown', function(event) {
 
 <script>
 
-document.getElementById('instantSearchInput').addEventListener('input', function() {
+function bindSearchEvents() {
+  const searchInput = document.getElementById('instantSearchInput');
+
+  // Handle typing in search input
+  searchInput.addEventListener('input', function () {
     const query = this.value.trim();
     const searchResultsContainer = document.getElementById('searchResults');
     const collectionResultsContainer = document.getElementById('collectionResults');
@@ -1430,123 +1434,140 @@ document.getElementById('instantSearchInput').addEventListener('input', function
     const viewAllResultsButton = document.getElementById('viewAllResultsButton');
 
     if (query.length > 1) {
-        trendingSearchesWrapper.style.display = 'none';
-        collectionSearchesWrapper.style.display = 'block';
-        popularProducts.style.display = 'none';
-        recommendedProducts.style.display = 'block';
+      trendingSearchesWrapper.style.display = 'none';
+      collectionSearchesWrapper.style.display = 'block';
+      popularProducts.style.display = 'none';
+      recommendedProducts.style.display = 'block';
 
-        // Update "View All" button URL and text
-        viewAllResultsButton.href = `/search?q=${encodeURIComponent(query)}`;
-        viewAllResultsButton.innerHTML = `View All Results for "${query}"`;
-        viewAllResultsButton.style.display = 'inline-block';
+      // Update View All button
+      viewAllResultsButton.href = `/search?q=${encodeURIComponent(query)}`;
+      viewAllResultsButton.innerHTML = `View All Results for "${query}"`;
+      viewAllResultsButton.style.display = 'inline-block';
 
-        fetch(`/search/suggest.json?q=${encodeURIComponent(query)}&resources[type]=product,collection&resources[limit]=8`)
-            .then(response => response.json())
-            .then(data => {
+      fetch(`/search/suggest.json?q=${encodeURIComponent(query)}&resources[type]=product,collection&resources[limit]=8`)
+        .then(response => response.json())
+        .then(data => {
+          // Clear old results
+          searchResultsContainer.innerHTML = '';
+          collectionResultsContainer.innerHTML = '';
 
-             console.log(data);
-                // Clear previous results
-                searchResultsContainer.innerHTML = '';
-                collectionResultsContainer.innerHTML = '';
+          // Products
+          const filteredProducts = data.resources.results.products
+            .slice(0, 4)
+            .filter(product => !product.tags.includes('hide-from-search'));
 
-                // Display product results (limit to 4)
-                const filteredProducts = data.resources.results.products
-    .slice(0, 4)
-    .filter(product => !product.tags.includes('hide-from-search'));
+          if (filteredProducts.length > 0) {
+            filteredProducts.forEach(product => {
+              const formattedPrice = Shopify.formatMoney(product.price, "{{ shop.money_format }}");
+              const productHtml = `
+                <div class="search-result-item product-item">
+                    <a href="${product.url}">
+                        <img class="product-img" src="${product.image.replace(/(\.[^.]*)$/, '_400x$1')}" alt="${product.title}" />
+                        <h4><a class="product-title" href="${product.url}">${product.title}</a></h4>
+                        <p class="product-price">${formattedPrice}</p>
+                    </a>
+                </div>
+              `;
+              searchResultsContainer.innerHTML += productHtml;
+            });
+          } else {
+            searchResultsContainer.innerHTML = '<p>No products found</p>';
+            viewAllResultsButton.style.display = 'none';
+          }
 
-if (filteredProducts.length > 0) {
-    filteredProducts.forEach(product => {
-        const currency = product.currency || 'USD'; // Default to USD if currency is not specified
-        const formattedPrice = Shopify.formatMoney(product.price, "{{ shop.money_format }}");
+          // Collections
+          if (data.resources.results.collections.length > 0) {
+            data.resources.results.collections.slice(0, 4).forEach(collection => {
+              const collectionHtml = `
+                <li class="collection-result-item">
+                    <a href="${collection.url}">${collection.title}</a>
+                </li>
+              `;
+              collectionResultsContainer.innerHTML += collectionHtml;
+            });
+          } else {
+            trendingSearchesWrapper.style.display = 'block';
+            collectionSearchesWrapper.style.display = 'none';
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching search results:', error);
+          searchResultsContainer.innerHTML = '<p>Error fetching results</p>';
+          collectionResultsContainer.innerHTML = '<p>Error fetching collections</p>';
+        });
 
-        const productHtml = `
-            <div class="search-result-item product-item">
-                <a href="${product.url}">
-                    <img class="product-img" src="${product.image.replace(/(\.[^.]*)$/, '_400x$1')}" alt="${product.title}" />
-                    <h4><a class="product-title" href="${product.url}">${product.title}</a></h4>
-                    <p class="product-price">${formattedPrice}</p>
-                </a>
-            </div>
-        `;
-        searchResultsContainer.innerHTML += productHtml;
-    });
-} 
-else {
-    searchResultsContainer.innerHTML = '<p>No products found</p>';
-    viewAllResultsButton.style.display = 'none';
+    } else {
+      trendingSearchesWrapper.style.display = 'block';
+      collectionSearchesWrapper.style.display = 'none';
+      popularProducts.style.display = 'block';
+      recommendedProducts.style.display = 'none';
+      searchResultsContainer.innerHTML = '';
+      collectionResultsContainer.innerHTML = '';
+      viewAllResultsButton.style.display = 'none';
+    }
+  });
+
+  // Handle pressing Enter
+  searchInput.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      const query = this.value.trim();
+      if (query.length > 0) {
+        window.location.href = `/search?q=${encodeURIComponent(query)}&type=product`;
+      }
+    }
+  });
+
+  // Close overlay click
+  document.querySelector('.close-overlay').addEventListener('click', function () {
+    searchInput.value = '';
+    document.getElementById('searchResults').innerHTML = '';
+    document.getElementById('collectionResults').innerHTML = '';
+    document.querySelector('.trending-searches-main').style.display = 'block';
+    document.querySelector('.collection-searches-wrapper').style.display = 'none';
+    document.getElementById('popular-products').style.display = 'block';
+    document.getElementById('recommended-products').style.display = 'none';
+    document.getElementById('viewAllResultsButton').style.display = 'none';
+    closeFullWidthSearch();
+  });
+
+  // Click on form area focuses input
+  document.querySelector('.header_search_form').addEventListener('click', function () {
+    this.querySelector('input').focus();
+  });
 }
 
+function openFullWidthSearch() {
+  const overlay = document.querySelector(".full-width-overlay");
+  const searchWrap = overlay.querySelector(".header_search_form");
 
-                // Display collection results (limit to 4)
-                if (data.resources.results.collections.length > 0) {
-                    data.resources.results.collections.slice(0, 4).forEach(collection => {
-                        const collectionHtml = `
-                            <li class="collection-result-item">
-                                <a href="${collection.url}">${collection.title}</a>
-                            </li>
-                        `;
-                        collectionResultsContainer.innerHTML += collectionHtml;
-                    });
-                } else {
-                    trendingSearchesWrapper.style.display = 'block';
-                    collectionSearchesWrapper.style.display = 'none';
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching search results:', error);
-                searchResultsContainer.innerHTML = '<p>Error fetching results</p>';
-                collectionResultsContainer.innerHTML = '<p>Error fetching collections</p>';
-            });
-    } else {
-        trendingSearchesWrapper.style.display = 'block';
-        collectionSearchesWrapper.style.display = 'none';
-        popularProducts.style.display = 'block';
-        recommendedProducts.style.display = 'none';
+  // Recreate the input every time
+  searchWrap.innerHTML = `
+    <span class="icon-search"></span>
+    <input type="text" id="instantSearchInput" placeholder="Search" />
+  `;
 
-        searchResultsContainer.innerHTML = '';
-        collectionResultsContainer.innerHTML = '';
-        viewAllResultsButton.style.display = 'none'; // Hide "View All" when no query
-    }
-});
+  const searchInput = document.getElementById('instantSearchInput');
 
-document.getElementById('instantSearchInput').addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        event.preventDefault(); // Prevent form submission if within a form
-        const query = this.value.trim();
-        if (query.length > 0) {
-            window.location.href = `/search?q=${encodeURIComponent(query)}&type=product`;
-        }
-    }
-});
-  
+  overlay.classList.add("active");
+  document.documentElement.classList.add("mobilesearch-overflowhidden");
 
-document.querySelector('.close-overlay').addEventListener('click', function() {
-    const searchInput = document.getElementById('instantSearchInput');
-    const searchResultsContainer = document.getElementById('searchResults');
-    const collectionResultsContainer = document.getElementById('collectionResults');
-    const trendingSearchesWrapper = document.querySelector('.trending-searches-main');
-    const collectionSearchesWrapper = document.querySelector('.collection-searches-wrapper');
-    const popularProducts = document.getElementById('popular-products');
-    const recommendedProducts = document.getElementById('recommended-products');
-    const viewAllResultsButton = document.getElementById('viewAllResultsButton');
-    
-    // Clear the search input field
-    searchInput.value = '';
+  // Focus immediately for mobile keyboard
+  searchInput.focus();
 
-    // Reset the view to default state
-    trendingSearchesWrapper.style.display = 'block';
-    collectionSearchesWrapper.style.display = 'none';
-    popularProducts.style.display = 'block';
-    recommendedProducts.style.display = 'none';
-    searchResultsContainer.innerHTML = '';
-    collectionResultsContainer.innerHTML = '';
-    viewAllResultsButton.style.display = 'none'; // Hide "View All" button
-});
+  // Keep cursor after animation
+  setTimeout(() => {
+    searchInput.focus();
+  }, 300);
 
-  document.querySelector('.header_search_form')
-  .addEventListener('click', function() {
-    this.querySelector('input').focus();
-});
+  // Rebind events to new input
+  bindSearchEvents();
+}
+
+function closeFullWidthSearch() {
+  document.querySelector(".full-width-overlay").classList.remove("active");
+  document.documentElement.classList.remove("mobilesearch-overflowhidden");
+}
 
   
 </script>
