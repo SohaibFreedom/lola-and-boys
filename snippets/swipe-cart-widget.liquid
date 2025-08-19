@@ -870,7 +870,7 @@ function injectGlobalPopup() {
 async function replaceNativeWithCustom() {
   const cart = await getCartItem();
  
-
+removeSwipeIfCartEmpty();
   const { tier, postProtectedProduct: existing } = await computeProtectionTier();
 
   // start with the raw subtotal (this _does_ include protection if it’s there)
