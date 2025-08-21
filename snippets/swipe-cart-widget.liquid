@@ -955,8 +955,30 @@ const formattedTotal = new Intl.NumberFormat(navigator.language, {
             const link = box.querySelector(".swipe-link-no-protection");
             const btn = box.querySelector(".swipe-btn-protection");
 
-            // override link: plain checkout
-         link.addEventListener("click", async e => {
+        
+// Helper: decide final checkout URL
+function getCheckoutUrl() {
+  let url = "/checkout";
+
+  try {
+    if (window.LoopOnstore && typeof LoopOnstore.isActive === "function" && LoopOnstore.isActive()) {
+      if (typeof LoopOnstore.returnLink === "function") {
+        url = LoopOnstore.returnLink();
+      } else if (typeof LoopOnstore.checkoutLink === "function") {
+        url = LoopOnstore.checkoutLink();
+      } else if (typeof LoopOnstore.checkoutLink === "string") {
+        url = LoopOnstore.checkoutLink;
+      }
+    }
+  } catch (e) {
+    console.warn("LoopOnstore check failed, falling back to /checkout", e);
+  }
+
+  return url || "/checkout";
+}
+
+/* ===== Snippet #1: plain checkout override (remove protection first) ===== */
+link.addEventListener("click", async (e) => {
   e.preventDefault();
 
   try {
@@ -964,29 +986,25 @@ const formattedTotal = new Intl.NumberFormat(navigator.language, {
   } catch (err) {
     console.error("Error removing protection:", err);
   }
+
   window.requestAnimationFrame(() => {
-    window.top.location.href = "/checkout";
-      
+    window.top.location.href = getCheckoutUrl();
   });
 });
 
-
-            // override button: add protection then checkout
-
-
-
-btn.addEventListener("click", async e => {
+/* ===== Snippet #2: add protection then go to checkout ===== */
+btn.addEventListener("click", async (e) => {
   e.preventDefault();
   skipSwipeMutation = true;
 
   try {
     await applyProtectionVariant();
-    // let the spinner show for at least 100ms so it actually renders
-    await new Promise(res => setTimeout(res, 100));
-    window.top.location.href = "/checkout";
+    // ensure spinner renders
+    await new Promise((res) => setTimeout(res, 100));
+    window.top.location.href = getCheckoutUrl();
   } catch (err) {
     console.error("Error applying protection:", err);
-      skipSwipeMutation = false;
+    skipSwipeMutation = false;
   }
 });
 
