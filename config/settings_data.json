@@ -3360,7 +3360,7 @@
     "email_link": "",
     "tiktok_link": "https://www.tiktok.com/@lolaandtheboys",
     "favicon": "shopify://shop_images/LATB-favicon.png",
-    "home_preview": "shopify://shop_images/ZARA-sets-19092022.jpg",
+    "home_preview": "shopify://shop_images/preview-img.png",
     "disqus_enabled": false,
     "disqus_shortname": "",
     "look_book_first_one": "shopify://shop_images/img-13.jpg",
@@ -5425,11 +5425,6 @@
       },
       "6097499278999377719": {
         "type": "shopify://apps/mega-menu/blocks/app-embed/7a00835e-fe40-45a5-a615-2eb4ab697b58",
-        "disabled": false,
-        "settings": {}
-      },
-      "12509190167029697241": {
-        "type": "shopify://apps/blotout-edgetag/blocks/app-embed/ae22d985-ba57-41f5-94c5-18d3dd98ea3c",
         "disabled": false,
         "settings": {}
       },
