@@ -955,8 +955,8 @@ const formattedTotal = new Intl.NumberFormat(navigator.language, {
             const link = box.querySelector(".swipe-link-no-protection");
             const btn = box.querySelector(".swipe-btn-protection");
 
-  // override link: checkout with Loop fallback
-link.addEventListener("click", async e => {
+            // override link: plain checkout
+         link.addEventListener("click", async e => {
   e.preventDefault();
 
   try {
@@ -964,64 +964,31 @@ link.addEventListener("click", async e => {
   } catch (err) {
     console.error("Error removing protection:", err);
   }
-
   window.requestAnimationFrame(() => {
-    let checkoutUrl = "/checkout";
-
-    // If LoopOnstore is active, use its checkout link
-    if (window.LoopOnstore && typeof LoopOnstore.isActive === "function" && LoopOnstore.isActive()) {
-      if (typeof LoopOnstore.returnLink === "function") {
-        checkoutUrl = LoopOnstore.returnLink(); 
-      } else if (LoopOnstore.checkoutLink) {
-        checkoutUrl = LoopOnstore.checkoutLink; 
-      }
-    }
-
-    window.top.location.href = checkoutUrl;
+    window.top.location.href = "/checkout";
+      
   });
 });
-
 
 
             // override button: add protection then checkout
 
 
 
-// Helper (local to this snippet): resolve final checkout URL
-function getCheckoutUrl() {
-  let url = "/checkout";
-  try {
-    if (window.LoopOnstore && typeof LoopOnstore.isActive === "function" && LoopOnstore.isActive()) {
-      if (typeof LoopOnstore.returnLink === "function") {
-        url = LoopOnstore.returnLink();
-      } else if (typeof LoopOnstore.checkoutLink === "function") {
-        url = LoopOnstore.checkoutLink();
-      } else if (typeof LoopOnstore.checkoutLink === "string") {
-        url = LoopOnstore.checkoutLink;
-      }
-    }
-  } catch (e) {
-    console.warn("LoopOnstore check failed, using /checkout", e);
-  }
-  return url || "/checkout";
-}
-
-btn.addEventListener("click", async (e) => {
+btn.addEventListener("click", async e => {
   e.preventDefault();
   skipSwipeMutation = true;
 
   try {
     await applyProtectionVariant();
     // let the spinner show for at least 100ms so it actually renders
-    await new Promise((res) => setTimeout(res, 100));
-
-    window.top.location.href = getCheckoutUrl();
+    await new Promise(res => setTimeout(res, 100));
+    window.top.location.href = "/checkout";
   } catch (err) {
     console.error("Error applying protection:", err);
-    skipSwipeMutation = false;
+      skipSwipeMutation = false;
   }
 });
-
 
         });
     });
