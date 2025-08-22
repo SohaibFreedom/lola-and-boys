@@ -647,7 +647,26 @@ async function removeSwipeIfCartEmpty() {
     }
   }
 }
+// Check and remove Swipe when Loop On-Store is active
+async function removeSwipeIfLoopActive() {
+  // ✅ Check if Loop is active before proceeding
+  if (!LoopOnstore.isActive()) {
+    return; // Exit the function if Loop is not active
+  }
 
+  const cart = await getCartItem();
+  const items = cart.items || [];
+
+  // Find any "Swipe" products in the cart
+  const swipeItem = items.find(
+    item => item.product_title === "Swipe" || item.product_title === "Swipe Package Protection"
+  );
+
+  // If a "Swipe" product is found, remove it from the cart
+  if (swipeItem && swipeItem.id) {
+    await fetch("/cart/update.js", prepParams("POST", { updates: { [swipeItem.id]: 0 } }));
+  }
+}
 
 
 // Helper to remove any existing Swipe protection before plain checkout:
@@ -997,31 +1016,68 @@ btn.addEventListener("click", async e => {
 }
 
 window.addEventListener("pageshow", () => {
+
+          if (LoopOnstore.isActive()) {
+        const rebuyButtons = document.querySelectorAll('.rebuy-button.block, .rebuy-cart__flyout-empty-cart a.block');
+        rebuyButtons.forEach(button => {
+          // Apply the CSS style directly
+          button.style.display = 'block';
+          button.style.setProperty('display', 'block', 'important');
+        });
+      } else {
+        // Run these functions ONLY if LoopOnstore is NOT active
+        replaceNativeWithCustom();
+        injectGlobalPopup();
+      }
+
   const bootstrap = new MutationObserver((_, obs) => {
-    const rebuy = document.querySelector('[data-rebuy-cart-anchor="body"],.body');
+    const rebuy = document.querySelector('[data-rebuy-cart-anchor="body"]');
     if (skipSwipeMutation) {
-     // we just added Swipe—ignore this batch of mutations
-     skipSwipeMutation = false;
-     return;
-  }
+      skipSwipeMutation = false;
+      return;
+    }
     if (!rebuy) return;
 
     obs.disconnect();
 
-    setTimeout(() => {
-      replaceNativeWithCustom();
-      injectGlobalPopup();
-    }, 1000);
+    
+      // ✅ Check if LoopOnstore is active
+      if (LoopOnstore.isActive()) {
+        const rebuyButtons = document.querySelectorAll('.rebuy-button.block, .rebuy-cart__flyout-empty-cart a.block');
+        rebuyButtons.forEach(button => {
+          // Apply the CSS style directly
+          button.style.display = 'block';
+          button.style.setProperty('display', 'block', 'important');
+        });
+      } else {
+        // Run these functions ONLY if LoopOnstore is NOT active
+        replaceNativeWithCustom();
+        injectGlobalPopup();
+      }
+  
 
     const cartObserver = new MutationObserver(() => {
-           if (skipSwipeMutation) {
-       skipSwipeMutation = false;
-       return;
-     }
-        setTimeout(() => {
-      replaceNativeWithCustom();
-      injectGlobalPopup();
-              }, 1000);
+          removeSwipeIfLoopActive();
+
+      if (skipSwipeMutation) {
+        skipSwipeMutation = false;
+        return;
+      }
+      setTimeout(() => {
+        // ✅ Check if LoopOnstore is active
+        if (LoopOnstore.isActive()) {
+          const rebuyButtons = document.querySelectorAll('.rebuy-button.block, .rebuy-cart__flyout-empty-cart a.block');
+          rebuyButtons.forEach(button => {
+            // Apply the CSS style directly
+            button.style.display = 'block';
+            button.style.setProperty('display', 'block', 'important');
+          });
+        } else {
+          // Run these functions ONLY if LoopOnstore is NOT active
+          replaceNativeWithCustom();
+          injectGlobalPopup();
+        }
+      }, 1000);
     });
 
     cartObserver.observe(rebuy, {
