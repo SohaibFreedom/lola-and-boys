@@ -34,6 +34,28 @@
             "button2_highlight": false
           }
         },
+        "image_e9Phpp": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/HP_BANNER_HOME_PAGE.png",
+            "image_mobile": "shopify://shop_images/HP_BANNER_MOBILE.png",
+            "mp4": "",
+            "mobilevideo": "",
+            "pretext": "",
+            "title": "",
+            "subtitle": "",
+            "text_position": "center",
+            "text_align": "center",
+            "caption_background": false,
+            "caption_background_transparency": false,
+            "button1": "",
+            "button1_link": "https://lolaandtheboys.com/collections/shoe-sale",
+            "button1_highlight": false,
+            "button2": "",
+            "button2_link": "https://lolaandtheboys.com/collections/shoe-sale",
+            "button2_highlight": false
+          }
+        },
         "image_V87qeG": {
           "type": "image",
           "settings": {
@@ -163,40 +185,17 @@
             "button2_link": "",
             "button2_highlight": false
           }
-        },
-        "image_e9Phpp": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/HOME_PAGE_BANNER_desktop_12.jpg",
-            "image_mobile": "shopify://shop_images/HOME_PAGE_BANNER_MOBILE_9.jpg",
-            "mp4": "",
-            "mobilevideo": "",
-            "pretext": "",
-            "title": "",
-            "subtitle": "",
-            "text_position": "center",
-            "text_align": "center",
-            "caption_background": false,
-            "caption_background_transparency": false,
-            "button1": "",
-            "button1_link": "",
-            "button1_highlight": false,
-            "button2": "",
-            "button2_link": "",
-            "button2_highlight": false
-          }
         }
       },
       "block_order": [
         "image_MzwgLN",
+        "image_e9Phpp",
         "image_V87qeG",
         "image_U3EW4E",
         "image_zPL6aM",
         "image_KD9mi6",
         "image_9rViCJ",
-        "image_QccNLz",
-        "image_e9Phpp"
+        "image_QccNLz"
       ],
       "settings": {
         "slideshow_text_animation": "fadeInDown",
