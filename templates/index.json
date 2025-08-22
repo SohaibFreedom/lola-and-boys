@@ -34,6 +34,28 @@
             "button2_highlight": false
           }
         },
+        "image_KD9mi6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/HP_BANNER_HOME_PAGE.png",
+            "image_mobile": "shopify://shop_images/HP_BANNER_MOBILE.png",
+            "mp4": "",
+            "mobilevideo": "",
+            "pretext": "",
+            "title": "",
+            "subtitle": "",
+            "text_position": "center",
+            "text_align": "center",
+            "caption_background": false,
+            "caption_background_transparency": false,
+            "button1": "",
+            "button1_link": "https://lolaandtheboys.com/collections/shoe-sale",
+            "button1_highlight": false,
+            "button2": "",
+            "button2_link": "",
+            "button2_highlight": false
+          }
+        },
         "image_V87qeG": {
           "type": "image",
           "settings": {
@@ -99,28 +121,6 @@
             "button2_highlight": false
           }
         },
-        "image_KD9mi6": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/HP_BANNER_HOME_PAGE.png",
-            "image_mobile": "shopify://shop_images/HP_BANNER_MOBILE.png",
-            "mp4": "",
-            "mobilevideo": "",
-            "pretext": "",
-            "title": "",
-            "subtitle": "",
-            "text_position": "center",
-            "text_align": "center",
-            "caption_background": false,
-            "caption_background_transparency": false,
-            "button1": "",
-            "button1_link": "https://lolaandtheboys.com/collections/shoe-sale",
-            "button1_highlight": false,
-            "button2": "",
-            "button2_link": "",
-            "button2_highlight": false
-          }
-        },
         "image_9rViCJ": {
           "type": "image",
           "settings": {
@@ -167,10 +167,10 @@
       },
       "block_order": [
         "image_MzwgLN",
+        "image_KD9mi6",
         "image_V87qeG",
         "image_U3EW4E",
         "image_zPL6aM",
-        "image_KD9mi6",
         "image_9rViCJ",
         "image_QccNLz"
       ],
