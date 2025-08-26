@@ -3608,61 +3608,59 @@ if (firstColorVariantData) {
 // Function to create variant divs based on the color-title
 function createVariantDivs(colorTitle) {
   const product2 = {{ product | json }};
-  const variantsContainer = document.getElementById('variants-containers');
-  
-  // Clear existing variant divs
+  const variantsContainer = document.getElementById('emb-variants-containers');
+
+  const optionNames = {{ product.options | json }};
+  const colorIdx = optionNames.findIndex(n => /color/i.test(n));
+
+  const getVariantColor = (v) => {
+    if (colorIdx === 0) return v.option1 || '';
+    if (colorIdx === 1) return v.option2 || '';
+    if (colorIdx === 2) return v.option3 || '';
+    return (v.title || '').split(' / ').find(part => /color/i.test(part)) || '';
+  };
+
+  const norm = s => (s || '').trim().toLowerCase();
+
   variantsContainer.innerHTML = '';
+  const addedSizes = new Set();
 
-  // Filter and create divs for matching variants
   product2.variants.forEach(variant => {
-    if (
-      variant.title.toLowerCase().includes(colorTitle.toLowerCase()) &&
-      variant.available
-    ) {
-      const variantDiv = document.createElement('div');
-      variantDiv.textContent = variant.option1;
-      variantDiv.setAttribute('data-v-id', variant.id);
-      variantDiv.classList.add('select_size', 'size_variants_circle', 'size_variants');
-      variantsContainer.appendChild(variantDiv);
+    if (!variant.available) return;
 
-      // Add click event listener to each dynamically created div
-      variantDiv.addEventListener('click', () => {
-    // Remove 'size_variants_active' class from all '.select_size' divs
-    const allSelectSizeDivs = document.querySelectorAll('.select_size');
-    allSelectSizeDivs.forEach(div => {
-        div.classList.remove('size_variants_active');
-    });
+    const vColor = getVariantColor(variant);
+    if (norm(vColor) === norm(colorTitle)) {
+      const sizeLabel = (variant.option1 || '').trim();
+      if (sizeLabel && !addedSizes.has(sizeLabel)) {
+        addedSizes.add(sizeLabel);
 
-    // Hide any size variant errors
-    $('.size_variants_errors').css('display', 'none');
+        const variantDiv = document.createElement('div');
+        variantDiv.textContent = sizeLabel;
+        variantDiv.setAttribute('data-v-id', variant.id);
+        variantDiv.classList.add('select_size', 'size_variants_circle', 'size_variants');
+        variantsContainer.appendChild(variantDiv);
 
-    // Add 'size_variants_active' class to the clicked div
-    variantDiv.classList.add('size_variants_active');
+        variantDiv.addEventListener('click', () => {
+          document.querySelectorAll('.select_size').forEach(div => {
+            div.classList.remove('size_variants_active');
+          });
 
-    // Update the colorSelectorHeading with the variant option1
-    const colorSelectorHeading = document.querySelector('.size_selector_heading');
-    if (colorSelectorHeading) {
-        colorSelectorHeading.textContent = variant.option1;
-    }
+          $('.size_variants_errors').css('display', 'none');
+          $('.small_selected_heading_size').css('visibility', 'visible');
 
-    // Get the value of the data-v-id attribute
-    const vId = variantDiv.getAttribute('data-v-id');
-    console.log('vId', vId);
+          variantDiv.classList.add('size_variants_active');
 
-    // Update the value of the hidden input with id 'selective_variant_ID'
-    const hiddenInput = document.getElementById('selective_variant_ID');
-    if (hiddenInput) {
-        hiddenInput.value = vId;
-    }
+          const sizeHeading = document.querySelector('.emb-size_selector_heading');
+          if (sizeHeading) sizeHeading.textContent = sizeLabel;
 
-    // Get the text content of the clicked div and assign it to the hidden input 'selective_variant_name'
-    const clickedDivText = variantDiv.textContent.trim(); // Get the text of the clicked div
-    const hiddenNameInput = document.getElementById('selective_variant_name');
-    if (hiddenNameInput) {
-        hiddenNameInput.value = clickedDivText; // Set the text content as the value of the hidden input
-    }
-});
+          const vId = variantDiv.getAttribute('data-v-id');
+          const hiddenId = document.getElementById('emb-selective_variant_ID');
+          if (hiddenId) hiddenId.value = vId;
 
+          const hiddenName = document.getElementById('selective_variant_name');
+          if (hiddenName) hiddenName.value = sizeLabel;
+        });
+      }
     }
   });
 }
