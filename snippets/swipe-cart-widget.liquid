@@ -977,7 +977,7 @@ const formattedTotal = new Intl.NumberFormat(navigator.language, {
             // override link: plain checkout
          link.addEventListener("click", async e => {
   e.preventDefault();
-
+showLoadingOnElement(link);
   try {
     await removeExistingProtectionIfAny();
   } catch (err) {
@@ -996,6 +996,7 @@ const formattedTotal = new Intl.NumberFormat(navigator.language, {
 
 btn.addEventListener("click", async e => {
   e.preventDefault();
+  showLoadingOnElement(btn);
   skipSwipeMutation = true;
 
   try {
