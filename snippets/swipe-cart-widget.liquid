@@ -1009,8 +1009,8 @@ btn.addEventListener("click", async e => {
 
   try {
     await applyProtectionVariant();
-    // let the spinner show for at least 100ms so it actually renders
-    await new Promise(res => setTimeout(res, 1000));
+    // let the spinner show for at least 300ms so it actually renders
+    await new Promise(res => setTimeout(res, 300));
     window.top.location.href = "/checkout";
   } catch (err) {
     console.error("Error applying protection:", err);
