@@ -1017,9 +1017,21 @@ btn.addEventListener("click", async e => {
 
 window.addEventListener("pageshow", () => {
 
-    
+          if (LoopOnstore.isActive()) {
+        const rebuyButtons = document.querySelectorAll('.rebuy-button.block, .rebuy-cart__flyout-empty-cart a.block');
+        rebuyButtons.forEach(button => {
+          // Apply the CSS style directly
+          button.style.display = 'block';
+          button.style.setProperty('display', 'block', 'important');
+        });
+      } else {
+        // Run these functions ONLY if LoopOnstore is NOT active
+        replaceNativeWithCustom();
+        injectGlobalPopup();
+      }
+
   const bootstrap = new MutationObserver((_, obs) => {
-    const rebuy = document.querySelector('[data-rebuy-cart-anchor="body"]);
+    const rebuy = document.querySelector('[data-rebuy-cart-anchor="body"]');
     if (skipSwipeMutation) {
       skipSwipeMutation = false;
       return;
@@ -1028,6 +1040,21 @@ window.addEventListener("pageshow", () => {
 
     obs.disconnect();
 
+    
+      // ✅ Check if LoopOnstore is active
+      if (LoopOnstore.isActive()) {
+        const rebuyButtons = document.querySelectorAll('.rebuy-button.block, .rebuy-cart__flyout-empty-cart a.block');
+        rebuyButtons.forEach(button => {
+          // Apply the CSS style directly
+          button.style.display = 'block';
+          button.style.setProperty('display', 'block', 'important');
+        });
+      } else {
+        // Run these functions ONLY if LoopOnstore is NOT active
+        replaceNativeWithCustom();
+        injectGlobalPopup();
+      }
+  
 
     const cartObserver = new MutationObserver(() => {
           removeSwipeIfLoopActive();
@@ -1036,9 +1063,9 @@ window.addEventListener("pageshow", () => {
         skipSwipeMutation = false;
         return;
       }
-    
+      setTimeout(() => {
         // ✅ Check if LoopOnstore is active
-if (typeof LoopOnstore !== "undefined" && LoopOnstore.isActive()) {
+        if (LoopOnstore.isActive()) {
           const rebuyButtons = document.querySelectorAll('.rebuy-button.block, .rebuy-cart__flyout-empty-cart a.block');
           rebuyButtons.forEach(button => {
             // Apply the CSS style directly
@@ -1050,7 +1077,7 @@ if (typeof LoopOnstore !== "undefined" && LoopOnstore.isActive()) {
           replaceNativeWithCustom();
           injectGlobalPopup();
         }
-     
+      }, 1000);
     });
 
     cartObserver.observe(rebuy, {
@@ -1066,6 +1093,8 @@ if (typeof LoopOnstore !== "undefined" && LoopOnstore.isActive()) {
     subtree: true
   });
 });
+
+
  
 
 </script>
