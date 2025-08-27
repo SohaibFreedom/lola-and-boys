@@ -650,7 +650,7 @@ async function removeSwipeIfCartEmpty() {
 // Check and remove Swipe when Loop On-Store is active
 async function removeSwipeIfLoopActive() {
   // ✅ Check if Loop is active before proceeding
-  if (!LoopOnstore.isActive()) {
+ if (typeof LoopOnstore !== 'undefined' && !LoopOnstore.isActive()) {
     return; // Exit the function if Loop is not active
   }
 
