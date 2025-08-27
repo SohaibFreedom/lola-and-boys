@@ -1,87 +1,44 @@
-<div class="option_title">Overall Fit</div>
-<div class="product-overall-fit">
-  {% assign overall_fit_value = product.metafields.custom.overallfit %}
-  <div class="bar">
-    <span class="dot {% if overall_fit_value == "Runs Small" %}star{% endif %}" style="left: 0%;">
-      {%- if overall_fit_value == 'Runs Small' %}★{% endif -%}
-    </span>
-    <span class="dot {% if overall_fit_value == "Slightly Small" %}star{% endif %}" style="left: 25%;">
-      {%- if overall_fit_value == 'Slightly Small' %}★{% endif -%}
-    </span>
-    <span class="dot {% if overall_fit_value == "True to Size" %}star{% endif %}" style="left: 50%;">
-      {%- if overall_fit_value == 'True to Size' %}★{% endif -%}
-    </span>
-    <span class="dot {% if overall_fit_value == "Slightly Large" %}star{% endif %}" style="left: 75%;">
-      {%- if overall_fit_value == 'Slightly Large' %}★{% endif -%}
-    </span>
-    <span class="dot {% if overall_fit_value == "Runs Large" %}star{% endif %}" style="left: 100%;">
-      {%- if overall_fit_value == 'Runs Large' %}★{% endif -%}
-    </span>
-    {% if overall_fit_value == blank %}
-      <span class="dot star" style="left: 50%;">★</span>
-    {% endif %}
+{% if product.metafields.custom.overallfit %}
+  <div class="option_title product-overall-title">Overall Fit</div>
+  <div class="product-overall-fit">
+    {% assign overall_fit_value = product.metafields.custom.overallfit %}
+    <div class="bar">
+      <span class="dot {% if overall_fit_value == "Runs Small" %}star{% endif %}" style="left: 0%;">
+        {%- if overall_fit_value == 'Runs Small' %}★{% endif -%}
+      </span>
+      <span class="dot {% if overall_fit_value == "Slightly Small" %}star{% endif %}" style="left: 25%;">
+        {%- if overall_fit_value == 'Slightly Small' %}★{% endif -%}
+      </span>
+      <span class="dot {% if overall_fit_value == "True to Size" %}star{% endif %}" style="left: 50%;">
+        {%- if overall_fit_value == 'True to Size' %}★{% endif -%}
+      </span>
+      <span class="dot {% if overall_fit_value == "Slightly Large" %}star{% endif %}" style="left: 75%;">
+        {%- if overall_fit_value == 'Slightly Large' %}★{% endif -%}
+      </span>
+      <span class="dot {% if overall_fit_value == "Runs Large" %}star{% endif %}" style="left: 100%;">
+        {%- if overall_fit_value == 'Runs Large' %}★{% endif -%}
+      </span>
+      {% if overall_fit_value == blank %}
+        <span class="dot star" style="left: 50%;">★</span>
+      {% endif %}
+    </div>
+    <div class="labels">
+      <span style="left: 0%;">Runs Small</span>
+      <span style="left: 25%;"></span>
+
+      <span style="left: 50%;">True to Size</span>
+
+      <span style="left: 75%;"></span>
+
+      <span style="left: 100%;">Runs Large</span>
+    </div>
   </div>
-  <div class="labels">
-    <span style="left: 0%;">Runs Small</span>
-    <span style="left: 25%;"></span>
+{% endif %}
 
-    <span style="left: 50%;">True to Size</span>
-
-    <span style="left: 75%;"></span>
-
-    <span style="left: 100%;">Runs Large</span>
+{% if product.metafields.custom.model_wear %}
+  <div class="model-wear-custom-pdp">
+    <ul class="model-text">
+      <li>{{- product.metafields.custom.model_wear }}</li>
+    </ul>
   </div>
-</div>
-
-<style>
-  .product-overall-fit {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 10px auto;
-      max-width: 88%;
-  }
-  .option_title {
-      width: 100%;
-  }
-  .product-overall-fit .bar {
-      position: relative;
-      width: 100%;
-      height: 3px;
-      background-color: #d3d3d3;
-      margin: 20px 0 10px;
-  }
-  .product-overall-fit .dot {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background-color: #d3d3d3;
-      border-radius: 50%;
-      transform: translateY(-3px);
-  }
-  .product-overall-fit .dot.star {
-      text-align: center;
-      line-height: 1;
-      top: -10px;
-      background: transparent;
-      font-size: 34px;
-      color: #000;
-     transform: translate(-125%, -50%);
-  }
-  .product-overall-fit .labels {
-      position: relative;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 40px;
-  }
-  .product-overall-fit .labels span {
-      position: absolute;
-      transform: translateX(-50%);
-      top: 10px;
-      font-size: 14px;
-      color: #000;
-      white-space: nowrap;
-  }
-</style>
+{% endif %}
