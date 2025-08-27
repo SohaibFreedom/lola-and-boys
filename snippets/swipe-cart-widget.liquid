@@ -1004,26 +1004,19 @@ showLoadingOnElement(link);
 
 btn.addEventListener("click", async e => {
   e.preventDefault();
-  showLoadingOnElement(btn); // show loader
+  showLoadingOnElement(btn);
   skipSwipeMutation = true;
 
   try {
     await applyProtectionVariant();
-
-    // keep loader visible for at least 1000ms
+    // let the spinner show for at least 100ms so it actually renders
     await new Promise(res => setTimeout(res, 1000));
-
-    // redirect (loader will disappear naturally on page unload)
     window.top.location.href = "/checkout";
   } catch (err) {
     console.error("Error applying protection:", err);
-    skipSwipeMutation = false;
-
-    // hide loader only if error occurs
-    hideLoadingOnElement(btn);
+      skipSwipeMutation = false;
   }
 });
-
 
         });
     });
