@@ -685,6 +685,14 @@ async function removeExistingProtectionIfAny() {
         );
     }
 }
+function showLoadingOnElement(el) {
+    el.classList.add("loading-overlay");
+    if (el.tagName.toLowerCase() === "input") {
+        el.value = "Processing..";
+    } else {
+        el.innerHTML = "Processing";
+    }
+}
 
 // Global functions for popup state (to avoid re-creating them)
 function openSwipePopup(e) {
