@@ -1,0 +1,58 @@
+{{ 'custom-product-accrodian.css' | asset_url | stylesheet_tag }}
+
+<section class="AccordionWrap">
+  <div class="AccordionContainer">
+    <div class="AccordionBox">
+      <div class="Acc-Heading">
+        <h3>Description</h3>
+        <span class="toggle__icon"></span>
+      </div>
+      <div class="Acc-Content" style="display: none;">
+        {{ product.description }}
+      </div>
+    </div>
+
+    {% if product.metafields.custom.overallfit %}
+      <div class="AccordionBox">
+        <div class="Acc-Heading current">
+          <h3>Size &amp; Fit</h3>
+          <span class="toggle__icon"></span>
+        </div>
+        <div class="Acc-Content">
+          {% render 'product-overallfit' %}
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="AccordionBox">
+      <div class="Acc-Heading">
+        <h3>Shipping &amp; Returns</h3>
+        <span class="toggle__icon"></span>
+      </div>
+      <div class="Acc-Content" style="display: none;">
+        <ul>
+          <li>Fast shipping from Chicago — orders ship within 24–48 hours.</li>
+          <li>30-day return policy for a refund or exchange.</li>
+          <li>Free shipping on orders $150+.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  $('.AccordionWrap .Acc-Heading').click(function () {
+    const content = $(this).next('.Acc-Content');
+
+    if (content.is(':hidden')) {
+      $('.AccordionWrap .Acc-Heading').removeClass('current');
+      $('.AccordionWrap .Acc-Content').slideUp(350); // fast close
+
+      $(this).addClass('current');
+      content.slideDown(350); // fast open
+    } else {
+      $(this).removeClass('current');
+      content.slideUp(350); // fast close
+    }
+  });
+</script>
