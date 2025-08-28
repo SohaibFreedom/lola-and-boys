@@ -116,7 +116,12 @@ span#countdown {
 
   .shop-now-text b {
     font-size: 11px;
+    line-height:15px;
   }
+
+   .shop-now-text strong {
+    display: block !important;
+   }
 
   .countdown-numbrs {
     font-size: 20px;
