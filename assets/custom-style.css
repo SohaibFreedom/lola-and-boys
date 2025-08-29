@@ -9,9 +9,50 @@
     display: none;
 }
 
+wishlist-product-card .wk-product-title .wk-text-link {
+    font-size: 14px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 /* product filters custom Start */
   
+.product_name .collection-specific-tags {
+  position:relative;
+  display:inline-block;
+  margin-left: 6px;
+}
 
+.AccordionWrap .model-wear-custom-pdp {
+  background: transparent !important;
+  padding: 0 !important;
+  justify-content:flex-start !important;
+  gap:10px;
+  margin:0 !important;
+}
+
+.model-wear-custom-pdp .model-icon {
+  display:none;
+}
+
+.AccordionWrap .model-text {
+  margin:0;
+}
+
+.AccordionWrap .model-text li {
+  margin:0;
+  font-size:15px;
+}
+
+@media only screen and (max-width: 768px) {
+  .product_name .collection-specific-tags {
+    margin:5px 0;
+    line-height: normal;
+    font-size: 11px;
+    padding: 8px 12px;
+  }
+}
 
 
 .footer .accordian-toggle .right.icon-down-arrow {
