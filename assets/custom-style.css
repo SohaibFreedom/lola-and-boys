@@ -8,6 +8,13 @@
 .usf-sr-config .usf-c-select {
     display: none;
 }
+.collection-specific-tags.holiday-staple-badge {
+    background-color: #C93B61 !important;
+    color: #ffff;
+}
+.product-list.usf-grid .collection-specific-tags.holiday-staple-badge .product-tag img {
+    width: 15px !important;
+}
 
 wishlist-product-card .wk-product-title .wk-text-link {
     font-size: 14px !important;
@@ -22,6 +29,17 @@ wishlist-product-card .wk-product-title .wk-text-link {
   position:relative;
   display:inline-block;
   margin-left: 6px;
+}
+
+
+.product_name .irina-fav-tag {
+    position: static;
+    transform: none;
+    clip-path: none;
+    display: inline-block;
+    padding: 5px 15px;
+    background: #f474c2d4 !important;
+    font-size: 10px;
 }
 
 .AccordionWrap .model-wear-custom-pdp {
