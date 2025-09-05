@@ -391,7 +391,7 @@ usf.templates = {
         </div>
     </div>
 
-      <div v-if="product.tags.includes('holiday-staple-badge')" class="collection-specific-tags">
+      <div v-if="product.tags.includes('holiday-staple-badge')" class="collection-specific-tags holiday-staple-badge">
         <div class="product-tag holiday-staple">
             <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/Lola_Gift_Icon_a435f3d8-30c8-43fa-8801-1dccab5f67d4.png?v=1757087441" width="20" alt="Just In">
             <span>Holiday Staple</span>
