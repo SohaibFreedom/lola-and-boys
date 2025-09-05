@@ -1,4 +1,4 @@
-/* USF file - DO NOT MODIFY THIS FILE. THIS FILE IS REGULARLY CHANGED BY USF APP AND **ANY DIRECT CHANGES WILL BE LOST**. Use our in-app customization if you need to update CSS and JS code. Auto modified at: 6/19/2025 1:27:05 PM*/
+/* USF file - DO NOT MODIFY THIS FILE. THIS FILE IS REGULARLY CHANGED BY USF APP AND **ANY DIRECT CHANGES WILL BE LOST**. Use our in-app customization if you need to update CSS and JS code. Auto modified at: 9/5/2025 8:54:24 AM*/
 /* Begin custom theme code */
 // define templates for the Turbo theme - 5.0
 window.USF_FILTER_AVOID_STICKY_HEADER_HORZ_DESKTOP = window.USF_FILTER_AVOID_STICKY_HEADER_VERT_DESKTOP  = ['.main_nav_wrapper.sticky_nav'];
@@ -390,6 +390,13 @@ usf.templates = {
         <div class="product-tag best-selling">
             <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/heart.png?v=1721673293" width="20" alt="Best Seller">
             <span>Best Seller</span>
+        </div>
+    </div>
+
+      <div v-if="product.tags.includes('holiday-staple-badge')" class="collection-specific-tags">
+        <div class="product-tag just-in">
+            <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/Lola_Gift_Icon_a435f3d8-30c8-43fa-8801-1dccab5f67d4.png?v=1757087441" width="20" alt="Just In">
+            <span>Holiday Staple</span>
         </div>
     </div>
 
