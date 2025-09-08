@@ -1485,20 +1485,33 @@ function bindSearchEvents() {
             viewAllResultsButton.style.display = 'none';
           }
 
-          // Collections
-          if (data.resources.results.collections.length > 0) {
-            data.resources.results.collections.slice(0, 4).forEach(collection => {
-              const collectionHtml = `
-                <li class="collection-result-item">
-                    <a href="${collection.url}">${collection.title}</a>
-                </li>
-              `;
-              collectionResultsContainer.innerHTML += collectionHtml;
-            });
-          } else {
-            trendingSearchesWrapper.style.display = 'block';
-            collectionSearchesWrapper.style.display = 'none';
-          }
+
+          // ID of the collection you want to hide
+const hiddenCollectionId = "300587712614"; // 🔑 replace with your real collection ID
+
+if (data.resources.results.collections.length > 0) {
+  data.resources.results.collections.slice(0, 4).forEach(collection => {
+    if (String(collection.id) !== hiddenCollectionId) {
+      const collectionHtml = `
+        <li class="collection-result-item">
+            <a href="${collection.url}">${collection.title}</a>
+        </li>
+      `;
+      collectionResultsContainer.innerHTML += collectionHtml;
+    }
+  });
+
+  // If the only result was hidden, fallback
+// If nothing left after filtering
+if (collectionResultsContainer.innerHTML.trim() === '') {
+  collectionResultsContainer.innerHTML = '<li>No collections found</li>';
+}
+} else {
+  collectionResultsContainer.innerHTML = '<li>No collections found</li>';
+}
+
+
+
         })
         .catch(error => {
           console.error('Error fetching search results:', error);
