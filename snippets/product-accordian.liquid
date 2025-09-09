@@ -34,6 +34,9 @@
           <li>Fast shipping from Chicago — orders ship within 24–48 hours.</li>
           <li>30-day return policy for a refund or exchange.</li>
           <li>Free shipping on orders $150+.</li>
+          {% if product.tags contains 'patch-app-category' %}
+            <li>Customized and personalized items are final sale and cannot be returned or exchanged.</li>
+          {% endif %}
         </ul>
       </div>
     </div>
