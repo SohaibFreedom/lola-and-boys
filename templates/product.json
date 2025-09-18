@@ -121,12 +121,28 @@
     "shogun-optimizer": {
       "type": "shogun-optimizer",
       "settings": {}
+    },
+    "60e93deaec69c03716a6": {
+      "type": "apps",
+      "blocks": {
+        "300f5758-122e-4268-8254-698694abe21b": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "300f5758-122e-4268-8254-698694abe21b"
+      ],
+      "settings": {}
     }
   },
   "order": [
     "shogun-helper",
     "shogun-above",
     "main",
+    "60e93deaec69c03716a6",
     "shop_with_us_4cNKDq",
     "ca363c135d32a883479e",
     "shogun-below",
