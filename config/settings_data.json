@@ -3914,7 +3914,7 @@
           "23ee518c-ddd9-496f-825e-6d407e57a3a9"
         ],
         "settings": {
-          "collection": "popular-products-header",
+          "collection": "popular-search-header",
           "show_announcement_bar": true,
           "show_countdown": true,
           "countdown_end_date": "2025-09-27T23:00",
