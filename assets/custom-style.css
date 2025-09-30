@@ -4,8 +4,9 @@ body.product .yotpo-bold-layout .yotpo-filters-container {
 
 body.rebuy-cart-visible  {
     overflow: hidden !important;
-    position: fixed !important;
+    overscroll-behavior: none;
 }
+
 body.product .yotpo-bold-layout .yotpo-head {
     margin: 0 !important;
     min-height: 30px !important;
