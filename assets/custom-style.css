@@ -2,7 +2,7 @@ body.product .yotpo-bold-layout .yotpo-filters-container {
     margin: 0 !important;
 }
 
-body.rebuy-cart-visible {
+body.rebuy-cart-visible, body.nav-overflow-hidden {
     overflow: hidden !important;
     position: fixed !important;
 }
