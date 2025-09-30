@@ -2,10 +2,7 @@ body.product .yotpo-bold-layout .yotpo-filters-container {
     margin: 0 !important;
 }
 
-body.rebuy-cart-visible {
-    overflow: hidden !important;
-    position: fixed !important;
-}
+
 body.product .yotpo-bold-layout .yotpo-head {
     margin: 0 !important;
     min-height: 30px !important;
