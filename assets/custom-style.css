@@ -5,8 +5,8 @@ body.product .yotpo-bold-layout .yotpo-filters-container {
 body.rebuy-cart-visible  {
     overflow: hidden !important;
     position: fixed !important;
-    width: 100%; 
-    height: 100%;
+    width: 100% !important; 
+    height: 100% !important;
 }
 
 body.product .yotpo-bold-layout .yotpo-head {
