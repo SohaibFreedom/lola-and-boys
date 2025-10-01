@@ -908,9 +908,15 @@ removeSwipeIfCartEmpty();
   }
   
 
+
+
+// ---- jahan use karna hai ----
 const protectionAmount = tier
-  ? parseFloat(tier.title.replace(/[^0-9.-]/g, ""))
+  ? parseFloat(tier.title.replace(/[^0-9.]/g, "")) // sirf number le
   : 0;
+
+const formattedProtection = moneyFormat(protectionAmount);
+
 
 const totalWithProtection = existing
   ? cart.total_price / 100
