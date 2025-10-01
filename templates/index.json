@@ -14,7 +14,6 @@
       "blocks": {
         "image_KD9mi6": {
           "type": "image",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/HP_BANNER_2900_X_1342.png",
             "image_mobile": "shopify://shop_images/HP_MOBILE_BANNER_2900_X_1342.png",
