@@ -5633,6 +5633,11 @@
         "type": "shopify://apps/discounty/blocks/sdk/d65eb522-0d94-499f-9831-d4b3301f5340",
         "disabled": false,
         "settings": {}
+      },
+      "13485262428272640058": {
+        "type": "shopify://apps/meta-business-ai/blocks/mwp-embed/a4b3e14c-421b-4c0e-977a-2558fbce5052",
+        "disabled": false,
+        "settings": {}
       }
     }
   }
