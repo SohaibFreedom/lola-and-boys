@@ -474,12 +474,8 @@ let skipSwipeMutation = false;
 // Helper to replace "{{amount}}" in the shop’s money format
 const moneyFormat = (amount) => {
   const cleanAmount = parseFloat(amount).toFixed(2);
-  return window.postMoneyFomat
-    .replace("{{amount}}", cleanAmount)
-    .replace("{{ amount }}", cleanAmount); // handle spaces too
+  return window.postMoneyFomat.replace("{{amount}}", cleanAmount);
 };
-
-
 
 // Build fetch params for JSON calls
 const prepParams = (method, body) => {
@@ -906,15 +902,9 @@ removeSwipeIfCartEmpty();
   }
   
 
-
-
-// ---- jahan use karna hai ----
 const protectionAmount = tier
-  ? parseFloat(tier.title.replace(/[^0-9.]/g, "")) // sirf number le
+  ? parseFloat(tier.title.replace(/[^0-9.-]/g, ""))
   : 0;
-
-const formattedProtection = moneyFormat(protectionAmount);
-
 
 const totalWithProtection = existing
   ? cart.total_price / 100
