@@ -477,8 +477,10 @@ const moneyFormat = (amount) => {
 
   return window.postMoneyFomat
     .replace("{{amount}}", cleanAmount)
-    .replace("{{ amount }}", cleanAmount); // agar beech mein space ho
+    .replace("{{ amount }}", cleanAmount); // agar space ho
 };
+
+
 
 
 // Build fetch params for JSON calls
