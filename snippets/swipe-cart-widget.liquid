@@ -474,7 +474,7 @@ let skipSwipeMutation = false;
 // Helper to replace "{{amount}}" in the shop’s money format
 const moneyFormat = (amount) => {
   const cleanAmount = parseFloat(amount).toFixed(2);
-  
+  return window.postMoneyFomat.replace("", cleanAmount);
 };
 
 // Build fetch params for JSON calls
