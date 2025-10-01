@@ -472,17 +472,10 @@ let productData; // “Swipe” product JSON
 let postProtectedProduct = null; // existing protection line item, if any
 let skipSwipeMutation = false;
 // Helper to replace "{{amount}}" in the shop’s money format
-// Shopify ke money_format ko properly replace karo
 const moneyFormat = (amount) => {
   const cleanAmount = parseFloat(amount).toFixed(2);
-
-  return window.postMoneyFomat
-    .replace("{{amount}}", cleanAmount)
-    .replace("{{amount_no_decimals}}", Math.round(amount))
-    .replace("{{amount_with_comma_separator}}", cleanAmount.replace(".", ","))
-    .replace("{{amount_no_decimals_with_comma_separator}}", Math.round(amount).toString().replace(".", ","));
+  return window.postMoneyFomat.replace("{{amount}}", cleanAmount);
 };
-
 
 // Build fetch params for JSON calls
 const prepParams = (method, body) => {
@@ -912,9 +905,6 @@ removeSwipeIfCartEmpty();
 const protectionAmount = tier
   ? parseFloat(tier.title.replace(/[^0-9.-]/g, ""))
   : 0;
-
-const formattedProtection = moneyFormat(protectionAmount);
-
 
 const totalWithProtection = existing
   ? cart.total_price / 100
