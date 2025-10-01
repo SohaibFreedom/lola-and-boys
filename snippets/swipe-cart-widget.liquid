@@ -474,8 +474,12 @@ let skipSwipeMutation = false;
 // Helper to replace "{{amount}}" in the shop’s money format
 const moneyFormat = (amount) => {
   const cleanAmount = parseFloat(amount).toFixed(2);
-  return window.postMoneyFomat.replace("", cleanAmount);
+
+  return window.postMoneyFomat
+    .replace("{{amount}}", cleanAmount)
+    .replace("{{ amount }}", cleanAmount); // agar beech mein space ho
 };
+
 
 // Build fetch params for JSON calls
 const prepParams = (method, body) => {
