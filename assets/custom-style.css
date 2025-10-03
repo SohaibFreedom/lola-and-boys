@@ -8,7 +8,7 @@ body.rebuy-cart-visible , body.nav-overflow-hidden {
     width: 100% !important; 
     height: 100% !important;
 }
-wrapped-gift-block[target-group="drawer"] wrapped-gift-block[target-group="cart-page"] {
+wrapped-gift-block[target-group="drawer"], wrapped-gift-block[target-group="cart-page"] {
     display: none !important;
 }
 #rebuy-widget-207164 .rebuy-product-media {
