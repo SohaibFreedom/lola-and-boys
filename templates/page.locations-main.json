@@ -1,29 +1,26 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "shogun-helper": {
       "type": "shogun-helper",
-      "settings": {
-      }
+      "settings": {}
     },
     "main": {
       "type": "page",
       "disabled": true,
-      "settings": {
-      }
+      "settings": {}
     },
     "shogun-optimizer": {
       "type": "shogun-optimizer",
-      "settings": {
-      }
+      "settings": {}
     },
     "richtext_custom_HKGbX4": {
       "type": "richtext-custom",
@@ -40,7 +37,7 @@
         "text_TNxppt": {
           "type": "text",
           "settings": {
-            "text": "<p>Visit any of our boutiques for an exceptional shopping experience. Our stylish locations offer a curated selection of the latest trends and timeless pieces, ensuring you'll find something you love. <\/p><p><strong>We also have exciting plans to open more stores in the future, bringing our unique shopping experience to even more locations.<\/strong><\/p>",
+            "text": "<p>Visit any of our boutiques for an exceptional shopping experience. Our stylish locations offer a curated selection of the latest trends and timeless pieces, ensuring you'll find something you love. </p><p><strong>We also have exciting plans to open more stores in the future, bringing our unique shopping experience to even more locations.</strong></p>",
             "text_align": "center",
             "description_size": "16",
             "textClass": ""
@@ -73,14 +70,14 @@
           "type": "text_block",
           "settings": {
             "enable_image": true,
-            "image": "shopify:\/\/shop_images\/lola-04_800x_96660dfc-8311-4dce-bc1c-e3b2313d4f3f.webp",
+            "image": "shopify://shop_images/lola-04_800x_96660dfc-8311-4dce-bc1c-e3b2313d4f3f.webp",
             "title": "The Showroom",
             "code": "919 N Larrabee St. Chicago IL 60610",
             "heading_size": "regular_text",
             "text": "",
             "align_text": "left",
             "button_label": "STORE DETAILS",
-            "button_link": "https:\/\/lolaandtheboys.com\/pages\/larrabee-store-page",
+            "button_link": "https://lolaandtheboys.com/pages/larrabee-store-page",
             "border_style": "none"
           }
         },
@@ -88,14 +85,14 @@
           "type": "text_block",
           "settings": {
             "enable_image": true,
-            "image": "shopify:\/\/shop_images\/UNICORN_WORLD.jpg",
+            "image": "shopify://shop_images/UNICORN_WORLD.jpg",
             "title": "Unicorn World at Water Tower",
             "code": "Watertower Mall - 2nd Floor 835 Michigan Ave Chicago, IL 60611",
             "heading_size": "regular_text",
             "text": "",
             "align_text": "left",
             "button_label": "STORE DETAILS",
-            "button_link": "https:\/\/lolaandtheboys.com\/pages\/watertower-mall-store-page",
+            "button_link": "https://lolaandtheboys.com/pages/watertower-mall-store-page",
             "border_style": "none"
           }
         },
@@ -103,14 +100,29 @@
           "type": "text_block",
           "settings": {
             "enable_image": true,
-            "image": "shopify:\/\/shop_images\/NORTHBRDIGE.jpg",
+            "image": "shopify://shop_images/NORTHBRDIGE.jpg",
             "title": "Lola + The Boys at Northbridge",
             "code": "520 N Michigan Ave, Chicago, IL, 60611",
             "heading_size": "regular_text",
             "text": "",
             "align_text": "left",
             "button_label": "STORE DETAILS",
-            "button_link": "https:\/\/lolaandtheboys.com\/pages\/michigan-ave-store-page",
+            "button_link": "https://lolaandtheboys.com/pages/michigan-ave-store-page",
+            "border_style": "none"
+          }
+        },
+        "text_block_WyErnN": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify://shop_images/IMG_9457.jpg",
+            "title": "LOLA + THE BOYS AT DADELAND MALL",
+            "code": "7535 North Kendall Drive, Space 3010Miami, FL 33156",
+            "heading_size": "regular_text",
+            "text": "",
+            "align_text": "left",
+            "button_label": "STORE DETAILS",
+            "button_link": "#",
             "border_style": "none"
           }
         }
@@ -118,7 +130,8 @@
       "block_order": [
         "text_block_ViRghJ",
         "text_block_hT3YaN",
-        "text_block_i7A9Hp"
+        "text_block_i7A9Hp",
+        "text_block_WyErnN"
       ],
       "settings": {
         "title": "",
