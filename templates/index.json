@@ -58,10 +58,9 @@
         },
         "image_V87qeG": {
           "type": "image",
-          "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/BTS_HP_1.jpg",
-            "image_mobile": "shopify://shop_images/BTS_HP_Mob.jpg",
+            "image": "shopify://shop_images/Halloween_Banner_2900x1342_bd7f7b88-3295-4f36-8f8c-a467e236281e.png",
+            "image_mobile": "shopify://shop_images/Halloween_Banner_1200x1116_ee53e5f9-2892-46cb-965b-a7327c50f4fc.png",
             "mp4": "",
             "mobilevideo": "",
             "pretext": "",
@@ -72,10 +71,10 @@
             "caption_background": false,
             "caption_background_transparency": false,
             "button1": "",
-            "button1_link": "https://lolaandtheboys.com/collections/back-to-school-2025",
+            "button1_link": "https://lolaandtheboys.com/collections/halloween-inspired",
             "button1_highlight": false,
             "button2": "",
-            "button2_link": "",
+            "button2_link": "https://lolaandtheboys.com/collections/halloween-inspired",
             "button2_highlight": false
           }
         },
