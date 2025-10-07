@@ -7,6 +7,10 @@
     object-fit: cover;
 }
 
+.top-footer-section .footer_menu ul li::nth-child(2) {
+  display:none;
+}
+
 body.product .yotpo-bold-layout .yotpo-filters-container {
     margin: 0 !important;
 }
