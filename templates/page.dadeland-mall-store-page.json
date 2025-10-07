@@ -39,13 +39,13 @@
         "image_iyCnKY": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/UNICORN_WORLD.jpg",
+            "image": "shopify://shop_images/IMG_9457.jpg",
             "colorbg": "",
             "Class": "locationstore-text",
-            "title": "Unicorn World at Water Tower",
-            "text": "<p><strong>Watertower Mall - 2nd Floor 835 Michigan Ave Chicago, IL 60611</strong></p><p><strong>Email:</strong> <a href=\"mailto:Uwchicago@Lolaandtheboys.com\" title=\"mailto:Uwchicago@Lolaandtheboys.com\">Uwchicago@Lolaandtheboys.com</a></p><p><strong>Phone:</strong> <a href=\"tel:(312) 945-2693\" title=\"tel:(312) 945-2693\">(312) 945-2693</a></p><p>Monday - Thursday: 11:00 AM - 7:00 PM<br/>Friday - Saturday: 1:00 AM - 8:00 PM<br/>Sunday: 12:00 PM - 6:00 PM</p><p></p>",
+            "title": "LOLA + THE BOYS AT DADELAND MALL",
+            "text": "<p><strong>Dadeland Mall – Space 3010 7535 North Kendall Drive, Miami, FL 33156</strong></p><p><strong>Email:</strong> <a href=\"mailto:Alexa@lolaandtheboys.com\" target=\"_blank\">Alexa@lolaandtheboys.com</a></p><p><strong>Phone:</strong> <a href=\"tel:(312) 945-2693\" title=\"tel:(312) 945-2693\">(312) 945-2693</a></p><p>Monday – Saturday: 10:00 AM – 9:00 PM<br/> Sunday: 11:00 AM – 7:00 PM</p>",
             "button_label": "Get Directions",
-            "link": "https://www.google.com/maps/dir//Unicorn+World+by+Lola+%2B+The+Boys,+Water+Tower+Second+Floor,+Michigan+Avenue,+Chicago,+IL/@41.898177,-87.6644504,13z/data=!3m2!4b1!5s0x880fd354648d5def:0x3333a570d956e015!4m8!4m7!1m0!1m5!1m1!1s0x880fd34c5310f71b:0x4b45993002f39eb8!2m2!1d-87.623251!2d41.8981844?entry=ttu"
+            "link": "https://www.google.com/maps/dir//Dadeland+Mall,+North+Kendall+Drive,+Miami,+FL/@25.6906266,-80.3537321,13z/data=!3m1!5s0x880fd354648d5def:0x3333a570d956e015!4m8!4m7!1m0!1m5!1m1!1s0x88d9c7a313cb7acd:0x1cc60c3844fa1968!2m2!1d-80.3124463!2d25.6906324?entry=ttu&g_ep=EgoyMDI1MTAwMS4wIKXMDSoASAFQAw%3D%3D"
           }
         }
       },
