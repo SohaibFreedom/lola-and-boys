@@ -122,7 +122,7 @@
             "text": "",
             "align_text": "left",
             "button_label": "STORE DETAILS",
-            "button_link": "#",
+            "button_link": "shopify://pages/dadeland-mall-store-page",
             "border_style": "none"
           }
         }
