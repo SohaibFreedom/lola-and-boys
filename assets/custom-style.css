@@ -7,8 +7,8 @@
     object-fit: cover;
 }
 
-.top-footer-section .footer_menu ul li::nth-child(2) {
-  display:none;
+.top-footer-section .footer_menu ul li:nth-child(2) {
+  display: none !important;
 }
 
 body.product .yotpo-bold-layout .yotpo-filters-container {
