@@ -70,12 +70,12 @@
             "text_align": "center",
             "caption_background": false,
             "caption_background_transparency": false,
-            "button1": "",
+            "button1": "https://lolaandtheboys.com/collections/halloween-inspired",
             "button1_link": "https://lolaandtheboys.com/collections/halloween-inspired",
-            "button1_highlight": true,
+            "button1_highlight": false,
             "button2": "",
             "button2_link": "https://lolaandtheboys.com/collections/halloween-inspired",
-            "button2_highlight": true
+            "button2_highlight": false
           }
         },
         "image_U3EW4E": {
