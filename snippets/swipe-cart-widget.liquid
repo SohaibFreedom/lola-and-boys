@@ -894,7 +894,7 @@ removeSwipeIfCartEmpty();
   const { tier, postProtectedProduct: existing } = await computeProtectionTier();
 
   // start with the raw subtotal (this _does_ include protection if it’s there)
-  let baseSubtotal = cart.items_subtotal_price / 100;
+  let baseSubtotal = cart.total_price / 100;
 
   // if there _is_ a protection line, knock it off so we don't double‑count:
   if (existing && existing.final_line_price) {
