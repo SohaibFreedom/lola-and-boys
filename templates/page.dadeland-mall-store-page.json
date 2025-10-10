@@ -33,6 +33,11 @@
         "button_link": ""
       }
     },
+    "store_location_banner_FGjQdy": {
+      "type": "store-location-banner",
+      "name": "Page Banner (Metafields)",
+      "settings": {}
+    },
     "custom_image_text_CgLMQq": {
       "type": "custom-image-text",
       "blocks": {
@@ -98,6 +103,7 @@
     "shogun-helper",
     "main",
     "shogun-optimizer",
+    "store_location_banner_FGjQdy",
     "featured_text_wfkTX3",
     "custom_image_text_CgLMQq",
     "richtext_custom_iAfKeY"
