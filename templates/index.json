@@ -80,7 +80,6 @@
         },
         "image_U3EW4E": {
           "type": "image",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/2_14.png",
             "image_mobile": "shopify://shop_images/2_15.png",
