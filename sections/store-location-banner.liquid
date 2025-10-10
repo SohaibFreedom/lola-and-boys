@@ -1,0 +1,68 @@
+{% if page.metafields.custom.banner_desktop_img or page.metafields.custom.banner_mobile_img %}
+  <div class="page-banner-wrapper">
+    
+    {% if page.metafields.custom.banner_desktop_img %}
+      <div class="desktop-banner">
+        <img 
+          src="{{ page.metafields.custom.banner_desktop_img | img_url: 'master' }}" 
+          alt="{{ page.title | escape }}" 
+          class="desktop-banner-img"
+          height="auto"
+          width="auto"
+        >
+      </div>
+    {% endif %}
+
+    {% if page.metafields.custom.banner_mobile_img %}
+      <div class="mobile-banner">
+        <img 
+          src="{{ page.metafields.custom.banner_mobile_img | img_url: 'master' }}" 
+          alt="{{ page.title | escape }}" 
+          class="mobile-banner-img"
+          height="auto"
+          width="auto"
+        >
+      </div>
+    {% endif %}
+
+  </div>
+{% endif %}
+
+<style>
+    .page-banner-wrapper img {
+        height:auto;
+        max-width:100%;
+    }
+
+    .page-banner-wrapper .desktop-banner {
+        display: block;
+    }
+
+    .page-banner-wrapper .mobile-banner {
+        display: none;
+    }
+
+    @media (max-width: 767px) {
+        .page-banner-wrapper .desktop-banner {
+            display: none;
+        }
+        .page-banner-wrapper .mobile-banner {
+            display: block;
+        }
+    }
+
+</style>
+
+{% schema %}
+{
+  "name": "Page Banner (Metafields)",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Page Banner (Metafields)",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}
+
