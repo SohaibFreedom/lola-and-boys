@@ -11,6 +11,50 @@
   "sections": {
     "main": {
       "type": "contact-template",
+      "blocks": {
+        "location_CXGhaK": {
+          "type": "location",
+          "settings": {
+            "ofc_title": "MAIN OFFICE",
+            "ofc_html": "<span>919 N Larrabee st <br>Chicago IL 60610</span>\n<b>Store Hours:</b>\n<span>Monday-Friday: 10 AM to 5 PM<br>\nSaturday: 11 AM to 5 PM<br>\nSunday: Closed</span>",
+            "button_label": "view store",
+            "button_link": "https://lolaandtheboys.com/pages/larrabee-store-page"
+          }
+        },
+        "location_t3tA3a": {
+          "type": "location",
+          "settings": {
+            "ofc_title": "Unicorn World Store",
+            "ofc_html": "<span>Watertower Mall - 2nd Floor <br>835 Michigan Ave <br>Chicago, IL 60611</span>\n<b>Store Hours:</b>\n<span>Monday-Thursday: 11 AM to 7 PM<br>\nFriday-Saturday: 11 AM to 8 PM<br>\nSunday: 12 PM to 6 PM\n</span>",
+            "button_label": "view store",
+            "button_link": "https://lolaandtheboys.com/pages/watertower-mall-store-page"
+          }
+        },
+        "location_bbEiMk": {
+          "type": "location",
+          "settings": {
+            "ofc_title": "Lola + The Boys at  <br>Northbridge",
+            "ofc_html": "<span>520 N Michigan Ave, <br> Chicago, IL, 60611\n</span>\n<b>Store Hours:</b>\n<span>Monday - Saturday: <br> \n10:00 AM - 8:00 PM <br> \nSunday: 11:00 AM - 8:00 PM</span>",
+            "button_label": "view store",
+            "button_link": "https://lolaandtheboys.com/pages/michigan-ave-store-page"
+          }
+        },
+        "location_nzRJ3J": {
+          "type": "location",
+          "settings": {
+            "ofc_title": "LOLA + THE BOYS AT<br> DADELAND MALL",
+            "ofc_html": "<span>7535 North Kendall Drive,<br> Space 3010 Miami,<br> FL 33156</span>\n\n<b>Store Hours:</b>\n<span>Monday - Saturday: <br> \n10:00 AM - 8:00 PM <br> \nSunday: 11:00 AM - 7:00 PM</span>",
+            "button_label": "view store",
+            "button_link": "https://lolaandtheboys.com/pages/dadeland-mall-store-page"
+          }
+        }
+      },
+      "block_order": [
+        "location_CXGhaK",
+        "location_t3tA3a",
+        "location_bbEiMk",
+        "location_nzRJ3J"
+      ],
       "settings": {
         "title": "",
         "text": "",

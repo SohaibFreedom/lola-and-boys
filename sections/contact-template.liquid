@@ -14,6 +14,7 @@
       class="lazyload {{ settings.image_loading_style }}"
       data-src="{{ section.settings.image | img_url: '1400x', format: 'pjpg' }}"
       sizes="100vw"
+      height="auto" width="auto"
       srcset="{{ section.settings.image | img_url: '480x', format: 'pjpg' }} 480w, {{ section.settings.image | img_url: '765x', format: 'pjpg' }} 765w, {{ section.settings.image | img_url: '1400x', format: 'pjpg' }} 1400w, {{ section.settings.image | img_url: '2048x', format: 'pjpg' }} 2048w"
     >
     <div class="caption captionOverlay--true">
@@ -24,90 +25,288 @@
 {% endif %}
 <a name="pagecontent" id="pagecontent"></a>
 <div class="container main content main-container">
-  <div class="contact-page-content">
-    <div class="page-title">
-      {% if section.settings.image == null %}
-        <h1>{{ page.title }}</h1>
-      {% endif %}
+    <div class="contact-page-content">
+        <div class="page-title">
+            {% if section.settings.image == null %}
+            <h1>{{ page.title }}</h1>
+            {% endif %}
+        </div>
+        <div class="contact-page-inner">
+            <div class="row">
+                <div class="contact-page-coustmer wi-25 wi-100">
+                    <div class="contact-page-box-title">
+                        <h4 class="page-c-heading">CUSTOMER CARE</h4>
+                    </div>
+                    <div class="contact-page-box-content">
+                        <div class="contact-menu-list">
+                            <ul>
+                                {% for link in linklists['contact-us'].links %}
+                                <li>
+                                    <a href="{{ link.url }}">{{ link.title }}</a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-support-box wi-50 wi-100">
+                    <div class="contact-page-box-content">
+                        {% if section.settings.phone_number != blank %}
+                        <div class="contact-support-content">
+                            <h3 class="page-c-heading">{{ section.settings.phone_title }}</h3>
+                            <a class="page-c-desc" href="tel:{{section.settings.phone_number}}">{{ section.settings.phone_number }}</a>
+                        </div>
+                        {% endif %}
+                        {% if section.settings.contactemail != blank %}
+                        <div class="contact-support-content">
+                            <h3 class="page-c-heading">{{ section.settings.email_title }}</h3>
+                            <a class="page-c-desc" href="mailto:{{section.settings.contactemail}}">{{ section.settings.contactemail}}</a>
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="contact-locations-grid">
+                        {% for block in section.blocks %}
+                          {% if block.type == 'location' %}
+                          <div class="contact-location">
+                              {% if block.settings.ofc_title != blank %}
+                              <h4 class="contact-location__title page-c-heading">
+                                  {{ block.settings.ofc_title }}
+                              </h4>
+                              {% endif %}
+
+                              {% if block.settings.ofc_html != blank %}
+                              <p class="contact-location__details page-c-desc">
+                                  {{ block.settings.ofc_html }}
+                              </p>
+                              {% endif %}
+                              {% if block.settings.button_label != blank and block.settings.button_link != blank %}
+                                  <a href="{{ block.settings.button_link }}" class="view-store-btn">{{ block.settings.button_label }}</a>
+                                {% endif %}
+                          </div>
+                          {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="contact-page-inner">
-      <div class="row">
-        <div class="contact-page-coustmer wi-25 wi-100">
-          <div class="contact-page-box-title">
-            <h4>CUSTOMER CARE</h4>
-          </div>
-          <div class="contact-page-box-content">
-            <div class="contact-menu-list">
-              <ul>
-                {% for link in linklists['contact-us'].links %}
-                  <li>
-                    <a href="{{ link.url }}">{{ link.title }}</a>
-                  </li>
-                {% endfor %}
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="contact-support-box wi-50 wi-100">
-          <div class="contact-page-box-content">
-            <div class="contact-support-content">
-              {% if section.settings.title != blank %}
-                <h3>{{ section.settings.title }}</h3>
-              {% endif %}
-              {% if section.settings.text != blank %}
-                <p>{{ section.settings.text }}</p>
-              {% endif %}
-            </div>
-            {% if section.settings.phone_number != blank %}
-              <div class="contact-support-content">
-                <h3>{{ section.settings.phone_title }}</h3>
-                <p>
-                  <a href="tel:{{section.settings.phone_number}}">{{ section.settings.phone_number }}</a>
-                </p>
-              </div>
-            {% endif %}
-            {% if section.settings.contactemail != blank %}
-              <div class="contact-support-content">
-                <h3>{{ section.settings.email_title }}</h3>
-                <p>
-                  <a href="mailto:{{section.settings.contactemail}}">{{ section.settings.contactemail }}</a>
-                </p>
-              </div>
-            {% endif %}
-          </div>
-          <div class="contact-page-box-content contact-box-many-part contact-expert-box">
-            <div class="contact-support-content">
-              <div class="contact-expert-img">
-                <a href="{{section.settings.contact_style_expert_link}}">
-                  {{- section.settings.contact_style_expert_label -}}
-                </a>
-                {% if section.settings.contactexpertimage != blank %}
-                  <img src="{{ section.settings.contactexpertimage | img_url: '800x' }}" alt="">
-                {% endif %}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="contact-page-coustmer wi-25 wi-100">
-          <div class="contact-page-box-content">
-            {% if section.settings.hour_html != blank %}
-              <div class="contact-support-content">
-                <h3>{{ section.settings.hour_title }}</h3>
-                {{ section.settings.hour_html }}
-              </div>
-            {% endif %}
-            {% if section.settings.main_ofc_html != blank %}
-              <div class="contact-support-content">
-                <h3>{{ section.settings.main_ofc_title }}</h3>
-                {{ section.settings.main_ofc_html }}
-              </div>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
+
+
+<style>
+  .contact-page-content h1 {
+    font-size:30px;
+    font-weight: 400;
+    letter-spacing:0.5px;
+    
+  }
+
+  .contact-page-content {
+    margin-bottom: 100px;
+  }
+
+  .contact-page-content .page-c-heading {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin:0;
+    font-family: "Poppins-Semibold" !important;
+    padding: 0;
+  }
+
+  .contact-page-content .page-c-desc {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    
+    margin: 0;
+  }
+
+  .contact-page-coustmer .contact-page-box-content .contact-menu-list ul li a {
+    font-size: 16px;
+    letter-spacing: 0px;
+    
+  }
+
+  .contact-locations-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .contact-page-content .contact-support-box.wi-50.wi-100 {
+    width: 75%;
+    padding:0;
+  }
+
+  .contact-locations-grid .contact-location{
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.07);
+    padding: 30px 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .contact-locations-grid h4 {
+    min-height:70px;
+  }
+
+  .contact-locations-grid span {
+    min-height:69px;
+    display:block;
+  }
+
+  .contact-locations-grid span, b {
+    line-height:20px;
+  }
+
+  .contact-locations-grid b {
+    font-weight:600;
+    margin:15px 0;
+    display:block;
+  }
+
+  .contact-support-content {
+    margin-bottom: 40px !important;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.07);
+    padding: 30px 10px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .contact-support-content p a {
+    line-height:normal;
+  }
+
+  .contact-page-box-content {
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  .contact-page-content .contact-page-box-title {
+    margin-bottom: 24px;
+  }
+
+  .contact-page-coustmer .contact-page-box-content .contact-menu-list ul li {
+    margin-bottom:18px;
+  }
+
+  .contact-page-content {
+    margin-bottom: 50px;
+  }
+  .view-store-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 4px 30px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 11px;
+  border: solid 1px transparent;
+  background: #000;
+  text-transform: uppercase;
+}
+.view-store-btn:hover,
+.view-store-btn:focus,
+.view-store-btn:active {
+  background: none;
+  border: solid 1px #000;
+  color: #000 !important;
+}
+.view-store-btn:visited {
+    color: #fff !important;
+}
+.view-store-btn:hover {
+    color: #000 !important;
+}
+.contact-page-coustmer {
+    padding: 0 !important;
+}
+
+@media (max-width: 1024px) {
+  .contact-location-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .contact-page-content .page-c-heading {
+    font-size: 12px;
+  }
+
+  .contact-locations-grid h4 {
+    min-height: 50px;
+  }
+
+  .contact-page-content .page-c-desc {
+    font-size: 10px;
+  }
+
+  .contact-locations-grid span, b {
+    line-height: 15px;
+  }.
+
+  .contact-locations-grid b {
+    margin: 10px 0;
+  }
+
+  .contact-locations-grid span {
+    min-height: 49px;
+  }
+
+  .contact-page-coustmer .contact-page-box-content .contact-menu-list ul li a {
+    font-size: 10px;
+  }
+
+  .contact-page-content h1 {
+    font-size: 20px;
+    margin: 0 0 20px;
+  }
+}
+
+@media (max-width: 800px) {
+  .contact-location-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .contact-locations-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .contact-page-content .contact-support-box.wi-50.wi-100 {
+    width: 100%;
+  }
+
+  .contact-locations-grid b {
+    margin:15px 0;
+  }
+
+  .contact-locations-grid span {
+      min-height: auto;
+  }
+
+  .contact-locations-grid h4 {
+      min-height: auto;
+      margin-bottom: 10px !important;
+  }
+
+  .contact-page-content {
+      margin-bottom: 30px;
+  }
+
+  .contact-page-content .wi-100 {
+    width: 100%;
+    padding: 0;
+  }
+
+  .contact-page-content .contact-page-box-title {
+    margin-bottom: 10px;
+  }
+
+  .contact-page-coustmer .contact-page-box-content .contact-menu-list ul li {
+    margin-bottom: 6px;
+  }
+}
+
+</style>
 
 {% schema %}
 {
@@ -135,16 +334,18 @@
        "id": "hour_html",
        "label": "Hour HTML"
      },
-	 {
-        "type": "text",
-        "id": "main_ofc_title",
-        "label": "Main Office Title"
-     },
-	{
-       "type": "html",
-       "id": "main_ofc_html",
-       "label": "Main Office HTML"
-     },
+
+     {
+          "type": "text",
+          "id": "main_ofc_title",
+          "label": "Main Office Title"
+        },
+        {
+          "type": "html",
+          "id": "main_ofc_html",
+          "label": "Main Office HTML"
+        },
+	 
 	 {
         "type": "text",
         "id": "phone_title",
@@ -200,6 +401,36 @@
         "id": "contactexpertimage",
         "label": "Contact Expert Image"
      }
+  ],
+
+  "blocks": [
+    {
+      "type": "location",
+      "name": "Location Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "ofc_title",
+          "label": "Title"
+        },
+        {
+          "type": "html",
+          "id": "ofc_html",
+          "label": "Main Office HTML"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button Label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        },
+
+      ]
+    },
   ]
 }
 {% endschema %}
