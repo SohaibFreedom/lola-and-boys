@@ -56,6 +56,28 @@
             "button2_highlight": false
           }
         },
+        "image_UXmp86": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/HP_BANNER_2900X1342_Boys_Collection_Banner_03befc39-237e-4363-8b20-156582a10c75.png",
+            "image_mobile": "shopify://shop_images/HP_BANNER_MOBILE_1200X1116_Boys_Collection_Banner_8e6df3fd-0673-4f0a-a388-1b6ae5da50b5.png",
+            "mp4": "",
+            "mobilevideo": "",
+            "pretext": "",
+            "title": "Your headline",
+            "subtitle": "",
+            "text_position": "center",
+            "text_align": "center",
+            "caption_background": false,
+            "caption_background_transparency": false,
+            "button1": "https://lolaandtheboys.com/collections/boys-1",
+            "button1_link": "",
+            "button1_highlight": false,
+            "button2": "",
+            "button2_link": "",
+            "button2_highlight": false
+          }
+        },
         "image_V87qeG": {
           "type": "image",
           "settings": {
@@ -169,6 +191,7 @@
       "block_order": [
         "image_KD9mi6",
         "image_MzwgLN",
+        "image_UXmp86",
         "image_V87qeG",
         "image_U3EW4E",
         "image_zPL6aM",
