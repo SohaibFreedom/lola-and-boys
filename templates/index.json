@@ -145,8 +145,8 @@
         "image_QccNLz": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Lola_Pretty_In_Pink_HP.jpg",
-            "image_mobile": "shopify://shop_images/Lola_Archive_Sale_HP_banner_mob_2.jpg",
+            "image": "shopify://shop_images/HP_BANNER_2900_X_1342_-1.png",
+            "image_mobile": "shopify://shop_images/HP_MOBILE_BANNER_2900_X_1342_-1.png",
             "mp4": "",
             "mobilevideo": "",
             "pretext": "",
@@ -157,7 +157,7 @@
             "caption_background": false,
             "caption_background_transparency": false,
             "button1": "",
-            "button1_link": "https://lolaandtheboys.com/collections/barbiecore",
+            "button1_link": "https://lolaandtheboys.com/collections/friends-family-sale",
             "button1_highlight": false,
             "button2": "",
             "button2_link": "",
