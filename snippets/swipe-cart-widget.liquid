@@ -1062,18 +1062,22 @@ window.addEventListener("pageshow", () => {
           document.querySelector('[data-rebuy-cart-anchor="body"] [data-rebuy-component="cart-items"]')
     ].filter(Boolean); // remove nulls
 
-    targets.forEach(target => {
-      const observer = new MutationObserver(() => {
-        
-        replaceNativeWithCustom();
-        injectGlobalPopup();
-      });
+targets.forEach(target => {
+  const observer = new MutationObserver(() => {
+    if (skipSwipeMutation) {
+      console.log("🟡 Mutation skipped (Swipe triggered)");
+      return;
+    }
+    replaceNativeWithCustom();
+    injectGlobalPopup();
+  });
 
-      observer.observe(target, {
-        childList: true,
-        subtree: true
-      });
-    });
+  observer.observe(target, {
+    childList: true,
+    subtree: true
+  });
+});
+
   }
 });
 
