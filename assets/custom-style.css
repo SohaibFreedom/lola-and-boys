@@ -7,10 +7,21 @@
     object-fit: cover;
 }
 
-.top-footer-section .footer_menu ul li:nth-child(2) {
+.footer .footer_menu ul li a[href="/pages/lookbooks"] {
   display: none !important;
 }
-
+button.swipe-btn-protection::after {
+    content: "Checkout +";
+    font-size: 16px;
+    left: 0px;
+    right: 0px;
+    padding: 0px !important;
+    position: absolute;
+}
+button.swipe-btn-protection {
+    font-size: 0;
+    position: relative;
+}
 body.product .yotpo-bold-layout .yotpo-filters-container {
     margin: 0 !important;
 }
