@@ -1087,7 +1087,8 @@ window.addEventListener("pageshow", () => {
     observer.observe(target, {
       childList: true,
       subtree: true,
-      attributes: true
+      attributes: true,
+      characterData: true,  
     });
 
     console.log("✅ Swipe observer active for:", selector);
