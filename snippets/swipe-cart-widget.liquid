@@ -1045,40 +1045,53 @@ window.addEventListener("pageshow", () => {
   if (typeof LoopOnstore !== "undefined" && LoopOnstore.isActive()) {
     const rebuyButtons = document.querySelectorAll(
       '.rebuy-button.block, .rebuy-cart__flyout-empty-cart a.block'
-    ); 
+    );
     rebuyButtons.forEach(button => {
       button.style.display = 'block';
       button.style.setProperty('display', 'block', 'important');
     });
-  } else {
-    // Run only when LoopOnstore is NOT active
-    replaceNativeWithCustom();
-    injectGlobalPopup();
-
-    const targets = [
-      document.querySelector('cart-drawer-component'),
-      document.querySelector('[data-template="cart"]'),
-         document.querySelector('.cart-section .cart-form__items'),
-          document.querySelector('[data-rebuy-component-id="cart_items"]')
-    ].filter(Boolean); // remove nulls
-
-targets.forEach(target => {
-  const observer = new MutationObserver(() => {
-    if (skipSwipeMutation) {
-      console.log("🟡 Mutation skipped (Swipe triggered)");
-      return;
-    }
-    replaceNativeWithCustom();
-    injectGlobalPopup();
-  });
-
-  observer.observe(target, {
-    childList: true,
-    subtree: true
-  });
-});
-
+    return; // ✅ Stop here if LoopOnstore active
   }
+
+  // Run only when LoopOnstore is NOT active
+  replaceNativeWithCustom();
+  injectGlobalPopup();
+
+  // ✅ Wider target coverage — includes dynamic cart wrappers
+  const targetSelectors = [
+    'cart-drawer-component',
+    '[data-template="cart"]',
+    '.cart-section .cart-form__items',
+    '[data-rebuy-component-id="cart_items"]',
+    '#site-cart-sidebar',
+    'cart-items'
+  ];
+
+  targetSelectors.forEach(selector => {
+    const target = document.querySelector(selector);
+    if (!target) return;
+
+    const observer = new MutationObserver(() => {
+      if (window.skipSwipeMutation) {
+        console.log("🟡 Mutation skipped (Swipe triggered)");
+        window.skipSwipeMutation = false;
+        return;
+      }
+
+      // ✅ Re-initialize whenever DOM mutates
+      replaceNativeWithCustom();
+      injectGlobalPopup();
+    });
+
+    // ✅ Broader observation for stability
+    observer.observe(target, {
+      childList: true,
+      subtree: true,
+      attributes: true
+    });
+
+    console.log("✅ Swipe observer active for:", selector);
+  });
 });
 
 
