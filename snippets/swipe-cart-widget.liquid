@@ -545,44 +545,62 @@ async function computeProtectionTier() {
 // 1) Fetch Swipe product data, 2) compute tier & existing line item,
 // 3) find matching variant by title, 4) build updates, 5) POST to /cart/update.js.
 async function applyProtectionVariant() {
-    try {
-        const { tier, postProtectedProduct: existing } =
-            await computeProtectionTier();
-        if (!tier) {
-            console.warn("No protection tier matches the cart subtotal.");
-            return;
-        }
+  try {
+    // Always fetch fresh cart
+    const freshCart = await getCartItem();
 
-        // Already have a protection item at correct tier? Just update displayed price (if needed)
-        if (existing && existing.variant_title === tier.title) {
-          if (existing.quantity > 1) {
-        await fetch(
-          "/cart/update.js",
-          prepParams("POST", { updates: { [existing.id]: 1 } })
-        );
+    // Determine correct tier again
+    const { tier } = await computeProtectionTier();
+
+    if (!tier) {
+      console.warn("No protection tier matches the cart subtotal.");
+      return;
     }
-            return; // nothing to do
-        }
 
-        // Fetch productData (Swipe) so we can find the variant whose title === tier.title
-        const swipe = await getSwipeProductData();
-        const matching = swipe.variants.filter((v) => v.title === tier.title);
-        if (!matching.length) {
-            console.warn(`Could not find Swipe variant titled "${tier.title}".`);
-            return;
-        }
-        const chosenVariant = matching[0];
+    // Check again for any existing Swipe line items (fresh check)
+    const existing = freshCart.items.find(
+      (item) =>
+        item.product_title === "Swipe" ||
+        item.product_title === "Swipe Package Protection"
+    );
 
-        // Build updates: set chosenVariant.id=1; if existing, existing.id=0
-        const updates = { [chosenVariant.id]: 1 };
-        if (existing && existing.id) {
-            updates[existing.id] = 0;
-        }
+    // ✅ If Swipe exists but with wrong variant, remove & replace
+    if (existing && existing.variant_title !== tier.title) {
+      console.log("🔁 Replacing old Swipe variant with new tier:", tier.title);
 
-        await fetch("/cart/update.js", prepParams("POST", { updates }));
-    } catch (err) {
-        console.error("applyProtectionVariant error:", err);
+      const swipe = await getSwipeProductData();
+      const match = swipe.variants.find((v) => v.title === tier.title);
+      if (!match) {
+        console.warn(`Could not find Swipe variant titled "${tier.title}".`);
+        return;
+      }
+
+      const updates = { [existing.id]: 0, [match.id]: 1 };
+      await fetch("/cart/update.js", prepParams("POST", { updates }));
+      return;
     }
+
+    // ✅ If Swipe doesn’t exist at all, add it fresh
+    if (!existing) {
+      console.log("🟢 Adding Swipe Protection:", tier.title);
+
+      const swipe = await getSwipeProductData();
+      const match = swipe.variants.find((v) => v.title === tier.title);
+      if (!match) {
+        console.warn(`Could not find Swipe variant titled "${tier.title}".`);
+        return;
+      }
+
+      const updates = { [match.id]: 1 };
+      await fetch("/cart/update.js", prepParams("POST", { updates }));
+      return;
+    }
+
+    // ✅ If Swipe exists and is already correct variant, keep it
+    console.log("✅ Swipe protection already correct:", existing.variant_title);
+  } catch (err) {
+    console.error("applyProtectionVariant error:", err);
+  }
 }
 
 // ——————————————————————————————————————————————————————————————————————————
