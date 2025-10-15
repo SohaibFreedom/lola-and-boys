@@ -1036,83 +1036,41 @@ btn.addEventListener("click", async e => {
 }
 
 window.addEventListener("pageshow", () => {
+  if (typeof LoopOnstore !== "undefined" && LoopOnstore.isActive()) {
+    const rebuyButtons = document.querySelectorAll(
+      '.rebuy-button.block, .rebuy-cart__flyout-empty-cart a.block'
+    );
+    rebuyButtons.forEach(button => {
+      button.style.display = 'block';
+      button.style.setProperty('display', 'block', 'important');
+    });
+  } else {
+    // Run only when LoopOnstore is NOT active
+    replaceNativeWithCustom();
+    injectGlobalPopup();
 
-    if (typeof LoopOnstore !== "undefined" && LoopOnstore.isActive()) {
-        const rebuyButtons = document.querySelectorAll('.rebuy-button.block, .rebuy-cart__flyout-empty-cart a.block');
-        rebuyButtons.forEach(button => {
-          // Apply the CSS style directly
-          button.style.display = 'block';
-          button.style.setProperty('display', 'block', 'important');
-        });
-      } else {
-        // Run these functions ONLY if LoopOnstore is NOT active
+    const targets = [
+      document.querySelector('cart-drawer-component'),
+      document.querySelector('[data-template="cart"]'),
+         document.querySelector('.cart-section .cart-form__items'),
+          document.querySelector('[data-rebuy-cart-anchor="body"] .cart-items)
+    ].filter(Boolean); // remove nulls
+
+    targets.forEach(target => {
+      const observer = new MutationObserver(() => {
+        
         replaceNativeWithCustom();
         injectGlobalPopup();
-      }
+      });
 
-  const bootstrap = new MutationObserver((_, obs) => {
-    const rebuy = document.querySelector('[data-rebuy-cart-anchor="body"]');
-    if (skipSwipeMutation) {
-      skipSwipeMutation = false;
-      return;
-    }
-    if (!rebuy) return;
-
-    obs.disconnect();
-
-    
-      // ✅ Check if LoopOnstore is active
-      if (typeof LoopOnstore !== "undefined" && LoopOnstore.isActive()) {
-        const rebuyButtons = document.querySelectorAll('.rebuy-button.block, .rebuy-cart__flyout-empty-cart a.block');
-        rebuyButtons.forEach(button => {
-          // Apply the CSS style directly
-          button.style.display = 'block';
-          button.style.setProperty('display', 'block', 'important');
-        });
-      } else {
-        // Run these functions ONLY if LoopOnstore is NOT active
-        replaceNativeWithCustom();
-        injectGlobalPopup();
-      }
-  
-
-    const cartObserver = new MutationObserver(() => {
-          removeSwipeIfLoopActive();
-
-      if (skipSwipeMutation) {
-        skipSwipeMutation = false;
-        return;
-      }
-      setTimeout(() => {
-        // ✅ Check if LoopOnstore is active
-        if (typeof LoopOnstore !== "undefined" && LoopOnstore.isActive()) {
-          const rebuyButtons = document.querySelectorAll('.rebuy-button.block, .rebuy-cart__flyout-empty-cart a.block');
-          rebuyButtons.forEach(button => {
-            // Apply the CSS style directly
-            button.style.display = 'block';
-            button.style.setProperty('display', 'block', 'important');
-          });
-        } else {
-          // Run these functions ONLY if LoopOnstore is NOT active
-          replaceNativeWithCustom();
-          injectGlobalPopup();
-        }
-      }, 1000);
+      observer.observe(target, {
+        childList: true,
+        subtree: true
+      });
     });
-
-    cartObserver.observe(rebuy, {
-      childList: true,
-      subtree: true,
-      attributes: true,
-      characterData: true
-    });
-  });
-
-  bootstrap.observe(document.body, {
-    childList: true,
-    subtree: true
-  });
+  }
 });
+
 
 
  
