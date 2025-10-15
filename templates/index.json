@@ -58,6 +58,7 @@
         },
         "image_UXmp86": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/HP_BANNER_2900X1342_Boys_Collection_Banner_03befc39-237e-4363-8b20-156582a10c75.png",
             "image_mobile": "shopify://shop_images/HP_BANNER_MOBILE_1200X1116_Boys_Collection_Banner_8e6df3fd-0673-4f0a-a388-1b6ae5da50b5.png",
