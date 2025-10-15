@@ -12,14 +12,14 @@
 }
 button.swipe-btn-protection::after {
     content: "Checkout +";
-    font-size: 16px;
+    font-size: 16px !important;
     left: 0px;
     right: 0px;
     padding: 0px !important;
     position: absolute;
 }
 button.swipe-btn-protection {
-    font-size: 0;
+    font-size: 0 !important;
     position: relative;
 }
 body.product .yotpo-bold-layout .yotpo-filters-container {
