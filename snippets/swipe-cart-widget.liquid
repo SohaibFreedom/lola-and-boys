@@ -1016,18 +1016,24 @@ showLoadingOnElement(link);
 btn.addEventListener("click", async e => {
   e.preventDefault();
   showLoadingOnElement(btn);
-  skipSwipeMutation = true;
+  
+  skipSwipeMutation = true; // 🚫 stop observer temporarily
 
   try {
     await applyProtectionVariant();
-    // let the spinner show for at least 300ms so it actually renders
-    await new Promise(res => setTimeout(res, 300));
+
+    // small delay so mutation completes cleanly
+    await new Promise(res => setTimeout(res, 500));
+
     window.top.location.href = "/checkout";
   } catch (err) {
     console.error("Error applying protection:", err);
-      skipSwipeMutation = false;
+  } finally {
+    // ✅ allow observer again after 2 seconds
+    setTimeout(() => (skipSwipeMutation = false), 2000);
   }
 });
+
 
         });
     });
