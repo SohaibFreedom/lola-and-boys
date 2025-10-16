@@ -1413,342 +1413,283 @@ function showmonogrambackembinputs() {
 }
 </script>
 <script>
-const addembCartItemButton = document.querySelector('.emb_cart_btn');
-const embcustomationcartbtn = document.querySelector('#emb-patches-customization-form-btn');
-const embloader = document.querySelector('#emb-loader-cart');
-const spanDiv = document.querySelector('.span-content');
+document.addEventListener('DOMContentLoaded', () => {
+  const addBtn = document.querySelector('.emb_cart_btn');
+  const customizeBtn = document.querySelector('#emb-patches-customization-form-btn');
+  const loader = document.querySelector('#emb-loader-cart');
+  const errorWrapper = document.querySelector('.emb-texterror-wrapper');
+  const STITCHING_VARIANT_ID = 42085140430950;
 
-addembCartItemButton.addEventListener('click', async function (event) {
-   // Target specific inputs by their name attributes
-    const Fchestinput = document.getElementsByName('Fchestinput')[0];
-    const FRarminput = document.getElementById('Bchestinput');
+  /* ===============================
+     Embroidery Add to Cart Handler
+  =============================== */
+  addBtn.addEventListener('click', async () => {
+    const Fchest = document.getElementsByName('Fchestinput')[0];
+    const FRarm = document.getElementById('Bchestinput');
+    const Fmono = document.getElementsByName('Fmonograminput')[0];
+    const Bmono = document.getElementsByName('Bmonograminput')[0];
 
-  const Fmonograminput = document.getElementsByName('Fmonograminput')[0];
-    const Bmonograminput = document.getElementsByName('Bmonograminput')[0];
-
-    // Check if all input values are empty
-    if (
-        Fchestinput.value.trim() === '' && 
-        Fmonograminput.value.trim() === '' && 
-        Bmonograminput.value.trim() === '' && 
-        FRarminput.value.trim() === ''    
-      
-    ) {
-        // Display the error div if all inputs are empty
-        document.querySelector('.emb-texterror-wrapper').style.display = 'block';
-    } else {
-      console.log('emb_cart_btn');
-    embloader.style.display = 'block';
- addembCartItemButton.style.display = 'none';
- embcustomationcartbtn.style.pointerEvents = 'none';
- embcustomationcartbtn.style.opacity = '0.5';
- embcustomationcartbtn.style.backgroundColor = '#dfdfdf';
-  embcustomationcartbtn.style.padding = '12px 71px';
-embcustomationcartbtn.style.borderRadius = '20px';
-
-    setTimeout(() => {
-        embcaptureAndCombineScreenshots();
-    }, 25);
-    }
-   
-});
-</script>
-
-<script>
- async function embuploadBlob(pngImageURL, inputSelector,counter) {
-  try {
-
-    // Fetch the image URL
-    const response = await fetch(pngImageURL);
-
-    // Convert the fetched response to a blob
-    const blob = await response.blob();
-
-    // Use FormData to prepare the data for sending
-    const formData = new FormData();
-    formData.append('image', blob, 'upload.png');
-
-    // Send the FormData to the server
-    const result = await fetch('https://heroic-frangipane-c8c826.netlify.app/.netlify/functions/getdata/check', {
-      method: 'POST',
-      body: formData
-    });
-
-    // Assuming the server responds with JSON
-    const jsonResponse = await result.json();
-    console.log(jsonResponse);
-
-    // Update the value of the input field with the file URL
-    if (jsonResponse && jsonResponse.fileUrl) {
-      document.querySelector(inputSelector).value = jsonResponse.fileUrl;
-    } else {
-      console.error('File URL not found in the response');
+    const allEmpty = [Fchest, FRarm, Fmono, Bmono].every(i => i?.value.trim() === '');
+    if (allEmpty) {
+      errorWrapper.style.display = 'block';
+      return;
     }
 
-    // Increment the counter and check condition
-  embaddcartfiles();
-
-  } catch (error) {
-    console.error('Error uploading blob:', error);
-  }
-}
-
-
-async function embaddcartfiles() {
-    let Patchesdata; // Define Patchesdata outside the function
-
-    // Fetch Patchesdata from the API endpoint
-    try {
-        const response = await fetch(`https://lolaandtheboys.com/apps/data-pickup`);
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        console.log(data);
-        // Assign the fetched data to Patchesdata
-        Patchesdata = data;
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        return; // Exit the function if fetching fails
-    }
-
-    // Patchesdata is now available
-    console.log('Patchesdata', Patchesdata);
-
-    console.log('addcartfiles');
-    const variantPrice = [];
-    let productPrice = '{{ variant.price }}';
-    console.log('this is product price', productPrice);
-    let totalPrice = parseFloat(productPrice.slice(0, -2));
-
-    const patchDivsPrice = document.querySelectorAll('.patch-');
-    patchDivsPrice.forEach(patch => {
-      const vId = patch.getAttribute('v-id');
-      const Id = patch.getAttribute('id');
-      const alphabets = Patchesdata.alphabets;
-      const patches = Patchesdata.patches;
-
-      const alphabetVariant = alphabets.find(item => item.id.toString() === vId);
-      const patchVariant = patches.find(item => item.id.toString() === vId);
-
-      const variant = { ...alphabetVariant, ...patchVariant };
-
-      if (variant) {
-        const price = parseFloat(variant.price);
-        if (!isNaN(price)) { // Check if price is a valid number
-          totalPrice += price;
-        } else {
-          console.error(`Invalid price for variant with v-id ${vId}`);
-        }
-      } else {
-        console.error(`Variant not found for v-id ${vId}`);
-      }
-    });
-
-    var currencyFormat = document.getElementById('currency-format').dataset.moneyFormat;
-    var amountPlaceholder = currencyFormat.match(/\{\{amount\}\}/)[0];
-    var currencySymbol = currencyFormat.replace(amountPlaceholder, '');
-    var pricewithSymbol = currencySymbol.trim() + totalPrice;
-    $('input[name="customized_price"]').val(pricewithSymbol);
-
-    // event.preventDefault(); // Prevent the default button click behavior
-
-    // Get the custom data from the hidden input fields
-    const customizedImageUrl = document.querySelector('input[name="customized_image_url_front"]').value;
-    const variantID = document.querySelector('input[name="emb-selective_variant_ID"]').value;
-    const selectedfont = document.querySelector('input[name="selective_emb_font"]').value;
-    const selectedfontcolor = document.querySelector('input[name="selective_font_color"]').value;
+    toggleLoading(true);
 
     try {
-      const response = await embaddToCart(customizedImageUrl, variantID,selectedfont,selectedfontcolor );
-      console.log('Cart Response:', response);
-   if (response.status === 422) {
-  const outOfStockDiv = document.getElementById('Out-of-stock-error');
-  console.log(outOfStockDiv);
-  if (outOfStockDiv) {
-    const addItemDiv = document.querySelector('.add-item');
-    if (addItemDiv) {
-      addItemDiv.style.background = '#ffe2e8';
-      addItemDiv.style.opacity = '1';
-      addItemDiv.style.pointerEvents = '';
-    }
-
-    // Display .span-content div
-    const spanContentDiv = document.querySelector('.span-content');
-    if (spanContentDiv) {
-      spanContentDiv.style.display = 'block';
-    }
-    
-    const loaderCartDiv = document.querySelector('.loader-cart');
-    if (loaderCartDiv) {
-      loaderCartDiv.style.display = 'none';
-    }
-    
-    console.log('yes exists');
-    outOfStockDiv.style.display = 'block'; // Display the div
-    outOfStockDiv.style.visibility = 'visible';
-    outOfStockDiv.textContent = response.message; // Set the content to the error message
-    
-    // Call the function to hide the outOfStockDiv after 5 seconds
-    hideOutOfStockDivAfterDelay();
-  }
-}else {
-    // Redirect to cart if the response is successful
-    // window.location.href = '/cart';
-     console.log('done');
-     // Hide the loader
-  $('#emb-loader-cart').hide();
-
-  // Show the cart button
-  $('#emb_cart_btn').show();
-
-  // Remove the disabled styles from the customization button
-  $('#emb-patches-customization-form-btn').css({
-    'pointer-events': 'auto',
-    'opacity': '1',
-    'background-color': '',
-    'padding': '',
-    'border-radius': ''
-  });
-  }
-    } catch (error) {
-      console.error('Error adding items to cart:', error);
-      // Handle error
-    }
-   async function embaddToCart(customizedImageUrl, variantID, selectedfont, selectedfontcolor) {
-    try {
-        // First: check the current cart to see if stitching fee product is already there
-        const cartResponse = await fetch('/cart.js');
-        const cart = await cartResponse.json();
-
-        const stitchingFeeExists = cart.items.some(item =>
-            item.variant_id === 42085140430950
-        );
-
-        // Always add the embroidery product
-        const item1 = {
-            id: variantID,
-            quantity: 1,
-            properties: {
-                _embroideryProduct: 'Embroidery Product',
-                _customized_image_url_front: customizedImageUrl,
-                "Font": selectedfont,
-                "Font Color": selectedfontcolor,
-                _Timestamp: Date.now().toString(),
-                _stichingvariantID: 42085140430950
-            }
-        };
-
-        // If stitching fee doesn't exist, also add it
-        const itemsToAdd = stitchingFeeExists
-            ? [item1]
-            : [
-                item1,
-                {
-                    id: 42085140430950,
-                    quantity: 1,
-                    properties: {
-                        _Timestamp: Date.now().toString()
-                    }
-                }
-            ];
-
-        const formData = { items: itemsToAdd };
-
-        // Send request to add the items
-        const response = await fetch(window.Shopify.routes.root + 'cart/add.js', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData)
-        });
-
-        return await response.json();  // Return the Shopify response
-
-    } catch (error) {
-        console.error('Error adding item to cart:', error);
-        throw error; // Re-throw for further handling
-    }
-}
-
-}
-  function hideOutOfStockDivAfterDelay() {
-  setTimeout(() => {
-    const outOfStockDiv = document.getElementById('Out-of-stock-error');
-    if (outOfStockDiv) {
-      outOfStockDiv.style.display = 'none';
-      outOfStockDiv.style.visibility = 'none';
-    }
-  }, 5000); // Delay of 5 seconds
-}
-</script>
-<script>
-  function embcaptureAndCombineScreenshots() {
-
-
-
-
-      function captureDiv(id) {
-          return html2canvas(document.getElementById(id), {
-              allowTaint: true,
-              useCORS: true
-          });
-      }
-
-      if (document.getElementById('emb-Front-Area').style.visibility === 'visible') {
-          var backArea = document.getElementById('emb-Back-area');
-          backArea.style.visibility = 'visible';
-          backArea.style.zIndex = 0;
-           backArea.style.top = '-9999px';
-      } else {
-          document.getElementById('emb-Front-Area').style.visibility = 'visible';
-          document.getElementById('emb-Back-area').style.visibility = 'visible';
-
-      }
-
-      Promise.all([
-          captureDiv('emb-Front-Area'),
-          captureDiv('emb-Back-area')
-      ]).then(function(canvases) {
-          var canvas1 = canvases[0];
-          var canvas2 = canvases[1];
-
-          console.log('Canvas 1 dimensions:', canvas1.width, canvas1.height);
-          console.log('Canvas 2 dimensions:', canvas2.width, canvas2.height);
-
-          var combinedCanvas = document.createElement('canvas');
-          var ctx = combinedCanvas.getContext('2d');
-
-          combinedCanvas.width = Math.max(canvas1.width, canvas2.width);
-          combinedCanvas.height = canvas1.height + canvas2.height;
-
-          console.log('Combined canvas dimensions:', combinedCanvas.width, combinedCanvas.height);
-
-          ctx.drawImage(canvas1, 0, 0);
-          ctx.drawImage(canvas2, 0, canvas1.height);
-
-          var combinedImageURL = combinedCanvas.toDataURL('image/png');
-          var counter = 2;
-          embuploadBlob(combinedImageURL, 'input[name="customized_image_url_front"]', counter);
-
-          // var combinedScreenshotContainer = document.getElementById('combined-screenshot');
-          // combinedScreenshotContainer.innerHTML = ''; // Clear previous content
-
-          var img = new Image();
-          img.src = combinedImageURL;
-
-          img.onload = function() {
-              console.log('Combined image loaded successfully.');
-          };
-
-          img.onerror = function() {
-              console.error('Error loading combined image.');
-          };
-
-          // combinedScreenshotContainer.appendChild(img);
-      }).catch(function(error) {
-          console.error('Error capturing divs:', error);
+      // ✅ Step 1: Create image (front + back)
+      const { blob } = await composeEmbroideryFrontBackAndExport({
+        background: '#ffffff',
+        jpegQuality: 0.9,
+        maxWidth: 1200
       });
+
+      // ✅ Step 2: Upload to S3
+      const s3Url = await uploadBlobToS3(blob);
+      document.querySelector('input[name="customized_image_url_front"]').value = s3Url;
+      console.log('[Embroidery] Uploaded:', s3Url);
+
+      // ✅ Step 3: Add embroidery + stitching fee to cart
+      await addEmbroideryToCart(s3Url);
+
+      console.log('[Embroidery] Added to cart successfully.');
+    } catch (err) {
+      console.error('[Embroidery] Error:', err);
+      showOutOfStockError('Something went wrong. Please try again.');
+    } finally {
+      toggleLoading(false);
+    }
+  });
+
+  /* ===============================
+     UI Helpers
+  =============================== */
+  function toggleLoading(state) {
+    loader.style.display = state ? 'block' : 'none';
+    addBtn.style.display = state ? 'none' : 'block';
+    customizeBtn.style.pointerEvents = state ? 'none' : 'auto';
+    customizeBtn.style.opacity = state ? '0.5' : '1';
+    customizeBtn.style.backgroundColor = state ? '#dfdfdf' : '';
+
+    if (state) {
+      customizeBtn.style.padding = '12px 71px';
+      customizeBtn.style.borderRadius = '20px';
+    } else {
+      customizeBtn.style.padding = '';
+      customizeBtn.style.borderRadius = '';
+    }
   }
+
+  function showOutOfStockError(msg) {
+    const outDiv = document.getElementById('Out-of-stock-error');
+    if (!outDiv) return;
+    outDiv.style.display = 'block';
+    outDiv.style.visibility = 'visible';
+    outDiv.textContent = msg;
+    setTimeout(() => {
+      outDiv.style.display = 'none';
+      outDiv.style.visibility = 'hidden';
+    }, 5000);
+  }
+
+  /* ===============================
+     Upload to S3
+  =============================== */
+  async function uploadBlobToS3(blob) {
+    const fd = new FormData();
+    fd.append('image', blob, 'embroidery.jpg');
+    const res = await fetch('https://6ch1pxqng1.execute-api.ap-south-1.amazonaws.com/check', {
+      method: 'POST',
+      body: fd
+    });
+    const json = await res.json();
+    if (!json.fileUrl) throw new Error('No fileUrl from S3');
+    return json.fileUrl;
+  }
+
+  /* ===============================
+     Add to Cart
+  =============================== */
+  async function addEmbroideryToCart(imageUrl) {
+    const cart = await fetch('/cart.js').then(r => r.json());
+    const stitchingExists = cart.items.some(i => i.variant_id === STITCHING_VARIANT_ID);
+
+    const variantID = document.querySelector('input[name="emb-selective_variant_ID"]').value;
+    const font = document.querySelector('input[name="selective_emb_font"]').value;
+    const color = document.querySelector('input[name="selective_font_color"]').value;
+
+    const embroideryItem = {
+      id: Number(variantID),
+      quantity: 1,
+      properties: {
+        _embroideryProduct: 'Embroidery Product',
+        _customized_image_url_front: imageUrl,
+        "Font": font,
+        "Font Color": color,
+        _Timestamp: Date.now(),
+        _stitchingVariantID: STITCHING_VARIANT_ID
+      }
+    };
+
+    const items = stitchingExists
+      ? [embroideryItem]
+      : [embroideryItem, { id: STITCHING_VARIANT_ID, quantity: 1, properties: { _Timestamp: Date.now() } }];
+
+    const res = await fetch(window.Shopify.routes.root + 'cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items })
+    });
+
+    const json = await res.json();
+    if (json.status === 422) showOutOfStockError(json.message || 'Out of stock.');
+  }
+
+  /* ===============================
+     EMBROIDERY IMAGE COMPOSITOR
+  =============================== */
+
+  function loadImageCORS(src) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.crossOrigin = "anonymous";
+      img.decoding = "async";
+      img.onload = () => resolve(img);
+      img.onerror = reject;
+      img.src = src;
+    });
+  }
+
+  async function composeEmbroideryArea({
+    areaEl,
+    baseImgSelector,
+    background = "#ffffff",
+    jpegQuality = 0.9
+  }) {
+    if (!areaEl) throw new Error("composeEmbroideryArea: areaEl missing");
+    const baseEl = areaEl.querySelector(baseImgSelector);
+    if (!baseEl) throw new Error(`Base image not found: ${baseImgSelector}`);
+
+    const baseSrc = baseEl.currentSrc || baseEl.src;
+    const baseImg = await loadImageCORS(baseSrc);
+
+    const baseRect = baseEl.getBoundingClientRect();
+    const renderW = baseRect.width || baseImg.naturalWidth;
+    const renderH = baseRect.height || baseImg.naturalHeight;
+
+    const scaleX = baseImg.naturalWidth / renderW;
+    const scaleY = baseImg.naturalHeight / renderH;
+
+    const canvas = document.createElement("canvas");
+    canvas.width = baseImg.naturalWidth;
+    canvas.height = baseImg.naturalHeight;
+    const ctx = canvas.getContext("2d", { alpha: false });
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = "high";
+
+    ctx.fillStyle = background;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(baseImg, 0, 0, canvas.width, canvas.height);
+
+    // Draw embroidery text
+    const textAreas = areaEl.querySelectorAll(".emb-font-type-area, .emb-back-type-area");
+    textAreas.forEach(embEl => {
+      const text = embEl.textContent.trim();
+      if (!text) return;
+
+      const rect = embEl.getBoundingClientRect();
+      const style = getComputedStyle(embEl);
+
+      const fontSize = parseFloat(style.fontSize) * scaleY;
+      const fontFamily = style.fontFamily;
+      const fontWeight = style.fontWeight;
+      const color = style.color;
+      const align = style.textAlign || "center";
+
+      const x = (rect.left - baseRect.left) * scaleX;
+      const y = (rect.top - baseRect.top + rect.height * 0.8) * scaleY;
+
+      ctx.font = `${fontWeight} ${fontSize}px ${fontFamily}`;
+      ctx.fillStyle = color;
+      ctx.textBaseline = "alphabetic";
+      ctx.textAlign = align;
+
+      const drawX =
+        align === "center"
+          ? x + (rect.width * scaleX) / 2
+          : align === "right"
+            ? x + rect.width * scaleX
+            : x;
+
+      ctx.fillText(text, drawX, y);
+    });
+
+    const blob = await new Promise(res => canvas.toBlob(b => res(b), "image/jpeg", jpegQuality));
+    const objectURL = URL.createObjectURL(blob);
+    console.log(`[EMBROIDERY:${areaEl.id}]`, objectURL);
+    return { canvas, blob, objectURL };
+  }
+
+  async function composeEmbroideryFrontBackAndExport({
+    background = "#ffffff",
+    jpegQuality = 0.9,
+    maxWidth = 1200
+  } = {}) {
+    const frontArea = document.getElementById("emb-Front-Area");
+    const backArea = document.getElementById("emb-Back-area");
+    if (!frontArea) throw new Error("Front embroidery area not found");
+
+    const frontOut = await composeEmbroideryArea({
+      areaEl: frontArea,
+      baseImgSelector: "#emb-Front-image",
+      background,
+      jpegQuality
+    });
+
+    let backOut = null;
+    if (backArea && backArea.querySelector("#emb-Back-image")) {
+      try {
+        backOut = await composeEmbroideryArea({
+          areaEl: backArea,
+          baseImgSelector: "#emb-Back-image",
+          background,
+          jpegQuality
+        });
+      } catch (e) {
+        console.warn("Back embroidery skipped:", e);
+      }
+    }
+
+    if (!backOut) return frontOut;
+
+    const combo = document.createElement("canvas");
+    combo.width = Math.max(frontOut.canvas.width, backOut.canvas.width);
+    combo.height = frontOut.canvas.height + backOut.canvas.height;
+    const ctx = combo.getContext("2d", { alpha: false });
+
+    ctx.fillStyle = background;
+    ctx.fillRect(0, 0, combo.width, combo.height);
+    ctx.drawImage(frontOut.canvas, 0, 0);
+    ctx.drawImage(backOut.canvas, 0, frontOut.canvas.height);
+
+    let target = combo;
+    if (maxWidth && combo.width > maxWidth) {
+      const scale = maxWidth / combo.width;
+      const down = document.createElement("canvas");
+      down.width = Math.round(combo.width * scale);
+      down.height = Math.round(combo.height * scale);
+      const dctx = down.getContext("2d", { alpha: false });
+      dctx.drawImage(combo, 0, 0, down.width, down.height);
+      target = down;
+    }
+
+    const blob = await new Promise(res => target.toBlob(b => res(b), "image/jpeg", jpegQuality));
+    const objectURL = URL.createObjectURL(blob);
+    console.log("[EMBROIDERY:FRONT+BACK]", objectURL);
+    return { canvas: target, blob, objectURL };
+  }
+});
 </script>
 <script>
 function getResponsiveMaxSize() {
