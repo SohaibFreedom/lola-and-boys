@@ -1088,7 +1088,9 @@ window.addEventListener("pageshow", () => {
       childList: true,
       subtree: true,
       attributes: true,
-      characterData: true
+      characterData: true,
+        characterDataOldValue: true // optionally track old text
+
     });
 
     console.log("✅ Swipe observer active for:", selector);
