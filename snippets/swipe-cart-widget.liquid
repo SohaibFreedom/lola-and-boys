@@ -1002,6 +1002,7 @@ showLoadingOnElement(link);
   } catch (err) {
     console.error("Error removing protection:", err);
   }
+  stopAllSwipeObservers(); // 🛑 stop observers
   window.requestAnimationFrame(() => {
     window.top.location.href = "/checkout";
       
@@ -1032,6 +1033,7 @@ btn.addEventListener("click", async e => {
 
     await applyProtectionVariant();
     await new Promise(res => setTimeout(res, 500));
+    stopAllSwipeObservers(); // 🛑 stop observers
     window.top.location.href = "/checkout";
   } catch (err) {
     console.error("Error applying protection:", err);
@@ -1066,6 +1068,15 @@ async function initSwipeOnceCartReady() {
   }
 }
 
+window.swipeObservers = []; // store active observers globally
+
+function stopAllSwipeObservers() {
+  if (window.swipeObservers && window.swipeObservers.length > 0) {
+    window.swipeObservers.forEach(o => o.disconnect());
+    window.swipeObservers = [];
+    console.log("🛑 All Swipe observers disconnected (checkout triggered)");
+  }
+}
 
 window.addEventListener("pageshow", () => {
   if (typeof LoopOnstore !== "undefined" && LoopOnstore.isActive()) {
@@ -1126,7 +1137,7 @@ initSwipeOnceCartReady();
         attributes: true,
         characterData: true
       });
-
+  window.swipeObservers.push(observer);
       console.log("✅ Swipe observer attached after detection:", selector);
     });
   });
