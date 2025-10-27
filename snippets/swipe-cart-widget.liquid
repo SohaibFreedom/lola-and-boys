@@ -909,20 +909,15 @@ async function replaceNativeWithCustom() {
   const cart = await getCartItem();
  
 removeSwipeIfCartEmpty();
-  const { tier, postProtectedProduct: existing } = await computeProtectionTier();
+let { tier, postProtectedProduct: existing } = await computeProtectionTier();
 
-  // start with the raw subtotal (this _does_ include protection if it’s there)
-  let baseSubtotal = cart.total_price / 100;
+// ✅ Ensure we always have a valid tier based on baseSubtotal (even if no non-Swipe items)
+if (!tier) {
+  const subtotal = (cart.total_price - (existing?.final_line_price || 0)) / 100;
+  tier = variantLogic.find(t => subtotal >= t.min && subtotal < t.max) || variantLogic[0];
+}
 
-  // if there _is_ a protection line, knock it off so we don't double‑count:
-  if (existing && existing.final_line_price) {
-    baseSubtotal -= existing.final_line_price / 100;
-  }
-  
-
-const protectionAmount = tier
-  ? parseFloat(tier.title.replace(/[^0-9.-]/g, ""))
-  : 0;
+const protectionAmount = parseFloat(tier.title.replace(/[^0-9.-]/g, ""));
 
 const totalWithProtection = existing
   ? cart.total_price / 100
