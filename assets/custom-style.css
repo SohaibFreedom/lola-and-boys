@@ -7,6 +7,10 @@
     object-fit: cover;
 }
 
+.homepage-slideshow .flickity-page-dots {
+    position: static;
+    padding-top: 15px;
+}
 .footer .footer_menu ul li a[href="/pages/lookbooks"] {
   display: none !important;
 }
