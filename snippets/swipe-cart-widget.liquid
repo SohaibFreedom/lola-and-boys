@@ -1045,6 +1045,28 @@ btn.addEventListener("click", async e => {
     // Crucial: After potentially adding new "pw-learn-more" elements, re-attach popup listeners.
     attachPopupListeners();
 }
+async function initSwipeOnceCartReady() {
+  try {
+    // ✅ Wait until Shopify's cart endpoint returns valid data
+    let cart = await getCartItem();
+    let retry = 0;
+
+    // if cart not ready (rare on first load), retry few times
+    while ((!cart || !cart.items || cart.items.length === 0) && retry < 5) {
+      await new Promise(r => setTimeout(r, 500));
+      cart = await getCartItem();
+      retry++;
+    }
+
+    // now render
+    await replaceNativeWithCustom();
+    injectGlobalPopup();
+  } catch (err) {
+    console.error("Swipe init error:", err);
+  }
+}
+
+
 window.addEventListener("pageshow", () => {
   if (typeof LoopOnstore !== "undefined" && LoopOnstore.isActive()) {
     const rebuyButtons = document.querySelectorAll(
@@ -1058,8 +1080,7 @@ window.addEventListener("pageshow", () => {
   }
 
   // ✅ Initialize Swipe immediately for visible carts
-  replaceNativeWithCustom();
-  injectGlobalPopup();
+initSwipeOnceCartReady()
 
   // ✅ Function to wait for an element before attaching observer
   function waitForElement(selector, callback, interval = 300, timeout = 10000) {
@@ -1096,8 +1117,7 @@ window.addEventListener("pageshow", () => {
         }
 
         // 🔁 Re-initialize Swipe when cart changes
-        replaceNativeWithCustom();
-        injectGlobalPopup();
+    initSwipeOnceCartReady()
       });
 
       observer.observe(target, {
