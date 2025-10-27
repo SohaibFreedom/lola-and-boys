@@ -1080,7 +1080,7 @@ window.addEventListener("pageshow", () => {
   }
 
   // ✅ Initialize Swipe immediately for visible carts
-initSwipeOnceCartReady()
+initSwipeOnceCartReady();
 
   // ✅ Function to wait for an element before attaching observer
   function waitForElement(selector, callback, interval = 300, timeout = 10000) {
@@ -1117,7 +1117,7 @@ initSwipeOnceCartReady()
         }
 
         // 🔁 Re-initialize Swipe when cart changes
-    initSwipeOnceCartReady()
+    initSwipeOnceCartReady();
       });
 
       observer.observe(target, {
