@@ -7,10 +7,7 @@
     object-fit: cover;
 }
 
-.homepage-slideshow .flickity-page-dots {
-    position: static !important;
-    padding-top: 15px !important;
-}
+
 .footer .footer_menu ul li a[href="/pages/lookbooks"] {
   display: none !important;
 }
@@ -281,6 +278,12 @@ div#rebuy-widget-207164 {
   #usf_container #selected-size-display {
     display: none !important;
   }
+
+  .homepage-slideshow .flickity-page-dots {
+    position: static !important;
+    padding-top: 15px !important;
+}
+  
 }
 
 @media only screen and (min-width: 768px) {
