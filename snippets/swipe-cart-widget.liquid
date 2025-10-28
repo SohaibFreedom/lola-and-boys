@@ -1002,7 +1002,6 @@ showLoadingOnElement(link);
   } catch (err) {
     console.error("Error removing protection:", err);
   }
-
   window.requestAnimationFrame(() => {
     window.top.location.href = "/checkout";
       
@@ -1013,61 +1012,34 @@ showLoadingOnElement(link);
             // override button: add protection then checkout
 
 
+
 btn.addEventListener("click", async e => {
   e.preventDefault();
   showLoadingOnElement(btn);
-  skipSwipeMutation = true;
+  
+  skipSwipeMutation = true; // 🚫 stop observer temporarily
 
   try {
-    const cart = await getCartItem();
-    const nonSwipeItems = cart.items.filter(
-      i => i.product_title !== "Swipe" && i.product_title !== "Swipe Package Protection"
-    );
-
-    // 🧹 If cart has only Swipe → remove it instead of checking out
-    if (nonSwipeItems.length === 0) {
-      await removeExistingProtectionIfAny();
-      alert("Swipe Protection cannot be purchased alone. It has been removed.");
-      return; // stop redirect
-    }
-
     await applyProtectionVariant();
+
+    // small delay so mutation completes cleanly
     await new Promise(res => setTimeout(res, 500));
+
     window.top.location.href = "/checkout";
   } catch (err) {
     console.error("Error applying protection:", err);
   } finally {
+    // ✅ allow observer again after 2 seconds
     setTimeout(() => (skipSwipeMutation = false), 2000);
   }
 });
+
 
         });
     });
     // Crucial: After potentially adding new "pw-learn-more" elements, re-attach popup listeners.
     attachPopupListeners();
 }
-async function initSwipeOnceCartReady() {
-  try {
-    // ✅ Wait until Shopify's cart endpoint returns valid data
-    let cart = await getCartItem();
-    let retry = 0;
-
-    // if cart not ready (rare on first load), retry few times
-    while ((!cart || !cart.items || cart.items.length === 0) && retry < 5) {
-      await new Promise(r => setTimeout(r, 500));
-      cart = await getCartItem();
-      retry++;
-    }
-
-    // now render
-    await replaceNativeWithCustom();
-    injectGlobalPopup();
-  } catch (err) {
-    console.error("Swipe init error:", err);
-  }
-}
-
-
 
 window.addEventListener("pageshow", () => {
   if (typeof LoopOnstore !== "undefined" && LoopOnstore.isActive()) {
@@ -1081,56 +1053,45 @@ window.addEventListener("pageshow", () => {
     return; // ✅ Stop here if LoopOnstore active
   }
 
-  // ✅ Initialize Swipe immediately for visible carts
-initSwipeOnceCartReady();
+  // Run only when LoopOnstore is NOT active
+  replaceNativeWithCustom();
+  injectGlobalPopup();
 
-  // ✅ Function to wait for an element before attaching observer
-  function waitForElement(selector, callback, interval = 300, timeout = 10000) {
-    const start = Date.now();
-    const timer = setInterval(() => {
-      const el = document.querySelector(selector);
-      if (el) {
-        clearInterval(timer);
-        callback(el);
-      } else if (Date.now() - start > timeout) {
-        clearInterval(timer);
-        console.warn("⏰ Timeout waiting for:", selector);
-      }
-    }, interval);
-  }
-
-  // ✅ Observe when element exists
+  // ✅ Wider target coverage — includes dynamic cart wrappers
   const targetSelectors = [
     'cart-drawer-component',
     '[data-template="cart"]',
     '.cart-section .cart-form__items',
-    '#rebuy-cart .rebuy-cart__flyout-subtotal',
+    '[data-rebuy-component-id="cart_items"] .rebuy-cart__flyout-subtotal',
     '#site-cart-sidebar',
     'cart-items'
   ];
 
   targetSelectors.forEach(selector => {
-    waitForElement(selector, (target) => {
-      const observer = new MutationObserver(() => {
-        if (window.skipSwipeMutation) {
-          console.log("🟡 Mutation skipped (Swipe triggered)");
-          window.skipSwipeMutation = false;
-          return;
-        }
+    const target = document.querySelector(selector);
+    if (!target) return;
 
-        // 🔁 Re-initialize Swipe when cart changes
-    initSwipeOnceCartReady();
-      });
+    const observer = new MutationObserver(() => {
+      if (window.skipSwipeMutation) {
+        console.log("🟡 Mutation skipped (Swipe triggered)");
+        window.skipSwipeMutation = false;
+        return;
+      }
 
-      observer.observe(target, {
-        childList: true,
-        subtree: true,
-        attributes: true,
-        characterData: true
-      });
-  window.swipeObservers.push(observer);
-      console.log("✅ Swipe observer attached after detection:", selector);
+      // ✅ Re-initialize whenever DOM mutates
+      replaceNativeWithCustom();
+      injectGlobalPopup();
     });
+
+    // ✅ Broader observation for stability
+    observer.observe(target, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      characterData: true
+    });
+
+    console.log("✅ Swipe observer active for:", selector);
   });
 });
 
