@@ -36,10 +36,9 @@
         },
         "image_KD9mi6": {
           "type": "image",
-          "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/HP_BANNER_2900_X_1342.png",
-            "image_mobile": "shopify://shop_images/HP_MOBILE_BANNER_2900_X_1342.png",
+            "image": "shopify://shop_images/1_1_1.png",
+            "image_mobile": "shopify://shop_images/1_1_1_5db79bf6-a366-441c-9196-6ad6f39591d6.png",
             "mp4": "",
             "mobilevideo": "",
             "pretext": "",
@@ -50,7 +49,7 @@
             "caption_background": false,
             "caption_background_transparency": false,
             "button1": "",
-            "button1_link": "https://lolaandtheboys.com/collections/friends-family-sale",
+            "button1_link": "https://lolaandtheboys.com/collections/denim",
             "button1_highlight": false,
             "button2": "",
             "button2_link": "",
