@@ -12,6 +12,29 @@
     "slideshow_nB6m8V": {
       "type": "slideshow",
       "blocks": {
+        "image_V87qeG": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/1_6.jpg",
+            "image_mobile": "shopify://shop_images/19_2.jpg",
+            "mp4": "",
+            "mobilevideo": "",
+            "pretext": "",
+            "title": "",
+            "subtitle": "",
+            "text_position": "center",
+            "text_align": "center",
+            "caption_background": false,
+            "caption_background_transparency": false,
+            "button1": "",
+            "button1_link": "https://lolaandtheboys.com/collections/black-friday",
+            "button1_highlight": false,
+            "button2": "",
+            "button2_link": "",
+            "button2_highlight": false
+          }
+        },
         "image_QccNLz": {
           "type": "image",
           "settings": {
@@ -122,28 +145,6 @@
             "button2_highlight": false
           }
         },
-        "image_V87qeG": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/1_6.jpg",
-            "image_mobile": "shopify://shop_images/19_2.jpg",
-            "mp4": "",
-            "mobilevideo": "",
-            "pretext": "",
-            "title": "",
-            "subtitle": "",
-            "text_position": "center",
-            "text_align": "center",
-            "caption_background": false,
-            "caption_background_transparency": false,
-            "button1": "",
-            "button1_link": "https://lolaandtheboys.com/collections/black-friday",
-            "button1_highlight": false,
-            "button2": "",
-            "button2_link": "",
-            "button2_highlight": false
-          }
-        },
         "image_U3EW4E": {
           "type": "image",
           "settings": {
@@ -189,12 +190,12 @@
         }
       },
       "block_order": [
+        "image_V87qeG",
         "image_QccNLz",
         "image_KD9mi6",
         "image_zPL6aM",
         "image_MzwgLN",
         "image_UXmp86",
-        "image_V87qeG",
         "image_U3EW4E",
         "image_9rViCJ"
       ],
