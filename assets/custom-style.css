@@ -8,6 +8,7 @@
 }
 
 
+
 .footer .footer_menu ul li a[href="/pages/lookbooks"] {
   display: none !important;
 }
@@ -119,6 +120,9 @@ wishlist-product-card .wk-product-title .wk-text-link {
     font-size: 11px;
     padding: 8px 12px;
   }
+      .cart_container a.icon-cart.mini_cart.dropdown_link, .cart_container a.icon-cart.mini_cart {
+        top: 18px !important;
+    }
 }
 
 

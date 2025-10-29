@@ -198,6 +198,11 @@ Delete
 
 
 {% render 'usf' %}
+
+<link rel="preload" as="style" href="https://unpkg.com/swiper/swiper-bundle.min.css" onload="this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"></noscript>
+<script defer src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
 </head>
   {% if template contains "index" %}
     {% assign feature_image = true %}
@@ -874,7 +879,7 @@ jQuery(document).ready(function($) {
             // Change Filters button text
             $('.usf-sr-config__mobile-filters-wrapper .usf-btn').each(function() {
                 if ($(this).text().trim() === 'Filters') {
-                    $(this).text('Filter By Size');
+                    $(this).text('Sort by Size');
                 }
             });
         }

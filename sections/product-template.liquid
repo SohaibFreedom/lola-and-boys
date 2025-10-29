@@ -1,3 +1,7 @@
+{{ 'custom-product.css' | asset_url | stylesheet_tag }}
+
+
+
 {% render 'shogun-products', content: product %}
 {% include 'shogun-products', content: product %}
 {{product.metafields.shogun.above}}
@@ -14,8 +18,8 @@
 
 <a name="pagecontent" id="pagecontent"></a>
 
-<div class="container main content" data-id="{{ product.id }}">
-  <div class="sixteen columns">
+<div class="product-page product-full ps-slider-wrap" data-id="{{ product.id }}">
+  <div class="ps-slider-content">
     {% if collection.previous_product or collection.next_product or section.settings.product_breadcrumb %}
       <div class="clearfix breadcrumb-collection">
         {% if collection.previous_product or collection.next_product %}
@@ -55,7 +59,6 @@
     {% endif %}
   </div>
 
-  {% comment %}Check to see if sidebar should be enabled{% endcomment %}
   {% if section.blocks.size > 0 %}
     {% assign sidebar = true %}
   {% else %}
@@ -63,265 +66,303 @@
   {% endif %}
 
   <div class="product clearfix">
+    <div class="product-row">
 
-      <div class="sixteen columns">
- 
+      <div  class="product-{{ product.id }}" itemscope itemtype="http://schema.org/Product"
+            data-free-text="{{ settings.free_price_text }}">
+        <div class="section product_section  js-product_section product-grid {% if section.settings.product_images_position == 'right' %}align_right--images{% endif %}" data-rv-handle="{{ product.handle }}">
 
-    <div  class="product-{{ product.id }}" itemscope itemtype="http://schema.org/Product"
-          data-free-text="{{ settings.free_price_text }}"
-          >
-      <div class="section product_section clearfix js-product_section {% if section.settings.product_images_position == 'right' %}align_right--images{% endif %}" data-rv-handle="{{ product.handle }}">
-
-        <div class="nine columns {% if section.settings.product_images_position == 'left' %}alpha{% else %}omega{% endif %}">
-          {% include 'product-images' %}
-          <div class="meta">
-            {% if section.settings.display_social_buttons %}
-              {% include "social-buttons" with "product" %}
-            {% endif %}
-          </div>
-        </div>
-
-        <div class="seven columns {% if section.settings.product_images_position == 'left' %}omega{% else %}alpha{% endif %}">
-
-          {% assign collection_handles = product.collections | map: 'handle' %}
-          {% assign variant = product.selected_or_first_available_variant %}
-{% include 'wh_variant' with variant %}
-
-          {% if product.available %}
-            {% if settings.sale_banner_enabled and wh_compare_at_price_max > wh_price %}
-              <div class="sale_banner_product">{{ 'collections.general.sale' | t }}</div>
-            {% endif %}
-          {% endif %}
-          {% if collection_handles contains 'new' %}
-            <div class="new_banner_product">{{ 'collections.general.new' | t }}</div>
-          {% endif %}
-          {% if collection_handles contains 'pre-order' %}
-            <div class="preorder_banner_product">{{ 'collections.general.pre_order' | t }}</div>
-          {% endif %}
+          <div class="product-media">
+{% render 'ps-color-slider', product: product %}
 
 
-
-          {% if variant.sku != blank and section.settings.display_sku %}
-            <p class="sku">
-              <span itemprop="sku">{{ variant.sku }}</span>
-            </p>
-          {% endif %}
-          <h1 class="product_name" itemprop="name">{{ product.title }} {% render 'tag-badges' %}</h1>
-       
-          {% render 'yotpo star rating' %}
-          
-          {% if section.settings.display_vendor %}
-            <p class="vendor">
-              <span itemprop="brand" class="vendor">{{ product.vendor | link_to_vendor }}</span>
-            </p>
-          {% endif %}
-
-  
-        
-          
-          {% comment %}
-          {% if settings.enable_shopify_product_badges and settings.enable_shopify_review_comments %}
-            <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
-          {% endif %}
-          {% endcomment %}
-          
-
-          {% assign product_tags = product.tags | join: ' ' %}
-          {% if product_tags contains 'meta-size-chart-' %}
-            {% for tag in product.tags %}
-              {% if tag contains 'meta-size-chart-' %}
-                <a href="#size-chart{{product.id}}" class="size_chart" data-remodal-target="size-chart{{product.id}}" data-no-instant>{{ 'products.product.size_chart' | t }} <span class="icon-right-arrow"></span></a>
-                {% include 'popup-size-chart', product_id: product.id %}
-              {% endif %}
-            {% endfor %}
-          {% elsif settings.size_chart != blank %}
-            <a href="#size-chart" class="size_chart" data-remodal-target="size-chart" data-no-instant>{{ 'products.product.size_chart' | t }} <span class="icon-right-arrow"></span></a>
-          {% endif %}
-
-
-          {% if collection_handles contains 'coming-soon' %}
-            <p class="modal_price">{{ 'collections.general.coming_soon' | t }}</p>
-          {% else %}
-            <p class="modal_price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-              <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
-              <meta itemprop="seller" content="{{ shop.name | escape }}" />
-              <link itemprop="availability" href="http://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}">
-              <meta itemprop="itemCondition" content="New" />
-
-              <span class="sold_out">{% if variant.available == false %}{{ 'products.product.sold_out' | t }}{% endif %}</span>
-              <span itemprop="price" content="{{ wh_v_price | money_without_currency | remove: "," }}" class="{% if wh_v_compare_at_price > wh_v_price %}sale{% endif %}">
-                <span class="bold_option_price_display current_price {% if product.available == false %}hidden{% endif %}">
-                  {% if wh_v_price > 0 %}
-                    <span class="product-money">{{ wh_v_price | money }}</span>
-                  {% else %}
-                    {{ settings.free_price_text }}
-                  {% endif %}
-                </span>
-              </span>
-              <span class="was_price">
-                {% if wh_v_price < wh_v_compare_at_price and variant.available %}
-                  <span class="product-money">{{ wh_v_compare_at_price | money }}</span>
-                {% endif %}
-              </span>
-
-              {% if section.settings.display_savings %}
-                <span class="sale savings">
-                  {% if wh_v_price < wh_v_compare_at_price and variant.available %}
-                    {{ 'products.product.savings' | t }}  {{ wh_v_compare_at_price | minus: wh_v_price | times: 100 | divided_by: wh_v_compare_at_price }}% (<span class="product-money">{{ wh_v_compare_at_price | minus: wh_v_price | money }}</span>)
-                  {% endif %}
-                </span>
-              {% endif %}
-            </p>
-          <div id="lowProductButton" class="testing-c"></div>
-            {% comment %}{% include 'product-notify-me' %}{% endcomment %}
-          {% endif %}
-         
-          <div class="feature_divider"></div>
-
-     
-          
-          {% if section.settings.product_description_position == "top" %}
-            {% if product.description != blank %}
-             <div class="description" itemprop="description">
-               {{ product.description | split: '<!-- split -->' | first }}
-             </div>
-           {% endif %}
-          {% endif %}
-
-          {% unless collection_handles contains 'coming-soon' %}
-            
-            {% unless product.tags contains 'PreOrder' %}
-    {% include 'attentive-waitlist' %}
-  {% endunless %}
-            {% include 'product-form' with 'product' %}
-            
-                    {% if product.tags contains "patch-customizer" %}
- <div class="customize-button">
-  <span>Customize With Patches</span> 
-   <svg class="icon icon-monogram-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M16 8.99999C16 9 16 9.00001 16 9.00002C16 9.5523 15.5523 10 15 10C12.1769 10 9.91305 12.2521 9.91305 15C9.91305 15.5523 9.46533 16 8.91305 16C8.36077 16 7.91305 15.5523 7.91305 15C7.91305 13.037 8.72886 11.2684 10.0402 10L3 10C2.44772 10 2 9.55228 2 9C2 8.44771 2.44772 8 3 8L10.04 8C8.72866 6.73159 7.91285 4.96296 7.91285 3C7.91285 2.44771 8.36057 2 8.91285 2C9.46514 2 9.91285 2.44772 9.91285 3C9.91285 5.74789 12.1767 7.99998 14.9998 7.99998C15.029 7.99998 15.0578 8.00123 15.0864 8.00368C15.5307 8.04168 15.8921 8.37022 15.9797 8.79848C15.993 8.86357 16 8.93097 16 8.99999Z" fill="#2C272D"></path>
-   </svg>
- </div>
-{% endif %}
-                {% if product.tags contains "embroidery-customizer" %}
- <div class="embroider-button">
-  <span>Customize With Embroidery</span> 
-   <svg class="icon icon-monogram-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M16 8.99999C16 9 16 9.00001 16 9.00002C16 9.5523 15.5523 10 15 10C12.1769 10 9.91305 12.2521 9.91305 15C9.91305 15.5523 9.46533 16 8.91305 16C8.36077 16 7.91305 15.5523 7.91305 15C7.91305 13.037 8.72886 11.2684 10.0402 10L3 10C2.44772 10 2 9.55228 2 9C2 8.44771 2.44772 8 3 8L10.04 8C8.72866 6.73159 7.91285 4.96296 7.91285 3C7.91285 2.44771 8.36057 2 8.91285 2C9.46514 2 9.91285 2.44772 9.91285 3C9.91285 5.74789 12.1767 7.99998 14.9998 7.99998C15.029 7.99998 15.0578 8.00123 15.0864 8.00368C15.5307 8.04168 15.8921 8.37022 15.9797 8.79848C15.993 8.86357 16 8.93097 16 8.99999Z" fill="#2C272D"></path>
-   </svg>
- </div>
-               {% endif %}
-          {% endunless %}
- {% render 'ZooomyListWishlistProduct' %}
-          {% if section.settings.product_description_position == "bottom" %}
-            {% if product.description != blank %}
-             <div class="description bottom" itemprop="description">
-              {{ product.description | split: '<!-- split -->' | first }}
-             </div>
-            {% endif %}
-          {% endif %}
-
-        {% comment %}
-          {% if settings.enable_shopify_review_comments and settings.review_position == "next_to_gallery" %}
-            <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
-          {% endif %}
-        {% endcomment %}
-
-          {% if section.settings.display_collections or section.settings.display_tags or section.settings.display_type %}
-            <div class="product_links">
-              {% if section.settings.display_collections %}
-                <p>
-                  <span class="label">{{ 'products.product.collections' | t }}:</span>
-                  <span>
-                   {% for col in product.collections %}
-                     <a href="{{ col.url }}" title="{{ col.title }}">{{ col.title }}</a>{% unless forloop.last %},{% endunless %}
-                   {% endfor %}
-                  </span>
-                </p>
-              {% endif %}
-
-              {% if section.settings.display_type %}
-                <p>
-                  <span class="label">{{ 'products.product.product_types' | t }}:</span>
-                  <span>{{ product.type | link_to_type }}</span>
-                </p>
-              {% endif %}
-
-              {% if section.settings.display_tags %}
-                <p>
-                 {% for tag in product.tags %}
-                   {% if forloop.first %}
-                     <span class="label">{{ 'products.product.tags' | t }}:</span>
-                   {% endif %}
-
-                   {% unless tag contains 'meta-' %}
-                     <span>
-                       <a href="/collections/{% if collection %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag | handle }}" title="{{ 'products.product.products_tagged' | t: tag: tag }}">{{ tag }}</a>{% unless forloop.last %},{% endunless %}
-                       </span>
-                   {% endunless %}
-                 {% endfor %}
-                </p>
+            <div class="meta">
+              {% if section.settings.display_social_buttons %}
+                {% include "social-buttons" with "product" %}
               {% endif %}
             </div>
-          {% endif %}
-          
-       {% render 'product-accordian' %}
-        </div>
-      </div>
-
-      {% if product.description contains "<!-- split -->"  %}
-        <br class="clear" />
-        <div class="section clearfix">
-          <div class="description">
-            {{ product.description | split: '<!-- split -->' | last }}
           </div>
-        </div>
-      {% endif %}
-     {% if section.settings.display_related_products %}
-              
-              {% include 'related-products' %}
+
+          <div class="product-info">
+
+            {% assign collection_handles = product.collections | map: 'handle' %}
+            {% assign variant = product.selected_or_first_available_variant %}
+{% include 'wh_variant' with variant %}
+
+            {% if product.available %}
+              {% if settings.sale_banner_enabled and wh_compare_at_price_max > wh_price %}
+                <div class="sale_banner_product">{{ 'collections.general.sale' | t }}</div>
+              {% endif %}
             {% endif %}
-            {% if section.settings.display_recently_viewed %}
-              {% include 'recently-viewed' %}
+            {% if collection_handles contains 'new' %}
+              <div class="new_banner_product">{{ 'collections.general.new' | t }}</div>
+            {% endif %}
+            {% if collection_handles contains 'pre-order' %}
+              <div class="preorder_banner_product">{{ 'collections.general.pre_order' | t }}</div>
             {% endif %}
 
-    <div style='clear:both'></div>
+            {% if variant.sku != blank and section.settings.display_sku %}
+              <p class="sku">
+                <span itemprop="sku">{{ variant.sku }}</span>
+              </p>
+            {% endif %}
+            <h1 class="product_name" itemprop="name">{{ product.title }} {% render 'tag-badges' %}</h1>
+            {% render 'yotpo star rating' %}
+            {% if section.settings.display_vendor %}
+              <p class="vendor">
+                <span itemprop="brand" class="vendor">{{ product.vendor | link_to_vendor }}</span>
+              </p>
+            {% endif %}
 
-    {% comment %}
-      {% if settings.enable_shopify_review_comments and settings.review_position == "below_gallery" %}
-        <div class="shopify-reviews">
-          <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
-        </div>
-      {% endif %}
-    {% endcomment %}
-    </div>
+            {% assign product_tags = product.tags | join: ' ' %}
+            {% if product_tags contains 'meta-size-chart-' %}
+              {% for tag in product.tags %}
+                {% if tag contains 'meta-size-chart-' %}
+                  <a href="#size-chart{{product.id}}" class="size_chart" data-remodal-target="size-chart{{product.id}}" data-no-instant>{{ 'products.product.size_chart' | t }} <span class="icon-right-arrow"></span></a>
+                  {% include 'popup-size-chart', product_id: product.id %}
+                {% endif %}
+              {% endfor %}
+            {% elsif settings.size_chart != blank %}
+              <a href="#size-chart" class="size_chart" data-remodal-target="size-chart" data-no-instant>{{ 'products.product.size_chart' | t }} <span class="icon-right-arrow"></span></a>
+            {% endif %}
 
-    {% if sidebar %}
-  {% include 'cross-sell' %}
+            {% if collection_handles contains 'coming-soon' %}
+              <p class="modal_price">{{ 'collections.general.coming_soon' | t }}</p>
+            {% else %}
+              <p class="modal_price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
+                <meta itemprop="seller" content="{{ shop.name | escape }}" />
+                <link itemprop="availability" href="http://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}">
+                <meta itemprop="itemCondition" content="New" />
 
+                <span class="sold_out">{% if variant.available == false %}{{ 'products.product.sold_out' | t }}{% endif %}</span>
+                <span itemprop="price" content="{{ wh_v_price | money_without_currency | remove: "," }}" class="{% if wh_v_compare_at_price > wh_v_price %}sale{% endif %}">
+                  <span class="bold_option_price_display current_price {% if product.available == false %}hidden{% endif %}">
+                    {% if wh_v_price > 0 %}
+                      <span class="product-money">{{ wh_v_price | money }}</span>
+                    {% else %}
+                      {{ settings.free_price_text }}
+                    {% endif %}
+                  </span>
+                </span>
+                <span class="was_price">
+                  {% if wh_v_price < wh_v_compare_at_price and variant.available %}
+                    <span class="product-money">{{ wh_v_compare_at_price | money }}</span>
+                  {% endif %}
+                </span>
+
+                {% if section.settings.display_savings %}
+                  <span class="sale savings">
+                    {% if wh_v_price < wh_v_compare_at_price and variant.available %}
+                      {{ 'products.product.savings' | t }}  {{ wh_v_compare_at_price | minus: wh_v_price | times: 100 | divided_by: wh_v_compare_at_price }}% (<span class="product-money">{{ wh_v_compare_at_price | minus: wh_v_price | money }}</span>)
+                    {% endif %}
+                  </span>
+                {% endif %}
+              </p>
+            <div id="lowProductButton" class="testing-c"></div>
+              {% comment %}{% include 'product-notify-me' %}{% endcomment %}
+            {% endif %}
            
+            <div class="feature_divider"></div>
+
+            {% if section.settings.product_description_position == "top" %}
+              {% if product.description != blank %}
+               <div class="description" itemprop="description">
+                 {{ product.description | split: '<!-- split -->' | first }}
+               </div>
+             {% endif %}
+            {% endif %}
+
+            {% unless collection_handles contains 'coming-soon' %}
+              
+              {% unless product.tags contains 'PreOrder' %}
+      {% include 'attentive-waitlist' %}
+    {% endunless %}
+              {% include 'product-form' with 'product' %}
+              
+                      {% if product.tags contains "patch-customizer" %}
+   <div class="customize-button">
+    <span>Customize With Patches</span> 
+     <svg class="icon icon-monogram-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M16 8.99999C16 9 16 9.00001 16 9.00002C16 9.5523 15.5523 10 15 10C12.1769 10 9.91305 12.2521 9.91305 15C9.91305 15.5523 9.46533 16 8.91305 16C8.36077 16 7.91305 15.5523 7.91305 15C7.91305 13.037 8.72886 11.2684 10.0402 10L3 10C2.44772 10 2 9.55228 2 9C2 8.44771 2.44772 8 3 8L10.04 8C8.72866 6.73159 7.91285 4.96296 7.91285 3C7.91285 2.44771 8.36057 2 8.91285 2C9.46514 2 9.91285 2.44772 9.91285 3C9.91285 5.74789 12.1767 7.99998 14.9998 7.99998C15.029 7.99998 15.0578 8.00123 15.0864 8.00368C15.5307 8.04168 15.8921 8.37022 15.9797 8.79848C15.993 8.86357 16 8.93097 16 8.99999Z" fill="#2C272D"></path>
+     </svg>
+   </div>
+  {% endif %}
+                  {% if product.tags contains "embroidery-customizer" %}
+   <div class="embroider-button">
+    <span>Customize With Embroidery</span> 
+     <svg class="icon icon-monogram-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M16 8.99999C16 9 16 9.00001 16 9.00002C16 9.5523 15.5523 10 15 10C12.1769 10 9.91305 12.2521 9.91305 15C9.91305 15.5523 9.46533 16 8.91305 16C8.36077 16 7.91305 15.5523 7.91305 15C7.91305 13.037 8.72886 11.2684 10.0402 10L3 10C2.44772 10 2 9.55228 2 9C2 8.44771 2.44772 8 3 8L10.04 8C8.72866 6.73159 7.91285 4.96296 7.91285 3C7.91285 2.44771 8.36057 2 8.91285 2C9.46514 2 9.91285 2.44772 9.91285 3C9.91285 5.74789 12.1767 7.99998 14.9998 7.99998C15.029 7.99998 15.0578 8.00123 15.0864 8.00368C15.5307 8.04168 15.8921 8.37022 15.9797 8.79848C15.993 8.86357 16 8.93097 16 8.99999Z" fill="#2C272D"></path>
+     </svg>
+   </div>
+                 {% endif %}
+            {% endunless %}
+   {% render 'ZooomyListWishlistProduct' %}
+            {% if section.settings.product_description_position == "bottom" %}
+              {% if product.description != blank %}
+               <div class="description bottom" itemprop="description">
+                {{ product.description | split: '<!-- split -->' | first }}
+               </div>
+              {% endif %}
+            {% endif %}
+
+          {% comment %}
+            {% if settings.enable_shopify_review_comments and settings.review_position == "next_to_gallery" %}
+              <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+            {% endif %}
+          {% endcomment %}
+
+            {% if section.settings.display_collections or section.settings.display_tags or section.settings.display_type %}
+              <div class="product_links">
+                {% if section.settings.display_collections %}
+                  <p>
+                    <span class="label">{{ 'products.product.collections' | t }}:</span>
+                    <span>
+                     {% for col in product.collections %}
+                       <a href="{{ col.url }}" title="{{ col.title }}">{{ col.title }}</a>{% unless forloop.last %},{% endunless %}
+                     {% endfor %}
+                    </span>
+                  </p>
+                {% endif %}
+
+                {% if section.settings.display_type %}
+                  <p>
+                    <span class="label">{{ 'products.product.product_types' | t }}:</span>
+                    <span>{{ product.type | link_to_type }}</span>
+                  </p>
+                {% endif %}
+
+                {% if section.settings.display_tags %}
+                  <p>
+                   {% for tag in product.tags %}
+                     {% if forloop.first %}
+                       <span class="label">{{ 'products.product.tags' | t }}:</span>
+                     {% endif %}
+
+                     {% unless tag contains 'meta-' %}
+                       <span>
+                         <a href="/collections/{% if collection %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag | handle }}" title="{{ 'products.product.products_tagged' | t: tag: tag }}">{{ tag }}</a>{% unless forloop.last %},{% endunless %}
+                         </span>
+                     {% endunless %}
+                   {% endfor %}
+                  </p>
+                {% endif %}
+              </div>
+            {% endif %}
+            
+         {% render 'product-accordian' %}
           </div>
         </div>
+
+        {% if product.description contains "<!-- split -->"  %}
+          <br class="clear" />
+          <div class="section clearfix">
+            <div class="description">
+              {{ product.description | split: '<!-- split -->' | last }}
+            </div>
+          </div>
+        {% endif %}
+       {% if section.settings.display_related_products %}
+                
+                {% include 'related-products' %}
+              {% endif %}
+              {% if section.settings.display_recently_viewed %}
+                {% include 'recently-viewed' %}
+              {% endif %}
+
+      <div style='clear:both'></div>
+
+      {% comment %}
+        {% if settings.enable_shopify_review_comments and settings.review_position == "below_gallery" %}
+          <div class="shopify-reviews">
+            <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+          </div>
+        {% endif %}
+      {% endcomment %}
       </div>
 
-    {% else %}
+      {% if sidebar %}
+    {% include 'cross-sell' %}
 
+             
+            </div>
           </div>
         </div>
-      </div>
-  {% include 'cross-sell' %}
 
-    {% endif %}
+      {% else %}
 
-    {% if product.tags contains "patch-customizer" %}
-<div class="product-customization">
-    {% render 'product-customize' %}
-  </div> 
-  <div class="embroidery-customization">
-    {% render 'embroidery-customize' %}
-  </div> 
+            </div>
+          </div>
+        </div>
+    {% include 'cross-sell' %}
 
       {% endif %}
+
+      {% if product.tags contains "patch-customizer" %}
+  <div class="product-customization">
+      {% render 'product-customize' %}
+    </div> 
+    <div class="embroidery-customization">
+      {% render 'embroidery-customize' %}
+    </div> 
+
+        {% endif %}
+
+<!-- ✅ Sticky "Select a Size" Button -->
+{% unless product.has_only_default_variant or product.tags contains 'patch-app-category' %}
+  <div class="sticky-add-wrapper" id="stickyWrapper">
+    <div id="stickyAddMobile" class="sticky-add-mobile">Select a Size</div>
+  </div>
+{% endunless %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const stickyWrap = document.getElementById("stickyWrapper");
+  const stickyBtn = document.getElementById("stickyAddMobile");
+  const sizeSection = document.querySelector(".product-form__controls-group, .product-form__option, .swatch, .product-sizes");
+
+  if (!stickyBtn || !sizeSection) return;
+
+  let lastVisible = null;
+
+  // ✅ Adjusted sensitivity (faster show)
+  function checkSizeVisibility() {
+    const rect = sizeSection.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+
+    // Slightly increased margin to show earlier
+    const buffer = 30; // pixels above viewport
+    const isVisible = rect.top < vh - buffer && rect.bottom > buffer;
+
+    if (isVisible && lastVisible !== true) {
+      stickyWrap.style.opacity = "0";
+      stickyWrap.style.pointerEvents = "none";
+      lastVisible = true;
+    } else if (!isVisible && lastVisible !== false) {
+      stickyWrap.style.opacity = "1";
+      stickyWrap.style.pointerEvents = "auto";
+      lastVisible = false;
+    }
+  }
+
+  stickyBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    sizeSection.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+
+  // ✅ Smooth & immediate scroll handling
+  window.addEventListener("scroll", () => checkSizeVisibility(), { passive: true });
+  window.addEventListener("resize", checkSizeVisibility);
+
+  checkSizeVisibility();
+});
+</script>
+
+
+
+
+
+
 <script>
   jdgmSettings.scrollTopOffset = 160;
 </script>
@@ -368,7 +409,7 @@
 	});
 </script>
 <!--- END KLAVYIO ADDED TO CART --->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
 <script>
    setTimeout(function(){ 
@@ -393,18 +434,35 @@ document.addEventListener("DOMContentLoaded", function () {
     var relatedProducts = document.querySelector(".related-products");
 
     if (shopifySection && relatedContainer && relatedProducts) {
-        // Move the Shopify section before the related container
         relatedContainer.parentNode.insertBefore(shopifySection, relatedContainer);
-
-        // Move the related container before the related products
         relatedProducts.parentNode.insertBefore(relatedContainer, relatedProducts);
     }
 });
-
 </script>
+
+
+
+
 <style>
-  .selectt {
+.selectt{display:none!important}
+.product-full{max-width:none!important;width:100%!important;margin:0!important;padding:0!important}
+.product-full .breadcrumb-collection{max-width:1280px;margin:0 auto;padding:0 24px}
+.product-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:0!important;align-items:start}
+.product-grid>*{float:none!important;width:auto!important;margin:0!important;padding:0!important;clear:none!important}
+.product-media{padding:0!important}
+.product-media .product-gallery,.product-media .media-slider__track,.product-media>*{margin:0!important}
+.product-info{padding:24px 32px!important}
+.product-media img,.product-media video{width:100%;height:auto;object-fit:contain;display:block}
+.product .breadcrumb-collection {
   display: none !important;
+}
+.product-media-slider-wrapper { 
+  max-width: 100% !important;
+}
+@media (max-width: 768px) { 
+  .product-grid {
+    grid-template-columns: 1fr !important;
+}
 }
 </style>
 
@@ -770,3 +828,4 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 
 {% endschema %}
+

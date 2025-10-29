@@ -1,0 +1,255 @@
+{%- comment -%}
+  ps-color-slider.liquid — Backend driven version
+  - Keeps Swiper layout intact
+  - Filters product media by variant color using product JSON
+  - No page reload on swatch change (note: your second script still reloads; I didn’t touch it)
+{%- endcomment -%}
+
+<div class="product-media-slider-wrapper" id="PsColorSlider-{{ product.id }}" data-product-json='{{ product | json | escape }}'>
+  <div class="swiper product-media-slider">
+    <div class="swiper-wrapper">
+      {% for media in product.media %}
+        <div class="swiper-slide" data-media-id="{{ media.id }}" data-alt="{{ media.alt | downcase | escape }}">
+          <div class="media-box">
+            {%- case media.media_type -%}
+              {%- when 'image' -%}
+                <img src="{{ media | img_url: '700x' }}" alt="{{ media.alt | escape }}" class="slider-media" loading="lazy">
+              {%- when 'video' -%}
+                <video class="slider-media" autoplay muted loop playsinline>
+                  {%- for source in media.sources -%}
+                    <source src="{{ source.url }}" type="{{ source.mime_type }}">
+                  {%- endfor -%}
+                </video>
+              {%- when 'external_video' -%}
+                {%- if media.host == 'youtube' -%}
+                  <iframe class="slider-media ext-vid" src="https://www.youtube.com/embed/{{ media.external_id }}?autoplay=1&loop=1&mute=1&playlist={{ media.external_id }}&controls=0&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                {%- elsif media.host == 'vimeo' -%}
+                  <iframe class="slider-media ext-vid" src="https://player.vimeo.com/video/{{ media.external_id }}?autoplay=1&loop=1&muted=1&background=1" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                {%- endif -%}
+            {%- endcase -%}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Arrows -->
+    <div class="swiper-button-prev custom-arrow" aria-label="Previous">
+      <svg viewBox="0 0 10 6" fill="#000" xmlns="http://www.w3.org/2000/svg" style="transform:rotate(90deg)">
+        <rect x="9.192" width="1" height="7" transform="rotate(45 9.192 0)" fill="currentColor"/>
+        <rect x="0.707" width="7" height="1" transform="rotate(45 0.707 0)" fill="currentColor"/>
+      </svg>
+    </div>
+    <div class="swiper-button-next custom-arrow" aria-label="Next">
+      <svg viewBox="0 0 10 6" fill="#000" xmlns="http://www.w3.org/2000/svg" style="transform:rotate(-90deg)">
+        <rect x="9.192" width="1" height="7" transform="rotate(45 9.192 0)" fill="currentColor"/>
+        <rect x="0.707" width="7" height="1" transform="rotate(45 0.707 0)" fill="currentColor"/>
+      </svg>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+
+<style>
+.product-media-slider-wrapper{position:relative;width:100%;max-width:1400px;margin:0 auto;overflow:hidden}
+.product-media-slider{width:100%}
+.media-box{position:relative;width:100%;aspect-ratio:3/4;margin:0;overflow:hidden}
+.media-box .slider-media{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover; object-position: top;}
+.swiper-slide{width:50%!important;flex:0 0 50%!important}
+.custom-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:20;width:30px;height:30px;display:flex;justify-content:center;align-items:center;background:#fff;border-radius:50%;cursor:pointer;padding:8px}
+.custom-arrow:hover{opacity:1;transform:translateY(-50%) scale(1.05)}
+.swiper-button-prev{left:12px}
+.swiper-button-next{right:12px}
+.swiper-button-next,.swiper-button-prev{color:#000!important}
+.swiper-wrapper {
+  gap: 5px !important;
+}
+/* Pagination Dots - Outside Slider */
+.swiper-pagination {
+  display: none !important ;
+  text-align: center;
+  margin-top: 10px;
+  position: relative;
+  bottom: 0;
+}
+
+/* Swiper dot styles like your reference */
+.swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: #c4c4c4;
+  opacity: 1;
+  margin: 0 10px !important;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background: #000; /* same blue as your example */
+}
+
+
+
+/* ✅ Mobile + Tablet (<=1024px) = 1 slide (full width) */
+@media(max-width:768px){
+  .swiper-slide{width:66.66%!important;flex:0 0 66.66%!important} /* 1.5 slides view */
+  .swiper-button-next, .swiper-button-prev{display:none!important} /* hide arrows on mobile */
+  .media-box {
+    aspect-ratio: 2 / 3;
+}
+.swiper-wrapper {
+  gap: 5px !important;
+}
+.swiper-pagination {
+    display: block !important;
+  }
+}
+transitions style {
+    transform: translate3d(-1155.51px, 0px, 0px);
+}
+element.style {
+    transition-duration: 700ms;
+    transform: translate3d(-1433.33px, 0px, 0px);
+}
+.swiper-android .swiper-slide, .swiper-ios .swiper-slide, .swiper-wrapper {
+    /* transform: translateZ(0); */
+}
+button.checkout_btn_product {
+    display: none !important;
+}
+.product_cart_btns {
+    grid-template-columns: 1fr !important;
+    margin-bottom: 0 !important;
+}
+
+</style>
+
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const root = document.getElementById("PsColorSlider-{{ product.id }}");
+  if (!root) return;
+
+  const productData = JSON.parse(root.getAttribute("data-product-json"));
+  const wrapper = root.querySelector(".swiper-wrapper");
+  const allSlides = Array.from(wrapper.querySelectorAll(".swiper-slide")).map(s => s.cloneNode(true));
+  let swiper = null;
+
+  // ⚡ Initialize Swiper (fast)
+  function initSwiper() {
+    if (swiper && swiper.destroy) swiper.destroy(true, true);
+
+    swiper = new Swiper(".product-media-slider", {
+      slidesPerView: 2,
+      loop: true,
+      speed: 700,
+      spaceBetween: 5,
+      observer: true,
+      observeParents: true,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev"
+      },
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true
+      },
+      on: {
+        afterInit(sw) {
+          const bullets = sw.pagination?.el?.querySelectorAll(".swiper-pagination-bullet");
+          if (bullets) {
+            bullets.forEach((b, i) => {
+              b.style.pointerEvents = "auto";
+              b.addEventListener("click", () => sw.slideToLoop(i));
+            });
+          }
+        }
+      },
+      breakpoints: {
+        0: { slidesPerView: 1.5, slidesPerGroup: 1 },
+        768: { slidesPerView: 1.5, slidesPerGroup: 1 },
+        1025: { slidesPerView: 2, slidesPerGroup: 1 }
+      }
+    });
+  }
+
+  // 🧩 Rebuild wrapper slides safely
+  function rebuildSlides(slidesArr) {
+    let slides = slidesArr.slice();
+    const MIN = 3;
+    if (slides.length === 0) slides = allSlides.slice();
+
+    function nextDifferent(startIdx, lastId) {
+      for (let off = 0; off < slidesArr.length; off++) {
+        const cand = slidesArr[(startIdx + off) % slidesArr.length];
+        if (!lastId || cand.dataset.mediaId !== lastId) return cand;
+      }
+      return slidesArr[startIdx % slidesArr.length];
+    }
+
+    let i = 0;
+    while (slides.length < MIN) {
+      const lastId = slides.length ? slides[slides.length - 1].dataset.mediaId : null;
+      const cand = nextDifferent(i, lastId);
+      slides.push(cand.cloneNode(true));
+      i++;
+    }
+
+    if (slides.length > 1 && slides[0].dataset.mediaId === slides[slides.length - 1].dataset.mediaId) {
+      const cand = nextDifferent(0, slides[0].dataset.mediaId);
+      if (cand) slides.push(cand.cloneNode(true));
+    }
+
+    wrapper.innerHTML = "";
+    slides.forEach(node => wrapper.appendChild(node));
+  }
+
+  // 🎨 Filter by selected color
+  function filterSlidesByColor(colorValue) {
+    const lc = (colorValue || "").toLowerCase().trim();
+    const matched = allSlides.filter(slide => (slide.dataset.alt || "").toLowerCase().includes(lc));
+    const filtered = matched.length ? matched : allSlides.slice();
+    rebuildSlides(filtered);
+    initSwiper();
+  }
+
+  // 🟢 Initial build based on selected variant color
+  const colorIdx = productData.options.findIndex(o => /color|colour/i.test(o));
+  const firstVariant = productData.variants.find(v => v.id === {{ product.selected_or_first_available_variant.id }});
+  if (firstVariant && colorIdx > -1) {
+    filterSlidesByColor(firstVariant.options[colorIdx]);
+  } else {
+    rebuildSlides(allSlides);
+    initSwiper();
+  }
+
+  // 🟣 Swatch change listener (keeps reload logic separate)
+  document.querySelectorAll(".swatch-element.color input[type='radio']").forEach(inp => {
+    inp.addEventListener("change", () => filterSlidesByColor(inp.value || ""));
+  });
+});
+</script>
+
+<!-- 🔁 Keep your original reload script as requested -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const swatches = document.querySelectorAll(".swatch-element.color input[type='radio'], .swatch-element.color label");
+  swatches.forEach((swatch) => {
+    ["click", "touchstart", "change"].forEach((eventType) => {
+      swatch.addEventListener(eventType, () => {
+        if (!swatch.classList.contains("swatch-reloading")) {
+          swatch.classList.add("swatch-reloading");
+          setTimeout(() => {
+            location.reload(); // 👈 stays exactly as before
+          }, 500);
+        }
+      });
+    });
+  });
+});
+</script>
