@@ -171,7 +171,14 @@
         {{ shop.name }}
       {% endif %}
     </a>
-    
+    {% if section.settings.search_enabled %}
+      <!-- <a href="/search" class="icon-search dropdown_link" title="{{ 'general.search.title' | t | escape }}" data-dropdown-rel="search"></a> -->
+
+      <li class="search_link">
+                    <a href="javascript:void(0);" onclick="openFullWidthSearch()" class="icon-search dropdown_link" title="{{ 'general.search.title' | t | escape }}" data-dropdown-rel="search"></a>
+                  </li>
+      
+    {% endif %}
     {% comment %}
     {% include 'iwish_v2' with 'iwishlink' %}
     {% endcomment %}
@@ -277,117 +284,6 @@
     {%- endfor -%}
   </ul>
 </div>
-{% if section.settings.search_enabled %}
-  <style>
-    @media only screen and (min-width: 768px) {
-      .mobile-search-bar {
-    display: none !important;
-}
-    }
-    @media only screen and (max-width: 768px) {
-      .mobile-search-bar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        background: #f9f9f9;
-        padding: 0 14px;
-        border: 1px solid #ddd;
-      }
-      .mobile-search-bar input {
-        border: none;
-        outline: none;
-        flex: 1;
-        font-size: 14px;
-        background: transparent;
-        color: #111;
-        margin: 0 !important;
-        padding: 0 !important;
-      }
-      .mobile-search-bar .icon-search {
-        font-size: 18px;
-        color: #333;
-        margin-left: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-    }
-  </style>
-
-  <div class="mobile-search-bar">
-    <input
-      id="animatedPlaceholder"
-      type="text"
-      placeholder="Try searching for... Birthday Styles"
-      onclick="openFullWidthSearch()"
-    >
-    <a href="javascript:void(0);"
-       onclick="openFullWidthSearch()"
-       class="icon-search dropdown_link"
-       title="{{ 'general.search.title' | t | escape }}"
-       data-dropdown-rel="search">
-    </a>
-  </div>
-
-  <script>
-    // Fixed start text
-    const prefix = "Try searching for... ";
-
-    // Animation list (excluding Birthday Styles)
-    const words = [
-      "Wicked Collab",
-      "Swiftie Styles",
-      "Customize It",
-      "Dresses",
-      "New Arrivals",
-      "Best Sellers"
-    ];
-
-    const input = document.getElementById("animatedPlaceholder");
-    let wordIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-
-    // Control typing/deleting speed
-    const typingSpeed = 100;
-    const deletingSpeed = 50;
-    const pauseEnd = 1800;  // wait when word completes
-    const pauseStart = 500; // wait before next word
-
-    // Start animation after short delay (so "Birthday Styles" shows first)
-    setTimeout(() => {
-      function typeEffect() {
-        const currentWord = words[wordIndex];
-
-        if (!isDeleting) {
-          input.setAttribute("placeholder", prefix + currentWord.substring(0, charIndex));
-          charIndex++;
-          if (charIndex > currentWord.length) {
-            isDeleting = true;
-            setTimeout(typeEffect, pauseEnd);
-            return;
-          }
-        } else {
-          input.setAttribute("placeholder", prefix + currentWord.substring(0, charIndex));
-          charIndex--;
-          if (charIndex < 0) {
-            isDeleting = false;
-            wordIndex = (wordIndex + 1) % words.length;
-            setTimeout(typeEffect, pauseStart);
-            return;
-          }
-        }
-
-        setTimeout(typeEffect, isDeleting ? deletingSpeed : typingSpeed);
-      }
-
-      typeEffect();
-    }, 2000); // 2 sec delay before animation starts
-  </script>
-{% endif %}
-
-
 {% if template contains "index" %}
   {% assign feature_image = true %}
 {% elsif template contains "collection" %}
