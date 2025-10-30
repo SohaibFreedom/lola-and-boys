@@ -60,47 +60,20 @@
 .swiper-button-prev{left:12px}
 .swiper-button-next{right:12px}
 .swiper-button-next,.swiper-button-prev{color:#000!important}
-.swiper-wrapper {
-  gap: 5px !important;
-}
+.swiper-wrapper { gap: 5px !important; }
 /* Pagination Dots - Outside Slider */
-.swiper-pagination {
-  display: none !important ;
-  text-align: center;
-  margin-top: 10px;
-  position: relative;
-  bottom: 0;
-}
-
+.swiper-pagination { display: none !important ; text-align: center; margin-top: 10px; position: relative; bottom: 0; }
 /* Swiper dot styles like your reference */
-.swiper-pagination-bullet {
-  width: 8px;
-  height: 8px;
-  background: #c4c4c4;
-  opacity: 1;
-  margin: 0 10px !important;
-  transition: all 0.3s ease;
-}
+.swiper-pagination-bullet { width: 8px; height: 8px; background: #c4c4c4; opacity: 1; margin: 0 10px !important; transition: all 0.3s ease; }
+.swiper-pagination-bullet-active { background: #000; }
 
-.swiper-pagination-bullet-active {
-  background: #000; /* same blue as your example */
-}
-
-
-
-/* ✅ Mobile + Tablet (<=1024px) = 1 slide (full width) */
+/* ✅ Mobile + Tablet (<=1024px) = 1.5 slides view + dots visible */
 @media(max-width:768px){
   .swiper-slide{width:66.66%!important;flex:0 0 66.66%!important} /* 1.5 slides view */
   .swiper-button-next, .swiper-button-prev{display:none!important} /* hide arrows on mobile */
-  .media-box {
-    aspect-ratio: 2 / 3;
-}
-.swiper-wrapper {
-  gap: 5px !important;
-}
-.swiper-pagination {
-    display: block !important;
-  }
+  .media-box { aspect-ratio: 2 / 3; }
+  .swiper-wrapper { gap: 5px !important; }
+  .swiper-pagination { display: block !important; }
 }
 transitions style {
     transform: translate3d(-1155.51px, 0px, 0px);
@@ -119,12 +92,7 @@ button.checkout_btn_product {
     grid-template-columns: 1fr !important;
     margin-bottom: 0 !important;
 }
-
 </style>
-
-
-
-
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -136,13 +104,23 @@ document.addEventListener("DOMContentLoaded", function () {
   const allSlides = Array.from(wrapper.querySelectorAll(".swiper-slide")).map(s => s.cloneNode(true));
   let swiper = null;
 
-  // ⚡ Initialize Swiper (fast)
+  // 🔎 media query helper (mobile = ≤768px)
+  const mq = window.matchMedia("(max-width: 768px)");
+  let isMobile = mq.matches;
+  mq.addEventListener?.("change", (e) => {
+    isMobile = e.matches;
+    // Rebuild & reinit to apply mobile/desktop specific options
+    rebuildSlides(currentFilteredSlides || allSlides);
+    initSwiper();
+  });
+
+  // ⚡ Initialize Swiper
   function initSwiper() {
     if (swiper && swiper.destroy) swiper.destroy(true, true);
 
-    swiper = new Swiper(".product-media-slider", {
+    const baseOpts = {
       slidesPerView: 2,
-      loop: true,
+      loop: !isMobile,                 // 🚫 no loop on mobile (fixes extra bullets)
       speed: 700,
       spaceBetween: 5,
       observer: true,
@@ -151,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev"
       },
-      autoplay: {
+      autoplay: isMobile ? false : {   // 🚫 autoplay off on mobile
         delay: 2500,
         disableOnInteraction: false
       },
@@ -165,21 +143,36 @@ document.addEventListener("DOMContentLoaded", function () {
           if (bullets) {
             bullets.forEach((b, i) => {
               b.style.pointerEvents = "auto";
-              b.addEventListener("click", () => sw.slideToLoop(i));
+              // use slideToLoop only when loop is enabled
+              b.addEventListener("click", () => sw.params.loop ? sw.slideToLoop(i) : sw.slideTo(i));
             });
           }
         }
       },
       breakpoints: {
-        0: { slidesPerView: 1.5, slidesPerGroup: 1 },
-        768: { slidesPerView: 1.5, slidesPerGroup: 1 },
-        1025: { slidesPerView: 2, slidesPerGroup: 1 }
+        0:    { slidesPerView: 1.5, slidesPerGroup: 1 },
+        768:  { slidesPerView: 1.5, slidesPerGroup: 1 },
+        1025: { slidesPerView: 2,   slidesPerGroup: 1 }
       }
-    });
+    };
+
+    swiper = new Swiper(".product-media-slider", baseOpts);
   }
 
   // 🧩 Rebuild wrapper slides safely
+  let currentFilteredSlides = null;
   function rebuildSlides(slidesArr) {
+    // Keep a ref to the 'logical' filtered slides (before padding)
+    currentFilteredSlides = slidesArr.slice();
+
+    // 👉 On mobile: do NOT pad or fix ends. This keeps bullet count == actual images.
+    if (isMobile) {
+      wrapper.innerHTML = "";
+      (slidesArr.length ? slidesArr : allSlides).forEach(node => wrapper.appendChild(node.cloneNode(true)));
+      return;
+    }
+
+    // 👉 Desktop: maintain your original minimum-fill behavior
     let slides = slidesArr.slice();
     const MIN = 3;
     if (slides.length === 0) slides = allSlides.slice();
@@ -200,6 +193,7 @@ document.addEventListener("DOMContentLoaded", function () {
       i++;
     }
 
+    // Keep ends varied (desktop only)
     if (slides.length > 1 && slides[0].dataset.mediaId === slides[slides.length - 1].dataset.mediaId) {
       const cand = nextDifferent(0, slides[0].dataset.mediaId);
       if (cand) slides.push(cand.cloneNode(true));
@@ -235,7 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
-<!-- 🔁 Keep your original reload script as requested -->
+<!-- 🔁 Your original reload script — untouched -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const swatches = document.querySelectorAll(".swatch-element.color input[type='radio'], .swatch-element.color label");
