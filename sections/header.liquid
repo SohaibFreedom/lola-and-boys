@@ -6,6 +6,10 @@
 
 {% comment %}Mobile navigation{% endcomment %}
 
+{% render 'search-popup-header' %}
+
+
+<section class="header-custom-c">
 {% render 'custom-announce' %}
 
 {% liquid
@@ -16,128 +20,7 @@
   endif
 %}
 
-<div id="fullWidthSearchOverlay" class="full-width-overlay">
 
-
-
-
-
-
-  
-                    <div class="overlay-content">
-                      
-
-                  <div class="search-wrap">
-                    <div class="header_search_form">
-                      <span class="icon-search"></span>
-                      <input type="text" id="instantSearchInput" placeholder="Search" />
-                    </div>
-                   
-                    <!-- <form action="/search" class="header_search_form">
-                      {% if settings.search_option != 'everything' %}
-                        <input type="hidden" name="type" value="product" />
-                      {% endif %}
-                      <span class="icon-search search-submit"></span>
-                      <input type="text" name="q" placeholder="{{ 'general.search.title' | t: shop_name: shop.name }}" value="{% if search and wh_price %}{{ search.terms }}{% endif %}" autocapitalize="off" autocomplete="off" autocorrect="off" />
-                    </form> -->
-                     <span class="close-overlay" onclick="closeFullWidthSearch()">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                          <path fill-rule="evenodd" clip-rule="evenodd" d="M9.00939 10L2.5 3.49061L3.49061 2.5L10 9.00939L16.5094 2.5L17.5 3.49061L10.9906 10L17.5 16.5094L16.5094 17.5L10 10.9906L3.49061 17.5L2.5 16.5094L9.00939 10Z" fill="currentColor"></path>
-                        </svg>
-                      </span>
-                  </div>
-
-
-
-
-
-
-                  
-                      <div class="overlay-body-content">
-                        <div class="sidebar-menu-wrap">
-                          <div class="collection-searches-wrapper" style="display: none;">
-                          <h3 class="menu-heading">Suggestions</h3>
-                            <div class="collection-results-wrapper"> 
-                            
-                          <ul id="collectionResults"></ul>
-
-                              </div>
-                         </div>
-                          <div class="trending-searches-main">
-                            <h3 class="menu-heading">Trending Searches</h3>
-                          <div class="trending-searches-wrapper">
-                             
-                    <ul>
-                      {% if section.settings.main_linklist3 != blank %}
-                        {% for link in linklists[section.settings.main_linklist3].links %}
-                          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-                        {% endfor %}
-                      {% else %}
-                        <li>No trending searches found.</li>
-                      {% endif %}
-                    </ul>
-                            </div>
-                            </div>
-                  </div>
-                  
-                        
-                        <div class="collection-product-wrap">
-                           <div id="recommended-products" style="display: none;"> 
-                              <h3>Recommended Products</h3>
-                            <a id="viewAllResultsButton" href="" class="view-all-results-button" style="display: none;">View All Results for "<span id="searchQuery"></span>"</a>
-                             <div class="search-results-wrapper">
-                                <div id="searchResults"></div>
-                             </div>
-                          
-                           </div>
-
-                       <div id="popular-products">  
-                    <h3>Popular Products</h3>
-                          <div class="collection-product-list-wrap">
-                    <div class="collection-product-list">
-                      {% assign selected_collection = section.settings.collection %}
-                      {% if collections[selected_collection] %}
-                        {% assign products = collections[selected_collection].products %}
-                        {% if products.size > 0 %}
-                          {% for product in products %}
-                            <div class="product-item">
-                              <a href="{{ product.url }}">
-                                <img class="product-img" src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title }}">
-                              </a>
-                              <h4>
-                                <a class="product-title" href="{{ product.url }}">{{ product.title }}</a>
-                              </h4>
-                              <p class="product-price">
-                                {{ product.price | money }}
-                              </p>
-                            </div>
-                          {% endfor %}
-                        {% else %}
-                          <p>No products found in this collection.</p>
-                        {% endif %}
-                      {% else %}
-                        <p>Selected collection not found.</p>
-                      {% endif %}
-                    </div>
-                  </div>   
-</div> 
-                         
-
-
-                          
-                  </div>
-                  
-                  
-                      </div>
-
-              <div class="shop-best-btn">
-                <a  href="https://lolaandtheboys.com/collections/best-sellers">Shop Best Sellers</a>
-              </div>
-                      
-                      
-                    </div>
-
-                  </div>
 
 
 <header id="header" class="mobile_nav-fixed--{{ section.settings.fixed_header }}">
@@ -600,7 +483,7 @@
 <a href="back-to-top" id="back-to-top" class="back-to-top u-center u-padding-t--lg" onclick="return false" style="display: block;"> <span class="icon icon--arrow-up--lg icon--sm u-color--black"> <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/t/31/assets/top-arrow.png?v=1623066046"> <span class="u-screen-reader">Return to Top</span></span>
 </a>
 </header>
-
+</section>
 
 <style>
 
@@ -794,7 +677,7 @@ width:100% !important;
   width: 100%;
   height: 100%;
   background-color: #0000007d;
-  z-index: 1000;
+  z-index: 99999999 !important;
   justify-content: center;
   align-items: flex-start;
   overflow-y: auto;
@@ -1600,67 +1483,49 @@ function closeFullWidthSearch() {
             
 
 
-            <style>
-@media screen and (max-width: 769px) {
-  #fullWidthSearchOverlay  #viewAllResultsButton {
-    position: relative !important;
-    margin-right: 0 !important;
-            margin-bottom: 15px;
-}
-  #fullWidthSearchOverlay .collection-product-wrap h3{
-      display: block !important;
-} 
-.full-width-overlay #searchResults {
-         width: 150vw;
-}
- .full-width-overlay .search-results-wrapper{
-    overflow: auto;
-    scrollbar-width: none;
-  }
- .full-width-overlay .collection-results-wrapper{
-    overflow: auto;
-    padding-bottom: 15px;
-  }
-.full-width-overlay  .icon-search{
-        position: relative;
-    top: 4px;
-  }
-  
-}
+        
 
 
- #fullWidthSearchOverlay #recommended-products{
-  position:relative;
-}
-  #fullWidthSearchOverlay  #viewAllResultsButton{
-    position: absolute;
-    right: 0;
-    margin-right: 20px;
-    text-decoration: underline;
+            
+     
+            <script>
+
+
+   document.addEventListener("DOMContentLoaded", () => {
+  const header = document.querySelector(".header-custom-c");
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+
+  function handleScroll() {
+    const currentScrollY = window.scrollY;
+    const isMobile = window.innerWidth <= 991;
+
+    if (isMobile) {
+      if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        // Scrolling DOWN → hide header
+        header.classList.add("hidden");
+      } else {
+        // Scrolling UP → show header
+        header.classList.remove("hidden");
+      }
+    } else {
+      // Desktop: always visible
+      header.classList.remove("hidden");
+    }
+
+    lastScrollY = currentScrollY;
+    ticking = false;
   }
 
-     #fullWidthSearchOverlay .collection-product-wrap h3{
-      color:#000;
-      display: inline-block;
-}         
-          .full-width-overlay    #searchResults {
-      display: flex;
-  gap:20px;
-}
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      window.requestAnimationFrame(handleScroll);
+      ticking = true;
+    }
+  });
+});
 
-.full-width-overlay .search-result-item {
-  width: calc(25% - 20px);
-}
 
-.full-width-overlay .search-result-item img {
-  max-width: 100% !important;
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
-    display: block;
-}
 
-.full-width-overlay .search-result-item p {
-    margin: 0;
-}
 
-            </style>            
+            </script>
