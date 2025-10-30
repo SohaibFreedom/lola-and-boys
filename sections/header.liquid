@@ -1596,6 +1596,50 @@ function closeFullWidthSearch() {
 </script>
 
 
+            <script>
+
+
+   document.addEventListener("DOMContentLoaded", () => {
+  const header = document.getElementById("shopify-section-header");
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+
+  function handleScroll() {
+    const currentScrollY = window.scrollY;
+    const isMobile = window.innerWidth <= 991;
+
+    if (isMobile) {
+      if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        // Scrolling DOWN → hide header
+        header.classList.add("hidden");
+      } else {
+        // Scrolling UP → show header
+        header.classList.remove("hidden");
+      }
+    } else {
+      // Desktop: always visible
+      header.classList.remove("hidden");
+    }
+
+    lastScrollY = currentScrollY;
+    ticking = false;
+  }
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      window.requestAnimationFrame(handleScroll);
+      ticking = true;
+    }
+  });
+});
+
+
+
+
+            </script>
+
+            
+
 
             <style>
 @media screen and (max-width: 769px) {

@@ -1621,11 +1621,33 @@ a.icon-cart:before {
   content: url(https://cdn.shopify.com/s/files/1/0002/0647/1226/files/bag_Icon_2.svg?v=1702579541);
 }
 #shopify-section-header {
-  position: sticky;
-  top: 0 !important;
-  width: 100% !important;
-  z-index: 999999 !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  transform: translateY(0);
 }
+
+
+
+  .content-main {
+  margin-top: 175px; /* adjust as per your header height */
+}
+
+/* Hide only on mobile when scrolling down */
+@media (max-width: 768px) {
+  #shopify-section-header.hidden {
+    transform: translateY(-100%);
+  }
+  .content-main {
+  margin-top: 124.5px ; /* adjust as per your header height */
+}
+}
+
 .cart_content_img img {
   height: 160px;
   object-fit: cover;
