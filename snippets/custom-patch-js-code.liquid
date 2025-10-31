@@ -7,7 +7,7 @@
           const product = {{ product | json }};
                    console.log(product.available);
            if (!product.available) {
-         
+          // Hide the button if the product is not available
           $('.customize-button').hide();
              console.log('PRODUCT IS OUT OF STOCK');
       }
@@ -211,7 +211,7 @@
             movecenter.classList.add('not-allowed');
             moveright.classList.add('not-allowed');
             movebottom.classList.add('not-allowed');
-           
+           // Disable the slider and change the cursor to not-allowed
              rangeSlider.disabled = true;
              decrementButtonNN.disabled = true;
              incrementButtonNN.disabled = true;
@@ -250,7 +250,7 @@
 
 <script>
   var ismainDragging = false;
-  var order = 1; 
+  var order = 1; // Initialize order counter
   var orderBack = 1;
 </script>
 <script>
@@ -262,13 +262,14 @@
           popup.classList.remove('active');
           setTimeout(() => {
               popup.remove();
-          }, 300); 
+          }, 300); // Wait for the transition to finish before removing the pop-up
       }
   }
 </script>
 <script>
   $(document).ready(function() {
 
+          // Check if .patch-selected-by-btn class exists within .edit-btn-patch-selected
           if ($('.edit-btn-patch-selected').hasClass('patch-selected-by-both')) {
               $('.delete-patches-wrapper-sidebar > .tidy-patches-delete-btn-wrraper').show();
           } else {
@@ -279,7 +280,7 @@
 <script>
       $(document).ready(function() {
         $(document).on('click', '.add-patch-pop-up-btn', function() {
-           
+            // Extract data attributes from the clicked element
             var patchSrc = $(this).attr('data-patch-src-popup');
             var patchId = $(this).attr('data-patch-id-popup');
             var patchHeight = $(this).attr('data-patch-height-popup');
@@ -298,102 +299,17 @@
 </script>
 <script>
    $(document).on('click', '.edit-left-btn', function(event) {
-     $('.onlymobile-screen').removeClass('onlymobile-screen-active');
-      $('.edit-left-btn').addClass('onlymobile-screen-active');
-      $('.variants-selected-sidebar').addClass('variants-continue-btn-invisible');
-    $('.only-mobile').css('display', 'none');
-    $('.size_variants_section').css('visibility', 'hidden');
        if ($(this).hasClass('patches-customization-tidy-delete-btn-active')) {
+           console.log('.tidy-right-btn hon my');
           changefillColors();
           $('.edit-delete-btn').removeClass('patches-customization-tidy-delete-btn-active');
-          // $('.patches-customization-editor').addClass('patches-customization-editor-active');
-           //$('.patches-customization-editor').css('display', 'block');
+           $('.patches-customization-editor').addClass('patches-customization-editor-active');
+           $('.patches-customization-editor').css('display', 'block');
            $('.patches-editor-wrapper').css('display', 'none');
            $('.only-mobile-colors-wrapper').css('display', 'none');
-         //  $('.delete-patches-wrapper-sidebar').css('display', 'none');
+           $('.delete-patches-wrapper-sidebar').css('display', 'none');
     
-           if (window.matchMedia("(max-width: 900px").matches){
-               $('.only-mobile-tdy-header').css('display', 'block');
-           } else {
-               $('.only-mobile-tdy-header').css('display', 'none');  
-           }
-
-           if (document.getElementById('Front-Area').style.visibility === 'visible') {
-               $('.back-tdiy-patches-btn').removeClass('tdiy-patches-btn-active');
-               $('.front-tdiy-patches-btn').addClass('tdiy-patches-btn-active');
-               $('.select-patches-for-back').removeClass('select-patches-active');
-               $('.select-patches-for-front').addClass('select-patches-active');
-
-               $('.patches-container .patch-').each(function() {
-                   var patchId = $(this).attr('id');
-        
-                 
-                   if (!$('.select-patches-for-front').find('[data-patch-id="' + patchId + '"]').length) {
-
-                       var imageSrc = $(this).find('.patch-image').attr('src');
-
-                       var selectedPatchDiv = $(`<div class="selected-patch-for-customization selected-patch-for-customization-for-front" id="${patchId}"></div>`);
-
-                       var imageElement = $('<img>').attr('src', imageSrc);
-
-                       selectedPatchDiv.append(imageElement);
-
-                       selectedPatchDiv.attr('data-patch-id', patchId);
-
-                       $('.select-patches-for-front').append(selectedPatchDiv);
-                   }
-               });
-           } else if (document.getElementById('Back-area').style.visibility === 'visible') {
-               $('.front-tdiy-patches-btn').removeClass('tdiy-patches-btn-active');
-               $('.back-tdiy-patches-btn').addClass('tdiy-patches-btn-active');
-               $('.select-patches-for-front').removeClass('select-patches-active');
-               $('.select-patches-for-back').addClass('select-patches-active');
-            
-               $('.patches-containerr .patch-').each(function() {
-                   var patchId = $(this).attr('id');
-      
-                   if (!$('.select-patches-for-back').find('[data-patch-id="' + patchId + '"]').length) {
-                       // Get image source
-                       var imageSrc = $(this).find('.patch-image').attr('src');
-
-                       // Create a new div with class .selected-patch-for-customization
-                       var selectedPatchDiv = $(`<div class="selected-patch-for-customization selected-patch-for-customization-for-back" id="${patchId}"></div>`);
-
-                       // Create an img element with the same src as the original image
-                       var imageElement = $('<img>').attr('src', imageSrc);
-
-                       // Append the image to the new div
-                       selectedPatchDiv.append(imageElement);
-
-                       // Append the patchId as a data attribute
-                       selectedPatchDiv.attr('data-patch-id', patchId);
-
-                       // Append the new div to .select-patches
-                       $('.select-patches-for-back').append(selectedPatchDiv);
-                   }
-               });
-           }
-
-           setTimeout(function() {
-               $('.patches-customization-editor').css('right', '0');
-           }, 100);
-       } 
-       else {
-         $('.tidy-right-btn').removeClass('patches-customization-tidy-delete-btn-active');
-             // $(this).addClass('patches-customization-tidy-delete-btn-active');
-           if ($('.edit-btn-patch-selected').hasClass('patch-selected-by-both')) {
-               $('.delete-patches-wrapper-sidebar > .tidy-patches-delete-btn-wrraper').show();
-           } else {
-               $('.delete-patches-wrapper-sidebar > .tidy-patches-delete-btn-wrraper').hide();
-           }
-          
-         changefillColors();
-           $('.delete-patches-wrapper-sidebar').css('display', 'block');
-           $('.patches-customization-editor').css('display', 'none');
-           $('.patches-editor-wrapper').css('display', 'none');
-           $('.only-mobile-colors-wrapper').css('display', 'none');
-    
-           if (window.matchMedia("(max-width: 900px)").matches){
+           if (window.matchMedia("(max-width: 768px)").matches){
                $('.only-mobile-tdy-header').css('display', 'block');
            } else {
                $('.only-mobile-tdy-header').css('display', 'none');  
@@ -433,7 +349,93 @@
                $('.back-tdiy-patches-btn').addClass('tdiy-patches-btn-active');
                $('.select-patches-for-front').removeClass('select-patches-active');
                $('.select-patches-for-back').addClass('select-patches-active');
-               $('.patches-containerr .patch-').each(function() {
+               $('.patches-container .patch-').each(function() {
+                   var patchId = $(this).attr('id');
+        
+                   // Check if the patch with the same ID already exists in .select-patches
+                   if (!$('.select-patches-for-back').find('[data-patch-id="' + patchId + '"]').length) {
+                       // Get image source
+                       var imageSrc = $(this).find('.patch-image').attr('src');
+
+                       // Create a new div with class .selected-patch-for-customization
+                       var selectedPatchDiv = $(`<div class="selected-patch-for-customization selected-patch-for-customization-for-back" id="${patchId}"></div>`);
+
+                       // Create an img element with the same src as the original image
+                       var imageElement = $('<img>').attr('src', imageSrc);
+
+                       // Append the image to the new div
+                       selectedPatchDiv.append(imageElement);
+
+                       // Append the patchId as a data attribute
+                       selectedPatchDiv.attr('data-patch-id', patchId);
+
+                       // Append the new div to .select-patches
+                       $('.select-patches-for-back').append(selectedPatchDiv);
+                   }
+               });
+           }
+
+           setTimeout(function() {
+               $('.patches-customization-editor').css('right', '0');
+           }, 100);
+       } 
+       else {
+         $('.tidy-right-btn').removeClass('patches-customization-tidy-delete-btn-active');
+              $(this).addClass('patches-customization-tidy-delete-btn-active');
+           if ($('.edit-btn-patch-selected').hasClass('patch-selected-by-both')) {
+               $('.delete-patches-wrapper-sidebar > .tidy-patches-delete-btn-wrraper').show();
+           } else {
+               $('.delete-patches-wrapper-sidebar > .tidy-patches-delete-btn-wrraper').hide();
+           }
+          
+           console.log('.tidy-right-btn hon my jani');
+         changefillColors();
+           $('.delete-patches-wrapper-sidebar').css('display', 'block');
+           $('.patches-customization-editor').css('display', 'none');
+           $('.patches-editor-wrapper').css('display', 'none');
+           $('.only-mobile-colors-wrapper').css('display', 'none');
+    
+           if (window.matchMedia("(max-width: 768px)").matches){
+               $('.only-mobile-tdy-header').css('display', 'block');
+           } else {
+               $('.only-mobile-tdy-header').css('display', 'none');  
+           }
+
+           if (document.getElementById('Front-Area').style.visibility === 'visible') {
+               $('.back-tdiy-patches-btn').removeClass('tdiy-patches-btn-active');
+               $('.front-tdiy-patches-btn').addClass('tdiy-patches-btn-active');
+               $('.select-patches-for-back').removeClass('select-patches-active');
+               $('.select-patches-for-front').addClass('select-patches-active');
+               $('.patches-container .patch-').each(function() {
+                   var patchId = $(this).attr('id');
+        
+                   // Check if the patch with the same ID already exists in .select-patches
+                   if (!$('.select-patches-for-front').find('[data-patch-id="' + patchId + '"]').length) {
+                       // Get image source
+                       var imageSrc = $(this).find('.patch-image').attr('src');
+
+                       // Create a new div with class .selected-patch-for-customization
+                       var selectedPatchDiv = $(`<div class="selected-patch-for-customization selected-patch-for-customization-for-front" id="${patchId}"></div>`);
+
+                       // Create an img element with the same src as the original image
+                       var imageElement = $('<img>').attr('src', imageSrc);
+
+                       // Append the image to the new div
+                       selectedPatchDiv.append(imageElement);
+
+                       // Append the patchId as a data attribute
+                       selectedPatchDiv.attr('data-patch-id', patchId);
+
+                       // Append the new div to .select-patches
+                       $('.select-patches-for-front').append(selectedPatchDiv);
+                   }
+               });
+           } else if (document.getElementById('Back-area').style.visibility === 'visible') {
+               $('.front-tdiy-patches-btn').removeClass('tdiy-patches-btn-active');
+               $('.back-tdiy-patches-btn').addClass('tdiy-patches-btn-active');
+               $('.select-patches-for-front').removeClass('select-patches-active');
+               $('.select-patches-for-back').addClass('select-patches-active');
+               $('.patches-container .patch-').each(function() {
                    var patchId = $(this).attr('id');
         
                    // Check if the patch with the same ID already exists in .select-patches
@@ -481,7 +483,7 @@
     $('.only-mobile-colors-wrapper').css('display', 'none');
      $('.delete-patches-wrapper-sidebar').css('display', 'none');
     
-    if (window.matchMedia("(max-width: 900px)").matches){
+    if (window.matchMedia("(max-width: 768px)").matches){
        $('.only-mobile-tdy-header').css('display', 'block');
     }else{
        $('.only-mobile-tdy-header').css('display', 'none');  
@@ -663,7 +665,7 @@
       // Start observing the document's body for configured mutations
       observer.observe(document.body, config);
 
-     
+      // Add a click event listener to the button
       customizeButton.click(function() {
           isCustomizationActive = true;
           console.log('customize button clicked');
@@ -673,8 +675,8 @@
           if (bannerLow) {
               bannerLow.style.display = 'none';
           }
-
-        
+          
+          // Select all elements with the hide-for-customization class and hide them
            $('.content-main').css('margin-top', '0px');
           $('.product-full').hide();
           $('.hide-for-customization').hide();
@@ -728,7 +730,7 @@
         $('.patches-tidy-editor-btn').css('display', 'none');
       // Remove the class from any element that has it
       $('.variants-selected-sidebar').removeClass('variants-continue-btn-invisible');
-              if (window.matchMedia("(max-width: 900px)").matches){
+              if (window.matchMedia("(max-width: 768px)").matches){
           $('.only-mobile').css('display', 'block');
       }else{
       $('.only-mobile').css('display', 'none');
@@ -936,8 +938,6 @@ const filteredData = dataToFilter.filter(item => {
 console.log('filterdata',filteredData);
 
 if (filteredData.length > 0) {
-    
-
     // Clear the patches container only if there is data
     $('#patches-wrapper').empty();
 
@@ -949,17 +949,12 @@ if (filteredData.length > 0) {
 
         // Only create the patch if an available variant is found
         if (availableVariant) {
-            
             const div = document.createElement('div');
             div.setAttribute('draggable', 'true');
             const title = document.createElement('p');
             title.setAttribute('draggable', 'false');
             div.setAttribute('v-id', item.id);
             div.classList.add('patch');
-   const existingPatchOnCanvas = document.querySelector(`.patch-[v-id="${item.id}"]`);
-    if (existingPatchOnCanvas) {
-      div.classList.add('patch-added-to-product');
-    }
             title.classList.add('patch-title');
             title.textContent = item.patchname || item.alphabetname;
 
@@ -1059,8 +1054,8 @@ img.setAttribute('crossorigin', 'anonymous');
 
             if (Array.isArray(product.tags)) {
                 if (product.tags.includes('back-pack')) {
-                    imgHeight += 35;
-                    imgWidth += 35;
+                    imgHeight += 40;
+                    imgWidth += 40;
                 }
                 if (product.tags.includes('patch-it-bag')) {
                     if (imgHeight < 30 && imgWidth < 30) {
@@ -1674,7 +1669,7 @@ else {
 
 }
  function filteralphabets() {
-   
+   console.log('fileterrrrrr');
 
 // Get the input value from the search bar
 const inputValue = document.querySelector('.customization-search-bar').value;
@@ -1683,7 +1678,7 @@ console.log(inputValue);
 $('.patches-toggle').hide();
 $('.alphabets-toggle').show();
 
-
+// Determine which data to filter based on the active toggle button
 const dataToFilter = alphabets;
 console.log('dataToFilter', dataToFilter);
 
@@ -1716,17 +1711,12 @@ if (filteredData.length > 0) {
 
         // Only create the patch if an available variant is found
         if (availableVariant) {
-
             const div = document.createElement('div');
             div.setAttribute('draggable', 'true');
             const title = document.createElement('p');
             title.setAttribute('draggable', 'false');
             div.setAttribute('v-id', item.id);
             div.classList.add('patch');
-             const existingPatchOnCanvas = document.querySelector(`.patch-[v-id="${item.id}"]`);
-    if (existingPatchOnCanvas) {
-      div.classList.add('patch-added-to-product');
-    }
             title.classList.add('patch-title');
             title.textContent = item.patchname || item.alphabetname;
 
@@ -1842,8 +1832,8 @@ img.setAttribute('crossorigin', 'anonymous');
 
             if (Array.isArray(product.tags)) {
                 if (product.tags.includes('back-pack')) {
-                    imgHeight += 10;
-                    imgWidth += 10;
+                    imgHeight += 25;
+                    imgWidth += 25;
                 }
                 if (product.tags.includes('patch-it-bag')) {
                     if (imgHeight < 30 && imgWidth < 30) {
@@ -2152,10 +2142,10 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
          halfHeight += 25;
          halfWidth += 25;
               }
-              else if (product.tags.includes('back-pack')){
+               else if (product.tags.includes('back-pack')){
         
-        halfHeight += 25;
-         halfWidth += 25;
+        halfHeight += 30;
+         halfWidth += 30;
             }
                 else if (product.tags.includes('customize-long-bag')){
                       halfHeight += 25;
@@ -2383,55 +2373,43 @@ else {
 }
 
 
- $('#patches-button').click(function() {
-  $(this).addClass('custom-patch-active'); 
-  $('#alphabets-button').removeClass('custom-patch-active');
-  $('.customization-search-bar').attr('placeholder', 'Search Patches');
+ $('#patches-button').click(function(){
+     $(this).addClass('custom-patch-active'); 
+     $('#alphabets-button').removeClass('custom-patch-active');
+    $('.customization-search-bar').attr('placeholder', 'Search Patches');
+     showPatches();
+   filterPatches();
+ });
+ 
+ // Event listener for the "Alphabets" button
+ $('#alphabets-button').click(function(){
+     $(this).addClass('custom-patch-active');
+     $('#patches-button').removeClass('custom-patch-active');
+    $('.customization-search-bar').attr('placeholder', 'Search Alphabets');
 
-  if ($('#patches-wrapper').is(':empty')) {
-    showPatches();
-    filterPatches();
-  }
-
-  $('.patches-toggle').show();
-  $('.alphabets-toggle').hide();
-});
-
-
-$('#alphabets-button').click(function() {
-  $(this).addClass('custom-patch-active');
-  $('#patches-button').removeClass('custom-patch-active');
-  $('.customization-search-bar').attr('placeholder', 'Search Alphabets');
-
-  if ($('#alphabets-wrapper').is(':empty')) {
-    showAlphabets();
-    filteralphabets();
-  }
-
-  $('.alphabets-toggle').show();
-  $('.patches-toggle').hide();
-});
-
+     showAlphabets();
+   filteralphabets();
+ });
 
 let _nearIO, _keepIO;
 
 function _loadImg(img) {
   if (!img.dataset.src || img.dataset._state === 'loaded') return;
   img.onload = () => img.classList.add('is-loaded');
-  img.src = img.dataset.src;              
+  img.src = img.dataset.src;               // set real image
   img.dataset._state = 'loaded';
 }
 
 function _unloadImg(img) {
   if (img.dataset._state !== 'loaded') return;
-  img.removeAttribute('src');              
+  img.removeAttribute('src');              // free memory / GPU
   img.classList.remove('is-loaded');
   img.dataset._state = 'idle';
 }
 
 function _ensureObservers() {
   if (!_nearIO) {
-    
+    // Loads when within ~400px of viewport
     _nearIO = new IntersectionObserver((entries, obs) => {
       entries.forEach(e => {
         if (e.isIntersecting) _loadImg(e.target);
@@ -2439,14 +2417,15 @@ function _ensureObservers() {
     }, { root: null, rootMargin: '400px 0px', threshold: 0.01 });
   }
   if (!_keepIO) {
-   
+    // Keeps image while it's within a big "keep zone" around viewport.
+    // When it leaves this zone, we unload it.
     _keepIO = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         const img = e.target;
         if (e.isIntersecting) {
-          img.dataset._keep = '1';        
+          img.dataset._keep = '1';         // inside keep zone
         } else if (img.dataset._keep === '1') {
-          img.dataset._keep = '0';        
+          img.dataset._keep = '0';         // just left keep zone
           _unloadImg(img);
         }
       });
@@ -2599,8 +2578,8 @@ img.setAttribute('crossorigin', 'anonymous');
 
             if (Array.isArray(product.tags)) {
                 if (product.tags.includes('back-pack')) {
-                    imgHeight += 35;
-                    imgWidth += 35;
+                    imgHeight += 40;
+                    imgWidth += 40;
                 }
                 if (product.tags.includes('patch-it-bag')) {
                     if (imgHeight < 30 && imgWidth < 30) {
@@ -3203,19 +3182,19 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
 }
 
 
-$('.variants-continue-btn-wrapper').click(function() {
+$('.variants-continue-btn').click(function() {
     // Check if the product has 'none-size-products' tag
     if (Array.isArray(product.tags) && product.tags.includes('none-size-products')) {
         // Skip size variant checks and directly show the loader
         
         console.log('continue to next moment');
-        
+
         // Show the loader
         $('.loader-cart-contiune').css('display', 'block');
 
         // Hide the continue button and change the background color of the wrapper
         $('.variants-continue-btn').css('display', 'none');
-        $('.variants-continue-btn-wrapper').css('background-color', 'rgb(114, 114, 114)', '!important');
+        $('.variants-continue-btn-wrapper').css('background-color', 'rgb(223, 223, 223)');
          
         // Set a timeout for 1 second for the loader to be visible
         setTimeout(function() {
@@ -3245,11 +3224,11 @@ $('.variants-continue-btn-wrapper').click(function() {
 
             $('.size_variants_errors').css('display', 'none');
 
-            if (window.matchMedia("(max-width: 900px)").matches) {
+            if (window.matchMedia("(max-width: 768px)").matches) {
                 $('.only-mobile').css('display', 'none');
             }
 
-            if (window.matchMedia("(max-width: 900px)").matches) {
+            if (window.matchMedia("(max-width: 768px)").matches) {
                 $('.only-mobile-colors-wrapper').css('display', 'block');
             } else {
                 $('.only-mobile-colors-wrapper').css('display', 'none');
@@ -3260,9 +3239,8 @@ $('.variants-continue-btn-wrapper').click(function() {
     } else {
         // Check if size variants are active only if product doesn't have 'none-size-products' tag
         if ($('.size_variants_circle').hasClass('size_variants_active')) {
-
+            
             console.log('continue to next moment');
-            console.log($('.size_variants_circle'));
             setTimeout(function() {
               showPatches();
                 // Hide the loader after 1 second
@@ -3290,37 +3268,28 @@ $('.variants-continue-btn-wrapper').click(function() {
 
                 $('.size_variants_errors').css('display', 'none');
 
-                if (window.matchMedia("(max-width: 900px)").matches) {
+                if (window.matchMedia("(max-width: 768px)").matches) {
                     $('.only-mobile').css('display', 'none');
                 }
 
-                if (window.matchMedia("(max-width: 900px)").matches) {
+                if (window.matchMedia("(max-width: 768px)").matches) {
                     $('.only-mobile-colors-wrapper').css('display', 'block');
                 } else {
                     $('.only-mobile-colors-wrapper').css('display', 'none');
                 }
 $('.size_variants_section').css('visibility', 'hidden');
-         $('.variants-continue-btn-wrapper').attr(
-  'style',
-  'border-color: #2c272d;'
-);
             }, 50); // 1 second delay for loader
             // Show the loader
             $('.loader-cart-contiune').css('display', 'block');
 
             // Hide the continue button and change the background color of the wrapper
             $('.variants-continue-btn').css('display', 'none');
-            $('.variants-continue-btn-wrapper').attr(
-  'style',
-  'background-color: rgb(190 190 190) !important; border-color: rgb(190 190 190);'
-);
-
+            $('.variants-continue-btn-wrapper').css('background-color', 'rgb(223, 223, 223)');
             
             // Set a timeout for 1 second for the loader to be visible
             
              
         } else {
-            alert('Size nit select');
             // Show the error div if no active size variant is selected
             $('.size_variants_errors').css('display', 'block');
         }
@@ -3493,8 +3462,9 @@ if (isAvailable) {
               }
             } 
             
-            else { 
-// Assuming variants is an array of variant objects
+            else {
+              console.log('size product'); 
+                                      // Assuming variants is an array of variant objects
 
  if (colorVariant.id.toString() === variant.id.toString()) {
                    const matchingVariants = product.variants.filter(variant => {
@@ -3695,31 +3665,13 @@ function createVariantDivs(colorTitle) {
 
         const hiddenNameInput = document.getElementById('selective_variant_name');
         if (hiddenNameInput) hiddenNameInput.value = sizeLabel;
-        
       });
-     const firstDiv = document.querySelector('.select_size');
-if (firstDiv) {
-  firstDiv.classList.add('size_variants_active');
-
-  const firstLabel = firstDiv.textContent;
-  const firstId = firstDiv.getAttribute('data-v-id');
-
-  const heading = document.querySelector('.size_selector_heading');
-  if (heading) heading.textContent = firstLabel;
-
-  const hiddenInput = document.getElementById('selective_variant_ID');
-  if (hiddenInput) hiddenInput.value = firstId;
-
-  const hiddenNameInput = document.getElementById('selective_variant_name');
-  if (hiddenNameInput) hiddenNameInput.value = firstLabel;
-} 
     }
-
   });
 }
 
 $('.size_variants').click(function() {
-                
+                // Remove 'size_variants_active' class from all elements with 'size_variants' class
                 $('.size_variants').removeClass('size_variants_active');
                 // Add 'size_variants_active' class to the clicked element
                 $(this).addClass('size_variants_active');
@@ -4585,33 +4537,28 @@ document.querySelector('#alphabets-wrapper').addEventListener('dragstart', funct
 
   
 document.querySelectorAll('.patches').forEach(patchesDiv => {
-  patchesDiv.addEventListener('click', function (event) {
-    const patch = event.target.closest('.patch');
+    patchesDiv.addEventListener('click', function (event) {
+        const patchTitle = event.target.closest('.patch-title');
 
-    if (!patch) return; // Ignore clicks outside patches
-        if (patch.classList.contains('patch-not-allowed')) {
-      console.log('This patch is not allowed.');
-      return;
-    }
-    patch.classList.add('patch-added-to-product');
+        if (!patchTitle) return; // If the event target isn't a patch title, ignore it
 
-    const patchId = patch.getAttribute('v-id');
-    const patchImg = patch.querySelector('img');
-    const patchSrc = patchImg.src;
-    const height = patchImg.getAttribute('height');
-    const width = patchImg.getAttribute('width');
+        const patch = patchTitle.closest('.patch');
+        const patchId = patch.getAttribute('v-id');
+        const patchImg = patch.querySelector('img');
+        const patchSrc = patchImg.src;
+        const height = patchImg.getAttribute('height'); // Get the height attribute
+        const width = patchImg.getAttribute('width');
 
-    if (document.getElementById('Front-Area').style.visibility === 'visible') {
-      addPatchToCenterBox(patchSrc, patchId, height, width);
-      dragPatch = patch;
-    } 
-    else if (document.getElementById('Back-area').style.visibility === 'visible') {
-      addPatchToBackcenterBox(patchSrc, patchId, height, width);
-      dragPatch = patch;
-    }
-  });
+        if (document.getElementById('Front-Area').style.visibility === 'visible') {
+            addPatchToCenterBox(patchSrc, patchId, height, width);
+            dragPatch = patch;
+        } 
+        else if (document.getElementById('Back-area').style.visibility === 'visible') {
+            addPatchToBackcenterBox(patchSrc, patchId, height, width);
+            dragPatch = patch;
+        }
+    });
 });
-
 
 
 
@@ -5236,14 +5183,13 @@ BackcenterBox.addEventListener('mouseup', function (event) {
        
    
     // $targetPatch.removeClass('patch-selected-by-btn');
+    
     $('.patches-customization-editor').addClass('patches-customization-editor-active');
     $('.patches-customization-editor').css('display', 'block');
-    $('.only-mobile').css('display', 'none');
     $('.patches-editor-wrapper').css('display', 'none');
     $('.only-mobile-colors-wrapper').css('display', 'none');
-    $('.variants-selected-sidebar').addClass('variants-continue-btn-invisible');
-    $('.size_variants_section').css('visibility', 'hidden');
-    if (window.matchMedia("(max-width: 900px)").matches){
+    
+    if (window.matchMedia("(max-width: 768px)").matches){
        $('.only-mobile-tdy-header').css('display', 'block');
     }else{
        $('.only-mobile-tdy-header').css('display', 'none');  
@@ -5319,16 +5265,10 @@ var patchActionElement = actionPatch.find('.patch-action');
         $('.patches-customization-editor').css('right', '0');
     }, 100);
         }
-    ismainDragging = false; 
+    ismainDragging = false; // Reset the flag
    changefillColors();
 });
 $(document).on('click', '.patches-tidy-editor-btn', function(event) {
-    $('.onlymobile-screen ').addClass('onlymobile-screen-active');
-    $('.edit-left-btn').removeClass('onlymobile-screen-active');
-    $('.delete-patches-wrapper-sidebar').css('display', 'none');
-    $('.variants-selected-sidebar').addClass('variants-continue-btn-invisible');
-    $('.only-mobile').css('display', 'none');
-    $('.size_variants_section').css('visibility', 'hidden');
    if (document.getElementById('Front-Area').style.visibility === 'visible') {
           $('.back-tdiy-patches-btn').removeClass('tdiy-patches-btn-active')
         $('.front-tdiy-patches-btn').addClass('tdiy-patches-btn-active')
@@ -5336,26 +5276,28 @@ $(document).on('click', '.patches-tidy-editor-btn', function(event) {
         $('.select-patches-for-front').addClass('select-patches-active')
           $('.patches-container .patch-').each(function() {
         var patchId = $(this).attr('id');
-       var actionPatch = $(this); 
+       var actionPatch = $(this); // Assuming 'this' is a jQuery object
 var patchActionElement = actionPatch.find('.patch-action');
   console.log('patchActionElement',patchActionElement);
         
-        
+        // Check if the patch with the same ID already exists in .select-patches
         if (!$('.select-patches-for-front').find('[data-patch-id="' + patchId + '"]').length) {
-          
+            // Get image source
             var imageSrc = $(this).find('.patch-image').attr('src');
 
-           
+            // Create a new div with class .selected-patch-for-customization
             var selectedPatchDiv = $(`<div class="selected-patch-for-customization selected-patch-for-customization-for-front" id="${patchId}"></div>`);
 
-           
+            // Create an img element with the same src as the original image
             var imageElement = $('<img>').attr('src', imageSrc);
+
+            // Append the image to the new div
             selectedPatchDiv.append(imageElement);
 
-            
+            // Append the patchId as a data attribute
             selectedPatchDiv.attr('data-patch-id', patchId);
 
-            
+            // Append the new div to .select-patches
             $('.select-patches-for-front').append(selectedPatchDiv);
         }
     });
@@ -5368,24 +5310,24 @@ var patchActionElement = actionPatch.find('.patch-action');
         $('.patches-containerr .patch-').each(function() {
         var patchId = $(this).attr('id');
         
-        
+        // Check if the patch with the same ID already exists in .select-patches
         if (!$('.select-patches-for-back').find('[data-patch-id="' + patchId + '"]').length) {
-            
+            // Get image source
             var imageSrc = $(this).find('.patch-image').attr('src');
 
-           
+            // Create a new div with class .selected-patch-for-customization
             var selectedPatchDiv = $(`<div class="selected-patch-for-customization selected-patch-for-customization-for-back" id="${patchId}"></div>`);
 
-           
+            // Create an img element with the same src as the original image
             var imageElement = $('<img>').attr('src', imageSrc);
 
-            
+            // Append the image to the new div
             selectedPatchDiv.append(imageElement);
 
-           
+            // Append the patchId as a data attribute
             selectedPatchDiv.attr('data-patch-id', patchId);
 
-            
+            // Append the new div to .select-patches
             $('.select-patches-for-back').append(selectedPatchDiv);
         }
     });
@@ -5421,11 +5363,9 @@ var patchActionElement = actionPatch.find('.patch-action');
     }, 100);
 });
 
-  
+    // Click event listener for closing the editor
     $('.close-patches-customization-editor').click(function() {
         console.log('this is order',order);
-        $('.patches-tidy-editor-btn').removeClass('onlymobile-screen-active');  
-        $('.edit-delete-btn').removeClass('onlymobile-screen-active');  
         $('.selected-patch-for-customization-for-front').removeClass('patch-selected');  
         $('.selected-patch-for-customization-for-back').removeClass('patch-selected');  
         $('.selected-patch-for-customization-for-front').removeClass('patch-selected-by-both');  
@@ -5443,10 +5383,10 @@ var patchActionElement = actionPatch.find('.patch-action');
         $('.edit-left-btn').removeClass('patches-customization-tidy-delete-btn-active');
         $('.tidy-right-btn').removeClass('patches-customization-tidy-delete-btn-active');
          $('.patch-').removeClass('patch-action');
-      
+      $('.patches-editor-wrapper').css('display', 'block');
       $('.only-mobile-tdy-header').css('display', 'none');
       $('.delete-patches-wrapper-sidebar').css('display', 'none');
-       if (window.matchMedia("(max-width: 900px)").matches){
+       if (window.matchMedia("(max-width: 768px)").matches){
         $('.only-mobile-colors-wrapper').css('display', 'block');  
     }else{
        $('.only-mobile-colors-wrapper').css('display', 'none');  
@@ -5461,8 +5401,6 @@ var patchActionElement = actionPatch.find('.patch-action');
                 });
             }, 900);
         }, 100);
-        setTimeout(() => $('.patches-editor-wrapper').css('display', 'block'), 200);
-
     });
 
      $('.tidy-patches-apply-changes-btn').click(function() {
@@ -5472,7 +5410,7 @@ var patchActionElement = actionPatch.find('.patch-action');
       $('.patches-editor-wrapper').css('display', 'block');
       $('.only-mobile-tdy-header').css('display', 'none');
        $('.delete-patches-wrapper-sidebar').css('display', 'none');
-       if (window.matchMedia("(max-width: 900px)").matches){
+       if (window.matchMedia("(max-width: 768px)").matches){
         $('.only-mobile-colors-wrapper').css('display', 'block');  
     }else{
        $('.only-mobile-colors-wrapper').css('display', 'none');  
@@ -5557,11 +5495,11 @@ var patchActionElement = actionPatch.find('.patch-action');
                   currentOrder++;
               });
 
-              order--; 
+              order--; // Decrement the order counter
              changefillColors();
           }
 
-       
+          // Log the target .patch- element to the console
 
 
           event.stopPropagation(); // Prevent click event from bubbling up
@@ -5577,7 +5515,10 @@ var patchActionElement = actionPatch.find('.patch-action');
           var $clickedPatch = $(this);
           var patchId = $clickedPatch.data('patch-id');
           if (!$clickedPatch.hasClass('patch-selected')) {
-        
+              // // If not selected, add order and class
+              // $clickedPatch.addClass('patch-selected').append('<span class="selected-patch-order">' + orderBack + '</span>');
+              // $('#' + patchId).addClass('patch-action').attr('order-data', orderBack);
+              // orderBack++;
 
               if (!$clickedPatch.hasClass('edit-btn-patch-selected')){
                    // If not selected, add order and class
@@ -6850,15 +6791,4 @@ window.addEventListener("resize", () => {
       $('#showBackBtnnmob').click(showBackOrFront);
       $('#Front-Area').removeClass('image-hidden').css('visibility', 'visible');
     });
-</script>
-<script>
-    $('.patches-full-screen-icon').on('click', function() {
-  // Toggle rotation
-  $(this).toggleClass('rotated');
-
-  // Toggle classes on other elements
-  $('#patches-customization-offcanvas-menu').toggleClass('only-for-small-devices');
-  $('.patches-customization-container').toggleClass('hide-product-imagewrapper-for-small-devices');
-});
-
 </script>
