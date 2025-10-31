@@ -15,7 +15,7 @@
   $(document).ready(function() {
     // Select the button using its class
     var embroiderbutton = $('.embroider-button');
-    var embroidercontimuebutton = $('#emb_variants_conitinue_btn');
+    var embroidercontimuebutton = $('.emb-variants-continue-btn');
     var cartButtonemb = $('.customize-cart-button');
     var embroidercontimuebackbutton = $('.emb_patches_back_btn');
 
@@ -31,8 +31,7 @@
           $('.front_input_heading').hide();
           $('.FLarminput').hide();
              // Show the sidebar by setting visibility to 'visible'
-        $('#emb_variants-selected-sidebar').css('visibility', 'visible');
-        $('#emb_variants-selected-sidebar').css('display', 'flex');
+      $('#emb_variants-selected-sidebar').addClass('active');
         $('#emb_variants-selected-sidebar').css('flex-direction', 'column');
         
         // Handle visibility for smaller screens
@@ -43,7 +42,6 @@
 
         // Show the continue button
         // $('.variants-continue-btn-invisible').css('display', 'block');
-
         // Hide the embroider continue button
         embroidercontimuebutton.css('visibility', 'hidden');
         }
@@ -51,8 +49,7 @@
            // Check if any .size_variants_circle has the .size_variants_active class
     if ($('.size_variants_circle').hasClass('size_variants_active')) {
         // Show the sidebar by setting visibility to 'visible'
-        $('#emb_variants-selected-sidebar').css('visibility', 'visible');
-        $('#emb_variants-selected-sidebar').css('display', 'flex');
+       $('#emb_variants-selected-sidebar').addClass('active');
         $('#emb_variants-selected-sidebar').css('flex-direction', 'column');
         
         // Handle visibility for smaller screens
@@ -62,10 +59,23 @@
         }
 
         // Show the continue button
-        // $('.variants-continue-btn-invisible').css('display', 'block');
+        $('.variants-continue-btn-invisible').css('display', 'block');
+        $('.scrolbar__color_size_wrap').css('display', 'none');
 
         // Hide the embroider continue button
-        embroidercontimuebutton.css('visibility', 'hidden');
+        
+         $('#emb-patches-customization-form-btn').css('display', 'flex');
+            $('.emb-variants-continue-btn').css('display', 'none');
+            $('.summary-add-to-bag-emb').css('display', 'block');
+            $('.summary-continnue-emb').css('display', 'none');
+            
+const $targets = $('.embroidery-summary-wrapper, .patches-customization-wrapper, .variants-selected-sidebar');
+
+  if ($targets.is('.embroidery-summary-wrapper-open, .overlay-active')) {
+    $targets.removeClass('embroidery-summary-wrapper-open overlay-active');
+  }
+  
+            
     } 
     else {
         // If no .size_variants_circle has .size_variants_active, show the error div
@@ -77,8 +87,8 @@
 
      embroidercontimuebackbutton.on('click', function() {
         // Show the sidebar by setting visibility to 'visible'
-        $('#emb_variants-selected-sidebar').css('visibility', 'hidden');
-       $('#emb_variants-selected-sidebar').css('display', 'none');
+        $('.scrolbar__color_size_wrap').css('display', 'block');
+     $('#emb_variants-selected-sidebar').removeClass('active')
        $('.size_variants_section').css('visibility', 'visible');
        $('#emb_size_color_selector_sidebar').removeClass('variants-continue-btn-invisible');
          $('.emb-only-mobile-for-styles').css('display', 'none');
@@ -89,9 +99,10 @@
         if (window.innerWidth < 769){
           $('.emb-only-mobile-for-styles').css('display', 'block');
        } 
-      
-        // Hide the button by setting visibility to 'hidden'
-        embroidercontimuebutton.css('visibility', 'visible');
+       $('#emb-patches-customization-form-btn').css('display', 'none');
+            $('.emb-variants-continue-btn').css('display', 'block');
+        $('.summary-add-to-bag-emb').css('display', 'none');
+            $('.summary-continnue-emb').css('display', 'block');
     });
     // Flag to indicate whether customization mode is active
     var isCustomizationActive = false;
@@ -139,8 +150,7 @@
         if (bannerLow) {
             bannerLow.style.display = 'none';
         }
-         $('.content-main').css('margin-top', '0px');
-          $('.product-full').hide();
+
         // Select all elements with the hide-for-customization class and hide them
         $('.hide-for-customization').hide();
         $('.yotpo-widget-clear').hide();
@@ -190,7 +200,35 @@
        const threadcolors = data.threadsColor;
         const parentDiv = document.querySelector('.all_emb_fonts');
        showcolorVariants();
-      
+      $(document).on('click', '.words-letter-show-plus-icons', function (e) {
+  e.preventDefault();
+  const $p = $('.emb-words-letter-font-wrapper');
+  const $pc = $('.emb-monogram-font-wrapper');
+  const open = $p.hasClass('is-open');
+  if (!open) {
+    const h = $p[0].scrollHeight;       // natural height
+    $p.css('--target-h', h + 'px').addClass('is-open');
+     $pc.css('--target-h', '0px').removeClass('is-open');
+  } else {
+    $p.css('--target-h', '0px').removeClass('is-open');
+  }
+});
+
+      $(document).on('click', '.monogram-show-plus-icons', function (e) {
+        e.preventDefault();
+  displayMonogramsFonts(fontVariants);
+  const $p = $('.emb-monogram-font-wrapper');
+  const $pc = $('.emb-words-letter-font-wrapper');
+  const open = $p.hasClass('is-open');
+  if (!open) {
+    const h = $p[0].scrollHeight;       // natural height
+    $p.css('--target-h', h + 'px').addClass('is-open');
+     $pc.css('--target-h', '0px').removeClass('is-open');
+  } else {
+    $p.css('--target-h', '0px').removeClass('is-open');
+  }
+});
+
        displayFonts(fontVariants);
            $('#emb_fonts_monogram_btn').click(function() {
 
@@ -615,6 +653,7 @@ if (isAvailable) {
    // Remove the class from all color-variant divs
    document.querySelectorAll('.color-variant').forEach((div) => {
        div.classList.remove('selected-variant');
+       
    });
 
    // Add the class to the clicked div
@@ -698,35 +737,53 @@ if (isAnyVariantAvailable) {
                     document.getElementById('emb-Back-image').src = colorVariant.backImg;
 
                     // Add click event listener to each div
-                    newDiv.addEventListener('click', () => {
-                        // Remove the class from all color-variant divs
-                        document.querySelectorAll('.color-variant').forEach((div) => {
-                            div.classList.remove('selected-variant');
-                        });
-                        
-                        // Add the class to the clicked div
-                        newDiv.classList.add('selected-variant');
-                        const colorTitle = newDiv.getAttribute('color-title');
-                        console.log('colorTitle', colorTitle);
-                           const colorSelectorHeading = document.querySelector('.emb-color_selector_heading');
-     console.log(colorSelectorHeading)
-   if (colorSelectorHeading) {
-     console.log('yes its existes colorSelectorHeading')
-       colorSelectorHeading.textContent = colorTitle;
-   }
-                               const sizeSelectorHeading = document.querySelector('.color_selector_heading');
-     console.log(sizeSelectorHeading)
-   if (sizeSelectorHeading) {
-     console.log('yes its existes colorSelectorHeading')
-       sizeSelectorHeading.textContent = '';
-   }
-                        // Call createVariantDivs if not a "back-pack"
-                        createVariantDivs(colorTitle);
+                  // Add click event listener to each div
+newDiv.addEventListener('click', () => {
+    // Remove the class from all color-variant divs
+    document.querySelectorAll('.color-variant').forEach((div) => {
+        div.classList.remove('selected-variant');
+    });
 
-                        // Set the src attribute of the image with id "Front-image" and "Back-image"
-                         document.getElementById('emb-Front-image').src = colorVariant.productImg;
-                         document.getElementById('emb-Back-image').src = colorVariant.backImg;
-                    });
+    // Remove the border class from all parent wrappers
+    document.querySelectorAll('.parent-variant-wrapper').forEach((wrapper) => {
+        wrapper.classList.remove('selected-variant-border');
+    });
+
+    // Add the class to the clicked div
+    newDiv.classList.add('selected-variant');
+
+    // Add border class to its parent
+    const parentWrapper = newDiv.closest('.parent-variant-wrapper');
+    if (parentWrapper) {
+        parentWrapper.classList.add('selected-variant-border');
+    }
+
+
+    const colorTitle = newDiv.getAttribute('color-title');
+    console.log('colorTitle', colorTitle);
+
+    const colorSelectorHeading = document.querySelector('.emb-color_selector_heading');
+    console.log(colorSelectorHeading);
+    if (colorSelectorHeading) {
+        console.log('yes its existes colorSelectorHeading');
+        colorSelectorHeading.textContent = colorTitle;
+    }
+
+    const sizeSelectorHeading = document.querySelector('.color_selector_heading');
+    console.log(sizeSelectorHeading);
+    if (sizeSelectorHeading) {
+        console.log('yes its existes sizeSelectorHeading');
+        sizeSelectorHeading.textContent = '';
+    }
+
+    // Call createVariantDivs if not a "back-pack"
+    createVariantDivs(colorTitle);
+
+    // Set the src attribute of the image with id "Front-image" and "Back-image"
+    document.getElementById('emb-Front-image').src = colorVariant.productImg;
+    document.getElementById('emb-Back-image').src = colorVariant.backImg;
+});
+
 
                     // Append the new div to the div with class "variant-selector-sidebar-btn"
                     parentDiv.appendChild(newDiv);
@@ -752,6 +809,10 @@ if (isAnyVariantAvailable) {
     if (firstColorVariant) {
         console.log('firstColorVariant');
         firstColorVariant.classList.add('selected-variant');
+        const parentWrapper = firstColorVariant.closest('.parent-variant-wrapper');
+if (parentWrapper) {
+  parentWrapper.classList.add('selected-variant-border');
+}
         // document.getElementById('Front-image').src = colorVariant.productImg;
         // document.getElementById('Back-image').src = colorVariant.backImg;
         const colorTitle = firstColorVariant.getAttribute('color-title');
@@ -812,78 +873,98 @@ if (firstColorVariantData) {
 
     }
 } 
-     function createVariantDivs(colorTitle) {
+       
+function createVariantDivs(colorTitle) {
   const product2 = {{ product | json }};
   const variantsContainer = document.getElementById('emb-variants-containers');
 
-  // Identify which option is the Color option (0/1/2 for option1/2/3)
-  const optionNames = {{ product.options | json }}; // ["Size","Color",...]
-  const colorIdx = optionNames.findIndex(n => /color/i.test(n)); // -1 if none
+  // Product options like ["Size","Color", ...]
+  const optionNames = {{ product.options | json }};
+  const colorIdx = optionNames.findIndex(n => /color/i.test(n));
+  const sizeIdx  = optionNames.findIndex(n => /size/i.test(n));
 
-  // Helper to read the variant's color consistently
-  const getVariantColor = (v) => {
-    if (colorIdx === 0) return v.option1 || '';
-    if (colorIdx === 1) return v.option2 || '';
-    if (colorIdx === 2) return v.option3 || '';
-    // Fallback: try to infer from title after " / "
-    return (v.title || '').split(' / ').find(part => /pink|color/i.test(part)) || '';
-  };
+  const getOpt = (v, idx) => (
+    idx === 0 ? v.option1 :
+    idx === 1 ? v.option2 :
+    idx === 2 ? v.option3 : ''
+  );
 
-  // Normalize for comparison
+  const getVariantColor = v => (colorIdx >= 0 ? getOpt(v, colorIdx) : '');
+  const getVariantSize  = v => (sizeIdx  >= 0 ? getOpt(v, sizeIdx)  : (v.option1 || ''));
+
   const norm = s => (s || '').trim().toLowerCase();
 
-  // Clear existing variant divs
+  // Reset
   variantsContainer.innerHTML = '';
-
-  // Keep sizes unique if multiple variants share same size
   const addedSizes = new Set();
+  let firstButton = null;
 
-  product2.variants.forEach(variant => {
-    if (!variant.available) return;
+  product2.variants.forEach(v => {
+    if (!v.available) return;
+    if (norm(getVariantColor(v)) !== norm(colorTitle)) return;
 
-    const vColor = getVariantColor(variant);
-    // STRICT equality (no substring): "pink" !== "light pink"
-    if (norm(vColor) === norm(colorTitle)) {
-      const sizeLabel = (variant.option1 || '').trim(); // assuming option1 is Size
-      if (sizeLabel && !addedSizes.has(sizeLabel)) {
-        addedSizes.add(sizeLabel);
+    const sizeLabel = (getVariantSize(v) || '').trim();
+    if (!sizeLabel || addedSizes.has(sizeLabel)) return;
 
-        const variantDiv = document.createElement('div');
-        variantDiv.textContent = sizeLabel;
-        variantDiv.setAttribute('data-v-id', variant.id);
-        variantDiv.classList.add('select_size', 'size_variants_circle', 'size_variants');
-        variantsContainer.appendChild(variantDiv);
+    addedSizes.add(sizeLabel);
 
-        // Click handler
-        variantDiv.addEventListener('click', () => {
-          // Remove active class
-          document.querySelectorAll('.select_size').forEach(div => {
-            div.classList.remove('size_variants_active');
-          });
+    const btn = document.createElement('div');
+    btn.textContent = sizeLabel;
+    btn.dataset.vId = v.id; // store variant id
+    btn.className = 'select_size size_variants_circle size_variants';
+    variantsContainer.appendChild(btn);
 
-          // Hide errors + show heading
-          $('.size_variants_errors').css('display', 'none');
-          $('.small_selected_heading_size').css('visibility', 'visible'); // fixed typo
+    if (!firstButton) firstButton = btn;
 
-          // Activate clicked
-          variantDiv.classList.add('size_variants_active');
+    // Click handler
+    btn.addEventListener('click', () => {
+      // Toggle active within this container only
+      variantsContainer.querySelectorAll('.select_size').forEach(d => d.classList.remove('size_variants_active'));
 
-          // Update size heading
-          const sizeHeading = document.querySelector('.emb-size_selector_heading');
-          if (sizeHeading) sizeHeading.textContent = sizeLabel;
-
-          // Hidden inputs
-          const vId = variantDiv.getAttribute('data-v-id');
-          const hiddenId = document.getElementById('emb-selective_variant_ID');
-          if (hiddenId) hiddenId.value = vId;
-
-          const hiddenName = document.getElementById('selective_variant_name');
-          if (hiddenName) hiddenName.value = sizeLabel;
-        });
+      // UI bits (jQuery is fine if present)
+      if (window.$) {
+        $('.size_variants_errors').css('display', 'none');
+        $('.small_selected_heading_size').css('visibility', 'visible');
       }
-    }
+
+      btn.classList.add('size_variants_active');
+
+      // Update heading
+      const sizeHeading = document.querySelector('.emb-size_selector_heading');
+      if (sizeHeading) sizeHeading.textContent = sizeLabel;
+
+      // Hidden inputs
+      const hiddenId = document.getElementById('emb-selective_variant_ID');
+      if (hiddenId) hiddenId.value = btn.dataset.vId;
+
+      const hiddenName = document.getElementById('selective_variant_name');
+      if (hiddenName) hiddenName.value = sizeLabel;
+    });
   });
+
+  // ✅ Auto-select the first size variant (no reliance on .click())
+  if (firstButton) {
+    // Clear any active classes just in case
+    variantsContainer.querySelectorAll('.select_size').forEach(d => d.classList.remove('size_variants_active'));
+
+    firstButton.classList.add('size_variants_active');
+
+    const sizeLabel = firstButton.textContent.trim();
+
+    const hiddenId = document.getElementById('emb-selective_variant_ID');
+    if (hiddenId) hiddenId.value = firstButton.dataset.vId;
+
+    const hiddenName = document.getElementById('selective_variant_name');
+    if (hiddenName) hiddenName.value = sizeLabel;
+
+    const sizeHeading = document.querySelector('.emb-size_selector_heading');
+    if (sizeHeading) sizeHeading.textContent = sizeLabel;
+
+    // (Optional) If you also need any external listeners to fire:
+    // firstButton.dispatchEvent(new Event('change', { bubbles: true }));
+  }
 }
+
 
   $('.size_variants').click(function() {
                 // Remove 'size_variants_active' class from all elements with 'size_variants' class
@@ -910,8 +991,8 @@ if (firstColorVariantData) {
 function displayFonts(fontVariants) {
     const allEmbFontsDiv = document.querySelector('.all_emb_fonts');
     allEmbFontsDiv.innerHTML = ''; // This will clear all existing content
-    $('#Monogram_inputs').hide();
-  $('#wordsletter_inputs').show();
+    {% comment %} $('#Monogram_inputs').hide();
+  $('#wordsletter_inputs').show(); {% endcomment %}
   const fontEmbDivs = [];
     fontVariants.forEach(font => {
         // Create the .font_emb div
@@ -1069,7 +1150,7 @@ function displayFonts(fontVariants) {
 
 }
 function displayMonogramsFonts(fontVariants) {
-  const allEmbFontsDiv = document.querySelector('.all_emb_fonts');
+  const allEmbFontsDiv = document.querySelector('.all_emb_monogram_fonts');
   allEmbFontsDiv.innerHTML = ''; // This will clear all existing content
 
   // Show and hide the appropriate inputs
@@ -1471,11 +1552,11 @@ document.addEventListener('DOMContentLoaded', () => {
     addBtn.style.display = state ? 'none' : 'block';
     customizeBtn.style.pointerEvents = state ? 'none' : 'auto';
     customizeBtn.style.opacity = state ? '0.5' : '1';
-    customizeBtn.style.backgroundColor = state ? '#dfdfdf' : '';
+    customizeBtn.style.backgroundColor = state ? '#d6d6d6' : '';
 
     if (state) {
       customizeBtn.style.padding = '12px 71px';
-      customizeBtn.style.borderRadius = '20px';
+      customizeBtn.style.borderRadius = '0 100px 100px 0';
     } else {
       customizeBtn.style.padding = '';
       customizeBtn.style.borderRadius = '';
@@ -1823,5 +1904,23 @@ document.querySelector('.Bchestinput').addEventListener('input', function () {
             fontSizeInput.value = 25;
         }
     }
+});
+</script>
+<script>
+ $('#Summar-icon-emb-wrap-continue').on('click', function() {
+  $('.embroidery-summary-wrapper').toggleClass('embroidery-summary-wrapper-open');
+  $('.complete-overly-wrapper').toggleClass('complete-overly-wrapper-active');
+});
+ $('#Summar-icon-emb-wrap-add-to-bag').on('click', function() {
+  $('.embroidery-summary-wrapper-add-to-bag').toggleClass('embroidery-summary-wrapper-add-to-bag-open');
+ $('.complete-overly-wrapper').toggleClass('complete-overly-wrapper-active');
+});
+ $('.summary-cross-btn-contiue-summary').on('click', function() {
+  $('.embroidery-summary-wrapper').toggleClass('embroidery-summary-wrapper-open');
+  $('.complete-overly-wrapper').toggleClass('complete-overly-wrapper-active');
+});
+ $('.summary-cross-btn-add-to-bag').on('click', function() {
+  $('.embroidery-summary-wrapper-add-to-bag').toggleClass('embroidery-summary-wrapper-add-to-bag-open');
+ $('.complete-overly-wrapper').toggleClass('complete-overly-wrapper-active');
 });
 </script>

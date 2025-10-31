@@ -6,35 +6,58 @@
 <!-- {{ variant | json}} -->
 
 <style>
-  .patch-not-allowed{
-    height: 70px;
-    width: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid transparent;
-    position: relative;
-    flex-direction: column;
+  .fotter-Summary-button:hover{
+    background:rgb(0, 0, 0);
+    color: white;
+  }
+  .footer-Summary-button:hover svg path {
+  stroke: #fff; /* or your desired hover color */
+  transition: stroke 0.3s ease;
+}
+  .customization-patch-product-name{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #2c272d;
+  }
+  .total-price span{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: #2c272d;
+    padding-right: 5px;
   }
   .span-content{
-    font-size: 20px !important;
+    font-size: 16px !important;
     text-transform: uppercase;
   }
-    .variants-container {
-      display: none;
-      position: absolute;
-      bottom: 61px;
-      color: #747474;
-      font-weight: 500;
-      left: 0;
-      width: 100%;
-      background-color: white;
-      animation: slide-up 0.5s ease forwards;
-      padding: 29px 23px;
-      border-top-left-radius: 25px;
-      border-top-right-radius: 25px;
-      background: rgb(255 255 255);
-  }
+.variants-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  padding: 24px;
+  padding-bottom: 48px;
+  background-color: #fff;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  z-index: 2;
+  
+  /* Hidden state */
+  transform: translateY(0);
+  opacity: 0;
+  pointer-events: none;
+  
+  /* Animation */
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.variants-container-open {
+  transform: translateY(-30px);
+  opacity: 1;
+  pointer-events: auto;
+}
+
 
   @keyframes slide-up {
       from {
@@ -49,16 +72,22 @@
   }
   .patch-customizaton-foter{
     bottom: 0;
-    padding: 20px 40px;
     border-top: 1px solid #dddddd;
-    width: 35%;
-    position: fixed;
+    width: 100%;
+    position: absolute;
     background: #ffffff;
+  }
+  .patch-customization-btn-wrap{
+   position:relative;
+  }
+  .patch-customization-btn-outer-wrapper, .variant-selector-sidebar-foter {
+        padding: 13px 24px;
   }
   .patches-customization-form-buttons{
     display: flex;
     width: 100%;
-    position: relative;
+    position: relative; 
+    z-index:3;
   }
   .fotter-Summary-button{
     display: flex;
@@ -67,15 +96,15 @@
     font-weight:600;
     gap: 10px;
     padding: 12px 36px;
-    background: #f8f8f8;
     color: black;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
+    border-radius: 100px 0 0 100px;
     cursor:pointer;
-    width: 40%;
+    background:white;
   }
   .fotter-Summary-button > span {
-    font-size: 17px;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.32px !important;
   }
   .add-item{
     font-weight:600;
@@ -83,26 +112,27 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #ffe2e8;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    width: 60%;
+    background: #2c272d;
+    color: white;
+   border-radius: 0 100px 100px 0;
+    width: 50%;
     cursor: pointer;
   }
   .total-price{
     border-top: 1px solid #dddddd;
-    margin-top: 20px;
-    padding-top: 12px;
+    padding-top: 16px;
+    margin-top: 25px;
     display:flex;
     justify-content:space-between;
   }
   .customization-patch-product-information{
     display:flex;
     justify-content:space-between;
+    margin-top: 12px;
   }
   .loader-cart {
-            border: 2px solid #f3f3f3; /* Light grey */
-            border-top: 2px solid #ff5477; /* Blue */
+             border: 2px solid #f3f3f3; /* Light grey */
+            border-top: 2px solid  #2c272d; /* Blue */
             border-radius: 50%;
             width: 25px;
             height: 25px;
@@ -116,7 +146,7 @@
         }
   .loader-cart-contiune {
             border: 2px solid #f3f3f3; /* Light grey */
-            border-top: 2px solid #ff5477; /* Blue */
+            border-top: 2px solid  #2c272d; /* Blue */
             border-radius: 50%;
             width: 25px;
             height: 25px;
@@ -135,7 +165,7 @@
   }
   @media screen and (max-width: 376px){
     .span-content {
-    font-size: 17px !important;
+    font-size: 14px !important;
     }
   }
 </style>
@@ -148,17 +178,20 @@
 <input type="hidden" name="size_variants_data" id="size_variants_data" value="">
 <input type="hidden" name="selective_variant_ID" id="selective_variant_ID" value="">
 <input type="hidden" name="selective_variant_name" id="selective_variant_name" value="">
-<div
+
+<div class="patch-customization-btn-outer-wrapper">
+  <div
   class="overlapping-correction-error"
   style=""
 >
   Please correct overlapping error first
 </div>
-<div class="overlapping-correction-error" id="Out-of-stock-error"></div>
 <div class="patch-customization-btn-wrap">
   <div class="complete-overly-wrapper"></div>
   <div id="variantsContainer" class="variants-container"></div>
-  <div class="patches-customization-form-buttons">
+  <div class="patches-customization-form-buttons add-to-bag-btns-wrapper">
+    
+    
     <div class="fotter-Summary-button">
       <span>Summary</span>
       <svg
@@ -188,7 +221,7 @@
     </div>
   </div>
 </div>
-
+</div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- REMOVE html2canvas; not needed anymore -->
 <script>
@@ -608,12 +641,11 @@ document.addEventListener('DOMContentLoaded', function () {
     if (loader) loader.style.display = 'block';
     if (spanDiv) spanDiv.style.display = 'none';
     addBtn.style.pointerEvents = 'none';
-    addBtn.style.opacity = '0.5';
-    addBtn.style.backgroundColor = '#dfdfdf';
+    addBtn.style.backgroundColor = 'rgb(190 190 190)';
 
     // lock UI while building image
     document.querySelectorAll('.patch').forEach(el => {
-      el.classList.remove('patch');
+     // el.classList.remove('patch');
       el.classList.add('patch-not-allowed');
       el.setAttribute('draggable', 'false');
     });
@@ -653,8 +685,123 @@ document.addEventListener('DOMContentLoaded', function () {
       addBtn.style.pointerEvents = 'auto';
       addBtn.style.opacity = '1';
       addBtn.style.backgroundColor = '';
+         document.querySelectorAll('.patch').forEach(el => {
+     // el.classList.remove('patch');
+      el.classList.remove('patch-not-allowed');
+      el.removeAttribute('draggable');
+    });
     }
   });
 });
+</script>
+
+<script>
+    const addCartButton = document.querySelector('.add-item');
+    document.addEventListener('DOMContentLoaded', function () {
+
+        let Patchesdata; // Define Patchesdata outside the function
+
+        // Fetch Patchesdata from the API endpoint
+        fetch(`https://lolaandtheboys.com/apps/data-pickup`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Assign the fetched data to Patchesdata
+                Patchesdata = data;
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+
+  $('.fotter-Summary-button').click(function () {
+   
+      $('.toggle-summary-svg').toggleClass('toggle-summary-svg-active');
+        const variants = [];
+        // let totalPrice = 0; // Initialize total price
+        let productactualPrice = '{{ product.price }}';
+        let productPrice = parseFloat(productactualPrice.slice(0, -2));
+        // Get all div elements with the class "patch-"
+        const patchDivs = document.querySelectorAll('.patch-');
+        var currencyFormat = document.getElementById('currency-format').dataset.moneyFormat;
+        var amountPlaceholder = currencyFormat.match(/\{\{amount\}\}/)[0];
+        var currencySymbol = currencyFormat.replace(amountPlaceholder, '');
+    
+        const variantPrice = currencySymbol.trim() + productPrice;
+            // If a variant with the corresponding v-id is found, push its ID and name to the variants array
+             variants.unshift({ id: '1', name: '{{ product.title }}', price: variantPrice });
+    
+        // Loop through each patch div
+        patchDivs.forEach(patch => {
+            // Get the variant ID from the v-id attribute
+            const vId = patch.getAttribute('v-id');
+            const Id = patch.getAttribute('id');
+
+            const alphabets = Patchesdata.alphabets;
+            const patches = Patchesdata.patches;
+            // Find the corresponding variant object in Patchesdata
+            const alphabetVariant = alphabets.find(item => item.id.toString() === vId);
+            const patchVariant = patches.find(item => item.id.toString() === vId);
+
+            // Merge the properties of both variant objects into a single object
+            const variant = { ...alphabetVariant, ...patchVariant };
+
+             
+
+            
+
+            if (variant) {
+                const price = parseFloat(variant.price);
+                const formattedPrice = currencySymbol.trim() + price.toFixed(0);
+                variants.push({
+                    id: Id,
+                    name: variant.alphabetname || variant.patchname,
+                    price: formattedPrice
+                });
+                
+                // Add the formatted price to the total price
+                productPrice +=  price;
+            }
+
+        });
+
+        let variantsHTML = "";
+        variantsHTML += `
+  <div class="summary-cross-btn-contiue-summary-patches">
+    <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9.09809 8L16 14.9019L14.9019 16L8 9.0981L1.0981 16L0 14.9019L6.9019 8L0 1.0981L1.0981 0L8 6.90191L14.9019 0L16 1.0981L9.09809 8Z" fill="#2C272D"></path>
+    </svg>
+  </div>
+`;
+        variants.forEach(variant => {
+            variantsHTML += `
+            <div class="customization-patch-product-information">
+                <div class="customization-patch-product-name">${variant.name}</div> <div class="customization-patch-product-name">${variant.price}</div></div>`;
+        });
+
+        variantsHTML += `<div class="total-price"><span>Subtotal</span> <span>${currencySymbol.trim()}${productPrice}</span></div>`;
+    
+        // Update the content of the variants container
+        $('.variants-container').html(variantsHTML);
+
+        // Toggle visibility of the variants container with animation
+       $('.variants-container').toggleClass('variants-container-open');
+       $('.complete-overly-wrapper').toggleClass('complete-overly-wrapper-active');
+       $('.complete-overly-wrapper').toggleClass('complete-overly-wrapper-active');
+       $('.complete-overly-wrapper').toggleClass('complete-overly-wrapper-active');
+    });
+
+    $(document).on('click', '.summary-cross-btn-contiue-summary-patches', function() {
+    $('.variants-container').toggleClass('variants-container-open');
+    $('.complete-overly-wrapper').toggleClass('complete-overly-wrapper-active');
+    $('.complete-overly-wrapper').toggleClass('complete-overly-wrapper-active');
+    $('.complete-overly-wrapper').toggleClass('complete-overly-wrapper-active');
+});
+});
+
+
 </script>
 
