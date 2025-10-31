@@ -663,7 +663,7 @@
       // Start observing the document's body for configured mutations
       observer.observe(document.body, config);
 
-      // Add a click event listener to the button
+     
       customizeButton.click(function() {
           isCustomizationActive = true;
           console.log('customize button clicked');
@@ -674,7 +674,9 @@
               bannerLow.style.display = 'none';
           }
 
-          // Select all elements with the hide-for-customization class and hide them
+        
+           $('.content-main').css('margin-top', '0px');
+          $('.product-full').hide();
           $('.hide-for-customization').hide();
           $('.yotpo-widget-clear').hide();
           $('.yotpo-reviews-list').hide();
