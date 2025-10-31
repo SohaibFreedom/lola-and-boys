@@ -1,0 +1,145 @@
+
+   <div class="size-chart-popup-c-btn-wrapper" style="margin-top:20px;">
+            <a href="" id="openSizeChart" class="size-chart-popup-c-btn">Size Chart</a>
+          </div>
+
+
+<!-- ✅ Popup -->
+<div id="sizeChartPopup" class="size-chart-popup-c">
+  <div class="size-chart-popup-c-overlay"></div>
+  <div class="size-chart-popup-c-content">
+    <span class="size-chart-popup-c-close">&times;</span>
+
+    <!-- Desktop Image -->
+    <img 
+      src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/desktop-size-chart.png?v=1761954056" 
+      alt="Size Chart" 
+      class="size-chart-popup-c-image desktop-img"
+    >
+
+    <!-- Mobile Image -->
+    <img 
+      src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/Mobile-size-chart.png?v=1761954050" 
+      alt="Size Chart Mobile" 
+      class="size-chart-popup-c-image mobile-img"
+    >
+  </div>
+</div>
+
+<style>
+.size-chart-popup-c-btn {
+  color: #000;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.size-chart-popup-c {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100000; /* 🔼 increased for full top visibility */
+  justify-content: center;
+  align-items: center;
+}
+
+.size-chart-popup-c-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.size-chart-popup-c-content {
+  position: relative;
+  background: #fff;
+  border-radius: 8px;
+  overflow: visible;
+  z-index: 100001;
+  width: 90%;
+  max-width: 1100px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.3);
+  animation: popupFade 0.3s ease;
+}
+
+.size-chart-popup-c-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.size-chart-popup-c-close {
+  position: absolute;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 21px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 100002;
+  right: -16px;
+  top: -11px;
+  padding: 15px;
+}
+
+.desktop-img { display: block; }
+.mobile-img { display: none; }
+
+@keyframes popupFade {
+  from {opacity: 0; transform: scale(0.95);}
+  to {opacity: 1; transform: scale(1);}
+}
+
+@media (max-width: 768px) {
+  .size-chart-popup-c-close {
+    width: 25px;
+    height: 25px;
+    font-size: 15px;
+    right: -17px;
+    top: -15px;
+    padding: 13px;
+  }
+  .desktop-img { display: none; }
+  .mobile-img { display: block; }
+}
+
+/* ✅ Hide sticky button when popup is open */
+body.popup-open #stickyWrapper {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const popup = document.getElementById("sizeChartPopup");
+  const openBtn = document.getElementById("openSizeChart");
+  const closeBtn = document.querySelector(".size-chart-popup-c-close");
+  const overlay = document.querySelector(".size-chart-popup-c-overlay");
+
+  function openPopup() {
+    popup.style.display = "flex";
+    document.body.classList.add("popup-open");
+    document.documentElement.classList.add("mobilesearch-overflowhidden");
+  }
+
+  function closePopup() {
+    popup.style.display = "none";
+    document.body.classList.remove("popup-open");
+    document.documentElement.classList.remove("mobilesearch-overflowhidden");
+  }
+
+  if (openBtn) openBtn.addEventListener("click", e => {
+    e.preventDefault();
+    openPopup();
+  });
+
+  if (closeBtn) closeBtn.addEventListener("click", closePopup);
+  if (overlay) overlay.addEventListener("click", closePopup);
+});
+</script>
