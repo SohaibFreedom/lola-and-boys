@@ -3916,12 +3916,12 @@
         "settings": {
           "collection": "popular-search-header",
           "show_announcement_bar": true,
-          "show_countdown": false,
-          "countdown_end_date": "2025-10-16T23:00",
+          "show_countdown": true,
+          "countdown_end_date": "2025-11-02T23:00",
           "bck_clr": "#f790d1",
-          "Annouce_url": "https://lolaandtheboys.com/collections/friends-family-sale",
+          "Annouce_url": "https://lolaandtheboys.com/collections/black-friday",
           "txt_clr": "#000000",
-          "text": "<b> FREE SHIPPING ON ORDERS OVER $150 <strong> </strong> </b>",
+          "text": "<b> FLASH BLACK FRIDAY 30% OFF SITE WIDE <strong> </strong> </b>",
           "phone_number": "",
           "top_bar_menu": "help",
           "cart_icon": "cart",
@@ -5631,11 +5631,6 @@
       },
       "13485262428272640058": {
         "type": "shopify://apps/meta-business-ai/blocks/mwp-embed/a4b3e14c-421b-4c0e-977a-2558fbce5052",
-        "disabled": false,
-        "settings": {}
-      },
-      "2270789430191447923": {
-        "type": "shopify://apps/discountly-pos-tier-discount/blocks/ac_tier/c8a31a00-e05e-40b6-952f-fdf860eeac4d",
         "disabled": false,
         "settings": {}
       }
