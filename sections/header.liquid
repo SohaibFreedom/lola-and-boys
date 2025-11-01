@@ -1487,30 +1487,42 @@ function closeFullWidthSearch() {
 
 
             
-     
-            <script>
-
-
-   document.addEventListener("DOMContentLoaded", () => {
+   <script>
+document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector(".header-custom-c");
   let lastScrollY = window.scrollY;
   let ticking = false;
+  let lastDirection = null;
+  const threshold = 80; // distance before hiding starts
+  const buffer = 50; // prevent flicker near page bottom
 
   function handleScroll() {
     const currentScrollY = window.scrollY;
+    const maxScroll = document.body.scrollHeight - window.innerHeight;
     const isMobile = window.innerWidth <= 991;
 
-    if (isMobile) {
-      if (currentScrollY > lastScrollY && currentScrollY > 80) {
-        // Scrolling DOWN → hide header
+    if (!isMobile) {
+      header.classList.remove("hidden");
+      return;
+    }
+
+    // Avoid flicker when near bottom
+    if (maxScroll - currentScrollY < buffer) {
+      header.classList.remove("hidden");
+      lastScrollY = currentScrollY;
+      ticking = false;
+      return;
+    }
+
+    const direction = currentScrollY > lastScrollY ? "down" : "up";
+
+    if (direction !== lastDirection) {
+      if (direction === "down" && currentScrollY > threshold) {
         header.classList.add("hidden");
       } else {
-        // Scrolling UP → show header
         header.classList.remove("hidden");
       }
-    } else {
-      // Desktop: always visible
-      header.classList.remove("hidden");
+      lastDirection = direction;
     }
 
     lastScrollY = currentScrollY;
@@ -1524,11 +1536,7 @@ function closeFullWidthSearch() {
     }
   });
 });
-
-
-
-
-            </script>
+</script>
 
 
 
