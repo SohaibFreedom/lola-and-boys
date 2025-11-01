@@ -1493,10 +1493,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let lastScrollY = window.scrollY;
   let ticking = false;
   let isHidden = false;
+  let scrollTimeout;
 
   const threshold = 80;
-  const footerBuffer = 150; // prevents flicker near bottom
-  const directionDelta = 10; // ignore tiny scroll jitter
+  const footerBuffer = 180;
+  const directionDelta = 10;
 
   function handleScroll() {
     const currentScrollY = window.scrollY;
@@ -1510,12 +1511,10 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Always show near footer
+    // Stop flicker near footer
     if (maxScroll - currentScrollY < footerBuffer) {
-      if (isHidden) {
-        header.classList.remove("hidden");
-        isHidden = false;
-      }
+      header.classList.remove("hidden");
+      isHidden = false;
       lastScrollY = currentScrollY;
       ticking = false;
       return;
@@ -1523,19 +1522,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const diff = currentScrollY - lastScrollY;
 
-    // Ignore very small scrolls
+    // Ignore micro scrolls
     if (Math.abs(diff) < directionDelta) {
       ticking = false;
       return;
     }
 
-    // Scroll down → hide
+    // Hide when scrolling down
     if (diff > 0 && currentScrollY > threshold && !isHidden) {
       header.classList.add("hidden");
       isHidden = true;
     }
 
-    // Scroll up → show
+    // Show when scrolling up
     else if (diff < 0 && isHidden) {
       header.classList.remove("hidden");
       isHidden = false;
@@ -1546,10 +1545,23 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   window.addEventListener("scroll", () => {
+    // cancel previous debounce
+    clearTimeout(scrollTimeout);
+
     if (!ticking) {
       window.requestAnimationFrame(handleScroll);
       ticking = true;
     }
+
+    // small debounce when scroll stops (to stabilize at bottom)
+    scrollTimeout = setTimeout(() => {
+      const maxScroll = document.body.scrollHeight - window.innerHeight;
+      const currentScrollY = window.scrollY;
+      if (maxScroll - currentScrollY < footerBuffer) {
+        header.classList.remove("hidden");
+        isHidden = false;
+      }
+    }, 120);
   });
 });
 </script>
