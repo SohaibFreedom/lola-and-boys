@@ -1643,18 +1643,13 @@ html.mobilesearch-overflowhidden .header-custom-c {
 }
 
 
-  .content-main {
-  margin-top: 175px; /* adjust as per your header height */
-}
 
 /* Hide only on mobile when scrolling down */
 @media (max-width: 768px) {
   .header-custom-c.hidden {
     transform: translateY(-100%);
   }
-  .content-main {
-  margin-top: 124.5px ; /* adjust as per your header height */
-}
+
 }
 
 .cart_content_img img {
