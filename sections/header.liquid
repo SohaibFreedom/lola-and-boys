@@ -1492,32 +1492,53 @@ document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector(".header-custom-c");
   let lastScrollY = window.scrollY;
   let ticking = false;
+  let isHidden = false;
+
   const threshold = 80;
-  const bottomBuffer = 60;
-  const isMobile = () => window.innerWidth <= 991;
+  const footerBuffer = 150; // prevents flicker near bottom
+  const directionDelta = 10; // ignore tiny scroll jitter
 
   function handleScroll() {
     const currentScrollY = window.scrollY;
     const maxScroll = document.body.scrollHeight - window.innerHeight;
+    const isMobile = window.innerWidth <= 991;
 
-    if (!isMobile()) {
+    if (!isMobile) {
       header.classList.remove("hidden");
       lastScrollY = currentScrollY;
       ticking = false;
       return;
     }
 
-    // Avoid flicker near footer
-    if (maxScroll - currentScrollY < bottomBuffer) {
-      header.classList.remove("hidden");
-    } 
-    // Scroll down
-    else if (currentScrollY > lastScrollY && currentScrollY > threshold) {
+    // Always show near footer
+    if (maxScroll - currentScrollY < footerBuffer) {
+      if (isHidden) {
+        header.classList.remove("hidden");
+        isHidden = false;
+      }
+      lastScrollY = currentScrollY;
+      ticking = false;
+      return;
+    }
+
+    const diff = currentScrollY - lastScrollY;
+
+    // Ignore very small scrolls
+    if (Math.abs(diff) < directionDelta) {
+      ticking = false;
+      return;
+    }
+
+    // Scroll down → hide
+    if (diff > 0 && currentScrollY > threshold && !isHidden) {
       header.classList.add("hidden");
-    } 
-    // Scroll up
-    else if (currentScrollY < lastScrollY - 5) {
+      isHidden = true;
+    }
+
+    // Scroll up → show
+    else if (diff < 0 && isHidden) {
       header.classList.remove("hidden");
+      isHidden = false;
     }
 
     lastScrollY = currentScrollY;
@@ -1532,6 +1553,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
+
 
 
 
