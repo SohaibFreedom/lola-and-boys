@@ -1644,12 +1644,11 @@ html.mobilesearch-overflowhidden .header-custom-c {
   height: max-content;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 768px) {
   .header-custom-c.hidden {
     transform: translateY(-100%);
   }
 }
-
 
 .cart_content_img img {
   height: 160px;
