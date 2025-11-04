@@ -49,9 +49,18 @@
 </section>
 
 
-<section class="custom-sizechart-popup">
-       {% render 'size-chart-popup' %}
-</section>
+{% unless product.tags contains 'Shoes'
+  or product.tags contains 'sneakers'
+  or product.tags contains 'Slippers'
+  or product.tags contains 'slides'
+  or product.tags contains 'loafers' %}
+
+  <section class="custom-sizechart-popup">
+    {% render 'size-chart-popup' %}
+  </section>
+
+{% endunless %}
+
 
 <script>
   $('.AccordionWrap .Acc-Heading').click(function () {
