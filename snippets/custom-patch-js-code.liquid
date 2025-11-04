@@ -687,38 +687,41 @@
           $('.annoucment-bar-top').hide();
           $('#header').hide();
           $('#some-id').hide();
-          // $('.yotpo-banner-low').hide();
+          
 
-          // Show the product customization div
+          
           $('.product-customization').show();
           setCustomizerHeaderWidth();
-          // Add classes to make other elements visible
+        
           $('.announce-bar-slide-wrapper, .header-background--solid, .content').hide();
           $('.customize-cart-button').hide();
 
-          // Add a class to cartButton to make it visible
+          
           cartButton.addClass('customize-cart-button-visible');
            const productTags = {{ product.tags | json }};
           if  (productTags.includes("none-size-products")) {
       $('.size_variants_section').hide();
   }
+  else{
+    if (window.innerWidth <= 900) {
+    document.querySelector(".mob-parent-div-for-front-back-btn").style.display = "block";
+  } else {
+    document.querySelector(".mob-parent-div-for-front-back-btn").style.display = "none";
+  }
+}
           if  (productTags.includes("happ-velour-set")) {
      document.querySelector('.size_variants_section').style.setProperty('visibility', 'visible', 'important');
 
   }
       });
 
-      // Add click event listener to the neverMindBtn button
+     
       neverMindBtn.click(function() {
           $('.all-sidebar-cross-alert').removeClass('all-sidebar-cross-alert-visble');
          $('.patches-customization-container-overly').css('display', 'none');
       });
 
-      // Clear neverMindBtn click event listener
-      // clearneverMindBtn.click(function() {
-      //     // Reload the page
-      //     location.reload();
-      // });
+    
     });
 </script>
 
