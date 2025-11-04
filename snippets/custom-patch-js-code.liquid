@@ -3806,7 +3806,8 @@ function showBackImage() {
         else if (productTags.includes("Bella-Hologram-Swimsuit")){
           patchesWrapper.style.visibility = "hidden"; 
           sizevariantscontaier.style.visibility = "visible";
-          patchesWrapperMob.style.visibility = "hidden";
+          patchesWrapperMob.style.visibility = "hidden !important";
+           document.querySelector(".mob-parent-div-for-front-back-btn").style.display = "none";
       }
      else{
             if (!currentImageData.Backimg) {
