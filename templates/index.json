@@ -277,7 +277,7 @@
             "image": "shopify://shop_images/rainbow-img.jpg",
             "link": "shopify://collections/newarrivals",
             "title": "Just Dropped",
-            "title_n": "313+",
+            "title_n": "162+",
             "title_1": "New Arrivals",
             "text": "",
             "button_label": "shop now",
@@ -289,9 +289,9 @@
           "settings": {
             "image": "shopify://shop_images/LATB_BTS25_01754.jpg",
             "link": "shopify://collections/newarrivals",
-            "title": "",
-            "title_n": "123",
-            "title_1": "Feature",
+            "title": "Just In",
+            "title_n": "",
+            "title_1": "",
             "text": "",
             "button_label": "shop now",
             "button_link": "shopify://collections/newarrivals"
@@ -300,11 +300,11 @@
         "image_tDQkFx": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Untitled_design-26.jpg",
+            "image": "shopify://shop_images/LATB_09192025_Wicked_2605.jpg",
             "link": "https://lolaandtheboys.com/collections/my-little-pony-collab",
-            "title": "",
+            "title": "Wicked For Good",
             "title_n": "",
-            "title_1": "Feature",
+            "title_1": "",
             "text": "",
             "button_label": "shop now",
             "button_link": "https://lolaandtheboys.com/collections/my-little-pony-collab"
@@ -330,7 +330,7 @@
         "image_YKz689": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/LATB_BTS25_01912.jpg",
+            "image": "shopify://shop_images/LATB_Holiday25_10292024_00730.jpg",
             "link": "https://lolaandtheboys.com/collections/girls-1",
             "title1": "Girls",
             "customclass": "",
@@ -342,7 +342,7 @@
         "image_fph4tc": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/LATB_Aug2025_2V2A3687.jpg",
+            "image": "shopify://shop_images/footwear-pre-order-sparkle-ruby-boots-lola-the-boys-29780196622438_06014e80-4127-4e43-974d-90471ebfd526.jpg",
             "link": "https://lolaandtheboys.com/collections/shoes",
             "title1": "Shoes",
             "customclass": "shoes-img-fix",
@@ -354,7 +354,7 @@
         "image_q8RiTa": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/LATB_BTS25_01666.jpg",
+            "image": "shopify://shop_images/LATB_11062024_01081.jpg",
             "link": "https://lolaandtheboys.com/collections/boys-1",
             "title1": "Boys",
             "customclass": "",
@@ -378,7 +378,7 @@
         "image_DP4QiN": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/LATB_BTS25_00202.jpg",
+            "image": "shopify://shop_images/LATB_11062024_01122_1fbc1450-2274-42d3-823f-ab2a1e6bf590.jpg",
             "link": "shopify://collections/sets",
             "title1": "SETS",
             "customclass": "",
@@ -538,9 +538,9 @@
         "image_9Qgf3d": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/LATB_BTS25_00474.jpg",
-            "link": "shopify://collections/activewear",
-            "title": "ACTIVEWEAR",
+            "image": "shopify://shop_images/dress-emerald-shimmer-party-dress-lola-wicked-31811263201382_e4401501-bdcc-4956-8f03-fd01ff512247.jpg",
+            "link": "shopify://collections/holiday-shop",
+            "title": "Holiday Shop",
             "text": "",
             "button_label": "shop now",
             "button_link": "shopify://collections/activewear"
@@ -549,7 +549,7 @@
         "image_wedKWc": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/LATB_UES_08112025_2V2A2871.jpg",
+            "image": "shopify://shop_images/LATB_09192025_Holiday_0544.jpg",
             "link": "https://lolaandtheboys.com/collections/girls-dresses-1",
             "title": "Dresses",
             "text": "",
@@ -571,7 +571,7 @@
         "image_hUpHCc": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/LATB_11062024_00810.jpg",
+            "image": "shopify://shop_images/LATB_09192025_Holiday_0131.jpg",
             "link": "shopify://collections/best-sellers",
             "title": "BEST SELLERS",
             "text": "",
@@ -625,7 +625,7 @@
         "image_MKtq7p": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/LATB_UES_08112025_2V2A1119_2.jpg",
+            "image": "shopify://shop_images/LATB_09192025_Holiday_0530.jpg",
             "link": "https://lolaandtheboys.com/collections/fall-outerwear",
             "title1": "OUTERWEAR STYLES",
             "text": "",
@@ -636,7 +636,7 @@
         "image_xkDgQ7": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/LATB_UES_08112025_2V2A3148.jpg",
+            "image": "shopify://shop_images/LATB_09192025_Holiday_1705.jpg",
             "link": "shopify://collections/silk-sets",
             "title1": "SILK SETS",
             "text": "",
