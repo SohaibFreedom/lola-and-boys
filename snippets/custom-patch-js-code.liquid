@@ -3791,7 +3791,7 @@ function showBackImage() {
     return currentImageData !== undefined;
 });
 
-   // Update the image source and CSS properties if data is found
+   
    if (currentImageData) {
      const img = document.getElementById("Back-image");
      img.src = currentImageData.Backimg;
@@ -3811,6 +3811,9 @@ function showBackImage() {
           sizevariantscontaier.style.visibility = "visible";
           patchesWrapperMob.style.visibility = "hidden";
       }
+      else if(productTags.includes("customize-long-bag")){
+        patchesWrapper.style.visibility = "hidden"; 
+    }
         else if (productTags.includes("Bella-Hologram-Swimsuit")){
           patchesWrapper.style.visibility = "hidden"; 
           sizevariantscontaier.style.visibility = "visible";
