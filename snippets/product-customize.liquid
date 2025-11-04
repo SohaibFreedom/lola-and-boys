@@ -1,777 +1,843 @@
 {% assign variant = product.selected_or_first_available_variant %}
-
 <style>
-   .patch .patch-image { opacity: 0; transition: opacity .25s ease; }
-.patch-image.is-loaded { opacity: 1; }
-  .patch-not-allowed{
-    height:100px !important;
-    width:100px !important;
+  .pos-only-for-desktop {
+  position: relative; /* default (normal) for mobile */
+}
+.edit-tidy-btn-wrapp, .patches-customization-btns-wrapper{
+  pointer-events: auto;
+}
+.patches-customizer-action-buttons{
+  position: absolute;
+  height:100%;
+    z-index: 1;
+    pointer-events: none;
+        padding: 0px 24px;
+
+}
+.patches-customizer-action-buttons-inner-wrapper{
+  position:relative;
+  height:100%;
+  width:100%;
+}
+/* Apply relative positioning only on desktop */
+
+  .patches-full-screen-icon{
+    display:none;
   }
-     @media screen and (max-device-width: 768px) and (orientation: landscape) {
-    .patches-customization-container {
-          width: 0% !important;
-         /* display: none !important;   */
-    }
-      .main__patches__wrapp{
-            height: 100vh !important;
-      }
-      #patches-customization-offcanvas-menu{
-            width: 100% !important ;
-      }
-      .patches-customization-header{
-       display: none !important;
-      }
-      .patch-customization-btn-wrap{
-        display: none !important;
-      }
-  }
-    .mob-parent-div-for-front-back-btn{
-      display:none;
-    }
-    .front-back-btn-wrapp-only-mob{
-      visibility: hidden;
-      position: absolute;
-      right: 20px;
-      top: 100px;
-    }
-    .front-back-btn-wrapp-only-mob > .patches-customizations-btn {
-      padding: 2px 12px !important;
-    }
-    .front-back-btn-wrapp-only-desktop{
-    visibility: visible;
-    }
-    .main-patch-action-div-del svg {
-      pointer-events: none;
+  .patch-added-to-product{
+    border-color:#2c272d !important;
+    border-radius: 6px;
   }
 
-    .main-patch-action-div-del {
-      z-index: 999999;
+  .tidy-patches-heading-edit-wrsapper{
+    padding: 10px 24px;
+  }
+    .complete-overly-wrapper-active{
+    display:block !important;
+  }
+    .summary-cross-btn-contiue-summary-patches{
       cursor: pointer;
-      visibility: hidden;
-      position: absolute;
-      background: #ffffff;
-      right: -50px;
-      top: -25px;
-      width: 40px;
-      border-radius: 5px;
-      height: 40px;
-      align-items: center;
-      display: flex;
-      justify-content: center;
-  }
-    }
-
-
-    .patch-not-allowed{
-      height: 100px !important;
-      width: 100px !important;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid transparent;
-      position: relative;
-      flex-direction: column;
-      cursor: not-allowed;
-    }
-    .patch-not-allowed:hover{
-     border-color:red !important;
-    }
-     .patch-not-allowed > img {
-      height: 70% !important;
-      width: 70% !important;
-      object-fit: contain;
-  }
-    .alphabets-toggle{
-     display: none;
-    }
-      .size_variants_section_error_heading_wrapp{
+      width: fit-content;
+      margin-left: auto;
+      margin-bottom: 10px;
       display:flex;
-      gap:5px;
-      gap: 20px;
     }
-      .imageDiv{
-       border: 2px solid transparent;
+   .patches-editor-wrapper.overlay-active:before{
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: #2c272d;
+      opacity: .5;
+      content: "";
+      z-index: 1;
     }
-    .small_selected_heading{
-      font-size: 70%;
-      color: #797676;
+    .monogram__sidebar-disclaimer_patches p{
+      padding: 24px 0 !important;
     }
-    .hidedisplay{
-      display: none !important;
+    .summary-continue-main-wrapper{
+      width: 100%;
+      display: flex;
+      z-index: 3;
     }
-    .custom_svg_color{
-       color: darkgrey !important
-    }
-    .custom_fill{
-      fill: darkgrey !important
-    }
-    .message_box_div{ width:65%; }
-    .edit-tidy-btns-wrapper > .patches-customization-tidy-delete-btn-active{
-          background-color: #ffe2e8;
-    }
-    .patch-transparent-border{
-          border: none !important;
-
-    }
-    .onlymobile-screen{
-      display: none !important;
-    }
-         .clear-btn-only-desktop{
-         display: block !important;
+    .parent-variant-wrapper:has(.selected-variant) {
+    border: 2px solid black;
+    border-radius: 5px;
+  }
+       .patch .patch-image { opacity: 0; transition: opacity .25s ease; }
+    .patch-image.is-loaded { opacity: 1; }
+  
+         @media screen and (max-device-width: 768px) and (orientation: landscape) {
+        .patches-customization-container {
+              width: 0% !important;
+             /* display: none !important;   */
         }
-    .clear-btn-only-mobile{
-              position: absolute;
-          top: 0px;
-          left: 18px;
-         display:none !important;
-      padding: 0px 27px !important;
-    }
-    .only-mobile-eidt-btn{
-      display:none;
-      background: white !important;
-      box-shadow: 0px 2px 4px rgb(0 0 0 / 5%) !important;
-      font-size: 14px !important;
-      padding: 0 27px !important;
-      border-radius: 26px !important;
-      cursor: pointer !important;
-      border: 1px solid #9900ef00 !important;
-    }
-    .slidecontainerrRange{
-      width:60%;
-    }
-      input[type="range"]:disabled {
-        cursor: not-allowed;
-    }
-       .not-allowed {
-                cursor: not-allowed !Important;
-            }
+          .main__patches__wrapp{
+                height: 100vh !important;
+          }
+          #patches-customization-offcanvas-menu{
+                width: 100% !important ;
+          }
+          .patches-customization-header{
+           display: none !important;
+          }
+          .patch-customization-btn-wrap{
+            display: none !important;
+          }
+      }
+        .mob-parent-div-for-front-back-btn{
+          display:none;
+        }
+        .front-back-btn-wrapp-only-mob{
+          visibility: hidden;
+          position: absolute;
+          right: 20px;
+          top: 100px;
+        }
+        .front-back-btn-wrapp-only-mob > .patches-customizations-btn {
+          padding: 2px 12px !important;
+        }
+        .front-back-btn-wrapp-only-desktop{
+        visibility: visible;
+        }
+        .main-patch-action-div-del svg {
+          pointer-events: none;
+      }
 
-            .not-allowed:hover {
-                background-color: #e7e7e7 !Important;
-            }
-      .add-patch-pop-up-btn{
-        text-align: center;
-        width: 30%;
-        margin: 0 auto;
-        background: #ffe2e8;
-        font-weight: bold;
-        border-radius: 50px;
-        padding: 11px 0;
-        cursor: pointer;
+        .main-patch-action-div-del {
+          z-index: 999999;
+          cursor: pointer;
+          visibility: hidden;
+          position: absolute;
+          background: #ffffff;
+          right: -50px;
+          top: -25px;
+          width: 40px;
+          border-radius: 5px;
+          height: 40px;
+          align-items: center;
+          display: flex;
+          justify-content: center;
       }
-      .delete-patches-wrapper-sidebar > .tidy-patches-wrraper > .select-patches  > .selected-patch-for-customization > .selected-patch-order{
-        display:none;
-      }
-      /* .delete-patches-wrapper-sidebar > .tidy-patches-wrraper > .select-patches  > .patch-selected-by-both {
-         border: 1px solid black;
-      } */
-     .patch-selected-by-both {
-         border: 1px solid black !important;
-      }
-      .edit-delete-btn{
-            border-bottom: 1px solid #f3f3f3;
-      }
-      .overlapping-correction-error{
-        display: none;
-        color: rgb(221, 34, 75);
-      font-size: 20px;
-      text-align: center;
-      padding: 5px 5px;
-      background: rgb(255 216 225);
-      margin-bottom: 11px;
-      }
-      .main__patches__wrapp{
-        overflow: hidden;
-        height: calc(100vh - 160px);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-      }
-      .main__patches__wrapper{
-            height: 100%;
-        display: flex;
-        flex-direction: column;
-      }
-      .scrollbox{
-        overflow:auto;
-      }
-      .product-tile-for-selected{
-        text-transform: capitalize;
-        font-size: 25px !important;
+        }
+        .alphabets-toggle{
+         display: none;
+        }
+          .size_variants_section_error_heading_wrapp{
+          display:flex;
+          gap:5px;
+          gap: 20px;
+        }
+          .imageDiv{
+           border: 2px solid transparent;
+        }
+        .small_selected_heading{
+          font-size: 14px;
+          color: #797676;
+        }
+        .hidedisplay{
+          display: none !important;
+        }
+        .custom_svg_color{
+           color: darkgrey !important
+        }
+        .custom_fill{
+          fill: darkgrey !important
+        }
+        .message_box_div{ width:65%; }
+        .edit-tidy-btns-wrapper > .patches-customization-tidy-delete-btn-active{
+              background-color: #2c272d;
+              color:white;
+        }
+        .patch-transparent-border{
+              border: none !important;
 
-      }
-      .tidy-patches-changes-btn-wrraper{
-        position: absolute;
+        }
+        .onlymobile-screen{
+          display: none !important;
+        }
+             .clear-btn-only-desktop{
+             display: block !important;
+            }
+        .clear-btn-only-mobile{
+          display:none !important;
+          padding: 0px 27px !important;
+        }
+        .only-mobile-eidt-btn{
+          display:none;
+          background: white !important;
+          box-shadow: 0px 2px 4px rgb(0 0 0 / 5%) !important;
+          font-size: 14px !important;
+          padding: 0 27px !important;
+          border-radius: 26px !important;
+          cursor: pointer !important;
+          border: 1px solid #9900ef00 !important;
+        }
+        .slidecontainerrRange{
+          width:60%;
+        }
+          input[type="range"]:disabled {
+            cursor: not-allowed;
+        }
+           .not-allowed {
+                    cursor: not-allowed !Important;
+                }
+
+                .not-allowed:hover {
+                    background-color: #e7e7e7 !Important;
+                }
+          .add-patch-pop-up-btn{
+            text-align: center;
+            width: 30%;
+            margin: 0 auto;
+            background: #ffe2e8;
+            font-weight: bold;
+            border-radius: 50px;
+            padding: 11px 0;
+            cursor: pointer;
+          }
+          .delete-patches-wrapper-sidebar > .tidy-patches-wrraper > .select-patches  > .selected-patch-for-customization > .selected-patch-order{
+            display:none;
+          }
+          /* .delete-patches-wrapper-sidebar > .tidy-patches-wrraper > .select-patches  > .patch-selected-by-both {
+             border: 1px solid black;
+          } */
+         .patch-selected-by-both {
+             border: 1px solid black !important;
+          }
+          .overlapping-correction-error{
+            display: none;
+            color: rgb(221, 34, 75);
+          font-size: 20px;
+          text-align: center;
+          padding: 5px 5px;
+          background: rgb(255 216 225);
+          margin-bottom: 11px;
+          }
+          .main__patches__wrapp{
+            overflow: hidden;
+            height: calc(100vh - 160px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+          }
+          .main__patches__wrapper{
+                height: 100%;
+            display: flex;
+            flex-direction: column;
+          }
+          .scrollbox{
+            overflow:auto;
+          }
+          .product-tile-for-selected{
+            text-transform: capitalize;
+            font-size: 24px !important;
+
+          }
+          .tidy-patches-changes-btn-wrraper{
+            position: absolute;
+                width: 100%;
+            border-top: 1px solid #e2e0e0;
+            background: white;
+            bottom: 0;
+            padding: 20px;
+          }
+          .scrollboxInner{
+          padding: 10px 24px;
+          }
+
+          .tidy-patches-apply-changes-btn{
             width: 100%;
-        border-top: 1px solid #e2e0e0;
-        background: white;
-        bottom: 0;
-        padding: 20px;
-      }
-      .scrollboxInner{
+            background: #2c272d;
+            color:white;
+            display: flex;
+            justify-content: center;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+          }
+          .patches-tidy-editor-btn{
+                background-color: #ffffff;
+            border-radius: 26px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 27px;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0px 2px 4px rgb(0 0 0 / 5%);
+             visibility: hidden;
+          }
+          .tidy-clear-btn-wrapp{
+            display:flex;
+          }
+          .only-mobile{
+            display:none;
+            width: 100%;
+          }
+          .only-mobile-colors-wrapper{
+            display:none ;
+            width: 100%;
+          }
+          .only-mobile-tdy-header{
+             display:none ;
+            width: 100%;
+          }
+          .messagefield:focus{
+            border:none;
+          }
+          .messagefield{
+            padding: 11px;
+            border: none;
+            background: #f4f4f4;
+            border-radius: 2px;
+            resize: none;
+          }
+          .overlapping-error{
+            transform: translate(-50%, -50%);
+            color: rgb(221, 34, 75);
+            position: absolute;
+            font-weight: bold;
+            text-align: center;
+            z-index: 3;
+            width: 100%;
+            left: 50%;
+            top: 20%;
+            font-size: 20px;
+            visibility: hidden;
+            margin-left: 30px;
+            margin-bottom: 20px;
+          }
+          .size_variants_errors{
+            display:none;
+          }
+          .size_variants_errors > span{
+            font-size: 20px;
+            color: red;
+          }
+          .customize-button{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid;
+            padding: 15px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            border-radius: 20px;
+          }
+          .customize-button > span{
+            font-weight: bold;
+          }
+           .patches-customization-wrapper{
+            display: flex;
+            height: 100vh;
+           }
+                .product-customization{
+                  display:none;
+              }
+              .Customization-heading{
+                    margin: 0 100px;
+            }
+            .patches-customization-container{
+                 display: flex;
+      flex-direction: column;
+      position: relative;
+      background: #fff8fa;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      -webkit-box-pack: center;
+      -webkit-box-align: center;
+            }
+          .patches-customization-container-overly{
+            display:none;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 1;
+            background: #ffdbe182;
+          }
+            .imageDiv {
+                position: relative;
+             width: 100%;
+             /* height:  100%; */
+                height: auto;
+            }
+            .sourceImage {
+                width: 100%;
+                height: 100%;
+                /* object-fit:contain; */
+                display: block;
+                margin: auto;
+            }
 
-      }
+            .centerMarker {
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                background-color: red;
+                border-radius: 50%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
 
-      .tidy-patches-apply-changes-btn{
-        width: 100%;
-        background: #ffe2e8;
-        display: flex;
+            .centerBox {
+                position: absolute;
+                width: 100px;
+                height: 100px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            .BackcenterBox{
+                position: absolute;
+                width: 100px;
+                height: 100px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .patches-container {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 2px solid transparent;
+            }
+
+            .images-patches-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: auto 0;
+            }
+            .patch-:hover{
+                cursor: all-scroll;
+            }
+            .patch:hover{
+                cursor: all-scroll;
+            }
+            .patch-action{
+            border-color: red !important;
+            }
+           .patch-{
+             border: 2px solid #ff000000;
+           }
+            .patch > img{
+            height: 70% !important;
+            width: 70% !important;
+            object-fit: contain;
+            }
+            .checkit{
+                position: relative;
+            width: 750px !important;
+            height: 704px !important;
+            display: flex;
+            justify-content: center;
+          }
+            #Front-Area, #Back-area{
+              position: absolute;
+                  height: 100%;
+            width: 100%;
+          }
+          .image-hidden{
+          left: -9999px;
+          top: -9999px;
+          }
+</style>
+<style>
+                /* Offcanvas Menu Styles */
+                #patches-customization-offcanvas-menu {
+                  background-color: #ffffff;
+                  overflow-x: hidden;
+                  position:relative;
+                  z-index: 1;
+                  box-shadow: -2px 0 4px #0000001a;
+                  height: 100vh;
+                  width: calc(100vw / 3);
+                  min-width: 507px;
+                }
+                .patches-customization-header{
+                  display: flex;
+                  justify-content: space-between;
+                  padding: 24px;
+                  border-bottom: 1px solid #dddddd;
+                  align-items: center;
+              }
+              .patches-back-button{
+                font-size: 20px;
+                gap: 5px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+              }
+              .patches-back-button > span{
+              margin: 0;
+              font-size: 18px;
+              letter-spacing: 1px;
+              }
+              .patches-customization-remover{
+                cursor: pointer;
+                height: 16px;;
+              }
+
+              .add-patches-info{
+                display: none;
+                justify-content: space-between;
+                width: 90%;
+                margin: 16px auto;
+              }
+              .add-patches-info-title{
+                font-weight: 600;
+                text-transform: uppercase;
+              }
+              .patches-toggle-buttons{
+              display: flex;
+              width: 90%;
+              margin-top: 16px !important;
+              margin: 0 auto;
+              text-transform: uppercase;
+              letter-spacing: 0.4px;
+            }
+
+              .patch-toggle-btn{
+                  border: 1px solid #ffe2e8;
+                  display: flex;
+                  justify-content: center;
+                  width: 100%;
+                  padding: 7px 0px;
+                  cursor: pointer;
+                  font-weight: 600;
+                  font-size: 12px !important;
+              }
+              .alphabets-button{
+              border-top-right-radius: 20px;
+              border-bottom-right-radius: 20px;
+              border-left:none;
+              }
+            .patches-button{
+              border-top-left-radius: 20px;
+              border-bottom-left-radius: 20px;
+              border-right:none;
+            }
+            .custom-patches-filter{
+              display: flex;
+              width: 90%;
+              margin: 16px auto;
+              gap: 10px;
+            }
+            .customization-search-bar{
+              margin-bottom: 0 !important;
+              border-radius: 20px;
+              font-size: 17px !important;
+              border: 1px solid #f2f2f2 !important;
+            }
+            .custom-patches-sort-btn{
+                 display: flex;
+        align-items: center;
+        width: 43%;
+        border: 1px solid #ffe2e8;
         justify-content: center;
-        padding: 12px 20px;
-        border-radius: 25px;
-        cursor: pointer;
-        font-weight: 600;
+        border-radius: 18px;
+        background: #ffe2e8;
+        }
+        .patches{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        width: 100%;
+        height: unset;
+        overflow: hidden;
+        margin: auto;
+        }
+        .tidy-patches-adjustment-wrapper{
+          height: auto;
+        overflow: hidden;
+        }
+            .patch{
+              height: 80px;
+              width: 80px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 1px solid transparent;
+              position:relative;
+              flex-direction: column;
+            }
+          .patch:hover {
+            border-color: #2c272d !important;
+            border-radius:10px;
+          }
+
+            .patch-image{
+              height: 100% !important;
+              width: 100% !important;
+              object-fit:contain;
+            }
+            .custom-patch-active{
+              background: #ffe2e8;
+              border: 1px solid #ffe2e8;
+              color: black;
+            }
+          .patch-title{
+            font-size: 14px;
+            position: absolute;
+            opacity: 0;
+            text-align: center;
+            margin: 0;
+            transition: opacity 0.3s;
+            text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+            color: #777777;
+            width:100%;
+            font-weight: 600;
+            display:none;
+          }
+          .patch-title:hover{
+            opacity:1;
+        }
+       .popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        max-width: 550px;
+        padding: 20px;
+        width: calc(100% - 40px);
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        z-index: 9999;
+        border-radius: 20px;
+        opacity: 0;
+        animation: fadeIn 0.5s ease forwards;
+        transition: opacity 0.3s ease;
+       }
+
+        @keyframes fadeIn {
+        0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+        100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
       }
-      .patches-tidy-editor-btn{
-            background-color: #ffffff;
+      .patch-pop_up-image-wrapper{
+         text-align: center;
+        width: 100%;
+        height: 400px;
+      }
+      .popup-name{
+        margin: 20px auto;
+        text-align: center;
+        font-size: 20px;
+      }
+      .popup.active {
+        opacity: 1; /* Show the pop-up when active class is applied */
+    }
+
+      .popup img {
+        max-width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .popup-close {
+          cursor: pointer;
+          margin-top: 10px;
+          text-align: right;
+      }
+      .zoom{
+        position: absolute;
+        bottom: -7px;
+        right: 0;
+        opacity:0;
+      }
+      .zoom > svg{
+        height: 20px;
+        cursor: pointer;
+        width: 20px;
+    }
+    .patch:hover:hover .zoom{
+      opacity: 1;
+    }
+    .fade-out {
+        animation: fadeOut 0.3s ease forwards; /* Apply fade-out animation */
+    }
+
+    @keyframes fadeOut {
+        0% { opacity: 1; }
+        100% { opacity: 0; }
+    }
+      .patches-customization-btns-wrapper-for-patches{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        position: absolute;
+        bottom: 0px;
+        padding:0px !Important;
+      }
+      .patches-customizations-btn{
+        background: white;
+        box-shadow: 0px 2px 4px rgb(0 0 0 / 5%);
+        padding: 9px 30px;
+        font-size: 18px;
+        border: 1px solid #2c272d;
+      }
+      .patches-customizations-btn-wrapper{
+        display: flex;
+        cursor: pointer;
+      }
+      .patches-customizations-back-btn{
+        border-top-right-radius: 25px;
+        border-bottom-right-radius: 25px;
+      }
+      .patches-customizations-front-btn{
+        border-top-left-radius: 25px;
+        border-bottom-left-radius: 25px;
+      }
+      .patches-customization-btn-active{
+        background-color: #2c272d;
+        color: white;
+    }
+      .patches-clear-btn{
+        background-color: #ffffff;
         border-radius: 26px;
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 0 27px;
-        font-size: 14px;
         cursor: pointer;
         box-shadow: 0px 2px 4px rgb(0 0 0 / 5%);
-         visibility: hidden;
+        background-color: #ffffff;
+        border-radius: 26px;
+        border: 1px solid #2c272d;
+        font-size: 16px;
+        padding: 6px 16px;
       }
-      .tidy-clear-btn-wrapp{
-        display:flex;
-      }
-      .only-mobile{
-        display:none;
+      .patches-customization-clear-alert-pop-up{
+        height: 100%;
         width: 100%;
+        right: -2400px;
+        transition: right 0.5s ease;
+        background: #ffffff;
+        position: absolute;
+        z-index: 9999;
+        display: none;
       }
-      .only-mobile-colors-wrapper{
-        display:none ;
-        width: 100%;
+      .patches-customization-clear-popup-active{
+        display:block;
       }
-      .only-mobile-tdy-header{
-         display:none ;
-        width: 100%;
-      }
-      .messagefield:focus{
-        border:none;
-      }
-      .messagefield{
-        padding: 11px;
-        border: none;
-        background: #f4f4f4;
-        border-radius: 2px;
-        resize: none;
-      }
-      .overlapping-error{
-        color: red;
-        font-size: 20px;
-        visibility: hidden;
-        margin-left: 30px;
-        margin-bottom: 20px;
-      }
-      .size_variants_errors{
-        display:none;
-      }
-      .size_variants_errors > span{
-        font-size: 20px;
-        color: red;
-      }
-      .customize-button{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border: 1px solid;
-        padding: 15px;
-        margin-bottom: 15px;
-        cursor: pointer;
-        border-radius: 20px;
-      }
-      .customize-button > span{
-        font-weight: bold;
-      }
-       .patches-customization-wrapper{
-        display: flex;
-        height: 100vh;
-       }
-            .product-customization{
-              display:none;
-          }
-          .Customization-heading{
-                margin: 0 100px;
-        }
-        .patches-customization-container{
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              width: 65%;
-              background: #fff8fa;
-              position:relative;
-        }
-      .patches-customization-container-overly{
-        display:none;
+      .patches-containerr{
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
-        position: absolute;
-        z-index: 1;
-        background: #ffdbe182;
       }
-        .imageDiv {
-            position: relative;
-         width: 100%;
-         /* height:  100%; */
-            height: auto;
-        }
-        .sourceImage {
-            width: 100%;
-            height: 100%;
-            /* object-fit:contain; */
-            display: block;
-            margin: auto;
-        }
-
-        .centerMarker {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: red;
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .centerBox {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        .BackcenterBox{
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .patches-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 2px solid transparent;
-        }
-
-        .images-patches-wrapper {
+      .patches-customization-editor{
+        height: 100%;
+        width: 100%;
+        right: -2400px;
+        transition: right 0.5s ease;
+        position: absolute;
+        z-index: 2;
+        display: none;
+      }
+      .patches-customization-editor.active {
+    right: 0;
+  }
+      /* .patch-open-editor{
+        border:1px solid blue;
+      } */
+      .variant-selector-sidebar-header{
         display: flex;
-        flex-direction: column;
+        width: 100%;
+        justify-content: space-between;
+        padding: 24px;
+        border-bottom: 1px solid #e0e0e0;
         align-items: center;
-        margin: auto 0;
-        }
-        .patch-:hover{
-            cursor: all-scroll;
-        }
-        .patch:hover{
-            cursor: all-scroll;
-        }
-        .patch-action{
-        border-color: red !important;
-        }
-       .patch-{
-         border: 2px solid #ff000000;
-       }
-        .patch > img{
-        height: 70% !important;
-        width: 70% !important;
-        object-fit: contain;
-        }
-        .checkit{
-            position: relative;
-        width: 750px !important;
-        height: 704px !important;
+      }
+      .close-variant-selector-editor{
+        cursor:pointer;
+        height:16px;
+        width:16px;
+      }
+      .variants-selected-sidebar{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: white;
+        z-index: 9999;
+      }
+      .variant-selector-sidebar-foter{
+        position: fixed;
+        bottom: 0;
+        width: 35%;
+        border-top: 1px solid #e4e4e4;
+        background: white;
+        padding:20px 24px;
+      }
+      .variants-continue-btn-wrapper, .fotter-Summary-button{
+      border: 1px solid #2c272d;
+      padding: 16px 24px !important;
+      width: 50%;
+      font-size: 16px;
+      text-align: center;
+      }
+      .variants-continue-btn-wrapper{
+        padding: 12px 71px;
+        border-radius: 0 100px 100px 0;
+        cursor: pointer;
+        font-size: 16px;
+        border-color: #2c272d;
+        background-color: #2c272d !important;
+        color: white;
         display: flex;
+        align-items: center;
         justify-content: center;
       }
-        #Front-Area, #Back-area{
-          position: absolute;
-              height: 100%;
-        width: 100%;
-      }
-      .image-hidden{
-      left: -9999px;
-      top: -9999px;
-      }
-</style>
-<style>
-              /* Offcanvas Menu Styles */
-              #patches-customization-offcanvas-menu {
-                width: 35%;
-                background-color: #ffffff;
-                overflow-x: hidden;
-                position:relative;
-                z-index: 1;
-              }
-              .patches-customization-header{
-                display: flex;
-                justify-content: space-between;
-                padding: 27px;
-                border-bottom: 1px solid #dddddd;
-                align-items: center;
-            }
-            .patches-back-button{
-              font-size: 20px;
-              gap: 5px;
-              cursor: pointer;
-              display: flex;
-              align-items: center;
-            }
-            .patches-back-button > h2{
-            margin: 0;
-            font-size: 18px;
-            letter-spacing: 1px;
-            text-transform: capitalize;
-            }
-            .patches-customization-remover{
-              height: 30px;
-              width: 30px;
-              cursor:pointer;
-            }
-
-            .add-patches-info{
-              display: flex;
-              justify-content: space-between;
-              width: 90%;
-              margin: 16px auto;
-            }
-            .add-patches-info-title{
-              font-weight: 600;
-              text-transform: uppercase;
-            }
-            .patches-toggle-buttons{
-            display: flex;
-            width: 90%;
-            margin: 0 auto;
-            text-transform: uppercase;
-            letter-spacing: 0.4px;
-          }
-
-            .patch-toggle-btn{
-                border: 1px solid #f2f2f2;
-                display: flex;
-                justify-content: center;
-                width: 100%;
-                padding: 7px 0px;
-                cursor: pointer;
-                font-weight: 600;
-            }
-            .alphabets-button{
-            border-top-right-radius: 20px;
-            border-bottom-right-radius: 20px;
-            border-left:none;
-            }
-          .patches-button{
-            border-top-left-radius: 20px;
-            border-bottom-left-radius: 20px;
-            border-right:none;
-          }
-          .custom-patches-filter{
-            display: flex;
-            width: 90%;
-            margin: 16px auto;
-            gap: 10px;
-          }
-          .customization-search-bar{
-            margin-bottom: 0 !important;
-            border-radius: 20px;
-            font-size: 17px !important;
-            border: 1px solid #f2f2f2 !important;
-          }
-          .custom-patches-sort-btn{
-               display: flex;
-      align-items: center;
-      width: 43%;
-      border: 1px solid #ffe2e8;
-      justify-content: center;
-      border-radius: 18px;
-      background: #ffe2e8;
-      }
-      .patches{
+      .variant-selector-sidebar-btn{
+        margin: 0px;
+        display: flex;
+        flex-wrap: wrap;
+        gap:6px;
+    }
+      .variant-selector-sidebar-btn-main-wrapper{
       display: flex;
-      flex-wrap: wrap;
-         padding: 40px;
-      gap: 10px;
-      justify-content: center;
-      width: 100%;
-      height: unset;
-      overflow: hidden;
-      margin: auto;
+        flex-wrap: wrap;
+        flex-direction: column;
+        padding: 0 30px;
       }
-      .tidy-patches-adjustment-wrapper{
+      .variant-selector-sidebar-btn-main-wrapper > h2{
+          font-size: 25px;
+        margin-bottom: 2rem;
+            letter-spacing: 0px;
+      }
+      .color-variant{
+        cursor:pointer;
+        border-radius: 3px;
+        transition: background-color 0.3s ease;
+      }
+
+      {% comment %} .selected-variant{
+        border: 2px solid #ff6491;
+        } {% endcomment %}
+      .parent-variant-wrapper{
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+      @media (max-width: 1800px) {
+        .imageDiv {
+            position: relative;
+        /* height: 100%; */
         height: auto;
-      overflow: hidden;
-      }
-          .patch{
-            height: 100px;
-            width: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid transparent;
-            position:relative;
-            flex-direction: column;
-          }
-        .patch:hover {
-          border-color:red !important;
+        width: 100%;
         }
-
-          .patch-image{
-            height: 100% !important;
-            width: 100% !important;
-            object-fit:contain;
-          }
-          .custom-patch-active{
-            background: #ffe2e8;
-            border: 1px solid #ffe2e8;
-            color: black;
-          }
-        .patch-title{
-          font-size: 14px;
-          position: absolute;
-          opacity: 0;
-          text-align: center;
-          margin: 0;
-          transition: opacity 0.3s;
-          text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
-          color: #777777;
-          width:100%;
-          font-weight: 600;
-        }
-        .patch-title:hover{
-          opacity:1;
-      }
-     .popup {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: white;
-      max-width: 550px;
-      padding: 20px;
-      width: calc(100% - 40px);
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-      z-index: 9999;
-      border-radius: 20px;
-      opacity: 0;
-      animation: fadeIn 0.5s ease forwards;
-      transition: opacity 0.3s ease;
-     }
-
-      @keyframes fadeIn {
-      0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-      100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
     }
-    .patch-pop_up-image-wrapper{
-       text-align: center;
-      width: 100%;
-      height: 400px;
-    }
-    .popup-name{
-      margin: 20px auto;
-      text-align: center;
-      font-size: 20px;
-    }
-    .popup.active {
-      opacity: 1; /* Show the pop-up when active class is applied */
-  }
-
-    .popup img {
-      max-width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .popup-close {
-        cursor: pointer;
-        margin-top: 10px;
-        text-align: right;
-    }
-    .zoom{
-      position: absolute;
-      bottom: -7px;
-      right: 0;
-      opacity:0;
-    }
-    .zoom > svg{
-      height: 20px;
-      cursor: pointer;
-      width: 20px;
-  }
-  .patch:hover:hover .zoom{
-    opacity: 1;
-  }
-  .fade-out {
-      animation: fadeOut 0.3s ease forwards; /* Apply fade-out animation */
-  }
-
-  @keyframes fadeOut {
-      0% { opacity: 1; }
-      100% { opacity: 0; }
-  }
-    .patches-customization-btns-wrapper{
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      position: absolute;
-      bottom: 27px;
-      padding: 0 15px;
-    }
-    .patches-customizations-btn{
-      background: white;
-      box-shadow: 0px 2px 4px rgb(0 0 0 / 5%);
-      padding: 9px 30px;
-      font-size: 18px;
-    }
-    .patches-customizations-btn-wrapper{
-      display: flex;
-      cursor: pointer;
-    }
-    .patches-customizations-back-btn{
-      border-top-right-radius: 25px;
-      border-bottom-right-radius: 25px;
-    }
-    .patches-customizations-front-btn{
-      border-top-left-radius: 25px;
-      border-bottom-left-radius: 25px;
-    }
-    .patches-customization-btn-active{
-      background-color: #ffe2e8;
-  }
-    .patches-clear-btn{
-      background-color: #ffffff;
-      border-radius: 26px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 18px;
-      cursor: pointer;
-      box-shadow: 0px 2px 4px rgb(0 0 0 / 5%);
-    padding: 9px 30px;
-    }
-    .patches-customization-clear-alert-pop-up{
-      height: 100%;
-      width: 100%;
-      right: -2400px;
-      transition: right 0.5s ease;
-      background: #ffffff;
-      position: absolute;
-      z-index: 9999;
-      display: none;
-    }
-    .patches-customization-clear-popup-active{
-      display:block;
-    }
-    .patches-containerr{
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-    .patches-customization-editor{
-      height: 100%;
-      width: 100%;
-      right: -2400px;
-      transition: right 0.5s ease;
-      position: absolute;
-      z-index: 2;
-      display: none;
-    }
-    /* .patch-open-editor{
-      border:1px solid blue;
-    } */
-    .variant-selector-sidebar-header{
-      display: flex;
-      width: 100%;
-      justify-content: space-between;
-      padding: 27px;
-      border-bottom: 1px solid #e0e0e0;
-      align-items: center;
-    }
-    .close-variant-selector-editor{
-      width: 30px;
-      height: 30px;
-      cursor:pointer;
-    }
-    .variants-selected-sidebar{
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: white;
-      z-index: 9999;
-    }
-    .variant-selector-sidebar-foter{
-      position: fixed;
-      bottom: 0;
-      width: 35%;
-      padding: 20px 40px;
-    }
-    .variants-continue-btn-wrapper{
-      padding: 12px 71px;
-      background: #ffe2e8;
-      border-top-right-radius: 20px;
-      border-bottom-right-radius: 20px;
-      width: 60%;
-      cursor: pointer;
-      font-size: 17px;
-    }
-    .variant-selector-sidebar-btn{
-      margin: 12px 0;
-      margin-top: 6px;
-      display: flex;
-      flex-wrap: wrap;
-      gap:6px;
-  }
-    .variant-selector-sidebar-btn-main-wrapper{
-    display: flex;
-      flex-wrap: wrap;
-      flex-direction: column;
-      padding: 0 30px;
-    }
-    .variant-selector-sidebar-btn-main-wrapper > h2{
-        font-size: 25px;
-      margin-bottom: 2rem;
-          letter-spacing: 0px;
-    }
-    .color-variant{
-      cursor:pointer;
-      height:50px;
-      width:50px;
-      border-radius: 3px;
-      border:1px solid transparent;
-      transition: background-color 0.3s ease;
-    }
-
-    .selected-variant{
-      border: 2px solid #ff6491;
-      }
-    .parent-variant-wrapper{
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-  }
-    @media (max-width: 1800px) {
-      .imageDiv {
-          position: relative;
-      /* height: 100%; */
-      height: auto;
-      width: 100%;
-      }
-  }
 </style>
 <style>
     .variants-continue-btn-invisible{
-      display:none;
+          visibility: hidden;
     }
     .all-sidebar-cross-alert{
       position:absolute;
@@ -810,15 +876,16 @@
 
     }
     .crosssvg-wrapper{
-      width: 30px;
+      width: 16px;
       cursor:pointer;
-      height:30px;
+      height:16px;
     }
     .all-sidebar-cross-exit-button{
       width: 40%;
       justify-content: center;
       display: flex;
-      background: #ffe2e8;
+      background: #2c272d;
+      color: white;
       border-radius: 20px;
       padding: 10px;
       cursor:pointer;
@@ -831,6 +898,8 @@
       border-radius: 20px;
       padding: 10px;
       cursor:pointer;
+      border: 1px solid;
+      border-color: #2c272d;
   }
     .all-sidebar-cross-neverMind-button:hover{
        background: #ffeff2;
@@ -843,7 +912,7 @@
     .selected-patch-for-customization{
       width: 50px;
       height: 50px;
-      background: white;
+      background-color: #f8f8f8;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -886,20 +955,22 @@
     .tidy-patches-header{
       display: flex;
       justify-content: space-between;
-      padding: 25px 30px;
+      padding: 24px;
       background-color: white;
       align-items: center;
+      border-bottom: 1px solid #dddddd;
     }
     .close-patches-customization-editor{
-      height: 30px;
-      width: 30px;
+      height: 16px;
+      width: 16px;
       cursor: pointer;
     }
     .tidy-patches-title{
-      font-size: 18px;
+      font-size: 16px;
       letter-spacing: 1px;
       text-transform: capitalize;
       margin: 0;
+      font-family: Roboto !important;
     }
     .tidy-patches-content{
       display: flex;
@@ -916,7 +987,7 @@
       display:block;
     }
     .tidy-patches-heading{
-      font-weight: bold;
+      font-weight: 500;
     }
     .tidy-patches-action-btn{
       display: flex;
@@ -925,10 +996,6 @@
     .tidy-patches-btns{
       border-bottom: 1px solid black;
       cursor: pointer;
-    }
-    .tidy-patches-wrraper{
-      background: #f8f8f8;
-      padding: 20px 5px;
     }
     .alignment-title{
       background: white;
@@ -958,7 +1025,7 @@
     .tidy-patches-alignment-section{
       display: flex;
       background: white;
-      padding: 25px 20px;
+      padding: 20px 0;
       border-bottom: 1px solid #e2e0e0;
       justify-content: space-between;
     }
@@ -973,10 +1040,12 @@
       }
     .tidy-patches-delete-title{
           width: 40%;
+          display:none;
     }
     .tidy-patches-delete-btn{
-      width: 60%;
-      background: #ffe2e8;
+      width: 100%;
+      border: 1px solid #2c272d !important;
+      background: #fff1f5;
       display: flex;
       justify-content: center;
       padding: 12px 20px;
@@ -987,9 +1056,8 @@
     .tidy-patches-delete-btn-wrraper{
       display: flex;
       background: white;
-      padding: 20px;
+      padding: 20px 0;
       width: 100%;
-      border-bottom: 1px solid #e2e0e0;
     }
   .tidy-patches-delete-btn:hover {
       background-color: #fde3ff;
@@ -1009,18 +1077,18 @@
     }
     .clear-patches-alert-header-title{
       font-size: 16px;
-      font-weight: bold;
+      font-weight: 500;
     }
     .close-customization-clear-alert{
-      width: 30px;
-      height: 30px;
+      width: 16px;
+      height: 16px;
       cursor:pointer;
     }
     .close-customization-clear-alert-content{
       padding: 40px 30px;
     }
     .close-customization-clear-alert-content > span {
-      font-size: 14px;
+      font-size: 17px;
     }
     .clear-patches-alert-footer{
       bottom: 0;
@@ -1043,19 +1111,20 @@
       cursor: pointer;
       font-weight: 600;
       text-transform: capitalize;
+      height:fit-content;
     }
     .patches-customizations-clear-btn{
-      background: #ffe2e8;
-    }
-    .patches-customizations-clear-btn:hover{
-      background: #fff2f4;
+      background: #2c272d;
+      color: white;
     }
     .patches-customizations-nevr-btn{
-
-      background: #f4f4f4;
+    background: #f4f4f4;
+    border-color: rgb(44, 39, 45) !important;
+    border: 1px solid;
   }
     .patches-customizations-nevr-btn:hover{
-      background: #fcd5dc;
+      background: rgb(44, 39, 45);
+      color:white;
     }
     .patch-selected-by-btn{
       border: 1px solid;
@@ -1067,7 +1136,14 @@
       display:block;
     }
     .variants-continue-btn{
-      font-weight:600;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.32px !important;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
     }
     .summary-btn-content{
      font-weight:600;
@@ -1077,7 +1153,7 @@
       position: fixed;
       width: 100%;
       height: 100%;
-      background: #ffdbe182;
+      background: rgba(255, 226, 232, 0.5);
       top: 0;
       left: 0;
       display: none;
@@ -1166,411 +1242,555 @@
 </style>
 <!-- media queries -->
 <style>
-  @media (min-width: 1024px) and (max-width: 1300px) {
-  .patches{
-        padding: 20px 0px;
-  }
-    .patch {
-    height: 70px;
-    width: 70px;
-    }
-}
-      @media screen and (max-width: 1024px) {
-        .checkit {
-        width: 590px !important;
-        height: 554px !important;
-
-    }
-     .variants-continue-btn {
-          font-size: 17px !important;
+      @media (min-width: 1024px) and (max-width: 1300px) {
+      .patches{
+            padding: 20px 0px;
       }
-      }
-  @media screen and (min-width: 377px) and (max-width: 767px) {
-      .variant-selector-sidebar-header {
-          padding: 20px !important;
-      }
-  }
-
-        @media screen and (max-width: 767px) {
-          .patches-customization-btns-wrapper {
-            bottom: 146px;
-          }
-          .variants-container {
-            max-height: 200px !important;
-            overflow: scroll;
-          }
-          .clear-btn-only-mobile{
-            display: block !important;
-          }
-          .onlymobile-screen{
-            display: block !important;
-          }
-          .clear-btn-only-desktop{
-           display: none !important;
-          }
-          .only-mobile-eidt-btn{
-            display: block !important;
-            visibility: hidden;
-          }
-          .alignment-actions{
-                width: 60% !important;
-          }
-          .edit-tidy-btn-wrapp{
-            display:none !important;
-          }
-          /* .color-variant:hover {
-              scale: 1.1;
-      } */
-          .variant-selector-sidebar-btn-main-wrapper > h2{
-            margin-bottom: 10px;
-          }
-           .product-tile-for-selected{
-          font-size: 16px !important;
-          margin-bottom: 0px;
-          }
-          .size_variants_section_heading{
-            font-size: 12px !important;
-          }
-          .parent-variant-wrapper {
-          width: 30px;
-          height: 30px;
-          }
-          .color-variant{
-          height: 30px;
-          width: 30px;
-          }
-          .size_variants_section_heading{
-                font-size: 12px !important;
-          }
-          .variant-selector-sidebar-btn {
-          margin: 6px 0;
-              gap: 3px;
-          }
-            .overlapping-correction-error{
-         font-size: 12px;
+        .patch {
+        height: 85px;
+        width: 85px;
         }
-          .size_variants_errors > span{
-                font-size: 15px;
-          }
-          .size_variants_section_heading{
-                font-size: 15px !important;
-          }
-          .size_variants_circle {
-          font-size: 10px;
-          padding: 0px 15px !important;
-          width:fit-content !important;
-          }
-          .size_variants_section {
-                margin-top: 0 !important;
-          }
-          .patch-toggle-btn{
-                padding: 2px 0px;
-          }
-          .customization-search-bar{
-      font-size: 16px !important;
-              height: 31px !important;
-              min-height: 30px !important;
-          }
-             .patches-toggle-buttons{
-            margin: 5px auto !important;
-          }
-          .custom-patches-sort-btn {
-              font-size: 9px;
-          }
-          .patches-customization-wrapper{
-                   height: fit-content;
-          }
-              #patches-customization-offcanvas-menu{
-              width: 100%;
-              height: calc(100% - 100vw);
-              min-height: 50vw;
-              position: absolute;
-              bottom: 0;
-          }
-          .patches-editor-wrapper {
-          position: absolute;
-          bottom: 0;
-          height: 100%;
-          width: 100%;
-          overflow: hidden;
-          flex-direction: column;
-          }
-          .main__patches__wrapp{
-          position: relative;
-         height: calc(92% - 49px);
-          }
-          .main__patches__wrapper {
-          height: 100%;
-          display: flex;
-          flex-direction: column
-      }
+    }
+          @media screen and (max-width: 1024px) {
+            .checkit {
+            width: 590px !important;
+            height: 554px !important;
 
-          .tidy-patches-delete-btn{
-            font-size: 12px;
+        }
+         .variants-continue-btn {
+              font-size: 17px !important;
           }
-          .alignment-title{
-            font-size: 12px;
           }
-          .tidy-patches-delete-btn-wrraper {
-            padding: 11px;
+     
+           @media screen and (max-width: 1024px){
+            .patch{
+                  height: 85px;
+        width: 85px;
+            }
+            .patches {
+                  padding: 20px 0;
+                  padding-top: 0px !important;
+            }
+              .messagefield {
+                    font-size: 16px;
+              }
+              .add-patches-info{
+              display:none;
+              }
+               .custom-patches-sort-btn{
+                font-size: 10px;
+              }
+             .add-item{
+              padding: 0px !important;
+              }
+              .tidy-patches-wrraper{
+             padding: 7px 5px;
+              }
+              .select-patches{
+                padding: 5px 0px;
+              }
+              .tidy-patches-content {
+                padding: 5px 0px;
+              }
+              .patches-clear-btn{
+                    font-size: 14px;
+              }
+              .variants-continue-btn-wrapper {
+               padding: 16px 24px !important;
+              }
+                .fotter-Summary-button {
+                  padding: 20px 25px !important;
+              }
+              .patches-toggle-buttons{
+                margin: 0px auto;
+                margin-top: 0px !important;
+                padding: 0px 24px;
+                width: 100%;
+              }
+              .tidy-patches-content {
+               font-size: 12px;
           }
-          .tidy-patches-alignment-section{
-                padding: 10px 20px;
-          }
-              .tidy-patches-header {
+            }
+  @media screen and (max-width: 900px) {
+    .front-back-btn-wrapp-only-mob {
+    visibility: visible !important;
+    }
+      .patches-clear-edit-tidy-btn-main-wrapper-only-for-mobile{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 24px;
+    position: absolute;
+    z-index: 4;
+    bottom:0%;
+  }
+  .patches-edit-tidy-btn-wrapp-only-for-mobile{
+    display: flex;
+    gap:5px;
+  }
+  .onlymobile-screen, .only-mobile-eidt-btn {
+    display: block !important;
+    visibility: visible !important;
+}
+.clear-btn-only-mobile{
+   display: block !important;
+}
+      .patches-full-screen-icon{
+      background: #fff8fa;;
+      border-radius: 50px;
+      position: relative;
+      margin: 0px auto;
+      width: 30px;
+      height: 30px;
+      z-index: 10;
+      display: flex;
+      transition: transform 0.3s ease;
+      transform: rotate(180deg);
+      justify-content: center;
+      align-items: center;
+      top: -11px;
+    }
+    .patches-full-screen-icon.rotated {
+    transform: rotate(0deg);
+  }
+      .pos-only-for-desktop {
+    position: static;
+  }
+  .patches-customizer-action-buttons {
+display:none;
+  }
+    .only-mobile {
+      display:block;
+    }
+    .patches-customization-wrapper {
+      flex-direction: column !important;
+    }
+   .patches-customization-container{
+      width:100% !important;
+      height: 100vw !important;
+    }
+    #patches-customization-offcanvas-menu.only-for-small-devices{
+      height: 100% !important;
+      transition: all 0.3s ease;
+      bottom:0px;
+      position:fixed;
+    }
+    #patches-customization-offcanvas-menu{
+      height: calc(100% - 100vw) !important;
+      min-height: 50vw !important;
+      width: 100% !important;
+      min-width:100%;
+    }
+    .only-desktop{
+      display:none !important;
+    }
+    .main__patches__wrapp{
+       position: relative;
+       height: calc(92% - 49px);
+    }
+    .hide-product-imagewrapper-for-small-devices{
+      height: 0vw !important;
+    }
+    .custom-patches-filter{
+      margin: 10px auto;
+      padding: 0px 24px;
+      width:100%;
+    }
+    .scrollboxInner{
+      padding:0px 24px;
+      padding-bottom: 16px;
+    }
+    .tidy-patches-wrraper {
+      padding: 7px 0px !important;
+    }
+    .tidy-patches-alignment-section{
+      justify-content: space-between !important;
+    }
+    .tidy-patches-content {
+      font-size: 19px !important;
+      padding: 15px 0px !important;
+    }
+    .patch-toggle-btn{
+      font-size: 14px !important;
+    }
+    .tidy-patches-heading-edit-wrsapper{
+      padding: 7px 24px !important;
+    }
+    .clear-patches-alert-footer {
+        font-size: 16px !important;
+    }
+  }
+  @media screen and (min-width: 540px) and (max-width: 768px) {
+  .patches-clear-edit-tidy-btn-main-wrapper-only-for-mobile{
+    position: absolute;
+    bottom:15%;
+    z-index: 4;
+  }
+}
+
+   
+@media screen and (max-width: 768px){
+
+  .tidy-patches-content {
+    font-size: 13px !important;
+    padding: 10px 0px !important;
+  }
+  .scrollboxInner {
+    padding: 0px 24px !important;
+  }
+  .tidy-patches-alignment-section {
+    padding: 10px 0px !important;
+  }
+  .messagefield {
+   font-size: 12px !important;
+   letter-spacing: 1px;
+  }
+  .variant-selector-sidebar-foter{
+    width: 100% !important;
+  }
+  .patch-customizaton-foter{
+    width: 100% !important;
+  }
+  .mob-parent-div-for-front-back-btn {
+    display:block;
+  }
+  .front-back-btn-wrapp-only-mob{
+    visibility: visible ;
+  }
+  .front-back-btn-wrapp-only-desktop{
+    visibility: hidden !important;
+  }
+  .main-patch-action-div-del{
+    right: -35px;
+    top: -15px;
+    width: 30px;
+    height: 30px;
+  }
+  .main-patch-action-div-del > svg {
+    width: 16px;
+    height: 16px;
+  }
+  .patches-customization-btns-wrapper {
+    bottom: 10px !important;
+  }
+  .tidy-patches-delete-btn{
+    padding: 4px 15px;
+  }
+  .onlymobile-screen, .only-mobile-eidt-btn{
+    margin: auto;
+  }
+  .only-mobile-eidt-btn{
+    gap:5px;
+  }
+  .onlymobile-screen-active{
+    color:white;
+    background:#2c272d !important;
+  }
+}
+ @media screen and (min-width: 377px) and (max-width: 767px) {
+          .variant-selector-sidebar-header {
               padding: 20px !important;
           }
-          .patches-customizations-btn {
-            padding: 2px 30px;
-          font-size: 14px;
-          }
-         .custom-patches-filter{
-           margin: 5px auto !important;
-         }
-                   .only-mobile{
-          display:block ;
-
-          .only-mobile-colors-wrapper{
-            display:none !important;
-          }
-          .patches-customizations-btn{
-          padding: 2px 26px;
-          font-size: 14px;
-          }
-       }
-           .only-desktop{
-          display:none !important;
-        }
-          .patch-pop_up-image-wrapper {
-            height: 150px !important;
-          }
-          .patches-customization-wrapper{
-                flex-direction: column;
-          }
-          .patches-customization-container{
-               width: 100%;
-              height: 100vw;
-      }
-      .images-patches-wrapper {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          margin-top: 5px;
-          padding-bottom: 51px;
-      }
-          .overlapping-error {
-            font-size: 12px;
-            margin-left:0;
-            margin-bottom: 0px;
-          }
-          .checkit {
-          width: 344px !important;
-          height: 300px !important;
-          display: flex;
-          justify-content: center;
       }
 
+            @media screen and (max-width: 767px) {
+  
+              .patches-customization-btns-wrapper {
+                bottom: 146px;
+              }
+              .variants-container {
+                max-height: 200px !important;
+                overflow: scroll;
+              }
+              .clear-btn-only-mobile{
+                display: block !important;
+              }
+              .onlymobile-screen{
+                display: block !important;
+                visibility: visible !important;
+              }
+              .clear-btn-only-desktop{
+               display: none !important;
+              }
+              .only-mobile-eidt-btn{
+                display: block !important;
+                visibility: visible !important;
+              }
+              .alignment-actions{
+                    width: 60% !important;
+              }
+              .edit-tidy-btn-wrapp{
+                display:none !important;
+              }
+              /* .color-variant:hover {
+                  scale: 1.1;
+          } */
+              .variant-selector-sidebar-btn-main-wrapper > h2{
+                margin-bottom: 10px;
+                    padding: 13px 0px !important;
+              }
+               .product-tile-for-selected{
+              font-size: 16px !important;
+              margin-bottom: 0px;
+              }
+              .size_variants_section_heading{
+                font-size: 12px !important;
+              }
+              .parent-variant-wrapper {
+              width: 30px;
+              height: 30px;
+              }
+              .size_variants_section_heading{
+                    font-size: 12px !important;
+              }
+              .variant-selector-sidebar-btn {
+              margin: 6px 0;
+                  gap: 3px;
+              }
+                .overlapping-correction-error{
+             font-size: 12px;
+            }
+              .size_variants_errors > span{
+                    font-size: 15px;
+              }
+              .size_variants_section_heading{
+                    font-size: 15px !important;
+              }
+              .size_variants_circle {
+              font-size: 10px;
+              padding: 0px 15px !important;
+              width:fit-content !important;
+              }
+              .size_variants_section {
+                    margin-top: 0 !important;
+              }
+              .patch-toggle-btn{
+                    padding: 2px 0px;
+              }
+              .customization-search-bar{
+          font-size: 16px !important;
+                  height: 31px !important;
+                  min-height: 30px !important;
+              }
+                 .patches-toggle-buttons{
+                margin: 5px auto !important;
+                margin-top: 0px !important;
+              }
+              .custom-patches-sort-btn {
+                  font-size: 9px;
+              }
+              .patches-customization-wrapper{
+                       height: fit-content;
+              }
+                  #patches-customization-offcanvas-menu{
+                  width: 100%;
+                  height: calc(100% - 100vw);
+                  min-height: 50vw;
+                  position: absolute;
+                  bottom: 0;
+              }
+              .patches-editor-wrapper {
+              position: absolute;
+              bottom: 0;
+              height: 100%;
+              width: 100%;
+              overflow: hidden;
+              flex-direction: column;
+              }
+              .main__patches__wrapper {
+              height: 100%;
+              display: flex;
+              flex-direction: column
+          }
+
+              .tidy-patches-delete-btn{
+                font-size: 12px;
+              }
+              .alignment-title{
+                font-size: 12px;
+              }
+              .tidy-patches-delete-btn-wrraper {
+                padding: 11px;
+              }
+              .tidy-patches-alignment-section{
+                    padding: 10px 20px;
+              }
+                  .tidy-patches-header {
+                  padding: 20px !important;
+              }
+              .patches-customizations-btn {
+                padding: 2px 30px;
+              font-size: 14px;
+              }
+             .custom-patches-filter{
+               margin: 5px auto !important;
+             }
+                       .only-mobile{
+              display:block ;
+
+              .only-mobile-colors-wrapper{
+                display:none !important;
+              }
+              .patches-customizations-btn{
+              padding: 2px 26px;
+              font-size: 14px;
+              }
+           }
+               .only-desktop{
+              display:none !important;
+            }
+              .patch-pop_up-image-wrapper {
+                height: 150px !important;
+              }
+              .patches-customization-wrapper{
+                    flex-direction: column;
+              }
+              .patches-customization-container{
+                   width: 100%;
+                  height: 100vw;
+          }
+          .images-patches-wrapper {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              margin-top: 5px;
+              margin: 0px;
+          }
+              .overlapping-error {
+                font-size: 12px;
+                margin-left:0;
+                margin-bottom: 0px;
+              }
+              .checkit {
+              width: 344px !important;
+              height: 300px !important;
+              display: flex;
+              justify-content: center;
+          }
 
 
-          .tidy-patches-header{
-            padding: 20px !important;
-          }
-          .tidy-patches-content {
-                padding: 10px 0px;
-          }
-          .selected-patch-for-customization {
-          width: 30px;
-          height: 30px;
-          }
-          .,,
-          .add-patches-info {
-            display: none;
-      }
-          .patches-toggle-buttons {
-            margin: 10px auto;
-          }
-          .patches-customization-header{
-            padding: 20px;
-          }
-          .add-item{
-          padding: 7px 36px !important;
-        }
-          .variants-continue-btn-wrapper{
-              padding: 12px 25px !important;
 
+              .tidy-patches-header{
+                padding: 20px !important;
+              }
+              .tidy-patches-content {
+                    padding: 10px 0px;
+              }
+              .selected-patch-for-customization {
+              width: 30px;
+              height: 30px;
+              }
+              .,,
+              .add-patches-info {
+                display: none;
           }
-          .fotter-Summary-button{
-                padding: 12px 15px;
+              .patches-toggle-buttons {
+                margin: 10px auto;
+                margin-top: 0px !important;
+              }
+              .patches-customization-header{
+                padding: 20px;
+              }
+              .add-item{
+              padding: 7px 36px !important;
+            }
+              .variants-continue-btn-wrapper{
+                  padding: 12px 24px !important;
+
+              }
+              .fotter-Summary-button{
+                    padding: 12px 15px;
+              }
           }
-      }
-      @media screen and (max-width: 768px){
-.patch-not-allowed {
-    height: 70px !important;
-    width: 70px !important;
-}
-          .variant-selector-sidebar-foter{
-        width: 100% !important;
-      }
-        .patch-customizaton-foter{
-         width: 100% !important;
-        }
-        .mob-parent-div-for-front-back-btn {
-          display:block;
-        }
-         .front-back-btn-wrapp-only-mob{
-         visibility: visible ;
-        }
-        .front-back-btn-wrapp-only-desktop{
-        visibility: hidden !important;
-       }
-         .main-patch-action-div-del{
-          right: -35px;
-          top: -15px;
-          width: 30px;
-          height: 30px;
-         }
-        .main-patch-action-div-del > svg {
-          width: 16px;
-          height: 16px;
-        }
-         .patches-customization-btns-wrapper {
-            bottom: 10px !important;
+           
+          @media screen and (min-width: 1025px) and (max-width: 1500px) {
+              .checkit {
+                  width: 450px !important;
+                  height: 404px !important;
+              }
           }
-         .tidy-patches-delete-btn{
-          padding: 4px 15px;
-         }
+          @media screen and (min-width: 1501px) and (max-width: 9400px) {
+              .checkit {
+                  width: 750px !important;
+                  height: 704px !important;
+              }
+          }
+   
+    @media screen and (min-width: 1024px) {
+    .patches-only-desktop {
+      flex-grow: 1;
     }
-
-        @media screen and (max-width: 1024px){
-        .patch{
-              height: 70px;
-    width: 70px;
-        }
-        .patches {
-              padding: 20px 0;
-        }
-          .messagefield {
-                font-size: 16px;
-          }
-          .add-patches-info{
-          display:none;
-          }
-           .custom-patches-sort-btn{
-            font-size: 10px;
-          }
-         .add-item{
-          padding: 0px !important;
-          }
-          .tidy-patches-wrraper{
-         padding: 7px 5px;
-          }
-          .select-patches{
-            padding: 5px 0px;
-          }
-          .tidy-patches-content {
-            padding: 5px 0px;
-          }
-          .patches-clear-btn{
-                font-size: 14px;
-          }
-          .variants-continue-btn-wrapper {
-           padding: 12px 25px !important;
-          }
-            .fotter-Summary-button {
-              padding: 10px !important;
-          }
-          .patches-toggle-buttons{
-            margin: 20px auto;
-          }
-          .tidy-patches-content {
-           font-size: 12px;
-      }
-        }
-      @media screen and (min-width: 1025px) and (max-width: 1500px) {
-          .checkit {
-              width: 450px !important;
-              height: 404px !important;
-          }
-      }
-      @media screen and (min-width: 1501px) and (max-width: 9400px) {
-          .checkit {
-              width: 750px !important;
-              height: 704px !important;
-          }
-      }
-
-        @media screen and (max-width: 820px) and (min-width: 769px){
+  }
+            @media screen and (max-width: 820px) and (min-width: 769px){
 
 
-          .patches-customization-form-buttons{
+              .patches-customization-form-buttons{
+                    font-size: 10px;
+              }
+              .custom-patches-sort-btn{
                 font-size: 10px;
+              }
+              .patches-customization-header{
+                padding: 24px;
+              }
+              .patches-back-button > span{
+                font-size: 15px;
+              }
+              .tidy-patches-alignment-section{
+                gap: 10px;
+                padding: 25px 0;
+                justify-content: space-around;
+              }
+              .alignment-title{
+                padding-left: 3px;
           }
-          .custom-patches-sort-btn{
-            font-size: 10px;
+              .alignment-actions{
+                width: 60%;
           }
-          .patches-customization-header{
-            padding: 27px 7px;
-          }
-          .patches-back-button > h2{
-            font-size: 15px;
-          }
-          .tidy-patches-alignment-section{
-            gap: 10px;
-            padding: 25px 0;
-            justify-content: space-around;
-          }
-          .alignment-title{
-            padding-left: 3px;
-      }
-          .alignment-actions{
-            width: 60%;
-      }
-          .clear-patches-alert-footer {
-                font-size: 10px;
-          }
-        }
+              .clear-patches-alert-footer {
+                    font-size: 10px;
+              }
+            }
 </style>
 <style>
-  .size_variants_section{
-    padding: 0 30px;
-    margin-top: 2rem;
-  }
-  .size_variants_section_heading{
-    margin: 0;
-    font-size: 20px;
-    text-transform: capitalize;
-     font-weight: 600;
-  }
-  .hide_size_variants{
-    display:none !important;
-  }
-  .size_variants_swatches{
-    display: flex;
-    gap: 15px;
-    margin-top: 5px;
-    flex-wrap: wrap;
-  }
-  .size_variants_circle{
-    height: fit-content;
-    width: fit-content;
-    padding: 8px 17px;
-    display: flex;
-    justify-content: center;
-    border: 1px solid #d1d0d0;
-    align-items: center;
-    background: #ffffff;
-  }
-  .size_variants_active{
-    background: #ffe2e8;
-  }
-   .size_variants{
-     cursor: pointer;
-     transition: transform 0.3s ease;
+    .size_variants_section{
+      padding: 0 30px;
+      margin-top: 2rem;
     }
+    .size_variants_section_heading{
+      margin: 0;
+      font-size: 16px;
+      text-transform: capitalize;
+       font-weight: 600;
+    }
+    .hide_size_variants{
+      display:none !important;
+    }
+    .size_variants_swatches{
+      display: flex;
+      gap: 15px;
+      margin-top: 0px;
+      flex-wrap: wrap;
+    }
+    .size_variants_circle{
+      height: fit-content;
+      width: fit-content;
+      padding: 8px 17px;
+      display: flex;
+      justify-content: center;
+      border: 1px solid #d1d0d0;
+      align-items: center;
+      background: #ffffff;
+      border-radius:5px;
+    }
+     .size_variants{
+       cursor: pointer;
+       transition: transform 0.3s ease;
+      }
 
-  .size_variants_active {
-    border: 2px solid #ff6491;
-}
+    .size_variants_active {
+      border: 2px solid black;
+  }
 </style>
 <style>
     /* .patches-customization-tidy-delete-btn-active{
@@ -1586,22 +1806,15 @@
     }
     .edit-delete-btn{
       background: white;
-      box-shadow: 0px 2px 4px rgb(0 0 0 / 5%);
-      padding: 9px 30px;
-      font-size: 18px;
+      padding: 6px 16px;
+      font-size: 16px;
       cursor: pointer;
-      border: 1px solid #9900ef00;
-    }
-    .edit-left-btn{
-             border-top-left-radius: 25px;
-      border-bottom-left-radius: 25px;
-    }
-    .tidy-right-btn{
-            border-top-right-radius: 25px;
-      border-bottom-right-radius: 25px;
+      border-radius: 40px;
+      border:1px solid transparent;
     }
     .edit-tidy-btns-wrapper{
           display: flex;
+          gap:10px;
     }
   .tidy-right-btn:hover {
       border: 1px solid #ffa8ba;
@@ -1620,9 +1833,6 @@
 </style>
 <style>
      @media screen and (max-width: 390px){
-        .variant-selector-sidebar-btn-main-wrapper > h2{
-            margin: 2px !important;
-      }
       .variant-selector-sidebar-btn-main-wrapper{
             padding: 0px 30px !important;
       }
@@ -1648,10 +1858,7 @@
           position: relative;
           height: calc(87% - 49px);
       }
-      .color-variant {
-          height: 25px !important;
-          width: 25px !important;
-      }
+
       .parent-variant-wrapper {
           width: 25px !important;
           height: 25px !important;
@@ -1679,35 +1886,81 @@
           .variant-selector-sidebar-header {
           padding: 10px !important;
       }
+          
   }
+  @media (min-width: 375px) and (max-width: 420px) {
+    .patches-clear-edit-tidy-btn-main-wrapper-only-for-mobile{
+      padding: 14px;
+    }
+    .variant-selector-sidebar-btn-main-wrapper {
+        padding: 0px 15px !important;
+    }
+        .variant-selector-sidebar-btn-main-wrapper > h2 {
+        margin-bottom: 10px;
+        padding: 5px 0px !important;
+    }
+        .product-tile-for-selected {
+        font-size: 15px !important;
+        }
+        .size_variants_section_heading {
+        font-size: 14px !important;
+    }
+    .Color_text_wrapper{
+          margin: 5px 0px;
+    }
+    .Color_text_wrapper {
+      gap:0px;
+    }
+    .small_selected_heading {
+    font-size: 12px;
+    }
+    
+ 
+}
 </style>
-<div class="patches-customization-wrapper">
-  <div class="patches-customization-container">
+<div class="patches-customization-wrapper pos-only-for-desktop">
+   <div class="patches-customization-container-overly"></div>
+  <div class="patches-customizer-action-buttons">
+ <div class="patches-customizer-action-buttons-inner-wrapper">
+<div class="edit-tidy-btn-wrapp">
+    <div class="edit-tidy-btns-wrapper">
+      <div class="edit-delete-btn edit-left-btn">Edit</div>
+      <div class="edit-delete-btn tidy-right-btn">Tidy</div>
+    </div>
+  </div>
+
+  <div class="patches-customization-btns-wrapper patches-customization-btns-wrapper-for-patches">
+    <div class="patches-customizations-btn-wrapper front-back-btn-wrapp-only-desktop">
+      <div
+        class="patches-customizations-btn patches-customizations-front-btn patches-customization-btn-active"
+        id="showFrontBtn"
+      >
+        Front
+      </div>
+      <div class="patches-customizations-btn patches-customizations-back-btn" id="showBackBtnn">
+        Back
+      </div>
+    </div>
+
+   
+    <div class="tidy-clear-btn-wrapp">
+      <div class="patches-clear-btn clear-btn-only-desktop" id="clear-shirt-Btnn">Clear All</div>
+     </div>
+  </div>
+  </div>
+</div>
+  <div class="patches-customization-container patches-only-desktop">
     <div class="only-mobile">
       <div class="variant-selector-sidebar-header">
         <div class="patches-back-button patches-back-button-relaod" id="patches-back-button">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            width="30"
-            height="30"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_1945_44173)"><path d="M4.51074 8.4502L11.2031 15.8867L12.2031 14.9863L5.96094 8.05371L5.91309 8L5.96094 7.94629L12.2031 1.0127L11.2031 0.112305L4.51074 7.5498L4.10742 8L4.51074 8.4502Z" fill="#2C272D" stroke="#2C272D" stroke-width="0.16"></path></g>
           </svg>
-          <h2>Back For More Styles</h2>
+          <span>Back For More Styles</span>
         </div>
         <div class="close-variant-selector-editor">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            width="30"
-            height="30"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_1945_44175)"><path d="M9.09809 8L16 14.9019L14.9019 16L8 9.0981L1.0981 16L0 14.9019L6.9019 8L0 1.0981L1.0981 0L8 6.90191L14.9019 0L16 1.0981L9.09809 8Z" fill="#2C272D"></path></g>
           </svg>
         </div>
       </div>
@@ -1715,28 +1968,14 @@
     <div class="only-mobile-colors-wrapper">
       <div class="patches-customization-header">
         <div class="patches-back-button">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            width="30"
-            height="30"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_1945_44173)"><path d="M4.51074 8.4502L11.2031 15.8867L12.2031 14.9863L5.96094 8.05371L5.91309 8L5.96094 7.94629L12.2031 1.0127L11.2031 0.112305L4.51074 7.5498L4.10742 8L4.51074 8.4502Z" fill="#2C272D" stroke="#2C272D" stroke-width="0.16"></path></g>
           </svg>
           <h2>Back For More Colors</h2>
         </div>
         <div class="patches-customization-remover">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            width="30"
-            height="30"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_1945_44175)"><path d="M9.09809 8L16 14.9019L14.9019 16L8 9.0981L1.0981 16L0 14.9019L6.9019 8L0 1.0981L1.0981 0L8 6.90191L14.9019 0L16 1.0981L9.09809 8Z" fill="#2C272D"></path></g>
           </svg>
         </div>
       </div>
@@ -1745,28 +1984,16 @@
       <div class="tidy-patches-header ">
         <h2 class="tidy-patches-title">Tidy Patches</h2>
         <div class="close-patches-customization-editor">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            width="30"
-            height="30"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_1945_44175)"><path d="M9.09809 8L16 14.9019L14.9019 16L8 9.0981L1.0981 16L0 14.9019L6.9019 8L0 1.0981L1.0981 0L8 6.90191L14.9019 0L16 1.0981L9.09809 8Z" fill="#2C272D"></path></g>
           </svg>
         </div>
       </div>
     </div>
 
-    <div class="patches-customization-container-overly"></div>
-    <div class="edit-tidy-btn-wrapp">
-      <div class="edit-tidy-btns-wrapper">
-        <div class="edit-delete-btn edit-left-btn">Edit</div>
-        <div class="edit-delete-btn tidy-right-btn">Tidy</div>
-      </div>
-    </div>
+
     <div class="images-patches-wrapper">
+      
       <div class="overlapping-error">Patches are overlapping or are too close for stitching</div>
       <!-- <div class="overlapping-correction-error">Please correct overlapping error first</div> -->
       <div class="dragpatchDiv"></div>
@@ -1814,39 +2041,24 @@
         <div class="patches-customizations-btn patches-customizations-back-btn" id="showBackBtnnmob">Back</div>
       </div>
     </div>
-
-    <div class="patches-customization-btns-wrapper">
-      <div class="patches-customizations-btn-wrapper front-back-btn-wrapp-only-desktop">
-        <div
-          class="patches-customizations-btn patches-customizations-front-btn patches-customization-btn-active"
-          id="showFrontBtn"
-        >
-          Front
-        </div>
-        <div class="patches-customizations-btn patches-customizations-back-btn" id="showBackBtnn">Back</div>
-      </div>
-      <div class="patches-clear-btn clear-btn-only-mobile" id="clear-shirt-Btnn">Clear</div>
-      <div class="tidy-clear-btn-wrapp">
-        <div class="patches-tidy-editor-btn onlymobile-screen">Tidy</div>
-        <div class="patches-clear-btn clear-btn-only-desktop" id="clear-shirt-Btnn">Clear</div>
-        <div class="edit-delete-btn edit-left-btn only-mobile-eidt-btn">Edit</div>
-      </div>
+    <div class="patches-clear-edit-tidy-btn-main-wrapper-only-for-mobile">
+<div class="patches-clear-btn clear-btn-only-mobile" id="clear-shirt-Btnn">Clear All</div>
+<div class="patches-edit-tidy-btn-wrapp-only-for-mobile">
+    <div class="patches-tidy-editor-btn onlymobile-screen">Tidy</div>
+    <div class="edit-delete-btn edit-left-btn only-mobile-eidt-btn">Edit</div>
+</div>
+  
     </div>
+   
+
   </div>
   <div id="patches-customization-offcanvas-menu" class="patches-offacnavs-customization">
     <div class="all-sidebar-cross-alert">
       <div class="all-sidebar-cross-alert-header">
         <span>Are you sure want to exit?</span>
         <div class="crosssvg-wrapper">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            width="30"
-            height="30"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_1945_44175)"><path d="M9.09809 8L16 14.9019L14.9019 16L8 9.0981L1.0981 16L0 14.9019L6.9019 8L0 1.0981L1.0981 0L8 6.90191L14.9019 0L16 1.0981L9.09809 8Z" fill="#2C272D"></path></g>
           </svg>
         </div>
       </div>
@@ -1859,95 +2071,91 @@
       </div>
     </div>
     <div class="variants-selected-sidebar">
-      <div class="scrolbar__color_size_wrap"> 
-      <div class="variant-selector-sidebar-header only-desktop">
-        <div class="patches-back-button patches-back-button-relaod" id="patches-back-button">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            width="30"
-            height="30"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-          </svg>
-          <h2>Back For More Styles</h2>
-        </div>
-        <div class="close-variant-selector-editor">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            width="30"
-            height="30"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </div>
-      </div>
-        
-          
-      <div class="variant-selector-sidebar-btn-main-wrapper">
-        <h2 class="product-tile-for-selected">{{ product.title }}</h2>
-        <span class="size_variants_section_heading size_variants_section_color_heading"
-          >Select Color : <small class="color_selector_heading small_selected_heading"></small
-        ></span>
-        <div class="variant-selector-sidebar-btn"></div>
-      </div>
-      <div class="size_variants_section">
-        <div class="size_variants_section_error_heading_wrapp">
-          <span class="size_variants_section_heading"
-            >Select Size: <small class="size_selector_heading small_selected_heading"></small
-          ></span>
-          <div class="size_variants_errors"><span>Please select size first</span></div>
-        </div>
-        <!-- <span class="size_variants_section_heading">Select Size</span> -->
-        <!--
-          <div class="size_variants_swatches">
-            <div id="small_variant" class="size_variants_circle size_variants" vlaue="S">S</div>
-            <div id="medium_variant" class="size_variants size_variants_circle" vlaue="M">M</div>
-            <div id="large_variant" class="size_variants size_variants_circle" vlaue="L">L</div>
-            <div id="extra_large_variant" class="size_variants size_variants_circle" vlaue="XL">XL</div>
+      <div class="scrolbar__color_size_wrap">
+        <div class="variant-selector-sidebar-header only-desktop">
+          <div class="patches-back-button patches-back-button-relaod" id="patches-back-button">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_1945_44173)"><path d="M4.51074 8.4502L11.2031 15.8867L12.2031 14.9863L5.96094 8.05371L5.91309 8L5.96094 7.94629L12.2031 1.0127L11.2031 0.112305L4.51074 7.5498L4.10742 8L4.51074 8.4502Z" fill="#2C272D" stroke="#2C272D" stroke-width="0.16"></path></g>
+            </svg>
+            <span>Back For More Styles</span>
           </div>
-        -->
-        <div id="variants-containers" class="size_variants_swatches"></div>
+          <div class="close-variant-selector-editor">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_1945_44175)"><path d="M9.09809 8L16 14.9019L14.9019 16L8 9.0981L1.0981 16L0 14.9019L6.9019 8L0 1.0981L1.0981 0L8 6.90191L14.9019 0L16 1.0981L9.09809 8Z" fill="#2C272D"></path></g>
+            </svg>
+          </div>
+        </div>
+
+        <div class="variant-selector-sidebar-btn-main-wrapper">
+          <h2 class="product-tile-for-selected">{{ product.title }}</h2>
+          <div class="Color_text_wrapper">
+            <span class="size_variants_section_heading size_variants_section_color_heading">Select Color</span>
+            <small class="color_selector_heading small_selected_heading"></small>
+          </div>
+          <div class="variant-selector-sidebar-btn"></div>
+        </div>
+        <div class="size_variants_section">
+          <div class="size_variants_section_error_heading_wrapp">
+            <div class="Color_text_wrapper">
+              <span class="size_variants_section_heading">Select Size</span>
+              <small class="size_selector_heading small_selected_heading"></small>
+            </div>
+
+            <div class="size_variants_errors"><span>Please select size first</span></div>
+          </div>
+          <!-- <span class="size_variants_section_heading">Select Size</span> -->
+          <!--
+            <div class="size_variants_swatches">
+              <div id="small_variant" class="size_variants_circle size_variants" vlaue="S">S</div>
+              <div id="medium_variant" class="size_variants size_variants_circle" vlaue="M">M</div>
+              <div id="large_variant" class="size_variants size_variants_circle" vlaue="L">L</div>
+              <div id="extra_large_variant" class="size_variants size_variants_circle" vlaue="XL">XL</div>
+            </div>
+          -->
+          <div id="variants-containers" class="size_variants_swatches"></div>
+          <div class="monogram__sidebar-disclaimer monogram__sidebar-disclaimer_patches">
+            <p>
+              Please note the preview is approximate. Customized items cannot be exchanged or returned and may require
+              additional time to process.
+            </p>
+          </div>
+        </div>
       </div>
-</div>
-        
+
       <div class="variant-selector-sidebar-foter">
-        <div class="patches-customization-form-buttons">
+        <div class="patches-customization-form-buttons ">
           <div class="complete-overly-wrapper"></div>
           <div id="variantsContainer" class="variants-container">
             <!-- Data will be populated here dynamically -->
           </div>
-          <div class="fotter-Summary-button">
-            <span class="summary-btn-content">Summary</span>
-            <svg
-              width="8"
-              height="14"
-              viewBox="0 0 8 14"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              class="patches-arrow-top toggle-summary-svg toggle-summary-svg-active"
-            >
-              <path d="M7 13L1 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><path d="M1 7.00002L6.99994 1.00002" stroke="currentColor" stroke-width="2" stroke-linecap="round" ></path>
-            </svg>
-            <svg
-              width="8"
-              height="14"
-              viewBox="0 0 8 14"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              class="patches-arrow-left toggle-summary-svg"
-            >
-              <path d="M7 13L1 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><path d="M1 7.00002L6.99994 1.00002" stroke="currentColor" stroke-width="2" stroke-linecap="round" ></path>
-            </svg>
-          </div>
-          <div class="variants-continue-btn-wrapper">
-            <div class="variants-continue-btn">Continue</div>
-            <div class="loader-cart-contiune"></div>
+          <div class="summary-continue-main-wrapper">
+            <div class="fotter-Summary-button">
+              <span class="summary-btn-content">Summary</span>
+              <svg
+                width="8"
+                height="14"
+                viewBox="0 0 8 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="patches-arrow-top toggle-summary-svg toggle-summary-svg-active"
+              >
+                <path d="M7 13L1 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><path d="M1 7.00002L6.99994 1.00002" stroke="currentColor" stroke-width="2" stroke-linecap="round" ></path>
+              </svg>
+              <svg
+                width="8"
+                height="14"
+                viewBox="0 0 8 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="patches-arrow-left toggle-summary-svg"
+              >
+                <path d="M7 13L1 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><path d="M1 7.00002L6.99994 1.00002" stroke="currentColor" stroke-width="2" stroke-linecap="round" ></path>
+              </svg>
+            </div>
+            <div class="variants-continue-btn-wrapper">
+              <div class="variants-continue-btn">Continue</div>
+              <div class="loader-cart-contiune"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -1956,15 +2164,8 @@
       <div class="tidy-patches-header only-desktop">
         <h2 class="tidy-patches-title">Tidy Patches</h2>
         <div class="close-patches-customization-editor">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            width="30"
-            height="30"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_1945_44175)"><path d="M9.09809 8L16 14.9019L14.9019 16L8 9.0981L1.0981 16L0 14.9019L6.9019 8L0 1.0981L1.0981 0L8 6.90191L14.9019 0L16 1.0981L9.09809 8Z" fill="#2C272D"></path></g>
           </svg>
         </div>
       </div>
@@ -2139,18 +2340,6 @@
                     <span>Position</span>
                   </div>
                   <div class="alignment-actions">
-                    <div onclick="movePatch('top')" class="tidy-patches-adjustment-btns" id="move-top">
-                      <svg
-                        width="8"
-                        height="14"
-                        viewBox="0 0 8 14"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="patches-arrow-top change_svg_color custom_svg_color"
-                      >
-                        <path d="M7 13L1 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><path d="M1 7.00002L6.99994 1.00002" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
-                      </svg>
-                    </div>
                     <div onclick="movePatch('left')" class="tidy-patches-adjustment-btns" id="move-left">
                       <svg
                         width="8"
@@ -2159,6 +2348,18 @@
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                         class="patches-arrow-bottom change_svg_color custom_svg_color"
+                      >
+                        <path d="M7 13L1 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><path d="M1 7.00002L6.99994 1.00002" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                      </svg>
+                    </div>
+                    <div onclick="movePatch('right')" class="tidy-patches-adjustment-btns" id="move-right">
+                      <svg
+                        width="8"
+                        height="14"
+                        viewBox="0 0 8 14"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="patches-arrow-right change_svg_color custom_svg_color"
                       >
                         <path d="M7 13L1 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><path d="M1 7.00002L6.99994 1.00002" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
                       </svg>
@@ -2175,14 +2376,14 @@
                         <circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="2"></circle>
                       </svg>
                     </div>
-                    <div onclick="movePatch('right')" class="tidy-patches-adjustment-btns" id="move-right">
+                    <div onclick="movePatch('top')" class="tidy-patches-adjustment-btns" id="move-top">
                       <svg
                         width="8"
                         height="14"
                         viewBox="0 0 8 14"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
-                        class="patches-arrow-right change_svg_color custom_svg_color"
+                        class="patches-arrow-top change_svg_color custom_svg_color"
                       >
                         <path d="M7 13L1 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><path d="M1 7.00002L6.99994 1.00002" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
                       </svg>
@@ -2254,15 +2455,8 @@
       <div class="clear-patches-alert-header">
         <span class="clear-patches-alert-header-title">Clear All Patches</span>
         <div class="close-customization-clear-alert">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            width="30"
-            height="30"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_1945_44175)"><path d="M9.09809 8L16 14.9019L14.9019 16L8 9.0981L1.0981 16L0 14.9019L6.9019 8L0 1.0981L1.0981 0L8 6.90191L14.9019 0L16 1.0981L9.09809 8Z" fill="#2C272D"></path></g>
           </svg>
         </div>
       </div>
@@ -2281,30 +2475,21 @@
     </div>
 
     <div class="patches-editor-wrapper">
+      <div class="patches-full-screen-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </div>
       <div class="patches-customization-header only-desktop">
         <div class="patches-back-button">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            width="30"
-            height="30"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_1945_44173)"><path d="M4.51074 8.4502L11.2031 15.8867L12.2031 14.9863L5.96094 8.05371L5.91309 8L5.96094 7.94629L12.2031 1.0127L11.2031 0.112305L4.51074 7.5498L4.10742 8L4.51074 8.4502Z" fill="#2C272D" stroke="#2C272D" stroke-width="0.16"></path></g>
           </svg>
           <h2>Back For More Colors</h2>
         </div>
         <div class="patches-customization-remover">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            width="30"
-            height="30"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_1945_44175)"><path d="M9.09809 8L16 14.9019L14.9019 16L8 9.0981L1.0981 16L0 14.9019L6.9019 8L0 1.0981L1.0981 0L8 6.90191L14.9019 0L16 1.0981L9.09809 8Z" fill="#2C272D"></path></g>
           </svg>
         </div>
       </div>
@@ -2345,19 +2530,12 @@
       <div class="tidy-patches-header only-desktop">
         <h2 class="tidy-patches-title">Edit Patches</h2>
         <div class="close-patches-customization-editor">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            width="30"
-            height="30"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_1945_44175)"><path d="M9.09809 8L16 14.9019L14.9019 16L8 9.0981L1.0981 16L0 14.9019L6.9019 8L0 1.0981L1.0981 0L8 6.90191L14.9019 0L16 1.0981L9.09809 8Z" fill="#2C272D"></path></g>
           </svg>
         </div>
       </div>
-      <div class="tidy-patches-wrraper">
+      <div class="tidy-patches-wrraper tidy-patches-heading-edit-wrsapper">
         <div class="tidy-patches-content ">
           <span class="tidy-patches-heading">Select Patches To Edit</span>
           <div class="front-tdiy-patches-btn tdiy-patches-btn-active"></div>

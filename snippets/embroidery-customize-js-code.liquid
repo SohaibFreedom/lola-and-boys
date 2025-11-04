@@ -1926,3 +1926,30 @@ document.querySelector('.Bchestinput').addEventListener('input', function () {
  $('.complete-overly-wrapper').toggleClass('complete-overly-wrapper-active');
 });
 </script>
+<script>
+function setCustomizerHeaderWidth() {
+  const header = document.querySelector('.patches-customizer-action-buttons');
+  const container = document.querySelector('.patches-customization-container');
+
+  if (!header || !container) return;
+
+  const containerRect = container.getBoundingClientRect();
+  header.style.width = containerRect.width + 'px';
+  header.style.maxWidth = containerRect.width + 'px';
+}
+
+// Run once when page is fully loaded
+window.addEventListener('load', setCustomizerHeaderWidth);
+
+// Also re-run when screen is resized
+window.addEventListener('resize', setCustomizerHeaderWidth);
+
+// Call it manually whenever needed, e.g. after clicking the customize button
+const customizeButton = document.querySelector('#customizeButton'); // replace with your actual selector
+if (customizeButton) {
+  customizeButton.addEventListener('click', () => {
+    setCustomizerHeaderWidth();
+  });
+}
+
+</script>
