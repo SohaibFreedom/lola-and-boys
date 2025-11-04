@@ -701,21 +701,13 @@
           if  (productTags.includes("none-size-products")) {
       $('.size_variants_section').hide();
   }
- else {
-  const mobDiv = document.querySelector(".mob-parent-div-for-front-back-btn");
-  if (!mobDiv) return;
-
-  const isBellaHologram = productTags.includes("Bella-Hologram-Swimsuit");
-  const isMobileView = window.innerWidth <= 900;
-
-
-  if (isMobileView && !isBellaHologram) {
-    mobDiv.style.display = "block";
+  else{
+    if (window.innerWidth <= 900) {
+    document.querySelector(".mob-parent-div-for-front-back-btn").style.display = "block";
   } else {
-    mobDiv.style.display = "none";
+    document.querySelector(".mob-parent-div-for-front-back-btn").style.display = "none";
   }
 }
-
           if  (productTags.includes("happ-velour-set")) {
      document.querySelector('.size_variants_section').style.setProperty('visibility', 'visible', 'important');
 
@@ -734,9 +726,9 @@
 
 <script>
     $('.patches-back-button').click(function() {
-      
+       // location.reload();
         $('.patches-tidy-editor-btn').css('display', 'none');
-     
+      // Remove the class from any element that has it
       $('.variants-selected-sidebar').removeClass('variants-continue-btn-invisible');
               if (window.matchMedia("(max-width: 900px)").matches){
           $('.only-mobile').css('display', 'block');
