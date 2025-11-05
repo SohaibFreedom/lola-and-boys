@@ -274,6 +274,7 @@
         "image_tAHiiP": {
           "type": "image",
           "settings": {
+            "custom_class": "",
             "image": "shopify://shop_images/rainbow-img.jpg",
             "link": "shopify://collections/newarrivals",
             "title": "Just Dropped",
@@ -287,9 +288,10 @@
         "image_eJCjKd": {
           "type": "image",
           "settings": {
+            "custom_class": "new-text-wrap",
             "image": "shopify://shop_images/LATB_BTS25_01754.jpg",
             "link": "shopify://collections/newarrivals",
-            "title": "",
+            "title": "Just In",
             "title_n": "",
             "title_1": "",
             "text": "",
@@ -300,9 +302,10 @@
         "image_tDQkFx": {
           "type": "image",
           "settings": {
+            "custom_class": "new-text-wrap",
             "image": "shopify://shop_images/LATB_09192025_Wicked_2605.jpg",
             "link": "https://lolaandtheboys.com/collections/my-little-pony-collab",
-            "title": "",
+            "title": "Wicked For Good",
             "title_n": "",
             "title_1": "",
             "text": "",
