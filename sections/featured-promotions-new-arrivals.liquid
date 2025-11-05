@@ -13,7 +13,7 @@
     <div  class="js-featured-promotions featured-promotions promo-per-row-{{ featured_promos_per_row }} clearfix"
           data-promo-animation="{{ section.settings.featured_links_animation }}">
         {% for block in section.blocks %}
-          <figure class="feature-section section-{{ forloop.index }} promo-{{ forloop.index }} title-overlay-{{ title_on_image }} {% if section.settings.featured_links_animation != blank %}promo-animation--true{% endif %}" {{ block.shopify_attributes }}>
+          <figure class="feature-section {{ block.settings.custom_class }} section-{{ forloop.index }} promo-{{ forloop.index }} title-overlay-{{ title_on_image }} {% if section.settings.featured_links_animation != blank %}promo-animation--true{% endif %}" {{ block.shopify_attributes }}>
               <div class="feature-inner feature-style--{{ section.settings.feature_style }} ">
                 {% if block.settings.image != nil %}
                     <img  src="{{ block.settings.image | img_url: '100x' }}"
@@ -167,6 +167,11 @@
       "name": "Promotion",
       "settings": [
         {
+          "type": "text",
+          "id": "custom_class",
+          "label": "Custom Class"
+        },
+        {
           "type": "image_picker",
           "id": "image",
           "label": "Image",
@@ -244,6 +249,40 @@
 }
 
 {% endschema %}
+
+
+<style>
+
+.new-text-wrap {
+  position: relative;
+  overflow: visible !important;
+}
+
+.new-text-wrap .title {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999 !important;
+  text-align: center;
+  width: 100%;
+  color: #000 !important;
+}
+
+</style>
+
+<script>
+$(document).ready(function() {
+  $('.new-text-wrap').each(function() {
+    var $h2 = $(this).find('.feature-overlay .feature-wrap h2.title').first();
+    if ($h2.length) {
+      // move the heading outside .feature-inner, not inside
+      $(this).find('.feature-inner').before($h2);
+    }
+  });
+});
+
+</script>
 
 <!-- {% javascript %}
 
