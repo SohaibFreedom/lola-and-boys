@@ -656,8 +656,7 @@
       // Create an observer instance linked to the callback function
       var observer = new MutationObserver(callback);
 
-      // Configuration of the observer:
-      // We want to observe additions of nodes (childList) and attribute changes
+      
       var config = { attributes: true, childList: true, subtree: true };
 
      
@@ -722,6 +721,7 @@
 
           if  (productTags.includes("happ-velour-set")) {
      document.querySelector('.size_variants_section').style.setProperty('visibility', 'visible', 'important');
+     document.querySelector('.front-back-btn-wrapp-only-desktop').style.setProperty('visibility', 'visible', 'important');
      mobDiv.style.display = "block";
 
   }
