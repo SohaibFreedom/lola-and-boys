@@ -660,7 +660,7 @@
       // We want to observe additions of nodes (childList) and attribute changes
       var config = { attributes: true, childList: true, subtree: true };
 
-      // Start observing the document's body for configured mutations
+     
       observer.observe(document.body, config);
 
       // Add a click event listener to the button
@@ -722,6 +722,7 @@
 
           if  (productTags.includes("happ-velour-set")) {
      document.querySelector('.size_variants_section').style.setProperty('visibility', 'visible', 'important');
+     mobDiv.style.display = "block";
 
   }
       });
