@@ -939,11 +939,11 @@ document.querySelector('.customization-search-bar').addEventListener('input', fu
 
         $('.patches-toggle').show();
     $('.alphabets-toggle').hide();
-    // Determine which data to filter based on the active toggle button
+   
  const dataToFilter = patches;
 console.log(dataToFilter);
 
-// Filter the data based on the search value
+
 const filteredData = dataToFilter.filter(item => {
     return item.patchname && item.patchname.toLowerCase().includes(inputValue.toLowerCase());
 });
@@ -953,16 +953,16 @@ console.log('filterdata',filteredData);
 if (filteredData.length > 0) {
     
 
-    // Clear the patches container only if there is data
+    
     $('#patches-wrapper').empty();
 
-    // Loop through the filtered data and display patches
+    
     filteredData.forEach(item => {
         const availableVariant = availableVariants.find(variant =>
             variant.productId === item.product_id && variant.variants.some(v => v.available)
         );
 
-        // Only create the patch if an available variant is found
+       
         if (availableVariant) {
             
             const div = document.createElement('div');
@@ -1017,6 +1017,10 @@ img.setAttribute('crossorigin', 'anonymous');
                   else if (productTags.includes("Super-soft-short-set")){
                    imgHeight -= 25;
                    imgWidth -= 25;
+                     }
+                  else if (productTags.includes("denimjackets")){
+                   imgHeight -= 15;
+                   imgWidth -= 15;
                      }
                 else {
                     console.log('condition false');
