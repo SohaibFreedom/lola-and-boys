@@ -699,7 +699,7 @@
           cartButton.addClass('customize-cart-button-visible');
            const productTags = {{ product.tags | json }};
              const patchesWrapperDesktop = document.querySelector(".front-back-btn-wrapp-only-desktop");
-      else if(productTags.includes("customize-long-bag")){
+       if(productTags.includes("customize-long-bag")){
         patchesWrapperDesktop .style.visibility = "hidden"; 
     }
           if  (productTags.includes("none-size-products")) {
