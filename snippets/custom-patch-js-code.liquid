@@ -698,6 +698,10 @@
           
           cartButton.addClass('customize-cart-button-visible');
            const productTags = {{ product.tags | json }};
+             const patchesWrapperDesktop = document.querySelector(".front-back-btn-wrapp-only-desktop");
+      else if(productTags.includes("customize-long-bag")){
+        patchesWrapperDesktop .style.visibility = "hidden"; 
+    }
           if  (productTags.includes("none-size-products")) {
       $('.size_variants_section').hide();
   }
@@ -3787,7 +3791,7 @@ function showBackImage() {
     currentImageData = imagesData.find(item => item.FproductId.toString() === variant.id.toString());
     console.log('Found Image Data:', currentImageData);
 
-    // Return true to stop the loop after finding the first match
+    
     return currentImageData !== undefined;
 });
 
@@ -3802,18 +3806,16 @@ function showBackImage() {
      const patchesWrapper = document.querySelector(".front-back-btn-wrapp-only-desktop");
      const sizevariantscontaier = document.querySelector(".size_variants_section");
       if (productTags.includes("happ-velour-set")){
-          patchesWrapper.style.visibility = "hidden"; 
+          patchesWrapper.style.visibility = "visible"; 
           sizevariantscontaier.style.visibility = "visible";
-          patchesWrapperMob.style.visibility = "hidden";
+          patchesWrapperMob.style.visibility = "visible";
       }
       else if(productTags.includes("no-front-image")){
           patchesWrapper.style.visibility = "hidden"; 
           sizevariantscontaier.style.visibility = "visible";
           patchesWrapperMob.style.visibility = "hidden";
       }
-      else if(productTags.includes("customize-long-bag")){
-        patchesWrapper.style.visibility = "hidden"; 
-    }
+    
         else if (productTags.includes("Bella-Hologram-Swimsuit")){
           patchesWrapper.style.visibility = "hidden"; 
           sizevariantscontaier.style.visibility = "visible";
