@@ -1311,28 +1311,29 @@ document.addEventListener('keydown', function(event) {
 
 
 <script>
-
 function bindSearchEvents() {
   const searchInput = document.getElementById('instantSearchInput');
+
+  if (!searchInput) return;
 
   // Handle typing in search input
   searchInput.addEventListener('input', function () {
     const query = this.value.trim();
     const searchResultsContainer = document.getElementById('searchResults');
     const collectionResultsContainer = document.getElementById('collectionResults');
-    const trendingSearchesWrapper = document.querySelector('.trending-searches-main');
     const collectionSearchesWrapper = document.querySelector('.collection-searches-wrapper');
     const popularProducts = document.getElementById('popular-products');
     const recommendedProducts = document.getElementById('recommended-products');
     const viewAllResultsButton = document.getElementById('viewAllResultsButton');
 
+    // 🔍 search chalu hone par sirf Suggestions + Recommended Products kaam karein
+    // Trending Searches ko bilkul touch nahi karenge
     if (query.length > 1) {
-      trendingSearchesWrapper.style.display = 'none';
       collectionSearchesWrapper.style.display = 'block';
       popularProducts.style.display = 'none';
       recommendedProducts.style.display = 'block';
 
-      // Update View All button
+      // View All button update
       viewAllResultsButton.href = `/search?q=${encodeURIComponent(query)}`;
       viewAllResultsButton.innerHTML = `View All Results for "${query}"`;
       viewAllResultsButton.style.display = 'inline-block';
@@ -1368,33 +1369,27 @@ function bindSearchEvents() {
             viewAllResultsButton.style.display = 'none';
           }
 
+          // ✅ collections (hidden collection filter same hi rakha hai)
+          const hiddenCollectionId = "300587712614"; // apna ID
 
-          // ID of the collection you want to hide
-const hiddenCollectionId = "300587712614"; // 🔑 replace with your real collection ID
+          if (data.resources.results.collections.length > 0) {
+            data.resources.results.collections.slice(0, 4).forEach(collection => {
+              if (String(collection.id) !== hiddenCollectionId) {
+                const collectionHtml = `
+                  <li class="collection-result-item">
+                      <a href="${collection.url}">${collection.title}</a>
+                  </li>
+                `;
+                collectionResultsContainer.innerHTML += collectionHtml;
+              }
+            });
 
-if (data.resources.results.collections.length > 0) {
-  data.resources.results.collections.slice(0, 4).forEach(collection => {
-    if (String(collection.id) !== hiddenCollectionId) {
-      const collectionHtml = `
-        <li class="collection-result-item">
-            <a href="${collection.url}">${collection.title}</a>
-        </li>
-      `;
-      collectionResultsContainer.innerHTML += collectionHtml;
-    }
-  });
-
-  // If the only result was hidden, fallback
-// If nothing left after filtering
-if (collectionResultsContainer.innerHTML.trim() === '') {
-  collectionResultsContainer.innerHTML = '<li>No collections found</li>';
-}
-} else {
-  collectionResultsContainer.innerHTML = '<li>No collections found</li>';
-}
-
-
-
+            if (collectionResultsContainer.innerHTML.trim() === '') {
+              collectionResultsContainer.innerHTML = '<li>No collections found</li>';
+            }
+          } else {
+            collectionResultsContainer.innerHTML = '<li>No collections found</li>';
+          }
         })
         .catch(error => {
           console.error('Error fetching search results:', error);
@@ -1403,17 +1398,18 @@ if (collectionResultsContainer.innerHTML.trim() === '') {
         });
 
     } else {
-      trendingSearchesWrapper.style.display = 'block';
+      // Input chhota / empty ho to sirf Suggestions band + Popular Products wapas
       collectionSearchesWrapper.style.display = 'none';
       popularProducts.style.display = 'block';
       recommendedProducts.style.display = 'none';
       searchResultsContainer.innerHTML = '';
       collectionResultsContainer.innerHTML = '';
       viewAllResultsButton.style.display = 'none';
+      // ⚠️ yahan bhi Trending Searches ko touch nahi kiya
     }
   });
 
-  // Handle pressing Enter
+  // Enter press -> search page
   searchInput.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
       event.preventDefault();
@@ -1424,16 +1420,16 @@ if (collectionResultsContainer.innerHTML.trim() === '') {
     }
   });
 
-  // Close overlay click
+  // Close icon click
   document.querySelector('.close-overlay').addEventListener('click', function () {
     searchInput.value = '';
     document.getElementById('searchResults').innerHTML = '';
     document.getElementById('collectionResults').innerHTML = '';
-    document.querySelector('.trending-searches-main').style.display = 'block';
     document.querySelector('.collection-searches-wrapper').style.display = 'none';
     document.getElementById('popular-products').style.display = 'block';
     document.getElementById('recommended-products').style.display = 'none';
     document.getElementById('viewAllResultsButton').style.display = 'none';
+    // ⚠️ koi .trending-searches-main display change nahi
     closeFullWidthSearch();
   });
 
@@ -1443,6 +1439,7 @@ if (collectionResultsContainer.innerHTML.trim() === '') {
   });
 }
 
+// Overlay open/close same rakhe, bas dobara events bind ho jaayen
 function openFullWidthSearch() {
   const overlay = document.querySelector(".full-width-overlay");
   const searchWrap = overlay.querySelector(".header_search_form");
@@ -1458,15 +1455,12 @@ function openFullWidthSearch() {
   overlay.classList.add("active");
   document.documentElement.classList.add("mobilesearch-overflowhidden");
 
-  // Focus immediately for mobile keyboard
   searchInput.focus();
 
-  // Keep cursor after animation
   setTimeout(() => {
     searchInput.focus();
   }, 300);
 
-  // Rebind events to new input
   bindSearchEvents();
 }
 
@@ -1474,9 +1468,8 @@ function closeFullWidthSearch() {
   document.querySelector(".full-width-overlay").classList.remove("active");
   document.documentElement.classList.remove("mobilesearch-overflowhidden");
 }
-
-  
 </script>
+
 
 
 
