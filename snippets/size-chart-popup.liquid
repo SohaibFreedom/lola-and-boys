@@ -141,5 +141,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
   if (closeBtn) closeBtn.addEventListener("click", closePopup);
   if (overlay) overlay.addEventListener("click", closePopup);
+
+  /* ✅ ESC key press → close popup */
+  document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") {
+      closePopup();
+    }
+  });
 });
 </script>
