@@ -1548,7 +1548,7 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
          newimgHeight = halfHeight;
           newimgWidth = halfWidth;
       }  
-    else if (if (window.matchMedia("(max-width: 375px)").matches)) {
+    else if (window.innerWidth <= 375) {
   console.log('below 375px');
           // Calculate half width and height
           var halfWidth = (imgWidth / 2) - 2;
@@ -2275,7 +2275,7 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
          newimgHeight = halfHeight;
           newimgWidth = halfWidth;
       }  
-    else if (if (window.matchMedia("(max-width: 375px)").matches)) {
+    else if (window.innerWidth <= 375) {
   console.log('below 375px');
           // Calculate half width and height
           var halfWidth = (imgWidth / 2) + 2 ;
