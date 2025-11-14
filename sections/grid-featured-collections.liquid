@@ -17,6 +17,20 @@
       letter-spacing: .3px;
       font-size: 14px !important;
   }
+
+
+
+   @media (max-width: 798px) {
+      .index .featured-promotions-section.featured-promotions-new-section {
+    background-color:#EAEAEA;
+    padding: 10px 0 20px !important;
+  }
+  
+    .home-feature-shop h2.title {
+      font-size:18px !important;
+      margin-top:5px !important; 
+    }
+  }
 {% endstyle %}
 
 {% assign featured_promos_per_row = section.settings.featured_promos_per_row | minus: 0 %}
@@ -24,7 +38,7 @@
 {% assign title_on_image = section.settings.promo_text_on_image_enabled %}
 
 {% if section.blocks.size > 0 %}
-  <div class="container promotions-grid-{{ featured_promos_grid }} feature_grid-collection ">
+  <div class="container promotions-grid-{{ featured_promos_grid }} feature_grid-collection {{ section.settings.custom_class }}">
     <div class="title-collections">
       <h2 class="title">{{ section.settings.maintitle }}</h2>
       <p><a href="{{ block.settings.button_link }}" class="lola-and-btn"></a></p>
@@ -124,6 +138,11 @@
   "class": "featured-promotions-section featured-promotions-new-section home_features_grid_section",
   "max_blocks": 12,
   "settings": [
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    },
     {
       "type": "range",
       "id": "featured_promos_per_row",

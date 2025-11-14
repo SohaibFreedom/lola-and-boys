@@ -2926,7 +2926,7 @@ html
     margin: 0 !important;
   }
   .homepage-slideshow-mobile {
-    height: 52vh !important;
+    height: 444px !important;
   }
 }
 @media only screen and (min-width: 1024px) {
