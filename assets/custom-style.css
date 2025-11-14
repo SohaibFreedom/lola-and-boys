@@ -3745,6 +3745,9 @@ html
     vertical-align: middle;
     overflow: visible;
   }
+  .cont-wrap {
+    margin-top: 0;
+}
   #rebuy-widget-207165 .rebuy-bundle__images {
     width: 95% !important;
     padding: 0 10px;
