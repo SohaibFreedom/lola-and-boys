@@ -2485,7 +2485,7 @@ html
   .index .promotions-grid-full_width {
     padding: 30px 0 !important;
 }
-.index .promotions-grid-full_width.feature_grid-collection.home-feature-shop {
+.index .promotions-grid-full_width.feature_grid-collection.home-feature-shop.grid-feature-bg {
         background-color: #eaeaea !important;
         padding-top: 5px !important;
     }
