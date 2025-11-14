@@ -2478,6 +2478,10 @@ html
   }
 }
 @media only screen and (max-width: 767px) {
+       .index .featured-promotions-section.featured-promotions-new-section {
+    padding:0 !important;
+    margin:0 !important;
+  }
   .gf-option-box li {
     width: 100%;
   }
