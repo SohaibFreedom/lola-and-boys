@@ -103,7 +103,7 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/HP_BANNER_SIZE.png",
-            "image_mobile": "shopify://shop_images/3_c24def59-6447-42d7-a1cb-ffde0fef6cf9.png",
+            "image_mobile": "shopify://shop_images/1_16.png",
             "mp4": "https://cdn.shopify.com/videos/c/o/v/1e7b1436d53d4f5f8dd21c8c17fe4876.mp4",
             "mobilevideo": "",
             "pretext": "",
@@ -123,6 +123,7 @@
         },
         "image_MzwgLN": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/LATB_F_25.jpg",
             "image_mobile": "shopify://shop_images/FALL_HP_Mob_1.jpg",
@@ -169,7 +170,7 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/2_14.png",
-            "image_mobile": "shopify://shop_images/2_23329d3b-5a96-47b7-8134-003d911e0180.png",
+            "image_mobile": "shopify://shop_images/2_22.png",
             "mp4": "",
             "mobilevideo": "",
             "pretext": "",
