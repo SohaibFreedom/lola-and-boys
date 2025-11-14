@@ -2482,6 +2482,10 @@ html
     padding:0 !important;
     margin:0 !important;
   }
+  .index .promotions-grid-full_width {
+    padding: 30px 0 !important;
+}
+
   .gf-option-box li {
     width: 100%;
   }
