@@ -436,7 +436,7 @@
         "image_BdmfEw"
       ],
       "settings": {
-        "custom_class": "home-feature-shop",
+        "custom_class": "home-feature-shop grid-feature-bg",
         "featured_promos_per_row": 3,
         "maintitle": "FEATURED SHOPS",
         "featured_promos_grid": "full_width",
