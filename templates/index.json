@@ -37,7 +37,6 @@
         },
         "image_qTG7w8": {
           "type": "image",
-          "disabled": true,
           "settings": {
             "image_mobile": "shopify://shop_images/1_8.jpg",
             "mp4": "https://cdn.shopify.com/videos/c/o/v/48ffc600e5e6407191ea901f276cde6c.mp4",
