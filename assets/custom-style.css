@@ -6,6 +6,10 @@
     max-height: 500px;
     object-fit: cover;
 }
+.usf-facets.usf-no-select.usf-zone.usf-sr-filters.usf-facets--mobile {
+    flex: 0 0 0 !important;
+    margin: 0 !important;
+}
 
 
 
