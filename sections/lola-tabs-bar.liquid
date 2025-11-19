@@ -89,42 +89,52 @@
     font-family: Karla, sans-serif !important;
   }
 
-  @media(max-width:768px) {
+ @media(max-width:768px) {
     .gift-page-product-heading {
       font-size: 22px;
       margin: 0 0 20px;
     }
 
     .gift-page-product-price-section {
-      padding: 50px 15px;
+      padding: 50px 0;
     }
 
     .gift-page-product-price-prdct-contnr {
       grid-template-columns: repeat(2, 1fr);
+      padding: 0 15px;
     }
+  .gift-page-product-price-tb {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr);
+      border-top: 2px solid #eaeaea;
+      width: 100%;
+      max-width: 450px;
+      margin: 0 auto 20px auto;
+      gap:0;
+  }
 
-    .gift-page-product-price-tb{
-  justify-content: space-between;
-  flex-wrap: nowrap;
-  white-space: nowrap;
-  overflow-x: auto;
-  -ms-overflow-style: none;     
-  scrollbar-width: none;       
-  -webkit-overflow-scrolling: touch;
-}
-.gift-page-product-price-tb::-webkit-scrollbar{ 
-  display: none;
-}
+  .gift-page-product-price-tb-btn {
+      padding: 10px 5px;
+      text-align: center;
+      border-right: 2px solid #eaeaea;
+      border-bottom: 2px solid #eaeaea;
+      background: #fff;
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: capitalize;
+      line-height: 18px;
+      font-family: "Poppins", sans-serif !important;
+  }
 
-    .gift-page-product-price-tb-btn {
-      padding: 5px 5px;
-      font-size: 12px;
-      line-height: 17px;
-    }
+  .gift-page-product-price-tb-btn-active {
+      background: #f7f7f7;
+      color: #000;
+  }
     .gift-page-product-price-prdct-details p:first-child {
     font-size: 11px;
 }
-  }
+}
 </style>
 
 <div class="gift-page-product-price-section" id="gift-guide-root-{{ section.id }}">
