@@ -144,7 +144,10 @@ const $targets = $('.embroidery-summary-wrapper, .patches-customization-wrapper,
    embroiderbutton.click(function() {
         isCustomizationActive = true;
         console.log('embroider button clicked');
-
+          const productTags = {{ product.tags | json }};
+       if (productTags.includes("no-front-image")){
+        $('.patches-customizations-btn-wrapper').hide();
+      }
         // Hide the bannerLow if it already exists
         var bannerLow = document.querySelector('.yotpo-banner-low');
         if (bannerLow) {
