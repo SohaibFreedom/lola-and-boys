@@ -9,22 +9,113 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "page",
-      "settings": {}
-    },
     "shogun-helper": {
       "type": "shogun-helper",
       "settings": {}
     },
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
+    },
     "shogun-optimizer": {
       "type": "shogun-optimizer",
+      "settings": {}
+    },
+    "gift_guide_video_block": {
+      "type": "gift-guide-video-section",
+      "settings": {
+        "video_url": "https://cdn.shopify.com/videos/c/o/v/4995199deddf4d3d9e3d2c227bd8c4fb.mp4",
+        "mobile_video_url": "https://cdn.shopify.com/videos/c/o/v/fb30949507614938950867f18c441f47.mp4"
+      }
+    },
+    "lola_tabs_bar": {
+      "type": "lola-tabs-bar",
+      "blocks": {
+        "tab_xHaWBb": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Dress",
+            "tag": "gift_guide_dress"
+          }
+        },
+        "tab_kwXQaR": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Sets",
+            "tag": "gift_guide_outfit_sets"
+          }
+        },
+        "tab_3dGAbK": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Best Sellers",
+            "tag": "gift_guide_best_sellers"
+          }
+        },
+        "tab_nVXD8V": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Tops",
+            "tag": "gift_guide_girls-tops"
+          }
+        },
+        "tab_efqKjT": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Boys",
+            "tag": "gift_guide_boys"
+          }
+        },
+        "tab_YyeF7E": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Gift Baskets",
+            "tag": "gift_guide_baskets"
+          }
+        },
+        "tab_e8GYgb": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Accessories",
+            "tag": "gift_guide_accessories"
+          }
+        },
+        "tab_ACdaPA": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "E-gift Card",
+            "tag": "gift_guide_gift_card"
+          }
+        }
+      },
+      "block_order": [
+        "tab_xHaWBb",
+        "tab_kwXQaR",
+        "tab_3dGAbK",
+        "tab_nVXD8V",
+        "tab_efqKjT",
+        "tab_YyeF7E",
+        "tab_e8GYgb",
+        "tab_ACdaPA"
+      ],
+      "settings": {
+        "heading": "Shop by Category",
+        "sf_token": ""
+      }
+    },
+    "lola_tabs_bar_2": {
+      "type": "lola-tabs-bar-2",
+      "disabled": true,
       "settings": {}
     }
   },
   "order": [
     "shogun-helper",
     "main",
-    "shogun-optimizer"
+    "shogun-optimizer",
+    "gift_guide_video_block",
+    "lola_tabs_bar",
+    "lola_tabs_bar_2"
   ]
 }
