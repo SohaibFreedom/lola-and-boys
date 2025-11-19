@@ -666,10 +666,6 @@
       customizeButton.click(function() {
           isCustomizationActive = true;
           console.log('customize button clicked');
-               const productTags = {{ product.tags | json }};
-       if (productTags.includes("Embossed-Emoji-Terry-Poncho")){
-        $('.patches-customizations-btn-wrapper').hide();
-      }
            $('body').addClass('patch_customizer_main_page');
         
           var bannerLow = document.querySelector('.yotpo-banner-low');
