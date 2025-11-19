@@ -1,0 +1,312 @@
+<style>
+  .gift-page-product-price-section {
+    padding: 50px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+  .gift-page-product-price-prdct-details p:first-child {
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: Karla, sans-serif !important;
+  }
+
+  .gift-page-product-price-prdct-details p:nth-child(2) {
+    font-family: Karla, sans-serif !important;
+    font-weight: 400;
+    letter-spacing: .3px;
+    font-size: 14px;
+  }
+
+  .gift-page-product-price-section {
+    padding: 50px 20px;
+  }
+
+  .gift-page-product-price-tb {
+    display: flex;
+    margin-bottom: 15px;
+    justify-content: center;
+    font-family: "FuturaPT_Regular" !important;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  .gift-page-product-price-tb-btn {
+    padding: 8px 24px;
+    cursor: pointer;
+    color: #575757;
+    font-size: 18px;
+    border-bottom: 1px solid #f4f4f4;
+  }
+
+  .gift-page-product-price-tb-btn-active {
+    border-bottom: 1px solid;
+    color: #212121;
+  }
+
+  .gift-page-product-price-prdct-contnr {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+  }
+
+  .gift-page-product-price-prdct {
+    text-align: center;
+    width: 100%;
+  }
+
+  .gift-page-product-price-prdct-image {
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+  }
+
+  .gift-page-product-price-prdct img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+    height: 380px;
+  }
+
+  .gift-page-product-price-prdct-details {
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .gift-page-product-price-prdct-details p {
+    margin: 0;
+    color: #333;
+  }
+
+  .gift-page-product-heading {
+    text-align: center;
+    font-size: 30px;
+    line-height: 32px;
+    color: #333;
+    margin: 0 0 30px;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-family: Karla, sans-serif !important;
+  }
+
+  @media(max-width:768px) {
+    .gift-page-product-heading {
+      font-size: 22px;
+      margin: 0 0 20px;
+    }
+
+    .gift-page-product-price-section {
+      padding: 50px 15px;
+    }
+
+    .gift-page-product-price-prdct-contnr {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gift-page-product-price-tb{
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow-x: auto;
+  -ms-overflow-style: none;     
+  scrollbar-width: none;       
+  -webkit-overflow-scrolling: touch;
+}
+.gift-page-product-price-tb::-webkit-scrollbar{ 
+  display: none;
+}
+
+    .gift-page-product-price-tb-btn {
+      padding: 5px 5px;
+      font-size: 12px;
+      line-height: 17px;
+    }
+    .gift-page-product-price-prdct-details p:first-child {
+    font-size: 11px;
+}
+  }
+</style>
+
+<div class="gift-page-product-price-section" id="gift-guide-root-{{ section.id }}">
+  <div class="gift-page-product-heading">{{ section.settings.heading }}</div>
+
+  <div class="gift-page-product-price-tb" id="giftTabs-{{ section.id }}">
+    {% for block in section.blocks %}
+    <div class="gift-page-product-price-tb-btn {% if forloop.first %}gift-page-product-price-tb-btn-active{% endif %}"
+      data-tag="{{ block.settings.tag | strip }}">
+      {{ block.settings.tab_label }}
+    </div>
+    {% endfor %}
+  </div>
+
+  <div id="gift-products-container-{{ section.id }}">
+    <p style="text-align:center;">Loading products...</p>
+  </div>
+</div>
+
+<script>
+  (function(){
+    const rootId="{{ section.id }}";
+    const container=document.getElementById("gift-products-container-"+rootId);
+    const tabs=document.querySelectorAll("#giftTabs-"+rootId+" .gift-page-product-price-tb-btn");
+    const STOREFRONT_TOKEN="{{ section.settings.sf_token | escape }}";
+    const API_VERSION="2024-07";
+    const TAGS=[{% for block in section.blocks %}"{{ block.settings.tag | strip }}"{% unless forloop.last %},{% endunless %}{% endfor %}];
+
+    let currentTag=tabs.length?tabs[0].dataset.tag:"";
+    const cache=new Map();
+
+    function skeleton(n){
+      const grid=document.createElement("div");
+      grid.className="gift-page-product-price-prdct-contnr";
+      for(let i=0;i<n;i++){
+        const card=document.createElement("div");
+        card.className="gift-page-product-price-prdct";
+        card.innerHTML=`
+          <div class="gift-page-product-price-prdct-image" style="background:#f6f6f6;"></div>
+          <div class="gift-page-product-price-prdct-details">
+            <p style="height:14px;background:#eee;margin:8px 40px;border-radius:6px;"></p>
+            <p style="height:14px;background:#eee;margin:8px 80px;border-radius:6px;"></p>
+          </div>`;
+        grid.appendChild(card);
+      }
+      container.innerHTML="";
+      container.appendChild(grid);
+    }
+
+    function renderHTML(html){
+      container.innerHTML=html;
+    }
+
+    function priceHTML(pr){
+      if(!pr) return "";
+      const a=Number(pr.minVariantPrice?.amount||0);
+      const b=Number(pr.maxVariantPrice?.amount||0);
+      const c=pr.minVariantPrice?.currencyCode||"{{ shop.currency }}";
+      const nf=new Intl.NumberFormat(undefined,{style:"currency",currency:c});
+      if(b && a!==b) return nf.format(a)+" - "+nf.format(b);
+      return nf.format(a||b);
+    }
+
+    async function fetchGraphQL(tag){
+      const items=[];
+      let after=null;
+      while(true){
+        const query=`query P($q:String!,$f:Int!,$a:String){products(first:$f,after:$a,query:$q){pageInfo{hasNextPage}edges{cursor node{handle title featuredImage{url alt} priceRange{minVariantPrice{amount currencyCode} maxVariantPrice{amount currencyCode}}}}}}`;
+        const variables={q:"tag:'"+tag+"' AND status:active",f:100,a:after};
+        const res=await fetch(`/api/${API_VERSION}/graphql.json`,{
+          method:"POST",
+          headers:{"Content-Type":"application/json","X-Shopify-Storefront-Access-Token":STOREFRONT_TOKEN},
+          body:JSON.stringify({query,variables}),
+          cache:"no-store"
+        });
+        const data=await res.json();
+        const edges=data?.data?.products?.edges||[];
+        edges.forEach(e=>items.push(e.node));
+        const next=data?.data?.products?.pageInfo?.hasNextPage;
+        if(!next||!edges.length) break;
+        after=edges[edges.length-1].cursor;
+      }
+      const html=buildGridHTML(items);
+      cache.set(tag,html);
+      return html;
+    }
+
+    async function fetchSearch(tag){
+      let page=1;
+      let cards="";
+      while(true){
+        const url=`/search?type=product&q=tag:${encodeURIComponent(tag)}&page=${page}&section_id=giftguide-section&cb=${Date.now()}`;
+        const res=await fetch(url,{cache:"no-store"});
+        const html=await res.text();
+        const tmp=document.createElement("div");
+        tmp.innerHTML=html;
+        const grid=tmp.querySelector(".gift-page-product-price-prdct-contnr");
+        if(!grid) break;
+        grid.querySelectorAll(".gift-page-product-price-prdct").forEach(el=>{cards+=el.outerHTML;});
+        const hasNext=tmp.querySelector(`[data-gift-page="${page+1}"]`);
+        if(!hasNext) break;
+        page++;
+      }
+      const html=cards?`<div class="gift-page-product-price-prdct-contnr">${cards}</div>`:'<p style="text-align:center;">No products found for this tag.</p>';
+      cache.set(tag,html);
+      return html;
+    }
+
+    function buildGridHTML(items){
+      if(!items.length) return '<p style="text-align:center;">No products found for this tag.</p>';
+      let cards="";
+      items.forEach(p=>{
+        const img=p.featuredImage;
+        const src=img?img.url+"&width=600":"//cdn.shopify.com/s/images/admin/no-image-compact.gif";
+        const srcset=img?`${img.url}&width=360 360w, ${img.url}&width=540 540w, ${img.url}&width=720 720w, ${img.url}&width=900 900w`:"";
+        const alt=(img?(img.alt||p.title):p.title).replace(/"/g,"&quot;");
+        cards+=`
+          <a href="/products/${p.handle}" class="gift-page-product-price-prdct">
+            <div class="gift-page-product-price-prdct-image">
+              <img src="${src}" srcset="${srcset}" sizes="(max-width:768px) 50vw, 25vw" loading="lazy" decoding="async" alt="${alt}">
+            </div>
+            <div class="gift-page-product-price-prdct-details">
+              <p>${p.title}</p>
+              <p>${priceHTML(p.priceRange)||""}</p>
+            </div>
+          </a>`;
+      });
+      return `<div class="gift-page-product-price-prdct-contnr">${cards}</div>`;
+    }
+
+    async function ensureTag(tag){
+      if(cache.has(tag)) return cache.get(tag);
+      if(STOREFRONT_TOKEN){try{return await fetchGraphQL(tag);}catch(e){console.error(e);}}
+      return await fetchSearch(tag);
+    }
+
+    async function initialLoad(){
+      if(!currentTag) return;
+      skeleton(8);
+      const first=ensureTag(currentTag).then(html=>{if(currentTag===tabs[0].dataset.tag) renderHTML(html);});
+      const others=TAGS.filter(t=>t!==currentTag).map(t=>ensureTag(t));
+      await Promise.race([first,Promise.allSettled(others)]);
+    }
+
+    tabs.forEach(tab=>{
+      tab.addEventListener("click",async ()=>{
+        tabs.forEach(t=>t.classList.remove("gift-page-product-price-tb-btn-active"));
+        tab.classList.add("gift-page-product-price-tb-btn-active");
+        const tag=tab.dataset.tag;
+        currentTag=tag;
+        if(cache.has(tag)){renderHTML(cache.get(tag));return;}
+        skeleton(8);
+        const html=await ensureTag(tag);
+        renderHTML(html);
+      });
+    });
+
+    initialLoad();
+  })();
+</script>
+
+
+
+{% schema %}
+{
+"name": "Gift Guide Ajax",
+"settings": [
+{ "type": "text", "id": "heading", "label": "Section Heading", "default": "Shop by Category" },
+{ "type": "text", "id": "sf_token", "label": "Storefront access token (optional for instant updates)" }
+],
+"blocks": [
+{
+"type": "tab",
+"name": "Tab",
+"settings": [
+{ "type": "text", "id": "tab_label", "label": "Tab Label", "default": "Dress" },
+{ "type": "text", "id": "tag", "label": "Tag (must match product tag)", "default": "gift_guide_dress" }
+]
+}
+],
+"presets": [
+{ "name": "Gift Guide Ajax", "category": "Products" }
+]
+}
+{% endschema %}
