@@ -1,0 +1,68 @@
+<style>
+
+.gift_guide_video_wrapper {
+  overflow: hidden;
+}
+
+.gift_guide_video_wrapper video {
+  width: 100%;
+  height: auto;
+  display: block;
+  clip-path: fill-box;
+}
+
+.gift_guide_video_wrapper .mobile-video {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .gift_guide_video_wrapper .desktop-video {
+    display: none !important;
+  }
+
+  .gift_guide_video_wrapper .mobile-video {
+    display: block;
+    object-fit: contain;
+    height:auto;
+  }
+}
+
+
+</style>
+  <div class="gift_guide_video_wrapper">
+    <video id="video" class="desktop-video" autoplay muted playsinline loop width="100%">
+      <source src="{{ section.settings.video_url }}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Mobile Video -->
+    <video class="mobile-video" autoplay muted playsinline loop width="100%">
+      <source src="{{ section.settings.mobile_video_url }}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  
+
+
+{% schema %}
+{
+  "name": "Custom Video",
+  "settings": [
+    {
+      "type": "url",
+      "id": "video_url",
+      "label": "Video URL"
+    },
+    {
+      "type": "url",
+      "id": "mobile_video_url",
+      "label": "Mobile Video URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Video"
+    }
+  ]
+}
+{% endschema %}
