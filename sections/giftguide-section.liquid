@@ -1,0 +1,67 @@
+{%- comment -%}
+Server side render for tag search. 8 products per page.
+Images use aspect-ratio via container and object-fit cover. No blur. No stretch.
+{%- endcomment -%}
+
+{% assign found = false %}
+
+{% paginate search.results by 8 %}
+  <div class="gift-page-product-price-prdct-contnr">
+    {% for item in search.results %}
+      {% if item.object_type == 'product' %}
+        {% assign found = true %}
+        <a href="{{ item.url }}" class="gift-page-product-price-prdct">
+          <div class="gift-page-product-price-prdct-image">
+            {%- comment -%} crisp images with srcset so they do not blur {%- endcomment -%}
+            <img
+              src="{{ item.featured_image | img_url: '600x' }}"
+              srcset="
+                {{ item.featured_image | img_url: '360x' }} 360w,
+                {{ item.featured_image | img_url: '540x' }} 540w,
+                {{ item.featured_image | img_url: '720x' }} 720w,
+                {{ item.featured_image | img_url: '900x' }} 900w
+              "
+              sizes="(max-width:768px) 50vw, 25vw"
+              loading="lazy"
+              decoding="async"
+              alt="{{ item.title | escape }}">
+          </div>
+          <div class="gift-page-product-price-prdct-details">
+            <p>{{ item.title }}</p>
+            <p>
+              {% if item.price_varies %}
+                {{ item.price_min | money }} - {{ item.price_max | money }}
+              {% else %}
+                {{ item.price | money }}
+              {% endif %}
+            </p>
+          </div>
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  {% if paginate.pages > 1 %}
+    <nav class="gift-pagination" style="text-align:center;margin-top:18px;">
+      {% if paginate.previous %}
+        <a href="{{ paginate.previous.url }}" data-gift-page="{{ paginate.current_page | minus: 1 }}">&laquo; Prev</a>
+      {% endif %}
+
+      {% for part in paginate.parts %}
+        {% if part.is_link %}
+          <a href="{{ part.url }}" data-gift-page="{{ part.title | plus: 0 }}">{{ part.title }}</a>
+        {% else %}
+          <strong class="is-current" data-gift-page="{{ paginate.current_page }}">{{ part.title }}</strong>
+        {% endif %}
+      {% endfor %}
+
+      {% if paginate.next %}
+        <a href="{{ paginate.next.url }}" data-gift-page="{{ paginate.current_page | plus: 1 }}">Next &raquo;</a>
+      {% endif %}
+    </nav>
+  {% endif %}
+{% endpaginate %}
+
+{% unless found %}
+  <p style="text-align:center;">No products found for this tag.</p>
+{% endunless %}
