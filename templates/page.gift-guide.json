@@ -103,11 +103,6 @@
         "heading": "Shop by Category",
         "sf_token": ""
       }
-    },
-    "lola_tabs_bar_2": {
-      "type": "lola-tabs-bar-2",
-      "disabled": true,
-      "settings": {}
     }
   },
   "order": [
@@ -115,7 +110,6 @@
     "main",
     "shogun-optimizer",
     "gift_guide_video_block",
-    "lola_tabs_bar",
-    "lola_tabs_bar_2"
+    "lola_tabs_bar"
   ]
 }
