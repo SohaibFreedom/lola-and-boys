@@ -2123,6 +2123,9 @@ html
   .c-cart__itemPrice {
     font-size: 12px !important;
   }
+    .desktop-slider {
+        display: none !important;
+    }
   .c-cart__itemQuantityBox {
     width: 100% !important;
     max-width: 100px !important;
