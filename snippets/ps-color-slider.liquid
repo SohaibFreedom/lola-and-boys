@@ -213,14 +213,17 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // 🟢 Initial build based on selected variant color
-  const colorIdx = productData.options.findIndex(o => /color|colour/i.test(o));
-  const firstVariant = productData.variants.find(v => v.id === {{ product.selected_or_first_available_variant.id }});
-  if (firstVariant && colorIdx > -1) {
-    filterSlidesByColor(firstVariant.options[colorIdx]);
-  } else {
-    rebuildSlides(allSlides);
-    initSwiper();
-  }
+ // ✅ Detect Color or Style variant automatically
+const variantOptionIdx = productData.options.findIndex(o => /color|colour|style/i.test(o));
+const firstVariant = productData.variants.find(v => v.id === {{ product.selected_or_first_available_variant.id }});
+
+if (firstVariant && variantOptionIdx > -1) {
+  filterSlidesByColor(firstVariant.options[variantOptionIdx]);
+} else {
+  rebuildSlides(allSlides);
+  initSwiper();
+}
+
 
   // 🟣 Swatch change listener (keeps reload logic separate)
   document.querySelectorAll(".swatch-element.color input[type='radio']").forEach(inp => {
@@ -230,16 +233,49 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 <!-- 🔁 Your original reload script — untouched -->
+<!-- 🔁 Your original reload script — updated to include all variant types -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  const swatches = document.querySelectorAll(".swatch-element.color input[type='radio'], .swatch-element.color label");
+  // 🎯 Sare swatch inputs + labels (Style, Color, Size, etc.)
+  const swatches = document.querySelectorAll(
+    ".swatch input[type='radio'], .swatch label"
+  );
+
   swatches.forEach((swatch) => {
     ["click", "touchstart", "change"].forEach((eventType) => {
       swatch.addEventListener(eventType, () => {
+        // 🔍 Related input nikaalo (agar label click hua ho)
+        let input = swatch.matches("input[type='radio']") ? swatch : null;
+
+        if (!input && swatch.tagName === "LABEL") {
+          const forId = swatch.getAttribute("for");
+          if (forId) {
+            input = document.getElementById(forId);
+          }
+        }
+
+        if (!input) return;
+
+        // 🏷️ Is swatch ka group wrapper & title (Style / Color / Size)
+        const wrapper = input.closest(".swatch");
+        const titleEl = wrapper ? wrapper.querySelector(".option_title") : null;
+        const title = titleEl ? titleEl.textContent.toLowerCase().trim() : "";
+
+        // ✅ Sirf Style + Color/Colour pe reload
+        const isStyleOrColor =
+          title.includes("style") ||
+          title.includes("color") ||
+          title.includes("colour");
+
+        if (!isStyleOrColor) {
+          // Size waghera yahan se exit ho jaye ga – NO reload
+          return;
+        }
+
         if (!swatch.classList.contains("swatch-reloading")) {
           swatch.classList.add("swatch-reloading");
           setTimeout(() => {
-            location.reload(); // 👈 stays exactly as before
+            location.reload(); // 👈 same reload
           }, 1000);
         }
       });
@@ -247,3 +283,5 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
+
+
