@@ -18,9 +18,11 @@
 }
 .cart button.swipe-btn-protection .cartfee {
  display:block;
+ color:#fff;
 }
 .cart button.swipe-btn-protection .protectfee {
  display:none;
+  color:#fff;
 }
 body.product .yotpo-bold-layout .yotpo-filters-container {
     margin: 0 !important;
