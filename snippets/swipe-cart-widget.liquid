@@ -635,6 +635,26 @@ async function renderCartBlock() {
         console.error("renderCartBlock fetch error:", err);
     }
 }
+// Helper to remove any existing Swipe protection before plain checkout:
+async function removeExistingProtectionIfAny() {
+  const cart = await getCartItem();
+  const items = cart.items || [];
+  const existing = items.find(
+    (itm) =>
+      itm.product_title === "Swipe" ||
+      itm.product_title === "Swipe Package Protection"
+  );
+  if (existing && existing.id) {
+        // FIX: Mute interceptors during update
+        skipSwipeMutation = true; 
+    await fetch(
+      "/cart/update.js",
+      prepParams("POST", { updates: { [existing.id]: 0 } })
+    );
+        // FIX: Unmute
+        skipSwipeMutation = false;
+  }
+}
 
 // Check and remove Swipe if no other products are in cart
 async function removeSwipeIfCartEmpty() {
@@ -677,22 +697,6 @@ async function removeSwipeIfLoopActive() {
 }
 
 
-// Helper to remove any existing Swipe protection before plain checkout:
-async function removeExistingProtectionIfAny() {
-    const cart = await getCartItem();
-    const items = cart.items || [];
-    const existing = items.find(
-        (itm) =>
-            itm.product_title === "Swipe" ||
-            itm.product_title === "Swipe Package Protection"
-    );
-    if (existing && existing.id) {
-        await fetch(
-            "/cart/update.js",
-            prepParams("POST", { updates: { [existing.id]: 0 } })
-        );
-    }
-}
 function showLoadingOnElement(el) {
     el.classList.add("loading-overlay");
     if (el.tagName.toLowerCase() === "input") {
@@ -825,22 +829,6 @@ const popupHTML = `<section class="swipe-popup">
 
 
 
-// Helper to remove any existing Swipe protection before plain checkout:
-async function removeExistingProtectionIfAny() {
-    const cart = await getCartItem();
-    const items = cart.items || [];
-    const existing = items.find(
-        (itm) =>
-            itm.product_title === "Swipe" ||
-            itm.product_title === "Swipe Package Protection"
-    );
-    if (existing && existing.id) {
-        await fetch(
-            "/cart/update.js",
-            prepParams("POST", { updates: { [existing.id]: 0 } })
-        );
-    }
-}
 
 
 
