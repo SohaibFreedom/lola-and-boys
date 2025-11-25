@@ -1009,7 +1009,10 @@ showLoadingOnElement(link);
 });
 
 
- btn.addEventListener("click", async e => {
+            // override button: add protection then checkout
+
+
+btn.addEventListener("click", async e => {
   e.preventDefault();
   showLoadingOnElement(btn);
   skipSwipeMutation = true;
@@ -1026,7 +1029,6 @@ showLoadingOnElement(link);
       alert("Swipe Protection cannot be purchased alone. It has been removed.");
       return; // stop redirect
     }
-    await verifySwipeBeforeCheckout();
 
     await applyProtectionVariant();
     await new Promise(res => setTimeout(res, 500));
@@ -1038,19 +1040,11 @@ showLoadingOnElement(link);
   }
 });
 
-
-
-
+        });
     });
-  });
-
-  // Crucial: After potentially adding new "pw-learn-more" elements, re-attach popup listeners.
-  attachPopupListeners();
+    // Crucial: After potentially adding new "pw-learn-more" elements, re-attach popup listeners.
+    attachPopupListeners();
 }
-
-
-
-
 async function initSwipeOnceCartReady() {
   try {
     // ✅ Wait until Shopify's cart endpoint returns valid data
@@ -1071,98 +1065,74 @@ async function initSwipeOnceCartReady() {
     console.error("Swipe init error:", err);
   }
 }
-/**
- * Observes the DOM for changes and calls handle() to re-check the cart UI.
- */
-function initMutationObserver() {
-    const observerTarget = document.body;
-    
-    // MutationObserver configuration: watch for new nodes and attribute changes on those nodes
-    const observerConfig = { 
-        childList: true, 
-        subtree: true,
-        attributes: true,
-        attributeFilter: ['style', 'class'] // Only observe relevant attribute changes if needed
-    };
-
-    const observerCallback = (mutationsList, observer) => {
-        let shouldHandle = false;
-        
-        // Define the target selectors which, if added or changed, warrant a re-check
-        const targetSelectors = [
-            'a[href$="/checkout"]',
-            'button[name="checkout"]',
-            'input[name="checkout"]',
-            '.cart__checkout',
-            '.buy-now',
-            '.rebuy-cart__checkout-button',
-            '.buy-it-now',
-            '#rebuy-cart', // Rebuy cart container
-            '.cart-drawer' // Common cart drawer/flyout class
-        ];
-
-        for (const mutation of mutationsList) {
-            // Check for newly added nodes that match the selectors
-            if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-                for (const selector of targetSelectors) {
-                    // Check if any added node or its descendants match a target selector
-                    if (mutation.target.matches(selector) || mutation.target.querySelector(selector) || 
-                        Array.from(mutation.addedNodes).some(node => 
-                            node.nodeType === 1 && (node.matches(selector) || node.querySelector(selector))
-                        )
-                    ) {
-                        shouldHandle = true;
-                        break;
-                    }
-                }
-            } 
-            // Check for attribute changes on relevant containers
-            else if (mutation.type === 'attributes') {
-                const targetClasses = ['.rebuy-cart__flyout', '.cart-drawer', '#rebuy-cart'];
-                if (targetClasses.some(cls => mutation.target.matches(cls))) {
-                    shouldHandle = true;
-                }
-            }
-
-            if (shouldHandle) break;
-        }
-
-        if (shouldHandle) {
-            handle();
-        }
-    };
-
-    // Create and start the observer
-    const observer = new MutationObserver(observerCallback);
-    observer.observe(observerTarget, observerConfig);
-    console.log("MutationObserver initialized to watch for checkout button changes.");
-
-    // Initial check (equivalent to old initSwipeOnceCartReady call)
-    handle(); 
-}
-
-
-
-
 
 
 window.addEventListener("pageshow", () => {
- if (typeof LoopOnstore !== "undefined" && LoopOnstore.isActive()) {
- const rebuyButtons = document.querySelectorAll(
- '.rebuy-button.block, .rebuy-cart__flyout-empty-cart a.block'
- );
- rebuyButtons.forEach(button => {
- button.style.display = 'block';
- button.style.setProperty('display', 'block', 'important');
- });
- } else {
-     // FIX: Start the observer and initial check instead of direct calls
- initMutationObserver(); 
- injectGlobalPopup();
+  if (typeof LoopOnstore !== "undefined" && LoopOnstore.isActive()) {
+    const rebuyButtons = document.querySelectorAll(
+      '.rebuy-button.block, .rebuy-cart__flyout-empty-cart a.block'
+    );
+    rebuyButtons.forEach(button => {
+      button.style.display = 'block';
+      button.style.setProperty('display', 'block', 'important');
+    });
+    return; // ✅ Stop here if LoopOnstore active
+  }
 
+  // ✅ Initialize Swipe immediately for visible carts
+initSwipeOnceCartReady();
 
- }
+  // ✅ Function to wait for an element before attaching observer
+  function waitForElement(selector, callback, interval = 300, timeout = 10000) {
+    const start = Date.now();
+    const timer = setInterval(() => {
+      const el = document.querySelector(selector);
+      if (el) {
+        clearInterval(timer);
+        callback(el);
+      } else if (Date.now() - start > timeout) {
+        clearInterval(timer);
+        console.warn("⏰ Timeout waiting for:", selector);
+      }
+    }, interval);
+  }
+
+  // ✅ Observe when element exists
+  const targetSelectors = [
+    'cart-drawer-component',
+    '[data-template="cart"]',
+    '.cart-section .cart-form__items',
+    '#rebuy-cart .rebuy-cart__flyout-subtotal',
+    '#site-cart-sidebar',
+    'cart-items'
+  ];
+
+  targetSelectors.forEach(selector => {
+    waitForElement(selector, (target) => {
+      const observer = new MutationObserver(() => {
+        if (window.skipSwipeMutation) {
+          console.log("🟡 Mutation skipped (Swipe triggered)");
+          window.skipSwipeMutation = false;
+          return;
+        }
+
+        // 🔁 Re-initialize Swipe when cart changes
+    initSwipeOnceCartReady();
+      });
+
+      observer.observe(target, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        characterData: true
+      });
+
+      console.log("✅ Swipe observer attached after detection:", selector);
+    });
+  });
 });
+
+
 
  
 
