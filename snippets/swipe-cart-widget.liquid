@@ -1009,10 +1009,7 @@ showLoadingOnElement(link);
 });
 
 
-            // override button: add protection then checkout
-
-
-btn.addEventListener("click", async e => {
+ btn.addEventListener("click", async e => {
   e.preventDefault();
   showLoadingOnElement(btn);
   skipSwipeMutation = true;
@@ -1040,11 +1037,19 @@ btn.addEventListener("click", async e => {
   }
 });
 
-        });
+
+
+
     });
-    // Crucial: After potentially adding new "pw-learn-more" elements, re-attach popup listeners.
-    attachPopupListeners();
+  });
+
+  // Crucial: After potentially adding new "pw-learn-more" elements, re-attach popup listeners.
+  attachPopupListeners();
 }
+
+
+
+
 async function initSwipeOnceCartReady() {
   try {
     // ✅ Wait until Shopify's cart endpoint returns valid data
@@ -1065,6 +1070,61 @@ async function initSwipeOnceCartReady() {
     console.error("Swipe init error:", err);
   }
 }
+let isHandling = false;
+const handle = (() => {
+  let t;
+  return () => {
+    clearTimeout(t);
+    t = setTimeout(async () => {
+      if (isHandling) return;
+      isHandling = true;
+      try { 
+        await initSwipeOnceCartReady(); 
+        injectGlobalPopup();
+      } finally {
+        setTimeout(() => (isHandling = false), 70);
+      }
+    }, 120);
+  };
+})();
+
+// ✅ Intercept Fetch API
+(function() {
+  const _fetch = window.fetch;
+  window.fetch = async (...args) => {
+    const url = String(args[0]);
+    const isCartCall = url.includes('/cart') || url.includes('/cart.js');
+    
+    const res = await _fetch(...args);
+    
+    if (isCartCall) {
+      // cart updated → refresh swipe
+      handle();
+    }
+
+    return res;
+  };
+})();
+
+// ✅ Intercept XHR (some themes use this)
+(function() {
+  const open = XMLHttpRequest.prototype.open;
+  XMLHttpRequest.prototype.open = function(method, url) {
+    this._isCartCall = url.includes('/cart') || url.includes('/cart.js');
+    return open.apply(this, arguments);
+  };
+  const send = XMLHttpRequest.prototype.send;
+  XMLHttpRequest.prototype.send = function() {
+    this.addEventListener('load', () => {
+      if (this._isCartCall) handle();
+    });
+    return send.apply(this, arguments);
+  };
+})();
+
+
+
+
 
 
 window.addEventListener("pageshow", () => {
@@ -1076,63 +1136,13 @@ window.addEventListener("pageshow", () => {
       button.style.display = 'block';
       button.style.setProperty('display', 'block', 'important');
     });
-    return; // ✅ Stop here if LoopOnstore active
-  }
-
-  // ✅ Initialize Swipe immediately for visible carts
-initSwipeOnceCartReady();
-
-  // ✅ Function to wait for an element before attaching observer
-  function waitForElement(selector, callback, interval = 300, timeout = 10000) {
-    const start = Date.now();
-    const timer = setInterval(() => {
-      const el = document.querySelector(selector);
-      if (el) {
-        clearInterval(timer);
-        callback(el);
-      } else if (Date.now() - start > timeout) {
-        clearInterval(timer);
-        console.warn("⏰ Timeout waiting for:", selector);
-      }
-    }, interval);
-  }
-
-  // ✅ Observe when element exists
-  const targetSelectors = [
-    'cart-drawer-component',
-    '[data-template="cart"]',
-    '.cart-section .cart-form__items',
-    '#rebuy-cart [data-rebuy-component="cart-items"]',
-    '#site-cart-sidebar',
-    'cart-items'
-  ];
-
-  targetSelectors.forEach(selector => {
-    waitForElement(selector, (target) => {
-      const observer = new MutationObserver(() => {
-        if (window.skipSwipeMutation) {
-          console.log("🟡 Mutation skipped (Swipe triggered)");
-          window.skipSwipeMutation = false;
-          return;
-        }
-
-        // 🔁 Re-initialize Swipe when cart changes
+  } else {
     initSwipeOnceCartReady();
-      });
+    injectGlobalPopup();
 
-      observer.observe(target, {
-        childList: true,
-        subtree: true,
-        attributes: true,
-        characterData: true
-      });
 
-      console.log("✅ Swipe observer attached after detection:", selector);
-    });
-  });
+  }
 });
-
-
 
  
 
