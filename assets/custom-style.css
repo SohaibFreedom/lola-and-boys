@@ -16,17 +16,11 @@
 .footer .footer_menu ul li a[href="/pages/lookbooks"] {
   display: none !important;
 }
-.cart button.swipe-btn-protection::after {
-    content: "Checkout +";
-    font-size: 16px !important;
-    left: 0px;
-    right: 0px;
-    padding: 0px !important;
-    position: absolute;
+.cart button.swipe-btn-protection .cartfee {
+ display:block;
 }
-.cart button.swipe-btn-protection {
-    font-size: 0 !important;
-    position: relative;
+.cart button.swipe-btn-protection .protectfee {
+ display:none;
 }
 body.product .yotpo-bold-layout .yotpo-filters-container {
     margin: 0 !important;
