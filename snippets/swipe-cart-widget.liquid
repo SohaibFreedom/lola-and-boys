@@ -635,26 +635,6 @@ async function renderCartBlock() {
         console.error("renderCartBlock fetch error:", err);
     }
 }
-// Helper to remove any existing Swipe protection before plain checkout:
-async function removeExistingProtectionIfAny() {
-  const cart = await getCartItem();
-  const items = cart.items || [];
-  const existing = items.find(
-    (itm) =>
-      itm.product_title === "Swipe" ||
-      itm.product_title === "Swipe Package Protection"
-  );
-  if (existing && existing.id) {
-        // FIX: Mute interceptors during update
-        skipSwipeMutation = true; 
-    await fetch(
-      "/cart/update.js",
-      prepParams("POST", { updates: { [existing.id]: 0 } })
-    );
-        // FIX: Unmute
-        skipSwipeMutation = false;
-  }
-}
 
 // Check and remove Swipe if no other products are in cart
 async function removeSwipeIfCartEmpty() {
@@ -697,6 +677,22 @@ async function removeSwipeIfLoopActive() {
 }
 
 
+// Helper to remove any existing Swipe protection before plain checkout:
+async function removeExistingProtectionIfAny() {
+    const cart = await getCartItem();
+    const items = cart.items || [];
+    const existing = items.find(
+        (itm) =>
+            itm.product_title === "Swipe" ||
+            itm.product_title === "Swipe Package Protection"
+    );
+    if (existing && existing.id) {
+        await fetch(
+            "/cart/update.js",
+            prepParams("POST", { updates: { [existing.id]: 0 } })
+        );
+    }
+}
 function showLoadingOnElement(el) {
     el.classList.add("loading-overlay");
     if (el.tagName.toLowerCase() === "input") {
@@ -829,6 +825,22 @@ const popupHTML = `<section class="swipe-popup">
 
 
 
+// Helper to remove any existing Swipe protection before plain checkout:
+async function removeExistingProtectionIfAny() {
+    const cart = await getCartItem();
+    const items = cart.items || [];
+    const existing = items.find(
+        (itm) =>
+            itm.product_title === "Swipe" ||
+            itm.product_title === "Swipe Package Protection"
+    );
+    if (existing && existing.id) {
+        await fetch(
+            "/cart/update.js",
+            prepParams("POST", { updates: { [existing.id]: 0 } })
+        );
+    }
+}
 
 
 
@@ -1059,57 +1071,75 @@ async function initSwipeOnceCartReady() {
     console.error("Swipe init error:", err);
   }
 }
-let isHandling = false;
-const handle = (() => {
-  let t;
-  return () => {
-    clearTimeout(t);
-    t = setTimeout(async () => {
-      if (isHandling) return;
-      isHandling = true;
-      try { 
-        await initSwipeOnceCartReady(); 
-        injectGlobalPopup();
-      } finally {
-        setTimeout(() => (isHandling = false), 70);
-      }
-    }, 120);
-  };
-})();
-
-// ✅ Intercept Fetch API
-(function() {
-  const _fetch = window.fetch;
-  window.fetch = async (...args) => {
-    const url = String(args[0]);
-    const isCartCall = url.includes('/cart') || url.includes('/cart.js');
+/**
+ * Observes the DOM for changes and calls handle() to re-check the cart UI.
+ */
+function initMutationObserver() {
+    const observerTarget = document.body;
     
-    const res = await _fetch(...args);
-    
-    if (isCartCall) {
-      // cart updated → refresh swipe
-      handle();
-    }
+    // MutationObserver configuration: watch for new nodes and attribute changes on those nodes
+    const observerConfig = { 
+        childList: true, 
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['style', 'class'] // Only observe relevant attribute changes if needed
+    };
 
-    return res;
-  };
-})();
+    const observerCallback = (mutationsList, observer) => {
+        let shouldHandle = false;
+        
+        // Define the target selectors which, if added or changed, warrant a re-check
+        const targetSelectors = [
+            'a[href$="/checkout"]',
+            'button[name="checkout"]',
+            'input[name="checkout"]',
+            '.cart__checkout',
+            '.buy-now',
+            '.rebuy-cart__checkout-button',
+            '.buy-it-now',
+            '#rebuy-cart', // Rebuy cart container
+            '.cart-drawer' // Common cart drawer/flyout class
+        ];
 
-// ✅ Intercept XHR (some themes use this)
-(function() {
-  const open = XMLHttpRequest.prototype.open;
-  XMLHttpRequest.prototype.open = function(method, url) {
-    this._isCartCall = url.includes('/cart') || url.includes('/cart.js');
-    return open.apply(this, arguments);
-  };
-  const send = XMLHttpRequest.prototype.send;
-  XMLHttpRequest.prototype.send = function() {
-    this.addEventListener('load', () => {
-      if (this._isCartCall) handle();
-    });
-    return send.apply(this, arguments);
-  };
-})();
+        for (const mutation of mutationsList) {
+            // Check for newly added nodes that match the selectors
+            if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                for (const selector of targetSelectors) {
+                    // Check if any added node or its descendants match a target selector
+                    if (mutation.target.matches(selector) || mutation.target.querySelector(selector) || 
+                        Array.from(mutation.addedNodes).some(node => 
+                            node.nodeType === 1 && (node.matches(selector) || node.querySelector(selector))
+                        )
+                    ) {
+                        shouldHandle = true;
+                        break;
+                    }
+                }
+            } 
+            // Check for attribute changes on relevant containers
+            else if (mutation.type === 'attributes') {
+                const targetClasses = ['.rebuy-cart__flyout', '.cart-drawer', '#rebuy-cart'];
+                if (targetClasses.some(cls => mutation.target.matches(cls))) {
+                    shouldHandle = true;
+                }
+            }
+
+            if (shouldHandle) break;
+        }
+
+        if (shouldHandle) {
+            handle();
+        }
+    };
+
+    // Create and start the observer
+    const observer = new MutationObserver(observerCallback);
+    observer.observe(observerTarget, observerConfig);
+    console.log("MutationObserver initialized to watch for checkout button changes.");
+
+    // Initial check (equivalent to old initSwipeOnceCartReady call)
+    handle(); 
+}
 
 
 
@@ -1117,20 +1147,21 @@ const handle = (() => {
 
 
 window.addEventListener("pageshow", () => {
-  if (typeof LoopOnstore !== "undefined" && LoopOnstore.isActive()) {
-    const rebuyButtons = document.querySelectorAll(
-      '.rebuy-button.block, .rebuy-cart__flyout-empty-cart a.block'
-    );
-    rebuyButtons.forEach(button => {
-      button.style.display = 'block';
-      button.style.setProperty('display', 'block', 'important');
-    });
-  } else {
-    initSwipeOnceCartReady();
-    injectGlobalPopup();
+  if (typeof LoopOnstore !== "undefined" && LoopOnstore.isActive()) {
+    const rebuyButtons = document.querySelectorAll(
+      '.rebuy-button.block, .rebuy-cart__flyout-empty-cart a.block'
+    );
+    rebuyButtons.forEach(button => {
+      button.style.display = 'block';
+      button.style.setProperty('display', 'block', 'important');
+    });
+  } else {
+     // FIX: Start the observer and initial check instead of direct calls
+    initMutationObserver(); 
+    injectGlobalPopup();
 
 
-  }
+  }
 });
 
  
