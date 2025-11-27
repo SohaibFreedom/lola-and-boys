@@ -5633,6 +5633,11 @@
         "type": "shopify://apps/meta-business-ai/blocks/mwp-embed/a4b3e14c-421b-4c0e-977a-2558fbce5052",
         "disabled": false,
         "settings": {}
+      },
+      "14006327314272015586": {
+        "type": "shopify://apps/swipe/blocks/post_protect/c8ef0120-cac7-4dcf-9bf1-52b5c97da31d",
+        "disabled": false,
+        "settings": {}
       }
     }
   }
