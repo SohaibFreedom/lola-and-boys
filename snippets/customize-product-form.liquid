@@ -304,6 +304,24 @@ function computeObjectFitRect(nw, nh, boxW, boxH, fit='fill', pos={x:0.5,y:0.5})
 }
 
 // Compose one side: base + patches (respects object-fit & content-box)
+function getRotationDegrees(el) {
+  const style = window.getComputedStyle(el);
+  const transform = style.transform || style.webkitTransform;
+
+  // element has NO rotation
+  if (!transform || transform === 'none') return 0;
+
+  const matrix = transform.match(/matrix\(([^)]+)\)/);
+  if (!matrix) return 0;
+
+  const values = matrix[1].split(',');
+  const a = parseFloat(values[0]); // cos
+  const b = parseFloat(values[1]); // sin
+
+  let angle = Math.atan2(b, a) * (180 / Math.PI);
+  return Math.round(angle);
+}
+
 async function composeArea({
   areaEl,
   baseImgSelector,
@@ -318,12 +336,12 @@ async function composeArea({
   // load base at natural resolution
   const baseImg = await loadImageCORS(baseEl.currentSrc || baseEl.src);
 
-  // DOM rendered size of base
+  // DOM rendered size
   const baseRect = baseEl.getBoundingClientRect();
   const baseRenderedW = baseRect.width  || baseImg.naturalWidth;
   const baseRenderedH = baseRect.height || baseImg.naturalHeight;
 
-  // DOM→natural scale
+  // DOM → natural scale
   const scaleX = baseImg.naturalWidth  / baseRenderedW;
   const scaleY = baseImg.naturalHeight / baseRenderedH;
 
@@ -332,30 +350,33 @@ async function composeArea({
   canvas.width  = baseImg.naturalWidth;
   canvas.height = baseImg.naturalHeight;
   const ctx = canvas.getContext('2d', { alpha: false });
-  ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
 
-  // background + base
+  // background + base product
   ctx.fillStyle = background;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(baseImg, 0, 0, canvas.width, canvas.height);
 
-  // draw patches
+  // draw patches/alphabet overlays
   const patchWrappers = areaEl.querySelectorAll(patchSelector);
+
   for (const wrap of patchWrappers) {
     const imgEl = wrap.querySelector('img.patch-image');
     if (!imgEl) continue;
 
-    // wrapper border-box rect relative to base
+    // wrapper rect relative to base
     const a = wrap.getBoundingClientRect();
     const b = baseEl.getBoundingClientRect();
     let x = a.left - b.left, y = a.top - b.top, w = a.width, h = a.height;
 
-    // convert to CONTENT box (remove border + padding to match object-fit spec)
+    // convert to content box (remove padding/border)
     const ws = getComputedStyle(wrap);
     const bl = num(ws.borderLeftWidth), br = num(ws.borderRightWidth),
           bt = num(ws.borderTopWidth),  bb = num(ws.borderBottomWidth),
           pl = num(ws.paddingLeft),     pr = num(ws.paddingRight),
           pt = num(ws.paddingTop),      pb = num(ws.paddingBottom);
+
     const contentX = x + bl + pl;
     const contentY = y + bt + pt;
     const contentW = Math.max(0, w - bl - br - pl - pr);
@@ -371,7 +392,13 @@ async function composeArea({
       const { drawW, drawH, offsetX, offsetY } =
         computeObjectFitRect(img.naturalWidth, img.naturalHeight, contentW, contentH, fit, pos);
 
-      // clip to the CONTENT box
+      // natural px target
+      const dx = Math.round((contentX + offsetX) * scaleX);
+      const dy = Math.round((contentY + offsetY) * scaleY);
+      const dw = Math.floor(drawW * scaleX);
+      const dh = Math.floor(drawH * scaleY);
+
+      // clip area (content box only)
       const clipX = Math.floor(contentX * scaleX);
       const clipY = Math.floor(contentY * scaleY);
       const clipW = Math.floor(contentW * scaleX);
@@ -382,26 +409,34 @@ async function composeArea({
       ctx.rect(clipX, clipY, clipW, clipH);
       ctx.clip();
 
-      // destination in natural px (use floor to avoid 1-px overshoot)
-      const dx = Math.round((contentX + offsetX) * scaleX);
-      const dy = Math.round((contentY + offsetY) * scaleY);
-      const dw = Math.floor(drawW * scaleX);
-      const dh = Math.floor(drawH * scaleY);
+      // ----------------------------------
+      // ✔ ROTATION SUPPORT (Option A)
+      // ----------------------------------
+      const deg = getRotationDegrees(wrap);  // returns 0 if no rotation
+      const rad = deg * Math.PI / 180;
 
-      ctx.drawImage(img, dx, dy, dw, dh);
+      const cx = dx + dw / 2;
+      const cy = dy + dh / 2;
+
+      ctx.translate(cx, cy);
+      ctx.rotate(rad);
+
+      ctx.drawImage(img, -dw / 2, -dh / 2, dw, dh);
       ctx.restore();
+
     } catch (e) {
       console.warn('Patch failed to load (skipped):', e, wrap);
     }
   }
 
-  // export + preview
-  const blob = await new Promise(res => canvas.toBlob(b => res(b), 'image/jpeg', jpegQuality));
+  // export composite
+  const blob = await new Promise(res => canvas.toBlob(b => res(b), "image/jpeg", jpegQuality));
   const objectURL = URL.createObjectURL(blob);
-  console.log(`[COMPOSITE:${areaEl.id}] preview:`, { w: canvas.width, h: canvas.height, url: objectURL });
+  console.log(`[COMPOSITE:${areaEl.id}]`, objectURL);
 
   return { canvas, blob, objectURL };
 }
+
 
 // combine front+back vertically (back optional)
 async function composeFrontBackAndExport({
