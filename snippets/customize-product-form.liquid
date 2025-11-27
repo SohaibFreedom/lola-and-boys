@@ -325,114 +325,143 @@ function getRotationDegrees(el) {
 async function composeArea({
   areaEl,
   baseImgSelector,
-  patchSelector = '.patch-',
-  background = '#ffffff',
+  patchSelector = ".patch-",
+  background = "#ffffff",
   jpegQuality = 0.85
 }) {
-  if (!areaEl) throw new Error('composeArea: areaEl missing');
-  const baseEl = areaEl.querySelector(baseImgSelector);
-  if (!baseEl) throw new Error(`Base image not found by selector ${baseImgSelector}`);
+  if (!areaEl) throw new Error("composeArea: areaEl missing");
 
-  // load base at natural resolution
+  const baseEl = areaEl.querySelector(baseImgSelector);
+  if (!baseEl) throw new Error(`Base image not found: ${baseImgSelector}`);
+
+  // ---- LOAD BASE IMAGE ----
   const baseImg = await loadImageCORS(baseEl.currentSrc || baseEl.src);
 
-  // DOM rendered size
   const baseRect = baseEl.getBoundingClientRect();
-  const baseRenderedW = baseRect.width  || baseImg.naturalWidth;
-  const baseRenderedH = baseRect.height || baseImg.naturalHeight;
+  const renderedW = baseRect.width || baseImg.naturalWidth;
+  const renderedH = baseRect.height || baseImg.naturalHeight;
 
-  // DOM → natural scale
-  const scaleX = baseImg.naturalWidth  / baseRenderedW;
-  const scaleY = baseImg.naturalHeight / baseRenderedH;
+  const scaleX = baseImg.naturalWidth / renderedW;
+  const scaleY = baseImg.naturalHeight / renderedH;
 
-  // canvas at natural resolution
-  const canvas = document.createElement('canvas');
-  canvas.width  = baseImg.naturalWidth;
+  // ---- SETUP CANVAS ----
+  const canvas = document.createElement("canvas");
+  canvas.width = baseImg.naturalWidth;
   canvas.height = baseImg.naturalHeight;
-  const ctx = canvas.getContext('2d', { alpha: false });
-  ctx.imageSmoothingEnabled = true;
-  ctx.imageSmoothingQuality = 'high';
 
-  // background + base product
+  const ctx = canvas.getContext("2d", { alpha: false });
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = "high";
+
+  // Background + base
   ctx.fillStyle = background;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(baseImg, 0, 0, canvas.width, canvas.height);
 
-  // draw patches/alphabet overlays
-  const patchWrappers = areaEl.querySelectorAll(patchSelector);
+  // ---- PATCHES ----
+  const patches = areaEl.querySelectorAll(patchSelector);
 
-  for (const wrap of patchWrappers) {
-    const imgEl = wrap.querySelector('img.patch-image');
+  for (const wrap of patches) {
+    const imgEl = wrap.querySelector("img.patch-image");
     if (!imgEl) continue;
 
-    // wrapper rect relative to base
-    const a = wrap.getBoundingClientRect();
-    const b = baseEl.getBoundingClientRect();
-    let x = a.left - b.left, y = a.top - b.top, w = a.width, h = a.height;
+    const wrapRect = wrap.getBoundingClientRect();
+    const baseRect2 = baseEl.getBoundingClientRect();
 
-    // convert to content box (remove padding/border)
-    const ws = getComputedStyle(wrap);
-    const bl = num(ws.borderLeftWidth), br = num(ws.borderRightWidth),
-          bt = num(ws.borderTopWidth),  bb = num(ws.borderBottomWidth),
-          pl = num(ws.paddingLeft),     pr = num(ws.paddingRight),
-          pt = num(ws.paddingTop),      pb = num(ws.paddingBottom);
+    // DOM relative → natural px
+    let x = wrapRect.left - baseRect2.left;
+    let y = wrapRect.top - baseRect2.top;
+    const w = wrapRect.width;
+    const h = wrapRect.height;
+
+    const style = getComputedStyle(wrap);
+    const bl = num(style.borderLeftWidth),
+      br = num(style.borderRightWidth),
+      bt = num(style.borderTopWidth),
+      bb = num(style.borderBottomWidth),
+      pl = num(style.paddingLeft),
+      pr = num(style.paddingRight),
+      pt = num(style.paddingTop),
+      pb = num(style.paddingBottom);
 
     const contentX = x + bl + pl;
     const contentY = y + bt + pt;
     const contentW = Math.max(0, w - bl - br - pl - pr);
     const contentH = Math.max(0, h - bt - bb - pt - pb);
+
     if (contentW <= 0 || contentH <= 0) continue;
 
+    // Load image
+    let img;
     try {
-      const img = await loadImageCORS(imgEl.currentSrc || imgEl.src);
-      const cs = getComputedStyle(imgEl);
-      const fit = (cs.objectFit || 'fill').toLowerCase();
-      const pos = parseObjectPosition(cs.objectPosition || '50% 50%');
-
-      const { drawW, drawH, offsetX, offsetY } =
-        computeObjectFitRect(img.naturalWidth, img.naturalHeight, contentW, contentH, fit, pos);
-
-      // natural px target
-      const dx = Math.round((contentX + offsetX) * scaleX);
-      const dy = Math.round((contentY + offsetY) * scaleY);
-      const dw = Math.floor(drawW * scaleX);
-      const dh = Math.floor(drawH * scaleY);
-
-      // clip area (content box only)
-      const clipX = Math.floor(contentX * scaleX);
-      const clipY = Math.floor(contentY * scaleY);
-      const clipW = Math.floor(contentW * scaleX);
-      const clipH = Math.floor(contentH * scaleY);
-
-      ctx.save();
-      ctx.beginPath();
-      ctx.rect(clipX, clipY, clipW, clipH);
-      ctx.clip();
-
-      // ----------------------------------
-      // ✔ ROTATION SUPPORT (Option A)
-      // ----------------------------------
-      const deg = getRotationDegrees(wrap);  // returns 0 if no rotation
-      const rad = deg * Math.PI / 180;
-
-      const cx = dx + dw / 2;
-      const cy = dy + dh / 2;
-
-      ctx.translate(cx, cy);
-      ctx.rotate(rad);
-
-      ctx.drawImage(img, -dw / 2, -dh / 2, dw, dh);
-      ctx.restore();
-
+      img = await loadImageCORS(imgEl.currentSrc || imgEl.src);
     } catch (e) {
-      console.warn('Patch failed to load (skipped):', e, wrap);
+      console.warn("Patch load failed:", e);
+      continue;
     }
+
+    const cs = getComputedStyle(imgEl);
+    const fit = (cs.objectFit || "fill").toLowerCase();
+    const pos = parseObjectPosition(cs.objectPosition || "50% 50%");
+
+    const { drawW, drawH, offsetX, offsetY } = computeObjectFitRect(
+      img.naturalWidth,
+      img.naturalHeight,
+      contentW,
+      contentH,
+      fit,
+      pos
+    );
+
+    // natural px rect
+    const dx = Math.round((contentX + offsetX) * scaleX);
+    const dy = Math.round((contentY + offsetY) * scaleY);
+    const dw = Math.round(drawW * scaleX);
+    const dh = Math.round(drawH * scaleY);
+
+    const clipX = Math.round(contentX * scaleX);
+    const clipY = Math.round(contentY * scaleY);
+    const clipW = Math.round(contentW * scaleX);
+    const clipH = Math.round(contentH * scaleY);
+
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(clipX, clipY, clipW, clipH);
+    ctx.clip();
+
+    // ========== ROTATION FIX (No Size Enlargement) ==========
+    const deg = getRotationDegrees(wrap);
+    const rad = deg * Math.PI / 180;
+
+    // Compute rotated bounding sizes
+    const rotatedW = Math.abs(dw * Math.cos(rad)) + Math.abs(dh * Math.sin(rad));
+    const rotatedH = Math.abs(dw * Math.sin(rad)) + Math.abs(dh * Math.cos(rad));
+
+    // Compensation scale (prevent patch from becoming bigger)
+    const scaleFix = Math.min(dw / rotatedW, dh / rotatedH);
+
+    const cx = dx + dw / 2;
+    const cy = dy + dh / 2;
+
+    ctx.translate(cx, cy);
+    ctx.rotate(rad);
+    ctx.scale(scaleFix, scaleFix);
+
+    ctx.drawImage(img, -dw / 2, -dh / 2, dw, dh);
+
+    ctx.restore();
   }
 
-  // export composite
-  const blob = await new Promise(res => canvas.toBlob(b => res(b), "image/jpeg", jpegQuality));
-  const objectURL = URL.createObjectURL(blob);
-  console.log(`[COMPOSITE:${areaEl.id}]`, objectURL);
+  // ---- EXPORT CANVAS SAFELY (Shopify-proof) ----
+  let blob, objectURL;
+  try {
+    blob = await new Promise(res =>
+      canvas.toBlob(b => res(b), "image/jpeg", jpegQuality)
+    );
+    objectURL = URL.createObjectURL(blob);
+  } catch (err) {
+    console.warn("Canvas export blocked by Shopify/CSP:", err);
+  }
 
   return { canvas, blob, objectURL };
 }
