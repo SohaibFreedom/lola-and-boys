@@ -12,1001 +12,1038 @@
   assign cartData = cart.items
 %}
 
-
 {{ 'cart-custom.css' | asset_url | stylesheet_tag: preload: true }}
 
-
-
 <a name="pagecontent" id="pagecontent"></a>
-<div id="currency-format" data-money-format="{{ shop.money_format }}"></div>
-<div class="main-container cart-temp-header">
-  <div class="row">
-    <div class="wi-100">
-      <div class="page-title">
-        <h1>{{ 'cart.general.title' | t }} ({{ cartCount }})</h1>
-      </div>
-    </div>
-  </div>
-</div>
 
-{% if cartCount == 0 %}
-  <div class="sixteen columns">
-    <div class="section clearfix">
-      <div class="six columns offset-by-five">
-        <p class="quote">{{ 'cart.general.continue_browsing_html' | t }}</p>
-
-        <a
-          href="{% if cart.items.first.product.collections != blank %}{{ cart.items.first.product.collections.last.url }}{% else %}/collections/all{% endif %}"
-          class="action_button continue-button add_to_cart"
-        >
-          {{- 'cart.general.continue_shopping_link_html' | t -}}
-        </a>
-      </div>
-      <br class="clear">
-    </div>
-  </div>
-{% else %}
-  <div class="main-container">
+<div id="CartContainer">
+  <div id="currency-format" data-money-format="{{ shop.money_format }}"></div>
+  <div class="main-container cart-temp-header">
     <div class="row">
       <div class="wi-100">
-        <form action="/cart" method="post" id="cart_form">
-          <div class="section clearfix cart-section-row">
-            <div class="ten columns cart-section-left">
-              <div class="custom-patch-cart-data"></div>
-              {% assign total_saving = 0 %}
-              {% for item in cart.items %}
-                {% if item.properties._Timestamp %}
-                  {% continue %}
-                {% endif %}
-                {% if item.vendor == 'SavedBy' %}
-                  {% continue %}
-                {% endif %}
-                {% include 'wh_calculate_discount' with item.product %}
-                {% include 'wh_variant' with item.variant %}
-                {% assign wh_line_price = wh_v_price | minus: 0 | times: item.quantity %}
+        <div class="page-title">
+          <h1>{{ 'cart.general.title' | t }} ({{ cartCount }})</h1>
+        </div>
+      </div>
+    </div>
+  </div>
 
-                {% if wh_v_compare_at_price > wh_v_price %}
-                  {% assign saving = wh_v_compare_at_price | minus: wh_line_price %}
-                  {% assign total_saving = saving | plus: total_saving %}
-                {% endif %}
+  {% if cartCount == 0 %}
+    <div class="sixteen columns">
+      <div class="section clearfix">
+        <div class="six columns offset-by-five">
+          <p class="quote">{{ 'cart.general.continue_browsing_html' | t }}</p>
 
-                <div class="section clearfix cart_content_row" data-id="{{ item.product.id }}">
-                  <div class="three columns alpha cart_content_img">
-                    <a href="{{ item.url }}" title="{{ item.title | escape }}" class="cart_page_image">
-                      {% if item.properties._customized_image_url_front %}
-                        <img
-                          src="{{ item.properties._customized_image_url_front}}"
-                          alt="{{ item.title | escape }}"
-                          class="lazyload {{ settings.image_loading_style }}"
-                          style="max-width: {{- item.image.width -}}px"
-                          data-sizes="auto"
-                          data-src="{{ item | img_url: '900x' }}"
-                          data-srcset="
-                             {{ item.properties._customized_image_url_front }} 300w,
-                            {{ item.properties._customized_image_url_front }} 600w,
-                            {{ item.properties._customized_image_url_front }} 900w
-                          "
-                        >
-                      {% else %}
-                        <img
-                          src="{{ item | img_url: '100x' }}"
-                          alt="{{ item.title | escape }}"
-                          class="lazyload {{ settings.image_loading_style }}"
-                          style="max-width: {{- item.image.width -}}px"
-                          data-sizes="auto"
-                          data-src="{{ item | img_url: '900x' }}"
-                          data-srcset="
-                            {{ item | img_url: '300x' }} 300w,
-                            {{ item | img_url: '600x' }} 600w,
-                            {{ item | img_url: '900x' }} 900w
-                          "
-                        >
-                      {% endif %}
-                    </a>
-                  </div>
+          <a
+            href="{% if cart.items.first.product.collections != blank %}{{ cart.items.first.product.collections.last.url }}{% else %}/collections/all{% endif %}"
+            class="action_button continue-button add_to_cart"
+          >
+            {{- 'cart.general.continue_shopping_link_html' | t -}}
+          </a>
+        </div>
+        <br class="clear">
+      </div>
+    </div>
+  {% else %}
+    <div class="main-container">
+      <div class="row">
+        <div class="wi-100">
+          <form action="/cart" method="post" id="cart_form">
+            <div class="section clearfix cart-section-row">
+              <div class="ten columns cart-section-left">
+                <div class="custom-patch-cart-data"></div>
+                {% assign total_saving = 0 %}
+                {% for item in cart.items %}
+                  {% if item.properties._Timestamp %}
+                    {% continue %}
+                  {% endif %}
+                  {% if item.vendor == 'SavedBy' %}
+                    {% continue %}
+                  {% endif %}
+                  {% include 'wh_calculate_discount' with item.product %}
+                  {% include 'wh_variant' with item.variant %}
+                  {% assign wh_line_price = wh_v_price | minus: 0 | times: item.quantity %}
 
-                  <div class="seven columns omega cart_content_info">
-                    <h3>
-                      <a href="{{ item.url }}" class="cart-product-title-c">
-                        {{- item.product.title }}
-                        <span class="saso-cart-item-discount-notes" data-key="{{item.key}}"></span>
-                        <span class="saso-cart-item-upsell-notes" data-key="{{item.key}}"></span>
-                      </a>
-                    </h3>
-                    {% comment %}
-                    {% endcomment %}
+                  {% if wh_v_compare_at_price > wh_v_price %}
+                    {% assign saving = wh_v_compare_at_price | minus: wh_line_price %}
+                    {% assign total_saving = saving | plus: total_saving %}
+                  {% endif %}
 
-                    {% if item.product.title == 'Gift Wrapping' %}
-                      <p class="cart-attribute__field">
-                        <label for="gift-message">Gift Message</label>
-                        <textarea
-                          id="gift-message"
-                          type="text"
-                          name="attributes[Gift Message]"
-                          value="{{ cart.attributes["Gift Message"] }}"
-                        ></textarea>
-                      </p>
-                    {% endif %}
-                    {% if item.product.title == 'Gift Card' %}
-                      <p class="cart-attribute__field">
-                        <label for="gift-message">Gift Message</label>
-                        <textarea
-                          id="gift-message"
-                          type="text"
-                          name="attributes[Gift Message-2]"
-                          value="{{ cart.attributes["Gift Message-2"] }}"
-                        ></textarea>
-                      </p>
-                    {% endif %}
-
-                    {% unless item.product.has_only_default_variant or item.variant.title contains 'Title' %}
-                      <p class="meta">
-                        {% for option in item.product.options %}
-                          <span class="label">{{ option }}:</span>
-                          <span>{{ item.variant.options[forloop.index0] }}</span><br>
-                        {% endfor %}
-                      </p>
-                    {% endunless %}
-
-                    <span
-                      class="Bold-theme-hook-DO-NOT-DELETE bold_cart_item_properties"
-                      style="display:none !important;"
-                    ></span>
-                    {%- if item.properties %}
-                      <p>
-                        {% for p in item.properties %}
-                          {%- if p.first contains 'Gift' -%}{%- continue -%}{%- endif -%}
-                          {%- if p.first.first == '_' -%}{%- continue -%}{%- endif -%}
-                          {% unless p.last == blank or p.first == '_preorder_locale' %}
-                            {% if p.last contains '/uploads/' %}
-                              <div>
-                                {% unless p.first contains '_is_preorder' -%}
-                                  {%- unless p.first == '_is_preorder' %}{{ p.first }}:{% endunless -%}
-                                {%- endunless %}
-                                <a class="lightbox" href="{{ p.last }}">{{ 'cart.general.uploaded_file' | t }}</a>
-                              </div>
-                            {% else %}
-                              <div>
-                                {% unless p.first contains '_is_preorder' -%}
-                                  {%- unless p.first == '_is_preorder' %}{{ p.first }}:{% endunless -%}
-                                {%- endunless %}
-                                {{ p.last }}
-                              </div>
-                            {% endif %}
-                          {% endunless %}
-                        {% endfor %}
-                      </p>
-                    {% endif %}
-
-                    {% comment %}
-                      <p class="modal_price">
-                        {% if wh_v_price > 0 %}
-                          <span class="">
-                          {% if customer.tags.size > 0 %}
-                          <span class="saso-cart-item-price" data-key="{{item.key}}">{{ wh_v_price | money }}</span>
-                          {% else %}
-                          <span class="saso-cart-item-price" data-key="{{item.key}}"><span class="Bold-theme-hook-DO-NOT-DELETE bold_cart_item_price" style="display:none !important;"></span>{{ wh_v_price | money }}</span>
-                          {% endif %}
-                          </span>
+                  <div class="section clearfix cart_content_row" data-id="{{ item.product.id }}">
+                    <div class="three columns alpha cart_content_img">
+                      <a href="{{ item.url }}" title="{{ item.title | escape }}" class="cart_page_image">
+                        {% if item.properties._customized_image_url_front %}
+                          <img
+                            src="{{ item.properties._customized_image_url_front}}"
+                            alt="{{ item.title | escape }}"
+                            class="lazyload {{ settings.image_loading_style }}"
+                            style="max-width: {{- item.image.width -}}px"
+                            data-sizes="auto"
+                            data-src="{{ item | img_url: '900x' }}"
+                            data-srcset="
+                               {{ item.properties._customized_image_url_front }} 300w,
+                              {{ item.properties._customized_image_url_front }} 600w,
+                              {{ item.properties._customized_image_url_front }} 900w
+                            "
+                          >
                         {% else %}
-                          {{ settings.free_price_text }}
+                          <img
+                            src="{{ item | img_url: '100x' }}"
+                            alt="{{ item.title | escape }}"
+                            class="lazyload {{ settings.image_loading_style }}"
+                            style="max-width: {{- item.image.width -}}px"
+                            data-sizes="auto"
+                            data-src="{{ item | img_url: '900x' }}"
+                            data-srcset="
+                              {{ item | img_url: '300x' }} 300w,
+                              {{ item | img_url: '600x' }} 600w,
+                              {{ item | img_url: '900x' }} 900w
+                            "
+                          >
                         {% endif %}
-
-                        {% if wh_v_price < wh_v_compare_at_price %}
-                          <span class="product-money was_price">{{ wh_v_compare_at_price | money }}</span>
-                        {% endif %}
-                      </p>
-                    {% endcomment %}
-                    <div class="modal_price cart-temp_price">
-                      {% if wh_v_compare_at_price > item.price %}
-                        <span
-                          class="c-cart__itemPrice c-cart__itemdiscountedprice"
-                          style="text-decoration: line-through;"
-                          rv-html="item.final_line_price | money Currency.currentCurrency"
-                          class="c-cart__itemPrice"
-                        >
-                          {{ wh_v_compare_at_price | money }}
-                        </span>
-
-                        <span
-                          class="c-cart__itemPrice"
-                          rv-html="item.discounted_line_price | money Currency.currentCurrency"
-                          class="c-cart__itemPrice"
-                        >
-                          {{ item.discounted_price | money }}
-                        </span>
-
-                      {% elsif item.original_price > item.discounted_price %}
-                        <span
-                          class="c-cart__itemPrice c-cart__itemdiscountedprice"
-                          style="text-decoration: line-through;"
-                          rv-html="item.final_line_price | money Currency.currentCurrency"
-                          class="c-cart__itemPrice"
-                        >
-                          {{ item.original_price | money }}
-                        </span>
-
-                        <span
-                          class="c-cart__itemPrice"
-                          rv-html="item.discounted_line_price | money Currency.currentCurrency"
-                          class="c-cart__itemPrice"
-                        >
-                          {{ item.discounted_price | money }}
-                        </span>
-
-                      {% else %}
-                        <span
-                          class="c-cart__itemPrice"
-                          rv-html="item.discounted_line_price | money Currency.currentCurrency"
-                          class="c-cart__itemPrice"
-                        >
-                          {{ item.original_price | money }}
-                        </span>
-                      {% endif %}
-                    </div>
-
-                   
-
-                    <div class="cart-action-btn-flex-c">
-                    <cart-remove-button
-                      id="Remove-{{ item.index | plus: 1 }}"
-                      data-index="{{ item.index | plus: 1 }}"
-                      data-item-key="{{ item.key }}"
-                    >
-                      <a
-                        href="{{ item.url_to_remove }}"
-                        class="button button--tertiary"
-                        aria-label="{{ 'remove' | t: title: item.title }}"
-                        onclick="removeItem(event, '{{ item.url_to_remove }}')"
-                      >
-                        Remove
                       </a>
-                    </cart-remove-button>
-
-
-                    {% assign product_handle_full = item.url %}
-
-{%- assign product_handle_no_query = product_handle_full | split: '?' | first -%}
-{%- assign product_handle_filtered = product_handle_no_query | remove: '/products/' -%}
-
-
-
-                    
-                    <wishlist-button-collection data-product-handle="{{ product_handle_filtered }}" show-icon="" icon="wishlist" align-self="center" align-content="center" floating="{&quot;reference&quot;:&quot;[wk-id=\&quot;PKfLVkO8BZyS1zm57EObx\&quot;]&quot;,&quot;position&quot;:{&quot;placement&quot;:&quot;top-end&quot;,&quot;inset&quot;:true}}" wk-loaded="" data-preorder-handle="mia-pink-fringe-dress"><!---->
-       
-                    
-                      <wk-button class="wk-floating" style="position: absolute; top: 0px; left: 0px; transition: none; transform: translate3d(216px, 0px, 0px);"><!---->
-     <button type="button" aria-label="Add to Wishlist" class="wk-button wk-align-center wk-align-content-center">
-     
-      Move to favorites
-   
-      </button>
-    </wk-button>
-      </wishlist-button-collection>
-<div class="heading-cart-change">Edit</div>
-          
-</div>
-
-                                <div class="change-btn-cart-flex">
-                      
-
-                        <div class="quanitty-toggle-cart">
-                           <div class="product-quantity-box left">
-                      <span class="ss-icon product-minus js-change-quantity" data-func="minus"
-                        ><span class="icon-minus"></span
-                      ></span>
-                      <input
-                        type="number"
-                        min="0"
-                        size="2"
-                        class="quantity"
-                        name="updates[]"
-                        {% unless item.variant.inventory_management == blank
-                          or item.variant.inventory_policy == 'continue'
-                        %}
-                          max="{{ item.variant.inventory_quantity }}"
-                        {% endunless %}
-                        id="updates_{{ item.id }}"
-                        value="{{ item.quantity }}"
-                        data-line-id="{{ forloop.index }}"
-                        data-item-key="{{ item.key }}"
-                        {% if settings.limit_quantity
-                          and item.variant.inventory_management != blank
-                          and item.variant.inventory_quantity > 0
-                          and item.variant.inventory_policy == 'deny'
-                        %}
-                          max="{{ item.variant.inventory_quantity }}"
-                        {% endif %}
-                      >
-                      <span class="ss-icon product-plus js-change-quantity" data-func="plus"
-                        ><span class="icon-plus"></span
-                      ></span>
                     </div>
+
+                    <div class="seven columns omega cart_content_info">
+                      <h3>
+                        <a href="{{ item.url }}" class="cart-product-title-c">
+                          {{- item.product.title }}
+                          <span class="saso-cart-item-discount-notes" data-key="{{item.key}}"></span>
+                          <span class="saso-cart-item-upsell-notes" data-key="{{item.key}}"></span>
+                        </a>
+                      </h3>
+
+                      {% if item.product.title == 'Gift Wrapping' %}
+                        <p class="cart-attribute__field">
+                          <label for="gift-message">Gift Message</label>
+                          <textarea
+                            id="gift-message"
+                            type="text"
+                            name="attributes[Gift Message]"
+                            value="{{ cart.attributes["Gift Message"] }}"
+                          ></textarea>
+                        </p>
+                      {% endif %}
+                      {% if item.product.title == 'Gift Card' %}
+                        <p class="cart-attribute__field">
+                          <label for="gift-message">Gift Message</label>
+                          <textarea
+                            id="gift-message"
+                            type="text"
+                            name="attributes[Gift Message-2]"
+                            value="{{ cart.attributes["Gift Message-2"] }}"
+                          ></textarea>
+                        </p>
+                      {% endif %}
+
+                      {% unless item.product.has_only_default_variant or item.variant.title contains 'Title' %}
+                        <p class="meta">
+                          {% for option in item.product.options %}
+                            <span class="label">{{ option }}:</span>
+                            <span>{{ item.variant.options[forloop.index0] }}</span><br>
+                          {% endfor %}
+
+                          <span class="label">Qty:</span>
+                          <span class="cart-line-qty-display">{{ item.quantity }}</span><br>
+                          <span class="cart-line-qty-error" style="display:none;color:#c00;font-size:12px;"></span>
+                        </p>
+                      {% endunless %}
+
+                      <span
+                        class="Bold-theme-hook-DO-NOT-DELETE bold_cart_item_properties"
+                        style="display:none !important;"
+                      ></span>
+                      {%- if item.properties %}
+                        <p>
+                          {% for p in item.properties %}
+                            {%- if p.first contains 'Gift' -%}{%- continue -%}{%- endif -%}
+                            {%- if p.first.first == '_' -%}{%- continue -%}{%- endif -%}
+                            {% unless p.last == blank or p.first == '_preorder_locale' %}
+                              {% if p.last contains '/uploads/' %}
+                                <div>
+                                  {% unless p.first contains '_is_preorder' -%}
+                                    {%- unless p.first == '_is_preorder' %}{{ p.first }}:{% endunless -%}
+                                  {%- endunless %}
+                                  <a class="lightbox" href="{{ p.last }}">{{ 'cart.general.uploaded_file' | t }}</a>
+                                </div>
+                              {% else %}
+                                <div>
+                                  {% unless p.first contains '_is_preorder' -%}
+                                    {%- unless p.first == '_is_preorder' %}{{ p.first }}:{% endunless -%}
+                                  {%- endunless %}
+                                  {{ p.last }}
+                                </div>
+                              {% endif %}
+                            {% endunless %}
+                          {% endfor %}
+                        </p>
+                      {% endif %}
+
+                      <div class="modal_price cart-temp_price">
+                        {% if wh_v_compare_at_price > item.price %}
+                          <span
+                            class="c-cart__itemPrice c-cart__itemdiscountedprice"
+                            style="text-decoration: line-through;"
+                            rv-html="item.final_line_price | money Currency.currentCurrency"
+                            class="c-cart__itemPrice"
+                          >
+                            {{ wh_v_compare_at_price | money }}
+                          </span>
+
+                          <span
+                            class="c-cart__itemPrice"
+                            rv-html="item.discounted_line_price | money Currency.currentCurrency"
+                            class="c-cart__itemPrice"
+                          >
+                            {{ item.discounted_price | money }}
+                          </span>
+
+                        {% elsif item.original_price > item.discounted_price %}
+                          <span
+                            class="c-cart__itemPrice c-cart__itemdiscountedprice"
+                            style="text-decoration: line-through;"
+                            rv-html="item.final_line_price | money Currency.currentCurrency"
+                            class="c-cart__itemPrice"
+                          >
+                            {{ item.original_price | money }}
+                          </span>
+
+                          <span
+                            class="c-cart__itemPrice"
+                            rv-html="item.discounted_line_price | money Currency.currentCurrency"
+                            class="c-cart__itemPrice"
+                          >
+                            {{ item.discounted_price | money }}
+                          </span>
+
+                        {% else %}
+                          <span
+                            class="c-cart__itemPrice"
+                            rv-html="item.discounted_line_price | money Currency.currentCurrency"
+                            class="c-cart__itemPrice"
+                          >
+                            {{ item.original_price | money }}
+                          </span>
+                        {% endif %}
+                      </div>
+
+                      <div class="cart-action-btn-flex-c">
+                        <cart-remove-button
+                          id="Remove-{{ item.index | plus: 1 }}"
+                          data-index="{{ item.index | plus: 1 }}"
+                          data-item-key="{{ item.key }}"
+                        >
+                          <a
+                            href="{{ item.url_to_remove }}"
+                            class="button button--tertiary"
+                            aria-label="{{ 'remove' | t: title: item.title }}"
+                            onclick="removeItem(event, '{{ item.url_to_remove }}')"
+                          >
+                            Remove
+                          </a>
+                        </cart-remove-button>
+
+                        {% assign product_handle_full = item.url %}
+                        {%- assign product_handle_no_query = product_handle_full | split: '?' | first -%}
+                        {%- assign product_handle_filtered = product_handle_no_query | remove: '/products/' -%}
+
+                        <wishlist-button-collection data-product-handle="{{ product_handle_filtered }}" show-icon="" icon="wishlist" align-self="center" align-content="center" floating="{&quot;reference&quot;:&quot;[wk-id=\&quot;PKfLVkO8BZyS1zm57EObx\&quot;]&quot;position&quot;:{&quot;placement&quot;:&quot;top-end&quot;,&quot;inset&quot;:true}}" wk-loaded="" data-preorder-handle="mia-pink-fringe-dress">
+                          <wk-button class="wk-floating" style="position: absolute; top: 0px; left: 0px; transition: none; transform: translate3d(216px, 0px, 0px);">
+                            <button type="button" aria-label="Add to Wishlist" class="wk-button wk-align-center wk-align-content-center">
+                              Move to favorites
+                            </button>
+                          </wk-button>
+                        </wishlist-button-collection>
+                        <div class="heading-cart-change">Edit</div>
+
+                      </div>
+
+                      <div class="change-btn-cart-flex">
+                        <div class="quanitty-toggle-cart">
+                          <div class="product-quantity-box left">
+                            <span class="ss-icon product-minus js-change-quantity" data-func="minus">
+                              <span class="icon-minus"></span>
+                            </span>
+                            <input
+                              type="number"
+                              min="0"
+                              size="2"
+                              class="quantity"
+                              name="updates[]"
+                              {% unless item.variant.inventory_management == blank
+                                or item.variant.inventory_policy == 'continue'
+                              %}
+                                max="{{ item.variant.inventory_quantity }}"
+                              {% endunless %}
+                              id="updates_{{ item.id }}"
+                              value="{{ item.quantity }}"
+                              data-line-id="{{ forloop.index }}"
+                              data-item-key="{{ item.key }}"
+                              {% if settings.limit_quantity
+                                and item.variant.inventory_management != blank
+                                and item.variant.inventory_quantity > 0
+                                and item.variant.inventory_policy == 'deny'
+                              %}
+                                max="{{ item.variant.inventory_quantity }}"
+                              {% endif %}
+                            >
+                            <span class="ss-icon product-plus js-change-quantity" data-func="plus">
+                              <span class="icon-plus"></span>
+                            </span>
+                          </div>
                           <div class="cancel-quantity-toggle">
-                          <span class="cancel-cart-btn">Cancel</span>
+                            <span class="cancel-cart-btn">Cancel</span>
+                            <span type="button" class="update-cart-btn" fdprocessedid="8mpijr">Update</span>
                           </div>
                         </div>
-                        
-                        
                       </div>
-                    
-                  </div>
-                </div>
-              {% endfor %}
-            </div>
 
-            <div class="five columns offset-by-one cart-right-section">
-              <div class="section clearfix">
-                <div class="subtotal">
-                  <h4 class="order-summery">ORDER SUMMARY</h4>
-                  <div class="subtotal-top">
-                    <p class="cart_subtotal js-cart_subtotal">
-                      <span class="right">
-                        <span class="">
-                          <span class="saso-cart-original-total"
-                            ><span
-                              class="Bold-theme-hook-DO-NOT-DELETE bold_cart_total"
-                              style="display:none !important;"
-                            ></span
-                            ><span class="wh-original-cart-total"
-                              ><span class="ak-upsell-original-price">{{ totalPrice | money }}</span
-                              ><span class="ak-upsell-cart-total"></span></span
-                            ><span class="wh-cart-total"></span>
-                            <div class="additional-notes">
-                              <span class="wh-minimums-note"></span><span class="wh-extra-note"></span>
-                            </div>
-                          </span>
-                          <span class="saso-cart-total"></span>
-                        </span>
-                      </span>
-                      <span>{{ 'cart.general.subtotal' | t }} ({{ cart.item_count | t }}) </span>
-                      <span class="sale-tax">sales tax calculated at checkout.</span>
-                      <div class="payment-icons-custom">
-                        <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/afterpay-logo-cus.png?v=1732745014" height="auto" width="auto" />
-                        <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/paypal-custom_50349735-fce2-4c5c-b7b1-21da83415513.png?v=1732744318" height="auto" width="auto" />
-                        <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/shoppay-custom.png?v=1732821864" height="auto" width="auto" />
-                      </div>
-                    </p>
+                    </div>
                   </div>
-                  
-                  {% if section.settings.display_savings %}
-                    <p class="cart_savings sale">
-                      {% if total_saving > 0 %}
+                {% endfor %}
+              </div>
+
+              <div class="five columns offset-by-one cart-right-section">
+                <div class="section clearfix">
+                  <div class="subtotal">
+                    <h4 class="order-summery">ORDER SUMMARY</h4>
+                    <div class="subtotal-top">
+                      <p class="cart_subtotal js-cart_subtotal">
                         <span class="right">
-                          <span class="">{{ total_saving | money }}</span>
+                          <span class="">
+                            <span class="saso-cart-original-total">
+                              <span
+                                class="Bold-theme-hook-DO-NOT-DELETE bold_cart_total"
+                                style="display:none !important;"
+                              ></span>
+                              <span class="wh-original-cart-total">
+                                <span class="ak-upsell-original-price">{{ totalPrice | money }}</span>
+                                <span class="ak-upsell-cart-total"></span>
+                              </span>
+                              <span class="wh-cart-total"></span>
+                              <div class="additional-notes">
+                                <span class="wh-minimums-note"></span><span class="wh-extra-note"></span>
+                              </div>
+                            </span>
+                            <span class="saso-cart-total"></span>
+                          </span>
                         </span>
-                        <span>{{ 'layout.general.savings' | t }}</span>
-                      {% endif %}
-                    </p>
-                  {% endif %}
-  
-                  {% if settings.show_multiple_currencies %}
-                    <p>
-                      <small>
-                        {{ 'cart.general.orders_processed_in_currency_html' | t: currency: shop.currency }}
-                      </small>
-                    </p>
-                  {% endif %}
-
-                  {% if section.settings.display_special_instructions %}
-                    <label for="note">{{ 'cart.general.note' | t: shop_name: shop.name }}:</label>
-                    <textarea id="note" name="note" rows="2">{{ cart.note }}</textarea>
-                  {% endif %}
-
-                  {% if section.settings.display_tos_checkbox %}
-                    <p>
-                      <input type="checkbox" class="tos_agree" id="cart_agree" required>
-                      <label class="tos_label" for="cart_agree">
-                        {{ 'cart.general.agree_to_terms_html' | t }}
-                      </label>
-                      {% if settings.tos_page != blank %}
-                        <a href="{{ pages[settings.tos_page].url }}" target="_blank" class="tos_icon">
-                          {{- 'cart.general.view_terms' | t -}}
-                        </a>
-                      {% endif %}
-                    </p>
-                  {% endif %}
-                  <input
-                    type="submit"
-                    class="action_button add_to_cart checkout-cart-page"
-                    id="checkout"
-                    name="checkout"
-                    value="proceed to checkout"
-                  >
-
-                  {% if section.settings.cart_message != blank %}
-                    <div>
-                      {{ section.settings.cart_message }}
+                        <span>{{ 'cart.general.subtotal' | t }} ({{ cart.item_count | t }}) </span>
+                        <span class="sale-tax">sales tax calculated at checkout.</span>
+                        <div class="payment-icons-custom">
+                          <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/afterpay-logo-cus.png?v=1732745014" height="auto" width="auto" />
+                          <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/paypal-custom_50349735-fce2-4c5c-b7b1-21da83415513.png?v=1732744318" height="auto" width="auto" />
+                          <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/shoppay-custom.png?v=1732821864" height="auto" width="auto" />
+                        </div>
+                      </p>
                     </div>
-                  {% endif %}
+                    
+                    {% if section.settings.display_savings %}
+                      <p class="cart_savings sale">
+                        {% if total_saving > 0 %}
+                          <span class="right">
+                            <span class="">{{ total_saving | money }}</span>
+                          </span>
+                          <span>{{ 'layout.general.savings' | t }}</span>
+                        {% endif %}
+                      </p>
+                    {% endif %}
+    
+                    {% if settings.show_multiple_currencies %}
+                      <p>
+                        <small>
+                          {{ 'cart.general.orders_processed_in_currency_html' | t: currency: shop.currency }}
+                        </small>
+                      </p>
+                    {% endif %}
 
-                  <p>
-                    <!-- Store pickup include on cart -->
-                    {% include 'creativer-store-pickup_v1_3' %}
-                  </p>
-                  <div></div>
-                  {% if content_for_additional_checkout_buttons %}
-                    <div class="additional-checkout-buttons">
-                      {% comment %}CreativeR | Store Pickup{% endcomment %}
-                      {% comment %}{{ content_for_additional_checkout_buttons }}{% endcomment %}
-                    </div>
-                  {% endif %}
-                  {% if shop.metafields.wh_net.enabled -%}
-                    {%- if customer.tags contains 'whnet' %}
-                      <div style="margin-top:30px;">
-                        <p>{{ shop.metafields.wh_net.wh_net_text }}</p>
-                        <a id="wh-30-open" class="button">{{ shop.metafields.wh_net.wh_net_button_text }}</a>
+                    {% if section.settings.display_special_instructions %}
+                      <label for="note">{{ 'cart.general.note' | t: shop_name: shop.name }}:</label>
+                      <textarea id="note" name="note" rows="2">{{ cart.note }}</textarea>
+                    {% endif %}
+
+                    {% if section.settings.display_tos_checkbox %}
+                      <p>
+                        <input type="checkbox" class="tos_agree" id="cart_agree" required>
+                        <label class="tos_label" for="cart_agree">
+                          {{ 'cart.general.agree_to_terms_html' | t }}
+                        </label>
+                        {% if settings.tos_page != blank %}
+                          <a href="{{ pages[settings.tos_page].url }}" target="_blank" class="tos_icon">
+                            {{- 'cart.general.view_terms' | t -}}
+                          </a>
+                        {% endif %}
+                      </p>
+                    {% endif %}
+
+                    {%- comment -%} Swipe Package Protection anchor {%- endcomment -%}
+                    <div class="Swipe-div"></div>
+
+                    <input
+                      type="submit"
+                      class="action_button add_to_cart checkout-cart-page"
+                      id="checkout"
+                      name="checkout"
+                      value="proceed to checkout"
+                    >
+
+                    {% if section.settings.cart_message != blank %}
+                      <div>
+                        {{ section.settings.cart_message }}
                       </div>
-                    {% endif -%}
-                  {%- endif %}
+                    {% endif %}
 
-                  {% if cartCount > 0 %}
-                    <div class="featured-links">
-                      <a href="https://lolaandtheboys.com/collections/newarrivals" class="secondary_button">
-                        {{- 'cart.general.continue_shopping_link_html' | t -}}
-                      </a>
-                    </div>
-                  {% endif %}
-                  <savedby-widget cart-page></savedby-widget>
+                    <p>
+                      <!-- Store pickup include on cart -->
+                      {% include 'creativer-store-pickup_v1_3' %}
+                    </p>
+                    <div></div>
+                    {% if content_for_additional_checkout_buttons %}
+                      <div class="additional-checkout-buttons">
+                        {% comment %}CreativeR | Store Pickup{% endcomment %}
+                        {% comment %}{{ content_for_additional_checkout_buttons }}{% endcomment %}
+                      </div>
+                    {% endif %}
+                    {% if shop.metafields.wh_net.enabled -%}
+                      {%- if customer.tags contains 'whnet' %}
+                        <div style="margin-top:30px;">
+                          <p>{{ shop.metafields.wh_net.wh_net_text }}</p>
+                          <a id="wh-30-open" class="button">{{ shop.metafields.wh_net.wh_net_button_text }}</a>
+                        </div>
+                      {% endif -%}
+                    {%- endif %}
+
+                    {% if cartCount > 0 %}
+                      <div class="featured-links">
+                        <a href="https://lolaandtheboys.com/collections/newarrivals" class="secondary_button">
+                          {{- 'cart.general.continue_shopping_link_html' | t -}}
+                        </a>
+                      </div>
+                    {% endif %}
+                    <savedby-widget cart-page></savedby-widget>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
 
-  <wishlist-page 
-  show-product-title  
-  show-price
-  show-vendor
-  show-buy-all-button
-  cta-button="add-to-cart"
-  product-options="dropdowns"
-  move-to-cart
-  wishlist-empty-link="/collections/all"
-></wishlist-page>
-  
-  <!-- Cross sell integration -->
-  {% include 'cross-sell' %}
+    <wishlist-page 
+      show-product-title  
+      show-price
+      show-vendor
+      show-buy-all-button
+      cta-button="add-to-cart"
+      product-options="dropdowns"
+      move-to-cart
+      wishlist-empty-link="/collections/all"
+    ></wishlist-page>
+    
+    <!-- Cross sell integration -->
+    {% include 'cross-sell' %}
 
-  {% include 'cart-shipping-calculator' %}
-{% endif %}
+    {% include 'cart-shipping-calculator' %}
+  {% endif %}
+</div> <!-- /#CartContainer -->
 
 <script>
-  function removeItem(event, urlToRemove) {
-    // Prevent the default behavior of the link
-    event.preventDefault();
-
-    // Perform the removal logic, e.g., using AJAX to update the cart on the server
-
-    // Reload the page
-    window.location.href = urlToRemove;
+  // Reload only the cart HTML via AJAX (no full page reload)
+  function reloadCartSection(callback) {
+    var $cartWrapper = $('#CartContainer');
+    if (!$cartWrapper.length) {
+      window.location.reload();
+      return;
+    }
+    var url = window.location.pathname + window.location.search;
+    $cartWrapper.addClass('is-loading');
+    $cartWrapper.load(url + ' #CartContainer > *', function (response, status) {
+      $cartWrapper.removeClass('is-loading');
+      if (status === 'error') {
+        window.location.reload();
+        return;
+      }
+      if (typeof callback === 'function') {
+        callback();
+      }
+    });
   }
-</script>
-<!-- app snipet js -->
-<script>
-              // Function to fetch cart data from the server
-              function fetchCartDataAndUpdateVariable() {
-                fetch(window.Shopify.routes.root + 'cart.js', {
-                  method: 'GET',
-                  headers: {
-                    'Content-Type': 'application/json'
-                  }
-                })
-                .then(response => {
-                  return response.json();
-                })
-                .then(data => {
-                  // Update the allCartData variable with the fetched data
-                  allCartData = data.items || [];
-                })
-                .catch(error => {
-                  console.error('Error fetching cart data:', error);
-                });
-              }
 
-              // Initialize allCartData as an empty array
-              var allCartData = [];
+  // Cart update helper with stock message + plus disable
+   function updateCartLineByKey(itemKey, quantity, maxLimit, requestedQty) {
+    if (!itemKey) return;
+    var payload = { updates: {} };
+    payload.updates[itemKey] = quantity;
 
-              // Function to handle delete button click
-       function handleDeleteButtonClick(event) {
-        // Get the timestamp value from the data attribute of the clicked button
-        var timestamp = event.target.dataset.customizedTimestamp;
+    return fetch(window.Shopify.routes.root + 'cart/update.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    })
+    .then(function(res){ return res.json(); })
+    .then(function(data){
+      var itemFromKey = data.items.find(function(item){
+        return item.key === itemKey;
+      });
+      var updatedQty = itemFromKey ? itemFromKey.quantity : 0;
 
-        // Array to store the IDs of items to delete
-        var itemIdsToDelete = [];
+      reloadCartSection(function() {
+        var input = document.querySelector('#cart_form input.quantity[data-item-key="' + itemKey + '"]');
+        if (!input) return;
 
-        // Iterate over each item in the cart data
-        allCartData.forEach(function(item) {
-            // Check if the item has the "_Timestamp" property equal to the timestamp
-            if (item.properties && item.properties._Timestamp === timestamp) {
-                // If it matches the condition, store its ID
-                itemIdsToDelete.push(item.key);
-            }
-        });
+        var row = input.closest('.cart_content_row');
+        if (!row) return;
 
-        // Check if any item IDs were found
-        // if (itemIdsToDelete.length > 0) {
-        //     // Log items to delete
-        //     console.log("Items to delete:", itemIdsToDelete);
+        var displayEl = row.querySelector('.cart-line-qty-display');
+        var errorEl   = row.querySelector('.cart-line-qty-error');
+        var plusBtn   = row.querySelector('.product-quantity-box .js-change-quantity[data-func="plus"]');
 
-        //     // Define a function to delete items one by one
-        //     function deleteItemsSequentially(index) {
-        //         if (index < itemIdsToDelete.length) {
-        //             var itemIdToDelete = itemIdsToDelete[index];
-        //             console.log("Deleting item with ID:", itemIdToDelete);
+        // qty sync
+        input.value = updatedQty;
+        if (displayEl) {
+          displayEl.textContent = updatedQty;
+        }
 
-        //             // Construct the updates object for the fetch request
-        //             var updates = {};
-        //             updates[itemIdToDelete] = 0; // Set the quantity to 0 to delete the item
+        // sab se pehle clear
+        if (errorEl) {
+          errorEl.textContent = '';
+          errorEl.style.display = 'none';
+        }
 
-        //             // Send update request for the item
-        //             fetch(window.Shopify.routes.root + 'cart/update.js', {
-        //                 method: 'POST',
-        //                 headers: {
-        //                     'Content-Type': 'application/json'
-        //                 },
-        //                 body: JSON.stringify({ updates })
-        //             })
-        //             .then(response => response.json())
-        //             .then(data => {
-        //                 // Handle response if needed
-        //                 console.log("Update response:", data);
-        //                 console.log("Item with ID " + itemIdToDelete + " has been deleted.");
+        var limit = maxLimit || updatedQty;
 
-        //                 // Delete next item recursively
-        //                 deleteItemsSequentially(index + 1);
-        //             })
-        //             .catch(error => {
-        //                 console.error('Error updating cart:', error);
-        //             });
-        //         } else {
-        //             console.log("All items have been deleted.");
-        //             location.reload();
-        //         }
-        //     }
+        // agar updatedQty limit pe hi hai (max stock pe khada hai) -> plus disable
+        if (plusBtn) {
+          if (updatedQty >= limit) {
+            plusBtn.style.opacity = '0.4';
+            plusBtn.style.pointerEvents = 'none';
+          } else {
+            plusBtn.style.opacity = '';
+            plusBtn.style.pointerEvents = '';
+          }
+        }
 
-        //     // Start deleting items sequentially
-        //     deleteItemsSequentially(0);
-        // } else {
-        //     console.log("No items found with the specified timestamp.");
-        // }
-         if (itemIdsToDelete.length > 0) {
-      // Log items to delete
-      console.log("Items to delete:", itemIdsToDelete);
-
-      // Construct the updates object for the fetch request
-      var updates = {};
-      itemIdsToDelete.forEach(itemId => {
-          updates[itemId] = 0; // Set the quantity to 0 to delete the item
+        // agar user ne limit se zyada maanga tha -> red message show
+        if (requestedQty && requestedQty > limit && errorEl) {
+          errorEl.textContent = 'Only ' + limit + ' in stock';
+          errorEl.style.display = 'inline';
+        }
       });
 
-      // Send update request for all items
+      return data;
+    })
+    .catch(function(err){
+      console.error('Cart update error', err);
+      window.location.reload();
+    });
+  }
+
+  // Override old removeItem to use AJAX + section reload
+  function removeItem(event, urlToRemove) {
+    event.preventDefault();
+    var btn = event.target;
+    var wrapper = btn.closest('cart-remove-button');
+    var itemKey = wrapper ? wrapper.getAttribute('data-item-key') : null;
+
+    if (!itemKey) {
+      window.location.href = urlToRemove;
+      return;
+    }
+    updateCartLineByKey(itemKey, 0);
+  }
+</script>
+
+<!-- app snippet js – your original logic, kept -->
+<script>
+  function fetchCartDataAndUpdateVariable() {
+    fetch(window.Shopify.routes.root + 'cart.js', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      allCartData = data.items || [];
+    })
+    .catch(error => {
+      console.error('Error fetching cart data:', error);
+    });
+  }
+
+  var allCartData = [];
+
+  function handleDeleteButtonClick(event) {
+    var timestamp = event.target.dataset.customizedTimestamp;
+    var itemIdsToDelete = [];
+
+    allCartData.forEach(function(item) {
+      if (item.properties && item.properties._Timestamp === timestamp) {
+        itemIdsToDelete.push(item.key);
+      }
+    });
+
+    if (itemIdsToDelete.length > 0) {
+      console.log("Items to delete:", itemIdsToDelete);
+
+      var updates = {};
+      itemIdsToDelete.forEach(itemId => {
+        updates[itemId] = 0;
+      });
+
       fetch(window.Shopify.routes.root + 'cart/update.js', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ updates })
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ updates })
       })
       .then(response => response.json())
       .then(data => {
-          // Handle response if needed
-          console.log("Update response:", data);
-          console.log("All specified items have been deleted.");
-
-          // Reload the page to reflect the updated cart
-          location.reload();
+        console.log("Update response:", data);
+        console.log("All specified items have been deleted.");
+        reloadCartSection();
       })
       .catch(error => {
-          console.error('Error updating cart:', error);
+        console.error('Error updating cart:', error);
       });
-  } else {
+    } else {
       console.log("No items found with the specified timestamp.");
+    }
   }
 
+  document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('cart_delete-custom-product-button')) {
+      var deleteButtons = document.querySelectorAll('.cart_delete-custom-product-button');
+      deleteButtons.forEach(function(deleteButton) {
+        deleteButton.style.pointerEvents = 'none';
+        deleteButton.style.opacity = '0.5';
+      });
+      handleDeleteButtonClick(event);
+    }
+  });
+</script>
+
+<script>
+// ========== ALWAYS FETCH CART ==========
+async function getCart() {
+  const r = await fetch('/cart.js', { cache: 'no-store' });
+  return r.json();
+}
+
+// ========== RENDER CART UI ==========
+async function renderCustomPatchCart() {
+  const container = document.querySelector('.custom-patch-cart-data');
+  if (!container) return;
+
+  container.innerHTML = "<p>Loading...</p>";
+
+  const cart  = await getCart();
+  const items = cart.items || [];
+  const timestampMap = {};
+
+  // ---- GROUP BY _Timestamp ----
+  items.forEach(item => {
+    const ts = item.properties?._Timestamp;
+    if (!ts) return; // ignore non-custom items
+
+    if (!timestampMap[ts]) timestampMap[ts] = [];
+    timestampMap[ts].push(item);
+  });
+
+  container.innerHTML = "";
+  const groups = Object.values(timestampMap);
+
+  // ---- RENDER GROUPS ----
+  groups.forEach(group => {
+
+    // ==========================
+    //  NEW PARENT DETECTION LOGIC
+    // ==========================
+
+    // 1) embroidery product must become parent
+    let parentItem = group.find(i =>
+      i.properties &&
+      i.properties._embroideryProduct === "Embroidery Product"
+    );
+
+    // 2) fallback to _Parent === "1"
+    if (!parentItem) {
+      parentItem = group.find(i =>
+        i.properties && i.properties._Parent === "1"
+      );
     }
 
+    // 3) fallback to first item
+    if (!parentItem) {
+      parentItem = group[0];
+    }
 
+    if (!parentItem) return;
 
+    const timestamp  = parentItem.properties._Timestamp;
+    const title      = parentItem.title;
+    const productUrl = parentItem.url;
 
-              // Event delegation to handle delete button click
-              document.addEventListener('click', function(event) {
-                if (event.target.classList.contains('cart_delete-custom-product-button')) {
-              var deleteButtons = document.querySelectorAll('.cart_delete-custom-product-button'); // Corrected selector
-              deleteButtons.forEach(function(deleteButton) {
-              deleteButton.style.pointerEvents = 'none';
-              deleteButton.style.opacity = '0.5';
-          });
-                  handleDeleteButtonClick(event);
-                }
-              });
+    // PRIORITY: embroidery image → customized_image → normal image
+    const frontImg =
+      parentItem.properties._embroidery_image ||
+      parentItem.properties._customized_image_url_front ||
+      parentItem.image;
+
+    const key = parentItem.key;
+
+    // 💰 TOTAL
+    const totalGroupPriceCents = group.reduce(
+      (sum, it) => sum + (it.final_line_price || 0),
+      0
+    );
+
+    const formattedPrice = Shopify.formatMoney(
+      totalGroupPriceCents,
+      "{{ shop.money_format }}"
+    );
+
+    // Build wrapper
+    const wrap = document.createElement("div");
+    wrap.className = "parent-cart-group";
+
+    wrap.innerHTML = `
+      <div class="parent-images">
+        <img src="${frontImg}" class="parent-preview front" alt="${title}">
+      </div> 
+
+      <div class="child-products-details-icons-wrapper">
+        <div class="parent-header">
+          <div class="header-left">
+            <div class="custom-product-title-price-wrapper">
+              <h3 class="custom-product-title">${title}</h3>
+              <span class="parent-price">${formattedPrice}</span>
+            </div>
+
+            <div class="Custom-product-cart-details-dropdown"> 
+              <span class="details-heading">Details</span>
+              <div class="toggle-arrow">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                     viewBox="0 0 24 24" stroke="currentColor">
+                  <title>details</title>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="child-items"></div>
+
+          <div class="header-right">
+            <a class="cart_delete-custom-product-button" data-key="${ key }" data-timestamp="${timestamp}">
+              Remove
+            </a>
+            <a class="cart_create-another-btn" href="${productUrl}">
+              Create Another
+            </a>
+          </div>
+        </div>
+      </div>
+    `;
+
+    const childBox = wrap.querySelector(".child-items");
+
+    // ---- PARENT ROW ----
+    const parentRow = document.createElement("div");
+    parentRow.className = "child-item parent-item-row";
+
+    const parentLinePrice = Shopify.formatMoney(
+      parentItem.final_line_price,
+      "{{ shop.money_format }}"
+    );
+
+    parentRow.innerHTML = `
+      <p class="parent-child-title">${parentItem.title} - ${parentLinePrice}</p>
+      <img src="${parentItem.image}" class="parent-child-image">
+    `;
+
+    childBox.appendChild(parentRow);
+
+    // ---- CHILDREN (EXCEPT PARENT) ----
+    group.forEach(item => {
+      if (item === parentItem) return;
+
+      const child = document.createElement("div");
+      child.className = "child-item";
+
+      const childPrice = Shopify.formatMoney(
+        item.final_line_price || 0,
+        "{{ shop.money_format }}"
+      );
+
+      child.innerHTML = `
+        <p>${item.title} - ${childPrice}</p>
+        <img src="${item.image}" alt="${item.title}">
+      `;
+
+      childBox.appendChild(child);
+    });
+
+    container.appendChild(wrap);
+  });
+}
+
+// INITIAL LOAD
+renderCustomPatchCart();
+
+// ========== TOGGLE DROPDOWN ==========
+document.addEventListener("click", function (e) {
+  const arrow = e.target.closest(".toggle-arrow");
+  if (!arrow) return;
+
+  const group    = arrow.closest(".parent-cart-group");
+  const childBox = group.querySelector(".child-items");
+
+  arrow.classList.toggle("rotated");
+  childBox.classList.toggle("hidden");
+});
+
+// ========== REMOVE BUTTON ==========
+// ========== REMOVE BUTTON (Simple Embroidery Logic) ==========
+document.addEventListener("click", async function (e) {
+  if (!e.target.classList.contains("cart_delete-custom-product-button")) return;
+
+  const ts         = e.target.dataset.timestamp;
+  const clickedKey = e.target.dataset.key;
+
+  const cart    = await getCart();
+  const updates = {};
+
+  // 1) Find the clicked item in the cart
+  const clickedItem = cart.items.find(i => i.key === clickedKey);
+
+  if (!clickedItem) {
+    // fallback: just delete the clicked line
+    updates[clickedKey] = 0;
+  } else {
+    const props        = clickedItem.properties || {};
+    const isEmbroidery = props._embroideryProduct === "Embroidery Product";
+    const itemTs       = props._Timestamp || ts;
+
+    // All items with same timestamp as clicked item
+    const sameTimestampItems = cart.items.filter(i =>
+      i.properties && i.properties._Timestamp === itemTs
+    );
+
+    if (isEmbroidery) {
+      // ---- EMBROIDERY PRODUCT DELETE LOGIC ----
+
+      // Check if there is ANY other item with same timestamp
+      if (sameTimestampItems.length > 1) {
+        // has children → delete ALL with this timestamp
+        sameTimestampItems.forEach(i => {
+          updates[i.key] = 0;
+        });
+      } else {
+        // no children → delete only embroidery product
+        updates[clickedKey] = 0;
+      }
+
+    } else {
+      // ---- NORMAL ITEM DELETE LOGIC ----
+      // (current behavior: delete whole group with same timestamp)
+      sameTimestampItems.forEach(i => {
+        updates[i.key] = 0;
+      });
+
+      // If you want to delete only clicked item instead, use:
+      // updates[clickedKey] = 0;
+    }
+  }
+
+  await fetch("/cart/update.js", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ updates })
+  });
+
+  renderCustomPatchCart();
+  location.reload();
+});
+
 </script>
 <script>
-        // Assuming cartData is defined somewhere in your HTML or is a JavaScript variable available in this scope
-            var cartData = {{ cartData | json }};
-              console.log(cartData);
-            const timestampMap = {};
-        let specificVariantPrice = 0;
 
-// First, loop through cartData to find the price of variant 42085140430950
-cartData.forEach(item => {
-  console.log(item.variant_id);
-    if (item.variant_id === 42085140430950) {
-      console.log('true')
-        // Store the price of the specific variant for future calculations
-        specificVariantPrice = item.price; 
-    }
-});
-  console.log('stiching price',specificVariantPrice)
-            // Group items by _Timestamp
-             cartData.forEach(item => {
-                if (item.properties._Timestamp) { // Check if _Timestamp property exists
-                    const timestamp = item.properties._Timestamp;
-                    if (!timestampMap[timestamp]) {
-                        timestampMap[timestamp] = [];
-                    }
-                    if (item.properties._customized_image_url_front) {
-                        console.log('in');
-                        // console.log(item.properties.Font Color);
-                        const imageUrl = item.properties._customized_image_url_front;
-                        const backImageUrl = item.properties._customized_image_url_back ;
-                        const priceProduct = item.properties._patches_price; // Convert item.price to a string                  
-                        const timestamp = item.properties._Timestamp; // Convert item.price to a string  
-                       if (item.properties._embroideryProduct === 'Embroidery Product'){
-                        const textfont = item.properties.Font; // Convert item.price to a string                  
-                        const fontcolor = item.properties["Font Color"]; 
-                          const priceProduct1 = item.price;
-                        let finalPrice = priceProduct1 + Number(specificVariantPrice);
-                         timestampMap[timestamp].push({
-                            emb:'Embroidery',
-                            title: item.title,
-                            price:  Number(finalPrice) / 100,
-                            imageUrl: imageUrl, // Include imageUrl in the object being pushed to the array
-                            parentVariant: 'parent',
-                            timestampp: timestamp,
-                            textfont:textfont,
-                            fontcolor:fontcolor
-                        });
-                       }
-                       else{
-                          timestampMap[timestamp].push({
-                            title: item.title,
-                            price: priceProduct,
-                            imageUrl: imageUrl, // Include imageUrl in the object being pushed to the array
-                            parentVariant: 'parent',
-                            backImage: backImageUrl,
-                            timestampp: timestamp
-                        });
-                     }
-                       
-                    } else {
-                        const timestamp = item.properties._Timestamp; 
-                        const imageUrl = item.image;
-                        const priceProduct = String(item.price); // Convert item.price to a string
-                        const removedecimal = parseFloat(priceProduct.slice(0, -2));
-                        timestampMap[timestamp].push({
-                            title: item.title,
-                            price: removedecimal,
-                            imageUrl: imageUrl, // Include imageUrl in the object being pushed to the array
-                            parentVariant: item.properties._parent_variant,
-                            timestampp: timestamp
-                        });
-                    }
-        
-                }
-            });
-        
-            // Convert the values of timestampMap to arrays of arrays
-            const filteredAndGroupedData = [];
-            for (const timestamp in timestampMap) {
-                filteredAndGroupedData.push(timestampMap[timestamp]);
-            }
-        
-            // Get the target div
-            const customPatchCartData = document.querySelector('.custom-patch-cart-data');
-        
-            // Iterate over each timestamp group
-            filteredAndGroupedData.forEach(timestampGroup => {
-                // Create a new div for each timestamp group
-                const parentPatchProductDetailsDiv = document.createElement('div');
-                parentPatchProductDetailsDiv.classList.add('parent-patch-product-details');
-        
-                // Create a new div to contain child items and parent price/title
-                const parentChildWrapperDiv = document.createElement('div');
-                parentChildWrapperDiv.classList.add('parent-child-wrapper');
-                timestampGroup.forEach(item => {
-  if (item.parentVariant === 'parent') {
-    // Create the delete button
-    var deletebutton = document.createElement('a');
-    deletebutton.classList.add('cart_delete-custom-product-button');
-    deletebutton.textContent = 'remove';
-    deletebutton.setAttribute('data-customized-timestamp', item.timestampp);
-    deletebutton.setAttribute('disabled', 'true'); // Initially disable the button
-    parentChildWrapperDiv.appendChild(deletebutton);
-    
-    // Enable the delete button after 3 seconds
-    window.addEventListener('load', function() {
-        setTimeout(function() {
-            deletebutton.removeAttribute('disabled');
-        }, 3000);
-    });
-if (item.emb === 'Embroidery'){
-    // Create the first div for textfont
-    var textFontDiv = document.createElement('div');
-    textFontDiv.classList.add('child-item');
-    
-    // Create a p tag for textfont inside the div
-    var textFontP = document.createElement('p');
-    textFontP.textContent = 'Font: ' + item.textfont;
-    
-    // Append p tag to the textFontDiv
-    textFontDiv.appendChild(textFontP);
-
-    // Append the textFontDiv to parentChildWrapperDiv
-    parentChildWrapperDiv.appendChild(textFontDiv);
-
-    // Create the second div for fontcolor
-    var fontColorDiv = document.createElement('div');
-    fontColorDiv.classList.add('child-item');
-    
-    // Create a p tag for fontcolor inside the div
-    var fontColorP = document.createElement('p');
-    fontColorP.textContent = 'Font Color: ' + item.fontcolor;
-    
-    // Append p tag to the fontColorDiv
-    fontColorDiv.appendChild(fontColorP);
-
-    // Append the fontColorDiv to parentChildWrapperDiv
-    parentChildWrapperDiv.appendChild(fontColorDiv);
-}
-  
-}
-
-
-
-});
-
-               
-               
-                
-                // Create a new div for parent price and title
-                const parentPriceTitleDiv = document.createElement('div');
-                parentPriceTitleDiv.classList.add('parent-price-title');
-        
-                console.log(timestampMap)
-                // Iterate over items in the timestamp group
-                timestampGroup.forEach(item => {
-                    
-                    // Create a new div element for the item
-                    const div = document.createElement('div');
-                    div.classList.add(item.parentVariant === 'parent' ? 'parent-item' : 'child-item');
-        
-                    // Create h3 element for title
-                    const title = document.createElement('h3');
-                    title.textContent = item.title;
-                    
-    
-                    var currencyFormat = document.getElementById('currency-format').dataset.moneyFormat;
-                    var amountPlaceholder = currencyFormat.match(/\{\{amount\}\}/)[0];
-                    var currencySymbol = currencyFormat.replace(amountPlaceholder, '');
-                    
-                    // Create p element for title and price
-                    const titleAndPrice = document.createElement('p');
-                    if (item.parentVariant === 'parent') {
-                      if (item.emb === 'Embroidery'){
-                        titleAndPrice.textContent = `${currencySymbol} ${item.price}`;
-                      }else{
-                        titleAndPrice.textContent = `${item.price}`; // Fix concatenation
-                      }
-                        
-                    } else {
-                        titleAndPrice.textContent = `${item.title} - ${currencySymbol} ${item.price}`; // Fix concatenation
-                    }
-                    
-        
-                    // Create img element for image
-                    const img = document.createElement('img');
-                    const backimg =document.createElement('img')
-                    if(item.parentVariant === 'parent' ){
-                    img.src = item.imageUrl;
-                    img.alt = 'Parent Image';
-                    img.classList.add('parent-image','front-image');
-                    backimg.src = item.backImage;
-                     backimg.alt = 'Back Image';
-                     backimg.classList.add('parent-image','back-image' );
-                     
-                    }else{
-                      img.src = item.imageUrl;
-                      img.alt = 'Child Image';
-                      img.classList.add('child-image');   
-                    }
-                    
-                   // img.alt = item.parentVariant === 'parent' ? 'Parent Image' : 'Child Image';
-                   // img.classList.add(item.parentVariant === 'parent' ? 'parent-image' : 'child-image');
-        
-                    // Append title, price, and img elements to the div
-                    div.appendChild(titleAndPrice);
-                    div.appendChild(img);
-                    div.appendChild(backimg);
-                   
-                    
-                    // If it's a parent item, append the title and price to the parentPriceTitleDiv
-                    if (item.parentVariant === 'parent') {
-                        parentPriceTitleDiv.appendChild(title);
-                        parentPriceTitleDiv.appendChild(titleAndPrice);
-                    }
-                    if (item.parentVariant === 'parent') {
-                        parentPatchProductDetailsDiv.appendChild(div);
-                    }
-                    else {
-        
-                        // Append the div to the parentChildWrapperDiv
-                       
-                        parentChildWrapperDiv.appendChild(div);
-                    }
-        
-                });
-             
-                // Append the parentPriceTitleDiv to the parentChildWrapperDiv
-                parentChildWrapperDiv.appendChild(parentPriceTitleDiv);
-    
-                // Wrap child items and parent price/title in a new div
-                parentPatchProductDetailsDiv.appendChild(parentChildWrapperDiv);
-        
-                // Append the parentPatchProductDetailsDiv to the target div
-                customPatchCartData.appendChild(parentPatchProductDetailsDiv);
-            });
-
-
-
-
-
-function modifyWishlistButton(button) {
-    // Ensure the button is within a parent with the cart-section-left class and body has cart context
+  function modifyWishlistButton(button) {
     if (
-        button &&
-        document.body.classList.contains('cart') &&
-        button.closest('.cart-section-left')
+      button &&
+      document.body.classList.contains('cart') &&
+      button.closest('.cart-section-left')
     ) {
-        // Remove the SVG
-        const svg = button.querySelector('svg');
-        if (svg) {
-            svg.remove();
-        }
-        // Add text "Move to Favorites"
-        button.textContent = 'Move to Favorites';
+      const svg = button.querySelector('svg');
+      if (svg) {
+        svg.remove();
+      }
+      button.textContent = 'Move to Favorites';
     }
-}
+  }
 
-// Set up MutationObserver
-const observer = new MutationObserver((mutationsList) => {
+  const observer = new MutationObserver((mutationsList) => {
     mutationsList.forEach((mutation) => {
-        if (mutation.type === 'childList') {
-            mutation.addedNodes.forEach((node) => {
-                // Check if the added node is a button within cart-section-left
-                if (
-                    node.nodeType === 1 &&
-                    node.matches('.cart-section-left button.wk-button')
-                ) {
-                    modifyWishlistButton(node);
-                }
+      if (mutation.type === 'childList') {
+        mutation.addedNodes.forEach((node) => {
+          if (
+            node.nodeType === 1 &&
+            node.matches('.cart-section-left button.wk-button')
+          ) {
+            modifyWishlistButton(node);
+          }
 
-                // If the added node is a parent containing cart-section-left
-                if (node.nodeType === 1) {
-                    const buttons = node.querySelectorAll(
-                        '.cart-section-left button.wk-button'
-                    );
-                    buttons.forEach(modifyWishlistButton);
-                }
-            });
-        }
+          if (node.nodeType === 1) {
+            const buttons = node.querySelectorAll(
+              '.cart-section-left button.wk-button'
+            );
+            buttons.forEach(modifyWishlistButton);
+          }
+        });
+      }
     });
-});
+  });
 
-// Start observing the body for added elements
-observer.observe(document.body, {
+  observer.observe(document.body, {
     childList: true,
-    subtree: true, // To catch changes deep in the DOM tree
-});
+    subtree: true,
+  });
 
-
-
-document.addEventListener('click', function(event) {
+  document.addEventListener('click', function(event) {
     if (event.target.classList.contains('heading-cart-change')) {
-        // Add 'active' class
-        document.querySelectorAll('.cart-action-btn-flex-c, .change-btn-cart-flex')
-            .forEach(function(element) {
-                element.classList.add('active');
-            });
+      document.querySelectorAll('.cart-action-btn-flex-c, .change-btn-cart-flex')
+        .forEach(function(element) {
+          element.classList.add('active');
+        });
     }
 
     if (event.target.classList.contains('cancel-cart-btn')) {
-        // Remove 'active' class
-        document.querySelectorAll('.cart-action-btn-flex-c, .change-btn-cart-flex')
-            .forEach(function(element) {
-                element.classList.remove('active');
-            });
+      document.querySelectorAll('.cart-action-btn-flex-c, .change-btn-cart-flex')
+        .forEach(function(element) {
+          element.classList.remove('active');
+        });
     }
-});
 
+    // UPDATE button → AJAX update with stock logic
+    if (event.target.classList.contains('update-cart-btn')) {
+      var row = event.target.closest('.cart_content_row');
+      if (!row) return;
+      var input = row.querySelector('input.quantity');
+      if (!input) return;
 
+      var requested = parseInt(input.value, 10);
+      if (isNaN(requested) || requested < 0) requested = 0;
 
-  
+      var maxAttr = input.getAttribute('max');
+      var max = maxAttr ? parseInt(maxAttr, 10) : null;
+      var finalQty = requested;
+
+      if (max !== null && requested > max) {
+        finalQty = max;
+      }
+
+      var itemKey = input.getAttribute('data-item-key');
+      if (!itemKey) return;
+
+      updateCartLineByKey(itemKey, finalQty, max, requested);
+    }
+  });
 </script>
 
+{% comment %} <script>
+  // AJAX quantity + stock check
+  (function() {
+    ...
+  })();
+</script> {% endcomment %}
+
 <script>
+  $(document).ready(function () {
+    const elementMap = {};
 
-$(document).ready(function () {
-    const elementMap = {}; // Map to store `.cart_content_row` elements by their text
-
-    // Change the Wishlist title to "Your Favorites"
-    
-
-    // Step 1: Map `.cart-product-title-c` text to parent `.cart_content_row`
     $('.cart-product-title-c').each(function () {
-        const text = $(this).text().trim();
-        elementMap[text] = $(this).closest('.cart_content_row');
+      const text = $(this).text().trim();
+      elementMap[text] = $(this).closest('.cart_content_row');
     });
 
-    // Step 2: MutationObserver to monitor dynamic elements
     const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-            if (mutation.addedNodes && mutation.addedNodes.length > 0) {
-                $(mutation.addedNodes).find('a.wk-text-link').each(function () {
-                    handleDynamicElement($(this));
-                });
-            }
-        });
+      mutations.forEach((mutation) => {
+        if (mutation.addedNodes && mutation.addedNodes.length > 0) {
+          $(mutation.addedNodes).find('a.wk-text-link').each(function () {
+            handleDynamicElement($(this));
+          });
+        }
+      });
     });
 
     observer.observe(document.body, {
-        childList: true,
-        subtree: true,
+      childList: true,
+      subtree: true,
     });
 
-    // Step 3: Periodically check for dynamic elements
     setInterval(() => {
-        $('a.wk-text-link').each(function () {
-            handleDynamicElement($(this));
-        });
-    }, 1000); // Check every 1 second
+      $('a.wk-text-link').each(function () {
+        handleDynamicElement($(this));
+      });
+    }, 1000);
 
-    // Function to handle dynamic elements
     function handleDynamicElement($element) {
-        const text = $element.text().trim();
-        const parentRow = elementMap[text];
-        if (parentRow) {
-            const button = parentRow.find('button.wk-button.wk-align-center.wk-align-content-center');
-            if (!button.hasClass('active-class')) {
-                button.addClass('active-class').text('Remove from Favorites');
-            }
+      const text = $element.text().trim();
+      const parentRow = elementMap[text];
+      if (parentRow) {
+        const button = parentRow.find('button.wk-button.wk-align-center.wk-align-content-center');
+        if (!button.hasClass('active-class')) {
+          button.addClass('active-class').text('Remove from Favorites');
         }
+      }
 
-    
-
-        // Add click event for buttons with the active class
-        $('.wk-button.wk-align-center.wk-align-content-center.wk-selected.active-class').click(function (e) {
-            e.preventDefault(); // Prevent default action, if any
-          $(this).text('Move to Favorites');
-            console.log('Button with active class clicked. Page will reload in 3 seconds.');
-
-            // Set a timeout to reload the page after 3 seconds
-            // setTimeout(() => {
-            //     console.log('Reloading the page...');
-            //     location.reload();
-            // }, 1000); // 3000ms = 3 seconds
-        });
+      $('.wk-button.wk-align-center.wk-align-content-center.wk-selected.active-class').click(function (e) {
+        e.preventDefault();
+        $(this).text('Move to Favorites');
+        console.log('Button with active class clicked.');
+      });
     }
 
     console.log('Script is running with MutationObserver and periodic checks.');
-});
-
-
-
+  });
 </script>
+
+
+<script>
+// Cart page: AJAX remove (no fade, no manual DOM delete)
+document.addEventListener('click', function (e) {
+  // Only handle Remove link in cart page form
+  var removeAnchor = e.target.closest('#cart_form cart-remove-button a.button--tertiary');
+  if (!removeAnchor) return;
+
+  e.preventDefault();
+  e.stopImmediatePropagation();
+
+  var wrapper = removeAnchor.closest('cart-remove-button');
+  if (!wrapper) return;
+
+  var itemKey = wrapper.getAttribute('data-item-key');
+  if (!itemKey) return;
+
+  // Just call your existing AJAX helper: qty 0 = remove line
+  if (typeof updateCartLineByKey === 'function') {
+    updateCartLineByKey(itemKey, 0);
+  } else {
+    // Hard fallback if something breaks
+    window.location.href = removeAnchor.getAttribute('href');
+  }
+}, true);
+</script>
+
 {% schema %}
 {
   "name": "Cart page",

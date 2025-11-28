@@ -2726,37 +2726,175 @@ $(function() {
       cache: false,
       type: 'post',
       data: { quantity: quantity, id: itemKey },
-      success: function (data) {
-        refreshCart(data);
+success: function (data) {
+  // 1) Theme ka existing cart refresh (mini-cart / header, etc.)
+  if (typeof refreshCart === 'function') {
+    refreshCart(data);
+  }
 
-        var lineIDIndex = lineID - 1;
+  // 2) Is line ka latest record Shopify response se nikaalo
+  const itemFromKey = data.items.find(function (item) {
+    return item.key === itemKey;
+  });
 
-        //check to see if there are correct amount of products in array
-        const itemFromKey = data.items.find((item) => item.key === itemKey);
-        if (typeof itemFromKey === "undefined"){
-          var updated_quantity = 0;
-        } else {
-          var updated_quantity = itemFromKey.quantity;
-        }
+  // 3) Purani warnings hatao
+  $('.warning--quantity').remove();
 
-        if(quantity > 0 && quantity != updated_quantity) {
-          if (updated_quantity == 1) {
-            items_left_text = {{ 'products.product.items_left_count.one' | t | json }};
-          } else {
-            items_left_text = {{ 'products.product.items_left_count.other' | t | json }};
-          }
+  // Cart / drawer me is item ka quantity input
+  var $input = parent.find("input[data-item-key='" + itemKey + "']");
 
-          $('.warning--quantity').remove();
+  // Agar item hi na mila (rare case) to: fake error mat dikhao,
+  // sirf cart section ko dobara reload kara do.
+  if (!itemFromKey) {
+    if (parent.is('#cart_form') && typeof reloadCartSection === 'function') {
+      reloadCartSection();
+    }
+    return;
+  }
 
-          var warning = '<p class="warning warning--quantity animated bounceIn">' + updated_quantity + ' ' + items_left_text + '</p>';
-          parent.find("input[data-item-key='" + itemKey + "']").parent().after(warning);
-          parent.find("input[data-item-key='" + itemKey + "']").val(updated_quantity);
-        } else if (parent.is('#cart_form')) {
-          $("#cart_form").submit();
-        }
-      }
+  var updated_quantity = itemFromKey.quantity;
+
+  // 4) Shopify ne hamari maangi hui quantity se KAM allow ki
+  //    (stock limit hit ho gayi)
+  if (quantity > 0 && quantity > updated_quantity) {
+
+    // Input ko actual available quantity pe lock karo
+    $input.val(updated_quantity);
+
+    // Sirf "Only X in stock" message
+    var warningHtml =
+      '<p class="warning warning--quantity animated bounceIn" ' +
+        'style="color:#c00; position:relative; z-index:10; margin-top:4px;">' +
+        'Only ' + updated_quantity + ' in stock' +
+      '</p>';
+
+    // Quantity box ke bilkul niche warning dikhayein
+    $input.parent().after(warningHtml);
+
+    // PLUS BUTTON KO DISABLE KARO (opacity + pointer lock)
+    var $box  = $input.closest('.product-quantity-box');
+    var $plus = $box.find('.js-change-quantity[data-func="plus"]');
+    $plus.css({
+      opacity: 0.4,
+      pointerEvents: 'none'
+    });
+
+    // Yahan reloadCartSection() NAHI chalayenge
+
+  } else {
+    // 5) Normal case – Shopify ne requested quantity accept kar li
+    $input.val(updated_quantity);
+
+    var $box  = $input.closest('.product-quantity-box');
+    var $plus = $box.find('.js-change-quantity[data-func="plus"]');
+    $plus.css({
+      opacity: '',
+      pointerEvents: ''
+    });
+
+    if (parent.is('#cart_form') && typeof reloadCartSection === 'function') {
+      reloadCartSection();
+    }
+  }
+}
+
+
     });
   }
+
+
+// ==================== CART PAGE ONLY ====================
+// Plus/minus sirf input ka number change kare, koi auto AJAX nahi.
+// Backend update sirf Update button se (cart-template ka updateCartLineByKey).
+
+document.addEventListener('click', function (e) {
+  var btn = e.target.closest('#cart_form .js-change-quantity');
+  if (!btn) return;
+
+  e.preventDefault();
+  e.stopImmediatePropagation();
+
+  var box = btn.closest('.product-quantity-box');
+  if (!box) return;
+
+  var input = box.querySelector('input.quantity');
+  if (!input) return;
+
+  var row = input.closest('.cart_content_row');
+  var errorEl = row ? row.querySelector('.cart-line-qty-error') : null;
+  var plusBtn = row ? row.querySelector('.product-quantity-box .js-change-quantity[data-func="plus"]') : null;
+
+  var current = parseInt(input.value, 10) || 0;
+  var func = btn.getAttribute('data-func'); // "plus" or "minus"
+
+  var maxAttr = input.getAttribute('max');
+  var max = maxAttr ? parseInt(maxAttr, 10) : NaN;
+
+  // --- Case: already at max & user clicks PLUS again -> show red error immediately ---
+  if (func === 'plus' && !isNaN(max) && current >= max) {
+    if (errorEl) {
+      errorEl.textContent = 'Only ' + max + ' in stock';
+      errorEl.style.display = 'inline';
+    }
+    if (plusBtn) {
+      plusBtn.style.opacity = '0.4';
+      plusBtn.style.pointerEvents = 'none';
+    }
+    return; // qty change mat karo
+  }
+
+  // Normal plus/minus behaviour (local change)
+  var delta = func === 'plus' ? 1 : -1;
+  var newQty = current + delta;
+  if (newQty < 0) newQty = 0;
+
+  if (!isNaN(max) && newQty > max) {
+    newQty = max;
+  }
+
+  input.value = newQty;
+
+  // Qty: display sync
+  if (row) {
+    var display = row.querySelector('.cart-line-qty-display');
+    if (display) {
+      display.textContent = newQty;
+    }
+    // front-end pe max hit hone par plus disable
+    if (plusBtn) {
+      if (!isNaN(max) && newQty >= max) {
+        plusBtn.style.opacity = '0.4';
+        plusBtn.style.pointerEvents = 'none';
+      } else {
+        plusBtn.style.opacity = '';
+        plusBtn.style.pointerEvents = '';
+      }
+    }
+    // max se niche aa gaye to error hata do
+    if (errorEl && (!max || newQty < max)) {
+      errorEl.textContent = '';
+      errorEl.style.display = 'none';
+    }
+  }
+}, true);
+
+// Manual typing pe bhi app.js ka default change-AJAX block,
+// taake auto update na ho – sirf Update button se.
+document.addEventListener('change', function (e) {
+  if (e.target && e.target.matches('#cart_form input.quantity')) {
+    e.stopImmediatePropagation();
+  }
+}, true);
+
+
+// Manual typing pe bhi app.js ka default change-AJAX block,
+// taake auto update na ho – sirf Update button se.
+document.addEventListener('change', function (e) {
+  if (e.target && e.target.matches('#cart_form input.quantity')) {
+    e.stopImmediatePropagation();
+  }
+}, true);
+
 
   function refreshCart(cart) {
     $(".cart_count").empty();
