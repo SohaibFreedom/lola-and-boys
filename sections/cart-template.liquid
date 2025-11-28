@@ -29,9 +29,8 @@
   </div>
 
   {% if cartCount == 0 %}
-    <div class="sixteen columns">
-      <div class="section clearfix">
-        <div class="six columns offset-by-five">
+    <div class="empty-cart-wrapper">
+
           <p class="quote">{{ 'cart.general.continue_browsing_html' | t }}</p>
 
           <a
@@ -40,9 +39,7 @@
           >
             {{- 'cart.general.continue_shopping_link_html' | t -}}
           </a>
-        </div>
-        <br class="clear">
-      </div>
+ 
     </div>
   {% else %}
     <div class="main-container">
