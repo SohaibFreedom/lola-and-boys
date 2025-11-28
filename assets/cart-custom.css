@@ -7,7 +7,9 @@
   align-items: center;
   gap: 8px;              /* space between CANCEL and UPDATE */
 }
-
+body.cart .cart-right-section .swipe-custom-box {
+    z-index: 9 !important;
+}
 body .cart .swipe-custom-box .swipe-btn-protection {
     z-index: 1 !important;
 }
