@@ -447,7 +447,203 @@
     {% include 'cart-shipping-calculator' %}
   {% endif %}
 </div> <!-- /#CartContainer -->
+<script>
+  // Build the custom patch / embroidery UI from cart items
+  function renderCustomPatchBlocks(cartItems) {
+    console.log('renderCustomPatchBlocks', cartItems);
 
+    const customPatchCartData = document.querySelector('.custom-patch-cart-data');
+    if (!customPatchCartData) return;
+
+    // Clear old content so we don't duplicate on reload
+    customPatchCartData.innerHTML = '';
+
+    const timestampMap = {};
+    let specificVariantPrice = 0;
+
+    // 1) Find stitching/embroidery base variant price
+    cartItems.forEach(item => {
+      if (item.variant_id === 42085140430950) {
+        specificVariantPrice = item.price;
+      }
+    });
+
+    // 2) Group items by _Timestamp (same logic as before, just using cartItems)
+    cartItems.forEach(item => {
+      if (!item.properties || !item.properties._Timestamp) return;
+
+      const timestamp = item.properties._Timestamp;
+      if (!timestampMap[timestamp]) {
+        timestampMap[timestamp] = [];
+      }
+
+      if (item.properties._customized_image_url_front) {
+        const imageUrl = item.properties._customized_image_url_front;
+        const backImageUrl = item.properties._customized_image_url_back;
+        const priceProduct = item.properties._patches_price;
+
+        if (item.properties._embroideryProduct === 'Embroidery Product') {
+          const textfont = item.properties.Font;
+          const fontcolor = item.properties['Font Color'];
+          const priceProduct1 = item.price;
+          let finalPrice = priceProduct1 + Number(specificVariantPrice);
+
+          timestampMap[timestamp].push({
+            emb: 'Embroidery',
+            title: item.title,
+            price: Number(finalPrice) / 100,
+            imageUrl: imageUrl,
+            parentVariant: 'parent',
+            timestampp: timestamp,
+            textfont: textfont,
+            fontcolor: fontcolor
+          });
+        } else {
+          timestampMap[timestamp].push({
+            title: item.title,
+            price: priceProduct,
+            imageUrl: imageUrl,
+            parentVariant: 'parent',
+            backImage: backImageUrl,
+            timestampp: timestamp
+          });
+        }
+      } else {
+        const imageUrl = item.image;
+        const priceProduct = String(item.price);
+        const removedecimal = parseFloat(priceProduct.slice(0, -2));
+
+        timestampMap[timestamp].push({
+          title: item.title,
+          price: removedecimal,
+          imageUrl: imageUrl,
+          parentVariant: item.properties._parent_variant,
+          timestampp: timestamp
+        });
+      }
+    });
+
+    // 3) Convert to array of groups
+    const filteredAndGroupedData = [];
+    for (const timestamp in timestampMap) {
+      filteredAndGroupedData.push(timestampMap[timestamp]);
+    }
+
+    // 4) Build DOM for each timestamp group (same as your existing code)
+    filteredAndGroupedData.forEach(timestampGroup => {
+      const parentPatchProductDetailsDiv = document.createElement('div');
+      parentPatchProductDetailsDiv.classList.add('parent-patch-product-details');
+
+      const parentChildWrapperDiv = document.createElement('div');
+      parentChildWrapperDiv.classList.add('parent-child-wrapper');
+
+      // Remove link + extra info
+      timestampGroup.forEach(item => {
+        if (item.parentVariant === 'parent') {
+          const deletebutton = document.createElement('a');
+          deletebutton.classList.add('cart_delete-custom-product-button');
+          deletebutton.textContent = 'remove';
+          deletebutton.setAttribute('data-customized-timestamp', item.timestampp);
+          deletebutton.setAttribute('disabled', 'true');
+          parentChildWrapperDiv.appendChild(deletebutton);
+
+          // Enable after 3s
+          setTimeout(function() {
+            deletebutton.removeAttribute('disabled');
+          }, 3000);
+
+          if (item.emb === 'Embroidery') {
+            const textFontDiv = document.createElement('div');
+            textFontDiv.classList.add('child-item');
+            const textFontP = document.createElement('p');
+            textFontP.textContent = 'Font: ' + item.textfont;
+            textFontDiv.appendChild(textFontP);
+            parentChildWrapperDiv.appendChild(textFontDiv);
+
+            const fontColorDiv = document.createElement('div');
+            fontColorDiv.classList.add('child-item');
+            const fontColorP = document.createElement('p');
+            fontColorP.textContent = 'Font Color: ' + item.fontcolor;
+            fontColorDiv.appendChild(fontColorP);
+            parentChildWrapperDiv.appendChild(fontColorDiv);
+          }
+        }
+      });
+
+      const parentPriceTitleDiv = document.createElement('div');
+      parentPriceTitleDiv.classList.add('parent-price-title');
+
+      timestampGroup.forEach(item => {
+        const div = document.createElement('div');
+        div.classList.add(item.parentVariant === 'parent' ? 'parent-item' : 'child-item');
+
+        const title = document.createElement('h3');
+        title.textContent = item.title;
+
+        const currencyFormatEl = document.getElementById('currency-format');
+        let currencySymbol = '';
+        if (currencyFormatEl) {
+          const currencyFormat = currencyFormatEl.dataset.moneyFormat || '';
+          const match = currencyFormat.match(/\{\{amount\}\}\}/);
+          if (match) {
+            currencySymbol = currencyFormat.replace(match[0], '').trim();
+          }
+        }
+
+        const titleAndPrice = document.createElement('p');
+        if (item.parentVariant === 'parent') {
+          if (item.emb === 'Embroidery') {
+            titleAndPrice.textContent = currencySymbol + ' ' + item.price;
+          } else {
+            titleAndPrice.textContent = item.price;
+          }
+        } else {
+          titleAndPrice.textContent = item.title + ' - ' + currencySymbol + ' ' + item.price;
+        }
+
+        const img = document.createElement('img');
+        const backimg = document.createElement('img');
+
+        if (item.parentVariant === 'parent') {
+          img.src = item.imageUrl;
+          img.alt = 'Parent Image';
+          img.classList.add('parent-image', 'front-image');
+
+          if (item.backImage) {
+            backimg.src = item.backImage;
+            backimg.alt = 'Back Image';
+            backimg.classList.add('parent-image', 'back-image');
+          }
+        } else {
+          img.src = item.imageUrl;
+          img.alt = 'Child Image';
+          img.classList.add('child-image');
+        }
+
+        div.appendChild(titleAndPrice);
+        div.appendChild(img);
+        if (item.parentVariant === 'parent' && item.backImage) {
+          div.appendChild(backimg);
+        }
+
+        if (item.parentVariant === 'parent') {
+          parentPriceTitleDiv.appendChild(title);
+          parentPriceTitleDiv.appendChild(titleAndPrice);
+        }
+
+        if (item.parentVariant === 'parent') {
+          parentPatchProductDetailsDiv.appendChild(div);
+        } else {
+          parentChildWrapperDiv.appendChild(div);
+        }
+      });
+
+      parentChildWrapperDiv.appendChild(parentPriceTitleDiv);
+      parentPatchProductDetailsDiv.appendChild(parentChildWrapperDiv);
+      customPatchCartData.appendChild(parentPatchProductDetailsDiv);
+    });
+  }
+</script>
 <script>
   // Reload only the cart HTML via AJAX (no full page reload)
   function reloadCartSection(callback) {
