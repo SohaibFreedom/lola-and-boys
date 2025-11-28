@@ -1626,7 +1626,7 @@ a.icon-cart:before {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 9999;
+  z-index: 99999999;
   background: #fff;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   transition: transform 0.35s ease-in-out;
