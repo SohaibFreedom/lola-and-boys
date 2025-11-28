@@ -7,6 +7,15 @@
   align-items: center;
   gap: 8px;              /* space between CANCEL and UPDATE */
 }
+
+
+.empty-cart-wrapper {
+    max-width: 600px;
+    padding: 0 20px;
+    margin: 3rem auto;
+}
+
+
 body.cart .cart-right-section .swipe-custom-box {
     z-index: 9 !important;
 }
