@@ -2,45 +2,7 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
-.cancel-quantity-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;              /* space between CANCEL and UPDATE */
-}
-body.cart .cart-right-section .swipe-custom-box {
-    z-index: 9 !important;
-}
-body .cart .swipe-custom-box .swipe-btn-protection {
-    z-index: 1 !important;
-}
 
-/* UPDATE – look like text link, not a button */
-.update-cart-btn {
-    font-family: Proxima Nova Rg;
-    text-decoration: underline;
-    font-size: 12px !important;
-    text-transform: uppercase;
-    letter-spacing: 1px !important;
-    color: #333;
-    background: none !important;
-    padding: 0;
-
-}
-.update-cart-btn:hover,
-.update-cart-btn:focus,
-.update-cart-btn:active {
-  background: none !important;
-  border: none !important;
-  color: inherit !important;
-  text-decoration: underline !important; 
-  box-shadow: none !important;
-  outline: none !important;
-}
-
-.cart_content_row.cart-row-removing {
-  opacity: 0;
-  transition: opacity 0.25s ease;
-}
 .cart-temp-header .page-title h1 {
   margin-bottom: 10px;
   margin-top: 3rem;
