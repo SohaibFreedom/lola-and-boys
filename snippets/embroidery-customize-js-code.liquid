@@ -1511,7 +1511,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const STITCHING_VARIANT_ID = 42085140430950;
 
   /* ===============================
-     Embroidery Add to Cart Handler
+     Embroidery Add / Update Handler
   =============================== */
   addBtn.addEventListener('click', async () => {
     const Fchest = document.getElementsByName('Fchestinput')[0];
@@ -1528,22 +1528,34 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleLoading(true);
 
     try {
-      // ✅ Step 1: Create image (front + back)
+      // CREATE EMBROIDERY IMAGE
       const { blob } = await composeEmbroideryFrontBackAndExport({
         background: '#ffffff',
         jpegQuality: 0.9,
         maxWidth: 1200
       });
 
-      // ✅ Step 2: Upload to S3
+      // UPLOAD TO S3
       const s3Url = await uploadBlobToS3(blob);
       document.querySelector('input[name="customized_image_url_front"]').value = s3Url;
+
       console.log('[Embroidery] Uploaded:', s3Url);
 
-      // ✅ Step 3: Add embroidery + stitching fee to cart
+      // CHECK IF UPDATE MODE
+      const isUpdate = $('.emb_cart_btn').text().trim() === 'Update';
+      const oldKey = localStorage.getItem('editCartKey');
+      const oldSession = localStorage.getItem('editSessionId');
+
+      if (isUpdate && oldKey) {
+        await removeOldEmbroideryItems(oldKey, oldSession);
+      }
+
+      // ADD NEW ITEM
       await addEmbroideryToCart(s3Url);
 
       console.log('[Embroidery] Added to cart successfully.');
+      renderEmbroideryCart();
+
     } catch (err) {
       console.error('[Embroidery] Error:', err);
       showOutOfStockError('Something went wrong. Please try again.');
@@ -1551,6 +1563,40 @@ document.addEventListener('DOMContentLoaded', () => {
       toggleLoading(false);
     }
   });
+
+  /* ===============================
+     Remove Old Embroidery + Stitching Items
+  =============================== */
+  async function removeOldEmbroideryItems(oldKey, oldSession) {
+    
+    const cart = await fetch('/cart.js').then(r => r.json());
+
+    const stitchingItem = cart.items.find(i => i.properties?._Session === oldSession);
+
+    // REMOVE parent item
+    await fetch('/cart/change.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        id: oldKey,
+        quantity: 0
+      })
+    });
+
+    // REMOVE stitching item
+    if (stitchingItem) {
+      await fetch('/cart/change.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: stitchingItem.key,
+          quantity: 0
+        })
+      });
+    }
+
+    console.log('[Embroidery] Removed old embroidery + stitching items.');
+  }
 
   /* ===============================
      UI Helpers
@@ -1599,7 +1645,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ===============================
-     Add to Cart
+     Add New Item to Cart
   =============================== */
   async function addEmbroideryToCart(imageUrl) {
     const cart = await fetch('/cart.js').then(r => r.json());
@@ -1609,37 +1655,44 @@ document.addEventListener('DOMContentLoaded', () => {
     const font = document.querySelector('input[name="selective_emb_font"]').value;
     const color = document.querySelector('input[name="selective_font_color"]').value;
 
+    const sessionId = 'emb-' + Date.now() + '-' + Math.floor(Math.random() * 9999);
+    localStorage.setItem('latestSessionId', sessionId);
+
     const embroideryItem = {
       id: Number(variantID),
       quantity: 1,
       properties: {
         _embroideryProduct: 'Embroidery Product',
         _customized_image_url_front: imageUrl,
-        "Font": font,
+        Font: font,
         "Font Color": color,
         _Timestamp: Date.now(),
+        _Session: sessionId,
         _stitchingVariantID: STITCHING_VARIANT_ID
       }
     };
 
-    const items = stitchingExists
-      ? [embroideryItem]
-      : [embroideryItem, { id: STITCHING_VARIANT_ID, quantity: 1, properties: { _Timestamp: Date.now() } }];
+    const stitchingItem = {
+      id: STITCHING_VARIANT_ID,
+      quantity: 1,
+      properties: {
+        _Timestamp: Date.now(),
+        _Session: sessionId
+      }
+    };
 
-    const res = await fetch(window.Shopify.routes.root + 'cart/add.js', {
+    const items = stitchingExists ? [embroideryItem] : [embroideryItem, stitchingItem];
+
+    await fetch('/cart/add.js', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ items })
     });
-
-    const json = await res.json();
-    if (json.status === 422) showOutOfStockError(json.message || 'Out of stock.');
   }
 
   /* ===============================
-     EMBROIDERY IMAGE COMPOSITOR
+     RENDER IMAGE FUNCTIONS (UNCHANGED)
   =============================== */
-
   function loadImageCORS(src) {
     return new Promise((resolve, reject) => {
       const img = new Image();
@@ -1651,18 +1704,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  async function composeEmbroideryArea({
-    areaEl,
-    baseImgSelector,
-    background = "#ffffff",
-    jpegQuality = 0.9
-  }) {
-    if (!areaEl) throw new Error("composeEmbroideryArea: areaEl missing");
+  async function composeEmbroideryArea({ areaEl, baseImgSelector, background = "#ffffff", jpegQuality = 0.9 }) {
     const baseEl = areaEl.querySelector(baseImgSelector);
     if (!baseEl) throw new Error(`Base image not found: ${baseImgSelector}`);
 
-    const baseSrc = baseEl.currentSrc || baseEl.src;
-    const baseImg = await loadImageCORS(baseSrc);
+    const baseImg = await loadImageCORS(baseEl.currentSrc || baseEl.src);
 
     const baseRect = baseEl.getBoundingClientRect();
     const renderW = baseRect.width || baseImg.naturalWidth;
@@ -1675,14 +1721,11 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas.width = baseImg.naturalWidth;
     canvas.height = baseImg.naturalHeight;
     const ctx = canvas.getContext("2d", { alpha: false });
-    ctx.imageSmoothingEnabled = true;
-    ctx.imageSmoothingQuality = "high";
 
     ctx.fillStyle = background;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(baseImg, 0, 0, canvas.width, canvas.height);
 
-    // Draw embroidery text
     const textAreas = areaEl.querySelectorAll(".emb-font-type-area, .emb-back-type-area");
     textAreas.forEach(embEl => {
       const text = embEl.textContent.trim();
@@ -1717,18 +1760,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const blob = await new Promise(res => canvas.toBlob(b => res(b), "image/jpeg", jpegQuality));
     const objectURL = URL.createObjectURL(blob);
-    console.log(`[EMBROIDERY:${areaEl.id}]`, objectURL);
     return { canvas, blob, objectURL };
   }
 
-  async function composeEmbroideryFrontBackAndExport({
-    background = "#ffffff",
-    jpegQuality = 0.9,
-    maxWidth = 1200
-  } = {}) {
+  async function composeEmbroideryFrontBackAndExport({ background = "#ffffff", jpegQuality = 0.9, maxWidth = 1200 } = {}) {
     const frontArea = document.getElementById("emb-Front-Area");
     const backArea = document.getElementById("emb-Back-area");
-    if (!frontArea) throw new Error("Front embroidery area not found");
 
     const frontOut = await composeEmbroideryArea({
       areaEl: frontArea,
@@ -1746,9 +1783,7 @@ document.addEventListener('DOMContentLoaded', () => {
           background,
           jpegQuality
         });
-      } catch (e) {
-        console.warn("Back embroidery skipped:", e);
-      }
+      } catch (e) {}
     }
 
     if (!backOut) return frontOut;
@@ -1756,6 +1791,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const combo = document.createElement("canvas");
     combo.width = Math.max(frontOut.canvas.width, backOut.canvas.width);
     combo.height = frontOut.canvas.height + backOut.canvas.height;
+
     const ctx = combo.getContext("2d", { alpha: false });
 
     ctx.fillStyle = background;
@@ -1776,10 +1812,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const blob = await new Promise(res => target.toBlob(b => res(b), "image/jpeg", jpegQuality));
     const objectURL = URL.createObjectURL(blob);
-    console.log("[EMBROIDERY:FRONT+BACK]", objectURL);
     return { canvas: target, blob, objectURL };
   }
+
 });
+
 </script>
 <script>
 function getResponsiveMaxSize() {
@@ -1958,4 +1995,326 @@ if (customizeButton) {
   });
 }
 
+</script>
+<script>
+/* ============================================
+   GLOBAL CART FETCH FUNCTION
+============================================ */
+async function getCart() {
+  const res = await fetch('/cart.js');
+  if (!res.ok) throw new Error('Failed to fetch cart');
+  return res.json();
+}
+
+/* ============================================
+   GLOBAL: Remove Parent + Children
+============================================ */
+async function removeParentAndChildren(groupId) {
+  const cart = await getCart();
+  const updates = {};
+
+  cart.items.forEach(item => {
+    const props = item.properties || {};
+    if (props._Timestamp === groupId || props._Session === groupId) {
+      updates[item.key] = 0;
+    }
+  });
+
+  await fetch('/cart/update.js', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ updates })
+  });
+}
+
+/* ============================================
+   GLOBAL: REMOVE SINGLE ITEM
+============================================ */
+async function removeItem(key) {
+  try {
+    const cart = await getCart();
+    const parent = cart.items.find(i => i.key === key);
+
+    if (parent?.properties?._Timestamp || parent?.properties?._Session) {
+      await removeParentAndChildren(parent.properties._Timestamp || parent.properties._Session);
+    } else {
+      await fetch('/cart/change.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: key, quantity: 0 }),
+      });
+    }
+
+    await window.renderEmbroideryCart();
+  } catch (err) {
+    console.error('Failed to remove item:', err);
+  }
+}
+
+/* ============================================
+   GLOBAL: HANDLE REMOVE BUTTON
+============================================ */
+async function handleRemoveButtonClick(e) {
+  const key = e.target.dataset.key;
+  const cart = await getCart();
+  const itemToRemove = cart.items.find(i => i.key === key);
+
+  if (itemToRemove?.properties?._Session || itemToRemove?.properties?._Timestamp) {
+    await removeParentAndChildren(itemToRemove.properties._Session || itemToRemove.properties._Timestamp);
+  } else {
+    await fetch('/cart/change.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: key, quantity: 0 }),
+    });
+  }
+
+  await window.renderEmbroideryCart();
+}
+
+/* ============================================
+   GLOBAL: BIND BUTTON FUNCTIONS
+============================================ */
+function bindCartButtons() {
+  document.querySelectorAll('.custom-cart-app-remove-btn').forEach(btn => {
+    btn.removeEventListener('click', handleRemoveButtonClick);
+    btn.addEventListener('click', handleRemoveButtonClick);
+  });
+
+  document.querySelectorAll('.custom-cart-app-make-another-btn').forEach(btn => {
+    btn.removeEventListener('click', handleMakeAnotherButtonClick);
+    btn.addEventListener('click', handleMakeAnotherButtonClick);
+  });
+}
+
+/* ============================================
+   GLOBAL: MAKE ANOTHER BUTTON
+============================================ */
+function handleMakeAnotherButtonClick() {
+  window.location.href = window.location.pathname;
+}
+
+/* ============================================
+   GLOBAL: renderEmbroideryCart()
+============================================ */
+window.renderEmbroideryCart = async function () {
+
+  const wrapper = document.querySelector('.custom-embroidery-cart-drawer-for-app-main-wrapper');
+  const counterDiv = document.querySelector('.custom_embroidery_cart_item_counter');
+  const totalPriceDiv = document.querySelector('.custom_embroidery_cart_item_price');
+
+  if (!wrapper) return;
+
+
+  /* MOBILE UI FIX */
+  if (window.innerWidth <= 900) {
+    document.querySelectorAll('.patches-customization-container, .patches-full-screen-icon')
+      .forEach(el => el.style.display = 'none');
+
+  const offcanvasMenu = document.querySelector('.emb_offcanvas');
+    if (offcanvasMenu) {
+      offcanvasMenu.style.setProperty('height', '100%', 'important');
+      offcanvasMenu.style.setProperty('min-height', '100vw', 'important');
+    }
+  }
+
+  wrapper.innerHTML = '<p class="loading">Loading cart...</p>';
+
+ const editor = document.querySelector('#emb_variants-selected-sidebar');
+if (editor) editor.style.visibility = 'hidden';
+
+  /* Show overlay */
+  const overlay = document.querySelector('.embroidery-patches-customization-container-overly');
+  if (overlay) {
+    overlay.style.display = 'block';
+    overlay.style.transition = 'opacity 0.3s ease';
+  }
+
+  /* Slide Drawer */
+  const drawer = document.querySelector('.custom-embroidery-cart-drawer-for-app');
+  console.log(drawer);
+  if (drawer) {
+    drawer.style.display = 'block';
+    drawer.style.position = 'absolute';
+    drawer.style.top = '0';
+    drawer.style.right = '0';
+    drawer.style.height = '100%';
+    drawer.style.width = '100%';
+    drawer.style.background = 'white';
+    drawer.style.boxShadow = '-3px 0 8px rgba(0,0,0,0.2)';
+    drawer.style.transform = 'translateX(100%)';
+    drawer.style.transition = 'transform 0.4s ease';
+    requestAnimationFrame(() => (drawer.style.transform = 'translateX(0)'));
+  }
+
+  /* LOAD CART DATA */
+  try {
+    const cart = await getCart();
+    const items = cart.items || [];
+
+    const parentItems = items.filter(
+      i => !i.properties || (!i.properties._ChildOf && !i.properties._parent_variant)
+    );
+    const childItems = items.filter(
+      i => i.properties && (i.properties._ChildOf || i.properties._parent_variant)
+    );
+
+    /* Counters */
+    if (counterDiv)
+      counterDiv.textContent = `Subtotal (${items.length} item${items.length !== 1 ? 's' : ''})`;
+
+    if (totalPriceDiv)
+      totalPriceDiv.textContent = Shopify.formatMoney(cart.total_price, "{{ shop.money_format }}");
+
+    if (parentItems.length === 0) {
+      wrapper.innerHTML = '<p class="empty-msg">Your cart is empty.</p>';
+      return;
+    }
+
+    /* Build HTML */
+    let html = '';
+
+    parentItems.forEach(parent => {
+      const props = parent.properties || {};
+      const isCustomized = props._Parent === 'Embroidery Product' || props._customized_image_url_front;
+
+      const relatedChildren = childItems.filter(
+        child =>
+          child.properties &&
+          (child.properties._parent_variant == parent.variant_id ||
+            child.properties._ChildOf === '1') &&
+          child.properties._Session === props._Session
+      );
+
+      const parentTotal =
+        parent.final_line_price +
+        relatedChildren.reduce((sum, c) => sum + c.final_line_price, 0);
+
+      const img =
+        props._customized_image_url_front ||
+        parent.image ||
+        "{{ 'no-image.png' | asset_url }}";
+
+      const latestSessionId = localStorage.getItem('latestSessionId');
+      const isLatestProduct =
+        isCustomized && props._Session && props._Session === latestSessionId;
+
+      const buttonsHTML = isCustomized
+        ? `
+          ${isLatestProduct ? `<div class="custom-embroidery-cart-app-edit-btn" data-key="${parent.key}" data-session="${props._Session}">Edit</div>` : ''}
+          <div class="custom-cart-app-remove-btn" data-key="${parent.key}">Remove</div>
+          <div class="custom-cart-app-make-another-btn">Create Another</div>`
+        : `<div class="custom-cart-app-remove-btn" data-key="${parent.key}">Remove</div>`;
+
+      html += `
+        <div class="custom-cart-item" data-key="${parent.key}">
+          <div class="custom-cart-item-img">
+            <img src="${img}" alt="${parent.title}" loading="lazy">
+          </div>
+          <div class="custom-cart-item-info">
+            <div class="custom-cart-app-product-title">${parent.title}</div>
+            <p class="custom-cart-app-custom-price">
+              ${Shopify.formatMoney(parentTotal, "{{ shop.money_format }}")}
+            </p>
+            <div class="custom-cart-app-custom-cart-actions">
+              ${buttonsHTML}
+            </div>
+          </div>
+        </div>
+      `;
+    });
+
+    localStorage.removeItem('latestSessionId');
+
+    wrapper.innerHTML = html;
+    bindCartButtons();
+
+  } catch (err) {
+    console.error(err);
+    wrapper.innerHTML = '<p class="error-msg">Failed to load cart.</p>';
+  }
+};
+
+/* ============================================
+   INITIAL LOAD (outside DOMContentLoaded)
+============================================ */
+
+document.addEventListener('click', function (e) {
+  const closeBtn = e.target.closest('.custom-embroidery-cart-drawer-for-app-close');
+  if (!closeBtn) return;
+if (window.innerWidth <= 900) {
+    // Hide elements
+    document.querySelectorAll('.patches-customization-container, .patches-full-screen-icon').forEach(el => {
+      el.style.display = 'block';
+    });
+
+    // Apply CSS to the offcanvas menu
+     const offcanvasMenu = document.querySelector('.emb_offcanvas');
+    if (offcanvasMenu) {
+     offcanvasMenu.style.setProperty('height', 'calc(100% - 100vw)', 'important');
+  offcanvasMenu.style.setProperty('min-height', '50vw', 'important');
+    }
+  }
+  const editor = document.querySelector('#emb_variants-selected-sidebar');
+if (editor) editor.style.visibility = 'visible';
+
+  const overlay = document.querySelector('.embroidery-patches-customization-container-overly');
+  if (overlay) {
+    overlay.style.transition = 'opacity 0.3s ease';
+    setTimeout(() => (overlay.style.display = 'none'), 300);
+  }
+
+  const drawer = document.querySelector('.custom-embroidery-cart-drawer-for-app');
+  if (drawer) {
+    drawer.style.transition = 'transform 0.4s ease';
+    drawer.style.transform = 'translateX(100%)';
+    setTimeout(() => {
+      drawer.style.display = 'none';
+      drawer.style.transform = '';
+    }, 400);
+  }
+   $('.emb_cart_btn').text('Update');
+});
+
+document.addEventListener('click', function (e) {
+const editBtn = e.target.closest('.custom-embroidery-cart-app-edit-btn');
+
+  if (!editBtn) return;
+  
+if (window.innerWidth <= 900) {
+    // Hide elemen
+    document.querySelectorAll('.patches-customization-container, .patches-full-screen-icon').forEach(el => {
+      el.style.display = 'block';
+    });
+
+    // Apply CSS to the offcanvas menu
+     const offcanvasMenu = document.querySelector('.emb_offcanvas');
+    if (offcanvasMenu) {
+     offcanvasMenu.style.setProperty('height', 'calc(100% - 100vw)', 'important');
+  offcanvasMenu.style.setProperty('min-height', '50vw', 'important');
+    }
+  }
+   const cartKey = editBtn.dataset.key;
+  localStorage.setItem('editCartKey', cartKey); // store key for later update
+
+   const editor = document.querySelector('#emb_variants-selected-sidebar');
+if (editor) editor.style.visibility = 'visible';
+
+  const overlay = document.querySelector('.embroidery-patches-customization-container-overly');
+  if (overlay) {
+    overlay.style.transition = 'opacity 0.3s ease';
+    setTimeout(() => (overlay.style.display = 'none'), 300);
+  }
+
+  const drawer = document.querySelector('.custom-embroidery-cart-drawer-for-app');
+  if (drawer) {
+    drawer.style.transition = 'transform 0.4s ease';
+    drawer.style.transform = 'translateX(100%)';
+    setTimeout(() => {
+      drawer.style.display = 'none';
+      drawer.style.transform = '';
+    }, 400);
+  }
+  $('.emb_cart_btn').text('Update');
+});
 </script>

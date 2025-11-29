@@ -758,9 +758,17 @@ document.addEventListener('DOMContentLoaded', () => {
     <!-- ACCESSIBILITYSPARK END -->
 
 
+{% if template == 'product' %}
+  {% unless product.tags contains 'patch-app-category' %}
+    <!-- Rebuy START -->
+    {% render 'rebuy-extensions' %}
+    <!-- Rebuy END -->
+  {% endunless %}
+{% else %}
   <!-- Rebuy START -->
-{% render 'rebuy-extensions' %}
-<!-- Rebuy END -->
+  {% render 'rebuy-extensions' %}
+  <!-- Rebuy END -->
+{% endif %}
   
   <script defer src="https://static.shopmy.us/Affiliates/sms_aff_clicktrack.js"></script>
     

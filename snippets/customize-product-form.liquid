@@ -163,6 +163,11 @@
     font-size: 17px !important;
     }
   }
+  @media screen and (max-width: 900px){
+      .custom-cart-drawer-for-app-main-wrapp{
+          padding: 40px 16px 0px 20px;
+    }
+  }
   @media screen and (max-width: 376px){
     .span-content {
     font-size: 14px !important;
@@ -225,6 +230,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- REMOVE html2canvas; not needed anymore -->
 <script>
+  
 /** =================== CONFIG =================== **/
 const CURRENCY_FORMAT_EL_ID = 'currency-format';
 const S3_UPLOAD_ENDPOINT = 'https://6ch1pxqng1.execute-api.ap-south-1.amazonaws.com/check';
@@ -266,6 +272,59 @@ function loadImageCORS(src) {
     img.src = src;
   });
 }
+/** Remove parent and its children (matched by _Timestamp or _Session) **/
+/**
+ * Remove all cart items that share the same _Timestamp or _Session.
+ * Sequential removal to prevent grouping deletions.
+ * Pass removeParent = false to avoid removing the parent.
+ */
+async function removeParentAndChildren(timestampOrSession, removeParent = true) {
+  const cart = await getCart();
+  if (!cart?.items?.length) return;
+
+  // Define targets based on _Timestamp or _Session matching
+  const targets = cart.items.filter(
+    i =>
+      i.properties &&
+      (
+        i.properties._Timestamp === timestampOrSession ||
+        i.properties._Session === timestampOrSession
+      )
+  );
+
+  if (targets.length === 0) {
+    console.log('[CART] No matching items found to remove.');
+    return;
+  }
+
+  // Sequential removal of each item (parent or child)
+  for (const t of targets) {
+    const isParent = t.properties?._Parent === '1' || !t.properties?._ChildOf && !t.properties?._parent_variant;
+
+    // Skip removal of parent if removeParent = false
+    if (!removeParent && isParent) {
+      console.log('[CART] Skipping parent removal:', t.title, t.key);
+      continue; // Skip parent if we're only removing patches
+    }
+
+    try {
+      const response = await fetch('/cart/change.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: t.key, quantity: 0 }),
+      });
+      if (!response.ok) {
+        console.warn('Failed to remove item:', t.title, t.key);
+      } else {
+        console.log(`[CART] Removed ${isParent ? 'parent' : 'child'} item:`, t.title, t.key);
+      }
+    } catch (err) {
+      console.warn('Error removing item:', t, err);
+    }
+  }
+}
+
+
 
 // helpers for CSS -> number
 const num = (v) => Math.max(0, parseFloat(v) || 0);
@@ -303,7 +362,6 @@ function computeObjectFitRect(nw, nh, boxW, boxH, fit='fill', pos={x:0.5,y:0.5})
   return { drawW: w, drawH: h, offsetX: offX, offsetY: offY };
 }
 
-// Compose one side: base + patches (respects object-fit & content-box)
 function getRotationDegrees(el) {
   const style = window.getComputedStyle(el);
   const transform = style.transform || style.webkitTransform;
@@ -529,6 +587,7 @@ async function composeFrontBackAndExport({
   return { canvas: target, blob, objectURL };
 }
 
+
 /** ============== S3 + CART HELPERS ============== **/
 async function uploadBlobToS3(blob) {
   const fd = new FormData();
@@ -546,7 +605,12 @@ async function updateLineItemPropsByKey(lineItemKey, newProps) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ id: lineItemKey, properties: newProps })
   });
-  if (!r.ok) throw new Error('Failed to update line item');
+if (!r.ok) {
+  const text = await r.text();
+  console.log('erooorr')
+  console.log("CHANGE ERROR:", text);
+  throw new Error('Failed to update line item');
+}
   return r.json();
 }
 
@@ -664,6 +728,8 @@ async function addToCartWithImage(sessionId, s3Url) {
   if (parentKey) PARENT_PROPS.set(parentKey, parentProps);
 
   console.log('[1] Products added to cart (with image) successfully');
+  localStorage.setItem('latestSessionId', sessionId);
+  renderCart();
   return { parentKey };
 }
 
@@ -715,6 +781,110 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     const sessionId = SESSION_TOKEN();
+const isUpdate = $('.span-content').text().trim() === 'Update';
+const cartKey = localStorage.getItem('editCartKey');
+
+if (isUpdate && cartKey) {
+  try {
+    if (loader) loader.style.display = 'block';
+    if (spanDiv) spanDiv.style.display = 'none';
+    addBtn.style.pointerEvents = 'none';
+    addBtn.style.backgroundColor = 'rgb(190 190 190)';
+
+    console.log('[UPDATE] Starting update for key:', cartKey);
+
+    const cart = await getCart();
+    const parentItem = cart.items.find(i => i.key === cartKey);
+    if (!parentItem) throw new Error('Parent item not found');
+
+    const oldTimestamp = parentItem.properties?._Timestamp;
+    const session = parentItem.properties?._Session;
+    const now = Date.now().toString();
+
+    // 1️⃣ First compose new image
+    const { blob } = await composeFrontBackAndExport({
+      jpegQuality: 0.85,
+      maxWidth: 1200
+    });
+
+    // 2️⃣ Upload image
+    const s3Url = await uploadBlobToS3(blob);
+    console.log('[UPDATE] S3 URL:', s3Url);
+const { symbol, totalPrice, selected } = collectPatchSelectionsAndPrice();
+const sizeVariants = document.querySelector('input[name="size_variants_data"]')?.value || '';
+const messageData  = document.querySelector('textarea[name="messagefield"]')?.value || '';
+
+    // 3️⃣ Update parent FIRST (important)
+  const updatedProps = {
+  "Product Name": product.title,
+  _customized_image_url_front: s3Url,
+  _customized_image_url_back: s3Url,
+  _size: sizeVariants,
+  _info: messageData,
+  _patches_price: String(totalPrice),   // NOW WORKS
+  _Session: session,
+  _Parent: '1',
+  _Timestamp: now,
+  _UpdatedAt: now
+};
+
+    console.log("🔥 Updating parent with props:", updatedProps);
+
+await updateLineItemPropsByKey(cartKey, updatedProps);
+
+    console.log("[UPDATE] Parent updated. Now removing children…");
+
+    // 4️⃣ Now remove OLD children
+    await removeParentAndChildren(oldTimestamp, false);
+
+    console.log("[UPDATE] Old children removed. Adding new children…");
+
+    // 5️⃣ Add new children
+    const variantID = parentItem.variant_id;
+    for (const sel of selected) {
+      await fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          items: [
+            {
+              id: sel.variantId,
+              quantity: 1,
+              properties: {
+                name: 'Custom Product',
+                _parent_variant: variantID,
+                _Session: session,
+                _ChildOf: '1',
+                _Unique: `${sel.id}_${now}`,
+                _Timestamp: now
+              }
+            }
+          ]
+        })
+      });
+    }
+
+    console.log('[UPDATE] All children added successfully');
+
+    $('.span-content').text('Add to bag');
+    localStorage.removeItem('editCartKey');
+    localStorage.setItem('latestSessionId', session);
+
+    await renderCart();
+
+  } catch (err) {
+    console.error('❌ UPDATE ERROR:', err);
+  } finally {
+    if (loader) loader.style.display = 'none';
+    if (spanDiv) spanDiv.style.display = 'block';
+    addBtn.style.pointerEvents = 'auto';
+    addBtn.style.backgroundColor = '';
+  }
+
+  return;
+}
+
+
 
     try {
       // 1) Compose the image(s)
@@ -869,3 +1039,347 @@ document.addEventListener('DOMContentLoaded', function () {
 
 </script>
 
+<script>
+document.addEventListener('DOMContentLoaded', async function () {
+  const wrapper = document.querySelector('.custom-cart-drawer-for-app-main-wrapper');
+  const counterDiv = document.querySelector('.custom_cart_item_counter');
+  const totalPriceDiv = document.querySelector('.custom_cart_item_price');
+
+  if (!wrapper) return;
+
+  async function getCart() {
+    const res = await fetch('/cart.js');
+    if (!res.ok) throw new Error('Failed to fetch cart');
+    return res.json();
+  }
+
+  async function renderCart() {
+   
+    console.log('wrapper',wrapper);
+     if (window.innerWidth <= 900) {
+    // Hide elements
+    document.querySelectorAll('.patches-customization-container, .patches-full-screen-icon').forEach(el => {
+      el.style.display = 'none';
+    });
+
+    // Apply CSS to the offcanvas menu
+    const offcanvasMenu = document.getElementById('patches-customization-offcanvas-menu');
+    if (offcanvasMenu) {
+     offcanvasMenu.style.setProperty('height', '100%', 'important');
+  offcanvasMenu.style.setProperty('min-height', '100vw', 'important');
+    }
+  }
+    wrapper.innerHTML = '<p class="loading"></p>';
+    
+    // Hide the patch editor
+    const editor = document.querySelector('.patches-editor-wrapper');
+    if (editor) editor.style.display = 'none';
+
+    // Show the overlay
+    const overlay = document.querySelector('.patches-customization-container-overly');
+    if (overlay) {
+      overlay.style.display = 'block';
+      overlay.style.opacity = '0';
+      overlay.style.transition = 'opacity 0.3s ease';
+      requestAnimationFrame(() => (overlay.style.opacity = '1'));
+    }
+
+    // Slide in the cart drawer
+    const drawer = document.querySelector('.custom-cart-drawer-for-app');
+    if (drawer) {
+      drawer.style.display = 'block';
+      drawer.style.position = 'absolute';
+      drawer.style.top = '0';
+      drawer.style.right = '0';
+      drawer.style.height = '100%';
+      drawer.style.width = '100%';
+      drawer.style.background = 'white';
+      drawer.style.boxShadow = '-3px 0 8px rgba(0, 0, 0, 0.2)';
+      drawer.style.transform = 'translateX(100%)';
+      drawer.style.transition = 'transform 0.4s ease';
+      requestAnimationFrame(() => (drawer.style.transform = 'translateX(0)'));
+    }
+
+    try {
+      const cart = await getCart();
+      const items = cart.items || [];
+
+      // Separate parents and children
+      const parentItems = items.filter(
+        (i) => !i.properties || (!i.properties._ChildOf && !i.properties._parent_variant)
+      );
+      const childItems = items.filter(
+        (i) => i.properties && (i.properties._ChildOf || i.properties._parent_variant)
+      );
+
+      // Totals
+      const totalCount = items.length;
+      const totalPrice = cart.total_price;
+      const formattedTotal = Shopify.formatMoney(totalPrice, "{{ shop.money_format }}");
+
+      if (counterDiv)
+        counterDiv.textContent = `Subtotal (${totalCount} item${totalCount !== 1 ? 's' : ''})`;
+      if (totalPriceDiv)
+        totalPriceDiv.textContent = formattedTotal;
+
+      // Empty state
+      if (parentItems.length === 0) {
+        wrapper.innerHTML = '<p class="empty-msg">Your cart is empty.</p>';
+        return;
+      }
+
+      let html = '';
+
+      // 🔹 Build item HTML (with child total merged)
+      parentItems.forEach((parent) => {
+        const props = parent.properties || {};
+        const isCustomizedParent =
+          props._Parent === '1' || props._customized_image_url_front;
+
+        // Find child items linked to this parent
+        const relatedChildren = childItems.filter(
+          (child) =>
+            child.properties &&
+            (child.properties._parent_variant == parent.variant_id ||
+              child.properties._ChildOf === '1') &&
+            child.properties._Session === props._Session
+        );
+
+        // Calculate combined total (parent + its children)
+        const parentTotal = parent.final_line_price +
+          relatedChildren.reduce((sum, c) => sum + c.final_line_price, 0);
+
+        const img =
+          props._customized_image_url_front ||
+          parent.image ||
+          "{{ 'no-image.png' | asset_url }}";
+
+        const title = parent.title || 'Untitled Product';
+        const price = Shopify.formatMoney(parentTotal, "{{ shop.money_format }}");
+        const id = parent.key;
+
+        const latestSessionId = localStorage.getItem('latestSessionId');
+        const isLatestProduct =
+        isCustomizedParent && props._Session && props._Session === latestSessionId;
+    const buttonsHTML = isCustomizedParent
+  ? `
+    ${isLatestProduct ? `<div class="custom-cart-app-edit-btn" data-key="${id}" data-session="${props._Session}">Edit</div>` : ''}
+    <div class="custom-cart-app-remove-btn" data-key="${id}">Remove</div>
+    <div class="custom-cart-app-make-another-btn">Create Another</div>
+  `
+  : `
+    <div class="custom-cart-app-remove-btn" data-key="${id}">Remove</div>
+  `;
+
+
+        html += `
+          <div class="custom-cart-item" data-key="${id}">
+            <div class="custom-cart-item-img">
+              <img src="${img}" alt="${title}" loading="lazy">
+            </div>
+            <div class="custom-cart-item-info">
+              <div class="custom-cart-app-product-title">${title}</div>
+              <p class="custom-cart-app-custom-price">${price}</p>
+              <div class="custom-cart-app-custom-cart-actions">
+                ${buttonsHTML}
+              </div>
+            </div>
+          </div>
+        `;
+      });
+localStorage.removeItem('latestSessionId');
+      wrapper.innerHTML = html;
+      bindCartButtons();
+
+    } catch (err) {
+      console.error(err);
+      wrapper.innerHTML = '<p class="error-msg">Failed to load cart.</p>';
+    }
+  }
+
+
+  // Remove item
+async function removeItem(key) {
+  try {
+    const cart = await getCart();
+    const parent = cart.items.find(i => i.key === key);
+    if (parent?.properties?._Timestamp || parent?.properties?._Session) {
+      await removeParentAndChildren(parent.properties._Timestamp || parent.properties._Session);
+    } else {
+      // fallback – normal remove
+      await fetch('/cart/change.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: key, quantity: 0 }),
+      });
+    }
+
+    await renderCart();
+  } catch (err) {
+    console.error('Failed to remove item:', err);
+  }
+}
+
+
+  // Button bindings
+ function bindCartButtons() {
+  // Re-attach remove button functionality
+  document.querySelectorAll('.custom-cart-app-remove-btn').forEach((btn) => {
+    btn.removeEventListener('click', handleRemoveButtonClick); // Avoid multiple bindings
+    btn.addEventListener('click', handleRemoveButtonClick); // Attach handler
+  });
+
+  document.querySelectorAll('.custom-cart-app-make-another-btn').forEach((btn) => {
+    btn.removeEventListener('click', handleMakeAnotherButtonClick); // Avoid multiple bindings
+    btn.addEventListener('click', handleMakeAnotherButtonClick);
+  });
+}
+
+// Handle removing items from cart
+async function handleRemoveButtonClick(e) {
+    const wrapperMain = document.querySelector('.custom-cart-drawer-for-app-main-wrapper'); 
+  if (wrapperMain) {
+    wrapper.innerHTML = '<p class="loading"></p>';
+  }
+  const key = e.target.dataset.key;
+  const cart = await getCart();
+  const itemToRemove = cart.items.find(i => i.key === key);
+  
+  if (itemToRemove?.properties?._Session || itemToRemove?.properties?._Timestamp) {
+    // If it's a parent or a child linked by session/timestamp, remove both
+    await removeParentAndChildren(itemToRemove.properties._Session || itemToRemove.properties._Timestamp);
+  } else {
+    // Fallback to normal removal
+    await fetch('/cart/change.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: key, quantity: 0 }),
+    });
+  }
+
+  await renderCart();
+}
+
+// Handle creating another product (reloading)
+function handleMakeAnotherButtonClick() {
+  location.reload();
+}
+
+
+  // Expose globally
+  window.renderCart = renderCart;
+  //renderCart();
+});
+
+// Close handler
+document.addEventListener('click', function (e) {
+  const closeBtn = e.target.closest('.custom-cart-drawer-for-app-close');
+  if (!closeBtn) return;
+        document.querySelectorAll('.patch').forEach(el => {
+     // el.classList.remove('patch');
+      el.classList.remove('patch-not-allowed');
+      el.setAttribute('draggable','true');
+    });
+if (window.innerWidth <= 900) {
+    // Hide elements
+    document.querySelectorAll('.patches-customization-container, .patches-full-screen-icon').forEach(el => {
+      el.style.display = 'block';
+    });
+
+    // Apply CSS to the offcanvas menu
+    const offcanvasMenu = document.getElementById('patches-customization-offcanvas-menu');
+    if (offcanvasMenu) {
+     offcanvasMenu.style.setProperty('height', 'calc(100% - 100vw)', 'important');
+  offcanvasMenu.style.setProperty('min-height', '50vw', 'important');
+    }
+  }
+  const editor = document.querySelector('.patches-editor-wrapper');
+  if (editor) editor.style.display = 'block';
+
+  const overlay = document.querySelector('.patches-customization-container-overly');
+  if (overlay) {
+    overlay.style.opacity = '1';
+    overlay.style.transition = 'opacity 0.3s ease';
+    overlay.style.opacity = '0';
+    setTimeout(() => (overlay.style.display = 'none'), 300);
+  }
+
+  const drawer = document.querySelector('.custom-cart-drawer-for-app');
+  if (drawer) {
+    drawer.style.transition = 'transform 0.4s ease';
+    drawer.style.transform = 'translateX(100%)';
+    setTimeout(() => {
+      drawer.style.display = 'none';
+      drawer.style.transform = '';
+    }, 400);
+  }
+  $('.span-content').text('Update');
+});
+
+document.addEventListener('click', function (e) {
+const editBtn = e.target.closest('.custom-cart-app-edit-btn');
+  if (!editBtn) return;
+         document.querySelectorAll('.patch').forEach(el => {
+     // el.classList.remove('patch');
+      el.classList.remove('patch-not-allowed');
+      el.setAttribute('draggable','true');
+    });
+if (window.innerWidth <= 900) {
+    // Hide elements
+    document.querySelectorAll('.patches-customization-container, .patches-full-screen-icon').forEach(el => {
+      el.style.display = 'block';
+    });
+
+    // Apply CSS to the offcanvas menu
+    const offcanvasMenu = document.getElementById('patches-customization-offcanvas-menu');
+    if (offcanvasMenu) {
+     offcanvasMenu.style.setProperty('height', 'calc(100% - 100vw)', 'important');
+  offcanvasMenu.style.setProperty('min-height', '50vw', 'important');
+    }
+  }
+   const cartKey = editBtn.dataset.key;
+  localStorage.setItem('editCartKey', cartKey); // store key for later update
+
+  const editor = document.querySelector('.patches-editor-wrapper');
+  if (editor) editor.style.display = 'block';
+
+  const overlay = document.querySelector('.patches-customization-container-overly');
+  if (overlay) {
+    overlay.style.opacity = '1';
+    overlay.style.transition = 'opacity 0.3s ease';
+    overlay.style.opacity = '0';
+    setTimeout(() => (overlay.style.display = 'none'), 300);
+  }
+
+  const drawer = document.querySelector('.custom-cart-drawer-for-app');
+  if (drawer) {
+    drawer.style.transition = 'transform 0.4s ease';
+    drawer.style.transform = 'translateX(100%)';
+    setTimeout(() => {
+      drawer.style.display = 'none';
+      drawer.style.transform = '';
+    }, 400);
+  }
+  $('.span-content').text('Update');
+});
+
+</script>
+
+<script>
+  $('.filter_all_categories_button_wrapp').on('click', function () {
+    // Get all active checkboxes and their data-toggle-filter values
+    const selectedCategories = $('.active_checkBox_category')
+        .map(function () {
+            return $(this).data('toggle-filter');  // or $(this).attr('data-toggle-filter')
+        })
+        .get()
+        .filter(Boolean); // remove null/undefined/empty
+
+    console.log('Selected categories:', selectedCategories);
+
+    // Call your filter function with these categories
+    filterPatches(selectedCategories);
+    $('.filter_customization_wrapper_show_all_filter_dropdowns').hide();
+});
+
+</script>
