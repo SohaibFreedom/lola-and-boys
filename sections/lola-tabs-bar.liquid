@@ -227,46 +227,24 @@
       return html;
     }
 
-    /* --------------------------------------------------
-       FIXED fetchSearch() — NO DUPLICATES AT ALL
-       -------------------------------------------------- */
     async function fetchSearch(tag){
       let page=1;
-      let cards = "";
-      const seen = new Set(); // FILTER DUPLICATES
-
+      let cards="";
       while(true){
-        const url = `/search?type=product&q=tag:${encodeURIComponent(tag)}&page=${page}&section_id=giftguide-section&cb=${Date.now()}`;
-        const res = await fetch(url, { cache:"no-store" });
-        const html = await res.text();
-
-        const tmp = document.createElement("div");
-        tmp.innerHTML = html;
-
-        const products = tmp.querySelectorAll(".gift-page-product-price-prdct");
-        if(!products.length) break;
-
-        products.forEach(el => {
-          let handle = el.getAttribute("href") || "";
-          handle = handle.split("?")[0].trim();  // TRUE DUPLICATE FIX
-
-          if(!seen.has(handle)){
-            seen.add(handle);
-            cards += el.outerHTML;
-          }
-        });
-
-        const hasNext = tmp.querySelector(`[data-gift-page="${page+1}"]`);
-        if (!hasNext) break;
-
+        const url=`/search?type=product&q=tag:${encodeURIComponent(tag)}&page=${page}&section_id=giftguide-section&cb=${Date.now()}`;
+        const res=await fetch(url,{cache:"no-store"});
+        const html=await res.text();
+        const tmp=document.createElement("div");
+        tmp.innerHTML=html;
+        const grid=tmp.querySelector(".gift-page-product-price-prdct-contnr");
+        if(!grid) break;
+        grid.querySelectorAll(".gift-page-product-price-prdct").forEach(el=>{cards+=el.outerHTML;});
+        const hasNext=tmp.querySelector(`[data-gift-page="${page+1}"]`);
+        if(!hasNext) break;
         page++;
       }
-
-      const html = cards
-        ? `<div class="gift-page-product-price-prdct-contnr">${cards}</div>`
-        : '<p style="text-align:center;">No products found for this tag.</p>';
-
-      cache.set(tag, html);
+      const html=cards?`<div class="gift-page-product-price-prdct-contnr">${cards}</div>`:'<p style="text-align:center;">No products found for this tag.</p>';
+      cache.set(tag,html);
       return html;
     }
 
@@ -301,9 +279,7 @@
     async function initialLoad(){
       if(!currentTag) return;
       skeleton(8);
-      const first=ensureTag(currentTag).then(html=>{
-        if(currentTag===tabs[0].dataset.tag) renderHTML(html);
-      });
+      const first=ensureTag(currentTag).then(html=>{if(currentTag===tabs[0].dataset.tag) renderHTML(html);});
       const others=TAGS.filter(t=>t!==currentTag).map(t=>ensureTag(t));
       await Promise.race([first,Promise.allSettled(others)]);
     }
@@ -324,7 +300,6 @@
     initialLoad();
   })();
 </script>
-
 
 
 
