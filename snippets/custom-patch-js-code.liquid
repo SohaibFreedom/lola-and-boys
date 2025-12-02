@@ -1786,12 +1786,12 @@ if (filteredData.length > 0) {
 
              const img = document.createElement('img');
 img.setAttribute('draggable', 'false');
-img.dataset.src = `${item.image}&width=100`; // store in dataset
+img.dataset.src = `${item.image}&width=100`; 
 img.alt = item.name;
 img.classList.add('patch-image');
 img.setAttribute('crossorigin', 'anonymous');
 
-            // Get the height and width as integers
+           
             let imgHeight = parseInt(item.height, 10);
             let imgWidth = parseInt(item.width, 10);
 
@@ -1799,10 +1799,10 @@ img.setAttribute('crossorigin', 'anonymous');
             const variantname = document.querySelector('input[name="selective_variant_name"]').value.trim();
             console.log('this is variantname', variantname);
 
-            // Adjust imgHeight and imgWidth based on variantname and productTags
+            
             if (variantname === '1' || variantname === '2' || variantname === '2/3' || variantname === '3/4' || variantname === '4/5' || variantname === '5/6' || 
                 variantname === '4' || variantname === '5' || variantname === '6') {
-                if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit")&& !productTags.includes("Customizable-Patch-Soft-Hoodie")&& !productTags.includes("Embossed-Emoji-Terry-Poncho") && !productTags.includes("Super-soft-short-set") && !productTags.includes("Lavender-Haze-Gem")) {
+                if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit")&& !productTags.includes("Customizable-Patch-Soft-Hoodie")&& !productTags.includes("Embossed-Emoji-Terry-Poncho") && !productTags.includes("Super-soft-short-set") && !productTags.includes("Lavender-Haze-Gem")  && !productTags.includes("Pastel-Velour-Short-Set")) {
                     console.log('condition true');
                     imgHeight += 8;
                     imgWidth += 8;
@@ -1811,6 +1811,12 @@ img.setAttribute('crossorigin', 'anonymous');
                    console.log("Lavender-Haze-Gem condition");
                    imgHeight -= 10;
                    imgWidth -= 10;
+                  
+                 }
+                else if (productTags.includes("Pastel-Velour-Short-Set")) {
+                   console.log("Pastel-Velour-Short-Set condition");
+                   imgHeight -= 2;
+                   imgWidth -= 2;
                   
                  }
                 else if (productTags.includes("Customizable-Patch-Soft-Hoodie")) {
