@@ -112,17 +112,7 @@
           {% capture i %}{% cycle "1", "2" %}{% endcapture %}
           {{ 'lifestyle-' | append: i | placeholder_svg_tag: 'placeholder-svg placeholder-svg--slideshow' }}
         {% endif %}
-          {% unless block.settings.button1_link != blank and block.settings.button2_link != blank %}
-            {% if block.settings.button1_link != blank %}
-              <a href="{{ block.settings.button1_link }}" class="banner-full-link">
-                {{ block.settings.title }}
-              </a>
-            {% elsif block.settings.button2_link != blank %}
-              <a href="{{ block.settings.button2_link }}" class="banner-full-link">
-                {{ block.settings.title }}
-              </a>
-            {% endif %}
-          {% endunless %}
+ 
           {% unless block.settings.pretext == blank and block.settings.title == blank and block.settings.subtitle == blank and block.settings.button1 == blank and block.settings.button2 == blank %}
             <div class="caption position-{{block.settings.text_position}} js-caption">
                 <div class="caption-content
