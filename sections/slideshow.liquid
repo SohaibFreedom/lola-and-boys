@@ -415,3 +415,17 @@
 
 
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  
+  var slider = document.querySelector('.homepage-slideshow');
+
+  if (!slider) return;
+
+  // Completely disable Flickity tap/click events
+  slider.addEventListener('touchstart', function (e) {
+    e.preventDefault();
+  }, { passive: false });
+
+});
+</script>
