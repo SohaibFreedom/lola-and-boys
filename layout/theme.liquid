@@ -265,6 +265,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      {{ content_for_layout }}
 </div>
 
+
+                        <script>
+              document.addEventListener("DOMContentLoaded", () => {
+  const header = document.querySelector('.header-custom-c'); // or your header selector
+  const content = document.querySelector('.content-main');
+  if (!header || !content) return;
+
+  const setOffset = () => {
+    const headerHeight = header.offsetHeight;
+    content.style.marginTop = `${headerHeight}px`;
+  };
+
+  // Run once initially
+  setOffset();
+
+  // Run again after all resources loaded (images/fonts can change height)
+  window.addEventListener('load', setOffset);
+
+  // Run on resize (in case of responsive height change)
+  window.addEventListener('resize', () => requestAnimationFrame(setOffset));
+
+  // Watch for DOM changes in header (e.g. countdown added/removed)
+  const observer = new MutationObserver(() => setOffset());
+  observer.observe(header, { childList: true, subtree: true, attributes: true });
+});
+
+            </script>
+
     {% unless template contains 'index' or settings.secondary_newsletter_banner == false %}
       {% section 'newsletter' %}
     {% endunless %}
