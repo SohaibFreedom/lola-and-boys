@@ -1568,3 +1568,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+<script>
+(function() {
+  const interval = setInterval(() => {
+    const header = document.querySelector('.header-custom-c');
+    const content = document.querySelector('.content-main');
+
+    if (header && content) {
+      content.style.marginTop = header.offsetHeight + "px";
+      clearInterval(interval);
+    }
+  }, 1); // runs instantly until header is ready
+
+  window.addEventListener('load', () => {
+    const header = document.querySelector('.header-custom-c');
+    const content = document.querySelector('.content-main');
+    if (header && content) {
+      content.style.marginTop = header.offsetHeight + "px";
+    }
+  });
+})();
+</script>
