@@ -415,17 +415,3 @@
 
 
 
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    // Mobile widths only
-    if (window.innerWidth <= 768) {
-      var vids = document.querySelectorAll(
-        '.homepage-slideshow .banner-video, .homepage-slideshow .banner-video-homemobile'
-      );
-      vids.forEach(function (v) {
-        // Completely remove the video element
-        v.parentNode && v.parentNode.removeChild(v);
-      });
-    }
-  });
-</script>
