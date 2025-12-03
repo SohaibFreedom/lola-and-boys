@@ -55,10 +55,17 @@
           </div>`;
 
         // Stop the countdown if the remaining time reaches zero
-        if (remainingTime <= 0) {
-          clearInterval(countdownTimer);
-          countdownElement.textContent = "Countdown is over!";
-        }
+   // Stop the countdown if the remaining time reaches zero
+if (remainingTime <= 0) {
+  clearInterval(countdownTimer);
+
+  // Remove countdown completely instead of showing text
+  if (countdownElement) {
+    countdownElement.innerHTML = "";
+    countdownElement.style.display = "none";
+  }
+}
+
       }, 1000); // Update every second
     }, 2000); // 2000 milliseconds = 2 seconds
   </script>
