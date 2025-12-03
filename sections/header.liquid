@@ -130,7 +130,43 @@
     </div>
   </div>
 </header>
+<div id="mobile-custom-linklist">
+ <ul id="some-id">
+    {%- for link in linklists.mobile-menu.links -%}
+      <li>
+        <a href="{{ link.url }}" {% if link.active %}aria-current="page"{% endif %}>
+          {{ link.title }}
+        </a>
 
+        {%- if link.links != blank -%}
+          <ul>
+            {%- for child_link in link.links -%}
+              <li>
+                <a href="{{ child_link.url }}" {% if child_link.active %}aria-current="page"{% endif %}>
+                  {{ child_link.title }}
+                </a>
+
+                {%- if child_link.links != blank -%}
+                  <ul>
+                    {%- for grandchild_link in child_link.links -%}
+                      <li>
+                        <a href="{{ grandchild_link.url }}" {% if grandchild_link.active %}aria-current="page"{% endif %}>
+                          {{ grandchild_link.title }}
+                        </a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
+
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+      </li>
+    {%- endfor -%}
+  </ul>
+</div>
 {% if template contains "index" %}
   {% assign feature_image = true %}
 {% elsif template contains "collection" %}
@@ -448,9 +484,6 @@
 </a>
 </header>
 </section>
-
-
-
 
 <style>
 
@@ -1443,3 +1476,116 @@ function closeFullWidthSearch() {
 </script>
 
 
+
+
+            
+
+
+        
+
+
+            
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const header = document.querySelector(".header-custom-c");
+  if (!header) return;
+
+  let lastScrollY = window.scrollY;
+  let isHidden = false;
+  let ticking = false;
+  let isLockedAtBottom = false;
+
+ const threshold = 120;        // thoda jaldi react kare
+  const footerLockZone = 200;
+  const directionDelta = 4; 
+
+  const showHeader = () => {
+    header.style.transform = "translateY(0)";
+  };
+
+  const hideHeader = () => {
+    header.style.transform = "translateY(-100%)";
+  };
+
+  function handleScroll() {
+    const currentScrollY = window.scrollY;
+    const maxScroll = document.body.scrollHeight - window.innerHeight;
+    const isMobile = window.innerWidth <= 991;
+    const diff = currentScrollY - lastScrollY;
+
+    // Desktop par hamesha visible
+    if (!isMobile) {
+      showHeader();
+      lastScrollY = currentScrollY;
+      ticking = false;
+      return;
+    }
+
+    // Neeche footer ke kareeb ho → header lock (show)
+    if (maxScroll - currentScrollY < footerLockZone) {
+      showHeader();
+      isHidden = false;
+      lastScrollY = currentScrollY;
+      ticking = false;
+      return;
+    }
+
+    // finger ki halki movement ignore
+    if (Math.abs(diff) < directionDelta) {
+      ticking = false;
+      return;
+    }
+
+    // Scroll down → hide
+    if (diff > 0 && currentScrollY > threshold && !isHidden) {
+      hideHeader();
+      isHidden = true;
+    }
+    // Scroll up → show
+    else if (diff < 0 && isHidden) {
+      showHeader();
+      isHidden = false;
+    }
+
+    lastScrollY = currentScrollY;
+    ticking = false;
+  }
+
+  // start me hamesha visible
+  showHeader();
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      window.requestAnimationFrame(handleScroll);
+      ticking = true;
+    }
+  });
+});
+</script>
+
+
+
+
+
+
+<script>
+(function() {
+  const interval = setInterval(() => {
+    const header = document.querySelector('.header-custom-c');
+    const content = document.querySelector('.content-main');
+
+    if (header && content) {
+      content.style.marginTop = header.offsetHeight + "px";
+      clearInterval(interval);
+    }
+  }, 1); // runs instantly until header is ready
+
+  window.addEventListener('load', () => {
+    const header = document.querySelector('.header-custom-c');
+    const content = document.querySelector('.content-main');
+    if (header && content) {
+      content.style.marginTop = header.offsetHeight + "px";
+    }
+  });
+})();
+</script>
