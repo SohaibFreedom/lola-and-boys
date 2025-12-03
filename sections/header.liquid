@@ -957,10 +957,12 @@ font-weight:300 !important;
   {% endif %}
 
 @media (max-width: 991px) {
-  .header-custom-c {
+  .header-custom-c,
+  .content-main {
     transition: transform 0.32s cubic-bezier(0.22, 0.61, 0.36, 1);
     will-change: transform;
   }
+}
 }
 
 </style>
@@ -1487,33 +1489,40 @@ function closeFullWidthSearch() {
             
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  const header = document.querySelector(".header-custom-c");
-  if (!header) return;
+  const header  = document.querySelector(".header-custom-c");
+  const content = document.querySelector(".content-main");
+  if (!header || !content) return;
 
   let lastScrollY = window.scrollY;
   let isHidden = false;
   let ticking = false;
-  let isLockedAtBottom = false;
 
- const threshold = 70;        // thoda jaldi react kare
+  let headerHeight = header.offsetHeight; 
+  const threshold      = 70;
   const footerLockZone = 200;
-  const directionDelta = 4; 
+  const directionDelta = 4;
+
+  const syncHeaderHeight = () => {
+    headerHeight = header.offsetHeight;
+  };
 
   const showHeader = () => {
-    header.style.transform = "translateY(0)";
+    header.style.transform  = "translateY(0)";
+    content.style.transform = "translateY(0)"; 
   };
 
   const hideHeader = () => {
-    header.style.transform = "translateY(-100%)";
+    header.style.transform  = "translateY(-100%)";
+    content.style.transform = `translateY(-${headerHeight}px)`;
   };
 
   function handleScroll() {
     const currentScrollY = window.scrollY;
-    const maxScroll = document.body.scrollHeight - window.innerHeight;
-    const isMobile = window.innerWidth <= 991;
-    const diff = currentScrollY - lastScrollY;
+    const maxScroll      = document.body.scrollHeight - window.innerHeight;
+    const isMobile       = window.innerWidth <= 991;
+    const diff           = currentScrollY - lastScrollY;
 
-    // Desktop par hamesha visible
+   
     if (!isMobile) {
       showHeader();
       lastScrollY = currentScrollY;
@@ -1521,27 +1530,24 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Neeche footer ke kareeb ho → header lock (show)
     if (maxScroll - currentScrollY < footerLockZone) {
       showHeader();
-      isHidden = false;
+      isHidden   = false;
       lastScrollY = currentScrollY;
-      ticking = false;
+      ticking     = false;
       return;
     }
 
-    // finger ki halki movement ignore
     if (Math.abs(diff) < directionDelta) {
       ticking = false;
       return;
     }
 
-    // Scroll down → hide
     if (diff > 0 && currentScrollY > threshold && !isHidden) {
       hideHeader();
       isHidden = true;
     }
-    // Scroll up → show
+ 
     else if (diff < 0 && isHidden) {
       showHeader();
       isHidden = false;
@@ -1551,8 +1557,10 @@ document.addEventListener("DOMContentLoaded", () => {
     ticking = false;
   }
 
-  // start me hamesha visible
+
+  syncHeaderHeight();
   showHeader();
+
 
   window.addEventListener("scroll", () => {
     if (!ticking) {
@@ -1560,8 +1568,19 @@ document.addEventListener("DOMContentLoaded", () => {
       ticking = true;
     }
   });
+
+
+  window.addEventListener("resize", () => {
+    syncHeaderHeight();
+    if (isHidden) {
+      content.style.transform = `translateY(-${headerHeight}px)`;
+    } else {
+      content.style.transform = "translateY(0)";
+    }
+  });
 });
 </script>
+
 
 
 

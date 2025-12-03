@@ -255,6 +255,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
  
     {% section 'header' %}
+
+        <script>
+  (function() {
+
+    var header = document.querySelector('.header-custom-c');
+    if (!header) return;
+
+
+    var headerHeight = header.offsetHeight || header.getBoundingClientRect().height;
+
+    var style = document.createElement('style');
+    style.type = 'text/css';
+    style.textContent = '.content-main{margin-top:' + headerHeight + 'px;}';
+
+    if (document.head) {
+      document.head.appendChild(style);
+    } else {
+      document.documentElement.insertBefore(style, document.documentElement.firstChild);
+    }
+  })();
+</script>
   
     {% section 'wishlist-drawer' %}
 
@@ -266,32 +287,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 
-                        <script>
-              document.addEventListener("DOMContentLoaded", () => {
-  const header = document.querySelector('.header-custom-c'); // or your header selector
-  const content = document.querySelector('.content-main');
-  if (!header || !content) return;
 
-  const setOffset = () => {
-    const headerHeight = header.offsetHeight;
-    content.style.marginTop = `${headerHeight}px`;
-  };
-
-  // Run once initially
-  setOffset();
-
-  // Run again after all resources loaded (images/fonts can change height)
-  window.addEventListener('load', setOffset);
-
-  // Run on resize (in case of responsive height change)
-  window.addEventListener('resize', () => requestAnimationFrame(setOffset));
-
-  // Watch for DOM changes in header (e.g. countdown added/removed)
-  const observer = new MutationObserver(() => setOffset());
-  observer.observe(header, { childList: true, subtree: true, attributes: true });
-});
-
-            </script>
 
     {% unless template contains 'index' or settings.secondary_newsletter_banner == false %}
       {% section 'newsletter' %}
