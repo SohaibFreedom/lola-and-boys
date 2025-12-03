@@ -2586,7 +2586,8 @@ div#mobile-custom-linklist {
 /* slideshow css */
 @media only screen and (max-width: 798px) {
   .banner-video {
-    display: none;
+    display: none !important;
+     pointer-events: none !important;
   }
   .banner-video-homemobile {
     display: block;
