@@ -2566,11 +2566,7 @@ html
     object-position: 45% 50%;
   }
 }
-@media only screen and (min-width: 799px) {
-div#mobile-custom-linklist {
-  display:none;
-}
-}
+
 @media only screen and (max-width: 799px) {
   .thumbnail .product-wrap .product_image .image__container {
     max-width: 100% !important;
