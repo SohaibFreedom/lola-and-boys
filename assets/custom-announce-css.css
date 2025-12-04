@@ -10,7 +10,7 @@
 .shop-now-text {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+
   gap: 12px;
 }
 .countdown-wrapper {
@@ -138,9 +138,11 @@ span#countdown {
     line-height: 9px;
     padding: 5px 0 0;
   }
-  .shop-now-text {
-    gap: 6px;
-  }
+    .shop-now-text {
+        gap: 6px;
+        width: 100% !important;
+        justify-content: center;
+    }
   .shop-now-text b {
     font-size: 11.5px;
   }
