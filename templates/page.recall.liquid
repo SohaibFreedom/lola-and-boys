@@ -13,7 +13,6 @@
       max-width: 900px;
       margin: 3rem auto;
   }
-/* ✅ NICHE WALI 2 ITEMS KO PERFECT CENTER KAR DO */
 .product-image-wrap {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -23,13 +22,31 @@
   justify-items: center;
 }
 
-/* 4th aur 5th GRID-ITEM (DIV) ke liye columns set */
+/* --- Niche wali do images ko bilkul center me la --- */
 .product-image-wrap > div:nth-child(4) {
-  grid-column: 1.5;    /* left column */
+  grid-column: 2; /* middle column start */
+}
+.product-image-wrap > div:nth-child(5) {
+  grid-column: 3; /* next to middle, dono center align banenge */
 }
 
-.product-image-wrap > div:nth-child(5) {
-  grid-column: 1.5;    /* right column */
+/* --- Trick: 5 item layout me second row ko center me lane ke liye 3 column hi rakhte hain --- */
+.product-image-wrap {
+  grid-template-rows: auto auto;
+  justify-content: center;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .product-image-wrap {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .product-image-wrap {
+    grid-template-columns: 1fr;
+  }
 }
 
    .notice-form-content .logo-img {
