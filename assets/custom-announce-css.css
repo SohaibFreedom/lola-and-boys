@@ -143,9 +143,10 @@ span#countdown {
         width: 100% !important;
         justify-content: center;
     }
-  .shop-now-text b {
-    font-size: 11.5px;
-  }
+     .shop-now-text b {
+        font-size: 13.5px;
+        line-height: 19px;
+    }
   .countdown-numbrs {
     font-size: 20px;
     line-height: 13px !important;
