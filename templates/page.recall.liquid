@@ -13,6 +13,7 @@
       max-width: 900px;
       margin: 3rem auto;
   }
+/* ✅ NICHE WALI 2 ITEMS KO PERFECT CENTER KAR DO */
 .product-image-wrap {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -22,25 +23,13 @@
   justify-items: center;
 }
 
-/* Center last two images perfectly under the top 3 */
-.product-image-wrap img:nth-child(4) {
-  grid-column: 2; /* middle column start */
-}
-.product-image-wrap img:nth-child(5) {
-  grid-column: 3; /* right of middle — gives perfect centering */
+/* 4th aur 5th GRID-ITEM (DIV) ke liye columns set */
+.product-image-wrap > div:nth-child(4) {
+  grid-column: 1;    /* left column */
 }
 
-/* Responsive tweaks */
-@media (max-width: 768px) {
-  .product-image-wrap {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .product-image-wrap {
-    grid-template-columns: 1fr;
-  }
+.product-image-wrap > div:nth-child(5) {
+  grid-column: 3;    /* right column */
 }
 
    .notice-form-content .logo-img {
