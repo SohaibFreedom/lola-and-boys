@@ -159,7 +159,11 @@
                   </span>
                 {% endif %}
               </p>
-            <div id="lowProductButton" class="testing-c"></div>
+
+          {% unless product.tags contains 'hellokitty' or product.tags contains 'Bethenny' %}
+    <div id="lowProductButton" class="testing-c"></div>
+{% endunless %}
+
               {% comment %}{% include 'product-notify-me' %}{% endcomment %}
             {% endif %}
            
