@@ -179,9 +179,12 @@
 
             {% unless collection_handles contains 'coming-soon' %}
               
-              {% unless product.tags contains 'PreOrder' %}
-      {% include 'attentive-waitlist' %}
-    {% endunless %}
+        {% unless product.tags contains 'hellokitty'
+    or product.tags contains 'Bethenny'
+    or product.tags contains 'PreOrder' %}
+  {% include 'attentive-waitlist' %}
+{% endunless %}
+
               {% include 'product-form' with 'product' %}
               
                       {% if product.tags contains "patch-customizer" %}
