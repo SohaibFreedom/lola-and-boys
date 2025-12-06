@@ -3,6 +3,25 @@
   .slidecontainerr{
   display:none !important;
 }
+.degree-input {
+  position: relative;
+  display: inline-block;
+}
+
+.degree-input::after {
+  content: "°";
+  position: absolute;
+  right: 16px;       /* adjust spacing */
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  pointer-events: none;
+  color: #000;
+}
+
+.degree-input input {
+  padding-right: 18px; /* ensure text doesn't overlap with ° sign */
+}
 .slidecontainerrRange .rot-container{
   display: flex;
   width: 100%;
@@ -2886,7 +2905,9 @@ display:none;
                                     <div class="rot-line" id="tickLine"></div>
                                        <input type="range" id="rotRange" min="-180" max="180" step="1" value="0">
                                     </div>
-                                    <input class="rot-value" type="text" id="rotValue" min="-180" max="180" value="0°">
+                                    <div class="degree-input">
+  <input type="number" id="rotValue" min="-180" max="180">
+</div>
                                   </div>
                     <div class="slidecontainerr">
                       <input type="range" min="-180" max="180" value="0" class="sliderr" id="myRange">
@@ -3275,12 +3296,9 @@ range.addEventListener("input", () => {
   updateRotation(Number(range.value));
 });
 
-/* --- Typing value manually (with degree sign support) --- */
+/* --- Typing value manually --- */
 val.addEventListener("input", () => {
-  // remove ° and non-numeric characters except minus
-  let raw = val.value.replace(/°/g, "").replace(/[^\-0-9]/g, "");
-
-  let v = Number(raw);
+  let v = Number(val.value);
 
   if (isNaN(v)) return;
 
@@ -3291,14 +3309,15 @@ val.addEventListener("input", () => {
   updateRotation(v);
 });
 
-/* --- Update rotation globally + update value with ° --- */
+/* --- Update rotation globally --- */
 function updateRotation(v) {
-  val.value = v + "°"; // add degree sign
+  val.value = v; // numeric only
 
   document.querySelectorAll(".patch-action").forEach(el => {
     el.style.transform = `rotate(${v}deg)`;
   });
 }
+
 
 
 </script>
