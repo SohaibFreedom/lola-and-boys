@@ -9,7 +9,10 @@
 .swipe-btn-protection span.protectfee {
     display: none;
 }
-<style>
+.pw-learn-more strong{
+
+  display:none;
+}
 .swipe-btn-protection span.cartfee {
     display: block !important;
 }
