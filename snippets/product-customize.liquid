@@ -1,5 +1,100 @@
 {% assign variant = product.selected_or_first_available_variant %}
 <style>
+  .slidecontainerr{
+  display:none !important;
+}
+.slidecontainerrRange .rot-container{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 10px;
+}
+.rot-slider-wrap {
+  position: relative;
+  width: 100%;
+  height: 32px; /* click area */
+}
+
+/* Main black line */
+.rot-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #000;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Tick marks */
+.rot-line div {
+  width: 2px;
+  height: 12px;
+  background: #000;
+  position: absolute;
+  top: -5px; /* centers properly */
+  transform: translateX(-1px);
+}
+
+/* RANGE INPUT */
+#rotRange {
+  appearance: none;
+  width: 100%;
+  height: 32px;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor:pointer;
+}
+
+/* Remove browser default track */
+#rotRange::-webkit-slider-runnable-track {
+  height: 3px;
+  background: transparent;
+}
+#rotRange::-moz-range-track {
+  height: 3px;
+  background: transparent;
+}
+
+/* Pink Thumb – PERFECTLY CENTERED */
+#rotRange::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #ff4f91;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: -13px; /* THIS IS THE FIX FOR CENTERING */
+}
+#rotRange::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #ff4f91;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+/* Editable value field */
+#rotValue {
+    width: 60px;
+    border: none;
+    font-size: 14px;
+    margin: 0px;
+    outline: none;
+    text-align: center;
+    height: 32px;
+    min-height: 32px;
+    background: #e7e7e7;
+}
+
    /* Custom Cart drawer Code */
    .custom-cart-app-edit-btn, .custom-embroidery-cart-app-edit-btn{
     display:none;
@@ -2786,6 +2881,13 @@ display:none;
                     <span>Rotate</span>
                   </div>
                   <div class="alignment-actions slidecontainerrRange">
+                                <div class="rot-container">
+                                  <div class="rot-slider-wrap">
+                                    <div class="rot-line" id="tickLine"></div>
+                                       <input type="range" id="rotRange" min="-180" max="180" step="1" value="0">
+                                    </div>
+                                    <input class="rot-value" type="text" id="rotValue" min="-180" max="180" value="0°">
+                                  </div>
                     <div class="slidecontainerr">
                       <input type="range" min="-180" max="180" value="0" class="sliderr" id="myRange">
                       <div class="degree-custom-wrapper">
@@ -2796,6 +2898,7 @@ display:none;
                         </div>
                       </div>
                     </div>
+
                   </div>
                 </div>
                 <div class="tidy-patches-alignment-section">
@@ -3144,4 +3247,58 @@ $(document).on('click', '.patches_category_icon', function () {
     $(this).toggleClass('rotate-icon');
 
 });
+
+const MIN = -180;
+const MAX = 180;
+const GAP = 45;
+
+const range = document.getElementById("rotRange");
+const line = document.getElementById("tickLine");
+const val = document.getElementById("rotValue");
+
+/* --- Create tick lines dynamically --- */
+for (let d = MIN; d <= MAX; d += GAP) {
+  const tick = document.createElement("div");
+  const pct = ((d - MIN) / (MAX - MIN)) * 100;
+  tick.style.left = pct + "%";
+
+  tick.addEventListener("click", () => {
+    range.value = d;
+    updateRotation(d);
+  });
+
+  line.appendChild(tick);
+}
+
+/* --- Slider movement --- */
+range.addEventListener("input", () => {
+  updateRotation(Number(range.value));
+});
+
+/* --- Typing value manually (with degree sign support) --- */
+val.addEventListener("input", () => {
+  // remove ° and non-numeric characters except minus
+  let raw = val.value.replace(/°/g, "").replace(/[^\-0-9]/g, "");
+
+  let v = Number(raw);
+
+  if (isNaN(v)) return;
+
+  if (v < MIN) v = MIN;
+  if (v > MAX) v = MAX;
+
+  range.value = v;
+  updateRotation(v);
+});
+
+/* --- Update rotation globally + update value with ° --- */
+function updateRotation(v) {
+  val.value = v + "°"; // add degree sign
+
+  document.querySelectorAll(".patch-action").forEach(el => {
+    el.style.transform = `rotate(${v}deg)`;
+  });
+}
+
+
 </script>
