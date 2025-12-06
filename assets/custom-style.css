@@ -9,7 +9,7 @@
 .swipe-btn-protection span.protectfee {
     display: none;
 }
-.pw-learn-more strong{
+.pw-learn-more strong , .tag-swipe{
 
   display:none;
 }
