@@ -241,9 +241,7 @@ Delete
     </style>
   </noscript>
 
- {% unless template == 'cart' %}
-  {% render 'swipe-cart-widget' %}
-{% endunless %}
+
 
 
   <body class="{{ template | replace: '.', '-' | handle }} {% if template == '404' %}template-404{% endif %}"> 
