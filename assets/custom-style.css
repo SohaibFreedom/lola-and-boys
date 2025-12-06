@@ -11,7 +11,7 @@
 }
 .pw-learn-more strong , .tag-swipe{
 
-  display:none;
+  display:none !important;
 }
 .swipe-btn-protection span.cartfee {
     display: block !important;
