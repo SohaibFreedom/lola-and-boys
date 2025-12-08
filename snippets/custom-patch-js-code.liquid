@@ -1855,7 +1855,7 @@ img.setAttribute('crossorigin', 'anonymous');
                        variantname === '10' || variantname === '9/10' || variantname === '10/11' || variantname === '11/12' || variantname === '12' || 
                        variantname === '14') {
                 if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit")&& !productTags.includes("Customizable-Patch-Soft-Hoodie")&& !productTags.includes("Embossed-Emoji-Terry-Poncho")&& !productTags.includes("Super-soft-short-set")&& !productTags.includes("Lavender-Haze-Gem") && !productTags.includes("Pastel-Velour-Short-Set")) {
-                 
+                    console.log('condition true');
                     imgHeight += 4;
                     imgWidth += 4;
                 } else if (productTags.includes("Customizable-Patch-Soft-Hoodie")) {
@@ -1870,24 +1870,17 @@ img.setAttribute('crossorigin', 'anonymous');
                    imgWidth -= 12;
                   
                  }else if (productTags.includes("Embossed-Emoji-Terry-Poncho")) {
-                   
+                   console.log("Embossed-Emoji-Terry-Poncho condition");
                    imgHeight -= 25;
                    imgWidth -= 25;
                   
-                 }      
-                 }else if (productTags.includes("Customizable-Hearts-Button-Denim-Jacket")) {
-            
-                   imgHeight -= 2;
-                   imgWidth -= 2;
-                  
-                 }      
-                 else if (productTags.includes("Super-soft-short-set")) {
-                   
+                 }      else if (productTags.includes("Super-soft-short-set")) {
+                   console.log("Super-soft-short-set");
                    imgHeight -= 33;
                    imgWidth -= 33;
                   
                  } else {
-                   
+                    console.log('condition false');
                     imgHeight -= 15;
                     imgWidth -= 15;
                   
@@ -1897,7 +1890,7 @@ img.setAttribute('crossorigin', 'anonymous');
                 }
             } 
             else if (variantname === 'Small') {
-                
+                console.log('condition true');
                 imgHeight += 30;
                 imgWidth += 30;
             } 
