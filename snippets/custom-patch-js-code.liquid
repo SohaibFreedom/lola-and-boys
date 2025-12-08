@@ -3045,11 +3045,11 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
       } 
    else if (window.matchMedia("(min-width: 376px) and (max-width: 767px)").matches) {
     console.log('up 375px');
-    console.log(window.innerWidth);
+    
           // Calculate half width and height
      var halfWidth = (imgWidth / 2) - 2;
      var halfHeight = (imgHeight / 2) - 2;
-          // Check if they are less than 20 and add 5px if true
+          
           if (halfWidth < 13) {
               halfWidth += 8;
           }
@@ -3116,10 +3116,14 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
                   halfHeight += 10;
          halfWidth += 10;
                   }
+     else if (product.tags.includes("Customizable-Hearts-Button-Denim-Jacket")){
+                  halfHeight += 3;
+         halfWidth += 3;
+                  }
      else if (product.tags.includes("Customizable-Patch-Soft-Hoodie")){
        console.log('Customizable-Patch-Soft-Hoodie under 375')
          if (patchName === "Roller Skates") {
-                     // alert('Roller Skates');
+                    
         halfWidth += 2;
       halfHeight += 2;
 
@@ -3136,7 +3140,7 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
          halfWidth += 8;
                   }
     
-          // Set the patch dimensions
+          
           img.width =halfWidth;
           img.height =halfHeight;
 
