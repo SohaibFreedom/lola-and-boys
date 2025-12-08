@@ -2233,7 +2233,7 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
             }
         
   
-          // Set the patch dimensions
+          
           img.width =halfWidth;
           img.height =halfHeight;
 
@@ -2243,10 +2243,10 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
    else if (window.matchMedia("(min-width: 376px) and (max-width: 767px)").matches) {
     console.log('up 375px');
     console.log(window.innerWidth);
-          // Calculate half width and height
+        
      var halfWidth = (imgWidth / 2) + 3 ;
      var halfHeight = (imgHeight / 2) + 3 ;
-          // Check if they are less than 20 and add 5px if true
+
           if (halfWidth < 13) {
               halfWidth += 8;
           }
@@ -2313,12 +2313,15 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
                    halfHeight += 8;
                    halfWidth += 8;
                  } 
-     else if (product.tags.includes("Bella-Hologram-Swimsuit")){
-                  halfHeight += 8;
-         halfWidth += 8;
+                   else if (product.tags.includes("Lavender-Haze-Gem")){
+                   halfHeight += 8;
+                   halfWidth += 8;
+                 } 
+     else if (product.tags.includes("Customizable-Hearts-Button-Denim-Jacket")){
+                  halfHeight += 3;
+         halfWidth += 3;
                   }
    
-          // Set the patch dimensions
           img.width =halfWidth;
           img.height =halfHeight;
 
