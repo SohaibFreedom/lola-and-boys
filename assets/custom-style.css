@@ -6,6 +6,9 @@
     max-height: 500px;
     object-fit: cover;
 }
+.custom-patch-cart-data .parent-cart-group .parent-images .parent-preview {
+    object-fit: contain;
+}
 .swipe-btn-protection span.protectfee {
     display: none;
 }
