@@ -6947,13 +6947,17 @@ window.addEventListener("resize", () => {
     });
 </script>
 <script>
-    $('.patches-full-screen-icon').on('click', function() {
-  // Toggle rotation
+ $('.patches-full-screen-icon').on('click', function() {
   $(this).toggleClass('rotated');
-
-  // Toggle classes on other elements
-  $('#patches-customization-offcanvas-menu').toggleClass('only-for-small-devices');
-  $('.patches-customization-container').toggleClass('hide-product-imagewrapper-for-small-devices');
+  const menu = $('#patches-customization-offcanvas-menu');
+  menu.css({
+    'height': '',
+    'min-height': ''
+  });
+  menu.toggleClass('only-for-small-devices');
+  $('.patches-customization-container')
+    .toggleClass('hide-product-imagewrapper-for-small-devices');
 });
+
 
 </script>
