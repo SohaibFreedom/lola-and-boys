@@ -2966,11 +2966,11 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
       }
    else if (window.matchMedia("(min-width: 768px) and (max-width: 1030px)").matches) {
        console.log('yes this is ipad view'); 
-     console.log('Window Width: ', window.innerWidth);
-    // Calculate half width and height
+    
+    
           var halfWidth = imgWidth / 2;
           var halfHeight = imgHeight / 2;
-          // Check if they are less than 20 and add 5px if true
+         
           if (halfWidth < 13) {
               halfWidth += 8;
           }
@@ -3026,6 +3026,10 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
                       halfHeight += 25;
          halfWidth += 25;
                 }
+                else if (product.tags.includes('Customizable-Hearts-Button-Denim-Jacket')){
+                      halfHeight += 8;
+         halfWidth += 8;
+                }
                 else {
          halfHeight += 20;
          halfWidth += 20;
@@ -3034,7 +3038,7 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
            if (product.tags.includes('Customizable-Patch-Soft-Hoodie')){
                   
                    if (patchName === "Roller Skates") {
-                     // alert('Roller Skates');
+                     
         halfWidth -= 8;
       halfHeight -= 8;
 
@@ -3043,7 +3047,7 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
                    
                  }
   
-          // Set the patch dimensions
+          
           img.width =halfWidth;
           img.height =halfHeight;
 
@@ -3053,7 +3057,7 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
    else if (window.matchMedia("(min-width: 376px) and (max-width: 767px)").matches) {
     console.log('up 375px');
     
-          // Calculate half width and height
+          
      var halfWidth = (imgWidth / 2) - 2;
      var halfHeight = (imgHeight / 2) - 2;
           
