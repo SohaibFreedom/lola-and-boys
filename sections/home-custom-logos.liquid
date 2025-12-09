@@ -1,0 +1,198 @@
+<div class="shipping-deadline-wrap">
+  <div class="shipping-deadline-container">
+
+    {% if section.settings.heading != blank %}
+      <h2 class="sd-main-heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="sd-items">
+      {% for block in section.blocks %}
+        <div class="sd-item {{ block.settings.custom_class }}">
+          
+          {% if block.settings.icon != blank %}
+            <img class="sd-icon" src="{{ block.settings.icon | img_url: '200x' }}" alt="">
+          {% endif %}
+
+          {% if block.settings.title != blank %}
+            <h3 class="sd-title">{{ block.settings.title }}</h3>
+          {% endif %}
+
+          {% if block.settings.text != blank %}
+            <p class="sd-text">{{ block.settings.text }}</p>
+          {% endif %}
+
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</div>
+
+<style>
+
+.shipping-deadline-wrap {
+  padding: 60px 0;
+  background: #FCF0FD;
+  text-align: center;
+  margin: 0 0 72px;
+}
+
+.shipping-deadline-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+
+.shipping-deadline-wrap .sd-main-heading {
+  font-size: 26px;
+  margin: 0 0 40px;
+  color: #000;
+  letter-spacing: 0.5px;
+}
+
+
+.shipping-deadline-wrap .sd-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.shipping-deadline-wrap .sd-item {
+  width: 33.33%;
+}
+
+
+.shipping-deadline-wrap .sd-icon {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  margin: 0 auto 15px;
+  display: block;
+}
+
+
+.shipping-deadline-wrap .sd-title {
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0 0 6px;
+  letter-spacing: 0;
+}
+
+
+.shipping-deadline-wrap .sd-text {
+  font-size: 14px;
+  color: #444;
+  margin: 0;
+  line-height: 20px;
+}
+
+.standerd-shipping .sd-icon {
+    width: 95px !important;
+}
+
+@media (max-width: 1024px) {
+.shipping-deadline-wrap .sd-icon {
+    width: 50px;
+    height: 50px;
+}
+.shipping-deadline-wrap .sd-title {
+    font-size: 15px;
+}
+.shipping-deadline-wrap .sd-text {
+    font-size: 13px;
+}
+}
+
+@media (max-width: 768px) {
+  .shipping-deadline-wrap {
+    padding: 30px 0;
+    margin: 0 0 30px;
+  }
+
+  .shipping-deadline-wrap .sd-items {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .shipping-deadline-wrap .sd-item {
+    width: 100%;
+  }
+
+  .shipping-deadline-wrap .sd-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .shipping-deadline-wrap .sd-main-heading {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+  .shipping-deadline-wrap .sd-title {
+    font-size: 14px;
+}
+.shipping-deadline-wrap .sd-text {
+    font-size: 13px;
+}
+.standerd-shipping .sd-icon {
+    width: 65px !important;
+}
+}
+</style>
+
+{% schema %}
+{
+  "name": "Shipping Deadlines",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Main Heading",
+      "default": "GET YOUR GIFTS ON TIME!"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Shipping Option",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Shipping Title",
+          "default": "STANDARD SHIPPING"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Description",
+          "default": "Order by Dec. 16 for delivery by Dec. 24"
+        },
+        {
+          "type": "text",
+          "id": "custom_class",
+          "label": "Custom CSS Class",
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shipping Deadlines",
+      "blocks": [
+        { "type": "item" },
+        { "type": "item" },
+        { "type": "item" }
+      ]
+    }
+  ]
+}
+{% endschema %}
