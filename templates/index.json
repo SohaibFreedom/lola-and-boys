@@ -77,6 +77,28 @@
             "button2_highlight": false
           }
         },
+        "image_aprGEg": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/HP_BANNER_1d57c8d9-b0d9-4c89-aad3-d181d816e1e5.png",
+            "image_mobile": "shopify://shop_images/HP_MOBILE_BANNER_1_9c7351b6-8947-43f7-956f-fd79559800e8.png",
+            "mp4": "",
+            "mobilevideo": "",
+            "pretext": "",
+            "title": "",
+            "subtitle": "",
+            "text_position": "center",
+            "text_align": "center",
+            "caption_background": false,
+            "caption_background_transparency": false,
+            "button1": "",
+            "button1_link": "https://lolaandtheboys.com/collections/birthday",
+            "button1_highlight": false,
+            "button2": "",
+            "button2_link": "",
+            "button2_highlight": false
+          }
+        },
         "image_QccNLz": {
           "type": "image",
           "settings": {
@@ -206,41 +228,19 @@
             "button2_link": "",
             "button2_highlight": false
           }
-        },
-        "image_aprGEg": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/HP_BANNER_1d57c8d9-b0d9-4c89-aad3-d181d816e1e5.png",
-            "image_mobile": "shopify://shop_images/HP_MOBILE_BANNER_1_9c7351b6-8947-43f7-956f-fd79559800e8.png",
-            "mp4": "https://cdn.shopify.com/videos/c/o/v/886b895fcf41461cb676cd203de3e54a.mp4",
-            "mobilevideo": "",
-            "pretext": "",
-            "title": "",
-            "subtitle": "",
-            "text_position": "center",
-            "text_align": "center",
-            "caption_background": false,
-            "caption_background_transparency": false,
-            "button1": "",
-            "button1_link": "https://lolaandtheboys.com/collections/birthday",
-            "button1_highlight": false,
-            "button2": "",
-            "button2_link": "",
-            "button2_highlight": false
-          }
         }
       },
       "block_order": [
         "image_V87qeG",
         "image_MzwgLN",
         "image_qTG7w8",
+        "image_aprGEg",
         "image_QccNLz",
         "image_KD9mi6",
         "image_zPL6aM",
         "image_UXmp86",
         "image_U3EW4E",
-        "image_9rViCJ",
-        "image_aprGEg"
+        "image_9rViCJ"
       ],
       "settings": {
         "slideshow_text_animation": "fadeInDown",
