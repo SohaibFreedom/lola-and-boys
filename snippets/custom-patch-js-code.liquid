@@ -2164,12 +2164,10 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
          
       }
    else if (window.matchMedia("(min-width: 768px) and (max-width: 1030px)").matches) {
-       console.log('yes this is ipad view'); 
-     console.log('Window Width: ', window.innerWidth);
-    // Calculate half width and height
+   
           var halfWidth = imgWidth / 2 - 4;
           var halfHeight = imgHeight / 2 - 4;
-          // Check if they are less than 20 and add 5px if true
+        
           if (halfWidth < 13) {
               halfWidth += 8;
           }
@@ -2227,6 +2225,10 @@ if (window.matchMedia("(min-width: 1501px) and (max-width: 9400px)").matches) {
          halfWidth += 30;
             }
                 else if (product.tags.includes('customize-long-bag')){
+                      halfHeight += 25;
+         halfWidth += 25;
+                }
+                else if (product.tags.includes('Customizable-Hearts-Button-Denim-Jacket')){
                       halfHeight += 25;
          halfWidth += 25;
                 }
