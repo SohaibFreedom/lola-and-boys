@@ -920,8 +920,9 @@ $('.filter_all_categories_button_wrapp').on('click', function () {
 
         if (window.innerWidth <= 900) {
 
-            document.querySelectorAll('.patches-customization-container, .patches-full-screen-icon')
-                .forEach(el => el.style.display = 'block');
+      document.querySelector('.patches-customization-container').style.display = 'block';
+document.querySelector('.patches-full-screen-icon').style.display = 'flex';
+
 
 
             const offcanvasMenu = document.getElementById('patches-customization-offcanvas-menu');
