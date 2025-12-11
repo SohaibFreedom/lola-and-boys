@@ -4673,7 +4673,7 @@ document.querySelector('#alphabets-wrapper').addEventListener('dragstart', funct
   // document.body.appendChild(newImage); // Ensure the image is in the DOM to trigger the 'onload' event
    dragpatchDiv.appendChild(newImage); // Ensure the image is in the DOM to trigger the 'onload' event
 
-  // Ensure the drag image is set even if the 'onload' event has already fired
+  
   if (newImage.complete) {
     event.dataTransfer.setDragImage(newImage, 20, 20);
   }
@@ -4684,9 +4684,9 @@ document.querySelectorAll('.patches').forEach(patchesDiv => {
   patchesDiv.addEventListener('click', function (event) {
     const patch = event.target.closest('.patch');
 
-    if (!patch) return; // Ignore clicks outside patches
+    if (!patch) return; 
         if (patch.classList.contains('patch-not-allowed')) {
-      console.log('This patch is not allowed.');
+      
       return;
     }
     patch.classList.add('patch-added-to-product');
@@ -4696,6 +4696,14 @@ document.querySelectorAll('.patches').forEach(patchesDiv => {
     const patchSrc = patchImg.src;
     const height = patchImg.getAttribute('height');
     const width = patchImg.getAttribute('width');
+    const count = document.querySelectorAll(".patches-container [class^='patch-']").length;
+
+  if (count === 4) {
+    if (!window.popupShown) {
+      window.popupShown = true;
+      tidyWrapperPopup();
+    }
+  }
 
     if (document.getElementById('Front-Area').style.visibility === 'visible') {
       addPatchToCenterBox(patchSrc, patchId, height, width);
