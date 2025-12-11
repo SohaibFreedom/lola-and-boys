@@ -1,5 +1,57 @@
 {% assign variant = product.selected_or_first_available_variant %}
 <style>
+  .patches-tidy-popup{
+    height: fit-content;
+    background: white;
+    top: 50%;
+    position: absolute;
+    left: 50%;
+    z-index: 5;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 40px);
+    max-width: 550px;
+    min-height: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    display:none;
+  }
+  .patches-tidy-popup .tidy_modal_inner_wrapper{
+    padding: 24px;
+    text-align: center;
+  }
+  .tidy_modal_inner_wrapper .close_tidy_modal_btn{
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+  }
+  .tidy_modal_inner_wrapper .info-modal-title{
+    font-size: 32px;
+    font-family: "Quincy CF";
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .tidy_modal_inner_wrapper .info-modal-info p{
+    font-size: 16px;
+    font-weight: 400;
+    margin: 18px 0;
+    font-family: "Poppins", "Cera Pro", sans-serif;
+  }
+  .info-modal-actions .tidy_modal_tidy_wrapp_open_btn{
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 40px;
+    background: #2c272d;
+    color: #fff;
+    line-height: 1;
+    font-weight: 600;
+    font-size: 16px !important;
+    letter-spacing: 0.32px;
+    padding: 16px 40px !important;
+    width: fit-content;
+  }
+  .tidy_modal_tidy_wrapp_open_btn{
+    cursor:pointer;
+  }
   .slidecontainerr{
   display:none !important;
 }
@@ -2413,6 +2465,20 @@ display:none;
 </style>
 <div class="patches-customization-wrapper pos-only-for-desktop">
    <div class="patches-customization-container-overly"></div>
+      <div class="patches-tidy-popup">
+    <div class="tidy_modal_inner_wrapper">
+      <div class="close_tidy_modal_btn">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1945_44175)"><path d="M9.09809 8L16 14.9019L14.9019 16L8 9.0981L1.0981 16L0 14.9019L6.9019 8L0 1.0981L1.0981 0L8 6.90191L14.9019 0L16 1.0981L9.09809 8Z" fill="#2C272D"></path></g><defs><clipPath id="clip0_1945_44175"><rect width="16" height="16" fill="white"></rect></clipPath></defs></svg>
+      </div>
+      <div class="info-modal-title">Looking Good!</div>
+      <div class="info-modal-info">
+        <p><span style="font-weight: 500;">Want to tidy things up?</span><br>Adjust and organize your patches for the perfect look.</p>
+      </div>
+      <div class="info-modal-actions">
+        <div class="tidy_modal_tidy_wrapp_open_btn">Tidy Now</div>
+      </div>
+    </div>
+   </div>
   <div class="patches-customizer-action-buttons">
  <div class="patches-customizer-action-buttons-inner-wrapper">
 <div class="edit-tidy-btn-wrapp">
@@ -3318,7 +3384,71 @@ function updateRotation(v) {
     el.style.transform = `rotate(${v}deg)`;
   });
 }
+function tidyWrapperPopup() {
+  $('.patches-tidy-popup').show();
+}
 
+$(document).on('click', '.tidy_modal_tidy_wrapp_open_btn', function() {
+  $('.patches-tidy-popup').hide();
+  $('.edit-left-btn').removeClass('patches-customization-tidy-delete-btn-active');
+  $(this).addClass('patches-customization-tidy-delete-btn-active');
+
+  changefillColors();
+  $('.patches-customization-editor').addClass('patches-customization-editor-active').css('display', 'block');
+  $('.patches-editor-wrapper').css('display', 'none');
+  $('.only-mobile-colors-wrapper').css('display', 'none');
+  $('.delete-patches-wrapper-sidebar').css('display', 'none');
+
+  if (window.matchMedia("(max-width: 900px)").matches){
+    $('.only-mobile-tdy-header').css('display', 'block');
+  } else {
+    $('.only-mobile-tdy-header').css('display', 'none');
+  }
+
+  if (document.getElementById('Front-Area').style.visibility === 'visible') {
+    $('.back-tdiy-patches-btn').removeClass('tdiy-patches-btn-active');
+    $('.front-tdiy-patches-btn').addClass('tdiy-patches-btn-active');
+    $('.select-patches-for-back').removeClass('select-patches-active');
+    $('.select-patches-for-front').addClass('select-patches-active');
+
+    $('.patches-container .patch-').each(function() {
+      var patchId = $(this).attr('id');
+      if (!$('.select-patches-for-front').find('[data-patch-id="' + patchId + '"]').length) {
+        var imageSrc = $(this).find('.patch-image').attr('src');
+        var selectedPatchDiv = $(`<div class="selected-patch-for-customization selected-patch-for-customization-for-front" id="${patchId}"></div>`);
+        var imageElement = $('<img>').attr('src', imageSrc);
+        selectedPatchDiv.append(imageElement);
+        selectedPatchDiv.attr('data-patch-id', patchId);
+        $('.select-patches-for-front').append(selectedPatchDiv);
+      }
+    });
+
+  } else if (document.getElementById('Back-area').style.visibility === 'visible') {
+    $('.front-tdiy-patches-btn').removeClass('tdiy-patches-btn-active');
+    $('.back-tdiy-patches-btn').addClass('tdiy-patches-btn-active');
+    $('.select-patches-for-front').removeClass('select-patches-active');
+    $('.select-patches-for-back').addClass('select-patches-active');
+
+    $('.patches-containerr .patch-').each(function() {
+      var patchId = $(this).attr('id');
+      if (!$('.select-patches-for-back').find('[data-patch-id="' + patchId + '"]').length) {
+        var imageSrc = $(this).find('.patch-image').attr('src');
+        var selectedPatchDiv = $(`<div class="selected-patch-for-customization selected-patch-for-customization-for-back" id="${patchId}"></div>`);
+        var imageElement = $('<img>').attr('src', imageSrc);
+        selectedPatchDiv.append(imageElement);
+        selectedPatchDiv.attr('data-patch-id', patchId);
+        $('.select-patches-for-back').append(selectedPatchDiv);
+      }
+    });
+  }
+
+  setTimeout(function() {
+    $('.patches-customization-editor').css('right', '0');
+  }, 100);
+});
+$('.close_tidy_modal_btn').on('click', function () {
+    $('.patches-tidy-popup').hide();
+});
 
 
 </script>
