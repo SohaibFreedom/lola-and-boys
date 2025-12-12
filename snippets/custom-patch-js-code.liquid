@@ -5203,6 +5203,7 @@ BackcenterBox.addEventListener('mouseup', function (event) {
           $('.patches-customization-container-overly').css('display', 'none');
              $('.patches-customization-editor').css('display', 'block');
         $('.delete-patches-wrapper-sidebar').css('display', 'none');
+        $('.patch').removeClass('patch-added-to-product');
 
       setTimeout(function() {
       $('.patches-customization-clear-alert-pop-up').css({
@@ -6908,22 +6909,25 @@ window.addEventListener("resize", () => {
 </script>
 <script>
   $(document).on('click', function(event) {
-      // Check if the clicked target has the class 'tidy-patches-delete-btn'
-      if ($(event.target).hasClass('main-patch-action-div-del') && $('.patch-action').length) {
-        console.log('delete icon clickedd');
-          // Select elements with classes 'patch-action' and 'patch-selected'
-          const elementsToDelete = $('.patch-action, .patch-selected, .patch-selected-by-btn, .patch-selected-by-both, .selected-patch-for-customization');
 
-          // Remove each of the selected elements
-          elementsToDelete.each(function() {
-              $(this).remove();
-          });
+    if ($(event.target).hasClass('main-patch-action-div-del')) {
 
-          // Reset the order variable
-          order = 1;
-          orderBack = 1;
-      }
-  });
+        const patchId = $(event.target).closest('[id]').attr('id');
+        const patchvId = $(event.target).closest('[v-id]').attr('v-id');
+
+        $('.patch-selected, .patch-selected-by-btn, .patch-selected-by-both, .selected-patch-for-customization')
+            .filter('[data-patch-id="' + patchId + '"]')
+            .remove();
+
+        $('.patch-action#' + patchId).remove();
+
+        $('.patch[v-id="' + patchvId + '"]').removeClass('patch-added-to-product');
+
+        order = 1;
+        orderBack = 1;
+    }
+
+});
 </script>
 <script>
     $(document).ready(function() {
