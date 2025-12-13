@@ -1100,98 +1100,111 @@ document.addEventListener('DOMContentLoaded', async function () {
       requestAnimationFrame(() => (drawer.style.transform = 'translateX(0)'));
     }
 
-    try {
-      const cart = await getCart();
-      const items = cart.items || [];
+     try {
+  const cart = await getCart();
+  const items = cart.items || [];
 
-      // Separate parents and children
-      const parentItems = items.filter(
-        (i) => !i.properties || (!i.properties._ChildOf && !i.properties._parent_variant)
-      );
-      const childItems = items.filter(
-        (i) => i.properties && (i.properties._ChildOf || i.properties._parent_variant)
-      );
+  /* ✅ Hide Stitching Fee (child fee product) */
+  const visibleItems = items.filter((i) => {
+    const p = i.properties || {};
+    const isStitchingFee =
+      p._Product === "Stitching Fee" ||
+      (i.handle && i.handle === "stitching-fee") ||
+      (i.product_title && i.product_title.toLowerCase() === "stitching fee") ||
+      (i.title && i.title.toLowerCase() === "stitching fee");
 
-      // Totals
-      const totalCount = items.length;
-      const totalPrice = cart.total_price;
-      const formattedTotal = Shopify.formatMoney(totalPrice, "{{ shop.money_format }}");
+    return !isStitchingFee;
+  });
 
-      if (counterDiv)
-        counterDiv.textContent = `Subtotal (${totalCount} item${totalCount !== 1 ? 's' : ''})`;
-      if (totalPriceDiv)
-        totalPriceDiv.textContent = formattedTotal;
+  // Separate parents and children (from visible items only)
+  const parentItems = visibleItems.filter(
+    (i) => !i.properties || (!i.properties._ChildOf && !i.properties._parent_variant)
+  );
+  const childItems = visibleItems.filter(
+    (i) => i.properties && (i.properties._ChildOf || i.properties._parent_variant)
+  );
 
-      // Empty state
-      if (parentItems.length === 0) {
-        wrapper.innerHTML = '<p class="empty-msg">Your cart is empty.</p>';
-        return;
-      }
+  // Totals (count excludes stitching fee, price stays Shopify total like before)
+  const totalCount = visibleItems.length;
+  const totalPrice = cart.total_price;
+  const formattedTotal = Shopify.formatMoney(totalPrice, "{{ shop.money_format }}");
 
-      let html = '';
+  if (counterDiv)
+    counterDiv.textContent = `Subtotal (${totalCount} item${totalCount !== 1 ? 's' : ''})`;
+  if (totalPriceDiv)
+    totalPriceDiv.textContent = formattedTotal;
 
-      // 🔹 Build item HTML (with child total merged)
-      parentItems.forEach((parent) => {
-        const props = parent.properties || {};
-        const isCustomizedParent =
-          props._Parent === '1' || props._customized_image_url_front;
+  // Empty state
+  if (parentItems.length === 0) {
+    wrapper.innerHTML = '<p class="empty-msg">Your cart is empty.</p>';
+    return;
+  }
 
-        // Find child items linked to this parent
-        const relatedChildren = childItems.filter(
-          (child) =>
-            child.properties &&
-            (child.properties._parent_variant == parent.variant_id ||
-              child.properties._ChildOf === '1') &&
-            child.properties._Session === props._Session
-        );
+  let html = '';
 
-        // Calculate combined total (parent + its children)
-        const parentTotal = parent.final_line_price +
-          relatedChildren.reduce((sum, c) => sum + c.final_line_price, 0);
+  // 🔹 Build item HTML (with child total merged)
+  parentItems.forEach((parent) => {
+    const props = parent.properties || {};
+    const isCustomizedParent =
+      props._Parent === '1' || props._customized_image_url_front;
 
-        const img =
-          props._customized_image_url_front ||
-          parent.image ||
-          "{{ 'no-image.png' | asset_url }}";
+    // Find child items linked to this parent
+    const relatedChildren = childItems.filter(
+      (child) =>
+        child.properties &&
+        (child.properties._parent_variant == parent.variant_id ||
+          child.properties._ChildOf === '1') &&
+        child.properties._Session === props._Session
+    );
 
-        const title = parent.title || 'Untitled Product';
-        const price = Shopify.formatMoney(parentTotal, "{{ shop.money_format }}");
-        const id = parent.key;
+    // Calculate combined total (parent + its children)
+    const parentTotal =
+      parent.final_line_price +
+      relatedChildren.reduce((sum, c) => sum + c.final_line_price, 0);
 
-        const latestSessionId = localStorage.getItem('latestSessionId');
-        const isLatestProduct =
-        isCustomizedParent && props._Session && props._Session === latestSessionId;
+    const img =
+      props._customized_image_url_front ||
+      parent.image ||
+      "{{ 'no-image.png' | asset_url }}";
+
+    const title = parent.title || 'Untitled Product';
+    const price = Shopify.formatMoney(parentTotal, "{{ shop.money_format }}");
+    const id = parent.key;
+
+    const latestSessionId = localStorage.getItem('latestSessionId');
+    const isLatestProduct =
+      isCustomizedParent && props._Session && props._Session === latestSessionId;
+
     const buttonsHTML = isCustomizedParent
-  ? `
-    ${isLatestProduct ? `<div class="custom-cart-app-edit-btn" data-key="${id}" data-session="${props._Session}">Edit</div>` : ''}
-    <div class="custom-cart-app-remove-btn" data-key="${id}">Remove</div>
-    <div class="custom-cart-app-make-another-btn">Create Another</div>
-  `
-  : `
-    <div class="custom-cart-app-remove-btn" data-key="${id}">Remove</div>
-  `;
+      ? `
+        ${isLatestProduct ? `<div class="custom-cart-app-edit-btn" data-key="${id}" data-session="${props._Session}">Edit</div>` : ''}
+        <div class="custom-cart-app-remove-btn" data-key="${id}">Remove</div>
+        <div class="custom-cart-app-make-another-btn">Create Another</div>
+      `
+      : `
+        <div class="custom-cart-app-remove-btn" data-key="${id}">Remove</div>
+      `;
 
-
-        html += `
-          <div class="custom-cart-item" data-key="${id}">
-            <div class="custom-cart-item-img">
-              <img src="${img}" alt="${title}" loading="lazy">
-            </div>
-            <div class="custom-cart-item-info">
-              <div class="custom-cart-app-product-title">${title}</div>
-              <p class="custom-cart-app-custom-price">${price}</p>
-              <div class="custom-cart-app-custom-cart-actions">
-                ${buttonsHTML}
-              </div>
-            </div>
+    html += `
+      <div class="custom-cart-item" data-key="${id}">
+        <div class="custom-cart-item-img">
+          <img src="${img}" alt="${title}" loading="lazy">
+        </div>
+        <div class="custom-cart-item-info">
+          <div class="custom-cart-app-product-title">${title}</div>
+          <p class="custom-cart-app-custom-price">${price}</p>
+          <div class="custom-cart-app-custom-cart-actions">
+            ${buttonsHTML}
           </div>
-        `;
-      });
-localStorage.removeItem('latestSessionId');
-      wrapper.innerHTML = html;
-      bindCartButtons();
+        </div>
+      </div>
+    `;
+  });
 
-    } catch (err) {
+  localStorage.removeItem('latestSessionId');
+  wrapper.innerHTML = html;
+  bindCartButtons();
+} } catch (err) {
       console.error(err);
       wrapper.innerHTML = '<p class="error-msg">Failed to load cart.</p>';
     }
