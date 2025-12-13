@@ -1258,6 +1258,7 @@ const overlayContent = document.querySelector('.overlay-content');
 
 function closeOverlay() {
   overlay.classList.remove('active');
+    document.documentElement.classList.remove("mobilesearch-overflowhidden");
 }
 overlay.addEventListener('click', function (event) {
 
