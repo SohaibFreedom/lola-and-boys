@@ -2011,14 +2011,60 @@ async function getCart() {
 ============================================ */
 async function removeParentAndChildren(groupId) {
   const cart = await getCart();
+  const items = cart.items || [];
+
+  const getProps = (item) => item.properties || {};
+
+  // ✅ Detect Embroidery parent items
+  const isEmbroideryItem = (item) => {
+    const p = getProps(item);
+    return (
+      p._embroideryProduct === 'Embroidery Product' ||
+      p._Parent === 'Embroidery Product' // (keep safe if your data uses this)
+    );
+  };
+
+  // ✅ Detect the one-time fee item
+  const isStitchingFeeItem = (item) => {
+    const p = getProps(item);
+    return p._Product === 'Stitching Fee';
+  };
+
+  // Items that belong to the group being removed (your original grouping logic)
+  const groupItems = items.filter(item => {
+    const p = getProps(item);
+    return p._Timestamp === groupId || p._Session === groupId;
+  });
+
+  // How many embroidery items exist now (before removal)
+  const embroideryTotalBefore = items.filter(isEmbroideryItem).length;
+
+  // How many embroidery items are being removed with this group
+  const embroideryRemoved = groupItems.filter(isEmbroideryItem).length;
+
+  // How many embroidery items would remain after this removal
+  const embroideryRemaining = embroideryTotalBefore - embroideryRemoved;
+
   const updates = {};
 
-  cart.items.forEach(item => {
-    const props = item.properties || {};
-    if (props._Timestamp === groupId || props._Session === groupId) {
-      updates[item.key] = 0;
+  // Remove group items, BUT keep Stitching Fee if embroidery will still remain
+  groupItems.forEach(item => {
+    if (isStitchingFeeItem(item)) {
+      if (embroideryRemaining <= 0) updates[item.key] = 0; // remove fee only if last embroidery is gone
+      return; // keep fee if other embroidery products still exist
     }
+    updates[item.key] = 0;
   });
+
+  // If this was the last embroidery item, remove ANY stitching-fee item(s) left in cart (even if not in the group)
+  if (embroideryRemaining <= 0) {
+    items.forEach(item => {
+      if (isStitchingFeeItem(item)) updates[item.key] = 0;
+    });
+  }
+
+  // Nothing to update
+  if (!Object.keys(updates).length) return;
 
   await fetch('/cart/update.js', {
     method: 'POST',
@@ -2055,6 +2101,14 @@ async function removeItem(key) {
    GLOBAL: HANDLE REMOVE BUTTON
 ============================================ */
 async function handleRemoveButtonClick(e) {
+    const wrapperMain = document.querySelector('.custom-embroidery-cart-drawer-for-app-main-wrapper'); 
+ if (wrapperMain) {
+    // 1️⃣ Empty wrapper
+    wrapperMain.innerHTML = '';
+
+    // 2️⃣ Show loader
+    wrapperMain.innerHTML = '<p class="loading"></p>';
+  }
   const key = e.target.dataset.key;
   const cart = await getCart();
   const itemToRemove = cart.items.find(i => i.key === key);
@@ -2149,87 +2203,94 @@ if (editor) editor.style.visibility = 'hidden';
 
   /* LOAD CART DATA */
   try {
-    const cart = await getCart();
-    const items = cart.items || [];
+  const cart = await getCart();
+  const items = cart.items || [];
 
-    const parentItems = items.filter(
-      i => !i.properties || (!i.properties._ChildOf && !i.properties._parent_variant)
+  /* ✅ Exclude product (works whether you pass product_id OR variant_id) */
+  const EXCLUDED_ID = 42085140430950;
+  const visibleItems = items.filter(i => {
+    const variantId = Number(i.variant_id ?? i.id);
+    const productId = Number(i.product_id);
+    return variantId !== EXCLUDED_ID && productId !== EXCLUDED_ID;
+  });
+
+  const parentItems = visibleItems.filter(
+    i => !i.properties || (!i.properties._ChildOf && !i.properties._parent_variant)
+  );
+  const childItems = visibleItems.filter(
+    i => i.properties && (i.properties._ChildOf || i.properties._parent_variant)
+  );
+
+  /* Counters */
+  if (counterDiv)
+    counterDiv.textContent = `Subtotal (${visibleItems.length} item${visibleItems.length !== 1 ? 's' : ''})`;
+
+  if (totalPriceDiv)
+    totalPriceDiv.textContent = Shopify.formatMoney(cart.total_price, "{{ shop.money_format }}");
+
+  if (parentItems.length === 0) {
+    wrapper.innerHTML = '<p class="empty-msg">Your cart is empty.</p>';
+    return;
+  }
+
+  /* Build HTML */
+  let html = '';
+
+  parentItems.forEach(parent => {
+    const props = parent.properties || {};
+    const isCustomized = props._Parent === 'Embroidery Product' || props._customized_image_url_front;
+
+    const relatedChildren = childItems.filter(
+      child =>
+        child.properties &&
+        (child.properties._parent_variant == parent.variant_id ||
+          child.properties._ChildOf === '1') &&
+        child.properties._Session === props._Session
     );
-    const childItems = items.filter(
-      i => i.properties && (i.properties._ChildOf || i.properties._parent_variant)
-    );
 
-    /* Counters */
-    if (counterDiv)
-      counterDiv.textContent = `Subtotal (${items.length} item${items.length !== 1 ? 's' : ''})`;
+    const parentTotal =
+      parent.final_line_price +
+      relatedChildren.reduce((sum, c) => sum + c.final_line_price, 0);
 
-    if (totalPriceDiv)
-      totalPriceDiv.textContent = Shopify.formatMoney(cart.total_price, "{{ shop.money_format }}");
+    const img =
+      props._customized_image_url_front ||
+      parent.image ||
+      "{{ 'no-image.png' | asset_url }}";
 
-    if (parentItems.length === 0) {
-      wrapper.innerHTML = '<p class="empty-msg">Your cart is empty.</p>';
-      return;
-    }
+    const latestSessionId = localStorage.getItem('latestSessionId');
+    const isLatestProduct =
+      isCustomized && props._Session && props._Session === latestSessionId;
 
-    /* Build HTML */
-    let html = '';
+    const buttonsHTML = isCustomized
+      ? `
+        ${isLatestProduct ? `<div class="custom-embroidery-cart-app-edit-btn" data-key="${parent.key}" data-session="${props._Session}">Edit</div>` : ''}
+        <div class="custom-cart-app-remove-btn" data-key="${parent.key}">Remove</div>
+        <div class="custom-cart-app-make-another-btn">Create Another</div>`
+      : `<div class="custom-cart-app-remove-btn" data-key="${parent.key}">Remove</div>`;
 
-    parentItems.forEach(parent => {
-      const props = parent.properties || {};
-      const isCustomized = props._Parent === 'Embroidery Product' || props._customized_image_url_front;
-
-      const relatedChildren = childItems.filter(
-        child =>
-          child.properties &&
-          (child.properties._parent_variant == parent.variant_id ||
-            child.properties._ChildOf === '1') &&
-          child.properties._Session === props._Session
-      );
-
-      const parentTotal =
-        parent.final_line_price +
-        relatedChildren.reduce((sum, c) => sum + c.final_line_price, 0);
-
-      const img =
-        props._customized_image_url_front ||
-        parent.image ||
-        "{{ 'no-image.png' | asset_url }}";
-
-      const latestSessionId = localStorage.getItem('latestSessionId');
-      const isLatestProduct =
-        isCustomized && props._Session && props._Session === latestSessionId;
-
-      const buttonsHTML = isCustomized
-        ? `
-          ${isLatestProduct ? `<div class="custom-embroidery-cart-app-edit-btn" data-key="${parent.key}" data-session="${props._Session}">Edit</div>` : ''}
-          <div class="custom-cart-app-remove-btn" data-key="${parent.key}">Remove</div>
-          <div class="custom-cart-app-make-another-btn">Create Another</div>`
-        : `<div class="custom-cart-app-remove-btn" data-key="${parent.key}">Remove</div>`;
-
-      html += `
-        <div class="custom-cart-item" data-key="${parent.key}">
-          <div class="custom-cart-item-img">
-            <img src="${img}" alt="${parent.title}" loading="lazy">
-          </div>
-          <div class="custom-cart-item-info">
-            <div class="custom-cart-app-product-title">${parent.title}</div>
-            <p class="custom-cart-app-custom-price">
-              ${Shopify.formatMoney(parentTotal, "{{ shop.money_format }}")}
-            </p>
-            <div class="custom-cart-app-custom-cart-actions">
-              ${buttonsHTML}
-            </div>
+    html += `
+      <div class="custom-cart-item" data-key="${parent.key}">
+        <div class="custom-cart-item-img">
+          <img src="${img}" alt="${parent.title}" loading="lazy">
+        </div>
+        <div class="custom-cart-item-info">
+          <div class="custom-cart-app-product-title">${parent.title}</div>
+          <p class="custom-cart-app-custom-price">
+            ${Shopify.formatMoney(parentTotal, "{{ shop.money_format }}")}
+          </p>
+          <div class="custom-cart-app-custom-cart-actions">
+            ${buttonsHTML}
           </div>
         </div>
-      `;
-    });
+      </div>
+    `;
+  });
 
-    localStorage.removeItem('latestSessionId');
+  localStorage.removeItem('latestSessionId');
 
-    wrapper.innerHTML = html;
-    bindCartButtons();
-
-  } catch (err) {
+  wrapper.innerHTML = html;
+  bindCartButtons();
+} catch (err) {
     console.error(err);
     wrapper.innerHTML = '<p class="error-msg">Failed to load cart.</p>';
   }
