@@ -148,6 +148,12 @@ const $targets = $('.embroidery-summary-wrapper, .patches-customization-wrapper,
        if (productTags.includes("no-front-image")){
         $('.patches-customizations-btn-wrapper').hide();
       }
+      if (productTags.includes("only-image-embroidery")){
+         $('#back_inputs_btn').hide();
+        $('#monogram_back_inputs_btn').hide();
+        $('#monogram_front_inputs_btn').css('border-radius', '25px');
+        $('#front_inputs_btn').css('border-radius', '25px');
+      }
         if (productTags.includes("Embossed-Emoji-Terry-Poncho")){
         $('.patches-customizations-btn-wrapper').hide();
       }
