@@ -12,6 +12,28 @@
     "slideshow_nB6m8V": {
       "type": "slideshow",
       "blocks": {
+        "image_qTG7w8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/HP_BANNER_8c285cc4-975e-400f-828e-863b443491f9.png",
+            "image_mobile": "shopify://shop_images/HP_MOBILE_BANNER_1_b2af2df3-975b-4a6f-a93a-22152a79cff9.png",
+            "mp4": "",
+            "mobilevideo": "",
+            "pretext": "",
+            "title": "",
+            "subtitle": "",
+            "text_position": "center",
+            "text_align": "center",
+            "caption_background": false,
+            "caption_background_transparency": false,
+            "button1": "",
+            "button1_link": "https://lolaandtheboys.com/collections/holiday-shop",
+            "button1_highlight": false,
+            "button2": "",
+            "button2_link": "",
+            "button2_highlight": false
+          }
+        },
         "image_V87qeG": {
           "type": "image",
           "settings": {
@@ -50,28 +72,6 @@
             "caption_background_transparency": false,
             "button1": "",
             "button1_link": "https://lolaandtheboys.com/collections/bethenny-collab",
-            "button1_highlight": false,
-            "button2": "",
-            "button2_link": "",
-            "button2_highlight": false
-          }
-        },
-        "image_qTG7w8": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "image_mobile": "shopify://shop_images/2_3.jpg",
-            "mp4": "https://cdn.shopify.com/videos/c/o/v/08a5cf56a99d4b7bb95a8d6f5db29d57.mp4",
-            "mobilevideo": "",
-            "pretext": "",
-            "title": "",
-            "subtitle": "",
-            "text_position": "center",
-            "text_align": "center",
-            "caption_background": false,
-            "caption_background_transparency": false,
-            "button1": "",
-            "button1_link": "https://lolaandtheboys.com/collections/black-friday",
             "button1_highlight": false,
             "button2": "",
             "button2_link": "",
@@ -232,9 +232,9 @@
         }
       },
       "block_order": [
+        "image_qTG7w8",
         "image_V87qeG",
         "image_MzwgLN",
-        "image_qTG7w8",
         "image_aprGEg",
         "image_QccNLz",
         "image_KD9mi6",
