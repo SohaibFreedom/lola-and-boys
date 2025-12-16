@@ -1,7 +1,10 @@
 .location-columns .four.columns {
   width:100% !important;
 }
+.homepage-slideshow {
 
+    margin: 0 auto 40px !important;
+}
 .location-columns  img[data-sizes=auto] {
     max-height: 500px;
     object-fit: cover;
