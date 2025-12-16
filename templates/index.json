@@ -254,47 +254,6 @@
         "slideshow_speed": 18
       }
     },
-    "home_custom_logos_4Kzc4W": {
-      "type": "home-custom-logos",
-      "blocks": {
-        "item_gRyhB7": {
-          "type": "item",
-          "settings": {
-            "icon": "shopify://shop_images/PACKAGE.png",
-            "title": "STANDARD SHIPPING",
-            "text": "Order by Dec. 16 for delivery by Dec. 24",
-            "custom_class": ""
-          }
-        },
-        "item_FNcVAE": {
-          "type": "item",
-          "settings": {
-            "icon": "shopify://shop_images/SHIPPING_TRUCK.png",
-            "title": "EXPRESS SHIPPING",
-            "text": "Order by Dec. 19 9am PT for delivery by Dec. 24",
-            "custom_class": "standerd-shipping"
-          }
-        },
-        "item_DcbaiC": {
-          "type": "item",
-          "settings": {
-            "icon": "shopify://shop_images/FAST_SHIPPING.png",
-            "title": "PRIORITY SHIPPING",
-            "text": "Order by Dec. 22 9am PT for delivery by Dec. 24",
-            "custom_class": ""
-          }
-        }
-      },
-      "block_order": [
-        "item_gRyhB7",
-        "item_FNcVAE",
-        "item_DcbaiC"
-      ],
-      "name": "Shipping Deadlines",
-      "settings": {
-        "heading": "GET YOUR GIFTS ON TIME!"
-      }
-    },
     "collection_mobile_list_FGTnEz": {
       "type": "collection-mobile-list",
       "blocks": {
@@ -353,6 +312,47 @@
         "bg_color": "",
         "text_color": "",
         "border_color": ""
+      }
+    },
+    "home_custom_logos_4Kzc4W": {
+      "type": "home-custom-logos",
+      "blocks": {
+        "item_gRyhB7": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/PACKAGE.png",
+            "title": "STANDARD SHIPPING",
+            "text": "Order by Dec. 16 for delivery by Dec. 24",
+            "custom_class": ""
+          }
+        },
+        "item_FNcVAE": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/SHIPPING_TRUCK.png",
+            "title": "EXPRESS SHIPPING",
+            "text": "Order by Dec. 19 9am PT for delivery by Dec. 24",
+            "custom_class": "standerd-shipping"
+          }
+        },
+        "item_DcbaiC": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/FAST_SHIPPING.png",
+            "title": "PRIORITY SHIPPING",
+            "text": "Order by Dec. 22 9am PT for delivery by Dec. 24",
+            "custom_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_gRyhB7",
+        "item_FNcVAE",
+        "item_DcbaiC"
+      ],
+      "name": "Shipping Deadlines",
+      "settings": {
+        "heading": "GET YOUR GIFTS ON TIME!"
       }
     },
     "featured_promotions_new_arrivals_wkUrRN": {
@@ -851,8 +851,8 @@
   },
   "order": [
     "slideshow_nB6m8V",
-    "home_custom_logos_4Kzc4W",
     "collection_mobile_list_FGTnEz",
+    "home_custom_logos_4Kzc4W",
     "featured_promotions_new_arrivals_wkUrRN",
     "grid_featured_collections_RWChAF",
     "announce_marquee_XqhL6w",
