@@ -117,24 +117,55 @@ body.popup-open #stickyWrapper {
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  const popup = document.getElementById("sizeChartPopup");
+  const popup   = document.getElementById("sizeChartPopup");
   const openBtn = document.getElementById("openSizeChart");
   const closeBtn = document.querySelector(".size-chart-popup-c-close");
-  const overlay = document.querySelector(".size-chart-popup-c-overlay");
+  const overlay  = document.querySelector(".size-chart-popup-c-overlay");
+
+  let savedScrollY = 0;
+
+  function lockScroll() {
+    savedScrollY = window.scrollY || window.pageYOffset || 0;
+
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${savedScrollY}px`;
+    document.body.style.left = "0";
+    document.body.style.right = "0";
+    document.body.style.width = "100%";
+  }
+
+  function unlockScroll() {
+    const y = savedScrollY;
+
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.left = "";
+    document.body.style.right = "";
+    document.body.style.width = "";
+
+    window.scrollTo(0, y);
+  }
 
   function openPopup() {
     popup.style.display = "flex";
     document.body.classList.add("popup-open");
-    document.documentElement.classList.add("mobilesearch-overflowhidden");
+
+    // ❌ Ye class scroll ko top par le jati hai (theme dependent)
+    // document.documentElement.classList.add("mobilesearch-overflowhidden");
+
+    lockScroll();
   }
 
   function closePopup() {
     popup.style.display = "none";
     document.body.classList.remove("popup-open");
-    document.documentElement.classList.remove("mobilesearch-overflowhidden");
+
+    // document.documentElement.classList.remove("mobilesearch-overflowhidden");
+
+    unlockScroll();
   }
 
-  if (openBtn) openBtn.addEventListener("click", e => {
+  if (openBtn) openBtn.addEventListener("click", (e) => {
     e.preventDefault();
     openPopup();
   });
@@ -142,11 +173,9 @@ document.addEventListener("DOMContentLoaded", function() {
   if (closeBtn) closeBtn.addEventListener("click", closePopup);
   if (overlay) overlay.addEventListener("click", closePopup);
 
-  /* ✅ ESC key press → close popup */
   document.addEventListener("keydown", function(e) {
-    if (e.key === "Escape") {
-      closePopup();
-    }
+    if (e.key === "Escape") closePopup();
   });
 });
 </script>
+
