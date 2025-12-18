@@ -9,6 +9,10 @@
     max-height: 500px;
     object-fit: cover;
 }
+.newprotecttext{
+display:none;
+
+}
 .custom-patch-cart-data .parent-cart-group .parent-images .parent-preview {
     object-fit: contain;
 }
