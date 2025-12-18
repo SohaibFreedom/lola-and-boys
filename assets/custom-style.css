@@ -9,11 +9,11 @@
     max-height: 500px;
     object-fit: cover;
 }
-.newprotecttext{
+.swipe-info-box .newprotecttext{
 display:none;
 
 }
-.oldprotect{
+.swipe-info-box .oldprotect{
   display:block !important;
 }
 .custom-patch-cart-data .parent-cart-group .parent-images .parent-preview {
