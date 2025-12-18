@@ -13,6 +13,9 @@
 display:none;
 
 }
+.oldprotect{
+  display:block !important;
+}
 .custom-patch-cart-data .parent-cart-group .parent-images .parent-preview {
     object-fit: contain;
 }
