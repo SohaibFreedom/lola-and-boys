@@ -22,10 +22,7 @@ display:none;
 .swipe-btn-protection span.protectfee {
     display: none;
 }
-.pw-learn-more strong , .tag-swipe{
 
-  display:none !important;
-}
 .swipe-btn-protection span.cartfee {
     display: block !important;
 }
