@@ -331,7 +331,7 @@
           "settings": {
             "icon": "shopify://shop_images/SHIPPING_TRUCK.png",
             "title": "EXPRESS SHIPPING",
-            "text": "Order by Dec. 19 9am PT for delivery by Dec. 24",
+            "text": "Order by Dec. 19  for delivery by Dec. 24",
             "custom_class": "standerd-shipping"
           }
         },
