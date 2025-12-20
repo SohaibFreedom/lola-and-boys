@@ -1,6 +1,13 @@
 {% assign variant = product.selected_or_first_available_variant %}
 <style>
-  .tidy-patches-alignment-section-not-show{
+  .tidy-patches-alignment-section-apply-chnages{
+    display: flex;
+    background: white;
+    padding: 20px 0;
+    border-top: 1px solid #e2e0e0;
+    justify-content: space-between;
+  }
+  .tidy-patches-alignment-section_hide{
     display:none !important;
   }
   .patches-tidy-popup{
@@ -1483,8 +1490,6 @@
       display: none;
       gap: 20px;
       padding: 10px 0px;
-      border-bottom: 1px solid #e2e0e0;
-      padding-bottom: 20px;
     }
     .select-patches-active{
       display:flex !important;
@@ -1832,7 +1837,6 @@
               }
               .select-patches{
                 padding: 5px 0px;
-                padding-bottom: 10px;
               }
               .tidy-patches-content {
                 padding: 5px 0px;
@@ -2025,7 +2029,7 @@ display:none;
     bottom: 10px !important;
   }
   .tidy-patches-delete-btn{
-    padding: 4px 15px;
+    padding: 8px 15px;
   }
   .onlymobile-screen, .only-mobile-eidt-btn{
     margin: auto;
@@ -2243,7 +2247,11 @@ display:none;
                 padding: 20px;
               }
               .add-item{
-              padding: 7px 36px !important;
+              padding: 12px 24px !important;
+            }
+            .tidy-patches-apply-changes-btn {
+                  font-size: 12px;
+                  padding: 10px 15px;
             }
               .variants-continue-btn-wrapper{
                   padding: 12px 24px !important;
@@ -2758,7 +2766,7 @@ display:none;
                 <div class="select-patches select-patches-for-back"></div>
               </div>
               <div class="tidy-patches-adjustment-wrapper">
-                <div class="tidy-patches-alignment-section tidy-patches-alignment-section-not-show">
+                <div class="tidy-patches-alignment-section tidy-patches-alignment-section_hide">
                   <div class="alignment-title">
                     <span>Align</span>
                   </div>
@@ -2845,7 +2853,7 @@ display:none;
                     </div>
                   </div>
                 </div>
-                <div class="tidy-patches-alignment-section tidy-patches-alignment-section-not-show">
+                <div class="tidy-patches-alignment-section tidy-patches-alignment-section_hide">
                   <div class="alignment-title">
                     <span>Space</span>
                   </div>
@@ -3017,13 +3025,18 @@ display:none;
                   <div class="tidy-patches-delete-title alignment-title">Delete Patch</div>
                   <div class="tidy-patches-delete-btn">Delete</div>
                 </div>
+                <div class="tidy-patches-alignment-section-apply-chnages">
+                  <div class="tidy-patches-apply-changes-btn">Apply Changes</div>
+                </div>
+                 
               </div>
             </div>
           </div>
         </div>
       </div>
       <div class="tidy-patches-changes-btn-wrraper">
-        <div class="tidy-patches-apply-changes-btn">Apply Changes</div>
+       
+        <div class="patch-customization-offcanvas-form">{% render 'customize-product-form' with 'product' %}</div>
       </div>
     </div>
     <div class="patches-customization-clear-alert-pop-up">
@@ -3098,7 +3111,7 @@ display:none;
       </div>
 
       <div class="patch-customizaton-foter">
-        <div class="patch-customization-offcanvas-form">{% render 'customize-product-form' with 'product' %}</div>
+       <div class="patch-customization-offcanvas-form">{% render 'customize-product-form' with 'product' %}</div>
       </div>
     </div>
     <div class="delete-patches-wrapper-sidebar">
@@ -3125,6 +3138,7 @@ display:none;
       </div>
       <div class="tidy-patches-changes-btn-wrraper">
         <div class="tidy-patches-apply-changes-btn">Apply Changes</div>
+         
       </div>
     </div>
        <div class="custom-cart-drawer-for-app">
@@ -3384,7 +3398,7 @@ val.addEventListener("input", () => {
 
 /* --- Update rotation globally --- */
 function updateRotation(v) {
-  val.value = v; // numeric only
+  val.value = v; // numeric 
 
   document.querySelectorAll(".patch-action").forEach(el => {
     el.style.transform = `rotate(${v}deg)`;
@@ -3398,7 +3412,8 @@ $(document).on('click', '.tidy_modal_tidy_wrapp_open_btn', function() {
   $('.patches-tidy-popup').hide();
   $('.edit-left-btn').removeClass('patches-customization-tidy-delete-btn-active');
   $(this).addClass('patches-customization-tidy-delete-btn-active');
-
+  $('.add_to_bag_wrrapper').show();
+  $('.patch-customization-btn-outer-wrapper').hide();
   changefillColors();
   $('.patches-customization-editor').addClass('patches-customization-editor-active').css('display', 'block');
   $('.patches-editor-wrapper').css('display', 'none');
