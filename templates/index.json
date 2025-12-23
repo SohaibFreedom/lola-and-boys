@@ -350,6 +350,7 @@
         "item_FNcVAE",
         "item_DcbaiC"
       ],
+      "disabled": true,
       "name": "Shipping Deadlines",
       "settings": {
         "heading": "GET YOUR GIFTS ON TIME!"
