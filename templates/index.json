@@ -81,8 +81,8 @@
         "image_aprGEg": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/HP_BANNER_1d57c8d9-b0d9-4c89-aad3-d181d816e1e5.png",
-            "image_mobile": "shopify://shop_images/HP_MOBILE_BANNER_1_9c7351b6-8947-43f7-956f-fd79559800e8.png",
+            "image": "shopify://shop_images/HP_BANNER_9e418c67-9903-4f59-9941-d0dc2ab9bf52.png",
+            "image_mobile": "shopify://shop_images/HP_MOBILE_BANNER_2.png",
             "mp4": "",
             "mobilevideo": "",
             "pretext": "",
@@ -93,7 +93,7 @@
             "caption_background": false,
             "caption_background_transparency": false,
             "button1": "",
-            "button1_link": "https://lolaandtheboys.com/collections/birthday",
+            "button1_link": "https://lolaandtheboys.com/collections/best-of-spring-summer",
             "button1_highlight": false,
             "button2": "",
             "button2_link": "",
