@@ -14,6 +14,7 @@
       "blocks": {
         "image_qTG7w8": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/HP_BANNER_8c285cc4-975e-400f-828e-863b443491f9.png",
             "image_mobile": "shopify://shop_images/HP_MOBILE_BANNER_1_b2af2df3-975b-4a6f-a93a-22152a79cff9.png",
