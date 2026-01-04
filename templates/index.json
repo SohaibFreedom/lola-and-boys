@@ -57,28 +57,6 @@
             "button2_highlight": false
           }
         },
-        "image_MzwgLN": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/HP_BANNER_SIZE_4.png",
-            "image_mobile": "shopify://shop_images/HP_MOBILE_BANNER_3.png",
-            "mp4": "",
-            "mobilevideo": "",
-            "pretext": "",
-            "title": "",
-            "subtitle": "",
-            "text_position": "center",
-            "text_align": "center",
-            "caption_background": false,
-            "caption_background_transparency": false,
-            "button1": "",
-            "button1_link": "https://lolaandtheboys.com/collections/bethenny-collab",
-            "button1_highlight": false,
-            "button2": "",
-            "button2_link": "",
-            "button2_highlight": false
-          }
-        },
         "image_aprGEg": {
           "type": "image",
           "settings": {
@@ -101,8 +79,31 @@
             "button2_highlight": false
           }
         },
+        "image_MzwgLN": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/HP_BANNER_SIZE_4.png",
+            "image_mobile": "shopify://shop_images/HP_MOBILE_BANNER_3.png",
+            "mp4": "",
+            "mobilevideo": "",
+            "pretext": "",
+            "title": "",
+            "subtitle": "",
+            "text_position": "center",
+            "text_align": "center",
+            "caption_background": false,
+            "caption_background_transparency": false,
+            "button1": "",
+            "button1_link": "https://lolaandtheboys.com/collections/bethenny-collab",
+            "button1_highlight": false,
+            "button2": "",
+            "button2_link": "",
+            "button2_highlight": false
+          }
+        },
         "image_QccNLz": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image_mobile": "shopify://shop_images/HOLIDAY_SHOP_mob_1_2bfda3af-aefa-4059-a507-dc285656e56d.jpg",
             "mp4": "https://cdn.shopify.com/videos/c/o/v/5ef77c45223c4cd398498e46f3c4407d.mp4",
@@ -235,8 +236,8 @@
       "block_order": [
         "image_qTG7w8",
         "image_V87qeG",
-        "image_MzwgLN",
         "image_aprGEg",
+        "image_MzwgLN",
         "image_QccNLz",
         "image_KD9mi6",
         "image_zPL6aM",
