@@ -1,59 +1,99 @@
 {%- comment -%}
-  ps-color-slider.liquid — Backend driven version
-  - Keeps Swiper layout intact
-  - Filters product media by variant color using product JSON
-  - No page reload on swatch change (note: your second script still reloads; I didn’t touch it)
+ps-color-slider.liquid — Backend driven version
+- Keeps Swiper layout intact
+- Filters product media by variant color using product JSON
+- No page reload on swatch change (note: your second script still reloads; I didn’t touch it)
 {%- endcomment -%}
 
-<div class="product-media-slider-wrapper" id="PsColorSlider-{{ product.id }}" data-product-json='{{ product | json | escape }}'>
-  <div class="swiper product-media-slider">
-    <div class="swiper-wrapper">
-      {% for media in product.media %}
-        <div class="swiper-slide" data-media-id="{{ media.id }}" data-alt="{{ media.alt | downcase | escape }}">
-          <div class="media-box">
-            {%- case media.media_type -%}
-              {%- when 'image' -%}
-                <img src="{{ media | img_url: '700x' }}" alt="{{ media.alt | escape }}" class="slider-media" loading="lazy">
-              {%- when 'video' -%}
-                <video class="slider-media" autoplay muted loop playsinline>
-                  {%- for source in media.sources -%}
-                    <source src="{{ source.url }}" type="{{ source.mime_type }}">
-                  {%- endfor -%}
-                </video>
-              {%- when 'external_video' -%}
-                {%- if media.host == 'youtube' -%}
-                  <iframe class="slider-media ext-vid" src="https://www.youtube.com/embed/{{ media.external_id }}?autoplay=1&loop=1&mute=1&playlist={{ media.external_id }}&controls=0&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                {%- elsif media.host == 'vimeo' -%}
-                  <iframe class="slider-media ext-vid" src="https://player.vimeo.com/video/{{ media.external_id }}?autoplay=1&loop=1&muted=1&background=1" allow="autoplay; fullscreen" allowfullscreen></iframe>
-                {%- endif -%}
-            {%- endcase -%}
-          </div>
+<div class="product-media-slider-wrapper" id="PsColorSlider-{{ product.id }}"
+    data-product-json='{{ product | json | escape }}'>
+    <div class="swiper product-media-slider">
+        <div class="swiper-wrapper">
+            {% for media in product.media %}
+            <div class="swiper-slide" data-media-id="{{ media.id }}" data-alt="{{ media.alt | downcase | escape }}">
+                <div class="media-box">
+                    {%- case media.media_type -%}
+                    {%- when 'image' -%}
+                    <img src="{{ media | img_url: '700x' }}" alt="{{ media.alt | escape }}" class="slider-media"
+                        loading="lazy">
+                    {%- when 'video' -%}
+                    <video class="slider-media" autoplay muted loop playsinline>
+                        {%- for source in media.sources -%}
+                        <source src="{{ source.url }}" type="{{ source.mime_type }}">
+                        {%- endfor -%}
+                    </video>
+                    {%- when 'external_video' -%}
+                    {%- if media.host == 'youtube' -%}
+                    <iframe class="slider-media ext-vid"
+                        src="https://www.youtube.com/embed/{{ media.external_id }}?autoplay=1&loop=1&mute=1&playlist={{ media.external_id }}&controls=0&modestbranding=1&rel=0"
+                        allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    {%- elsif media.host == 'vimeo' -%}
+                    <iframe class="slider-media ext-vid"
+                        src="https://player.vimeo.com/video/{{ media.external_id }}?autoplay=1&loop=1&muted=1&background=1"
+                        allow="autoplay; fullscreen" allowfullscreen></iframe>
+                    {%- endif -%}
+                    {%- endcase -%}
+                </div>
+            </div>
+            {% endfor %}
         </div>
-      {% endfor %}
-    </div>
 
-    <!-- Arrows -->
-    <div class="swiper-button-prev custom-arrow" aria-label="Previous">
-       <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none" style="transform:rotate(180deg)">
-                <path d="M27 9L42 24M42 24L27 39M42 24H6" stroke="#2D2A26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        <!-- Arrows -->
+        <div class="swiper-button-prev custom-arrow" aria-label="Previous">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none"
+                style="transform:rotate(180deg)">
+                <path d="M27 9L42 24M42 24L27 39M42 24H6" stroke="#2D2A26" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round"></path>
             </svg>
-    </div>
-    <div class="swiper-button-next custom-arrow" aria-label="Next">
-      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
-                <path d="M27 9L42 24M42 24L27 39M42 24H6" stroke="#2D2A26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </div>
+        <div class="swiper-button-next custom-arrow" aria-label="Next">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <path d="M27 9L42 24M42 24L27 39M42 24H6" stroke="#2D2A26" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round"></path>
             </svg>
+        </div>
+        <div class="swiper-pagination"></div>
     </div>
-    <div class="swiper-pagination"></div>
-  </div>
 </div>
 
 <style>
-.product-media-slider-wrapper{position:relative;width:100%;max-width:1400px;margin:0 auto;overflow:hidden}
-.product-media-slider{width:100%}
-.media-box{position:relative;width:100%;aspect-ratio:3/4;margin:0;overflow:hidden}
-.media-box .slider-media{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover; object-position: top;}
-.swiper-slide{width:50%!important;flex:0 0 50%!important}
-.custom-arrow{position: absolute;
+    .product-media-slider-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        overflow: hidden
+    }
+
+    .product-media-slider {
+        width: 100%
+    }
+
+    .media-box {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 3/4;
+        margin: 0;
+        overflow: hidden
+    }
+
+    .media-box .slider-media {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+    }
+
+    .swiper-slide {
+        width: 50% !important;
+        flex: 0 0 50% !important
+    }
+
+    .custom-arrow {
+        position: absolute;
         top: 50%;
         transform: translateY(-50%);
         z-index: 20;
@@ -65,239 +105,315 @@
         background: none !important;
         border-radius: 50%;
         cursor: pointer;
-        padding: 8px}
-.custom-arrow:hover{opacity:1;transform:translateY(-50%) scale(1.05)}
-.swiper-button-prev{left:12px}
-.swiper-button-next{right:12px}
-.swiper-button-next,.swiper-button-prev{color:#000!important}
-.swiper-wrapper { gap: 5px !important; }
-/* Pagination Dots - Outside Slider */
-.swiper-pagination {  text-align: center; margin-top: 10px; position: relative; bottom: 0; }
-/* Swiper dot styles like your reference */
-.swiper-pagination-bullet { width: 8px;
-    height: 8px;
-    background: #fff;
-    opacity: 1;
-    margin: 0 4px !important;
-    transition: all 0.3s 
-ease;
-    border: solid 1.5px #000; }
-.swiper-pagination-bullet-active { background: #000; }
+        padding: 8px
+    }
 
-/* ✅ Mobile + Tablet (<=1024px) = 1.5 slides view + dots visible */
-@media(max-width:768px){
-  .swiper-slide{width:66.66%!important;flex:0 0 66.66%!important} /* 1.5 slides view */
-  .swiper-button-next, .swiper-button-prev{display:none!important} /* hide arrows on mobile */
-  .media-box { aspect-ratio: 2 / 3; }
-  .swiper-wrapper { gap: 5px !important; }
-  .swiper-pagination { display: block !important; }
-}
-transitions style {
-    transform: translate3d(-1155.51px, 0px, 0px);
-}
-element.style {
-    transition-duration: 700ms;
-    transform: translate3d(-1433.33px, 0px, 0px);
-}
-.swiper-android .swiper-slide, .swiper-ios .swiper-slide, .swiper-wrapper {
-    /* transform: translateZ(0); */
-}
-button.checkout_btn_product {
-    display: none !important;
-}
-.product_cart_btns {
-    grid-template-columns: 1fr !important;
-    margin-bottom: 0 !important;
-}
+    .custom-arrow:hover {
+        opacity: 1;
+        transform: translateY(-50%) scale(1.05)
+    }
+
+    .swiper-button-prev {
+        left: 12px
+    }
+
+    .swiper-button-next {
+        right: 12px
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        color: #000 !important
+    }
+
+    .swiper-wrapper {
+        gap: 5px !important;
+    }
+
+    /* Pagination Dots - Outside Slider */
+    .swiper-pagination {
+        text-align: center;
+        margin-top: 10px;
+        position: relative;
+        bottom: 0;
+    }
+
+    /* Swiper dot styles like your reference */
+    .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+        background: #fff;
+        opacity: 1;
+        margin: 0 4px !important;
+        transition: all 0.3s ease;
+        border: solid 1.5px #000;
+    }
+
+    .swiper-pagination-bullet-active {
+        background: #000;
+    }
+
+    /* ✅ Mobile + Tablet (<=1024px) = 1.5 slides view + dots visible */
+    @media(max-width:768px) {
+        .swiper-slide {
+            width: 66.66% !important;
+            flex: 0 0 66.66% !important
+        }
+
+        /* 1.5 slides view */
+        .swiper-button-next,
+        .swiper-button-prev {
+            display: none !important
+        }
+
+        /* hide arrows on mobile */
+        .media-box {
+            aspect-ratio: 2 / 3;
+        }
+
+        .swiper-wrapper {
+            gap: 5px !important;
+        }
+
+        .swiper-pagination {
+            display: block !important;
+        }
+    }
+
+    transitions style {
+        transform: translate3d(-1155.51px, 0px, 0px);
+    }
+
+    element.style {
+        transition-duration: 700ms;
+        transform: translate3d(-1433.33px, 0px, 0px);
+    }
+
+    .swiper-android .swiper-slide,
+    .swiper-ios .swiper-slide,
+    .swiper-wrapper {
+        /* transform: translateZ(0); */
+    }
+
+    button.checkout_btn_product {
+        display: none !important;
+    }
+
+    .product_cart_btns {
+        grid-template-columns: 1fr !important;
+        margin-bottom: 0 !important;
+    }
+
+    .swiper-pagination {
+        z-index: 99999 !important;
+        pointer-events: auto !important;
+    }
+
+    .swiper-pagination .swiper-pagination-bullet {
+        pointer-events: auto !important;
+    }
 </style>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const root = document.getElementById("PsColorSlider-{{ product.id }}");
-  if (!root) return;
+    document.addEventListener("DOMContentLoaded", function () {
+        const root = document.getElementById("PsColorSlider-{{ product.id }}");
+        if (!root) return;
 
-  const productData = JSON.parse(root.getAttribute("data-product-json"));
-  const wrapper = root.querySelector(".swiper-wrapper");
-  const allSlides = Array.from(wrapper.querySelectorAll(".swiper-slide")).map(s => s.cloneNode(true));
-  let swiper = null;
+        const productData = JSON.parse(root.getAttribute("data-product-json"));
+        const wrapper = root.querySelector(".swiper-wrapper");
+        const allSlides = Array.from(wrapper.querySelectorAll(".swiper-slide")).map(s => s.cloneNode(true));
+        let swiper = null;
 
-  // 🔎 media query helper (mobile = ≤768px)
-  const mq = window.matchMedia("(max-width: 768px)");
-  let isMobile = mq.matches;
-  mq.addEventListener?.("change", (e) => {
-    isMobile = e.matches;
-    // Rebuild & reinit to apply mobile/desktop specific options
-    rebuildSlides(currentFilteredSlides || allSlides);
-    initSwiper();
-  });
+        // 🔎 media query helper (mobile = ≤768px)
+        const mq = window.matchMedia("(max-width: 768px)");
+        let isMobile = mq.matches;
+        mq.addEventListener?.("change", (e) => {
+            isMobile = e.matches;
+            // Rebuild & reinit to apply mobile/desktop specific options
+            rebuildSlides(currentFilteredSlides || allSlides);
+            initSwiper();
+        });
 
-  // ⚡ Initialize Swiper
-  function initSwiper() {
-    if (swiper && swiper.destroy) swiper.destroy(true, true);
+        function bindBulletClicks(sw) {
+            const bullets = sw.pagination?.bullets || sw.pagination?.el?.querySelectorAll(".swiper-pagination-bullet");
+            if (!bullets) return;
 
-    const baseOpts = {
-      slidesPerView: 2,
-      loop: true,                 // 🚫 no loop on mobile (fixes extra bullets)
-      speed: 700,
-      spaceBetween: 5,
-      observer: true,
-      observeParents: true,
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev"
-      },
-      autoplay: false,
-
-
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true
-      },
-      on: {
-        afterInit(sw) {
-          const bullets = sw.pagination?.el?.querySelectorAll(".swiper-pagination-bullet");
-          if (bullets) {
             bullets.forEach((b, i) => {
-              b.style.pointerEvents = "auto";
-              // use slideToLoop only when loop is enabled
-              b.addEventListener("click", () => sw.params.loop ? sw.slideToLoop(i) : sw.slideTo(i));
+                if (b.__psBound) return;      // ✅ double binding prevent
+                b.__psBound = true;
+
+                b.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+
+                    // ✅ Exact jump on any dot
+                    if (sw.params.loop) sw.slideToLoop(i);
+                    else sw.slideTo(i);
+                }, true); // ✅ CAPTURE mode (important)
             });
-          }
         }
-      },
-      breakpoints: {
-        0:    { slidesPerView: 1.5, slidesPerGroup: 1 },
-        768:  { slidesPerView: 1.5, slidesPerGroup: 1 },
-        1025: { slidesPerView: 2,   slidesPerGroup: 1 }
-      }
-    };
 
-    swiper = new Swiper(".product-media-slider", baseOpts);
-  }
 
-  // 🧩 Rebuild wrapper slides safely
-  let currentFilteredSlides = null;
-  function rebuildSlides(slidesArr) {
-    // Keep a ref to the 'logical' filtered slides (before padding)
-    currentFilteredSlides = slidesArr.slice();
+        function initSwiper() {
+            if (swiper && swiper.destroy) swiper.destroy(true, true);
 
-    // 👉 On mobile: do NOT pad or fix ends. This keeps bullet count == actual images.
-    if (isMobile) {
-      wrapper.innerHTML = "";
-      (slidesArr.length ? slidesArr : allSlides).forEach(node => wrapper.appendChild(node.cloneNode(true)));
-      return;
+            const baseOpts = {
+                slidesPerView: 2,
+                loop: true,
+                speed: 700,
+                spaceBetween: 5,
+                observer: true,
+                observeParents: true,
+                navigation: {
+                    nextEl: root.querySelector(".swiper-button-next"),
+                    prevEl: root.querySelector(".swiper-button-prev")
+                },
+                autoplay: false,
+
+
+                pagination: {
+                    el: root.querySelector(".swiper-pagination"),
+                    clickable: true
+                },
+
+                on: {
+                    afterInit(sw) { bindBulletClicks(sw); },
+                    paginationUpdate(sw) { bindBulletClicks(sw); }
+                },
+
+
+                breakpoints: {
+                    0: { slidesPerView: 1.5, slidesPerGroup: 1 },
+                    768: { slidesPerView: 1.5, slidesPerGroup: 1 },
+                    1025: { slidesPerView: 2, slidesPerGroup: 1 }
+                }
+            };
+
+            swiper = new Swiper(root.querySelector(".product-media-slider"), baseOpts);
+        }
+
+        // 🧩 Rebuild wrapper slides safely
+        let currentFilteredSlides = null;
+        function rebuildSlides(slidesArr) {
+            // Keep a ref to the 'logical' filtered slides (before padding)
+            currentFilteredSlides = slidesArr.slice();
+
+            // 👉 On mobile: do NOT pad or fix ends. This keeps bullet count == actual images.
+            if (isMobile) {
+                wrapper.innerHTML = "";
+                (slidesArr.length ? slidesArr : allSlides).forEach(node => wrapper.appendChild(node.cloneNode(true)));
+                return;
+            }
+
+            // 👉 Desktop: maintain your original minimum-fill behavior
+            let slides = slidesArr.slice();
+            const MIN = 3;
+            if (slides.length === 0) slides = allSlides.slice();
+
+            function nextDifferent(startIdx, lastId) {
+                for (let off = 0; off < slidesArr.length; off++) {
+                    const cand = slidesArr[(startIdx + off) % slidesArr.length];
+                    if (!lastId || cand.dataset.mediaId !== lastId) return cand;
+                }
+                return slidesArr[startIdx % slidesArr.length];
+            }
+
+            let i = 0;
+            while (slides.length < MIN) {
+                const lastId = slides.length ? slides[slides.length - 1].dataset.mediaId : null;
+                const cand = nextDifferent(i, lastId);
+                slides.push(cand.cloneNode(true));
+                i++;
+            }
+
+            // Keep ends varied (desktop only)
+            if (slides.length > 1 && slides[0].dataset.mediaId === slides[slides.length - 1].dataset.mediaId) {
+                const cand = nextDifferent(0, slides[0].dataset.mediaId);
+                if (cand) slides.push(cand.cloneNode(true));
+            }
+
+            wrapper.innerHTML = "";
+            slides.forEach(node => wrapper.appendChild(node));
+        }
+
+        // 🎨 Filter by selected color
+        function filterSlidesByColor(colorValue) {
+            const lc = (colorValue || "").toLowerCase().trim();
+            const matched = allSlides.filter(slide => (slide.dataset.alt || "").toLowerCase().includes(lc));
+            const filtered = matched.length ? matched : allSlides.slice();
+            rebuildSlides(filtered);
+            initSwiper();
+        }
+
+        // 🟢 Initial build based on selected variant color
+        // ✅ Detect Color or Style variant automatically
+        const variantOptionIdx = productData.options.findIndex(o => /color|colour|style/i.test(o));
+        const firstVariant = productData.variants.find(v => v.id === {{ product.selected_or_first_available_variant.id }});
+
+    if (firstVariant && variantOptionIdx > -1) {
+        filterSlidesByColor(firstVariant.options[variantOptionIdx]);
+    } else {
+        rebuildSlides(allSlides);
+        initSwiper();
     }
 
-    // 👉 Desktop: maintain your original minimum-fill behavior
-    let slides = slidesArr.slice();
-    const MIN = 3;
-    if (slides.length === 0) slides = allSlides.slice();
 
-    function nextDifferent(startIdx, lastId) {
-      for (let off = 0; off < slidesArr.length; off++) {
-        const cand = slidesArr[(startIdx + off) % slidesArr.length];
-        if (!lastId || cand.dataset.mediaId !== lastId) return cand;
-      }
-      return slidesArr[startIdx % slidesArr.length];
-    }
-
-    let i = 0;
-    while (slides.length < MIN) {
-      const lastId = slides.length ? slides[slides.length - 1].dataset.mediaId : null;
-      const cand = nextDifferent(i, lastId);
-      slides.push(cand.cloneNode(true));
-      i++;
-    }
-
-    // Keep ends varied (desktop only)
-    if (slides.length > 1 && slides[0].dataset.mediaId === slides[slides.length - 1].dataset.mediaId) {
-      const cand = nextDifferent(0, slides[0].dataset.mediaId);
-      if (cand) slides.push(cand.cloneNode(true));
-    }
-
-    wrapper.innerHTML = "";
-    slides.forEach(node => wrapper.appendChild(node));
-  }
-
-  // 🎨 Filter by selected color
-  function filterSlidesByColor(colorValue) {
-    const lc = (colorValue || "").toLowerCase().trim();
-    const matched = allSlides.filter(slide => (slide.dataset.alt || "").toLowerCase().includes(lc));
-    const filtered = matched.length ? matched : allSlides.slice();
-    rebuildSlides(filtered);
-    initSwiper();
-  }
-
-  // 🟢 Initial build based on selected variant color
- // ✅ Detect Color or Style variant automatically
-const variantOptionIdx = productData.options.findIndex(o => /color|colour|style/i.test(o));
-const firstVariant = productData.variants.find(v => v.id === {{ product.selected_or_first_available_variant.id }});
-
-if (firstVariant && variantOptionIdx > -1) {
-  filterSlidesByColor(firstVariant.options[variantOptionIdx]);
-} else {
-  rebuildSlides(allSlides);
-  initSwiper();
-}
-
-
-  // 🟣 Swatch change listener (keeps reload logic separate)
-  document.querySelectorAll(".swatch-element.color input[type='radio']").forEach(inp => {
-    inp.addEventListener("change", () => filterSlidesByColor(inp.value || ""));
-  });
+    // 🟣 Swatch change listener (keeps reload logic separate)
+    document.querySelectorAll(".swatch-element.color input[type='radio']").forEach(inp => {
+        inp.addEventListener("change", () => filterSlidesByColor(inp.value || ""));
+    });
 });
 </script>
 
 <!-- 🔁 Your original reload script — untouched -->
 <!-- 🔁 Your original reload script — updated to include all variant types -->
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  // 🎯 Sare swatch inputs + labels (Style, Color, Size, etc.)
-  const swatches = document.querySelectorAll(
-    ".swatch input[type='radio'], .swatch label"
-  );
+    document.addEventListener("DOMContentLoaded", () => {
+        // 🎯 Sare swatch inputs + labels (Style, Color, Size, etc.)
+        const swatches = document.querySelectorAll(
+            ".swatch input[type='radio'], .swatch label"
+        );
 
-  swatches.forEach((swatch) => {
-    ["click", "touchstart", "change"].forEach((eventType) => {
-      swatch.addEventListener(eventType, () => {
-        // 🔍 Related input nikaalo (agar label click hua ho)
-        let input = swatch.matches("input[type='radio']") ? swatch : null;
+        swatches.forEach((swatch) => {
+            ["click", "touchstart", "change"].forEach((eventType) => {
+                swatch.addEventListener(eventType, () => {
+                    // 🔍 Related input nikaalo (agar label click hua ho)
+                    let input = swatch.matches("input[type='radio']") ? swatch : null;
 
-        if (!input && swatch.tagName === "LABEL") {
-          const forId = swatch.getAttribute("for");
-          if (forId) {
-            input = document.getElementById(forId);
-          }
-        }
+                    if (!input && swatch.tagName === "LABEL") {
+                        const forId = swatch.getAttribute("for");
+                        if (forId) {
+                            input = document.getElementById(forId);
+                        }
+                    }
 
-        if (!input) return;
+                    if (!input) return;
 
-        // 🏷️ Is swatch ka group wrapper & title (Style / Color / Size)
-        const wrapper = input.closest(".swatch");
-        const titleEl = wrapper ? wrapper.querySelector(".option_title") : null;
-        const title = titleEl ? titleEl.textContent.toLowerCase().trim() : "";
+                    // 🏷️ Is swatch ka group wrapper & title (Style / Color / Size)
+                    const wrapper = input.closest(".swatch");
+                    const titleEl = wrapper ? wrapper.querySelector(".option_title") : null;
+                    const title = titleEl ? titleEl.textContent.toLowerCase().trim() : "";
 
-        // ✅ Sirf Style + Color/Colour pe reload
-        const isStyleOrColor =
-          title.includes("style") ||
-          title.includes("color") ||
-          title.includes("colour");
+                    // ✅ Sirf Style + Color/Colour pe reload
+                    const isStyleOrColor =
+                        title.includes("style") ||
+                        title.includes("color") ||
+                        title.includes("colour");
 
-        if (!isStyleOrColor) {
-          // Size waghera yahan se exit ho jaye ga – NO reload
-          return;
-        }
+                    if (!isStyleOrColor) {
+                        // Size waghera yahan se exit ho jaye ga – NO reload
+                        return;
+                    }
 
-        if (!swatch.classList.contains("swatch-reloading")) {
-          swatch.classList.add("swatch-reloading");
-          setTimeout(() => {
-            location.reload(); // 👈 same reload
-          }, 1000);
-        }
-      });
+                    if (!swatch.classList.contains("swatch-reloading")) {
+                        swatch.classList.add("swatch-reloading");
+                        setTimeout(() => {
+                            location.reload(); // 👈 same reload
+                        }, 1000);
+                    }
+                });
+            });
+        });
     });
-  });
-});
 </script>
-
-
