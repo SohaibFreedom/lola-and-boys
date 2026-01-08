@@ -1941,8 +1941,8 @@ li.toolbox-item[data-name="text"] {
 .product_cart_btns {
   display: grid;
   gap: 16px;
-  grid-template-columns: 1fr 1fr !important;
-  margin-bottom: 0 !important;
+  grid-template-columns: 1fr !important;
+  margin-bottom: 0;
 }
 .product_cart_btns button {
   min-height: 52px !important;
