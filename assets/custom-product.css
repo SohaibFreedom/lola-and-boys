@@ -183,6 +183,11 @@ body.product span.wk-text {
   width:auto!important;
   padding:0!important;
 }
+.wk-icon svg {
+    width: 17px !important;
+    height: 17px !important;
+
+}
 
 @media (min-width:769px){
   .product-page.product-full .product-info{
