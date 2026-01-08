@@ -1,9 +1,4 @@
-{%- comment -%}
-ps-color-slider.liquid — Backend driven version
-- Keeps Swiper layout intact
-- Filters product media by variant color using product JSON
-- No page reload on swatch change (note: your second script still reloads; I didn’t touch it)
-{%- endcomment -%}
+{{ 'ps-color-slider.css' | asset_url | stylesheet_tag }}
 
 <div class="product-media-slider-wrapper" id="PsColorSlider-{{ product.id }}"
     data-product-json='{{ product | json | escape }}'>
@@ -38,181 +33,23 @@ ps-color-slider.liquid — Backend driven version
             {% endfor %}
         </div>
 
-        <!-- Arrows -->
         <div class="swiper-button-prev custom-arrow" aria-label="Previous">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none"
-                style="transform:rotate(180deg)">
-                <path d="M27 9L42 24M42 24L27 39M42 24H6" stroke="#2D2A26" stroke-width="1.5" stroke-linecap="round"
-                    stroke-linejoin="round"></path>
+            <!-- ✅ UPDATED SVG (LEFT) -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none" style="transform:rotate(180deg)">
+                <path d="M27 9L42 24M42 24L27 39M42 24H6" stroke="#2D2A26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
             </svg>
         </div>
+
         <div class="swiper-button-next custom-arrow" aria-label="Next">
+            <!-- ✅ UPDATED SVG (RIGHT) -->
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
-                <path d="M27 9L42 24M42 24L27 39M42 24H6" stroke="#2D2A26" stroke-width="1.5" stroke-linecap="round"
-                    stroke-linejoin="round"></path>
+                <path d="M27 9L42 24M42 24L27 39M42 24H6" stroke="#2D2A26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
             </svg>
         </div>
+
         <div class="swiper-pagination"></div>
     </div>
 </div>
-
-<style>
-    .product-media-slider-wrapper {
-        position: relative;
-        width: 100%;
-        max-width: 1400px;
-        margin: 0 auto;
-        overflow: hidden
-    }
-
-    .product-media-slider {
-        width: 100%
-    }
-
-    .media-box {
-        position: relative;
-        width: 100%;
-        aspect-ratio: 3/4;
-        margin: 0;
-        overflow: hidden
-    }
-
-    .media-box .slider-media {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: top;
-    }
-
-    .swiper-slide {
-        width: 50% !important;
-        flex: 0 0 50% !important
-    }
-
-    .custom-arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 20;
-        width: 60px;
-        height: 60px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: none !important;
-        border-radius: 50%;
-        cursor: pointer;
-        padding: 8px
-    }
-
-    .custom-arrow:hover {
-        opacity: 1;
-        transform: translateY(-50%) scale(1.05)
-    }
-
-    .swiper-button-prev {
-        left: 12px
-    }
-
-    .swiper-button-next {
-        right: 12px
-    }
-
-    .swiper-button-next,
-    .swiper-button-prev {
-        color: #000 !important
-    }
-
-    .swiper-wrapper {
-        gap: 5px !important;
-    }
-
-    /* Pagination Dots - Outside Slider */
-    .swiper-pagination {
-        text-align: center;
-        margin-top: 10px;
-        position: relative;
-        bottom: 0;
-    }
-
-    /* Swiper dot styles like your reference */
-    .swiper-pagination-bullet {
-        width: 8px;
-        height: 8px;
-        background: #fff;
-        opacity: 1;
-        margin: 0 4px !important;
-        transition: all 0.3s ease;
-        border: solid 1.5px #000;
-    }
-
-    .swiper-pagination-bullet-active {
-        background: #000;
-    }
-
-    /* ✅ Mobile + Tablet (<=1024px) = 1.5 slides view + dots visible */
-    @media(max-width:768px) {
-        .swiper-slide {
-            width: 66.66% !important;
-            flex: 0 0 66.66% !important
-        }
-
-        /* 1.5 slides view */
-        .swiper-button-next,
-        .swiper-button-prev {
-            display: none !important
-        }
-
-        /* hide arrows on mobile */
-        .media-box {
-            aspect-ratio: 2 / 3;
-        }
-
-        .swiper-wrapper {
-            gap: 5px !important;
-        }
-
-        .swiper-pagination {
-            display: block !important;
-        }
-    }
-
-    transitions style {
-        transform: translate3d(-1155.51px, 0px, 0px);
-    }
-
-    element.style {
-        transition-duration: 700ms;
-        transform: translate3d(-1433.33px, 0px, 0px);
-    }
-
-    .swiper-android .swiper-slide,
-    .swiper-ios .swiper-slide,
-    .swiper-wrapper {
-        /* transform: translateZ(0); */
-    }
-
-    button.checkout_btn_product {
-        display: none !important;
-    }
-
-    .product_cart_btns {
-        grid-template-columns: 1fr !important;
-        margin-bottom: 0 !important;
-    }
-
-    .swiper-pagination {
-        z-index: 99999 !important;
-        pointer-events: auto !important;
-    }
-
-    .swiper-pagination .swiper-pagination-bullet {
-        pointer-events: auto !important;
-    }
-</style>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -224,35 +61,33 @@ ps-color-slider.liquid — Backend driven version
         const allSlides = Array.from(wrapper.querySelectorAll(".swiper-slide")).map(s => s.cloneNode(true));
         let swiper = null;
 
-        // 🔎 media query helper (mobile = ≤768px)
         const mq = window.matchMedia("(max-width: 768px)");
         let isMobile = mq.matches;
         mq.addEventListener?.("change", (e) => {
             isMobile = e.matches;
-            // Rebuild & reinit to apply mobile/desktop specific options
             rebuildSlides(currentFilteredSlides || allSlides);
             initSwiper();
         });
 
         function bindBulletClicks(sw) {
-            const bullets = sw.pagination?.bullets || sw.pagination?.el?.querySelectorAll(".swiper-pagination-bullet");
-            if (!bullets) return;
+  const bullets = sw.pagination?.bullets || sw.pagination?.el?.querySelectorAll(".swiper-pagination-bullet");
+  if (!bullets) return;
 
-            bullets.forEach((b, i) => {
-                if (b.__psBound) return;      // ✅ double binding prevent
-                b.__psBound = true;
+  bullets.forEach((b, i) => {
+    if (b.__psBound) return;      // ✅ double binding prevent
+    b.__psBound = true;
 
-                b.addEventListener("click", function (e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+    b.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (e.stopImmediatePropagation) e.stopImmediatePropagation();
 
-                    // ✅ Exact jump on any dot
-                    if (sw.params.loop) sw.slideToLoop(i);
-                    else sw.slideTo(i);
-                }, true); // ✅ CAPTURE mode (important)
-            });
-        }
+      // ✅ Exact jump on any dot
+      if (sw.params.loop) sw.slideToLoop(i);
+      else sw.slideTo(i);
+    }, true); // ✅ CAPTURE mode (important)
+  });
+}
 
 
         function initSwiper() {
@@ -265,23 +100,14 @@ ps-color-slider.liquid — Backend driven version
                 spaceBetween: 5,
                 observer: true,
                 observeParents: true,
-                navigation: {
-                    nextEl: root.querySelector(".swiper-button-next"),
-                    prevEl: root.querySelector(".swiper-button-prev")
-                },
+                navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
                 autoplay: false,
 
-
-                pagination: {
-                    el: root.querySelector(".swiper-pagination"),
-                    clickable: true
-                },
-
+                pagination: { el: ".swiper-pagination", clickable: true },
                 on: {
-                    afterInit(sw) { bindBulletClicks(sw); },
-                    paginationUpdate(sw) { bindBulletClicks(sw); }
-                },
-
+  afterInit(sw) { bindBulletClicks(sw); },
+  paginationUpdate(sw) { bindBulletClicks(sw); }
+},
 
                 breakpoints: {
                     0: { slidesPerView: 1.5, slidesPerGroup: 1 },
@@ -290,23 +116,19 @@ ps-color-slider.liquid — Backend driven version
                 }
             };
 
-            swiper = new Swiper(root.querySelector(".product-media-slider"), baseOpts);
+            swiper = new Swiper(".product-media-slider", baseOpts);
         }
 
-        // 🧩 Rebuild wrapper slides safely
         let currentFilteredSlides = null;
         function rebuildSlides(slidesArr) {
-            // Keep a ref to the 'logical' filtered slides (before padding)
             currentFilteredSlides = slidesArr.slice();
 
-            // 👉 On mobile: do NOT pad or fix ends. This keeps bullet count == actual images.
             if (isMobile) {
                 wrapper.innerHTML = "";
                 (slidesArr.length ? slidesArr : allSlides).forEach(node => wrapper.appendChild(node.cloneNode(true)));
                 return;
             }
 
-            // 👉 Desktop: maintain your original minimum-fill behavior
             let slides = slidesArr.slice();
             const MIN = 3;
             if (slides.length === 0) slides = allSlides.slice();
@@ -327,7 +149,6 @@ ps-color-slider.liquid — Backend driven version
                 i++;
             }
 
-            // Keep ends varied (desktop only)
             if (slides.length > 1 && slides[0].dataset.mediaId === slides[slides.length - 1].dataset.mediaId) {
                 const cand = nextDifferent(0, slides[0].dataset.mediaId);
                 if (cand) slides.push(cand.cloneNode(true));
@@ -337,7 +158,6 @@ ps-color-slider.liquid — Backend driven version
             slides.forEach(node => wrapper.appendChild(node));
         }
 
-        // 🎨 Filter by selected color
         function filterSlidesByColor(colorValue) {
             const lc = (colorValue || "").toLowerCase().trim();
             const matched = allSlides.filter(slide => (slide.dataset.alt || "").toLowerCase().includes(lc));
@@ -346,8 +166,6 @@ ps-color-slider.liquid — Backend driven version
             initSwiper();
         }
 
-        // 🟢 Initial build based on selected variant color
-        // ✅ Detect Color or Style variant automatically
         const variantOptionIdx = productData.options.findIndex(o => /color|colour|style/i.test(o));
         const firstVariant = productData.variants.find(v => v.id === {{ product.selected_or_first_available_variant.id }});
 
@@ -358,62 +176,525 @@ ps-color-slider.liquid — Backend driven version
         initSwiper();
     }
 
-
-    // 🟣 Swatch change listener (keeps reload logic separate)
     document.querySelectorAll(".swatch-element.color input[type='radio']").forEach(inp => {
         inp.addEventListener("change", () => filterSlidesByColor(inp.value || ""));
     });
 });
 </script>
 
-<!-- 🔁 Your original reload script — untouched -->
-<!-- 🔁 Your original reload script — updated to include all variant types -->
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-        // 🎯 Sare swatch inputs + labels (Style, Color, Size, etc.)
-        const swatches = document.querySelectorAll(
-            ".swatch input[type='radio'], .swatch label"
-        );
+        const swatches = document.querySelectorAll(".swatch input[type='radio'], .swatch label");
 
         swatches.forEach((swatch) => {
             ["click", "touchstart", "change"].forEach((eventType) => {
                 swatch.addEventListener(eventType, () => {
-                    // 🔍 Related input nikaalo (agar label click hua ho)
                     let input = swatch.matches("input[type='radio']") ? swatch : null;
 
                     if (!input && swatch.tagName === "LABEL") {
                         const forId = swatch.getAttribute("for");
-                        if (forId) {
-                            input = document.getElementById(forId);
-                        }
+                        if (forId) input = document.getElementById(forId);
                     }
 
                     if (!input) return;
 
-                    // 🏷️ Is swatch ka group wrapper & title (Style / Color / Size)
                     const wrapper = input.closest(".swatch");
                     const titleEl = wrapper ? wrapper.querySelector(".option_title") : null;
                     const title = titleEl ? titleEl.textContent.toLowerCase().trim() : "";
 
-                    // ✅ Sirf Style + Color/Colour pe reload
-                    const isStyleOrColor =
-                        title.includes("style") ||
-                        title.includes("color") ||
-                        title.includes("colour");
-
-                    if (!isStyleOrColor) {
-                        // Size waghera yahan se exit ho jaye ga – NO reload
-                        return;
-                    }
+                    const isStyleOrColor = title.includes("style") || title.includes("color") || title.includes("colour");
+                    if (!isStyleOrColor) return;
 
                     if (!swatch.classList.contains("swatch-reloading")) {
                         swatch.classList.add("swatch-reloading");
-                        setTimeout(() => {
-                            location.reload(); // 👈 same reload
-                        }, 1000);
+                        setTimeout(() => { location.reload(); }, 1000);
                     }
                 });
             });
         });
+    });
+</script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const ROOT_ID = "PsColorSlider-{{ product.id }}";
+        const root = document.getElementById(ROOT_ID);
+        if (!root) return;
+
+        const FLAG = "__PS_FULLSCREEN_UPDATED__" + ROOT_ID;
+        if (window[FLAG]) return;
+        window[FLAG] = true;
+
+        let modalEl = null;
+        let lbSwiper = null;
+
+        function getUniqueMediaFromDOM() {
+            const slides = Array.from(root.querySelectorAll(".product-media-slider .swiper-wrapper .swiper-slide"));
+            const map = new Map();
+
+            slides.forEach(slide => {
+                const id = slide.getAttribute("data-media-id") || slide.dataset.mediaId || "";
+                if (!id || map.has(id)) return;
+
+                const img = slide.querySelector("img.slider-media");
+                const vid = slide.querySelector("video.slider-media");
+                const ifr = slide.querySelector("iframe.slider-media");
+
+                if (img) map.set(id, { id, type: "image", src: img.currentSrc || img.src, alt: img.getAttribute("alt") || "" });
+                else if (vid) {
+                    const source = vid.querySelector("source");
+                    map.set(id, { id, type: "video", src: (source && source.src) ? source.src : "" });
+                } else if (ifr) {
+                    map.set(id, { id, type: "iframe", src: ifr.src });
+                }
+            });
+
+            return Array.from(map.values());
+        }
+
+        function buildModal() {
+            if (modalEl) return modalEl;
+
+            modalEl = document.createElement("div");
+            modalEl.className = "pslb-modal";
+            modalEl.innerHTML = `
+      <button class="pslb-close" type="button" aria-label="Close">×</button>
+
+      <div class="pslb-nav pslb-prev" aria-label="Previous">
+        <svg viewBox="0 0 10 6" xmlns="http://www.w3.org/2000/svg" style="transform:rotate(90deg)">
+          <rect x="9.192" width="1" height="7" transform="rotate(45 9.192 0)" fill="currentColor"/>
+          <rect x="0.707" width="7" height="1" transform="rotate(45 0.707 0)" fill="currentColor"/>
+        </svg>
+      </div>
+
+      <div class="pslb-nav pslb-next" aria-label="Next">
+        <svg viewBox="0 0 10 6" xmlns="http://www.w3.org/2000/svg" style="transform:rotate(-90deg)">
+          <rect x="9.192" width="1" height="7" transform="rotate(45 9.192 0)" fill="currentColor"/>
+          <rect x="0.707" width="7" height="1" transform="rotate(45 0.707 0)" fill="currentColor"/>
+        </svg>
+      </div>
+
+      <div class="swiper pslb-swiper">
+        <div class="swiper-wrapper"></div>
+        <div class="swiper-pagination pslb-pagination"></div>
+      </div>
+    `;
+
+            document.body.appendChild(modalEl);
+            modalEl.querySelector(".pslb-close").addEventListener("click", closeLightbox);
+            modalEl.addEventListener("click", (ev) => { if (ev.target === modalEl) closeLightbox(); });
+
+            return modalEl;
+        }
+
+        function openLightbox(startIndex) {
+            const items = getUniqueMediaFromDOM();
+            if (!items.length) return;
+
+            const modal = buildModal();
+            const wrap = modal.querySelector(".pslb-swiper .swiper-wrapper");
+            wrap.innerHTML = "";
+
+            items.forEach(item => {
+                const slide = document.createElement("div");
+                slide.className = "swiper-slide";
+
+                if (item.type === "image") {
+                    slide.innerHTML = `<div class="pslb-slide-inner">
+          <img class="pslb-zoom-img" src="${item.src}" alt="${(item.alt || "").replace(/"/g, '&quot;')}" draggable="false"/>
+        </div>`;
+                } else if (item.type === "video") {
+                    slide.innerHTML = `<div class="pslb-slide-inner">
+          <video controls playsinline><source src="${item.src}"></video>
+        </div>`;
+                } else {
+                    slide.innerHTML = `<div class="pslb-slide-inner">
+          <iframe src="${item.src}" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>`;
+                }
+                wrap.appendChild(slide);
+            });
+
+            document.body.classList.add("pslb-open");
+
+            const canLoop = items.length > 1;
+
+            if (lbSwiper && lbSwiper.destroy) lbSwiper.destroy(true, true);
+            lbSwiper = new Swiper(modal.querySelector(".pslb-swiper"), {
+                slidesPerView: 1,
+                loop: canLoop,
+                speed: 520,
+                allowTouchMove: canLoop,
+                resistanceRatio: 0,
+                initialSlide: Math.max(0, Math.min(startIndex || 0, items.length - 1)),
+                pagination: { el: modal.querySelector(".pslb-pagination"), clickable: true },
+                navigation: { nextEl: modal.querySelector(".pslb-next"), prevEl: modal.querySelector(".pslb-prev") }
+            });
+
+            installZoom(modal, lbSwiper);
+        }
+
+        function closeLightbox() {
+            document.body.classList.remove("pslb-open");
+            if (lbSwiper && lbSwiper.destroy) lbSwiper.destroy(true, true);
+            lbSwiper = null;
+            if (modalEl) { modalEl.remove(); modalEl = null; }
+        }
+
+        function installZoom(modal, swiperInstance) {
+            modal.querySelectorAll(".swiper-slide").forEach(slide => {
+                const img = slide.querySelector(".pslb-zoom-img");
+                if (!img) return;
+
+                if (!img.__panBound) {
+                    img.__panBound = true;
+
+                    let down = false, sx = 0, sy = 0, stx = 0, sty = 0;
+
+                    const getNum = (v) => {
+                        if (!v) return 0;
+                        const n = parseFloat(String(v).replace("px", ""));
+                        return Number.isFinite(n) ? n : 0;
+                    };
+                    const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
+
+                    img.addEventListener("pointerdown", (ev) => {
+                        if (!slide.classList.contains("pslb-zoomed")) return;
+                        down = true;
+                        img.classList.add("is-panning");
+                        try { img.setPointerCapture(ev.pointerId); } catch (e) { }
+                        sx = ev.clientX; sy = ev.clientY;
+                        stx = getNum(getComputedStyle(img).getPropertyValue("--tx"));
+                        sty = getNum(getComputedStyle(img).getPropertyValue("--ty"));
+                        ev.preventDefault();
+                        ev.stopPropagation();
+                        if (ev.stopImmediatePropagation) ev.stopImmediatePropagation();
+                    }, true);
+
+                    img.addEventListener("pointermove", (ev) => {
+                        if (!down || !slide.classList.contains("pslb-zoomed")) return;
+
+                        const scale = parseFloat(getComputedStyle(img).getPropertyValue("--scale")) || 1;
+                        const baseW = parseFloat(img.dataset.baseW || "0") || img.getBoundingClientRect().width;
+                        const baseH = parseFloat(img.dataset.baseH || "0") || img.getBoundingClientRect().height;
+
+                        const maxX = Math.max(0, (baseW * scale - baseW) / 2);
+                        const maxY = Math.max(0, (baseH * scale - baseH) / 2);
+
+                        const dx = ev.clientX - sx;
+                        const dy = ev.clientY - sy;
+
+                        const ntx = clamp(stx + dx, -maxX, maxX);
+                        const nty = clamp(sty + dy, -maxY, maxY);
+
+                        img.style.setProperty("--tx", ntx.toFixed(2) + "px");
+                        img.style.setProperty("--ty", nty.toFixed(2) + "px");
+
+                        ev.preventDefault();
+                        ev.stopPropagation();
+                        if (ev.stopImmediatePropagation) ev.stopImmediatePropagation();
+                    }, true);
+
+                    const end = (ev) => {
+                        if (!down) return;
+                        down = false;
+                        img.classList.remove("is-panning");
+                        try { img.releasePointerCapture(ev.pointerId); } catch (e) { }
+                    };
+                    img.addEventListener("pointerup", end, true);
+                    img.addEventListener("pointercancel", end, true);
+                    img.addEventListener("pointerleave", end, true);
+                }
+
+                slide.classList.remove("pslb-zoomed");
+                img.style.setProperty("--scale", 1);
+                img.style.setProperty("--tx", "0px");
+                img.style.setProperty("--ty", "0px");
+                img.style.setProperty("--ox", "50%");
+                img.style.setProperty("--oy", "50%");
+                img.dataset.baseW = "";
+                img.dataset.baseH = "";
+
+                function getPoint(ev) {
+                    if (ev.touches && ev.touches[0]) return { x: ev.touches[0].clientX, y: ev.touches[0].clientY };
+                    return { x: ev.clientX, y: ev.clientY };
+                }
+                function clamp2(n, min, max) { return Math.max(min, Math.min(max, n)); }
+
+                function toggle(ev) {
+                    const zoomed = slide.classList.contains("pslb-zoomed");
+                    const pt = getPoint(ev);
+
+                    if (zoomed) {
+                        slide.classList.remove("pslb-zoomed");
+                        img.style.setProperty("--scale", 1);
+                        img.style.setProperty("--tx", "0px");
+                        img.style.setProperty("--ty", "0px");
+                        img.style.setProperty("--ox", "50%");
+                        img.style.setProperty("--oy", "50%");
+                        swiperInstance.allowTouchMove = swiperInstance.params.loop;
+                        return;
+                    }
+
+                    const rect = img.getBoundingClientRect();
+                    img.dataset.baseW = rect.width;
+                    img.dataset.baseH = rect.height;
+
+                    const x = clamp2(pt.x - rect.left, 0, rect.width);
+                    const y = clamp2(pt.y - rect.top, 0, rect.height);
+
+                    img.style.setProperty("--ox", ((x / rect.width) * 100).toFixed(2) + "%");
+                    img.style.setProperty("--oy", ((y / rect.height) * 100).toFixed(2) + "%");
+                    img.style.setProperty("--scale", 2.4);
+                    img.style.setProperty("--tx", "0px");
+                    img.style.setProperty("--ty", "0px");
+
+                    slide.classList.add("pslb-zoomed");
+                    swiperInstance.allowTouchMove = false;
+                }
+
+                img.addEventListener("dblclick", (ev) => { ev.preventDefault(); toggle(ev); });
+
+                let lt = 0;
+                img.addEventListener("touchend", (ev) => {
+                    const now = Date.now();
+                    const d = now - lt;
+                    lt = now;
+                    if (d < 280) { ev.preventDefault(); toggle(ev); }
+                }, { passive: false });
+            });
+        }
+
+        window.__PS_OPEN_LIGHTBOX__ = openLightbox;
+    });
+</script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const root = document.getElementById("PsColorSlider-{{ product.id }}");
+        if (!root) return;
+
+        if (root.querySelector(".pslb-trigger")) return;
+
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "pslb-trigger";
+        btn.setAttribute("aria-label", "Zoom images");
+        btn.innerHTML = `
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" stroke="currentColor" stroke-width="2"/>
+      <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M10.5 7v7M7 10.5h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  `;
+
+        btn.addEventListener("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+
+            const slides = Array.from(root.querySelectorAll(".product-media-slider .swiper-slide"));
+            const seen = new Set();
+            const uniqueIds = [];
+            slides.forEach(s => {
+                const id = s.getAttribute("data-media-id") || s.dataset.mediaId;
+                if (id && !seen.has(String(id))) { seen.add(String(id)); uniqueIds.push(String(id)); }
+            });
+
+            const active = root.querySelector(".product-media-slider .swiper-slide.swiper-slide-active");
+            const activeId = active ? (active.getAttribute("data-media-id") || active.dataset.mediaId) : null;
+            const idx = activeId ? Math.max(0, uniqueIds.indexOf(String(activeId))) : 0;
+
+            if (window.__PS_OPEN_LIGHTBOX__) window.__PS_OPEN_LIGHTBOX__(idx);
+        });
+
+        root.appendChild(btn);
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const root = document.getElementById("PsColorSlider-{{ product.id }}");
+        if (!root) return;
+
+        const FLAG = "__PS_INLINE_ZOOM_INSTALLED__" + "{{ product.id }}";
+        if (window[FLAG]) return;
+        window[FLAG] = true;
+
+        const sliderEl = root.querySelector(".product-media-slider");
+        const getSwiper = () => (sliderEl && sliderEl.swiper) ? sliderEl.swiper : null;
+
+        const getNum = (v) => {
+            if (!v) return 0;
+            const n = parseFloat(String(v).replace("px", ""));
+            return Number.isFinite(n) ? n : 0;
+        };
+        const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
+
+        function setDefaults(img) {
+            img.style.setProperty("--scale", 1);
+            img.style.setProperty("--ox", "50%");
+            img.style.setProperty("--oy", "50%");
+            img.style.setProperty("--tx", "0px");
+            img.style.setProperty("--ty", "0px");
+            img.classList.remove("is-panning");
+        }
+
+        function resetAllZoom() {
+            root.querySelectorAll("img.slider-media").forEach(img => setDefaults(img));
+            root.querySelectorAll(".swiper-slide.ps-inline-zoomed").forEach(slide => {
+                requestAnimationFrame(() => slide.classList.remove("ps-inline-zoomed"));
+            });
+            const sw = getSwiper();
+            if (sw) sw.allowTouchMove = true;
+        }
+
+        function toggleZoom(imgEl, clientX, clientY) {
+            const slide = imgEl.closest(".swiper-slide");
+            if (!slide) return;
+
+            const already = slide.classList.contains("ps-inline-zoomed");
+            if (already) {
+                setDefaults(imgEl);
+                requestAnimationFrame(() => slide.classList.remove("ps-inline-zoomed"));
+                const sw = getSwiper();
+                if (sw) sw.allowTouchMove = true;
+                return;
+            }
+
+            resetAllZoom();
+
+            const rect = imgEl.getBoundingClientRect();
+            const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
+            const y = Math.max(0, Math.min(clientY - rect.top, rect.height));
+            const ox = (x / rect.width) * 100;
+            const oy = (y / rect.height) * 100;
+
+            slide.classList.add("ps-inline-zoomed");
+            imgEl.style.setProperty("--ox", ox.toFixed(2) + "%");
+            imgEl.style.setProperty("--oy", oy.toFixed(2) + "%");
+            imgEl.style.setProperty("--scale", 2.35);
+            imgEl.style.setProperty("--tx", "0px");
+            imgEl.style.setProperty("--ty", "0px");
+
+            const sw = getSwiper();
+            if (sw) sw.allowTouchMove = false;
+        }
+
+        let down = false, sx = 0, sy = 0, stx = 0, sty = 0, activeImg = null;
+
+        function getMax(img) {
+            const scale = parseFloat(getComputedStyle(img).getPropertyValue("--scale")) || 1;
+            const rect = img.getBoundingClientRect();
+            const baseW = rect.width / scale;
+            const baseH = rect.height / scale;
+            const maxX = Math.max(0, (baseW * scale - baseW) / 2);
+            const maxY = Math.max(0, (baseH * scale - baseH) / 2);
+            return { maxX, maxY };
+        }
+
+        root.addEventListener("pointerdown", function (e) {
+            const img = e.target.closest("img.slider-media");
+            if (!img) return;
+
+            const slide = img.closest(".swiper-slide");
+            if (!slide || !slide.classList.contains("ps-inline-zoomed")) return;
+
+            down = true;
+            activeImg = img;
+            img.classList.add("is-panning");
+            try { img.setPointerCapture(e.pointerId); } catch (err) { }
+
+            sx = e.clientX; sy = e.clientY;
+            stx = getNum(getComputedStyle(img).getPropertyValue("--tx"));
+            sty = getNum(getComputedStyle(img).getPropertyValue("--ty"));
+
+            e.preventDefault();
+            e.stopPropagation();
+            if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+        }, true);
+
+        root.addEventListener("pointermove", function (e) {
+            if (!down || !activeImg) return;
+            const slide = activeImg.closest(".swiper-slide");
+            if (!slide || !slide.classList.contains("ps-inline-zoomed")) return;
+
+            const { maxX, maxY } = getMax(activeImg);
+            const dx = e.clientX - sx;
+            const dy = e.clientY - sy;
+
+            const ntx = clamp(stx + dx, -maxX, maxX);
+            const nty = clamp(sty + dy, -maxY, maxY);
+
+            activeImg.style.setProperty("--tx", ntx.toFixed(2) + "px");
+            activeImg.style.setProperty("--ty", nty.toFixed(2) + "px");
+
+            e.preventDefault();
+            e.stopPropagation();
+            if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+        }, true);
+
+        function endPan(e) {
+            if (!down) return;
+            down = false;
+            if (activeImg) {
+                activeImg.classList.remove("is-panning");
+                try { activeImg.releasePointerCapture(e.pointerId); } catch (err) { }
+            }
+            activeImg = null;
+        }
+        root.addEventListener("pointerup", endPan, true);
+        root.addEventListener("pointercancel", endPan, true);
+        root.addEventListener("pointerleave", endPan, true);
+
+        root.addEventListener("click", function (e) {
+            const img = e.target.closest("img.slider-media");
+            if (!img) return;
+            e.preventDefault();
+            e.stopPropagation();
+            if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+        }, true);
+
+        root.addEventListener("dblclick", function (e) {
+            const img = e.target.closest("img.slider-media");
+            if (!img) return;
+            e.preventDefault();
+            e.stopPropagation();
+            if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+            toggleZoom(img, e.clientX, e.clientY);
+        }, true);
+
+        let lastTapTs = 0;
+        root.addEventListener("touchend", function (e) {
+            const img = e.target.closest("img.slider-media");
+            if (!img) return;
+
+            const now = Date.now();
+            const delta = now - lastTapTs;
+            lastTapTs = now;
+
+            if (delta < 280) {
+                const t = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0] : null;
+                if (!t) return;
+
+                e.preventDefault();
+                e.stopPropagation();
+                if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+                toggleZoom(img, t.clientX, t.clientY);
+            }
+        }, { passive: false, capture: true });
+
+        const sw = getSwiper();
+        if (sw && sw.on) {
+            sw.on("slideChangeTransitionStart", resetAllZoom);
+            sw.on("touchStart", function () {
+                const zoomed = root.querySelector(".swiper-slide.ps-inline-zoomed");
+                if (zoomed) resetAllZoom();
+            });
+        }
+
+        root.querySelectorAll("img.slider-media").forEach(img => setDefaults(img));
     });
 </script>

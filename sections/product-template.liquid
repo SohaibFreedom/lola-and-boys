@@ -102,12 +102,20 @@
             {% endif %}
 
             {% if variant.sku != blank and section.settings.display_sku %}
-              <p class="sku">
-                <span itemprop="sku">{{ variant.sku }}</span>
-              </p>
-            {% endif %}
-            <h1 class="product_name" itemprop="name">{{ product.title }} {% render 'tag-badges' %}</h1>
-            {% render 'yotpo star rating' %}
+  <p class="sku">
+    <span itemprop="sku">{{ variant.sku }}</span>
+  </p>
+{% endif %}
+
+<div class="product-title-row">
+  <h1 class="product_name" itemprop="name">
+    {{ product.title }} {% render 'tag-badges' %}
+  </h1>
+
+</div>
+
+{% render 'yotpo star rating' %}
+
             {% if section.settings.display_vendor %}
               <p class="vendor">
                 <span itemprop="brand" class="vendor">{{ product.vendor | link_to_vendor }}</span>
@@ -450,28 +458,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-<style>
-.selectt{display:none!important}
-.product-full{max-width:none!important;width:100%!important;margin:0!important;padding:0!important}
-.product-full .breadcrumb-collection{max-width:1280px;margin:0 auto;padding:0 24px}
-.product-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:0!important;align-items:start}
-.product-grid>*{float:none!important;width:auto!important;margin:0!important;padding:0!important;clear:none!important}
-.product-media{padding:0!important}
-.product-media .product-gallery,.product-media .media-slider__track,.product-media>*{margin:0!important}
-.product-info{padding:24px 32px!important}
-.product-media img,.product-media video{width:100%;height:auto;object-fit:contain;display:block}
-.product .breadcrumb-collection {
-  display: none !important;
-}
-.product-media-slider-wrapper { 
-  max-width: 100% !important;
-}
-@media (max-width: 768px) { 
-  .product-grid {
-    grid-template-columns: 1fr !important;
-}
-}
-</style>
+
 
 {% schema %}
 

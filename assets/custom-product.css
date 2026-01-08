@@ -4,9 +4,9 @@
 }
 
 
-body.product wishlist-button-block {
+/* body.product wishlist-button-block {
     display: none;
-}
+} */
 .variant-popup wishlist-button-block {
       display: none !important;
 }
@@ -19,7 +19,7 @@ body.product wishlist-button-block {
 @media (min-width: 768px) {
 .product .product-info {
     width: 70% !important;
-    padding-top:4rem !important;
+    padding-top:1rem !important;
 }
 .sticky-add-wrapper {
     display:none;
@@ -35,12 +35,12 @@ body.product wishlist-button-block {
 
 
 
-     body.product wishlist-button-block {
+     /* body.product wishlist-button-block {
     position: absolute;
     top: 13px;
     right: 5px;
     display: block;
-}
+} */
     .product_section .product-info {
   
         position: relative;
@@ -79,3 +79,142 @@ body.product span.wk-text {
       padding: 10px 15px!important;
     }
   }
+  .selectt{display:none!important}
+.product-full{max-width:none!important;width:100%!important;margin:0!important;padding:0!important}
+.product-full .breadcrumb-collection{max-width:1280px;margin:0 auto;padding:0 24px}
+.product-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:0!important;align-items:start}
+.product-grid>*{float:none!important;width:auto!important;margin:0!important;padding:0!important;clear:none!important}
+.product-media{padding:0!important}
+.product-media .product-gallery,.product-media .media-slider__track,.product-media>*{margin:0!important}
+.product-info{padding:24px 32px!important}
+.product-media img,.product-media video{width:100%;height:auto;object-fit:contain;display:block}
+.product .breadcrumb-collection {
+  display: none !important;
+}
+.product-media-slider-wrapper { 
+  max-width: 100% !important;
+}
+@media (max-width: 768px) { 
+  .product-grid {
+    grid-template-columns: 1fr !important;
+}
+}
+/* ✅ FIX: Mobile - Title, Reviews, Price above gallery WITHOUT overlap (CSS only) */
+@media (max-width: 768px) {
+
+  .product-page.product-full .product-grid{
+    grid-template-columns: 1fr !important;
+    grid-auto-rows: auto;
+    grid-auto-flow: row;
+    row-gap: 10px;
+  }
+
+  /* flatten only to allow children to become grid items */
+  .product-page.product-full .product-info{
+    display: contents !important;
+  }
+
+  /* Gallery comes after Title/Reviews/Price */
+  .product-page.product-full .product-media{
+    grid-column: 1;
+    grid-row: 4;
+    padding: 0 !important;
+  }
+
+  /* Default: everything else stays BELOW gallery */
+  .product-page.product-full .product-info > *{
+    grid-column: 1;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* ✅ Top block order (separate rows = no overlap) */
+  .product-page.product-full .product-info .product_name{
+    grid-row: 1;
+    padding-top: 14px;
+    margin: 0 !important;
+  }
+
+  .product-page.product-full .product-info .yotpo,
+  .product-page.product-full .product-info [class*="yotpo"]{
+    grid-row: 2;
+  }
+
+  .product-page.product-full .product-info .modal_price{
+    grid-row: 3;
+    padding-bottom: 10px;
+    margin: 0 !important;
+  }
+}
+
+
+/* ✅ MOBILE: scroll + zoom + sticky size button fix */
+@media (max-width: 768px) {
+
+  /* 1) Sticky wrapper full-screen overlay na ban ke scroll block kare */
+  #stickyWrapper {
+    pointer-events: none !important;
+  }
+  #stickyAddMobile {
+    pointer-events: auto !important;
+  }
+
+  /* 2) Slider images:
+        - NORMAL (not zoomed): vertical scroll allow
+        - ZOOMED: sirf image pan, page nahi */
+  #PsColorSlider-{{ product.id }} img.slider-media,
+  #PsColorSlider-{{ product.id }} video.slider-media,
+  #PsColorSlider-{{ product.id }} iframe.slider-media {
+    touch-action: pan-y !important;     /* page scroll allowed jab zoom off ho */
+  }
+
+  /* Zoom on hone par JS slide ko ps-inline-zoomed de raha hai,
+     us state me browser ka scroll band, sirf hamara pan chalega */
+  #PsColorSlider-{{ product.id }} .swiper-slide.ps-inline-zoomed img.slider-media {
+    touch-action: none !important;
+  }
+}
+.product-page.product-full wishlist-button-block .wk-text{
+  display:none!important;
+}
+
+.product-page.product-full wishlist-button-block .wk-button,
+.product-page.product-full wishlist-button-block .wk-full-width{
+  width:auto!important;
+  padding:0!important;
+}
+
+@media (min-width:769px){
+  .product-page.product-full .product-info{
+    position:relative!important;
+  }
+
+  .product-page.product-full .product-info wishlist-button-block{
+    position:absolute!important;
+    top:33px!important; 
+    right:0!important;
+    display:inline-flex!important;
+    align-items:center!important;
+    z-index:5!important;
+  }
+  .wk-icon svg {
+    width: 26px !important;
+    height: 26px !important;
+
+}
+}
+
+@media (max-width:768px){
+  .product-page.product-full .product-grid{
+    position:relative!important;
+  }
+
+  .product-page.product-full .product-grid wishlist-button-block{
+    position:absolute!important;
+    top:28px!important; 
+    right:40px!important;
+    display:inline-flex!important;
+    align-items:center!important;
+    z-index:5!important;
+  }
+}
