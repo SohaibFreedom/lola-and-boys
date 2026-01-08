@@ -124,8 +124,8 @@ body.product span.wk-text {
   /* Default: everything else stays BELOW gallery */
   .product-page.product-full .product-info > *{
     grid-column: 1;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
   }
 
   /* ✅ Top block order (separate rows = no overlap) */
