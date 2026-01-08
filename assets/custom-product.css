@@ -183,11 +183,7 @@ body.product span.wk-text {
   width:auto!important;
   padding:0!important;
 }
-.wk-icon svg {
-    width: 17px !important;
-    height: 17px !important;
 
-}
 
 @media (min-width:769px){
   .product-page.product-full .product-info{
@@ -222,6 +218,11 @@ body.product span.wk-text {
     align-items:center!important;
     z-index:5!important;
   }
+  .wk-icon svg {
+    width: 22px !important;
+    height: 22px !important;
+
+}
 }
 @media (max-width: 768px) {
  .product-template square-placement {
