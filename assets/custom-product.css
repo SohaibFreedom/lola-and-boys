@@ -222,8 +222,8 @@ body.product span.wk-text {
  .product-template square-placement {
     grid-column: 1;
     grid-row: 4;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
     margin-top: 6px;
   }
 
