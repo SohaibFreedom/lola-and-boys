@@ -224,7 +224,8 @@ body.product span.wk-text {
     grid-row: 4;
     padding-left: 16px !important;
     padding-right: 16px !important;
-    margin-top: 6px;
+    margin-top: 0 !important;
+    margin-bottom:10px !important;
   }
 
   .product-page.product-full .product-media{
