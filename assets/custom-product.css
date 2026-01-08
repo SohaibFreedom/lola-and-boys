@@ -224,25 +224,4 @@ body.product span.wk-text {
 
 }
 }
-@media (max-width: 768px) {
- .product-template square-placement {
-    grid-column: 1;
-    grid-row: 4;
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-    margin-top: 0 !important;
-    margin-bottom:10px !important;
-  }
 
-  .product-page.product-full .product-media{
-    grid-column: 1;
-    grid-row: 5;
-    padding: 0 !important;
-  }
-  .afterpay-paragraph {
-    font-size: 12px !important;
-}
-.afterpay-logo.brand-afterpay, .afterpay-logo.brand-afterpay svg {
-    width: 70px !important;
-}
-}
