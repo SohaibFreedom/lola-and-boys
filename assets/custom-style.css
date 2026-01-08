@@ -1942,7 +1942,7 @@ li.toolbox-item[data-name="text"] {
   display: grid;
   gap: 16px;
   grid-template-columns: 1fr 1fr !important;
-  margin-bottom: 20px;
+  margin-bottom: 0 !important;
 }
 .product_cart_btns button {
   min-height: 52px !important;
