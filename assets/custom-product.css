@@ -142,7 +142,7 @@ body.product span.wk-text {
 
   .product-page.product-full .product-info .modal_price{
     grid-row: 3;
-    padding-bottom: 10px;
+    padding-bottom: 0 !important;
     margin: 0 !important;
   }
 }
