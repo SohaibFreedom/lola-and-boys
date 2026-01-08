@@ -211,7 +211,7 @@ body.product span.wk-text {
 
   .product-page.product-full .product-grid wishlist-button-block{
     position:absolute!important;
-    top:28px!important; 
+    top:5px!important; 
     right:40px!important;
     display:inline-flex!important;
     align-items:center!important;
