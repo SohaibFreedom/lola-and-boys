@@ -271,25 +271,6 @@
         justify-content: center;
     }
 
-    .pslb-close {
-        position: fixed;
-        top: calc(12px + env(safe-area-inset-top));
-        right: calc(12px + env(safe-area-inset-right));
-        z-index: 1000005;
-        width: 38px;
-        height: 38px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, .95);
-        border: 1px solid rgba(0, 0, 0, .18);
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        font-size: 22px;
-        line-height: 1;
-        -webkit-tap-highlight-color: transparent;
-    }
-
     .pslb-swiper {
         width: 100%;
         height: 100%;
@@ -413,4 +394,14 @@
 body:has(.swiper-slide.ps-inline-zoomed) {
   overflow: hidden !important;
   height: 100% !important;
+}
+/* ✅ Lightbox videos – controls hide */
+.pslb-slide-inner video.pslb-video {
+  pointer-events: none;
+}
+
+.pslb-slide-inner video.pslb-video::-webkit-media-controls-enclosure,
+.pslb-slide-inner video.pslb-video::-webkit-media-controls-panel,
+.pslb-slide-inner video.pslb-video::-webkit-media-controls {
+  display: none !important;
 }

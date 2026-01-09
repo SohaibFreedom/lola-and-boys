@@ -288,6 +288,23 @@
             return modalEl;
         }
 
+                // ✅ Lightbox videos autoplay + loop helper
+        function autoPlayModalVideos(modal) {
+            const vids = modal.querySelectorAll("video.pslb-video");
+            vids.forEach(v => {
+                try {
+                    v.muted = true;
+                    v.loop = true;
+                    v.playsInline = true;
+                    v.setAttribute("playsinline", "");
+                    v.setAttribute("webkit-playsinline", "");
+                    const p = v.play();
+                    if (p && p.catch) p.catch(() => {});
+                } catch (e) {}
+            });
+        }
+
+
         function openLightbox(startIndex) {
             const items = getUniqueMediaFromDOM();
             if (!items.length) return;
@@ -304,11 +321,22 @@
                     slide.innerHTML = `<div class="pslb-slide-inner">
           <img class="pslb-zoom-img" src="${item.src}" alt="${(item.alt || "").replace(/"/g, '&quot;')}" draggable="false"/>
         </div>`;
-                } else if (item.type === "video") {
+                                } else if (item.type === "video") {
                     slide.innerHTML = `<div class="pslb-slide-inner">
-          <video controls playsinline><source src="${item.src}"></video>
+          <video
+            class="pslb-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            playsInline
+            webkit-playsinline
+          >
+            <source src="${item.src}">
+          </video>
         </div>`;
                 } else {
+
                     slide.innerHTML = `<div class="pslb-slide-inner">
           <iframe src="${item.src}" allow="autoplay; fullscreen" allowfullscreen></iframe>
         </div>`;
@@ -332,7 +360,18 @@
                 navigation: { nextEl: modal.querySelector(".pslb-next"), prevEl: modal.querySelector(".pslb-prev") }
             });
 
+            
+
+                        // ✅ Lightbox videos autoplay / loop on open + slide change
+            autoPlayModalVideos(modal);
+            if (lbSwiper && lbSwiper.on) {
+                lbSwiper.on("slideChangeTransitionEnd", function () {
+                    autoPlayModalVideos(modal);
+                });
+            }
+
             installZoom(modal, lbSwiper);
+
         }
 
         function closeLightbox() {
