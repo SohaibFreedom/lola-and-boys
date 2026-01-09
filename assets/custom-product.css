@@ -146,11 +146,12 @@ body.product span.wk-text {
     order: 2;
   }
 
-  .product-page.product-full .product-info .modal_price{
-    order: 3;
-    padding-bottom: 0 !important;
-    margin: 0 !important;
-  }
+ .product-page.product-full .product-info .modal_price {
+        order: 3;
+        padding-bottom: 10px !important;
+        margin: 0 !important;
+        margin-top: 9px !important;
+    }
 
   .product-page.product-full .product-media{
     order: 4;
