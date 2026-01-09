@@ -28,7 +28,7 @@
 
   @media (max-width: 768px) {
 
-           .customize-button{
+           .customize-button, .embroider-button {
             margin-left:16px !important;
             margin-right:16px !important;
           }
