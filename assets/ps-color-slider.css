@@ -103,8 +103,8 @@
   }
 
   .swiper-slide {
-    width: 66.66% !important;
-    flex: 0 0 66.66% !important;
+    width: 80% !important;
+    flex: 0 0 80% !important;
   }
 
   .swiper-button-next,
@@ -113,7 +113,7 @@
   }
 
   .media-box {
-    aspect-ratio: 2 / 3.5;
+    aspect-ratio: 700/830;
   }
 
   .swiper-pagination {
