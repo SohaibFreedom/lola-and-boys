@@ -13,26 +13,7 @@
 </script>
 
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-  const toggleBtn = document.querySelector(".mobile_nav.dropdown_link");
-  const dropdown = document.querySelector('.dropdown_container[data-dropdown="menu"]');
 
-  if (toggleBtn && dropdown) {
-    toggleBtn.addEventListener("click", function (e) {
-      dropdown.classList.toggle("dropdown_open");
-    });
-  }
-
-  document.body.addEventListener("click", function (e) {
-    // if click is NOT inside the dropdown container, close it
-    if (!e.target.closest('.dropdown_container[data-dropdown="menu"]')) {
-      if (dropdown) dropdown.classList.remove("dropdown_open");
-    }
-  });
-});
-
-</script>
 <script>
   $(document).ready(function() {
     // Select the button using its class
