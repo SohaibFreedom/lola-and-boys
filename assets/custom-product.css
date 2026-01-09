@@ -28,6 +28,11 @@
 
   @media (max-width: 768px) {
 
+           .customize-button{
+            margin-left:16px !important;
+            margin-right:16px !important;
+          }
+
    body.product wishlist-button-block  .wk-button.wk-full-width {
     align-items: center !important;
 
