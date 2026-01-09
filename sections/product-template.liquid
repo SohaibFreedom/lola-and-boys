@@ -456,6 +456,104 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const stickyWrap = document.getElementById("stickyWrapper");
+  const stickyBtn  = document.getElementById("stickyAddMobile");
+
+  if (!stickyWrap || !stickyBtn) return;
+
+  // 🔍 Main product form
+  const formEl = document.querySelector(
+    '.product_section form[action*="/cart/add"]'
+  );
+
+  // 🔍 Size / options area (fallback)
+  const sizeSection = document.querySelector(
+    '.product_section .product-form__controls-group, ' +
+    '.product_section .product-form__option, ' +
+    '.product_section .swatch, ' +
+    '.product_section .product-sizes'
+  );
+
+  // 🔍 Add to Bag button (multiple selectors for safety)
+  const atcButton = formEl
+    ? formEl.querySelector(
+        '#AddToCart, button[name="add"], .add_to_cart, .product-form__cart-submit'
+      )
+    : null;
+
+  const scrollTarget = atcButton || formEl || sizeSection;
+  if (!scrollTarget) return;
+
+  // ✅ Actual visible height (Chrome/Safari bars ko handle karne ke liye)
+  const getViewportHeight = () =>
+    (window.visualViewport && window.visualViewport.height) ||
+    window.innerHeight ||
+    document.documentElement.clientHeight;
+
+  // ✅ Bottom bar (Chrome ka bottom nav, iOS ka home indicator, etc.)
+  const getBottomInset = () => {
+    if (window.visualViewport && window.innerHeight) {
+      const diff = window.innerHeight - window.visualViewport.height;
+      return diff > 0 ? diff : 0;
+    }
+    return 0;
+  };
+
+  let lastVisible = null;
+
+  // Sticky button show/hide
+  function checkSizeVisibility() {
+    const base = sizeSection || scrollTarget;
+    const rect = base.getBoundingClientRect();
+    const vh   = getViewportHeight();
+    const buffer = 30;
+
+    const isVisible = rect.top < vh - buffer && rect.bottom > buffer;
+
+    if (isVisible && lastVisible !== true) {
+      stickyWrap.style.opacity = "0";
+      stickyWrap.style.pointerEvents = "none";
+      lastVisible = true;
+    } else if (!isVisible && lastVisible !== false) {
+      stickyWrap.style.opacity = "1";
+      stickyWrap.style.pointerEvents = "auto";
+      lastVisible = false;
+    }
+  }
+
+  // 👇 Scroll helper: Add to Bag ko viewport bottom se thora upar laao
+  function scrollToTarget() {
+    const rect = scrollTarget.getBoundingClientRect();
+    const vh   = getViewportHeight();
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+    const marginBottom = 10 + getBottomInset(); // 10px gap + browser bar height
+    const targetScroll = currentScroll + rect.bottom - vh + marginBottom;
+
+    window.scrollTo({
+      top: Math.max(targetScroll, 0),
+      behavior: "smooth"
+    });
+  }
+
+  // Click on sticky "Select a Size"
+  stickyBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    scrollToTarget();
+  });
+
+  window.addEventListener("scroll", checkSizeVisibility, { passive: true });
+  window.addEventListener("resize", checkSizeVisibility);
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener("resize", checkSizeVisibility);
+  }
+
+  checkSizeVisibility();
+});
+</script>
+
 
 
 

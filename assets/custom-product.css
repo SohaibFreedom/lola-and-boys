@@ -99,60 +99,65 @@ body.product span.wk-text {
     grid-template-columns: 1fr !important;
 }
 }
-/* ✅ FIX: Mobile - Title, Reviews, Price above gallery WITHOUT overlap (CSS only) */
 @media (max-width: 768px) {
 
   .product-page.product-full .product-grid{
+    display: grid !important;
     grid-template-columns: 1fr !important;
     grid-auto-rows: auto;
     grid-auto-flow: row;
     row-gap: 10px;
+    position: relative !important;
   }
 
-  /* flatten only to allow children to become grid items */
   .product-page.product-full .product-info{
     display: contents !important;
   }
 
-  /* Gallery comes after Title/Reviews/Price */
-  .product-page.product-full .product-media{
-    grid-column: 1;
-    grid-row: 4;
-    padding: 0 !important;
-  }
-
-  /* Default: everything else stays BELOW gallery */
   .product-page.product-full .product-info > *{
     grid-column: 1;
-    padding-left: 16px !important;
-    padding-right: 16px !important;
+    padding-left: 16px;
+    padding-right: 16px;
+    order: 10;
   }
 
-  /* ✅ Top block order (separate rows = no overlap) */
-  .product-page.product-full .product-info .product_name{
-    grid-row: 1;
+  .product-page.product-full .product-info .product-title-row{
+    order: 1;
     padding-top: 14px;
     margin: 0 !important;
   }
 
   .product-page.product-full .product-info .yotpo,
   .product-page.product-full .product-info [class*="yotpo"]{
-    grid-row: 2;
+    order: 2;
   }
 
-    .product-page.product-full .product-info .modal_price {
-        grid-row: 3;
-        padding-bottom: 10px !important;
-        margin: 0 !important;
-        padding-top: 6px;
-    }
+  .product-page.product-full .product-info .modal_price{
+    order: 3;
+    padding-bottom: 0 !important;
+    margin: 0 !important;
+  }
+
+  .product-page.product-full .product-media{
+    order: 4;
+    grid-column: 1;
+    padding: 0 !important;
+  }
+
+  .product-page.product-full .product-grid wishlist-button-block{
+    position: absolute !important;
+    top: 8px !important;
+    right: 16px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    z-index: 5 !important;
+  }
 }
 
 
-/* ✅ MOBILE: scroll + zoom + sticky size button fix */
+
 @media (max-width: 768px) {
 
-  /* 1) Sticky wrapper full-screen overlay na ban ke scroll block kare */
   #stickyWrapper {
     pointer-events: none !important;
   }
@@ -160,17 +165,13 @@ body.product span.wk-text {
     pointer-events: auto !important;
   }
 
-  /* 2) Slider images:
-        - NORMAL (not zoomed): vertical scroll allow
-        - ZOOMED: sirf image pan, page nahi */
+
   #PsColorSlider-{{ product.id }} img.slider-media,
   #PsColorSlider-{{ product.id }} video.slider-media,
   #PsColorSlider-{{ product.id }} iframe.slider-media {
-    touch-action: pan-y !important;     /* page scroll allowed jab zoom off ho */
+    touch-action: pan-y !important;     
   }
 
-  /* Zoom on hone par JS slide ko ps-inline-zoomed de raha hai,
-     us state me browser ka scroll band, sirf hamara pan chalega */
   #PsColorSlider-{{ product.id }} .swiper-slide.ps-inline-zoomed img.slider-media {
     touch-action: none !important;
   }
