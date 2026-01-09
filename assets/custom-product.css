@@ -32,6 +32,10 @@
     align-items: center !important;
 
 }
+.product-info .yotpo-display-wrapper .text-m {
+    padding: 0 !important;
+    margin-right: 7px;
+}
 .product-title-row {
     width: 90%;
 }
