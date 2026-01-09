@@ -4,6 +4,7 @@
 }
 
 
+
 /* body.product wishlist-button-block {
     display: none;
 } */
@@ -27,6 +28,11 @@
 }
 
   @media (max-width: 768px) {
+
+    .dropdown_container.dropdown_open-custom[data-dropdown=menu] .dropdown {
+        transform: translateZ(0);
+        transition: transform .4s;
+    }
 
            .customize-button, .embroider-button {
             margin-left:16px !important;
