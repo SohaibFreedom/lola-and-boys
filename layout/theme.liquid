@@ -950,16 +950,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-jQuery(document).ready(function() {
-  jQuery(".mobile_nav.dropdown_link").click(function() {
-    jQuery('.dropdown_container[data-dropdown="menu"]').toggleClass('dropdown_open');
-  });
-  jQuery('body').click(function(e) {
-    if (!$(e.target).closest('.dropdown_container[data-dropdown="menu"]').length){
-        jQuery('.dropdown_container[data-dropdown="menu"]').removeClass('dropdown_open');
-    }
- });
-});
+
   
 </script>
 
