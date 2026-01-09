@@ -32,6 +32,9 @@
     align-items: center !important;
 
 }
+.product-title-row {
+    width: 90%;
+}
 .product-info .sale_banner_product {
     width: max-content;
     margin: 0 16px 10px;
