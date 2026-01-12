@@ -3912,6 +3912,9 @@ body.product {
     position: relative;
     bottom: -3px;
   }
+  .featured-promotions-section .container .featured-promotions .feature-section .title {
+    font-size: 15px !important;
+  }
 }
 
 #shopify-section-template--15691089936486__richtext_custom_MifjVr .rich-text__buttons a {
