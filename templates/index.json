@@ -434,7 +434,7 @@
         "image_fph4tc": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/footwear-pre-order-sparkle-ruby-boots-lola-the-boys-29780196622438_06014e80-4127-4e43-974d-90471ebfd526.jpg",
+            "image": "shopify://shop_images/footwear-glitter-love-cowboy-boots-exclude-fall-31178778574950_867e8a1a-8967-4a9d-b34c-32dcfb00955e.jpg",
             "link": "https://lolaandtheboys.com/collections/shoes",
             "title1": "Shoes",
             "customclass": "shoes-img-fix",
@@ -470,7 +470,7 @@
         "image_DP4QiN": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/LATB_11062024_01122_1fbc1450-2274-42d3-823f-ab2a1e6bf590.jpg",
+            "image": "shopify://shop_images/SHOT_25_0039_1.jpg",
             "link": "shopify://collections/sets",
             "title1": "SETS",
             "customclass": "",
@@ -631,9 +631,9 @@
         "image_9Qgf3d": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/dress-emerald-shimmer-party-dress-lola-wicked-31811263201382_e4401501-bdcc-4956-8f03-fd01ff512247.jpg",
-            "link": "shopify://collections/holiday-shop",
-            "title": "Holiday Shop",
+            "image": "shopify://shop_images/12172022_LOLA_THEBOYS_135091_1.jpg",
+            "link": "https://lolaandtheboys.com/collections/valentines-day",
+            "title": "VDAY SHOP",
             "text": "",
             "button_label": "shop now",
             "button_link": "shopify://collections/activewear"
@@ -664,7 +664,7 @@
         "image_hUpHCc": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/LATB_09192025_Holiday_0131.jpg",
+            "image": "shopify://shop_images/SHOT_31_0083.jpg",
             "link": "shopify://collections/best-sellers",
             "title": "BEST SELLERS",
             "text": "",
@@ -729,7 +729,7 @@
         "image_xkDgQ7": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/LATB_09192025_Holiday_1705.jpg",
+            "image": "shopify://shop_images/sets-disco-cherry-silk-set-lola-the-boys-1184276399_1.jpg",
             "link": "shopify://collections/silk-sets",
             "title1": "Lounge Wear",
             "text": "",
@@ -740,7 +740,7 @@
         "image_h4Vwnh": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/IMG_9031.jpg",
+            "image": "shopify://shop_images/Photo_4_rev.png",
             "link": "shopify://collections/mommy-me-1",
             "title1": "Mommy + Me",
             "text": "",
