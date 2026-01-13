@@ -378,7 +378,7 @@
           "type": "image",
           "settings": {
             "custom_class": "new-text-wrap",
-            "image": "shopify://shop_images/LATB_09192025_Holiday_0240.jpg",
+            "image": "shopify://shop_images/dress-shimmer-bow-dress-lola-the-boys-1204961857_09475b25-2a7e-4c52-bb10-6821184116ff.jpg",
             "link": "shopify://collections/newarrivals",
             "title": "Just In",
             "title_n": "",
@@ -628,15 +628,15 @@
     "featured_promotions_zDnTpN": {
       "type": "featured-promotions",
       "blocks": {
-        "image_9Qgf3d": {
+        "image_hUpHCc": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/12172022_LOLA_THEBOYS_135091_1.jpg",
-            "link": "https://lolaandtheboys.com/collections/valentines-day",
-            "title": "VDAY SHOP",
+            "image": "shopify://shop_images/SHOT_31_0083.jpg",
+            "link": "shopify://collections/best-sellers",
+            "title": "BEST SELLERS",
             "text": "",
             "button_label": "shop now",
-            "button_link": "shopify://collections/activewear"
+            "button_link": "shopify://collections/best-sellers"
           }
         },
         "image_wedKWc": {
@@ -661,23 +661,23 @@
             "button_link": "shopify://collections/archivesale"
           }
         },
-        "image_hUpHCc": {
+        "image_9Qgf3d": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/SHOT_31_0083.jpg",
-            "link": "shopify://collections/best-sellers",
-            "title": "BEST SELLERS",
+            "image": "shopify://shop_images/pearl-bow-cardigan-lola-the-boys-31810910912614_7947a27d-124b-4c26-81ec-bd4e97d5a584.jpg",
+            "link": "https://lolaandtheboys.com/collections/valentines-day",
+            "title": "VDAY SHOP",
             "text": "",
             "button_label": "shop now",
-            "button_link": "shopify://collections/best-sellers"
+            "button_link": "shopify://collections/activewear"
           }
         }
       },
       "block_order": [
-        "image_9Qgf3d",
+        "image_hUpHCc",
         "image_wedKWc",
         "image_FjkpWA",
-        "image_hUpHCc"
+        "image_9Qgf3d"
       ],
       "settings": {
         "featured_promos_per_row": 2,
