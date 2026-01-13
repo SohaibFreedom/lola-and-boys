@@ -159,6 +159,15 @@
                   {% endif %}
                 </span>
 
+                              <!-- DEBUG (remove later) -->
+<div style="display:none" id="priceDebug">
+  wh_v_price={{ wh_v_price }}
+  wh_v_compare_at_price={{ wh_v_compare_at_price }}
+  available={{ variant.available }}
+  currency={{ shop.currency }}
+</div>
+
+
                 {% if section.settings.display_savings %}
                   <span class="sale savings">
                     {% if wh_v_price < wh_v_compare_at_price and variant.available %}
