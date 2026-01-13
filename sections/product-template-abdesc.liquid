@@ -112,6 +112,16 @@
           <h1 class="product_name" itemprop="name">{{ product.title }}</h1>
        
           {% render 'yotpo star rating' %}
+
+
+                        <!-- DEBUG (remove later) -->
+<div style="display:none" id="priceDebug">
+  wh_v_price={{ wh_v_price }}
+  wh_v_compare_at_price={{ wh_v_compare_at_price }}
+  available={{ variant.available }}
+  currency={{ shop.currency }}
+</div>
+
           
           {% if section.settings.display_vendor %}
             <p class="vendor">
@@ -167,13 +177,6 @@
                 {% endif %}
               </span>
 
-              <!-- DEBUG (remove later) -->
-<div style="display:none" id="priceDebug">
-  wh_v_price={{ wh_v_price }}
-  wh_v_compare_at_price={{ wh_v_compare_at_price }}
-  available={{ variant.available }}
-  currency={{ shop.currency }}
-</div>
 
 
               {% if section.settings.display_savings %}
