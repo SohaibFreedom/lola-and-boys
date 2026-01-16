@@ -2213,12 +2213,12 @@ if (editor) editor.style.visibility = 'hidden';
   /* LOAD CART DATA */
   try {
   const cart = await getCart();
-  const HIDE_VARIANT_ID = 43443727040614;
+  const HIDE_VARIANT_ID = 7760048357478;
 
   let items = cart.items || [];
 
   // ✅ Shopify cart.js me "id" = variant id hota hai
-  items = items.filter(i => Number(i.id) !== HIDE_VARIANT_ID);
+  items = items.filter(i => Number(i.product_id) !== HIDE_VARIANT_ID);
 
   /* ✅ Exclude product (works whether you pass product_id OR variant_id) */
   const EXCLUDED_ID = 42085140430950;
