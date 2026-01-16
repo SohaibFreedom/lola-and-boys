@@ -1135,7 +1135,12 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     try {
       const cart = await getCart();
-      const items = cart.items || [];
+      const HIDE_VARIANT_ID = 43443727040614;
+
+      let items = cart.items || [];
+
+     // ✅ Shopify cart.js me "id" = variant id hota hai
+      items = items.filter(i => Number(i.id) !== HIDE_VARIANT_ID);
 
       // Separate parents and children
       const parentItems = items.filter(
