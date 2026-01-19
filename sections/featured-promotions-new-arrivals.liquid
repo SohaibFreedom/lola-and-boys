@@ -34,7 +34,7 @@
                   {% endif %}
                 {% if block.settings.text != blank or block.settings.button_label != blank or block.settings.title != blank and title_on_image != blank %}
                   <figcaption class="feature-overlay">
-                    <a {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %}class="link-promo"></a>
+                    <a {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %}class="link-promo" aria-label="Shop {{ block.settings.link | escape }}"></a>
                       <div class="feature-wrap">
                         {% if block.settings.title != blank %}
                           <h2 class="title">{{ block.settings.title }}</h2>
