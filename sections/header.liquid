@@ -99,6 +99,7 @@
   {% endif %}
   <div class="dropdown_container" data-dropdown="menu">
     <div class="dropdown">
+      <nav aria-label="Main menu">
       <ul class="menu" id="mobile_menu">
         {% include 'mobile-menu' with section.settings.main_linklist %}
         {% include 'mobile-menu' with section.settings.main_linklist2 %}
@@ -127,6 +128,7 @@
           </li>
         {% endif %}
       </ul>
+      </nav>
     </div>
   </div>
 </header>
