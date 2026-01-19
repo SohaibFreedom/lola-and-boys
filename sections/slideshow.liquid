@@ -114,11 +114,11 @@
         {% endif %}
           {% unless block.settings.button1_link != blank and block.settings.button2_link != blank %}
             {% if block.settings.button1_link != blank %}
-              <a href="{{ block.settings.button1_link }}" class="banner-full-link">
+              <a href="{{ block.settings.button1_link }}" class="banner-full-link" aria-label="Shop {{ block.settings.button1_link | escape }}">
                 {{ block.settings.title }}
               </a>
             {% elsif block.settings.button2_link != blank %}
-              <a href="{{ block.settings.button2_link }}" class="banner-full-link">
+              <a href="{{ block.settings.button2_link }}" class="banner-full-link" aria-label="Shop {{ block.settings.button2_link | escape }}">
                 {{ block.settings.title }}
               </a>
             {% endif %}
