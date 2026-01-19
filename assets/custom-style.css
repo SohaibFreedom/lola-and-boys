@@ -420,6 +420,21 @@ div#rebuy-widget-207164 {
   }
 }
 
+@media (max-width: 480px){
+  .collection-specific-tags .product-tag.personalize-badge{
+    flex-wrap: wrap !important;   /* only this tag can wrap */
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .collection-specific-tags .product-tag.personalize-badge span{
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+    min-width: 0 !important;
+  }
+}
+
 .collection-collection-with-banner .page_banner {
   margin-bottom: 1rem;
 }
@@ -439,8 +454,11 @@ div#rebuy-widget-207164 {
   row-gap: 20px;
   column-gap: 15px;
 }
-.product-list.usf-grid .collection-specific-tags .product-tag img {
+.product-list.usf-grid .collection-specific-tags .product-tag.personalize-badge img{
   width: 11px !important;
+  max-width: 100% !important;
+  height: auto !important;
+  display: block;
 }
 .usf-facet-values.usf-scrollbar.usf-facet-values--List {
   max-height: 100% !important;
@@ -1157,7 +1175,7 @@ div#accessiblembilenav .login-signup-mobile-c a > span {
   display: flex;
   align-items: center;
   gap: 5px;
-  flex-wrap: nowrap;
+  flex-wrap: nowrap; /* keep desktop same */
 }
 
 .c-insta-grid-wrapper {
