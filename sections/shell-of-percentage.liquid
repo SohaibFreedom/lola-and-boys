@@ -11,7 +11,7 @@
     <img class="mobile"  src="{{ section.settings.mobile_image | img_url: 'master' }}"/>
   </div>
  </a>
-  <a href="{{ section.settings.button_link }}" class="lola-and-btn">{{ section.settings.button_text }}</a>
+  <a href="{{ section.settings.button_link }}" class="lola-and-btn" aria-label="Shop {{ section.settings.button_link | escape }}">{{ section.settings.button_text }}</a>
 </div>
 
   
