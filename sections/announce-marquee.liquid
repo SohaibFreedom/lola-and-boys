@@ -79,74 +79,84 @@
   </div>
 </div>
 <style>
-    .soon-in {
-        display: flex;
-        justify-content: center;
-        margin-top: 25px;
-        font-size: 20px;
-        color: #fff;
+  .soon-in{
+  display:flex;
+  justify-content:center;
+  margin-top:25px;
+  font-size:20px;
+  color:#fff;
+}
+
+.cont-wrap{
+  width:100%;
+  overflow:hidden;
+  background:#000000 !important;
+  margin:30px 0;
+}
+
+/* keep slider same */
+.scorri{
+  position:relative;
+  display:flex;
+  width:100%;
+  justify-content:flex-start;
+  overflow:hidden;
+  white-space:nowrap;
+}
+
+/* marquee rows */
+.tithome-images{
+  display:flex;
+  animation:marquee 30s linear infinite;
+  align-items:center;
+  padding:20px 0;
+  gap:2rem;
+  margin:0;
+}
+
+.tithome-images li{
+  display:inline-block;
+  list-style:none;
+  padding-right:30px;
+  margin-bottom:0 !important;
+}
+
+/* IMPORTANT: don't force width/height auto overrides (this broke it) */
+.tithome-images img{
+  max-width:95px;
+  height:auto;
+  width:auto;
+  display:inline-block;
+  mix-blend-mode:difference;
+  filter:invert(1);
+}
+
+/* WCAG reflow fix WITHOUT breaking slider:
+   only prevent page-wide horizontal scroll */
+html, body{
+  overflow-x: hidden;
+}
+
+@keyframes marquee{
+  0%{ transform:translateX(0); }
+  100%{ transform:translateX(-100%); }
+}
+
+@media only screen and (max-width:768px){
+  .tithome-images li{ padding-right:10px; }
+  .tithome-images img{ max-width:50px; }
+  .tithome-images{
+    padding:10px 0;
+    display:flex;
+    align-items:center;
   }
-    .cont-wrap {
-        width: 100%;
-        overflow: hidden;
-        background: #000000 !important;
-        margin: 30px 0;
-    }
+}
 
-    .scorri {
-        position: relative;
-        display: flex;
-        width: 100%;
-        justify-content: flex-start;
-        overflow: hidden;
-        white-space: nowrap;
-    }
+/* optional */
+@media (prefers-reduced-motion: reduce){
+  .tithome-images{ animation:none !important; }
+}
 
-    .tithome-images {
-        display: flex;
-        animation: marquee 30s linear infinite;
-        align-items: center;
-        padding: 20px 0;
-        gap: 2rem;
-        margin:0;
-    }
-
-    .tithome-images li {
-        display: inline-block;
-        list-style: none;
-        padding-right: 30px;
-        margin-bottom:0 !important;
-    }
-
-    .tithome-images img {
-        max-width: 95px;
-        mix-blend-mode: difference;
-        filter: invert(1);
-    }
-
-    @keyframes marquee {
-        0% {
-            transform: translateX(0);
-        }
-        100% {
-            transform: translateX(-100%);
-        }
-    }
-    @media only screen and (max-width: 768px) {
-        .tithome-images li {
-          padding-right: 10px;
-        }
-
-        .tithome-images img {
-            max-width: 50px;
-        }
-
-        .tithome-images {
-            padding: 10px 0;
-            display: flex;
-            align-items: center;
-        }
-      }
 </style>
 
 {% schema %}
