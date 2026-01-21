@@ -164,7 +164,7 @@
           {% endif %}
 
           <input type="hidden" name="challenge" value="false" />
-          <input type="email" class="contact_email" name="contact[email]" required placeholder="{{ 'general.newsletter_form.placeholder' | t }}" />
+          <input type="email" class="contact_email" name="contact[email]" autocomplete="email" required placeholder="{{ 'general.newsletter_form.placeholder' | t }}" />
           <input type='submit' class="action_button sign_up" value="Join Now" />
         {% endform %}
             </div>
