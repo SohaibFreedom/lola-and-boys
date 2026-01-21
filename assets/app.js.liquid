@@ -450,43 +450,77 @@ if (!$homepageSlider.hasClass('flickity-enabled')) {
 
   var flkty = $homepageSlider.data('flickity');
 
-  function setDotAria() {
-    var $dots = $homepageSlider.find('.flickity-page-dots .dot');
-    $dots.each(function(i) {
-      $(this).attr('aria-label', 'Go to slide ' + (i + 1));
-    });
+  function setDotsA11y() {
+    var $dotWrap = $homepageSlider.find('.flickity-page-dots');
+    if (!$dotWrap.length) return;
 
-    // current dot
-    $dots.removeAttr('aria-current');
-    $homepageSlider.find('.flickity-page-dots .dot.is-selected').attr('aria-current', 'true');
+    // Label the navigation group
+    if (!$dotWrap.attr('aria-label')) {
+      $dotWrap.attr('aria-label', 'Carousel navigation');
+    }
+
+    var $dots = $dotWrap.find('.dot');
+
+    $dots.each(function (i) {
+      var $dot = $(this);
+
+      // Accessible name + correct role for interactive LI
+      $dot.attr({
+        'aria-label': 'Go to slide ' + (i + 1),
+        'role': 'button',
+        'tabindex': '0'
+      });
+
+      // aria-current on selected dot
+      if ($dot.hasClass('is-selected')) {
+        $dot.attr('aria-current', 'true');
+      } else {
+        $dot.removeAttr('aria-current');
+      }
+
+      // Keyboard support (Enter/Space) - bind once
+      if (!$dot.data('a11yBound')) {
+        $dot.on('keydown', function (e) {
+          var key = e.key || e.keyCode;
+          if (key === 'Enter' || key === ' ' || key === 13 || key === 32) {
+            e.preventDefault();
+            $dot.trigger('click');
+          }
+        });
+        $dot.data('a11yBound', true);
+      }
+    });
   }
 
-  // dots render after init
-  setTimeout(setDotAria, 0);
+  // Dots render after init
+  setTimeout(setDotsA11y, 0);
 
-  // update when slide changes
-  $homepageSlider.on('cellSelect.flickity', function() {
-    setDotAria();
-  });
+  // Update when slide changes / settles / resizes (some themes rebuild dots)
+  $homepageSlider.on('cellSelect.flickity', setDotsA11y);
+  $homepageSlider.on('settle.flickity', setDotsA11y);
+  $homepageSlider.on('resize.flickity', setDotsA11y);
 
   if (settings.slideshowTextAnimation != '') {
-    setTimeout(function() {
-      $homepageSlider.find('.gallery-cell:nth-child(1) .caption-content')
+    setTimeout(function () {
+      $homepageSlider
+        .find('.gallery-cell:nth-child(1) .caption-content')
         .addClass('animated ' + settings.slideshowTextAnimation);
     }, 400);
 
-    $homepageSlider.on('cellSelect', function() {
+    $homepageSlider.on('cellSelect', function () {
       if ($homepageSlider.is(':visible')) {
         var currentSlide = flkty.selectedIndex + 1;
-        setTimeout(function() {
+        setTimeout(function () {
           $homepageSlider.find('.caption-content').removeClass('animated ' + settings.slideshowTextAnimation);
-          $homepageSlider.find('.gallery-cell:nth-child(' + currentSlide + ') .caption-content')
+          $homepageSlider
+            .find('.gallery-cell:nth-child(' + currentSlide + ') .caption-content')
             .addClass('animated ' + settings.slideshowTextAnimation);
         }, 400);
       }
     });
   }
 }
+
 
 
       if ($homepageSlider.find('.gallery-cell').length > 1) {
