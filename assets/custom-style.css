@@ -16,6 +16,12 @@
     right: -13px;
 }
 
+.icon-list-header-right {
+    margin: 0 !important;
+}
+.icon-list-header-right li {
+    margin: 0 !important;
+}
 .header-search-main .wishlist-container {
     position: relative;
 }
