@@ -79,7 +79,16 @@
                 {{ block.settings.image | img_url: size10 }} {{size10 | replace: 'x', 'w'}}"
                  />
           {% elsif block.settings.mp4 != blank %}
-              <a href="{{ block.settings.button1_link }}" aria-label="Shop {{ block.settings.button1_link | escape }}"><video muted autoplay webkit-playsinline loop class="banner-video">
+              <a href="{{ block.settings.button1_link }}" aria-label="Shop {{ block.settings.button1_link | escape }}"><video
+  class="banner-video"
+  autoplay
+  muted
+  loop
+  playsinline
+  webkit-playsinline
+  aria-hidden="true"
+  tabindex="-1"
+>
                 <source src="{{ block.settings.mp4 }}" type="video/mp4">
               </video></a>
             
