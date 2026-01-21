@@ -28,7 +28,7 @@
           {% if section.settings.display_last_name %}
             <input type="text" value="" name="LNAME" placeholder="{{ 'general.newsletter_form.subscriber_last_name' | t }}">
           {% endif %}
-          <input type="email" value="" name="EMAIL" class="contact_email" placeholder="{{ 'general.newsletter_form.placeholder' | t }}">
+          <input type="email" value="" name="EMAIL" class="contact_email" autocomplete="email" placeholder="{{ 'general.newsletter_form.placeholder' | t }}">
           <input type="submit" value="{{ 'general.newsletter_form.submit' | t }}" class="action_button sign_up" name="subscribe" />
         </form>
       {% else %}
@@ -50,7 +50,7 @@
           {% endif %}
 
           <input type="hidden" name="challenge" value="false" />
-          <input type="email" class="contact_email" name="contact[email]" required placeholder="{{ 'general.newsletter_form.placeholder' | t }}" />
+          <input type="email" class="contact_email" name="contact[email]" autocomplete="email" required placeholder="{{ 'general.newsletter_form.placeholder' | t }}" />
           <input type='submit' class="action_button sign_up" value="{{ 'general.newsletter_form.submit' | t }}" />
         {% endform %}
       {% endif %}
