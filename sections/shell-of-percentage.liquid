@@ -7,8 +7,8 @@
     <p class="">{{ section.settings.description | escape }}</p>
     <h3 class="">{{ section.settings.title_sale | escape }}</h3>
     {% endcomment %}
-    <img class="desktop"  src="{{ section.settings.image | img_url: 'master' }}"/>
-    <img class="mobile"  src="{{ section.settings.mobile_image | img_url: 'master' }}"/>
+    <img class="desktop"  src="{{ section.settings.image | img_url: 'master' }}" alt="sale-banner-img"/>
+    <img class="mobile"  src="{{ section.settings.mobile_image | img_url: 'master' }}" alt="sale-banner-img"/>
   </div>
  </a>
   <a href="{{ section.settings.button_link }}" class="lola-and-btn" aria-label="SHOP THE SALE">{{ section.settings.button_text }}</a>
