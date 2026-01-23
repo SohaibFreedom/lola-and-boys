@@ -115,7 +115,7 @@ var _usfProductPrice = `
             <span v-if="minDiscountedPrice > 0" class="money" v-html="priceVaries && !product.selectedVariantId ? displayMinDiscountedPrice : displayDiscountedPrice"></span>
             <span v-else v-html="_usfSettingGlobal.free_price_text"></span>
         </span>
-        <span class="was_price">
+        <span class="was_price hello">
             <span v-if="hasDiscount" class="money" v-html="displayPrice"></span>
         </span>
     </template>

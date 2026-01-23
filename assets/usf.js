@@ -1,4 +1,4 @@
-/* USF file - DO NOT MODIFY THIS FILE. THIS FILE IS REGULARLY CHANGED BY USF APP AND **ANY DIRECT CHANGES WILL BE LOST**. Use our in-app customization if you need to update CSS and JS code. Auto modified at: 9/5/2025 8:58:20 AM*/
+/* USF file - DO NOT MODIFY THIS FILE. THIS FILE IS REGULARLY CHANGED BY USF APP AND **ANY DIRECT CHANGES WILL BE LOST**. Use our in-app customization if you need to update CSS and JS code. Auto modified at: 1/23/2026 1:06:29 PM*/
 /* Begin custom theme code */
 // define templates for the Turbo theme - 5.0
 window.USF_FILTER_AVOID_STICKY_HEADER_HORZ_DESKTOP = window.USF_FILTER_AVOID_STICKY_HEADER_VERT_DESKTOP  = ['.main_nav_wrapper.sticky_nav'];
@@ -117,7 +117,7 @@ var _usfProductPrice = `
             <span v-if="minDiscountedPrice > 0" class="money" v-html="priceVaries && !product.selectedVariantId ? displayMinDiscountedPrice : displayDiscountedPrice"></span>
             <span v-else v-html="_usfSettingGlobal.free_price_text"></span>
         </span>
-        <span class="was_price">
+        <span class="was_price hello">
             <span v-if="hasDiscount" class="money" v-html="displayPrice"></span>
         </span>
     </template>
