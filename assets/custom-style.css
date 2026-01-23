@@ -1,4 +1,14 @@
 
+@font-face {
+  font-family: "Inter";
+  src:
+    url("https://cdn.shopify.com/s/files/1/0002/0647/1226/files/Inter-VariableFont_opsz_wght.woff2?v=1769200565") format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/0002/0647/1226/files/Inter-VariableFont_opsz_wght.woff?v=1769200564") format("woff");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 
 /* CSS for Header Wishlist Count and Cart Bag Count  */
 
