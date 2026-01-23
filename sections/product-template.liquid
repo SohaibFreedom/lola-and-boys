@@ -373,14 +373,9 @@ document.addEventListener("DOMContentLoaded", function() {
   window.addEventListener("resize", checkSizeVisibility);
 
   checkSizeVisibility();
-});
-</script>
 
 
-
-
-<script>
-  const observer = new MutationObserver(() => {
+    const observer = new MutationObserver(() => {
   const afterpay = document.querySelector('square-placement');
   const productForm = document.querySelector('.product_form');
 
@@ -392,7 +387,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
 observer.observe(document.body, { childList: true, subtree: true });
 
+
+});
 </script>
+
+
+
+
 
 <script>
   jdgmSettings.scrollTopOffset = 160;
