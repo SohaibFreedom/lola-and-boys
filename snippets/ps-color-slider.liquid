@@ -110,8 +110,8 @@
 },
 
                 breakpoints: {
-                    0: { slidesPerView: 1.5, slidesPerGroup: 1 },
-                    768: { slidesPerView: 1.5, slidesPerGroup: 1 },
+                    0: { slidesPerView: 1, slidesPerGroup: 1 },
+                    768: { slidesPerView: 1, slidesPerGroup: 1 },
                     1025: { slidesPerView: 2, slidesPerGroup: 1 }
                 }
             };
@@ -736,4 +736,41 @@
 
         root.querySelectorAll("img.slider-media").forEach(img => setDefaults(img));
     });
+</script>
+
+
+<script>
+  (function () {
+    function cleanMoneyText(str) {
+      if (!str) return str;
+      return str
+        .replace(/([.,]00)\s*$/,'')
+        .replace(/([.,]00)(?=\D*$)/,'');
+    }
+
+    function cleanAll(root) {
+      (root || document).querySelectorAll(".money").forEach(function (el) {
+        var t = el.textContent || "";
+        var nt = cleanMoneyText(t.trim());
+        if (nt !== t.trim()) el.textContent = nt;
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      cleanAll(document);
+
+      var mo = new MutationObserver(function (muts) {
+        muts.forEach(function (m) {
+          if (m.target) cleanAll(m.target);
+          if (m.addedNodes && m.addedNodes.length) {
+            m.addedNodes.forEach(function (n) {
+              if (n.nodeType === 1) cleanAll(n);
+            });
+          }
+        });
+      });
+
+      mo.observe(document.body, { childList: true, subtree: true, characterData: true });
+    });
+  })();
 </script>

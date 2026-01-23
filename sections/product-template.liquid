@@ -89,11 +89,7 @@
             {% assign variant = product.selected_or_first_available_variant %}
 {% include 'wh_variant' with variant %}
 
-            {% if product.available %}
-              {% if settings.sale_banner_enabled and wh_compare_at_price_max > wh_price %}
-                <div class="sale_banner_product">{{ 'collections.general.sale' | t }}</div>
-              {% endif %}
-            {% endif %}
+
             {% if collection_handles contains 'new' %}
               <div class="new_banner_product">{{ 'collections.general.new' | t }}</div>
             {% endif %}
@@ -134,6 +130,11 @@
               <a href="#size-chart" class="size_chart" data-remodal-target="size-chart" data-no-instant>{{ 'products.product.size_chart' | t }} <span class="icon-right-arrow"></span></a>
             {% endif %}
 
+            <div class="price-sale-wrap-c">
+
+              <div class="price-wrap-c">
+      
+
             {% if collection_handles contains 'coming-soon' %}
               <p class="modal_price">{{ 'collections.general.coming_soon' | t }}</p>
             {% else %}
@@ -170,6 +171,17 @@
                   </span>
                 {% endif %}
               </p>
+              
+              </div>
+                            <div class="sale-wrap-c">
+                    {% if product.available %}
+              {% if settings.sale_banner_enabled and wh_compare_at_price_max > wh_price %}
+                <div class="sale_banner_product">{{ 'collections.general.sale' | t }}</div>
+              {% endif %}
+            {% endif %}
+              </div>
+
+            </div>
 
           {% unless product.tags contains 'hellokitty' or product.tags contains 'Bethenny' %}
     <div id="lowProductButton" class="testing-c"></div>
@@ -375,7 +387,7 @@ document.addEventListener("DOMContentLoaded", function() {
   checkSizeVisibility();
 
 
-    const observer = new MutationObserver(() => {
+const observer = new MutationObserver(() => {
   const afterpay = document.querySelector('square-placement');
   const productForm = document.querySelector('.product_form');
 
@@ -388,8 +400,11 @@ document.addEventListener("DOMContentLoaded", function() {
 observer.observe(document.body, { childList: true, subtree: true });
 
 
+
 });
 </script>
+
+
 
 
 
@@ -568,6 +583,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
   checkSizeVisibility();
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  var wl = document.querySelector("wishlist-button-block");
+  var media = document.querySelector(".product-page.product-full .product-media");
+  if (!wl || !media) return;
+  if (!media.contains(wl)) media.appendChild(wl);
+});
+
 </script>
 
 

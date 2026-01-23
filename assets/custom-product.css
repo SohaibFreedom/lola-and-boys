@@ -2,7 +2,14 @@
 .product-quantity-box {
     display: none !important;
 }
+.modal_price * {
+    font-family: "Inter" !important;
+    font-weight:500 !important;
+}
 
+.modal_price span {
+    color:#2D2A26;
+}
 
 
 /* body.product wishlist-button-block {
@@ -12,6 +19,9 @@
       display: none !important;
 }
 
+.product-info .sale-wrap-c {
+    display: none;
+}
 
 
 .product-quantity-box+.inline_purchase {
@@ -52,11 +62,11 @@
 }
 .product-info .sale_banner_product {
     width: max-content;
-    margin: 0 16px 10px;
+    margin: 0;
 }
-.product-template square-placement {
-  padding: 0 16px !important;
-  margin: 4px 0 !important;
+.price-sale-wrap-c {
+    display: flex;
+    justify-content: space-between;
 }
 
 
@@ -157,7 +167,7 @@ body.product span.wk-text {
     order: 2;
   }
 
- .product-page.product-full .product-info .modal_price {
+ .product-page.product-full .product-info .price-sale-wrap-c {
         order: 3;
         padding-bottom: 10px !important;
         margin: 0 !important;
@@ -227,9 +237,12 @@ body.product span.wk-text {
     z-index:5!important;
   }
   .wk-icon svg {
-    width: 17px !important;
-    height: 17px !important;
-
+    width: 27px !important;
+    height: 27px !important;
+}
+.pslb-trigger svg {
+    width: 25px !important;
+    height: 25px !important;
 }
 }
 
@@ -256,7 +269,67 @@ body.product span.wk-text {
 .afterpay-logo.brand-afterpay, .afterpay-logo.brand-afterpay svg {
     width: 70px !important;
 }
-}
-@media (max-width: 768px) {
 
+
+}
+.product-page.product-full .product-media{position:relative!important;}
+
+.product-page.product-full .product-media wishlist-button-block{
+  position:absolute!important;
+  top:-2px!important;
+  right:5px!important;
+  z-index:1!important;
+  display:inline-flex!important;
+  align-items:center!important;
+}
+
+.product-page.product-full .product-media .zoom_button,
+.product-page.product-full .product-media .product-gallery__zoom,
+.product-page.product-full .product-media .icon-zoom,
+.product-page.product-full .product-media [data-zoom]{
+  position:absolute!important;
+  top:16px!important;
+  right:16px!important;
+  z-index:65!important;
+}
+.product-row wishlist-button-block .wk-button.wk-selected {
+    --icon-fill: #000 !important;
+}
+.product-page.product-full wishlist-button-block .wk-button, .product-page.product-full wishlist-button-block .wk-full-width {
+    width: auto !important;
+    padding: 30px 20px !important;
+}
+span.sale.savings {
+    display: none;
+}
+/* Lola price style like SKIMS: was price (grey + strike) then sale price (red) */
+.modal_price{
+  display:flex;
+  align-items:baseline;
+  flex-wrap:wrap;
+}
+
+.modal_price .was_price span{
+  order:1;
+  color:#A6A5A3 !important;
+  margin-right: 5px;
+  text-decoration:line-through;
+  text-decoration-thickness:2px;
+  text-underline-offset:2px;
+}
+
+.modal_price [itemprop="price"]{
+  order:2; 
+  margin-left: 0;
+}
+
+.modal_price [itemprop="price"].sale .money{
+  font-weight: 600;
+   --tw-text-opacity: 1;
+  color:#BA203E;
+}
+
+/* optional: keep savings at end */
+.modal_price .sale.savings{
+  order:3;
 }
