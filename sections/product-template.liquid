@@ -379,7 +379,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+<script>
+  const observer = new MutationObserver(() => {
+  const afterpay = document.querySelector('square-placement');
+  const productForm = document.querySelector('.product_form');
 
+  if (afterpay && productForm) {
+    productForm.prepend(afterpay);
+    observer.disconnect();
+  }
+});
+
+observer.observe(document.body, { childList: true, subtree: true });
+
+</script>
 
 <script>
   jdgmSettings.scrollTopOffset = 160;
