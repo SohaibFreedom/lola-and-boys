@@ -1,4 +1,4 @@
-/* USF file - DO NOT MODIFY THIS FILE. THIS FILE IS REGULARLY CHANGED BY USF APP AND **ANY DIRECT CHANGES WILL BE LOST**. Use our in-app customization if you need to update CSS and JS code. Auto modified at: 1/23/2026 1:07:25 PM*/
+/* USF file - DO NOT MODIFY THIS FILE. THIS FILE IS REGULARLY CHANGED BY USF APP AND **ANY DIRECT CHANGES WILL BE LOST**. Use our in-app customization if you need to update CSS and JS code. Auto modified at: 1/23/2026 1:19:28 PM*/
 /* Begin custom theme code */
 // define templates for the Turbo theme - 5.0
 window.USF_FILTER_AVOID_STICKY_HEADER_HORZ_DESKTOP = window.USF_FILTER_AVOID_STICKY_HEADER_VERT_DESKTOP  = ['.main_nav_wrapper.sticky_nav'];
@@ -111,18 +111,30 @@ var _usfProductPrice = `
 <span v-if="_col_handle.coming_soon" class="modal_price">Coming soon</span>
 <span v-else class="price" :class="{'sale': hasDiscount}" v-if="!usf.plugins.lastRenderResult">
     <div v-if="isSoldOut && usf.settings.search.showSoldOut && !_usfSettingGlobal.display_price" class="sold-out" v-html="loc.soldOut"></div>
-    <template v-else>
-            <span class="was_price hello">
-            <span v-if="hasDiscount" class="money" v-html="displayPrice"></span>
-        </span>
-        
-        <span class="current_price" :data-min="minPrice">
-            <small v-if="priceVaries && !product.selectedVariantId && minDiscountedPrice > 0"><em v-html="loc.from"></em></small>
-            <span v-if="minDiscountedPrice > 0" class="money" v-html="priceVaries && !product.selectedVariantId ? displayMinDiscountedPrice : displayDiscountedPrice"></span>
-            <span v-else v-html="_usfSettingGlobal.free_price_text"></span>
-        </span>
+<template v-else>
+  <span class="was_price hello">
+    <span v-if="hasDiscount" class="money" v-html="displayPrice"></span>
+  </span>
 
-    </template>
+  <span
+    class="current_price"
+    :class="{ 'red-price': hasDiscount }"
+    :data-min="minPrice"
+  >
+    <small v-if="priceVaries && !product.selectedVariantId && minDiscountedPrice > 0">
+      <em v-html="loc.from"></em>
+    </small>
+
+    <span
+      v-if="minDiscountedPrice > 0"
+      class="money"
+      v-html="priceVaries && !product.selectedVariantId ? displayMinDiscountedPrice : displayDiscountedPrice"
+    ></span>
+
+    <span v-else v-html="_usfSettingGlobal.free_price_text"></span>
+  </span>
+</template>
+
 </span>
 `;
 
