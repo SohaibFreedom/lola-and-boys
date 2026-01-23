@@ -387,18 +387,6 @@ document.addEventListener("DOMContentLoaded", function() {
   checkSizeVisibility();
 
 
-const observer = new MutationObserver(() => {
-  const afterpay = document.querySelector('square-placement');
-  const productForm = document.querySelector('.product_form');
-
-  if (afterpay && productForm) {
-    productForm.prepend(afterpay);
-    observer.disconnect();
-  }
-});
-
-observer.observe(document.body, { childList: true, subtree: true });
-
 
 
 });

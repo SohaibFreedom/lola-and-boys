@@ -11,6 +11,9 @@
     color:#2D2A26;
 }
 
+.product-info square-placement {
+  display:none !important;
+}
 
 /* body.product wishlist-button-block {
     display: none;
