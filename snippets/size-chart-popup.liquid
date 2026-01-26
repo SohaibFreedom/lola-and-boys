@@ -7,24 +7,34 @@
 <!-- ✅ Popup -->
 <div id="sizeChartPopup" class="size-chart-popup-c">
   <div class="size-chart-popup-c-overlay"></div>
+
   <div class="size-chart-popup-c-content">
     <span class="size-chart-popup-c-close">&times;</span>
 
-    <!-- Desktop Image -->
-    <img 
-      src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/desktop-size-chart.png?v=1761954056" 
-      alt="Size Chart" 
+    {%- assign mf_desktop = product.metafields.custom.size_chart_desktop.value -%}
+    {%- assign mf_mobile  = product.metafields.custom.size_chart_mobile.value -%}
+
+    {%- assign fallback_desktop = 'https://cdn.shopify.com/s/files/1/0002/0647/1226/files/desktop-size-chart.png?v=1761954056' -%}
+    {%- assign fallback_mobile  = 'https://cdn.shopify.com/s/files/1/0002/0647/1226/files/Mobile-size-chart.png?v=1761954050' -%}
+
+    <!-- Desktop Image (metafield overrides fallback) -->
+    <img
+      src="{% if mf_desktop %}{{ mf_desktop | image_url: width: 1600 }}{% else %}{{ fallback_desktop }}{% endif %}"
+      alt="Size Chart"
       class="size-chart-popup-c-image desktop-img"
+      loading="lazy"
     >
 
-    <!-- Mobile Image -->
-    <img 
-      src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/Mobile-size-chart.png?v=1761954050" 
-      alt="Size Chart Mobile" 
+    <!-- Mobile Image (metafield overrides fallback) -->
+    <img
+      src="{% if mf_mobile %}{{ mf_mobile | image_url: width: 900 }}{% else %}{{ fallback_mobile }}{% endif %}"
+      alt="Size Chart Mobile"
       class="size-chart-popup-c-image mobile-img"
+      loading="lazy"
     >
   </div>
 </div>
+
 
 <style>
 .size-chart-popup-c-btn {
