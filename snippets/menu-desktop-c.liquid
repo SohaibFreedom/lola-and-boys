@@ -1,0 +1,182 @@
+{{ 'menu-custom.css' | asset_url | stylesheet_tag }}
+
+<nav class="desktop-menu-c" style="background-color: {{ section.settings.menu_bg_color }};">
+  <div class="menu-container">
+    {% if section.settings.desktop_menu and section.settings.desktop_menu.links != blank %}
+      <ul class="nav-list-desk desktop-only">
+        {% for link in section.settings.desktop_menu.links %}
+          <li class="nav-item-desk {{ link.title | handleize }} {% if link.links != blank %}has-megamenu{% endif %}">
+            <a
+              href="{{ link.url }}"
+              class="nav-link-desk"
+              style="color: {{ section.settings.menu_text_color }};"
+            >
+              {{ link.title }}
+            </a>
+
+            {% if link.links != blank %}
+              <div class="dropdown-desk">
+                <div class="dropdown-grid-desk {{ link.title | handleize }}-submenu">
+                  {%- assign submenu_image = blank -%}
+                  {%- assign submenu_url = link.url -%}
+                  {%- assign submenu_title = link.title -%}
+
+                  {%- if link.type == 'collection_link' and link.object != blank -%}
+                    {%- assign submenu_image = link.object.metafields.custom.sub_menu_image -%}
+                  {%- endif -%}
+
+                  {%- if submenu_image == blank and link.links != blank -%}
+                    {%- for child in link.links -%}
+                      {%- if child.type == 'collection_link'
+                        and child.object.metafields.custom.sub_menu_image != blank
+                      -%}
+                        {%- assign submenu_image = child.object.metafields.custom.sub_menu_image -%}
+                        {%- assign submenu_url = child.url -%}
+                        {%- assign submenu_title = child.title -%}
+                        {%- break -%}
+                      {%- endif -%}
+                    {%- endfor -%}
+                  {%- endif -%}
+
+                  {% for child in link.links %}
+                    <div class="dropdown-col grid-w {{ child.title | handleize }}">
+                      <a
+                        href="{{ child.url }}"
+                        class="col-heading"
+                        style="color: {{ section.settings.submenu_text_color }};"
+                      >
+                        {{ child.title }}
+                      </a>
+                      {% if child.links != blank %}
+                        <ul>
+                          {% for subchild in child.links %}
+                            <li class="{{ subchild.title | handleize }}">
+                              <a
+                                class="subcol-link"
+                                href="{{ subchild.url }}"
+                                style="color: {{ section.settings.submenu_text_color }};"
+                              >
+                                {{ subchild.title }}
+                              </a>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      {% endif %}
+                    </div>
+                  {% endfor %}
+
+                  {% comment %}
+                    {% if submenu_image != blank %}
+                      <div class="dropdown-img-menu grid-w">
+                        <a href="{{ submenu_url }}" class="dropdown-img-link">
+                          <img src="{{ submenu_image | img_url: '400x' }}" alt="{{ submenu_title | escape }}" height="auto" width="auto">
+                          <span class="dropdown-img-title">{{ submenu_title }}</span>
+                        </a>
+                      </div>
+                    {% endif %}
+                  {% endcomment %}
+
+                  {%- assign handle = link.title | handle -%}
+                  {%- assign mega_menu = shop.metaobjects.mega_menu_option[handle] -%}
+
+                  {% if mega_menu %}
+                    {% if mega_menu.image_1 %}
+                      <div class="mega-card">
+                        {% if mega_menu.link_1 != blank %}
+                          <a href="{{ mega_menu.link_1 }}" aria-label="Shop {{ mega_menu.link_1 | strip_html }}">
+                        {% endif %}
+                        <img
+                          src="{{ mega_menu.image_1 | image_url: width: 400 }}"
+                          alt="{{ mega_menu.title_1 | strip_html }}"
+                          height="auto"
+                          width="auto"
+                        >
+                        {% if mega_menu.title_1 %}
+                          <div class="mega-title">{{ mega_menu.title_1 | metafield_tag }}</div>
+                        {% endif %}
+                        {% if mega_menu.sub_title_1 %}
+                          <div class="mega-subtitle">{{ mega_menu.sub_title_1 | metafield_tag }}</div>
+                        {% endif %}
+
+                        {% if mega_menu.link_1 != blank %}
+                          </a>
+                        {% endif %}
+                      </div>
+                    {% endif %}
+
+                    {% if mega_menu.image_2 %}
+                      <div class="mega-card">
+                        {% if mega_menu.link_2 != blank %}
+                          <a href="{{ mega_menu.link_2 }}" aria-label="Shop {{ mega_menu.link_2 | strip_html }}">
+                        {% endif %}
+                        <img
+                          src="{{ mega_menu.image_2 | image_url: width: 400 }}"
+                          alt="{{ mega_menu.title_2 | strip_html }}"
+                          height="auto"
+                          width="auto"
+                        >
+                        {% if mega_menu.title_2 %}
+                          <div class="mega-title">{{ mega_menu.title_2 | metafield_tag }}</div>
+                        {% endif %}
+                        {% if mega_menu.sub_title_2 %}
+                          <div class="mega-subtitle">{{ mega_menu.sub_title_2 | metafield_tag }}</div>
+                        {% endif %}
+
+                        {% if mega_menu.link_2 != blank %}
+                          </a>
+                        {% endif %}
+                      </div>
+                    {% endif %}
+
+                    {% if mega_menu.image_3 %}
+                      <div class="mega-card">
+                        {% if mega_menu.link_3 != blank %}
+                          <a href="{{ mega_menu.link_3 }}" aria-label="Shop {{ mega_menu.link_3 | strip_html }}">
+                        {% endif %}
+                        <img
+                          src="{{ mega_menu.image_3 | image_url: width: 400 }}"
+                          alt="{{ mega_menu.title_3 | strip_html }}"
+                          height="auto"
+                          width="auto"
+                        >
+                        {% if mega_menu.title_3 %}
+                          <div class="mega-title">{{ mega_menu.title_3 | metafield_tag }}</div>
+                        {% endif %}
+                        {% if mega_menu.sub_title_3 %}
+                          <div class="mega-subtitle">{{ mega_menu.sub_title_3 | metafield_tag }}</div>
+                        {% endif %}
+
+                        {% if mega_menu.link_3 != blank %}
+                          </a>
+                        {% endif %}
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                </div>
+              </div>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if section.settings.mobile_menu and section.settings.mobile_menu.links != blank %}
+      <ul class="nav-list-desk mobile-only">
+        {% for link in section.settings.mobile_menu.links %}
+          <li class="nav-item-desk {{ link.title | handleize }}">
+            <a href="{{ link.url }}" class="nav-link-desk" style="color: {{ section.settings.menu_text_color }};">
+              {{ link.title }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+</nav>
+
+<script>
+  $(document).ready(function () {
+    // Check if .girls-submenu exists and instantly append .womens dropdown to .outerwear for Girls
+    $('.girls-submenu .dropdown-col.grid-w.womens').appendTo('.girls-submenu .dropdown-col.grid-w.outerwear');
+  });
+</script>

@@ -1,0 +1,559 @@
+{{ 'menu-custom.css' | asset_url | stylesheet_tag }}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+<div class="mobile-menuWrap">
+  <div class="mobile-menu-toggle">
+    <button id="menuToggleBtn" aria-label="Toggle Menu">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </div>
+
+  <div class="lola-mobile-menu" id="mobileMenu">
+    <div class="lola-menu-overlay"></div>
+
+    <div class="lola-menu-content" id="mainMenu">
+      <div class="lola-menu-topbar">
+        <button class="lola-menu-x" id="closeMenu" aria-label="Close Menu">×</button>
+        {% if customer %}
+  <a class="lola-menu-auth" href="/account">My Account</a>
+{% else %}
+  <a class="lola-menu-auth" href="/account">Hey, Sign in / Sign Up</a>
+{% endif %}
+
+      </div>
+
+      {% assign girls_menu_handle = section.settings.girls_menu %}
+      {% assign boys_menu_handle = section.settings.boys_menu %}
+      {% assign teens_menu_handle = section.settings.teens_menu %}
+      {% assign collabs_menu_handle = section.settings.collabs_menu %}
+      {% assign cc_menu_handle = section.settings.customer_care_menu %}
+      {% assign company_menu_handle = section.settings.company_menu %}
+
+      {% assign girls_menu = linklists[girls_menu_handle].links %}
+      {% assign boys_menu = linklists[boys_menu_handle].links %}
+      {% assign teens_menu = linklists[teens_menu_handle].links %}
+      {% assign collabs_menu = linklists[collabs_menu_handle].links %}
+      {% assign cc_menu = linklists[cc_menu_handle].links %}
+      {% assign company_menu = linklists[company_menu_handle].links %}
+
+      <div class="lola-tabs" role="tablist" aria-label="Mobile Menu Tabs">
+        <button class="lola-tab lola-tab-toggle is-active" type="button" data-tab="girls">{{ section.settings.tab_label_girls | default: 'GIRLS' }}</button>
+        <button class="lola-tab lola-tab-toggle" type="button" data-tab="boys">{{ section.settings.tab_label_boys | default: 'BOYS' }}</button>
+        <button class="lola-tab-c"><a href="https://lolaandtheboys.com/collections/teen">{{ section.settings.tab_label_teens | default: 'TEENS' }}</a></button>
+        <button class="lola-tab lola-tab-toggle" type="button" data-tab="collabs">{{ section.settings.tab_label_collabs | default: 'COLLABS' }}</button>
+      </div>
+
+      <div class="lola-tabpanels">
+        <!-- GIRLS -->
+        <div class="lola-panel is-active" data-panel="girls">
+          <div class="lola-list">
+            {% for l in girls_menu %}
+              <div class="lola-row c-menu-class-{{ l.title | handleize }}{% if l.links.size > 0 %} has-submenu{% endif %}">
+                <a class="lola-row-link" href="{{ l.url }}">
+                  <span class="lola-row-text">{{ l.title }}</span>
+                  {% if l.links.size > 0 %}<span class="lola-row-arrow" aria-hidden="true"></span>{% endif %}
+                </a>
+
+                {% if l.links.size > 0 %}
+                  <div class="lola-dropdown" hidden>
+                    {% for c in l.links %}
+                      <a class="lola-drop-link" href="{{ c.url }}">{{ c.title }}</a>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+
+          {% assign girls_tiles_count = 0 %}
+          {% for b in section.blocks %}
+            {% if b.type == 'featured_tile' and b.settings.tab == 'girls' and b.settings.image != blank %}
+              {% assign girls_tiles_count = girls_tiles_count | plus: 1 %}
+            {% endif %}
+          {% endfor %}
+
+          {% if girls_tiles_count > 0 %}
+            <div class="lola-featured">
+              <div class="lola-featured-title">FEATURED</div>
+
+              <div class="swiper lola-featured-swiper" data-swiper="girls" data-count="{{ girls_tiles_count }}">
+                <div class="swiper-wrapper">
+                  {% for b in section.blocks %}
+                    {% if b.type == 'featured_tile' and b.settings.tab == 'girls' and b.settings.image != blank %}
+                      <div class="swiper-slide">
+                        <a class="lola-featured-card" href="{{ b.settings.link }}">
+                          <img src="{{ b.settings.image | image_url: width: 700 }}" alt="{{ b.settings.label | escape }}">
+                          <div class="lola-featured-label">{{ b.settings.label }}</div>
+                        </a>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+
+                <button class="lola-featured-prev" type="button" aria-label="Previous"></button>
+                <button class="lola-featured-next" type="button" aria-label="Next"></button>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+
+        <!-- BOYS -->
+        <div class="lola-panel" data-panel="boys">
+          <div class="lola-list">
+            {% for l in boys_menu %}
+              <div class="lola-row c-menu-class-{{ l.title | handleize }}{% if l.links.size > 0 %} has-submenu{% endif %}">
+                <a class="lola-row-link" href="{{ l.url }}">
+                  <span class="lola-row-text">{{ l.title }}</span>
+                  {% if l.links.size > 0 %}<span class="lola-row-arrow" aria-hidden="true"></span>{% endif %}
+                </a>
+
+                {% if l.links.size > 0 %}
+                  <div class="lola-dropdown" hidden>
+                    {% for c in l.links %}
+                      <a class="lola-drop-link" href="{{ c.url }}">{{ c.title }}</a>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+
+          {% assign boys_tiles_count = 0 %}
+          {% for b in section.blocks %}
+            {% if b.type == 'featured_tile' and b.settings.tab == 'boys' and b.settings.image != blank %}
+              {% assign boys_tiles_count = boys_tiles_count | plus: 1 %}
+            {% endif %}
+          {% endfor %}
+
+          {% if boys_tiles_count > 0 %}
+            <div class="lola-featured">
+              <div class="lola-featured-title">FEATURED</div>
+
+              <div class="swiper lola-featured-swiper" data-swiper="boys" data-count="{{ boys_tiles_count }}">
+                <div class="swiper-wrapper">
+                  {% for b in section.blocks %}
+                    {% if b.type == 'featured_tile' and b.settings.tab == 'boys' and b.settings.image != blank %}
+                      <div class="swiper-slide">
+                        <a class="lola-featured-card" href="{{ b.settings.link }}">
+                          <img src="{{ b.settings.image | image_url: width: 700 }}" alt="{{ b.settings.label | escape }}">
+                          <div class="lola-featured-label">{{ b.settings.label }}</div>
+                        </a>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+
+                <button class="lola-featured-prev" type="button" aria-label="Previous"></button>
+                <button class="lola-featured-next" type="button" aria-label="Next"></button>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+
+        <!-- TEENS -->
+        <div class="lola-panel" data-panel="teens">
+          <div class="lola-list">
+            {% for l in teens_menu %}
+              <div class="lola-row {% if l.links.size > 0 %}has-submenu{% endif %}">
+                <a class="lola-row-link" href="{{ l.url }}">
+                  <span class="lola-row-text">{{ l.title }}</span>
+                  {% if l.links.size > 0 %}<span class="lola-row-arrow" aria-hidden="true"></span>{% endif %}
+                </a>
+
+                {% if l.links.size > 0 %}
+                  <div class="lola-dropdown" hidden>
+                    {% for c in l.links %}
+                      <a class="lola-drop-link" href="{{ c.url }}">{{ c.title }}</a>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+
+          {% assign teens_tiles_count = 0 %}
+          {% for b in section.blocks %}
+            {% if b.type == 'featured_tile' and b.settings.tab == 'teens' and b.settings.image != blank %}
+              {% assign teens_tiles_count = teens_tiles_count | plus: 1 %}
+            {% endif %}
+          {% endfor %}
+
+          {% if teens_tiles_count > 0 %}
+            <div class="lola-featured">
+              <div class="lola-featured-title">FEATURED</div>
+
+              <div class="swiper lola-featured-swiper" data-swiper="teens" data-count="{{ teens_tiles_count }}">
+                <div class="swiper-wrapper">
+                  {% for b in section.blocks %}
+                    {% if b.type == 'featured_tile' and b.settings.tab == 'teens' and b.settings.image != blank %}
+                      <div class="swiper-slide">
+                        <a class="lola-featured-card" href="{{ b.settings.link }}">
+                          <img src="{{ b.settings.image | image_url: width: 700 }}" alt="{{ b.settings.label | escape }}">
+                          <div class="lola-featured-label">{{ b.settings.label }}</div>
+                        </a>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+
+                <button class="lola-featured-prev" type="button" aria-label="Previous"></button>
+                <button class="lola-featured-next" type="button" aria-label="Next"></button>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+
+        <!-- COLLABS -->
+        <div class="lola-panel" data-panel="collabs">
+          <div class="lola-list">
+            {% for l in collabs_menu %}
+              <div class="lola-row {% if l.links.size > 0 %}has-submenu{% endif %}">
+                <a class="lola-row-link" href="{{ l.url }}">
+                  <span class="lola-row-text">{{ l.title }}</span>
+                  {% if l.links.size > 0 %}<span class="lola-row-arrow" aria-hidden="true"></span>{% endif %}
+                </a>
+
+                {% if l.links.size > 0 %}
+                  <div class="lola-dropdown" hidden>
+                    {% for c in l.links %}
+                      <a class="lola-drop-link" href="{{ c.url }}">{{ c.title }}</a>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+
+          {% assign collabs_tiles_count = 0 %}
+          {% for b in section.blocks %}
+            {% if b.type == 'featured_tile' and b.settings.tab == 'collabs' and b.settings.image != blank %}
+              {% assign collabs_tiles_count = collabs_tiles_count | plus: 1 %}
+            {% endif %}
+          {% endfor %}
+
+          {% if collabs_tiles_count > 0 %}
+            <div class="lola-featured">
+              <div class="lola-featured-title">FEATURED</div>
+
+              <div class="swiper lola-featured-swiper" data-swiper="collabs" data-count="{{ collabs_tiles_count }}">
+                <div class="swiper-wrapper">
+                  {% for b in section.blocks %}
+                    {% if b.type == 'featured_tile' and b.settings.tab == 'collabs' and b.settings.image != blank %}
+                      <div class="swiper-slide">
+                        <a class="lola-featured-card" href="{{ b.settings.link }}">
+                          <img src="{{ b.settings.image | image_url: width: 700 }}" alt="{{ b.settings.label | escape }}">
+                          <div class="lola-featured-label">{{ b.settings.label }}</div>
+                        </a>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+
+                <button class="lola-featured-prev" type="button" aria-label="Previous"></button>
+                <button class="lola-featured-next" type="button" aria-label="Next"></button>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="lola-bottom">
+        <a class="lola-bottom-link fav-link-mob" href="https://lolaandtheboys.com/apps/wishlist">
+          <span class="lola-bottom-text">MY FAVORITES</span>
+        <div class="wishlist-menu-mob-c"> <svg viewBox="0 0 64 64"> <path d="M32.012,59.616c-1.119-.521-2.365-1.141-3.707-1.859a79.264,79.264,0,0,1-11.694-7.614C6.316,42,.266,32.6.254,22.076,0.244,12.358,7.871,4.506,17.232,4.5a16.661,16.661,0,0,1,11.891,4.99l2.837,2.889,2.827-2.9a16.639,16.639,0,0,1,11.874-5.02h0c9.368-.01,17.008,7.815,17.021,17.539,0.015,10.533-6.022,19.96-16.312,28.128a79.314,79.314,0,0,1-11.661,7.63C34.369,58.472,33.127,59.094,32.012,59.616Z"></path></svg><div id="wishlist-count1"><span id="wishlist-count-mob-menu">0</span></div></div>
+        </a>
+
+        <div class="lola-acc">
+          <a class="lola-bottom-link lola-acc-toggle" href="#">
+            <span class="lola-bottom-text">CUSTOMER CARE</span>
+            <span class="lola-bottom-plus" aria-hidden="true">+</span>
+          </a>
+          <div class="lola-acc-panel" hidden>
+            {% for l in cc_menu %}
+              <a class="lola-acc-item" href="{{ l.url }}">{{ l.title }}</a>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="lola-acc">
+          <a class="lola-bottom-link lola-acc-toggle" href="#">
+            <span class="lola-bottom-text">COMPANY</span>
+            <span class="lola-bottom-plus" aria-hidden="true">+</span>
+          </a>
+          <div class="lola-acc-panel" hidden>
+            {% for l in company_menu %}
+              <a class="lola-acc-item" href="{{ l.url }}">{{ l.title }}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+{% schema %}
+{
+  "name": "Mobile Menu Custom",
+  "settings": [
+    { "type": "link_list", "id": "girls_menu", "label": "Girls Menu (mobile)" },
+    { "type": "link_list", "id": "boys_menu", "label": "Boys Menu (mobile)" },
+    { "type": "link_list", "id": "teens_menu", "label": "Teens Menu (mobile)" },
+    { "type": "link_list", "id": "collabs_menu", "label": "Collabs Menu (mobile)" },
+    { "type": "link_list", "id": "customer_care_menu", "label": "Customer Care Menu" },
+    { "type": "link_list", "id": "company_menu", "label": "Company Menu" },
+
+    { "type": "text", "id": "tab_label_girls", "label": "Tab Label: Girls", "default": "GIRLS" },
+    { "type": "text", "id": "tab_label_boys", "label": "Tab Label: Boys", "default": "BOYS" },
+    { "type": "text", "id": "tab_label_teens", "label": "Tab Label: Teens", "default": "TEENS" },
+    { "type": "text", "id": "tab_label_collabs", "label": "Tab Label: Collabs", "default": "COLLABS" }
+  ],
+  "blocks": [
+    {
+      "type": "featured_tile",
+      "name": "Featured Tile",
+      "settings": [
+        {
+          "type": "select",
+          "id": "tab",
+          "label": "Tab",
+          "options": [
+            { "value": "girls", "label": "Girls" },
+            { "value": "boys", "label": "Boys" },
+            { "value": "teens", "label": "Teens" },
+            { "value": "collabs", "label": "Collabs" }
+          ],
+          "default": "girls"
+        },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "label", "label": "Label" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Mobile Menu Custom", "category": "Navigation" }
+  ]
+}
+{% endschema %}
+
+<script>
+
+$('.c-menu-class-sale-up-to-70-off').replaceWith(
+  '<a class="lola-row-link" href="/collections/sale-on-sale"><span class="lola-row-text" style="font-family: inherit;">SALE&nbsp;&nbsp;&nbsp;<span class="sale-up-light">Up to 70% Off</span></span></a>'
+);
+
+
+$(document).on('click', '.lola-acc-toggle', function () {
+  const $box = $('#mainMenu');
+
+  setTimeout(() => {
+    $box.stop(true).animate(
+      { scrollTop: $box[0].scrollHeight },
+      1500 // slower scroll (try 2000 for very slow)
+    );
+  }, 350);
+});
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const mobileMenu = document.getElementById("mobileMenu");
+  if (!mobileMenu) return;
+
+  const overlay = mobileMenu.querySelector(".lola-menu-overlay");
+  const closeBtn = document.getElementById("closeMenu");
+  const headerToggle = document.getElementById("headerMobileToggle");
+
+  function isMobile(){ return window.matchMedia("(max-width: 768px)").matches; }
+
+  function resetUI(){
+    const tabs = mobileMenu.querySelectorAll(".lola-tab-toggle");
+    const panels = mobileMenu.querySelectorAll(".lola-panel");
+
+    tabs.forEach((t,i)=>t.classList.toggle("is-active", i===0));
+    panels.forEach((p,i)=>p.classList.toggle("is-active", i===0));
+
+    mobileMenu.querySelectorAll(".lola-row.has-submenu").forEach(r=>r.classList.remove("is-open"));
+    mobileMenu.querySelectorAll(".lola-dropdown").forEach(d=>d.setAttribute("hidden",""));
+
+    mobileMenu.querySelectorAll(".lola-acc").forEach(a=>a.classList.remove("is-open"));
+    mobileMenu.querySelectorAll(".lola-acc-panel").forEach(p=>p.setAttribute("hidden",""));
+  }
+
+function closeMenu(){
+  if (!mobileMenu.classList.contains("active")) return;
+
+  mobileMenu.classList.add("closing");
+  document.body.classList.remove("menu-open");
+
+  const done = (e) => {
+    if (e.propertyName !== "transform") return;
+    mobileMenu.classList.remove("active");
+    mobileMenu.classList.remove("closing");
+    resetUI();
+    mobileMenu.removeEventListener("transitionend", done);
+  };
+
+  mobileMenu.addEventListener("transitionend", done);
+}
+
+function openMenu(){
+  resetUI();
+  mobileMenu.classList.remove("closing");
+  mobileMenu.classList.add("active");
+  document.body.classList.add("menu-open");
+  setTimeout(()=>initFeaturedSwipers(mobileMenu), 60);
+}
+
+
+  closeBtn && closeBtn.addEventListener("click", closeMenu);
+  overlay && overlay.addEventListener("click", closeMenu);
+
+  if (headerToggle) {
+    headerToggle.addEventListener("click", (e) => {
+      e.preventDefault();
+      openMenu();
+    });
+  }
+
+  const tabs = mobileMenu.querySelectorAll(".lola-tab");
+  const panels = mobileMenu.querySelectorAll(".lola-panel");
+
+  tabs.forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      if(!isMobile()) return;
+
+      tabs.forEach(b=>b.classList.remove("is-active"));
+      btn.classList.add("is-active");
+
+      const key = btn.getAttribute("data-tab");
+      panels.forEach(p=>p.classList.toggle("is-active", p.getAttribute("data-panel")===key));
+
+      mobileMenu.querySelectorAll(".lola-row.has-submenu").forEach(r=>r.classList.remove("is-open"));
+      mobileMenu.querySelectorAll(".lola-dropdown").forEach(d=>d.setAttribute("hidden",""));
+
+      setTimeout(()=>{
+        mobileMenu.querySelectorAll(".lola-featured-swiper").forEach(el=>{
+          if (el.__SWIPER__) el.__SWIPER__.update();
+        });
+      }, 60);
+    });
+  });
+
+  mobileMenu.querySelectorAll(".lola-row.has-submenu > .lola-row-link").forEach(link=>{
+    link.addEventListener("click",(e)=>{
+      if(!isMobile()) return;
+      e.preventDefault();
+
+      const row = link.closest(".lola-row");
+      const dd = row.querySelector(".lola-dropdown");
+      if(!dd) return;
+
+      const panel = row.closest(".lola-panel");
+      panel.querySelectorAll(".lola-row.has-submenu").forEach(r=>{
+        if(r!==row){
+          r.classList.remove("is-open");
+          const d = r.querySelector(".lola-dropdown");
+          if(d) d.setAttribute("hidden","");
+        }
+      });
+
+      const willOpen = dd.hasAttribute("hidden");
+      row.classList.toggle("is-open", willOpen);
+      if(willOpen) dd.removeAttribute("hidden");
+      else dd.setAttribute("hidden","");
+    }, {passive:false});
+  });
+
+  mobileMenu.querySelectorAll(".lola-acc-toggle").forEach(btn=>{
+    btn.addEventListener("click",(e)=>{
+      if(!isMobile()) return;
+      e.preventDefault();
+
+      const acc = btn.closest(".lola-acc");
+      const panel = acc.querySelector(".lola-acc-panel");
+      if(!panel) return;
+
+      const bottom = acc.closest(".lola-bottom");
+      bottom.querySelectorAll(".lola-acc").forEach(a=>{
+        if(a!==acc){
+          a.classList.remove("is-open");
+          const p = a.querySelector(".lola-acc-panel");
+          if(p) p.setAttribute("hidden","");
+        }
+      });
+
+      const willOpen = panel.hasAttribute("hidden");
+      acc.classList.toggle("is-open", willOpen);
+      if(willOpen) panel.removeAttribute("hidden");
+      else panel.setAttribute("hidden","");
+    }, {passive:false});
+  });
+
+  function initFeaturedSwipers(scope){
+    if (typeof Swiper === "undefined") return;
+
+    const containers = (scope || document).querySelectorAll(".lola-featured-swiper");
+    containers.forEach((el)=>{
+      if (el.__SWIPER__) return;
+
+      const count = parseInt(el.getAttribute("data-count") || "0", 10);
+
+      el.__SWIPER__ = new Swiper(el, {
+        loop: true,
+        slidesPerView: 3,
+        slidesPerGroup: 1,
+        spaceBetween: 10,
+        navigation: {
+          nextEl: el.querySelector(".lola-featured-next"),
+          prevEl: el.querySelector(".lola-featured-prev")
+        },
+        watchOverflow: true
+      });
+
+      if (count <= 3) {
+        el.querySelector(".lola-featured-prev").style.display = "none";
+        el.querySelector(".lola-featured-next").style.display = "none";
+      }
+    });
+  }
+});
+
+(() => {
+  const mq = matchMedia('(max-width:768px)');
+  if (!mq.matches) return;
+
+  const t = (el, open) => {
+    if (!el) return;
+    el.style.display = 'block';
+
+    if (open) {
+      el.style.height = '0px';
+      el.offsetHeight;
+      el.style.height = el.scrollHeight + 'px';
+      el.addEventListener('transitionend', () => { el.style.height = 'auto'; }, { once: true });
+    } else {
+      el.style.height = el.scrollHeight + 'px';
+      el.offsetHeight;
+      el.style.height = '0px';
+    }
+  };
+
+  const sync = () => {
+    document.querySelectorAll('.lola-row').forEach(r => {
+      const dd = r.querySelector('.lola-dropdown') || (r.nextElementSibling?.classList.contains('lola-dropdown') ? r.nextElementSibling : null);
+      t(dd, r.classList.contains('is-open'));
+    });
+    document.querySelectorAll('.lola-acc').forEach(a => t(a.querySelector('.lola-acc-panel'), a.classList.contains('is-open')));
+  };
+
+  new MutationObserver(sync).observe(document.body, { subtree:true, attributes:true, attributeFilter:['class'] });
+  addEventListener('load', sync);
+})();
+
+</script>

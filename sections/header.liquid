@@ -24,8 +24,6 @@
 
 
 <header id="header" class="mobile_nav-fixed--{{ section.settings.fixed_header }}">
-
-
   
   {% comment %}
   {% if section.settings.promo_text != blank %}
@@ -36,12 +34,22 @@
   {% endif %}
   {% endcomment %}
   <div class="top_bar clearfix">
-    <a class="mobile_nav dropdown_link" data-dropdown-rel="menu" data-no-instant="true">
-      <div>
+ <a
+  id="headerMobileToggle"
+  class="custom-mobile-menu-c-togggle"
+  href="#mobileMenu"
+  role="button"
+  aria-label="Open mobile menu"
+  aria-controls="mobileMenu"
+  aria-expanded="false">
+
+
+      
+      <div class="menu-bars-c">
         <span></span>
         <span></span>
         <span></span>
-        <span></span>
+
       </div>
       <span class="menu_title">{{ 'layout.general.menu' | t }}</span>
     </a>
@@ -395,54 +403,9 @@
           {{ logo }}
          {% endif %}
         
-          <div class="header-mega-menu">
-            <div class="menu-container">
-              <div class="menu-container-row">
-                <nav aria-label="Main menu">
-                <ul class="site-nav list--inline" id="sitenav"></ul>
-               </nav>
-              </div>
-            </div>
-          </div>
-      
-         {% comment %}
-        {% if section.settings.logo_position == "left" or section.settings.menu_position == "block" %}
-          {{ logo }}
-          <div class="nav">
-            <ul class="menu {{ section.settings.menu_alignment }} clearfix">
-              {{ menu_left }}
-              {{ menu_right }}
-            </ul>
-          </div>
-        {% else %}
-          <div class="nav">
-            <ul class="menu {{ section.settings.menu_alignment }} clearfix">
-              {{ menu_left }}
-            </ul>
-          </div>
-          {{ logo }}
-          <div class="nav">
-            <ul class="menu {% if section.settings.menu_alignment == 'align_left' %}align_right{% elsif section.settings.menu_alignment == 'align_right' %}align_left{% else %}{{ section.settings.menu_alignment }}{% endif %} clearfix">
-              {{ menu_right }}
-            </ul>
-          </div>
-        {% endif %}
-        
-        {% if section.settings.search_enabled %}
-          <div class="dropdown_container center" data-dropdown="search">
-            <div class="dropdown">
-              <form action="/search" class="header_search_form">
-                {% if settings.search_option != 'everything' %}
-                  <input type="hidden" name="type" value="product" />
-                {% endif %}
-                <span class="icon-search search-submit"></span>
-                <input type="text" name="q" placeholder="{{ 'general.search.title' | t: shop_name: shop.name }}" autocapitalize="off" autocomplete="off" autocorrect="off" class="search-terms" />
-              </form>
-            </div>
-          </div>
-        {% endif %}
-        {% endcomment %}
-        
+         <div class="menu-desktop-c">
+           {% render 'menu-desktop-c' %} 
+         </div>
         {% include 'sub-menu' with section.settings.main_linklist %}
         {% include 'sub-menu' with section.settings.main_linklist2 %}
       </div>
@@ -942,41 +905,90 @@ font-weight:300 !important;
   "name": "Header",
   "class": "header-section",
   "settings": [
-  {
-    "type": "collection",
-    "id": "collection",
-    "label": "Collection"
-  },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+
+    {
+     "type": "header",
+     "content": "Desktop Menu Custom"
+    },
+
+    {
+      "type": "link_list",
+      "id": "desktop_menu",
+      "label": "Select Desktop Menu"
+    },
+    
+    {
+      "type": "link_list",
+      "id": "mobile_menu",
+      "label": "Mobile Menu"
+    },
+
+     {
+      "type": "link_list",
+      "id": "mobile_mega_menu",
+      "label": "Mobile Mega Menu"
+    },
+
+    {
+      "type": "color",
+      "id": "menu_bg_color",
+      "label": "Background Color",
+      "default": "#000"
+    },
+
+    {
+      "type": "color",
+      "id": "menu_text_color",
+      "label": "Text Color",
+      "default": "#fff"
+    },
+
+    {
+      "type": "color",
+      "id": "submenu_text_color",
+      "label": "Sub Menu Text",
+      "default": "#000"
+    },
     
     {
      "type": "header",
      "content": "Top bar"
     },
-  {
+
+    {
 			"type":"checkbox",
 			"id":"show_announcement_bar",
 			"label":"Show Annoucement Bar"
 		},
-      {
-      	"type":"checkbox",
+
+    {
+      "type":"checkbox",
 			"id":"show_countdown",
 			"label":"Show Countdown"
 		},
+
     {
-      	"type":"text",
+      "type":"text",
 			"id":"countdown_end_date",
 			"label":"Date Countdown"
 		},
-        {
-          "type": "color",
-          "id": "bck_clr",
-          "label": "Background Color"
-        },
-        {
-          "type": "url",
-          "id": "Annouce_url",
-          "label": "Link to"
-        },
+
+    {
+      "type": "color",
+      "id": "bck_clr",
+      "label": "Background Color"
+    },
+
+    {
+      "type": "url",
+      "id": "Annouce_url",
+      "label": "Link to"
+    },
         {
           "type": "color",
           "id": "txt_clr",
@@ -1212,33 +1224,32 @@ font-weight:300 !important;
 {% endschema %}
 <script>
 
- function updateWishlistCount() {
-    var wishlistCountSpan = document.querySelector('.wk-counter');
-    var wishlistCountValueSpan1 = document.getElementById('wishlist-count1-value');
-    var wishlistCountValueSpan2 = document.getElementById('wishlist-count2-value');
+function updateWishlistCount() {
+  var wishlistCountSpan = document.querySelector('.wk-counter');
 
-    wishlistCountValueSpan1.innerText = wishlistCountSpan ? wishlistCountSpan.innerText : '0';
-    wishlistCountValueSpan2.innerText = wishlistCountSpan ? wishlistCountSpan.innerText : '0';
+  var count = wishlistCountSpan ? (wishlistCountSpan.innerText || '').trim() : '0';
+  if (!count) count = '0';
+
+  var wishlistCountValueSpan1 = document.getElementById('wishlist-count1-value');
+  var wishlistCountValueSpan2 = document.getElementById('wishlist-count2-value');
+  var wishlistCountMobMenu = document.getElementById('wishlist-count-mob-menu');
+
+  if (wishlistCountValueSpan1) wishlistCountValueSpan1.innerText = count;
+  if (wishlistCountValueSpan2) wishlistCountValueSpan2.innerText = count;
+  if (wishlistCountMobMenu) wishlistCountMobMenu.innerText = count;
 }
 
 function setupButtonClickEventListeners() {
-    var wkButtons = document.querySelectorAll('.wk-button');
-    wkButtons.forEach(function (button) {
-        button.addEventListener('click', updateOnButtonClick);
-    });
-}
-
-function updateOnButtonClick() {
-    updateWishlistCount();
+  document.querySelectorAll('.wk-button').forEach(function (button) {
+    button.addEventListener('click', updateWishlistCount);
+  });
 }
 
 updateWishlistCount();
-
 setupButtonClickEventListeners();
 
-setInterval(function () {
-    updateWishlistCount();
-}, 0);
+// don't use 0ms interval (it hammers the browser)
+setInterval(updateWishlistCount, 500);
 
 
 function openFullWidthSearch() {

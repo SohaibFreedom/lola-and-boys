@@ -253,6 +253,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
  
     {% section 'header' %}
+    {% section 'mobile-menu' %}
   
     {% section 'wishlist-drawer' %}
 
@@ -673,71 +674,17 @@ btn.on('click', function(e) {
   });
 
 
-$(document).ready(function() {
-if(window.location.href.indexOf('sculpting-swim-sarong-in-leopard') > -1) {
-  window.location.href = 'https://stylest.com/products/sculpting-swim-bodysuit-leopard';
-} else if (window.location.href.indexOf('stylest-sculpting-swim-sarong') > -1){
-  window.location.href = 'https://stylest.com/products/sculpting-swim-sarong-navy-palm-print';
-}
-  else if (window.location.href.indexOf('stylest-puff-sleeve-zip-pink') > -1){
-  window.location.href = 'https://stylest.com/products/sculpting-puff-sleeve-zip-pink-palm-print';
-}
-   else if (window.location.href.indexOf('sculpting-puff-sleeve-zip-swimsuit-in-ombre') > -1){
-  window.location.href = 'https://stylest.com/products/sculpting-puff-sleeve-zip-ombre';
-}
 
-  setTimeout(function() { 
-       $('.collection-template-section [d-handle="copy-of-stylest-puff-sleeve-zip-pink"] a').attr('href', 'https://stylest.com/products/sculpting-puff-sleeve-zip-pink-palm-print');
-    $('.collection-template-section [d-handle="stylest-sculpting-swim-sarong"] a').attr('href', 'https://stylest.com/products/sculpting-swim-sarong-navy-palm-print');
-    }, 1000);
-
-  setTimeout(function() { 
-$('.product_section .gPreorderBtn').click(function(){
-
-	
-	   setTimeout(function() { 
-        	$('div#offcanvas-right').addClass('cart-drawer-open');
-    }, 2000);
-
-});
-	  }, 1000);
-  
-   }); // end ready  
 
 
       
-// Overlay for globo menu app and disable scroll
-      
-document.addEventListener('DOMContentLoaded', () => {
-    const mobileNav = document.querySelector('.mobile_nav');
-    const dropdownContainer = document.querySelector('.dropdown_container');
-    const dropdownOverlay = document.querySelector('.dropdown-overlay-globomenu'); // Ensure this class exists in your HTML
-    const body = document.body;
-
-    const toggleDropdown = () => {
-        const isOpen = dropdownContainer.classList.toggle('dropdown_open-custom');
-        body.classList.toggle('nav-overflow-hidden', isOpen);
-        
-        // Show or hide the overlay based on dropdown state
-        dropdownOverlay.style.display = isOpen ? 'block' : 'none';
-    };
-
-    mobileNav.addEventListener('click', toggleDropdown);
-
-    document.addEventListener('click', (event) => {
-        if (!mobileNav.contains(event.target) && !dropdownContainer.contains(event.target) && dropdownContainer.classList.contains('dropdown_open-custom')) {
-            toggleDropdown();
-        }
-    });
-});
-
 
       
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
 {% include 'globo.filter.action' %}
-  <script src="https://zooomyapps.com/wishlist/ZooomyColl.js" data-shop-id="lola-and-the-boys-2.myshopify.com" data-cus-id="{{customer.id}}" data-cus-email="{{customer.email}}" data-cus-name="{{customer.first_name}} {{customer.last_name}}" data-page="{{template}}"></script>
+
 
 <script type="application/json" data-ajax-cart-initial-state >
   {{ cart | json }}
