@@ -34,7 +34,7 @@ span.money {
   object-position: top;
 }
 
-.swiper-slide {
+.product-media .swiper-slide {
   width: 50% !important;
   flex: 0 0 50% !important;
 }
@@ -105,10 +105,7 @@ span.money {
     gap: 0 !important;
   }
 
-  .swiper-slide {
-    width: 80% !important;
-    flex: 0 0 80% !important;
-  }
+
 
   .swiper-button-next,
   .swiper-button-prev {
