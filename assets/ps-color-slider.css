@@ -167,8 +167,8 @@ span.money {
     display: block !important;
   }
 
-  .product-media-slider-wrapper .swiper-button-next:after,
-  .product-media-slider-wrapper .swiper-button-prev:after {
+.swiper-button-next:after,
+.swiper-button-prev:after {
     display: none !important;
   }
 
