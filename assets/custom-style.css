@@ -126,7 +126,7 @@ color: #fff !important;
     width: 17px;
     height: 17px;
     border-radius: 50px;
-    color: #fff;
+    color: #fff !important;
     align-items: center;
     justify-content: center;
     position: absolute;
