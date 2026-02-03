@@ -3694,3 +3694,28 @@ jQuery(document).ready(function() {
     }
  });
 });
+
+
+
+(function () {
+  function fixRebuyAriaLevel() {
+    document
+      .querySelectorAll('a.rebuy-product-title.clickable[aria-level], a.rebuy-product-title[aria-level]')
+      .forEach(function (a) {
+        a.removeAttribute('aria-level');
+      });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    fixRebuyAriaLevel();
+
+    var tries = 0;
+    var maxTries = 25;   // 25 * 200ms = 5 seconds only
+    var timer = setInterval(function () {
+      fixRebuyAriaLevel();
+      tries++;
+      if (tries >= maxTries) clearInterval(timer);
+    }, 200);
+  });
+})();
+
