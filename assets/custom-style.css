@@ -134,9 +134,10 @@ color: #fff !important;
     left: 26px;
     padding:0;
 }
-#header .cart_container a.icon-cart.mini_cart {
-        left: -12px;
-    }
+    #header .cart_container a.icon-cart.mini_cart {
+        left: -12px !important;
+        top: 7px !important;
+      }
  #header .wishlist-mobile-container svg {
         height: 22px !important;
         width: 22px !important;
