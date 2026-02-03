@@ -67,7 +67,7 @@
     </a>
     {% if section.settings.search_enabled %}
       <!-- <a href="/search" class="icon-search dropdown_link" title="{{ 'general.search.title' | t | escape }}" data-dropdown-rel="search"></a> -->
-      <ul class="list-style-none">
+      <ul class="list-style-none" role="list">
       <li class="search_link">
                     <a href="javascript:void(0);" onclick="openFullWidthSearch()" class="icon-search dropdown_link" title="{{ 'general.search.title' | t | escape }}" data-dropdown-rel="search"></a>
                   </li></ul>
@@ -192,7 +192,7 @@
         {% capture logo %}
           <div class="logo text-align--{{ section.settings.logo_alignment }}">
             <div class="main-container align-items-center justify-content-between logo-inner-main">
-                <ul class="list-style-none">
+                <ul class="list-style-none" role="list">
                 <li class="search_link">
                     <a href="javascript:void(0);" onclick="openFullWidthSearch()" class="icon-search dropdown_link" title="{{ 'general.search.title' | t | escape }}" data-dropdown-rel="search"></a>
                   </li>
