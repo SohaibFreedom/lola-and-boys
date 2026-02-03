@@ -2,6 +2,11 @@
 .product-quantity-box {
     display: none !important;
 }
+p.modal_price {
+    margin-bottom: 0;
+    padding-top: 8px;
+}
+
 .modal_price * {
     font-family: "Inter" !important;
     font-weight:500 !important;
