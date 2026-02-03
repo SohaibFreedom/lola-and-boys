@@ -9,6 +9,9 @@
   font-display: swap;
 }
 
+.header div.logo img {
+    max-width: 180px;
+}
 
 .product-list span.price {
       font-family: "Inter" !important;
