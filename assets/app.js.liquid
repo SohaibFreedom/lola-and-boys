@@ -3698,6 +3698,31 @@ jQuery(document).ready(function() {
 
 
 (function () {
+                document.addEventListener("DOMContentLoaded", () => {
+  const header = document.querySelector('.header-custom-c'); // or your header selector
+  const content = document.querySelector('.content-main');
+  if (!header || !content) return;
+
+  const setOffset = () => {
+    const headerHeight = header.offsetHeight;
+    content.style.marginTop = `${headerHeight}px`;
+  };
+
+  // Run once initially
+  setOffset();
+
+  // Run again after all resources loaded (images/fonts can change height)
+  window.addEventListener('load', setOffset);
+
+  // Run on resize (in case of responsive height change)
+  window.addEventListener('resize', () => requestAnimationFrame(setOffset));
+
+  // Watch for DOM changes in header (e.g. countdown added/removed)
+  const observer = new MutationObserver(() => setOffset());
+  observer.observe(header, { childList: true, subtree: true, attributes: true });
+});
+
+
   function fixRebuyAriaLevel() {
     document
       .querySelectorAll('a.rebuy-product-title.clickable[aria-level], a.rebuy-product-title[aria-level]')
@@ -3717,5 +3742,9 @@ jQuery(document).ready(function() {
       if (tries >= maxTries) clearInterval(timer);
     }, 200);
   });
+
 })();
+
+
+
 
