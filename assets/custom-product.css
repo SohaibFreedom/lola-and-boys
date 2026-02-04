@@ -162,6 +162,7 @@ body.product span.wk-text {
     padding-left: 16px;
     padding-right: 16px;
     order: 10;
+    margin:0 !important;
   }
 
   .product-page.product-full .product-info .product-title-row{
