@@ -223,6 +223,9 @@ body.product span.wk-text {
   .swatch .option_title {
     margin: 0 0 .5em 0;
 }
+div#rebuy-widget-207164 {
+    padding: 0;
+}
 }
 .product-page.product-full wishlist-button-block .wk-text{
   display:none!important;
