@@ -226,6 +226,9 @@ body.product span.wk-text {
 div#rebuy-widget-207164 {
     padding: 0;
 }
+.yotpo-main-widget-tabs:not(.pp-embedded-displayed) {
+    margin-top: 15px;
+}
 }
 .product-page.product-full wishlist-button-block .wk-text{
   display:none!important;
