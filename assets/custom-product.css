@@ -162,7 +162,18 @@ body.product span.wk-text {
     padding-left: 16px;
     padding-right: 16px;
     order: 10;
+    margin: 0 !important;
   }
+
+  .swatch .option_title {
+    margin:0 0 .5em 0;
+}
+div#rebuy-widget-207164 {
+    padding: 0;
+}
+.ugc-storefront-widgets-tabs-container.yotpo-main-widget-tabs {
+    margin-top: 10px;
+}
 
   .product-page.product-full .product-info .product-title-row{
     order: 1;
