@@ -220,6 +220,9 @@ body.product span.wk-text {
   #PsColorSlider-{{ product.id }} .swiper-slide.ps-inline-zoomed img.slider-media {
     touch-action: none !important;
   }
+  .swatch .option_title {
+    margin: 0 0 .5em 0;
+}
 }
 .product-page.product-full wishlist-button-block .wk-text{
   display:none!important;
