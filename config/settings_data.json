@@ -3927,7 +3927,7 @@
           "bck_clr": "#f790d1",
           "Annouce_url": "https://lolaandtheboys.com/collections/girls-1",
           "txt_clr": "#000000",
-          "text": "<b> FREE SHIPPING ON ORDERS OVER $200 <strong>  </strong> </b>",
+          "text": "<b> 💕 Founder Birthday Sale! Take $50 OFF $200 <strong> use code LOVE50 </strong> </b>",
           "phone_number": "",
           "top_bar_menu": "help",
           "cart_icon": "cart",
@@ -5597,11 +5597,6 @@
           "background_color": "#ffffff",
           "border_color": "#000000"
         }
-      },
-      "6097499278999377719": {
-        "type": "shopify://apps/mega-menu/blocks/app-embed/7a00835e-fe40-45a5-a615-2eb4ab697b58",
-        "disabled": false,
-        "settings": {}
       },
       "starapps-via": {
         "type": "shopify://apps/variant-image-automator/blocks/starapps-via-embed/2a01d106-3d10-48e8-ba53-5cb971217ac4",
