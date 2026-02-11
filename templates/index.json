@@ -36,6 +36,7 @@
         },
         "image_qTG7w8": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/4_6.png",
             "image_mobile": "shopify://shop_images/HP_MOBILE_BANNER_1_58787671-3f9d-45e9-80d9-798148ae23b1.png",
@@ -721,6 +722,7 @@
             "image": "shopify://shop_images/LATB_Aug2025_2V2A5391.jpg",
             "link": "https://lolaandtheboys.com/collections/fall-outerwear",
             "title1": "OUTERWEAR STYLES",
+            "title": "",
             "text": "",
             "button_label": "Shop Now",
             "button_link": "https://lolaandtheboys.com/collections/mermaid"
@@ -732,6 +734,7 @@
             "image": "shopify://shop_images/sets-disco-cherry-silk-set-lola-the-boys-1184276399_1.jpg",
             "link": "shopify://collections/silk-sets",
             "title1": "Lounge Wear",
+            "title": "",
             "text": "",
             "button_label": "Shop now",
             "button_link": "shopify://collections/silk-sets"
@@ -743,6 +746,7 @@
             "image": "shopify://shop_images/Photo_4_rev.png",
             "link": "shopify://collections/mommy-me-1",
             "title1": "Mommy + Me",
+            "title": "",
             "text": "",
             "button_label": "Shop now",
             "button_link": "shopify://collections/mommy-me-1"
