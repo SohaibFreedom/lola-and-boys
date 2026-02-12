@@ -5417,6 +5417,7 @@
           },
           "featured_tile_HaxXDf": {
             "type": "featured_tile",
+            "disabled": true,
             "settings": {
               "tab": "girls",
               "image": "shopify://shop_images/VDAY.png",
