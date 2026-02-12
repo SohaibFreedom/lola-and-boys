@@ -34,12 +34,24 @@
                   {% endif %}
                 {% if block.settings.text != blank or block.settings.button_label != blank or block.settings.title != blank and title_on_image != blank %}
                   <figcaption class="feature-overlay">
-                    <a {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %}class="link-promo" aria-label="Shop {{ block.settings.link | escape }}"></a>
+                    <a {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %}class="link-promo"></a>
                       <div class="feature-wrap">
                         {% if block.settings.title != blank %}
                           <h2 class="title">{{ block.settings.title }}</h2>
                         {% endif %}
-                   
+                        {% if block.settings.title != blank %}
+                          <h3 class="title">{{ block.settings.title_n }}</h3>
+                        {% endif %}
+                        {% if block.settings.title != blank %}
+                          <h2 class="title">{{ block.settings.title_1 }}</h2>
+                        {% endif %}
+                        <div class="feature-details">
+                          {% if block.settings.text != blank %}
+                            <div class="description">{{ block.settings.text }}</div>
+                          {% endif %}
+
+                         
+                        </div>
                       </div>
                   </figcaption>
                  
