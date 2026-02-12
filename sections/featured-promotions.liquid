@@ -44,20 +44,13 @@
                     <a {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %}class="link-promo" aria-label="Shop {{ block.settings.link | escape }}"></a>
                       <div class="feature-wrap">
                         
-                        {% if block.settings.title != blank or block.settings.title_n != blank or block.settings.title_1 != blank %}
-  <h2 class="title promo-stack">
-    {% if block.settings.title != blank %}
-      <span class="promo-top">{{ block.settings.title }}</span>
-    {% endif %}
-    {% if block.settings.title_n != blank %}
-      <span class="promo-mid">{{ block.settings.title_n }}</span>
-    {% endif %}
-    {% if block.settings.title_1 != blank %}
-      <span class="promo-btm">{{ block.settings.title_1 }}</span>
-    {% endif %}
-  </h2>
-{% endif %}
+                        <div class="feature-details">
+                          {% if block.settings.text != blank %}
+                            <div class="description">{{ block.settings.text }}</div>
+                          {% endif %}
 
+                         
+                        </div>
                       </div>
                   </figcaption>
                  
@@ -189,19 +182,6 @@
           "label": "Header",
           "default": "Feature"
         },
-        {
-  "type": "text",
-  "id": "title_n",
-  "label": "Header Number",
-  "default": "162+"
-},
-{
-  "type": "text",
-  "id": "title_1",
-  "label": "Header 2",
-  "default": "New Arrivals"
-},
-
         {
           "type": "richtext",
           "id": "text",
