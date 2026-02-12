@@ -33,27 +33,34 @@
                     {{ 'collection-' | append: i | placeholder_svg_tag: 'placeholder-svg placeholder-svg--promotions' }}
                   {% endif %}
                 {% if block.settings.text != blank or block.settings.button_label != blank or block.settings.title != blank and title_on_image != blank %}
-                  <figcaption class="feature-overlay">
-                    <a {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %}class="link-promo"></a>
-                      <div class="feature-wrap">
-                        {% if block.settings.title != blank %}
-                          <h2 class="title">{{ block.settings.title }}</h2>
-                        {% endif %}
-                        {% if block.settings.title != blank %}
-                          <h3 class="title">{{ block.settings.title_n }}</h3>
-                        {% endif %}
-                        {% if block.settings.title != blank %}
-                          <h2 class="title">{{ block.settings.title_1 }}</h2>
-                        {% endif %}
-                        <div class="feature-details">
-                          {% if block.settings.text != blank %}
-                            <div class="description">{{ block.settings.text }}</div>
-                          {% endif %}
+<figcaption class="feature-overlay">
+  <a
+    class="link-promo"
+    {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %}
+    aria-label="{% if block.settings.title != blank %}{{ block.settings.title | escape }}{% else %}Promotion{% endif %}">
+  </a>
 
-                         
-                        </div>
-                      </div>
-                  </figcaption>
+  <div class="feature-wrap">
+    {% if block.settings.title != blank %}
+      <h2 class="title">{{ block.settings.title }}</h2>
+    {% endif %}
+
+    {% if block.settings.title_n != blank %}
+      <h3 class="title">{{ block.settings.title_n }}</h3>
+    {% endif %}
+
+    {% if block.settings.title_1 != blank %}
+      <h2 class="title">{{ block.settings.title_1 }}</h2>
+    {% endif %}
+
+    {% if block.settings.text != blank %}
+      <div class="feature-details">
+        <div class="description">{{ block.settings.text }}</div>
+      </div>
+    {% endif %}
+  </div>
+</figcaption>
+
                  
                 {% elsif block.settings.link != blank %}
                   <a {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %}class="link-promo"></a>
