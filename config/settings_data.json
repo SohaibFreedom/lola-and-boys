@@ -5463,6 +5463,7 @@
           },
           "featured_tile_KY9qfw": {
             "type": "featured_tile",
+            "disabled": true,
             "settings": {
               "tab": "boys",
               "image": "shopify://shop_images/VDAY.png",
@@ -5508,6 +5509,7 @@
           },
           "featured_tile_dUGrbN": {
             "type": "featured_tile",
+            "disabled": true,
             "settings": {
               "tab": "collabs",
               "image": "shopify://shop_images/VDAY.png",
