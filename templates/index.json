@@ -423,7 +423,7 @@
         "image_YKz689": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/024A4162_77671b66-e73e-4b69-88fd-58d006628e31.jpg",
+            "image": "shopify://shop_images/024A7322_dbdd920d-a119-4259-8c75-c23a63b03ad6.jpg",
             "link": "https://lolaandtheboys.com/collections/girls-1",
             "title1": "Girls",
             "customclass": "",
@@ -632,12 +632,9 @@
         "image_hUpHCc": {
           "type": "image",
           "settings": {
-            "custom_class": "",
             "image": "shopify://shop_images/Lola_The_Boys_19_0155.jpg",
             "link": "shopify://collections/best-sellers",
             "title": "BEST SELLERS",
-            "title_n": "123",
-            "title_1": "Feature",
             "text": "",
             "button_label": "shop now",
             "button_link": "shopify://collections/best-sellers"
@@ -646,12 +643,9 @@
         "image_wedKWc": {
           "type": "image",
           "settings": {
-            "custom_class": "",
             "image": "shopify://shop_images/SHOT19_2862.jpg",
             "link": "https://lolaandtheboys.com/collections/girls-dresses-1",
             "title": "Dresses",
-            "title_n": "123",
-            "title_1": "Feature",
             "text": "",
             "button_label": "shop now",
             "button_link": "shopify://collections/girls-dresses-1"
@@ -660,12 +654,9 @@
         "image_FjkpWA": {
           "type": "image",
           "settings": {
-            "custom_class": "",
             "image": "shopify://shop_images/archive_1000_x_1500_px_-3.jpg",
             "link": "shopify://collections/archivesale",
             "title": "Archive Sale",
-            "title_n": "123",
-            "title_1": "Feature",
             "text": "",
             "button_label": "shop now",
             "button_link": "shopify://collections/archivesale"
@@ -674,12 +665,9 @@
         "image_9Qgf3d": {
           "type": "image",
           "settings": {
-            "custom_class": "",
             "image": "shopify://shop_images/accessories-confetti-butterfly-beach-bag-lola-the-boys-1213911048_d05e1e96-5c7f-4126-ad9d-ee229b4098d3.jpg",
             "link": "https://lolaandtheboys.com/collections/rompers",
             "title": "ROMPERS",
-            "title_n": "123",
-            "title_1": "Feature",
             "text": "",
             "button_label": "shop now",
             "button_link": "shopify://collections/activewear"
