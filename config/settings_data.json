@@ -5417,12 +5417,11 @@
           },
           "featured_tile_HaxXDf": {
             "type": "featured_tile",
-            "disabled": true,
             "settings": {
               "tab": "girls",
-              "image": "shopify://shop_images/VDAY.png",
-              "label": "VDAY Shop",
-              "link": "https://lolaandtheboys.com/collections/valentines-day"
+              "image": "shopify://shop_images/ROMPER_2.png",
+              "label": "Rompers",
+              "link": "https://lolaandtheboys.com/collections/rompers"
             }
           },
           "featured_tile_dtaDWV": {
@@ -5463,12 +5462,11 @@
           },
           "featured_tile_KY9qfw": {
             "type": "featured_tile",
-            "disabled": true,
             "settings": {
               "tab": "boys",
-              "image": "shopify://shop_images/VDAY.png",
-              "label": "VDAY Shop",
-              "link": "https://lolaandtheboys.com/collections/valentines-day"
+              "image": "shopify://shop_images/ROMPER_2.png",
+              "label": "Rompers",
+              "link": "https://lolaandtheboys.com/collections/rompers"
             }
           },
           "featured_tile_AKFPjm": {
@@ -5509,12 +5507,11 @@
           },
           "featured_tile_dUGrbN": {
             "type": "featured_tile",
-            "disabled": true,
             "settings": {
               "tab": "collabs",
-              "image": "shopify://shop_images/VDAY.png",
-              "label": "VDAY Shop",
-              "link": "https://lolaandtheboys.com/collections/valentines-day"
+              "image": "shopify://shop_images/ROMPER_2.png",
+              "label": "Rompers",
+              "link": "https://lolaandtheboys.com/collections/rompers"
             }
           },
           "featured_tile_UbdEqt": {
