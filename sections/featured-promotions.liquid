@@ -45,9 +45,21 @@
                       <div class="feature-wrap">
                         
                         <div class="feature-details">
-                          {% if block.settings.text != blank %}
-                            <div class="description">{{ block.settings.text }}</div>
-                          {% endif %}
+                          {% if block.settings.title != blank or block.settings.title_n != blank or block.settings.title_1 != blank %}
+  <h2 class="title promo-stack">
+    {% if block.settings.title != blank %}
+      <span class="promo-top">{{ block.settings.title }}</span>
+    {% endif %}
+
+    {% if block.settings.title_n != blank %}
+      <span class="promo-mid">{{ block.settings.title_n }}</span>
+    {% endif %}
+
+    {% if block.settings.title_1 != blank %}
+      <span class="promo-btm">{{ block.settings.title_1 }}</span>
+    {% endif %}
+  </h2>
+{% endif %}
 
                          
                         </div>
