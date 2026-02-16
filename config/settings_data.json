@@ -5406,6 +5406,33 @@
       "mobile-menu": {
         "type": "mobile-menu",
         "blocks": {
+          "featured_tile_jNKjLM": {
+            "type": "featured_tile",
+            "settings": {
+              "tab": "collabs",
+              "image": "shopify://shop_images/SPRING.png",
+              "label": "Spring 2026 🌸",
+              "link": "https://lolaandtheboys.com/collections/spring-collection"
+            }
+          },
+          "featured_tile_hmFmFp": {
+            "type": "featured_tile",
+            "settings": {
+              "tab": "boys",
+              "image": "shopify://shop_images/SPRING.png",
+              "label": "Spring 2026 🌸",
+              "link": "https://lolaandtheboys.com/collections/spring-collection"
+            }
+          },
+          "featured_tile_kxHRac": {
+            "type": "featured_tile",
+            "settings": {
+              "tab": "girls",
+              "image": "shopify://shop_images/SPRING.png",
+              "label": "Spring 2026 🌸",
+              "link": "https://lolaandtheboys.com/collections/spring-collection"
+            }
+          },
           "featured_tile_8hqXJR": {
             "type": "featured_tile",
             "settings": {
@@ -5543,6 +5570,9 @@
           }
         },
         "block_order": [
+          "featured_tile_jNKjLM",
+          "featured_tile_hmFmFp",
+          "featured_tile_kxHRac",
           "featured_tile_8hqXJR",
           "featured_tile_HaxXDf",
           "featured_tile_dtaDWV",
