@@ -56,6 +56,28 @@
             "button2_highlight": false
           }
         },
+        "image_fjiMQC": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/HP_BANNER_064ed3f0-4d69-4753-bcd1-3b32c8dcb675.png",
+            "image_mobile": "shopify://shop_images/HP_MOBILE_BANNER_1_5765fa85-4785-46b4-ab21-c233f293c892.png",
+            "mp4": "",
+            "mobilevideo": "",
+            "pretext": "",
+            "title": "Your headline",
+            "subtitle": "",
+            "text_position": "center",
+            "text_align": "center",
+            "caption_background": false,
+            "caption_background_transparency": false,
+            "button1": "",
+            "button1_link": "https://lolaandtheboys.com/collections/swimwear",
+            "button1_highlight": false,
+            "button2": "",
+            "button2_link": "",
+            "button2_highlight": false
+          }
+        },
         "image_V87qeG": {
           "type": "image",
           "settings": {
@@ -235,6 +257,7 @@
       "block_order": [
         "image_qTG7w8",
         "image_QccNLz",
+        "image_fjiMQC",
         "image_V87qeG",
         "image_aprGEg",
         "image_MzwgLN",
