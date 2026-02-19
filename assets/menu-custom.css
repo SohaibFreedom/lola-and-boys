@@ -1133,3 +1133,15 @@ div.hidden {
 
 }
 
+
+
+
+@media (min-width: 800px) and (max-width: 1300px) {
+  .desktop-menu-c .nav-item-desk {
+    padding: 0 5px;
+}
+.desktop-menu-c .nav-link-desk {
+        letter-spacing: .5px;
+        font-size: 11px !important;
+    }
+}
