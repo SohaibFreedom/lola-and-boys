@@ -21,7 +21,7 @@
       "type": "product-template",
       "blocks": {
         "swish_formerly_wishlist_king_wishlist_button_block_MCDCDd": {
-          "type": "shopify://apps/swish-formerly-wishlist-king/blocks/wishlist-button-block/194f5011-a43c-4b22-b12e-eaf20dc4506a",
+          "type": "shopify://apps/swish-wishlist-king/blocks/wishlist-button-block/194f5011-a43c-4b22-b12e-eaf20dc4506a",
           "settings": {
             "button_style": "plain_accent_1",
             "button_alignment": "center",
@@ -70,6 +70,113 @@
         "rv_max_display": 12,
         "rv_per": 5,
         "toggle": false
+      }
+    },
+    "announce_marquee_XqhL6w": {
+      "type": "announce-marquee",
+      "blocks": {
+        "logo_block_8VJrbp": {
+          "type": "logo_block",
+          "settings": {
+            "logo_image": "shopify://shop_images/Harper_s_Bazaar_Logo_svg_3bfaef6c-a18b-48c5-84bd-91b509d16695.png",
+            "logo_alt_text": ""
+          }
+        },
+        "logo_block_ezcDEz": {
+          "type": "logo_block",
+          "settings": {
+            "logo_image": "shopify://shop_images/e34f3e61-dbda-47cf-be4b-3a7447ff0c00.png",
+            "logo_alt_text": ""
+          }
+        },
+        "logo_block_7UqkNm": {
+          "type": "logo_block",
+          "settings": {
+            "logo_image": "shopify://shop_images/abc-7-2-logo-png-transparent_967ee0b7-ec43-44ff-a1c4-8fd31d5ab0f0.png",
+            "logo_alt_text": ""
+          }
+        },
+        "logo_block_Uy8KE6": {
+          "type": "logo_block",
+          "settings": {
+            "logo_image": "shopify://shop_images/vanity-fair-logo_29057420-44b9-4c02-a48b-6e4a5cfdb97c.png",
+            "logo_alt_text": ""
+          }
+        },
+        "logo_block_w3zqpN": {
+          "type": "logo_block",
+          "settings": {
+            "logo_image": "shopify://shop_images/forbes.com_logo.png",
+            "logo_alt_text": ""
+          }
+        },
+        "logo_block_PQwjRf": {
+          "type": "logo_block",
+          "settings": {
+            "logo_image": "shopify://shop_images/us-weekly_90424067-95c0-418e-9dc1-fa342c8867c7.png",
+            "logo_alt_text": ""
+          }
+        },
+        "logo_block_zKdieH": {
+          "type": "logo_block",
+          "settings": {
+            "logo_image": "shopify://shop_images/download_1f871b81-ad50-4dd5-ba17-56c444004cc8.png",
+            "logo_alt_text": ""
+          }
+        },
+        "logo_block_amqa9Y": {
+          "type": "logo_block",
+          "settings": {
+            "logo_image": "shopify://shop_images/ok-magazine-logo-D6F257F7C7-seeklogo.com_6a0809d5-05e6-4b9c-9da8-4f0cbd3112a2.png",
+            "logo_alt_text": ""
+          }
+        },
+        "logo_block_VBcbnw": {
+          "type": "logo_block",
+          "settings": {
+            "logo_image": "shopify://shop_images/RealSimple_svg_0f508d5b-cdaf-4834-b078-d48ddb8b3ee3.png",
+            "logo_alt_text": ""
+          }
+        },
+        "logo_block_wNbtzM": {
+          "type": "logo_block",
+          "settings": {
+            "logo_image": "shopify://shop_images/d8e7cb11-eeb2-46ee-892c-8baf95351b47.png",
+            "logo_alt_text": ""
+          }
+        },
+        "logo_block_zR7HXA": {
+          "type": "logo_block",
+          "settings": {
+            "logo_image": "shopify://shop_images/glamour_logo.png",
+            "logo_alt_text": ""
+          }
+        },
+        "logo_block_WeccVP": {
+          "type": "logo_block",
+          "settings": {
+            "logo_image": "shopify://shop_images/logo-1_1.svg",
+            "logo_alt_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_block_8VJrbp",
+        "logo_block_ezcDEz",
+        "logo_block_7UqkNm",
+        "logo_block_Uy8KE6",
+        "logo_block_w3zqpN",
+        "logo_block_PQwjRf",
+        "logo_block_zKdieH",
+        "logo_block_amqa9Y",
+        "logo_block_VBcbnw",
+        "logo_block_wNbtzM",
+        "logo_block_zR7HXA",
+        "logo_block_WeccVP"
+      ],
+      "settings": {
+        "heading": "",
+        "text": ""
       }
     },
     "shop_with_us_4cNKDq": {
@@ -150,6 +257,7 @@
     "shogun-helper",
     "shogun-above",
     "main",
+    "announce_marquee_XqhL6w",
     "shop_with_us_4cNKDq",
     "ca363c135d32a883479e",
     "shogun-below",
