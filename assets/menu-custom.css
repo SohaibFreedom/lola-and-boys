@@ -434,6 +434,7 @@ div.hidden {
 .desktop-menu-c .nav-link-desk {
   text-decoration: none;
   display: block;
+  cursor:pointer;
   transition: color 0.3s ease-in-out;
   letter-spacing: 0.6px;
   text-transform: uppercase;
