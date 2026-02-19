@@ -2,6 +2,9 @@
 .product-quantity-box {
     display: none !important;
 }
+.cont-wrap {
+    margin-bottom: 0;
+}
 p.modal_price {
     margin-bottom: 0;
     padding-top: 8px;
