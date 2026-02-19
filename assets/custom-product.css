@@ -2,7 +2,7 @@
 .product-quantity-box {
     display: none !important;
 }
-.cont-wrap {
+body.product .cont-wrap {
     margin-bottom: 0;
 }
 p.modal_price {
