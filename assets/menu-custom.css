@@ -1142,6 +1142,7 @@ div.hidden {
 }
 .desktop-menu-c .nav-link-desk {
         letter-spacing: .5px;
-        font-size: 11px !important;
+        font-size: 10px !important;
+        padding: 5px !important;
     }
 }
