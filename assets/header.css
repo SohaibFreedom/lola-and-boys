@@ -5,10 +5,7 @@
 .header-search-login ul.menu.right .icon-user:before {
      content: none !important; 
 }
-.icon-search:before {
-  content:none !important;
-}
-  
+
    .full-width-overlay .header_search_form .search-submit {
         font-size: 20px !important;
     }
