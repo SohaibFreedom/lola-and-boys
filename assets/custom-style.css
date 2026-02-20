@@ -1,32 +1,4 @@
 
-@font-face {
-  font-family: "Inter";
-  src:
-    url("https://cdn.shopify.com/s/files/1/0002/0647/1226/files/Inter-VariableFont_opsz_wght.woff2?v=1769200565") format("woff2"),
-    url("https://cdn.shopify.com/s/files/1/0002/0647/1226/files/Inter-VariableFont_opsz_wght.woff?v=1769200564") format("woff");
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-
-@font-face {
-  font-family: "Tstar Pro Headline";
-  src:
-    url("https://cdn.shopify.com/s/files/1/0002/0647/1226/files/TSTARPRO-Headline.woff2?v=1770138425") format("woff2"),
-    url("https://cdn.shopify.com/s/files/1/0002/0647/1226/files/TSTARPRO-Headline.woff?v=1770138423") format("woff");
-  font-style: normal;
-  font-display: swap;
-}
-
-h1,h2,h3,h4,h5,h6,.title {
-  font-family: "Tstar Pro Headline" !important;
-}
-
-
-html, body {
-  font-family: "Inter" !important;
-}
 .social_buttons .icon-twitter-share::before{
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M18.9 2H22l-6.8 7.8L23 22h-6.2l-4.9-6.1L6.6 22H3.5l7.3-8.3L1 2h6.3l4.4 5.5L18.9 2Zm-1.1 18h1.7L6.2 3.9H4.4L17.8 20Z'/%3E%3C/svg%3E");
 }
