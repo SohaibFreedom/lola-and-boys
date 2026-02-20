@@ -34,6 +34,28 @@
             "button2_highlight": false
           }
         },
+        "image_V87qeG": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Hello_Kitty_Lola_HP_1.jpg",
+            "image_mobile": "shopify://shop_images/Hello_Kitty_Lola_HP_Mob.jpg",
+            "mp4": "",
+            "mobilevideo": "",
+            "pretext": "",
+            "title": "",
+            "subtitle": "",
+            "text_position": "center",
+            "text_align": "center",
+            "caption_background": false,
+            "caption_background_transparency": false,
+            "button1": "",
+            "button1_link": "https://lolaandtheboys.com/collections/hello-kitty",
+            "button1_highlight": false,
+            "button2": "",
+            "button2_link": "",
+            "button2_highlight": false
+          }
+        },
         "image_QccNLz": {
           "type": "image",
           "disabled": true,
@@ -73,28 +95,6 @@
             "caption_background_transparency": false,
             "button1": "",
             "button1_link": "https://lolaandtheboys.com/collections/swimwear",
-            "button1_highlight": false,
-            "button2": "",
-            "button2_link": "",
-            "button2_highlight": false
-          }
-        },
-        "image_V87qeG": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Hello_Kitty_Lola_HP_1.jpg",
-            "image_mobile": "shopify://shop_images/Hello_Kitty_Lola_HP_Mob.jpg",
-            "mp4": "",
-            "mobilevideo": "",
-            "pretext": "",
-            "title": "",
-            "subtitle": "",
-            "text_position": "center",
-            "text_align": "center",
-            "caption_background": false,
-            "caption_background_transparency": false,
-            "button1": "",
-            "button1_link": "https://lolaandtheboys.com/collections/hello-kitty",
             "button1_highlight": false,
             "button2": "",
             "button2_link": "",
@@ -257,9 +257,9 @@
       },
       "block_order": [
         "image_qTG7w8",
+        "image_V87qeG",
         "image_QccNLz",
         "image_fjiMQC",
-        "image_V87qeG",
         "image_aprGEg",
         "image_MzwgLN",
         "image_KD9mi6",
