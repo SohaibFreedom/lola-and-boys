@@ -9,6 +9,58 @@
   font-display: swap;
 }
 
+
+@font-face {
+  font-family: "Tstar Pro Headline";
+  src:
+    url("https://cdn.shopify.com/s/files/1/0002/0647/1226/files/TSTARPRO-Headline.woff2?v=1770138425") format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/0002/0647/1226/files/TSTARPRO-Headline.woff?v=1770138423") format("woff");
+  font-style: normal;
+  font-display: swap;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: "Tstar Pro Headline" !important;
+}
+
+html, body {
+  font-family: "Inter" !important;
+}
+.icon-search::before{
+  content:"";
+  display:inline-block;
+  width:22px;
+  height:22px;
+  background:no-repeat center / contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M21 21l-4.35-4.35'/%3E%3C/svg%3E");
+}
+.icon-user::before{
+  content:"";
+  display:inline-block;
+  width:22px;
+  height:22px;
+  background:no-repeat center / contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E");
+}
+.icon-facebook::before{
+  content:"";
+  display:inline-block;
+  width:22px;
+  height:22px;
+  background:no-repeat center / contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.5 1.6-1.5h1.7V5c-.3 0-1.4-.1-2.7-.1-2.7 0-4.5 1.6-4.5 4.6V11H7v3h2.6v8h3.9z'/%3E%3C/svg%3E");
+}
+.icon-pinterest::before{
+  content:"";
+  display:inline-block;
+  width:22px;
+  height:22px;
+  background:no-repeat center / contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M12.1 2C6.6 2 3 5.6 3 10.8c0 3 1.7 4.7 2.8 4.7.4 0 .7-1 .7-1.4 0-.4-1-1.2-1-2.8 0-3.3 2.5-5.7 5.8-5.7 2.8 0 4.3 1.7 4.3 4.2 0 2-1.1 5.8-3.7 5.8-1 0-1.8-.7-1.8-1.7 0-1.5.9-3 1.4-4.4.3-1.1-.2-2-1.4-2-1.7 0-3 2.2-3 4.2 0 1 .3 1.6.3 1.6L6.6 22l3.7-1.3c0-.9.1-1.5.3-2.2.2-.7.6-2.3.6-2.3.3.6 1.3 1.1 2.3 1.1 3 0 5.2-2.8 5.2-6.7C18.7 5.7 15.7 2 12.1 2z'/%3E%3C/svg%3E");
+}
+.icon-instagram::before{
+  content:"";
+  display:inline-block;
+  width:22px;
+  height:22px;
+  background:no-repeat center / contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9z'/%3E%3Cpath fill='%23fff' d='M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z'/%3E%3Ccircle cx='17.5' cy='6.5' r='1.2' fill='%23fff'/%3E%3C/svg%3E");
+}
 .header div.logo img {
     max-width: 180px;
 }
@@ -19,7 +71,6 @@
 }
 
 .product-list span.price {
-      font-family: "Inter" !important;
     font-weight: 500 !important;
     font-size: 14px !important;
     color: #2D2A26;
@@ -684,17 +735,6 @@ div#rebuy-widget-207164 {
 
 /* product filters custom end */
 
-.page-customize-landing h1,
-.page-customize-landing h2,
-.page-customize-landing h3,
-.page-customize-landing h4,
-.page-customize-landing h5,
-.page-customize-landing h6,
-.page-customize-landing p,
-.page-customize-landing a,
-.page-customize-landing span {
-  font-family: "Sofia Pro", sans-serif !important;
-}
 .wishlist-container svg {
   fill: transparent !important;
   stroke: #000 !important;
@@ -726,57 +766,7 @@ button#attn-waitlist-trigger-btn {
     display: block !important;
   }
 }
-@font-face {
-  font-family: "Alias-Didot-Light";
-  src: url("https://cdn.shopify.com/s/files/1/0002/0647/1226/files/Alias_Didot_W00_Light.woff2?v=1739466885")
-      format("woff2"),
-    url("https://cdn.shopify.com/s/files/1/0002/0647/1226/files/Alias_Didot_W00_Light.woff?v=1739466885")
-      format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Montserrat-Regular", sans-serif;
-  src: url("https://cdn.shopify.com/s/files/1/0002/0647/1226/files/Montserrat-Regular.woff2?v=1739895535")
-      format("woff2"),
-    url("https://cdn.shopify.com/s/files/1/0002/0647/1226/files/Montserrat-Regular.woff?v=1739895142")
-      format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
 
-@font-face {
-  font-family: "Montserrat-Bold", sans-serif;
-  src: url("https://cdn.shopify.com/s/files/1/0002/0647/1226/files/Montserrat-Bold.woff2?v=1739895535")
-      format("woff2"),
-    url("https://cdn.shopify.com/s/files/1/0002/0647/1226/files/Montserrat-Bold.woff?v=1739895141")
-      format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Sofia Pro";
-  src: url("https://cdn.shopify.com/s/files/1/0917/3729/3086/files/Sofia_Pro_Regular_Az.otf?v=1738354657")
-    format("opentype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Sofia-Pro-Bold";
-  src: url("https://cdn.shopify.com/s/files/1/0917/3729/3086/files/Sofia-Pro-Bold-Az.otf?v=1738618650")
-    format("opentype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Noto Serif Display", sans-serif;
-  src: url("https://cdn.shopify.com/s/files/1/0917/3729/3086/files/NotoSerif-VariableFont_wdth_wght.ttf?v=1738623026")
-    format("opentype");
-  font-weight: normal;
-  font-style: normal;
-}
 
 /* Kids Workshop Page CSS */
 
@@ -786,7 +776,6 @@ button#attn-waitlist-trigger-btn {
   object-position: center !important;
 }
 .kids-workshop-hero .caption h1 {
-  font-family: "FuzzyBUbbles" !important;
   background-color: transparent !important;
   font-size: 36px !important;
   color: #000 !important;
@@ -794,7 +783,6 @@ button#attn-waitlist-trigger-btn {
 }
 
 .kids-workshop-hero .subtitle p {
-  font-family: "FuzzyBUbbles" !important;
   font-size: 16px !important;
   color: #000 !important;
 }
@@ -803,21 +791,18 @@ button#attn-waitlist-trigger-btn {
   background-color: #dc143c;
   border-color: #dc143c;
   color: #ffffff;
-  font-family: "FuzzyBUbbles" !important;
 }
 .workshop-bookingform {
   max-width: 1000px;
   margin: 0 auto;
 }
 .workshop-details h2 {
-  font-family: "FuzzyBUbbles" !important;
   font-weight: bold;
   letter-spacing: 0;
   color: #dc143c;
 }
 
 .workshop-details a {
-  font-family: "FuzzyBUbbles" !important;
   background-color: #dc143c !important;
   border-color: #dc143c !important;
   color: #ffffff;
@@ -1330,7 +1315,6 @@ div#birthday-wrapper .label {
   display: none;
 }
 .search-template-section div#gf-products .sub_title a {
-  font-family: Karla, sans-serif !important;
   font-weight: 700 !important;
   font-size: 13px !important;
   letter-spacing: 0 !important;
@@ -1491,7 +1475,6 @@ div#template--15401532719206__richtext_custom_UT9Bit .rich-text__blocks {
   color: #000 !important;
   background: transparent;
   font-weight: 400 !important;
-  font-family: Karla, sans-serif !important;
 }
 .lookbooks_header ul {
   display: flex;
@@ -1564,7 +1547,6 @@ div#template--15401532719206__richtext_custom_UT9Bit .rich-text__blocks {
 }
 .mmet-irina-table.custom-multi-column .flex-item p {
   font-size: 18.5px;
-  font-family: Roboto;
   padding: 2rem 3rem;
 }
 .mmet-irina-table.custom-multi-column .flex-item {
@@ -1611,7 +1593,6 @@ div#template--15401532719206__richtext_custom_UT9Bit .rich-text__blocks {
   margin-bottom: 3rem;
 }
 .form-ugc .submit-button {
-  font-family: Karla, sans-serif !important;
   font-size: 18px;
   height: 50px;
 }
@@ -1713,7 +1694,6 @@ div#shopify-section-cart-template {
 }
 .founder-imgbanenr .caption .subtitle {
   color: #fff;
-  font-family: inherit !important;
   text-transform: none;
   font-style: normal;
   font-size: 15px !important;
@@ -1781,7 +1761,6 @@ a.yotpo-logo-link-new {
 div#wishlist-count2,
 div#wishlist-count1 {
   display: inline-block;
-  font-family: Roboto;
 }
 wishlist-link-floating[wk-rendered] {
   display: none !important;
@@ -2019,7 +1998,6 @@ li.toolbox-item[data-name="text"] {
 }
 .product_cart_btns button {
   min-height: 52px !important;
-  font-family: inherit;
   font-weight: bold;
   letter-spacing: 1px;
 }
@@ -2155,10 +2133,8 @@ body.cart div#pickup-container {
   margin-top: 10px;
 }
 .spf-product__info .jdgm-widget {
-  font-family: Proxima Nova Rg !important;
 }
 .h4.spf-product-card__title a {
-  font-family: Karla, sans-serif !important;
   display: inline-block;
   vertical-align: top;
   font-size: 14px;
@@ -2174,7 +2150,6 @@ html
   .open-quick-view {
   width: auto;
   border: 1px solid #000000;
-  font-family: Oswald !important;
   font-weight: 400;
   font-size: 14px;
   margin-top: 0;
@@ -2222,7 +2197,6 @@ html
 .product-on-page#gf-products .spf-product-card__title a,
 .product-on-page#gf-products .spf-product-card__title {
   font-size: 14px;
-  font-family: Karla, sans-serif !important;
   font-weight: 400;
   letter-spacing: 0.3px;
   line-height: 1.2;
@@ -3427,7 +3401,6 @@ div#mobile-custom-linklist {
   font-size: 30px;
   line-height: 37px;
   color: #000;
-  font-family: "Sofia Pro", sans-serif !important;
   margin: 0 0 8px;
   list-style: disc;
   font-weight: 400;
@@ -3488,7 +3461,6 @@ div#mobile-custom-linklist {
 }
 
 .page-customize-landing .event-schedule p strong {
-  font-family: "Sofia-Pro-Bold", sans-serif !important;
 }
 
 .page-customize-landing .event-cta-button {
