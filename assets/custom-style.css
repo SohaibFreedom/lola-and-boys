@@ -152,6 +152,12 @@ color: #fff !important;
 }
 
 @media only screen and (max-width: 768px) {
+  .icon-search:before {
+
+    width: 25px;
+    height: 25px;
+
+}
   #header  .wishlist-mobile-container #wishlist-count1 {
         background: #000;
         width: 17px;
