@@ -279,7 +279,6 @@ font-weight:300 !important;
 
 .main_nav div.logo .overlay-content a {
   color:#000 !important;
-  font-family: "Proxima Nova Rg" !important;
 }
 
 .main_nav div.logo .overlay-content h4 {
@@ -287,9 +286,6 @@ font-weight:300 !important;
   margin:0;
 }
 
-/* .header .main_nav_wrapper .main_nav .logo .overlay-content a {
-  font-family: 'Proxima Nova Rg', sans-serif !important;
-} */
 
 .trending-searches {
   width: 30%;
@@ -378,7 +374,6 @@ font-weight:300 !important;
   font-weight:400;
   color: #605e5c;
   margin:0;
-  font-family: "Proxima Nova Rg" !important;
 }
 
 .sidebar-menu-wrap ul {
