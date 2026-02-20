@@ -208,7 +208,6 @@ styleTag.textContent = `
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 .swipe-container h1,h2,h3,h4,h5,,h6 , .swipe-container * {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
 
 
 }
@@ -228,7 +227,6 @@ styleTag.textContent = `
   background:#FFF;
   box-sizing:border-box;
   border-radius:13px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
 
   background:#FFF;
   padding:18px;
