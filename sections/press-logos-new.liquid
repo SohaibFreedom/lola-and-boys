@@ -18,6 +18,12 @@
                     "type": "image_picker",
                     "label": "Logo Image",
                     "info": "Upload the logo image here."
+                },
+                {
+                    "id": "link",
+                    "type": "url",
+                    "label": "Logo Link",
+                    "info": "Paste the URL to open when the logo is clicked."
                 }
             ]
         }
@@ -94,7 +100,13 @@
   <div class="custom-press-logos">
     {% for block in section.blocks %}
       <div class="press-logo-item">
-        <img src="{{ block.settings.image | img_url: 'master' }}">
+        {% if block.settings.link != blank %}
+          <a href="{{ block.settings.link }}" target="_blank" rel="noopener">
+            <img src="{{ block.settings.image | img_url: 'master' }}">
+          </a>
+        {% else %}
+          <img src="{{ block.settings.image | img_url: 'master' }}">
+        {% endif %}
       </div>
     {% endfor %}
   </div>
