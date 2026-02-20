@@ -2,7 +2,6 @@
   position: relative;
   z-index: 9999;
   padding: 0 15px;
-  font-family: Poppins, sans-serif !important;
 }
 
 /* AFTER (open LEFT -> RIGHT) */
@@ -14,7 +13,6 @@
   height: 100%;
   display: block !important;
   z-index: 999999;
-  font-family: 'Helvetica Neue', sans-serif;
 
   transform: translateX(-100%);
   opacity: 0;
@@ -73,7 +71,6 @@ span.sale-up-light {
     border: 0;
     padding: 10px 0 12px;
     text-transform: uppercase;
-    font-family: Poppins, sans-serif !important;
     font-size: 12px;
     font-weight: 600;
     letter-spacing: .06em;
@@ -85,7 +82,6 @@ span.sale-up-light {
     width: 100% !important;
     height: 100% !important;
     display: flex;
-        font-family: Poppins, sans-serif !important;
     align-items: center;
     justify-content: center;
 }
@@ -227,7 +223,6 @@ div#shopify-section-mobile-menu {
   letter-spacing: 0.6px;
   width: 60%;
   padding-left: 15px;
-  font-family: Poppins, sans-serif !important;
 }
 
 .menu-item .menu-link {
@@ -293,7 +288,6 @@ div#shopify-section-mobile-menu {
   font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
-  font-family: Poppins, Arial, sans-serif;
   letter-spacing: 0.6px;
   border-bottom: 0;
   padding: 0 0 0 15px;
@@ -445,7 +439,6 @@ div.hidden {
   line-height: 20px !important;
   border-bottom: 2px solid transparent;
   padding: 6px 0 4px;
-  font-family: Proxima Nova Rg !important;
 }
 
 .desktop-menu-c .nav-link-desk {
@@ -527,7 +520,6 @@ div.hidden {
   font-weight: 400;
   color: #000;
   margin: 0;
-  font-family: Poppins, sans-serif !important;
 }
 
 .desktop-menu-c .mega-title p {
@@ -594,7 +586,6 @@ div.hidden {
   transition: color .3s ease-in-out, text-decoration .3s ease-in-out;
   border-bottom: 1px solid #D0D0D0;
   line-height: 13px;
-  font-family: Poppins, sans-serif !important;
 }
 
 .desktop-menu-c .dropdown-col ul {
@@ -614,7 +605,6 @@ div.hidden {
   color: #616161 !important;
   transition: color 0.3s ease-in-out;
   text-transform: uppercase;
-  font-family: Poppins, sans-serif !important;
 }
 
 .desktop-menu-c .subcol-link:hover {
@@ -686,14 +676,12 @@ div.hidden {
         color: #000;
         cursor: pointer;
         font-weight: 300 !important;
-        font-family: Inter;
         padding: 4px 13px;
         margin: 10px 0;
         height: 10px !important;
   }
 
   .lola-menu-auth {
-    font-family: Poppins, sans-serif !important;
     font-size: 12px;
     font-weight: 400;
     color: #000;
@@ -715,7 +703,6 @@ div.hidden {
     border: 0;
     padding: 10px 0 12px;
     text-transform: uppercase;
-    font-family: Poppins, sans-serif !important;
     font-size: 12px;
     font-weight: 600;
     letter-spacing: .06em;
@@ -752,7 +739,6 @@ div.hidden {
   }
 
   .lola-row-text {
-    font-family: Poppins, sans-serif !important;
     font-size: 10.5px;
     font-weight: 400;
     letter-spacing: .06em;
@@ -796,7 +782,6 @@ div.hidden {
     padding: 6px 15px;
     text-decoration: none;
     color: #000;
-    font-family: Poppins, sans-serif !important;
     font-size: 12px;
     font-weight: 400;
     text-transform: uppercase;
@@ -813,7 +798,6 @@ div.hidden {
   }
 
   .lola-featured-title {
-    font-family: Poppins, sans-serif !important;
     font-size: 12px;
     font-weight: 400;
     letter-spacing: .08em;
@@ -842,7 +826,6 @@ div.hidden {
 
   .lola-featured-label {
     margin-top: 6px;
-    font-family: Poppins, sans-serif !important;
     font-size: 10px;
     font-weight: 400;
     letter-spacing: .08em;
@@ -864,7 +847,6 @@ div.hidden {
   }
 
   .lola-bottom-text {
-    font-family: Poppins, sans-serif !important;
     font-size: 12px;
     font-weight: 400;
     letter-spacing: .06em;
@@ -910,7 +892,6 @@ div.hidden {
     padding: 6px 18px;
     text-decoration: none;
     color: #000;
-    font-family: Poppins, sans-serif !important;
     font-size: 12px;
     font-weight: 400;
     text-transform: uppercase;
