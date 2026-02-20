@@ -15,7 +15,6 @@
   line-height: 1.4;
   background-color: #000000 !important;
   color: #313131;
-  font-family: "Work Sans", sans-serif;
   font-size: 13px;
 }
 .gm-menu-installed .gm-menu.gm-bordered:not(.gm-menu-mobile) > .gm-level-0 + .gm-level-0 {
@@ -25,13 +24,11 @@
   border-top: 1px solid #0f0f0f !important;
 }
 .gm-menu-installed .gm-item.gm-level-0 > .gm-target > .gm-text{
-  font-family: "Oswald", sans-serif !important;
 }
 .gm-menu-installed .gm-menu .gm-item.gm-level-0 > .gm-target{
   padding: 15px 20px !important;
   /* background-color: #000000 !important; */
   color: #ffffff !important;
-  font-family: "Oswald", sans-serif !important;
   font-size: 14px !important;
   font-weight: 400 !important;
   font-style: normal !important;
@@ -95,7 +92,6 @@
 
 .gm-menu-installed .gm-menu .gm-tab-links > .gm-item > .gm-target,
 .gm-menu-installed .gm-menu .gm-tab-links > .gm-item > .gm-target > .gm-text{
-  font-family: "Work Sans", sans-serif;
   font-size: 14px;
   font-weight: 500;
   font-style: normal;
@@ -137,14 +133,12 @@
 .gm-html-inner,
 .gm-menu-installed .gm-menu .gm-submenu .gm-item .gm-target {
   color: #313131 !important;
-  font-family: "Work Sans", sans-serif !important;
   font-size: 13px !important;
   font-weight: 400 !important;
   font-style: normal !important;
 }
 .gm-menu-installed .gm-menu .gm-submenu .gm-item .gm-heading {
   color: #ae2828 !important;
-  font-family: "Work Sans", sans-serif !important;
   font-size: 14px !important;
   font-weight: 600 !important;
   font-style: normal !important;
@@ -152,7 +146,6 @@
 }
 .gm-menu-installed .gm-menu .gm-submenu .gm-item .gm-heading .gm-target {
   color: #ae2828 !important;
-  font-family: "Work Sans", sans-serif !important;
   font-size: 14px !important;
   font-weight: 600 !important;
   font-style: normal !important;
@@ -175,7 +168,6 @@
 }
 .gm-menu-installed .gm-menu .gm-submenu .gm-item .gm-description {
   color: #969696 !important;
-  font-family: "Work Sans", sans-serif !important;
   font-size: 12px !important;
   font-weight: 400 !important;
   font-style: normal !important;
@@ -256,7 +248,6 @@
 
 .gm-menu-installed .gm-menu > .gm-level-0.gm-theme-li > a {
   color: #ffffff !important;
-  font-family: "Oswald", sans-serif !important;
   font-size: 14px !important;
 }
 
