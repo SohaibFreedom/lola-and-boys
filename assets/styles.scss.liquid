@@ -138,7 +138,6 @@ $xlarge: 1400px;
 }
 
 @mixin headline-style($font-size: $font-size-header) {
-  font-family: {{ settings.headline_font | replace: 'Google_', '' | replace: '+', ' ' }};
   font-size: $font-size * 1px;
   font-weight: {{ settings.headline_weight }};
   font-style: {{ settings.headline_font_text }};
@@ -175,7 +174,7 @@ $xlarge: 1400px;
 
 /* #Reset & Basics
 ================================================== */
-article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary{display:block;}audio,canvas,video{display:inline-block;}audio:not([controls]){display:none;height:0;}[hidden]{display:none;}html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}a:focus{outline:thin dotted;}a:active,a:hover{outline:0;}h1{font-size:2em;}abbr[title]{border-bottom:1px dotted;}b,strong{font-weight:700;}dfn{font-style:italic;}mark{background:#ff0;color:#000;}code,kbd,pre,samp{font-family:monospace, serif;font-size:1em;}pre{white-space:pre-wrap;word-wrap:break-word;}q{quotes:\201C \201D \2018 \2019;}small{font-size:80%;}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}sup{top:-.5em;}sub{bottom:-.25em;}img{border:0;}svg:not(:root){overflow:hidden;}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em;}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0;}button,input{line-height:normal;}button,html input[type=button],/* 1 */
+article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary{display:block;}audio,canvas,video{display:inline-block;}audio:not([controls]){display:none;height:0;}[hidden]{display:none;}html{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}a:focus{outline:thin dotted;}a:active,a:hover{outline:0;}h1{font-size:2em;}abbr[title]{border-bottom:1px dotted;}b,strong{font-weight:700;}dfn{font-style:italic;}mark{background:#ff0;color:#000;}code,kbd,pre,samp{font-size:1em;}pre{white-space:pre-wrap;word-wrap:break-word;}q{quotes:\201C \201D \2018 \2019;}small{font-size:80%;}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}sup{top:-.5em;}sub{bottom:-.25em;}img{border:0;}svg:not(:root){overflow:hidden;}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em;}button,input,select,textarea{font-size:100%;margin:0;}button,input{line-height:normal;}button,html input[type=button],/* 1 */
 input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}button[disabled],input[disabled]{cursor:default;}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0;}input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none;}textarea{overflow:auto;vertical-align:top;}table{border-collapse:collapse;border-spacing:0;}body,figure{margin:0;}legend,button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}
 
 .clearfix:after {visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
@@ -185,7 +184,6 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
 /* #Basic Styles
 ================================================== */
 body {
-  font-family: {{ settings.regular_font | replace: 'Google_', '' | replace: '+', ' ' }};
   font-weight: {{ settings.regular_weight }};
   font-size: {{ settings.regular_font_size }}px;
   text-transform: {{ settings.regular_font_style }};
@@ -295,7 +293,6 @@ img[data-sizes="auto"] {
 /* #Typography
 ================================================== */
 .logo {
-  font-family: {{ settings.logo_font | replace: 'Google_', '' | replace: '+', ' ' }};
   font-weight: {{ settings.logo_weight }};
   font-size: {{ settings.logo_font_size }}px;
   text-transform: {{ settings.logo_font_style }};
@@ -1109,7 +1106,6 @@ body.is-active {
 .menu a span,
 select.currencies,
 .mini_cart span {
-  font-family: {{ settings.nav_font | replace: 'Google_', '' | replace: '+', ' ' }};
   font-weight: {{ settings.nav_weight }};
   font-size: {{ settings.nav_font_size }}px;
   text-transform: {{ settings.nav_font_style }};
@@ -1432,7 +1428,6 @@ a.tos_icon,
   position: absolute;
   z-index: 2000;
   background-color: {{ settings.shop_bg_color }};
-  font-family: {{ settings.regular_font | replace: 'Google_', '' | replace: '+', ' ' }};
   font-weight: {{ settings.regular_weight }};
   font-size: smaller;
   text-transform: {{ settings.regular_font_style }};
@@ -1592,7 +1587,6 @@ input[type="submit"].guest_button, input[type="button"].guest_button {
 
 .dropdown_content p,
 .mobile-mega-menu p {
-  font-family: {{ settings.nav_font | replace: 'Google_', '' | replace: '+', ' ' }};
   font-size: {{ settings.nav_font_size }}px;
   color: {{ settings.nav_color }};
   padding-top: 12px;
@@ -1960,7 +1954,6 @@ ul.toggle_list li ul {
     border: none;
     outline: 0;
     box-shadow: 0;
-    font-family: inherit;
     letter-spacing: 0;
     text-transform: none;
     position: absolute;
@@ -1997,7 +1990,6 @@ ul.toggle_list li ul {
     vertical-align: middle;
     top: -1px;
     &:before {
-      font-family: Arial, "Helvetica CY", "Nimbus Sans L", sans-serif !important;
       font-size: 25px;
       line-height: 15px;
       position: absolute;
@@ -2193,7 +2185,6 @@ ul.toggle_list li ul {
     padding-right: 30px;
     background-position: 100% 50%;
     background-color: {{ settings.shop_bg_color }};
-    font-family: {{ settings.nav_font | replace: 'Google_', '' | replace: '+', ' ' }};
     font-weight: {{ settings.nav_weight }};
     font-size: {{ settings.nav_font_size }}px;
     text-transform: {{ settings.nav_font_style }};
@@ -2370,7 +2361,6 @@ a.button,
     height: 40px;
     line-height: 1.2;
     vertical-align: top;
-    font-family: {{ settings.nav_font | replace: 'Google_', '' | replace: '+', ' ' }};
     font-weight: {{ settings.button_weight }};
     font-size: {{ settings.button_font_size }}px;
     text-transform: {{ settings.button_font_style }};
@@ -2672,7 +2662,6 @@ $accordionBg: {{ settings.shop_bg_color }};
       height: auto;
       line-height: inherit;
       font-weight: normal;
-      font-family: {{ settings.regular_font | replace: 'Google_', '' | replace: '+', ' ' }};
       box-shadow: none;
       border-radius: 0px;
       font-size: 18px;
@@ -2982,7 +2971,6 @@ input[type="button"].get-rates.action_button {
 }
 
 .sale_banner_product, .new_banner_product, .preorder_banner_product {
-  font-family: {{ settings.nav_font | replace: 'Google_', '' | replace: '+', ' ' }};
   font-weight: {{ settings.nav_weight }};
   font-size: {{ settings.nav_font_size }}px;
   text-transform: {{ settings.nav_font_style }};
@@ -4419,7 +4407,6 @@ a.tag {
 
 .quick_shop,
 .view_all {
-  font-family: {{ settings.nav_font | replace: 'Google_', '' | replace: '+', ' ' }};
   font-weight: {{ settings.button_weight }};
   font-size: {{ settings.button_font_size }}px;
   text-transform: {{ settings.button_font_style }};
@@ -4625,7 +4612,6 @@ a.tag {
 
 .sale_banner, .new_banner, .preorder_banner {
   background: {{ settings.sale_banner_color }};
-  font-family: {{ settings.nav_font | replace: 'Google_', '' | replace: '+', ' ' }};
   font-weight: {{ settings.nav_weight }};
   font-size: 15px;
   text-transform: {{ settings.nav_font_style }};
@@ -4654,7 +4640,6 @@ a.secondary_button, input.secondary_button {
   border-top: solid 1px {{ settings.border_color }};
   border-bottom: solid 1px {{ settings.border_color }};
   margin: 20px 0;
-  font-family: {{ settings.nav_font | replace: 'Google_', '' | replace: '+', ' ' }};
   font-weight: {{ settings.nav_weight }};
   font-size: {{ settings.nav_font_size }}px;
   text-transform: {{ settings.nav_font_style }};
@@ -4974,7 +4959,6 @@ body.article { padding-bottom: 0 }
 .toggle span {
   color: {{ settings.was_price_color }};
   font-weight:bold;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size:smaller;
   float: right;
   display: none;
@@ -5615,7 +5599,6 @@ $promoBannerHeight: 30px;
     background: transparent;
     z-index: 1000;
     &:before {
-      font-family: Arial, "Helvetica CY", "Nimbus Sans L", sans-serif !important;
       font-size: 20px;
       line-height: $promoBannerHeight;
       position: absolute;
@@ -6407,7 +6390,6 @@ html.remodal-is-locked {
 }
 
 .remodal-close:before {
-  font-family: Arial, "Helvetica CY", "Nimbus Sans L", sans-serif !important;
   font-size: 25px;
   line-height: 35px;
 
@@ -7153,19 +7135,9 @@ or wrap each row of columns in a <div class="row"> */
   
 }
 
-@font-face {
-  font-family: 'turbo';
-  src: url('{{ "turbo.eot" | asset_url }}');
-  src: url('{{ "turbo.eot" | asset_url }}') format('embedded-opentype'),
-       url('{{ "turbo.woff" | asset_url }}') format('woff'),
-       url('{{ "turbo.ttf" | asset_url }}') format('truetype'),
-       url('{{ "turbo.svg" | asset_url }}') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
+
 
 [class^="icon-"]:before, [class*=" icon-"]:before {
-  font-family: "turbo";
   font-style: normal;
   font-weight: normal;
   speak: none;
@@ -7272,7 +7244,6 @@ form.search_form, .search_form input {
 }
 
 .search_form input, .search_form input:active, .search_form input:focus {
-  font-family: {{ settings.nav_font | replace: 'Google_', '' | replace: '+', ' ' }};
   font-weight: {{ settings.nav_weight }};
   font-size: 12px;
   letter-spacing: {{ settings.nav_letter_spacing }}px;
@@ -7301,7 +7272,6 @@ form.search_form, .search_form input {
 
 .header_search_form input, .header_search_form input:focus, .header_search_form input:active {
   background-color: transparent;
-  font-family: {{ settings.nav_font | replace: 'Google_', '' | replace: '+', ' ' }};
   font-weight: {{ settings.nav_weight }};
   color: {{ settings.nav_color }};
   font-weight: {{ settings.nav_weight }};
@@ -8018,7 +7988,6 @@ footer .social_icons a:active, footer .social_icons a:hover {
   }
   .pretext {
     color: {{ settings.banner_color }};
-    font-family: {{ settings.slideshow_subtitle_font | replace: 'Google_', '' | replace: '+', ' ' }};
     font-weight: {{settings.slideshow_subtitle_weight}};
     text-transform: {{settings.slideshow_subtitle_font_style}};
     font-style: {{settings.slideshow_subtitle_font_text}};
@@ -8045,7 +8014,6 @@ footer .social_icons a:active, footer .social_icons a:hover {
   }
   .headline {
     color: {{ settings.banner_color }};
-    font-family: {{ settings.slideshow_headline_font | replace: 'Google_', '' | replace: '+', ' ' }};
     font-weight: {{ settings.slideshow_headline_weight }};
     text-transform: {{ settings.slideshow_headline_font_style }};
     font-size: {{ settings.slideshow_headline_size }}px;
@@ -8074,7 +8042,6 @@ footer .social_icons a:active, footer .social_icons a:hover {
   }
   .subtitle {
     color: {{ settings.banner_color }};
-    font-family: {{ settings.slideshow_subtitle_font | replace: 'Google_', '' | replace: '+', ' ' }};
     font-weight: {{settings.slideshow_subtitle_weight}};
     text-transform: {{settings.slideshow_subtitle_font_style}};
     font-style: {{settings.slideshow_subtitle_font_text}};
@@ -9286,23 +9253,6 @@ $delay: 0;
 }
 
 
-/* #Font-Face
-================================================== */
-/*  This is the proper syntax for an @font-face file.
-    Upload your font files to Assets and then
-    copy your FontName into code below and remove
-    comment brackets */
-
-/*  @font-face {
-      font-family: 'FontName';
-      src: url('FontName.eot');
-      src: url('FontName.eot?iefix') format('eot'),
-           url('FontName.woff') format('woff'),
-           url('FontName.ttf') format('truetype'),
-           url('FontName.svg#webfontZam02nTh') format('svg');
-      font-weight: normal;
-      font-style: normal; }
-*/
 
 
 /* #Custom Styles
@@ -9345,11 +9295,7 @@ h2, .h2, h2.title{text-decoration:underline;}
 /* .featured-promotions .feature-section .feature-overlay:hover{background:purple;} */
 
 
-/* h1 {
-  font-family: "proxima-nova",sans-serif;
-  }
- */
-/* .menu a, .menu a:visited, .menu a:active, #header span.menu_title, .menu a span, select.currencies, .mini_cart span{font-family:'proxima-nova',sans-serif;} */
+
 
 
 .additional-checkout-buttons{display:none;}
@@ -9357,20 +9303,8 @@ h2, .h2, h2.title{text-decoration:underline;}
 
 
 
-/* Wishlist app css */
-@font-face {
-	font-family: "Flaticon1";
-	src: url("flaticon1.eot");
-	src: url("flaticon1.eot#iefix") format("embedded-opentype"),
-	url("flaticon1.woff") format("woff"),
-	url("flaticon1.ttf") format("truetype"),
-	url("flaticon1.svg") format("svg");
-	font-weight: normal;
-	font-style: normal;
-}
 [class^="flaticon1-"]:before, [class*=" flaticon1-"]:before,
 [class^="flaticon1-"]:after, [class*=" flaticon1-"]:after {   
-	font-family: Flaticon1;	
 	font-style: normal;
 }
 .flaticon1-like50:before {
@@ -9388,19 +9322,9 @@ a.iWishAdd { color:#333; text-transform:  uppercase; font-size:  14px; letter-sp
 a.iWishAdd img { position: relative; top: 6px; height:22px; width:22px;}
 .iwishItem.alpha { clear: left; }
 input.iwishBuyBtn { margin: 10px 0; }
-@font-face {
-	font-family: "Flaticon";
-	src: url("flaticon.eot");
-	src: url("flaticon.eot#iefix") format("embedded-opentype"),
-	url("flaticon.woff") format("woff"),
-	url("flaticon.ttf") format("truetype"),
-	url("flaticon.svg") format("svg");
-	font-weight: normal;
-	font-style: normal;
-}
+
 [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
 [class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
-	font-family: Flaticon;
         font-size: 14px;
 	font-style: normal;
 	margin-left: 10px;margin-right:3px;
@@ -9422,7 +9346,6 @@ input.iwishBuyBtn { margin: 10px 0; }
     height: 40px;
     line-height: 1.2;
     vertical-align: top;
-    font-family: Oswald;
     font-weight: normal;
     font-size: 14px;
     text-transform: uppercase;
@@ -9476,13 +9399,11 @@ div#shopify-section-1601613223173 .featured-promotions .feature-section.title-ov
 .faq-reward p {
     font-size: 1.25vw;
     color: #fff;
-      font-family: Montserrat;
 }
 .faq-reward h2 {
     font-size: 1.64062vw;
     color: #fff;
     margin-bottom: 0;
-    font-family: Montserrat;
   text-transform: capitalize;
 }
 .cta-rewards {
@@ -9497,11 +9418,9 @@ div#shopify-section-1601613223173 .featured-promotions .feature-section.title-ov
 .main-div-rewards p:nth-child(2) {
     font-size: 2.74262vw;
     text-decoration: underline;
-   font-family: Montserrat;
 }
 .main-div-rewards p:first-child {
     font-size: 2.391vw;
-   font-family: Montserrat;
 }
 .row-custom{display: flex;}
 
@@ -10063,7 +9982,6 @@ list-style:none;
     background-color: #f7f7f7;
     color: #000;
     content: "x";
-    font-family: sans-serif;
     padding: 6px 12px;
     position: absolute;
     text-transform: uppercase;
