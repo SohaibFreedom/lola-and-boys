@@ -25,7 +25,6 @@ body .cart .swipe-custom-box .swipe-btn-protection {
 
 /* UPDATE – look like text link, not a button */
 .update-cart-btn {
-    font-family: Proxima Nova Rg;
     text-decoration: underline;
     font-size: 12px !important;
     text-transform: uppercase;
@@ -170,7 +169,6 @@ body .cart .swipe-custom-box .swipe-btn-protection {
 button.wk-button.wk-align-center,
 .heading-cart-change,
 .quanitty-toggle-cart span.cancel-cart-btn {
-  font-family: Proxima Nova Rg;
   text-decoration: underline;
   font-size: 12px !important;
   text-transform: uppercase;
@@ -232,7 +230,6 @@ button.wk-button.wk-align-center,
   font-size: 14px;
   font-weight: 500;
   color: #000;
-  font-family: Poppins, Arial, sans-serif;
 }
 
 .cart-right-section .subtotal-top p:empty {
