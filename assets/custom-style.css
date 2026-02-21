@@ -5,8 +5,11 @@
 .rebuy-button, .rebuy-cart__flyout-empty-cart a {
     font-family: inherit !important;
 }
+.sale_banner {
+     font-family: "Tstar Pro Headline" !important;
+}
 
-button.swipe-btn-protection, .sale_banner {
+button.swipe-btn-protection {
    font-family: "Tstar Pro Headline";
 }
 .featured-link--half .collection_title {
