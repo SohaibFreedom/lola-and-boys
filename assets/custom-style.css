@@ -6,7 +6,7 @@
     font-family: inherit !important;
 }
 
-button.swipe-btn-protection {
+button.swipe-btn-protection, .sale_banner {
    font-family: "Tstar Pro Headline";
 }
 .featured-link--half .collection_title {
