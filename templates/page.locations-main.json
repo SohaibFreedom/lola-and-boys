@@ -125,13 +125,29 @@
             "button_link": "shopify://pages/dadeland-mall-store-page",
             "border_style": "none"
           }
+        },
+        "text_block_YxQqz7": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify://shop_images/Image_-_2025-12-16T130054.318_079632b9-60ce-43d3-807f-b41ff2a16677.jpg",
+            "title": "Lola + The Boys Plaza Del Lago",
+            "code": "1515 Sheridan Road, Suite 18, Wilmette Illinois 60091, United States",
+            "heading_size": "regular_text",
+            "text": "",
+            "align_text": "left",
+            "button_label": "STORE DETAILS",
+            "button_link": "https://lolaandtheboys.com/pages/plaza-del-lago-page",
+            "border_style": "none"
+          }
         }
       },
       "block_order": [
         "text_block_ViRghJ",
         "text_block_hT3YaN",
         "text_block_i7A9Hp",
-        "text_block_WyErnN"
+        "text_block_WyErnN",
+        "text_block_YxQqz7"
       ],
       "settings": {
         "title": "",
