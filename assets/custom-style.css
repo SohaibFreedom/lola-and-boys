@@ -3982,6 +3982,6 @@ body.product {
 .container .one-fifth.column {
   width: 100% !important;
 }
-.sale_banner {
+.product-list .collection-matrix .sale_banner {
     display: none;
 }
