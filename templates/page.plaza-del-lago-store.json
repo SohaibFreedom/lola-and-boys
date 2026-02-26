@@ -55,11 +55,11 @@
       ],
       "name": "Custom Image text",
       "settings": {
-        "sectionClass": "",
+        "sectionClass": "location-inner-col locationstores",
         "featured_links_per_row": "1",
         "frontpage_text_align": "center",
         "frontpage_image_position": "left",
-        "frontpage_grid_style": "standard"
+        "frontpage_grid_style": "full_width"
       }
     }
   },
