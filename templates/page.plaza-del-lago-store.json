@@ -9,22 +9,65 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "page",
-      "settings": {}
-    },
     "shogun-helper": {
       "type": "shogun-helper",
+      "settings": {}
+    },
+    "main": {
+      "type": "page",
+      "disabled": true,
       "settings": {}
     },
     "shogun-optimizer": {
       "type": "shogun-optimizer",
       "settings": {}
+    },
+    "featured_text_jw9Fq6": {
+      "type": "featured-text",
+      "name": "Rich text and image",
+      "settings": {
+        "title": "Stores",
+        "content": "",
+        "text_size": "featured_text",
+        "text_alignment": "align_left",
+        "button_label": "",
+        "button_link": ""
+      }
+    },
+    "custom_image_text_XebAGE": {
+      "type": "custom-image-text",
+      "blocks": {
+        "image_VtLqft": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Image_-_2025-12-16T130054.318.jpg",
+            "colorbg": "",
+            "Class": "locationstore-text",
+            "title": "Lola + The Boys Plaza Del Lago",
+            "text": "<p><strong>7535 North Kendall Drive, Space 3010 Miami, FL 33156</strong></p><p><strong>Email:</strong> <a href=\"mailto:Alexa@lolaandtheboys.com\" target=\"_blank\">Alexa@lolaandtheboys.com</a></p><p>Monday – Saturday: 10:00 AM – 9:00 PM<br/> Sunday: 11:00 AM – 7:00 PM</p>",
+            "button_label": "Get Directions",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_VtLqft"
+      ],
+      "name": "Custom Image text",
+      "settings": {
+        "sectionClass": "",
+        "featured_links_per_row": "1",
+        "frontpage_text_align": "center",
+        "frontpage_image_position": "left",
+        "frontpage_grid_style": "standard"
+      }
     }
   },
   "order": [
     "shogun-helper",
     "main",
-    "shogun-optimizer"
+    "shogun-optimizer",
+    "featured_text_jw9Fq6",
+    "custom_image_text_XebAGE"
   ]
 }
