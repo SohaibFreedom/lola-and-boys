@@ -3979,3 +3979,6 @@ body.product {
 #shopify-section-template--15691089936486__richtext_custom_MifjVr .rich-text__buttons a {
   color:#fff !important;
 }
+.container .one-fifth.column {
+  width: 100% !important;
+}
