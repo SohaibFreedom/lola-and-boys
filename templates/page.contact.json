@@ -42,10 +42,19 @@
         "location_nzRJ3J": {
           "type": "location",
           "settings": {
-            "ofc_title": "LOLA + THE BOYS AT<br> DADELAND MALL",
+            "ofc_title": "LOLA + THE BOYS AT DADELAND MALL",
             "ofc_html": "<span>7535 North Kendall Drive,<br> Space 3010 Miami,<br> FL 33156</span>\n\n<b>Store Hours:</b>\n<span>Monday - Saturday: <br> \n10:00 AM - 8:00 PM <br> \nSunday: 11:00 AM - 7:00 PM</span>",
             "button_label": "view store",
             "button_link": "https://lolaandtheboys.com/pages/dadeland-mall-store-page"
+          }
+        },
+        "location_HeDzn8": {
+          "type": "location",
+          "settings": {
+            "ofc_title": "Lola + The Boys Plaza Del Lago",
+            "ofc_html": "<span>1515 Sheridan Road, Suite 18,<br> Wilmette Illinois 60091, <br> United States</span>\n\n<b>Store Hours:</b>\n<span>Monday – Sunday: <br> \n 10:00 AM – 6:00 PM</span>",
+            "button_label": "view store",
+            "button_link": "https://lolaandtheboys.com/pages/plaza-del-lago-page"
           }
         }
       },
@@ -53,7 +62,8 @@
         "location_CXGhaK",
         "location_t3tA3a",
         "location_bbEiMk",
-        "location_nzRJ3J"
+        "location_nzRJ3J",
+        "location_HeDzn8"
       ],
       "settings": {
         "title": "",
