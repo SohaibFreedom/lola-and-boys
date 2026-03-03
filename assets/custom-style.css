@@ -2560,6 +2560,7 @@ html
   }
   #mobile-custom-linklist ul#some-id li a {
     letter-spacing: 2px;
+    font-weight: 500;
   }
   #header .top_bar a.mobile_logo {
     margin: 0 auto !important;
