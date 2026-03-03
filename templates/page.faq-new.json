@@ -79,7 +79,7 @@
           "type": "returns",
           "settings": {
             "title": "How can I process a return?",
-            "description": "<p>You can return or exchange your item by following this <a href=\"https://returns.lolaandtheboys.com/\" target=\"_blank\">link</a>.</p>"
+            "description": "<p>You can return or exchange your item by following this <a href=\"https://returns.lolaandtheboys.com/\" target=\"_blank\">link</a>.<br/><a href=\"https://returns.lolaandtheboys.com/\" title=\"https://returns.lolaandtheboys.com/\">https://returns.lolaandtheboys.com/</a></p>"
           }
         },
         "order_support_eb9CFe": {
