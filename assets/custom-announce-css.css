@@ -2,13 +2,12 @@
   font-size: 16px !important;
   letter-spacing: 0;
   font-weight: 400 !important;
-  max-width: 900px !important;
 }
 .announcement-bar {
-  padding: 15px !important;
+  padding: 0.6em 1em;
 }
 .shop-now-text {
-  display: none;
+  display: flex;
   align-items: center;
 
   gap: 12px;
@@ -92,15 +91,15 @@ span#countdown {
 }
 
 .announcement-bar-text {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    grid-template-columns: 1fr 1fr;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
 @media only screen and (max-width: 768px) {
   .announcement-bar p {
-    font-size: 9px !important;
+    font-size: 11px;
     line-height: 11px;
   }
 
@@ -112,7 +111,7 @@ span#countdown {
   }
 
   .shop-now-text b {
-    font-size: 9px !important;
+    font-size: 11px;
     line-height:15px;
   }
 
@@ -121,25 +120,12 @@ span#countdown {
    }
 
   .countdown-numbrs {
-    font-size: 15px !important;
+    font-size: 20px;
     line-height: 13px !important;
-    padding: 6px 9px 3px !important;
+    padding: 10px 9px 3px !important;
     border-radius: 2px;
     margin-right: 3px;
   }
-  img.announce-left-img {
-    max-width: 210px !important;
-}
- .countdown-ends-text{ 
-  font-size: 14px !important; 
-  margin-top: 12px !important;
-}
-.announcement-bar-text {
-    gap: 15px !important;
-  }
-  .announcement-bar {
-  padding: 6px !important;
-}
 }
 
 @media only screen and (max-width: 480px) {
@@ -175,7 +161,7 @@ span#countdown {
   }
 
   .announcement-bar-text {
-    gap: 15px;
+    gap: 10px;
   }
 }
 
@@ -188,39 +174,5 @@ span#countdown {
 @media only screen and (max-width: 767px) and (min-width: 480px) {
   .announcement-bar .announcement-bar-text {
     font-size: 11px !important;
-  }
-}
-img.announce-left-img {
-  max-width: 430px;
-  object-fit: contain;
-}
-.countdown-wrap{
-  display:block;
-}
-/* ✅ Figma jaisa stroke (NOT shadow) */
-.countdown-ends-text{
-font-family: "Tstar Pro Headline" !important;
-  text-transform: uppercase;
-  font-size: 17px; 
-  line-height: 1;
-  letter-spacing: 0.01em;
-  text-align: center;
-  color: #ffffff !important;
-  -webkit-text-stroke: 4px rgba(59,32,77,1);
-  paint-order: stroke fill;
-  text-shadow: none !important;
-  margin-top: 18px;
-}
-@supports not (-webkit-text-stroke: 1px black){
-  .countdown-ends-text{
-    text-shadow:
-      -2px 0 rgba(59,32,77,1),
-       2px 0 rgba(59,32,77,1),
-       0 -2px rgba(59,32,77,1),
-       0  2px rgba(59,32,77,1),
-      -2px -2px rgba(59,32,77,1),
-       2px -2px rgba(59,32,77,1),
-      -2px  2px rgba(59,32,77,1),
-       2px  2px rgba(59,32,77,1);
   }
 }
