@@ -3914,6 +3914,8 @@
           "23ee518c-ddd9-496f-825e-6d407e57a3a9"
         ],
         "settings": {
+          "left_banner_image": "shopify://shop_images/image_2.png",
+          "ends_text": "ENDS TONIGHT",
           "collection": "popular-search-header",
           "desktop_menu": "desktop-menu",
           "mobile_menu": "",
