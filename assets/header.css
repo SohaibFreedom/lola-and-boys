@@ -17,6 +17,10 @@
 }
 .full-width-overlay .product-item a.product-title {
     font-size: 12px !important;
+    line-height: 15px;
+    padding: 3px 0 7px;
+    display: block;
+    margin: 0;
 }
 .full-width-overlay  .product-item p.product-price {
     font-size: 11px !important;
