@@ -3989,3 +3989,7 @@ body.product {
  .collection-matrix .sale_banner {
     display: none;
 }
+
+label[for="swatch-1-light-blue-7810193227878"] {
+  background-color: #6DE9EF !important;
+}
