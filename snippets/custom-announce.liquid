@@ -1,116 +1,202 @@
 {%- comment -%}
 SNIPPET FILE: snippets/announcement-bar-top.liquid
-NOTE: Ye aapke existing CSS ko touch nahi karta. Sirf left image add + countdown same.
+FINAL:
+- old selected => old only
+- new selected => new countdown bar
+- new countdown end => old bar auto show
 {%- endcomment -%}
 
 {{ 'custom-announce-css.css' | asset_url | stylesheet_tag }}
 
-<div class="annoucment-bar-top">
-  {% if section.settings.show_announcement_bar %}
+{% if section.settings.show_announcement_bar %}
 
-    <a href="{{ section.settings.Annouce_url | default: '#' }}">
-      <div class="announcement-bar" style="background-color: {{ section.settings.bck_clr }};">
-        <div class="announcement-bar-text" style="color: {{ section.settings.txt_clr }};">
-          <span id="close_announcement_bar" style="display:none;">X</span>
+  {% if section.settings.announcement_bar_version == 'old' %}
 
-          {% if section.settings.show_countdown %}
-  <div class="countdown-wrap">
-    <div class="countdown"></div>
+    <div class="annoucment-bar-top announcement-bar-old">
+      {% if section.settings.text %}
+        <a href="{{ section.settings.Annouce_url }}">
+          <div class="announcement-bar" style="background-color: {{ section.settings.bck_clr }};">
+            <div class="announcement-bar-text" style="color: {{ section.settings.txt_clr }};">
+              <span id="close_announcement_bar" style="display:none;">X</span>
 
-    {% if section.settings.ends_text != blank %}
-      <div class="countdown-ends-text">{{ section.settings.ends_text }}</div>
-    {% endif %}
-  </div>
-{% endif %}
+              {% if section.settings.show_countdown %}
+                <div class="countdown"></div>
+              {% endif %}
 
-          {%- comment -%} ✅ LEFT IMAGE (always left via CSS at bottom) {%- endcomment -%}
-          {% if section.settings.left_banner_image != blank %}
-            <img
-              class="announce-left-img"
-              src="{{ section.settings.left_banner_image | image_url: width: 900 }}"
-              alt=""
-              loading="lazy"
-            >
-          {% endif %}
+              <div class="shop-now-text">
+                {{ section.settings.text }}
+                <p style="display:none;" class="details">SHOP NOW</p>
+              </div>
+            </div>
+          </div>
+        </a>
 
-          
+        {% if section.settings.show_countdown %}
+          <script>
+            (function () {
+              const formatWithZero = (num) => `${num}`.padStart(2, '0');
+              const root = document.getElementById('shopify-section-{{ section.id }}');
+              if (!root) return;
 
-          <div class="shop-now-text">
-            {{ section.settings.text }}
-            <p style="display:none;" class="details">SHOP NOW</p>
+              setTimeout(function () {
+                const fixedTargetDate = new Date('{{ section.settings.countdown_end_date }}').getTime();
+                const countdownElement = root.querySelector('.announcement-bar-old .countdown');
+                if (!countdownElement) return;
+
+                const countdownTimer = setInterval(function () {
+                  const remainingTime = Math.floor((fixedTargetDate - Date.now()) / 1000);
+
+                  if (remainingTime <= 0) {
+                    clearInterval(countdownTimer);
+                    countdownElement.innerHTML = "";
+                    countdownElement.style.display = "none";
+                    return;
+                  }
+
+                  const days = Math.floor(remainingTime / 86400);
+                  const hours = Math.floor((remainingTime % 86400) / 3600);
+                  const minutes = Math.floor((remainingTime % 3600) / 60);
+                  const seconds = remainingTime % 60;
+
+                  countdownElement.innerHTML = `
+                    <div class="countdown-wrapper">
+                      <div class="countdown-number">
+                        <div class="days-number countdown-numbrs">${formatWithZero(days)} <br> <p>Days</p></div>
+                        <div class="hours-number countdown-numbrs">${formatWithZero(hours)} <br> <p>Hrs</p></div>
+                        <div class="minutes-number countdown-numbrs">${formatWithZero(minutes)} <br> <p>Min</p></div>
+                        <div class="seconds-number countdown-numbrs">${formatWithZero(seconds)} <br> <p>Sec</p></div>
+                      </div>
+                    </div>`;
+                }, 1000);
+              }, 2000);
+            })();
+          </script>
+        {% endif %}
+      {% endif %}
+    </div>
+
+  {% elsif section.settings.announcement_bar_version == 'new' %}
+
+    {%- comment -%} NEW BAR {%- endcomment -%}
+    <div class="annoucment-bar-top announcement-bar-new">
+      <a href="{{ section.settings.Annouce_url | default: '#' }}">
+        <div class="announcement-bar" style="background-color: {{ section.settings.bck_clr }};">
+          <div class="announcement-bar-text" style="color: {{ section.settings.txt_clr }};">
+            <span id="close_announcement_bar" style="display:none;">X</span>
+
+            {% if section.settings.show_countdown %}
+              <div class="countdown-wrap">
+                <div class="countdown"></div>
+
+                {% if section.settings.ends_text != blank %}
+                  <div class="countdown-ends-text">{{ section.settings.ends_text }}</div>
+                {% endif %}
+              </div>
+            {% endif %}
+
+            {% if section.settings.left_banner_image != blank %}
+              <img
+                class="announce-left-img"
+                src="{{ section.settings.left_banner_image | image_url: width: 900 }}"
+                alt=""
+                loading="lazy"
+              >
+            {% endif %}
+
+            <div class="shop-now-text">
+              {{ section.settings.text }}
+              <p style="display:none;" class="details">SHOP NOW</p>
+            </div>
           </div>
         </div>
-      </div>
-    </a>
+      </a>
+    </div>
+
+    {%- comment -%} OLD FALLBACK BAR - new countdown khatam hone ke baad ye show hogi {%- endcomment -%}
+    <div class="annoucment-bar-top announcement-bar-old fallback-old-bar" style="display:none;">
+      {% if section.settings.text %}
+        <a href="{{ section.settings.Annouce_url }}">
+          <div class="announcement-bar" style="background-color: {{ section.settings.bck_clr }};">
+            <div class="announcement-bar-text" style="color: {{ section.settings.txt_clr }};">
+              <span id="close_announcement_bar" style="display:none;">X</span>
+
+              <div class="shop-now-text">
+                {{ section.settings.text }}
+                <p style="display:none;" class="details">SHOP NOW</p>
+              </div>
+            </div>
+          </div>
+        </a>
+      {% endif %}
+    </div>
 
     {% if section.settings.show_countdown %}
       <script>
         (function () {
-          // Function to format numbers with leading zeros
           const formatWithZero = (num) => `${num}`.padStart(2, '0');
-
-          // Scope inside this section only
           const root = document.getElementById('shopify-section-{{ section.id }}');
           if (!root) return;
 
-          // Delay initialization
-          setTimeout(function() {
+          setTimeout(function () {
             const fixedTargetDate = new Date('{{ section.settings.countdown_end_date }}').getTime();
+            const countdownElement = root.querySelector('.announcement-bar-new .countdown');
+            const newBar = root.querySelector('.announcement-bar-new');
+            const oldFallbackBar = root.querySelector('.fallback-old-bar');
 
-            const countdownElement = root.querySelector('.countdown');
-            if (!countdownElement) return;
+            if (!countdownElement || !newBar) return;
 
-            const announcementWrap = root.querySelector('.annoucment-bar-top');
-if (announcementWrap) announcementWrap.style.display = ""; // ✅ ensure visible when date is future
+            function showOldFallback() {
+              newBar.style.display = 'none';
+              if (oldFallbackBar) oldFallbackBar.style.display = '';
+            }
+
+            function showNewBar() {
+              newBar.style.display = '';
+              if (oldFallbackBar) oldFallbackBar.style.display = 'none';
+            }
 
             const countdownTimer = setInterval(function () {
               const remainingTime = Math.floor((fixedTargetDate - Date.now()) / 1000);
 
-              const endsTextEl = root.querySelector('.countdown-ends-text');
-if (endsTextEl) {
-  if (remainingTime <= 86400 && remainingTime > 0) {
-    endsTextEl.style.display = "";
-  } else {
-    endsTextEl.style.display = "none";
-  }
-}
+              const endsTextEl = root.querySelector('.announcement-bar-new .countdown-ends-text');
+              if (endsTextEl) {
+                if (remainingTime <= 86400 && remainingTime > 0) {
+                  endsTextEl.style.display = "";
+                } else {
+                  endsTextEl.style.display = "none";
+                }
+              }
 
               if (remainingTime <= 0) {
-  clearInterval(countdownTimer);
-  countdownElement.innerHTML = "";
-  countdownElement.style.display = "none";
+                clearInterval(countdownTimer);
+                countdownElement.innerHTML = "";
+                countdownElement.style.display = "none";
+                showOldFallback();
+                return;
+              }
 
-  // ✅ Hide whole announcement when countdown ends
-  if (announcementWrap) announcementWrap.style.display = "none";
-
-  return;
-}
+              showNewBar();
 
               const days = Math.floor(remainingTime / 86400);
               const hours = Math.floor((remainingTime % 86400) / 3600);
               const minutes = Math.floor((remainingTime % 3600) / 60);
               const seconds = remainingTime % 60;
 
-              const formattedDays = formatWithZero(days);
-              const formattedHours = formatWithZero(hours);
-              const formattedMinutes = formatWithZero(minutes);
-              const formattedSeconds = formatWithZero(seconds);
-
               countdownElement.innerHTML = `
                 <div class="countdown-wrapper">
                   <div class="countdown-number">
-                    <div class="days-number countdown-numbrs">${formattedDays} <br> <p>Days</p></div>
-                    <div class="hours-number countdown-numbrs">${formattedHours} <br> <p>Hrs</p></div>
-                    <div class="minutes-number countdown-numbrs">${formattedMinutes} <br> <p>Min</p></div>
-                    <div class="seconds-number countdown-numbrs">${formattedSeconds} <br> <p>Sec</p></div>
+                    <div class="days-number countdown-numbrs">${formatWithZero(days)} <br> <p>Days</p></div>
+                    <div class="hours-number countdown-numbrs">${formatWithZero(hours)} <br> <p>Hrs</p></div>
+                    <div class="minutes-number countdown-numbrs">${formatWithZero(minutes)} <br> <p>Min</p></div>
+                    <div class="seconds-number countdown-numbrs">${formatWithZero(seconds)} <br> <p>Sec</p></div>
                   </div>
                 </div>`;
             }, 1000);
-
           }, 200);
         })();
       </script>
     {% endif %}
 
   {% endif %}
-</div>
+
+{% endif %}

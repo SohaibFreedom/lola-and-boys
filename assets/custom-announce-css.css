@@ -1,61 +1,56 @@
-.announcement-bar .announcement-bar-text {
+/* =========================
+   OLD ANNOUNCEMENT BAR CSS
+   ========================= */
+.announcement-bar-old .announcement-bar .announcement-bar-text {
   font-size: 16px !important;
   letter-spacing: 0;
   font-weight: 400 !important;
-  max-width: 900px !important;
 }
-.announcement-bar {
-  padding: 15px !important;
+.announcement-bar-old .announcement-bar {
+  padding: 0.6em 1em;
 }
-.shop-now-text {
-  display: none;
+.announcement-bar-old .shop-now-text {
+  display: flex;
   align-items: center;
-
   gap: 12px;
 }
-.countdown-wrapper {
+.announcement-bar-old .countdown-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
 }
-span#countdown {
+.announcement-bar-old span#countdown {
   position: static !important;
   height: auto !important;
   transform: none !important;
   font-size: 16px !important;
 }
-.countdown-wrapper .details {
+.announcement-bar-old .countdown-wrapper .details {
   text-decoration: underline;
 }
-
-#countdown {
+.announcement-bar-old #countdown {
   margin: 0 auto;
   margin-top: 12px;
   margin-bottom: 6px;
 }
-.shop-now-text br {
+.announcement-bar-old .shop-now-text br {
   display: none;
 }
-.countdown-numbrs p {
-}
-.announcement-bar p {
+.announcement-bar-old .announcement-bar p {
   padding: 6px 0 0;
   font-weight: 700;
   text-transform: uppercase;
   text-decoration: underline;
   font-size: 15px;
-
   line-height: 15px;
 }
-
-.shop-now-text b {
+.announcement-bar-old .shop-now-text b {
   font-size: 13px;
   font-weight: 600;
   text-transform: uppercase;
 }
-
-.countdown-numbrs {
+.announcement-bar-old .countdown-numbrs {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -71,7 +66,7 @@ span#countdown {
   border-radius: 3px;
   margin-right: 3px;
 }
-.countdown-number {
+.announcement-bar-old .countdown-number {
   display: flex;
   align-items: center;
   font-size: 20px;
@@ -79,8 +74,7 @@ span#countdown {
   gap: 3px;
   justify-content: center;
 }
-
-.countdown-number p {
+.announcement-bar-old .countdown-number p {
   font-size: 12px;
   font-weight: 600 !important;
   text-decoration: none;
@@ -88,120 +82,189 @@ span#countdown {
   line-height: 12px !important;
   text-align: center;
 }
-.countdown-number {
-}
-
-.announcement-bar-text {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    grid-template-columns: 1fr 1fr;
+.announcement-bar-old .announcement-bar-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
 @media only screen and (max-width: 768px) {
-  .announcement-bar p {
-    font-size: 9px !important;
+  .announcement-bar-old .announcement-bar p {
+    font-size: 11px;
     line-height: 11px;
   }
-
-  .shop-now-text br {
+  .announcement-bar-old .shop-now-text br {
     display: block;
   }
-  .shop-now-text {
+  .announcement-bar-old .shop-now-text {
     line-height: 1.5 !important;
   }
-
-  .shop-now-text b {
-    font-size: 9px !important;
-    line-height:15px;
+  .announcement-bar-old .shop-now-text b {
+    font-size: 11px;
+    line-height: 15px;
   }
-
-   .shop-now-text strong {
+  .announcement-bar-old .shop-now-text strong {
     display: block !important;
-   }
-
-  .countdown-numbrs {
-    font-size: 15px !important;
+  }
+  .announcement-bar-old .countdown-numbrs {
+    font-size: 20px;
     line-height: 13px !important;
-    padding: 6px 9px 3px !important;
+    padding: 10px 9px 3px !important;
     border-radius: 2px;
     margin-right: 3px;
   }
-  img.announce-left-img {
-    max-width: 210px !important;
-}
- .countdown-ends-text{ 
-  font-size: 14px !important; 
-  margin-top: 12px !important;
-}
-.announcement-bar-text {
-    gap: 15px !important;
-  }
-  .announcement-bar {
-  padding: 6px !important;
-}
 }
 
 @media only screen and (max-width: 480px) {
-  .announcement-bar p {
+  .announcement-bar-old .announcement-bar p {
     font-size: 11px;
     line-height: 9px;
     padding: 5px 0 0;
   }
-    .shop-now-text {
-        gap: 6px;
-        width: 100% !important;
-        justify-content: center;
-    }
-     .shop-now-text b {
-        font-size: 13.5px;
-        line-height: 19px;
-    }
-  .countdown-numbrs {
+  .announcement-bar-old .shop-now-text {
+    gap: 6px;
+    width: 100% !important;
+    justify-content: center;
+  }
+  .announcement-bar-old .shop-now-text b {
+    font-size: 13.5px;
+    line-height: 19px;
+  }
+  .announcement-bar-old .countdown-numbrs {
     font-size: 20px;
     line-height: 13px !important;
     padding: 7px 7px 3px !important;
     border-radius: 2px;
     margin-right: 3px;
   }
-
-  .annoucment-bar-top .announcement-bar .announcement-bar-text,
-  .annoucment-bar-top span#countdown {
+  .announcement-bar-old .annoucment-bar-top .announcement-bar .announcement-bar-text,
+  .announcement-bar-old .annoucment-bar-top span#countdown {
     padding: 0 !important;
   }
-
-  .announcement-bar {
+  .announcement-bar-old .announcement-bar {
     padding: 0.4em 0.5em;
   }
-
-  .announcement-bar-text {
-    gap: 15px;
+  .announcement-bar-old .announcement-bar-text {
+    gap: 10px;
   }
 }
 
 @media only screen and (max-width: 479px) and (min-width: 320px) {
-  .announcement-bar .announcement-bar-text,
-  span#countdown {
+  .announcement-bar-old .announcement-bar .announcement-bar-text,
+  .announcement-bar-old span#countdown {
     font-size: 9px !important;
   }
 }
 @media only screen and (max-width: 767px) and (min-width: 480px) {
-  .announcement-bar .announcement-bar-text {
+  .announcement-bar-old .announcement-bar .announcement-bar-text {
     font-size: 11px !important;
   }
 }
-img.announce-left-img {
+
+
+/* =========================
+   NEW ANNOUNCEMENT BAR CSS
+   ========================= */
+.announcement-bar-new .announcement-bar .announcement-bar-text {
+  font-size: 16px !important;
+  letter-spacing: 0;
+  font-weight: 400 !important;
+  max-width: 900px !important;
+}
+.announcement-bar-new .announcement-bar {
+  padding: 15px !important;
+}
+.announcement-bar-new .shop-now-text {
+  display: none;
+  align-items: center;
+  gap: 12px;
+}
+.announcement-bar-new .countdown-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.announcement-bar-new span#countdown {
+  position: static !important;
+  height: auto !important;
+  transform: none !important;
+  font-size: 16px !important;
+}
+.announcement-bar-new .countdown-wrapper .details {
+  text-decoration: underline;
+}
+.announcement-bar-new #countdown {
+  margin: 0 auto;
+  margin-top: 12px;
+  margin-bottom: 6px;
+}
+.announcement-bar-new .shop-now-text br {
+  display: none;
+}
+.announcement-bar-new .announcement-bar p {
+  padding: 6px 0 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: underline;
+  font-size: 15px;
+  line-height: 15px;
+}
+.announcement-bar-new .shop-now-text b {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.announcement-bar-new .countdown-numbrs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  color: #000 !important;
+  padding: 0;
+  font-size: 25px;
+  line-height: 18px !important;
+  font-weight: 400 !important;
+  background-color: #fbf5f5;
+  padding: 11px 9px 8px !important;
+  border-radius: 3px;
+  margin-right: 3px;
+}
+.announcement-bar-new .countdown-number {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  color: #fff;
+  gap: 3px;
+  justify-content: center;
+}
+.announcement-bar-new .countdown-number p {
+  font-size: 12px;
+  font-weight: 600 !important;
+  text-decoration: none;
+  text-transform: capitalize;
+  line-height: 12px !important;
+  text-align: center;
+}
+.announcement-bar-new .announcement-bar-text {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+}
+.announcement-bar-new img.announce-left-img {
   max-width: 430px;
   object-fit: contain;
 }
-.countdown-wrap{
-  display:block;
+.announcement-bar-new .countdown-wrap {
+  display: block;
 }
-/* ✅ Figma jaisa stroke (NOT shadow) */
-.countdown-ends-text{
-font-family: "Tstar Pro Headline" !important;
+.announcement-bar-new .countdown-ends-text {
+  font-family: "Tstar Pro Headline" !important;
   text-transform: uppercase;
-  font-size: 17px; 
+  font-size: 17px;
   line-height: 1;
   letter-spacing: 0.01em;
   text-align: center;
@@ -211,8 +274,8 @@ font-family: "Tstar Pro Headline" !important;
   text-shadow: none !important;
   margin-top: 18px;
 }
-@supports not (-webkit-text-stroke: 1px black){
-  .countdown-ends-text{
+@supports not (-webkit-text-stroke: 1px black) {
+  .announcement-bar-new .countdown-ends-text {
     text-shadow:
       -2px 0 rgba(59,32,77,1),
        2px 0 rgba(59,32,77,1),
@@ -222,5 +285,91 @@ font-family: "Tstar Pro Headline" !important;
        2px -2px rgba(59,32,77,1),
       -2px  2px rgba(59,32,77,1),
        2px  2px rgba(59,32,77,1);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .announcement-bar-new .announcement-bar p {
+    font-size: 9px !important;
+    line-height: 11px;
+  }
+  .announcement-bar-new .shop-now-text br {
+    display: block;
+  }
+  .announcement-bar-new .shop-now-text {
+    line-height: 1.5 !important;
+  }
+  .announcement-bar-new .shop-now-text b {
+    font-size: 9px !important;
+    line-height: 15px;
+  }
+  .announcement-bar-new .shop-now-text strong {
+    display: block !important;
+  }
+  .announcement-bar-new .countdown-numbrs {
+    font-size: 15px !important;
+    line-height: 13px !important;
+    padding: 6px 9px 3px !important;
+    border-radius: 2px;
+    margin-right: 3px;
+  }
+  .announcement-bar-new img.announce-left-img {
+    max-width: 210px !important;
+  }
+  .announcement-bar-new .countdown-ends-text {
+    font-size: 14px !important;
+    margin-top: 12px !important;
+  }
+  .announcement-bar-new .announcement-bar-text {
+    gap: 15px !important;
+  }
+  .announcement-bar-new .announcement-bar {
+    padding: 6px !important;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .announcement-bar-new .announcement-bar p {
+    font-size: 11px;
+    line-height: 9px;
+    padding: 5px 0 0;
+  }
+  .announcement-bar-new .shop-now-text {
+    gap: 6px;
+    width: 100% !important;
+    justify-content: center;
+  }
+  .announcement-bar-new .shop-now-text b {
+    font-size: 13.5px;
+    line-height: 19px;
+  }
+  .announcement-bar-new .countdown-numbrs {
+    font-size: 20px;
+    line-height: 13px !important;
+    padding: 7px 7px 3px !important;
+    border-radius: 2px;
+    margin-right: 3px;
+  }
+  .announcement-bar-new .annoucment-bar-top .announcement-bar .announcement-bar-text,
+  .announcement-bar-new .annoucment-bar-top span#countdown {
+    padding: 0 !important;
+  }
+  .announcement-bar-new .announcement-bar {
+    padding: 0.4em 0.5em;
+  }
+  .announcement-bar-new .announcement-bar-text {
+    gap: 15px;
+  }
+}
+
+@media only screen and (max-width: 479px) and (min-width: 320px) {
+  .announcement-bar-new .announcement-bar .announcement-bar-text,
+  .announcement-bar-new span#countdown {
+    font-size: 9px !important;
+  }
+}
+@media only screen and (max-width: 767px) and (min-width: 480px) {
+  .announcement-bar-new .announcement-bar .announcement-bar-text {
+    font-size: 11px !important;
   }
 }
