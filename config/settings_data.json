@@ -3914,6 +3914,7 @@
           "23ee518c-ddd9-496f-825e-6d407e57a3a9"
         ],
         "settings": {
+          "announcement_bar_version": "old",
           "left_banner_image": "shopify://shop_images/image_2.png",
           "ends_text": "FINAL HOURS",
           "collection": "popular-search-header",
@@ -3929,7 +3930,7 @@
           "bck_clr": "#f790d1",
           "Annouce_url": "https://lolaandtheboys.com/collections/girls-1",
           "txt_clr": "#000000",
-          "text": "<b> Women’s Day Flash Sale : 20% OFF Site Wide! <strong> Ends At Midnight </strong> </b>",
+          "text": "<b> Save $50 off your order of $250+\nUse code LOLA50</b>",
           "phone_number": "",
           "top_bar_menu": "help",
           "cart_icon": "cart",
