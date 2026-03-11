@@ -3930,7 +3930,7 @@
           "bck_clr": "#f790d1",
           "Annouce_url": "https://lolaandtheboys.com/collections/girls-1",
           "txt_clr": "#000000",
-          "text": "<b> Save $50 off your order of $250+\nUse code LOLA50</b>",
+          "text": "<b> Save $50 off your order of $250+ <br> Use code LOLA50</b>",
           "phone_number": "",
           "top_bar_menu": "help",
           "cart_icon": "cart",
