@@ -47,6 +47,7 @@
   font-size: 13px;
   font-weight: 600;
   text-transform: uppercase;
+  line-height:19px;
 }
 .announcement-bar-old .countdown-numbrs {
   display: flex;
