@@ -12,28 +12,6 @@
     "slideshow_nB6m8V": {
       "type": "slideshow",
       "blocks": {
-        "image_qTG7w8": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/HP_BANNER_1f10dd86-f777-47f2-b595-cc78f9227981.png",
-            "image_mobile": "shopify://shop_images/HP_MOBILE_BANNER_eea800ad-7390-441a-972e-15f2c615d1e1.png",
-            "mp4": "",
-            "mobilevideo": "",
-            "pretext": "",
-            "title": "",
-            "subtitle": "",
-            "text_position": "center",
-            "text_align": "center",
-            "caption_background": false,
-            "caption_background_transparency": false,
-            "button1": "",
-            "button1_link": "https://lolaandtheboys.com/collections/spring-collection",
-            "button1_highlight": false,
-            "button2": "",
-            "button2_link": "",
-            "button2_highlight": false
-          }
-        },
         "image_QccNLz": {
           "type": "image",
           "settings": {
@@ -50,6 +28,28 @@
             "caption_background_transparency": false,
             "button1": "",
             "button1_link": "https://lolaandtheboys.com/collections/easter",
+            "button1_highlight": false,
+            "button2": "",
+            "button2_link": "",
+            "button2_highlight": false
+          }
+        },
+        "image_qTG7w8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/HP_BANNER_1f10dd86-f777-47f2-b595-cc78f9227981.png",
+            "image_mobile": "shopify://shop_images/HP_MOBILE_BANNER_eea800ad-7390-441a-972e-15f2c615d1e1.png",
+            "mp4": "",
+            "mobilevideo": "",
+            "pretext": "",
+            "title": "",
+            "subtitle": "",
+            "text_position": "center",
+            "text_align": "center",
+            "caption_background": false,
+            "caption_background_transparency": false,
+            "button1": "",
+            "button1_link": "https://lolaandtheboys.com/collections/spring-collection",
             "button1_highlight": false,
             "button2": "",
             "button2_link": "",
@@ -255,8 +255,8 @@
         }
       },
       "block_order": [
-        "image_qTG7w8",
         "image_QccNLz",
+        "image_qTG7w8",
         "image_V87qeG",
         "image_fjiMQC",
         "image_aprGEg",
