@@ -61,6 +61,40 @@
         "frontpage_image_position": "left",
         "frontpage_grid_style": "full_width"
       }
+    },
+    "richtext_custom_TTAEk8": {
+      "type": "richtext-custom",
+      "blocks": {
+        "button_ExgKhe": {
+          "type": "button",
+          "settings": {
+            "button_label": "BACK TO STORES",
+            "button_link": "https://lolaandtheboys.com/pages/visit-store",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "button_ExgKhe"
+      ],
+      "name": "Custom richtext",
+      "settings": {
+        "desktop_content_position": "center",
+        "custom_class": "locations-text",
+        "custom_id": "",
+        "display_flex": false,
+        "gap_between": "",
+        "content_alignment": "center",
+        "heading_color": "white",
+        "text_color": "white",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 52,
+        "Image_size": 50
+      }
     }
   },
   "order": [
@@ -68,6 +102,7 @@
     "main",
     "shogun-optimizer",
     "featured_text_9G4T6w",
-    "custom_image_text_kUwack"
+    "custom_image_text_kUwack",
+    "richtext_custom_TTAEk8"
   ]
 }
