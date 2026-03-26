@@ -3993,3 +3993,7 @@ body.product {
 label[for="swatch-1-light-blue-7810193227878"] {
   background-color: #6DE9EF !important;
 }
+
+.text-columns-with-images-section .text-column {
+  width: 100% !important;
+}
