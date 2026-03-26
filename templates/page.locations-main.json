@@ -140,6 +140,21 @@
             "button_link": "https://lolaandtheboys.com/pages/plaza-del-lago-page",
             "border_style": "none"
           }
+        },
+        "text_block_g3w4t9": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify://shop_images/IMG_4862_1_1.png",
+            "title": "Lola + The Boys Aventura",
+            "code": "19505 Biscayne Boulevard unit 3170, Aventura Florida 33180",
+            "heading_size": "regular_text",
+            "text": "",
+            "align_text": "left",
+            "button_label": "STORE DETAILS",
+            "button_link": "https://lolaandtheboys.com/pages/plaza-del-lago-page",
+            "border_style": "none"
+          }
         }
       },
       "block_order": [
@@ -147,7 +162,8 @@
         "text_block_hT3YaN",
         "text_block_i7A9Hp",
         "text_block_WyErnN",
-        "text_block_YxQqz7"
+        "text_block_YxQqz7",
+        "text_block_g3w4t9"
       ],
       "settings": {
         "title": "",
