@@ -102,6 +102,7 @@
         },
         "image_aprGEg": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/HP_BANNER_9e418c67-9903-4f59-9941-d0dc2ab9bf52.png",
             "image_mobile": "shopify://shop_images/HP_MOBILE_BANNER_2.png",
@@ -146,6 +147,7 @@
         },
         "image_KD9mi6": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/1_1_1.png",
             "image_mobile": "shopify://shop_images/1_26649d13-e68a-41e6-91c3-25429a15ddb6.png",
