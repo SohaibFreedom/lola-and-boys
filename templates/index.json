@@ -554,6 +554,7 @@
         },
         "logo_block_7UqkNm": {
           "type": "logo_block",
+          "disabled": true,
           "settings": {
             "logo_image": "shopify://shop_images/abc-7-2-logo-png-transparent_967ee0b7-ec43-44ff-a1c4-8fd31d5ab0f0.png",
             "logo_alt_text": ""
@@ -603,6 +604,7 @@
         },
         "logo_block_wNbtzM": {
           "type": "logo_block",
+          "disabled": true,
           "settings": {
             "logo_image": "shopify://shop_images/d8e7cb11-eeb2-46ee-892c-8baf95351b47.png",
             "logo_alt_text": ""
