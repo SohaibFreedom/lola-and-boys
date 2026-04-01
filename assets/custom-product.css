@@ -192,8 +192,12 @@ div#rebuy-widget-207164 {
         order: 3;
         padding-bottom: 10px !important;
         margin: 0 !important;
-        margin-top: 9px !important;
+        margin-top: 0 !important;
     }
+    .product-info p.modal_price {
+
+    padding-top: 0;
+}
 
   .product-page.product-full .product-media{
     order: 4;
