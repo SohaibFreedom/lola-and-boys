@@ -190,7 +190,7 @@ div#rebuy-widget-207164 {
 
  .product-page.product-full .product-info .price-sale-wrap-c {
         order: 3;
-        padding-bottom: 10px !important;
+        padding-bottom: 0 !important;
         margin: 0 !important;
         margin-top: 0 !important;
     }
