@@ -194,6 +194,9 @@ div#rebuy-widget-207164 {
         margin: 0 !important;
         margin-top: 0 !important;
     }
+    .product-info  .yotpo.bottomLine.yotpo-small {
+    padding-top: 0 !important;
+}
      .product-info .yotpo-bottomline.pull-left.star-clickable {
     margin: 5px 0 !important;
 }
