@@ -2824,7 +2824,7 @@ div#mobile-custom-linklist {
      pointer-events: none !important;
   }
   .banner-video-homemobile {
-    display: block;
+    display: block !important;
   }
   .homepage-slideshow-mobile {
     margin-top: 0px !important;
