@@ -38,10 +38,8 @@
         "image_qTG7w8": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/HP_BANNER_1f10dd86-f777-47f2-b595-cc78f9227981.png",
-            "image_mobile": "shopify://shop_images/HP_MOBILE_BANNER_eea800ad-7390-441a-972e-15f2c615d1e1.png",
-            "mp4": "",
-            "mobilevideo": "",
+            "mp4": "https://cdn.shopify.com/videos/c/o/v/37e1ae4974494587b0cc0472f702b1ce.mp4",
+            "mobilevideo": "https://cdn.shopify.com/videos/c/o/v/d9242e3eb0e74e9eb233321eb74bd52c.mp4",
             "pretext": "",
             "title": "",
             "subtitle": "",
