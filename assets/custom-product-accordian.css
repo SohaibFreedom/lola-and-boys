@@ -1,0 +1,146 @@
+   .product_section .description.bottom {
+      display:none;
+    }
+
+    .AccordionWrap {
+      margin: 20px 0;
+    }
+
+    .AccordionWrap .Acc-Content li {
+      list-style: circle;
+  }
+    .AccordionWrap .Acc-Content ul {
+      padding-left: 10px;
+  }
+    .AccordionWrap .Acc-Heading h2 {
+      font-size:17px;
+      font-weight:500;
+      color:#000;
+      text-transform:uppercase;
+      margin:0;
+      line-height: 17px;
+      letter-spacing:0;
+    }
+
+    .AccordionWrap .Acc-Heading {
+      padding:15px 0;
+      border-bottom:1px solid #7C7C7C;
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .AccordionWrap .Acc-Content {
+      padding: 15px;
+      display: none;
+      background: #fff;
+      line-height: 1.5;
+      border-bottom: 1px solid #000000;
+    }
+
+    .AccordionWrap .Acc-Content p {
+      margin:0;
+    }
+
+    .AccordionWrap .toggle__icon {
+      height: 10px;
+      width: 13px;
+      display: inline-block;
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='10'%3E%3Cpath d='M10.631 8.5L6.5 2.303 2.368 8.5h8.263zm1.869 1H.5l6-9 6 9z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: 13px 10px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .AccordionWrap .Acc-Heading.current .toggle__icon {
+      transform: rotate(180deg);
+    }
+
+                .product-overall-fit {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 10px auto;
+                max-width: 88%;
+            }
+  .model-wear-custom-pdp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffd0e2;
+      padding: 8px 0;
+      gap: 7px;
+      font-size: 17px;
+      font-weight: 500;
+      margin: 20px 0 10px;
+  }
+            .product-overall-title {
+                width: 100%;
+            }
+      .model-wear-custom-pdp svg {
+        width: 30px;
+        position: relative;
+        top: 3px;
+    }
+            .product-overall-fit .bar {
+                position: relative;
+                width: 100%;
+                height: 3px;
+                background-color: #d3d3d3;
+                margin: 20px 0 10px;
+            }
+            .product-overall-fit .dot {
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                background-color: #d3d3d3;
+                border-radius: 50%;
+                transform: translateY(-3px);
+            }
+            .product-overall-fit .dot.star {
+                text-align: center;
+                line-height: 1;
+                top: -10px;
+                background: transparent;
+                font-size: 34px;
+                color: #000;
+               transform: translate(-125%, -50%);
+            }
+            .product-overall-fit .labels {
+                position: relative;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 40px;
+            }
+            .product-overall-fit .labels span {
+                position: absolute;
+                transform: translateX(-50%);
+                top: 10px;
+                font-size: 14px;
+                color: #000;
+                white-space: nowrap;
+            }
+            
+    @media only screen and (max-width:1024px) {
+      .AccordionWrap .Acc-Heading h2 {
+        font-size:14px;
+        line-height:14px;
+      }
+
+    }
+
+        @media only screen and (max-width:768px) {
+
+.model-wear-custom-pdp svg {
+    width: 22px;
+
+}
+.model-wear-custom-pdp {
+    font-size: 15px;
+
+}
+        }
