@@ -5785,16 +5785,6 @@
           "custom_styles": ""
         }
       },
-      "124348908681409149": {
-        "type": "shopify://apps/simple-bundles-kits/blocks/simple-bundles-v2/e553276b-36b2-446d-b80a-aa47fe5f96ac",
-        "disabled": false,
-        "settings": {
-          "select_placeholder": "Please select an option",
-          "disable_oos_options": true,
-          "custom_css": "",
-          "custom_js": ""
-        }
-      },
       "7570552984445421165": {
         "type": "shopify://apps/yotpo-product-photo-reviews/blocks/settings/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
         "disabled": false,
@@ -5839,6 +5829,11 @@
       },
       "14006327314272015586": {
         "type": "shopify://apps/swipe/blocks/post_protect/c8ef0120-cac7-4dcf-9bf1-52b5c97da31d",
+        "disabled": false,
+        "settings": {}
+      },
+      "17824471530847535147": {
+        "type": "shopify://apps/accessibe-widget/blocks/accessiBe/149b77a2-0170-42f6-9355-0bef39587b09",
         "disabled": false,
         "settings": {}
       }
