@@ -1,0 +1,18 @@
+<link rel="preload" href="/a/novel/js/novel-storefront.js?shop={{ shop.permanent_domain }}" as="script">
+<script type="text/javascript" async fetchpriority="high" src="/a/novel/js/novel-storefront.js?shop={{ shop.permanent_domain }}"></script>
+{% if request and request.origin %}
+    {% assign fullUrl = request.origin | append: request.path %}
+{% endif %}<script>
+    try {
+        {% if customer and customer.id %}
+            window.__shopifyCustomerIdFromGlobals__ = "{{ customer.id }}";
+        {% endif %}
+        {% if cart.attributes['synthetic-cart-id'] %}
+            window.__shopifyCartIdFromGlobals__ = "{{ cart.attributes['synthetic-cart-id'] }}";
+        {% endif %}
+        localStorage.setItem("__novel-storefront-data__", JSON.stringify({
+            validUntil: Date.now() + 1000 * 60 * 60,
+            value: {"version":1,"storefrontName":"Lola + The Boys","shopifyDomain":"lolaandtheboys.com","storefrontAccessToken":null,"storefrontCustomerTokenProperty":null,"customerAccountsEnabled":true,"authenticateWithShopifyCustomerAccount":false,"integrations":[],"tokenProducts":[],"gatedExperiences":[],"novelPassUnauthedLink":"https://lolaandtheboys.novel.com"}
+        }));
+    } catch (e) {}
+</script>
