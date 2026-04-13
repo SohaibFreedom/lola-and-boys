@@ -169,6 +169,7 @@
         },
         "image_zPL6aM": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/HP_BANNER_SIZE.png",
             "image_mobile": "shopify://shop_images/1_16.png",
@@ -191,6 +192,7 @@
         },
         "image_UXmp86": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/HP_BANNER_2900X1342_Boys_Collection_Banner_03befc39-237e-4363-8b20-156582a10c75.png",
             "image_mobile": "shopify://shop_images/4_bdae10d3-aaa0-4fa8-a53a-19636b2f3569.png",
