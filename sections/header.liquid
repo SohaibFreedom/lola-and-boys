@@ -944,9 +944,16 @@ function bindSearchEvents() {
           collectionResultsContainer.innerHTML = '';
 
           // Products
+          const hiddenHandles = ['swipe', 'swipe-package-protection'];
           const filteredProducts = data.resources.results.products
-            .slice(0, 4)
-            .filter(product => !product.tags.includes('hide-from-search'));
+            .filter(product => {
+              const handle = (product.handle || '').toLowerCase();
+              const title = (product.title || '').toLowerCase();
+
+              return !hiddenHandles.includes(handle) && title !== 'swipe package protection';
+            })
+            .filter(product => !product.tags.includes('hide-from-search'))
+            .slice(0, 4);
 
           if (filteredProducts.length > 0) {
             filteredProducts.forEach(product => {
@@ -1067,5 +1074,4 @@ function closeFullWidthSearch() {
   document.documentElement.classList.remove("mobilesearch-overflowhidden");
 }
 </script>
-
 
