@@ -18,7 +18,12 @@ body.product div#newReviewFormModal {
      border-radius:10px !important;
 }
 
-
+.product-7728484515942 .swatch-element.color.light-blue-swatch.soldout,
+.product-7728484515942 .swatch-element.color.yellow-swatch.soldout,
+.product-7728484515942 .swatch-element.color.white-swatch.soldout,
+.product-7728484515942 .swatch-element.color.lavender-swatch.soldout {
+  display: none;
+}
 .usf-no-facets .product-list.product-list {
     max-width: 1100px !important;
     margin: 0 auto;
