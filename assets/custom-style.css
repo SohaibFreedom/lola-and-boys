@@ -18,12 +18,7 @@ body.product div#newReviewFormModal {
      border-radius:10px !important;
 }
 
-.swatch-element.color.light-blue-swatch.soldout,
-.swatch-element.color.yellow-swatch.soldout,
-.swatch-element.color.white-swatch.soldout,
-.swatch-element.color.lavender-swatch.soldout {
-    display: none !important;
-}
+
 .usf-no-facets .product-list.product-list {
     max-width: 1100px !important;
     margin: 0 auto;
