@@ -1,4 +1,6 @@
 
+
+
 .social_buttons .icon-twitter-share::before{
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M18.9 2H22l-6.8 7.8L23 22h-6.2l-4.9-6.1L6.6 22H3.5l7.3-8.3L1 2h6.3l4.4 5.5L18.9 2Zm-1.1 18h1.7L6.2 3.9H4.4L17.8 20Z'/%3E%3C/svg%3E");
 }
@@ -14,6 +16,13 @@ body.product div#newReviewFormModal {
 .sale_banner {
      font-family: "Tstar Pro Headline" !important;
      border-radius:10px !important;
+}
+
+.swatch-element.color.light-blue-swatch.soldout,
+.swatch-element.color.yellow-swatch.soldout,
+.swatch-element.color.white-swatch.soldout,
+.swatch-element.color.lavender-swatch.soldout {
+    display: none !important;
 }
 .usf-no-facets .product-list.product-list {
     max-width: 1100px !important;
