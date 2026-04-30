@@ -3914,7 +3914,8 @@
           "23ee518c-ddd9-496f-825e-6d407e57a3a9"
         ],
         "settings": {
-          "announcement_bar_version": "new",
+          "announcement_bar_version": "old",
+          "left_banner_image": "shopify://shop_images/image_2.png",
           "ends_text": "FINAL HOURS",
           "collection": "popular-search-header",
           "desktop_menu": "desktop-menu",
@@ -3925,7 +3926,7 @@
           "submenu_text_color": "#000000",
           "show_announcement_bar": true,
           "show_countdown": true,
-          "countdown_end_date": "2026-04-30T09:00:00",
+          "countdown_end_date": "2026-04-30T01:00:00",
           "bck_clr": "#f790d1",
           "Annouce_url": "https://lolaandtheboys.com/collections/anniversary-sale",
           "txt_clr": "#000000",
