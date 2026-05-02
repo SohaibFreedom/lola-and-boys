@@ -16,8 +16,9 @@
           "type": "image",
           "disabled": true,
           "settings": {
-            "image_mobile": "shopify://shop_images/Lola_10_anniversarySale_HP_Mob_9.jpg",
-            "mp4": "https://cdn.shopify.com/videos/c/o/v/fd51bb48959348cdbbee0e2f77e8a954.mp4",
+            "image": "shopify://shop_images/Barbie_HP2_1.jpg",
+            "image_mobile": "shopify://shop_images/Barbie_HP_Mob_1.jpg",
+            "mp4": "",
             "mobilevideo": "",
             "pretext": "",
             "title": "",
