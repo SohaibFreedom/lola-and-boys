@@ -89,6 +89,7 @@
     {% endif %}
 
   </div>
+  {% render 'custom-mobile-menu' %}
   {% if section.settings.search_enabled %}
     <!-- <div class="dropdown_container center" data-dropdown="search">
       <div class="dropdown search_dropdown_mobile">
@@ -1074,4 +1075,3 @@ function closeFullWidthSearch() {
   document.documentElement.classList.remove("mobilesearch-overflowhidden");
 }
 </script>
-
