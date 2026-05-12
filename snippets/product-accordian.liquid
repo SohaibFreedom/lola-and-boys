@@ -30,18 +30,25 @@
         <span class="toggle__icon"></span>
       </div>
       <div class="Acc-Content" style="display: none;">
+        {%- assign is_final_sale = false -%}
+        {%- if product.tags contains 'saleonsale'
+            or product.tags contains 'Sale'
+            or product.tags contains 'FINALSALE50' -%}
+          {%- assign is_final_sale = true -%}
+        {%- endif -%}
+
         <ul>
           <li>Fast shipping from Chicago</li>
 
-          {% unless product.tags contains 'patch-app-category' %}
-            <li>21 - day return policy for a refund or exchange.</li>
-          {% endunless %}
-
-          <li>Free shipping on orders $250+.</li>
-
           {% if product.tags contains 'patch-app-category' %}
             <li>Customized and personalized items are final sale and cannot be returned or exchanged.</li>
+          {% elsif is_final_sale %}
+            <li>Item is Final Sale &mdash; no returns or exchanges</li>
+          {% else %}
+            <li>21 - day return policy for a refund or exchange.</li>
           {% endif %}
+
+          <li>Free shipping on orders $250+.</li>
         </ul>
       </div>
     </div>
