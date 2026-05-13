@@ -18,7 +18,10 @@ body.product div#newReviewFormModal {
      border-radius:10px !important;
 }
 
-
+label[for="swatch-0-light-blue-7878934233190"] {
+  background-image: none !important;
+  background-color: #CEDBDD !important;
+}
 
 .product-7728484515942 .swatch-element.color.light-blue-swatch.soldout,
 .product-7728484515942 .swatch-element.color.yellow-swatch.soldout,
