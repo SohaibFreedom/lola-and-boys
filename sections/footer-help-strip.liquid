@@ -1,0 +1,360 @@
+{% comment %}
+  Footer-style help strip (newsletter + app badges)
+{% endcomment %}
+
+{% assign newsletter_input_id = 'LtbFooterNewsletterEmail' %}
+
+<section class="ltb-footer-connect-strip">
+  <div class="container ltb-footer-connect__container">
+    <div class="ltb-footer-connect__col ltb-footer-connect__col--newsletter">
+      {% if section.settings.newsletter_heading != blank %}
+        <h2 class="ltb-footer-connect__heading">{{ section.settings.newsletter_heading }}</h2>
+      {% endif %}
+
+      {% if section.settings.newsletter_text != blank %}
+        <div class="ltb-footer-connect__copy">{{ section.settings.newsletter_text }}</div>
+      {% endif %}
+
+      <label for="{{ newsletter_input_id }}" class="ltb-footer-connect__label">{{ section.settings.email_label }}</label>
+      <div class="ltb-footer-connect__input-row">
+        {% include 'footer-newsletter-form', input_id: newsletter_input_id, submit_value: section.settings.newsletter_button_text, label_class: 'visually-hidden-c', label_text: section.settings.email_label %}
+      </div>
+    </div>
+
+    <div class="ltb-footer-connect__col ltb-footer-connect__col--apps">
+      {% if section.settings.apps_heading != blank %}
+        <h2 class="ltb-footer-connect__heading">{{ section.settings.apps_heading }}</h2>
+      {% endif %}
+
+      {% if section.settings.apps_text != blank %}
+        <div class="ltb-footer-connect__copy">{{ section.settings.apps_text }}</div>
+      {% endif %}
+
+      <div class="ltb-footer-connect__apps">
+        {% if section.settings.app_store_image != blank %}
+          <a class="ltb-footer-connect__app-link" href="{{ section.settings.app_store_link }}" {% if section.settings.open_links_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}>
+            <img src="{{ section.settings.app_store_image | img_url: '240x' }}" alt="{{ section.settings.app_store_alt | escape }}" loading="lazy" />
+          </a>
+        {% endif %}
+
+        {% if section.settings.play_store_image != blank %}
+          <a class="ltb-footer-connect__app-link" href="{{ section.settings.play_store_link }}" {% if section.settings.open_links_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}>
+            <img src="{{ section.settings.play_store_image | img_url: '240x' }}" alt="{{ section.settings.play_store_alt | escape }}" loading="lazy" />
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ltb-footer-connect-strip {
+    background: {{ section.settings.background_color }};
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  }
+
+  .ltb-footer-connect-strip .ltb-footer-connect__container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 28px;
+  }
+
+  .ltb-footer-connect-strip .ltb-footer-connect__col {
+    flex: 1 1 0;
+    min-width: 280px;
+    text-align: center;
+  }
+
+  .ltb-footer-connect-strip .ltb-footer-connect__heading {
+    margin: 0 0 10px;
+    color: #222;
+    font-size: 14px;
+    line-height: 1.2;
+    letter-spacing: 1.2px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .ltb-footer-connect-strip .ltb-footer-connect__copy,
+  .ltb-footer-connect-strip .ltb-footer-connect__copy p {
+    margin: 0;
+    color: #222;
+    font-size: 12px;
+    line-height: 1.5;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  .ltb-footer-connect-strip .ltb-footer-connect__copy a {
+    color: #222;
+    text-decoration: underline;
+  }
+
+  .ltb-footer-connect-strip .ltb-footer-connect__label {
+    display: block;
+    margin: 14px 0 8px;
+    color: #222;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    line-height: 1;
+    text-align: center;
+  }
+
+  .ltb-footer-connect-strip .ltb-footer-connect__input-row {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+
+  .ltb-footer-connect-strip .ltb-footer-connect__input-row form {
+    margin: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 50px;
+    grid-template-rows: auto auto;
+    width: 100%;
+  }
+
+  .ltb-footer-connect-strip .ltb-footer-connect__input-row .contact_email {
+    width: 100%;
+    height: 38px;
+    min-height: 38px;
+    border: 1px solid #111;
+    border-right: 0;
+    color: #111;
+    margin: 0;
+    padding: 0 12px;
+    font-size: 12px;
+    line-height: 38px;
+    background: transparent;
+    box-sizing: border-box;
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .ltb-footer-connect-strip .ltb-footer-connect__input-row .action_button.sign_up {
+    width: 50px;
+    min-width: 50px;
+    height: 38px;
+    min-height: 38px;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #111;
+    background: #111;
+    color: transparent;
+    font-size: 0;
+    line-height: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23ffffff' d='M15.772 7.46l-3.867-3.75a.75.75 0 0 0-1.044 1.077L13.4 7.25H.75a.75.75 0 0 0 0 1.5H13.4l-2.538 2.46a.75.75 0 0 0 1.044 1.077l3.867-3.75a.75.75 0 0 0 0-1.077z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 15px;
+    box-sizing: border-box;
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .ltb-footer-connect-strip .ltb-footer-connect__input-row p {
+    margin: 8px 0 0;
+    font-size: 12px;
+    line-height: 1.4;
+    text-align: center;
+    grid-column: 1 / 3;
+    grid-row: 2;
+  }
+
+  .ltb-footer-connect-strip .ltb-footer-connect__apps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .ltb-footer-connect-strip .ltb-footer-connect__app-link {
+    display: inline-flex;
+    line-height: 0;
+  }
+
+  .ltb-footer-connect-strip .ltb-footer-connect__apps img {
+    width: auto;
+    max-width: 140px;
+    height: auto;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .ltb-footer-connect-strip {
+      padding: {{ section.settings.padding_top | times: 0.8 | round }}px 0 {{ section.settings.padding_bottom | times: 0.8 | round }}px;
+    }
+
+    .ltb-footer-connect-strip .ltb-footer-connect__col {
+      min-width: calc(50% - 20px);
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .ltb-footer-connect-strip .ltb-footer-connect__container {
+      gap: 22px;
+    }
+
+    .ltb-footer-connect-strip .ltb-footer-connect__col {
+      min-width: 100%;
+    }
+
+    .ltb-footer-connect-strip .ltb-footer-connect__heading {
+      font-size: 13px;
+    }
+
+    .ltb-footer-connect-strip .ltb-footer-connect__copy,
+    .ltb-footer-connect-strip .ltb-footer-connect__copy p {
+      font-size: 12px;
+    }
+
+    .ltb-footer-connect-strip .ltb-footer-connect__label {
+      font-size: 11px;
+      margin-top: 14px;
+    }
+
+    .ltb-footer-connect-strip .ltb-footer-connect__input-row {
+      max-width: 100%;
+    }
+
+    .ltb-footer-connect-strip .ltb-footer-connect__apps img {
+      max-width: 128px;
+    }
+  }
+  .newsletter-col.four.columns {
+    display: none;
+}
+.top-footer-section > div:nth-child(3) {
+  border-right: none !important;
+}
+</style>
+
+{% schema %}
+{
+  "name": "Footer Connect Strip",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Newsletter Column"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_heading",
+      "label": "Heading",
+      "default": "ELEVATE YOUR FASHION GAME"
+    },
+    {
+      "type": "richtext",
+      "id": "newsletter_text",
+      "label": "Text",
+      "default": "<p>Sign up for our email newsletter and <strong>GET 10% OFF.</strong> It's like having a stylish BFF. Opt out any time. <a href=\"#\">Privacy Policy</a></p>"
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "label": "Email label",
+      "default": "Email Address"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_button_text",
+      "label": "Newsletter button text",
+      "default": "->"
+    },
+    {
+      "type": "header",
+      "content": "App Column"
+    },
+    {
+      "type": "text",
+      "id": "apps_heading",
+      "label": "Heading",
+      "default": "GET THE APP ON THE GO"
+    },
+    {
+      "type": "textarea",
+      "id": "apps_text",
+      "label": "Text",
+      "default": "Download our super easy-to-use app available for your iPhone, iPad and Android devices."
+    },
+    {
+      "type": "image_picker",
+      "id": "app_store_image",
+      "label": "App Store image"
+    },
+    {
+      "type": "url",
+      "id": "app_store_link",
+      "label": "App Store link"
+    },
+    {
+      "type": "text",
+      "id": "app_store_alt",
+      "label": "App Store alt text",
+      "default": "Download on the App Store"
+    },
+    {
+      "type": "image_picker",
+      "id": "play_store_image",
+      "label": "Play Store image"
+    },
+    {
+      "type": "url",
+      "id": "play_store_link",
+      "label": "Play Store link"
+    },
+    {
+      "type": "text",
+      "id": "play_store_alt",
+      "label": "Play Store alt text",
+      "default": "Get it on Google Play"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_links_new_tab",
+      "label": "Open links in new tab",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f4f4f4"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 20,
+      "max": 90,
+      "step": 2,
+      "unit": "px",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 20,
+      "max": 90,
+      "step": 2,
+      "unit": "px",
+      "default": 42
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer Connect Strip"
+    }
+  ]
+}
+{% endschema %}
