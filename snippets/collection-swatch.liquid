@@ -9,23 +9,31 @@
       <div class="collection_swatches">
 
         {% for variant in product.variants %}
-          {% assign value = variant.options[option_index] %}
-          {% unless values contains value %}
-            {% assign values = values | join: ',' %}
-            {% assign values = values | append: ',' | append: value %}
-            {% assign values = values | split: ',' %}
+          {% assign hide_variant_swatch = false %}
+          {% if variant.metafields.custom.hide_when_out_of_stock.value == true or variant.metafields.custom.hide_when_out_of_stock.value == 'true' or variant.metafields.custom.hide_when_out_of_stock.value == 'True' %}
+            {% if variant.available == false %}
+              {% assign hide_variant_swatch = true %}
+            {% endif %}
+          {% endif %}
+          {% unless hide_variant_swatch %}
+            {% assign value = variant.options[option_index] %}
+            {% unless values contains value %}
+              {% assign values = values | join: ',' %}
+              {% assign values = values | append: ',' | append: value %}
+              {% assign values = values | split: ',' %}
 
-            <a href="{{ variant.url | within: collection }}" class="swatch" data-swatch-name="meta-{{ downcased_option }}_{{ value | replace: ' ', '_' | downcase }}">
-              <span {% if section.settings.products_per_row == 2 %}
-                      data-image="{{ variant.featured_image | product_img_url: '600x' }}"
-                    {% elsif section.settings.products_per_row == 3 %}
-                      data-image="{{ variant.featured_image | product_img_url: '500x' }}"
-                    {% else %}
-                      data-image="{{ variant.featured_image | product_img_url: '400x' }}"
-                    {% endif %}
-                    style="background-image: url({{ value | handle | append: '.' | append: file_extension | asset_img_url: '50x' | prepend: 'https:' }}); background-color: {{ value | split: ' ' | last | handle }};">
-                </span>
-            </a>
+              <a href="{{ variant.url | within: collection }}" class="swatch" data-swatch-name="meta-{{ downcased_option }}_{{ value | replace: ' ', '_' | downcase }}">
+                <span {% if section.settings.products_per_row == 2 %}
+                        data-image="{{ variant.featured_image | product_img_url: '600x' }}"
+                      {% elsif section.settings.products_per_row == 3 %}
+                        data-image="{{ variant.featured_image | product_img_url: '500x' }}"
+                      {% else %}
+                        data-image="{{ variant.featured_image | product_img_url: '400x' }}"
+                      {% endif %}
+                      style="background-image: url({{ value | handle | append: '.' | append: file_extension | asset_img_url: '50x' | prepend: 'https:' }}); background-color: {{ value | split: ' ' | last | handle }};">
+                  </span>
+              </a>
+            {% endunless %}
           {% endunless %}
         {% endfor %}
 

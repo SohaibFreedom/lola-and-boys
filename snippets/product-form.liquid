@@ -1,4 +1,24 @@
 {% assign variant = product.selected_or_first_available_variant %}
+{% assign selected_variant_should_hide = false %}
+{% if variant.metafields.custom.hide_when_out_of_stock.value == true or variant.metafields.custom.hide_when_out_of_stock.value == 'true' or variant.metafields.custom.hide_when_out_of_stock.value == 'True' %}
+  {% if variant.available == false %}
+    {% assign selected_variant_should_hide = true %}
+  {% endif %}
+{% endif %}
+{% if selected_variant_should_hide %}
+  {% for variant_check in product.variants %}
+    {% assign variant_check_should_hide = false %}
+    {% if variant_check.metafields.custom.hide_when_out_of_stock.value == true or variant_check.metafields.custom.hide_when_out_of_stock.value == 'true' or variant_check.metafields.custom.hide_when_out_of_stock.value == 'True' %}
+      {% if variant_check.available == false %}
+        {% assign variant_check_should_hide = true %}
+      {% endif %}
+    {% endif %}
+    {% unless variant_check_should_hide %}
+      {% assign variant = variant_check %}
+      {% break %}
+    {% endunless %}
+  {% endfor %}
+{% endif %}
 
 <form
   action="/cart/add"
@@ -25,15 +45,23 @@
         class="multi_select"
       >
         {% for v in product.variants %}
-          <option
-            {% if v == variant %}
-              selected="selected"
+          {% assign hide_variant_option = false %}
+          {% if v.metafields.custom.hide_when_out_of_stock.value == true or v.metafields.custom.hide_when_out_of_stock.value == 'true' or v.metafields.custom.hide_when_out_of_stock.value == 'True' %}
+            {% if v.available == false %}
+              {% assign hide_variant_option = true %}
             {% endif %}
-            value="{{ v.id }}"
-            data-sku="{{ v.sku }}"
-          >
-            {{ v.title }}
-          </option>
+          {% endif %}
+          {% unless hide_variant_option %}
+            <option
+              {% if v == variant %}
+                selected="selected"
+              {% endif %}
+              value="{{ v.id }}"
+              data-sku="{{ v.sku }}"
+            >
+              {{ v.title }}
+            </option>
+          {% endunless %}
         {% endfor %}
       </select>
     </div>
@@ -46,15 +74,23 @@
       <label>{{ product.options[0] }}</label>
       <select id="product-select-{{ product.id }}{{ product-form }}{{ section.id }}{{ block.id }}" name="id">
         {% for v in product.variants %}
-          <option
-            {% if v == variant %}
-              selected="selected"
+          {% assign hide_variant_option = false %}
+          {% if v.metafields.custom.hide_when_out_of_stock.value == true or v.metafields.custom.hide_when_out_of_stock.value == 'true' or v.metafields.custom.hide_when_out_of_stock.value == 'True' %}
+            {% if v.available == false %}
+              {% assign hide_variant_option = true %}
             {% endif %}
-            value="{{ v.id }}"
-            data-sku="{{ v.sku }}"
-          >
-            {{ v.title }}
-          </option>
+          {% endif %}
+          {% unless hide_variant_option %}
+            <option
+              {% if v == variant %}
+                selected="selected"
+              {% endif %}
+              value="{{ v.id }}"
+              data-sku="{{ v.sku }}"
+            >
+              {{ v.title }}
+            </option>
+          {% endunless %}
         {% endfor %}
       </select>
     </div>
@@ -230,6 +266,116 @@
 
 <script>
   $(document).ready(function () {
+    var productForm = $('#product-form-{{ product.id }}');
+    var metaControlledVariants = [
+      {% for v in product.variants %}
+        {
+          option1: {{ v.option1 | json }},
+          option2: {{ v.option2 | json }},
+          option3: {{ v.option3 | json }},
+          available: {{ v.available | json }},
+          inventory_quantity: {{ v.inventory_quantity | json }},
+          inventory_management: {{ v.inventory_management | json }},
+          hide_meta: {{ v.metafields.custom.hide_when_out_of_stock.value | json }}
+        }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ];
+    var isApplyingMetaHide = false;
+
+    function metaValueIsTrue(value) {
+      return value === true || value === 'true' || value === 'True';
+    }
+
+    function shouldHideByMeta(variantData) {
+      if (!metaValueIsTrue(variantData.hide_meta)) return false;
+      if (variantData.available === false) return true;
+      return false;
+    }
+
+    function getSelectedOptionValues($form) {
+      var selected = [];
+      $form.find('.single-option-selector').each(function () {
+        selected.push($(this).val() || '');
+      });
+      if (!selected.length) {
+        $form.find('.swatch').each(function () {
+          selected.push($(this).find('input:checked').val() || '');
+        });
+      }
+      return selected;
+    }
+
+    function matchingVariantsForValue(value, optionIndex, selectedValues) {
+      return metaControlledVariants.filter(function (variantData) {
+        var options = [variantData.option1 || '', variantData.option2 || '', variantData.option3 || ''];
+        if (options[optionIndex] !== value) return false;
+        for (var index = 0; index < optionIndex; index += 1) {
+          if (!selectedValues[index]) continue;
+          if (options[index] !== selectedValues[index]) return false;
+        }
+        return true;
+      });
+    }
+
+    function applyMetafieldVariantHiding($form) {
+      if (isApplyingMetaHide || !$form.length) return;
+      isApplyingMetaHide = true;
+
+      var selectedValues = getSelectedOptionValues($form);
+
+      $form.find('.swatch').each(function () {
+        var $swatchGroup = $(this);
+        var optionIndex = Number($swatchGroup.attr('data-option-index'));
+        if (isNaN(optionIndex)) return;
+
+        $swatchGroup.find('.swatch-element').each(function () {
+          var $swatchElement = $(this);
+          var value = $swatchElement.attr('data-value');
+          var matches = matchingVariantsForValue(value, optionIndex, selectedValues);
+          if (!matches.length) return;
+
+          var hasVisibleMatch = matches.some(function (variantData) {
+            return !shouldHideByMeta(variantData);
+          });
+          var $radioInput = $swatchElement.prev('input[type="radio"]');
+
+          if (hasVisibleMatch) {
+            $swatchElement.show();
+            $radioInput.prop('disabled', false);
+          } else {
+            $swatchElement.hide();
+            $radioInput.prop('checked', false).prop('disabled', true);
+          }
+        });
+
+        var $selectedVisible = $swatchGroup.find('input[type="radio"]:checked').filter(function () {
+          return $(this).next('.swatch-element').is(':visible');
+        });
+
+        if (!$selectedVisible.length) {
+          var $firstVisible = $swatchGroup.find('.swatch-element:visible').first().prev('input[type="radio"]');
+
+          if ($firstVisible.length) {
+            $firstVisible.prop('checked', true).trigger('change');
+          }
+        }
+      });
+
+      isApplyingMetaHide = false;
+    }
+
+    if (productForm.length) {
+      setTimeout(function () {
+        applyMetafieldVariantHiding(productForm);
+      }, 0);
+
+      productForm.on('change', '.swatch :radio, .single-option-selector', function () {
+        setTimeout(function () {
+          applyMetafieldVariantHiding(productForm);
+        }, 0);
+      });
+    }
+
     $('.swatch-element').on('click', function () {
       if ($(this).hasClass('soldout')) {
         $('.checkout_btn_product')[0].style.display = 'none';

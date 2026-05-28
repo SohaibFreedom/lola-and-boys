@@ -59,6 +59,13 @@
   {%- unless variant.metafields.shappify_bundle.is_bundle == "true" -%}
   {%- unless variant.metafields.brodev_scn.hide == "true" -%}
   {%- unless variant.metafields.secomapp.freegifts -%}
+  {%- assign hide_variant_json = false -%}
+  {%- if variant.metafields.custom.hide_when_out_of_stock.value == true or variant.metafields.custom.hide_when_out_of_stock.value == 'true' or variant.metafields.custom.hide_when_out_of_stock.value == 'True' -%}
+    {%- if variant.available == false -%}
+      {%- assign hide_variant_json = true -%}
+    {%- endif -%}
+  {%- endif -%}
+  {%- unless hide_variant_json -%}
     {%- if raw_set_prices -%}
       {%- assign set_prices_array = raw_set_prices | split: "," -%}
       {%- for sp in set_prices_array -%}
@@ -152,6 +159,7 @@
     "inventory_policy":{{- variant.inventory_policy | json -}},
     "barcode":{{- variant.barcode | json -}}
     }
+  {%- endunless -%}
   {%- endunless -%}
   {%- endunless -%}
   {%- endunless -%}
