@@ -51,18 +51,41 @@
                 </div>
                 <div class="contact-support-box wi-50 wi-100">
                     <div class="contact-page-box-content">
-                        {% if section.settings.phone_number != blank %}
-                        <div class="contact-support-content">
-                            <h3 class="page-c-heading">{{ section.settings.phone_title }}</h3>
-                            <a class="page-c-desc" href="tel:{{section.settings.phone_number}}">{{ section.settings.phone_number }}</a>
+                        <div class="contact-support-intro">
+                            <p class="contact-support-eyebrow page-c-heading">{{ section.settings.support_eyebrow | default: "WE'RE HERE TO HELP" }}</p>
+                            <h2 class="contact-support-title page-c-heading">{{ section.settings.title | default: "Reach Us" }}</h2>
+                            <div class="contact-support-text page-c-desc">
+                                {% if section.settings.text != blank %}
+                                    {{ section.settings.text }}
+                                {% else %}
+                                    <p>Questions about an order, sizing, or anything else? Our team would love to help.</p>
+                                {% endif %}
+                            </div>
                         </div>
-                        {% endif %}
-                        {% if section.settings.contactemail != blank %}
-                        <div class="contact-support-content">
-                            <h3 class="page-c-heading">{{ section.settings.email_title }}</h3>
-                            <a class="page-c-desc" href="mailto:{{section.settings.contactemail}}">{{ section.settings.contactemail}}</a>
+
+                        <div class="contact-support-methods">
+                            <div class="contact-support-content">
+                                <div class="contact-support-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" focusable="false">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.35 1.94.7 2.89a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.18-1.27a2 2 0 0 1 2.11-.45c.95.35 1.93.57 2.89.7A2 2 0 0 1 22 16.92z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="page-c-heading">{{ section.settings.phone_title | default: "BY PHONE" }}</h3>
+                                <a class="page-c-desc contact-support-primary" href="tel:{{section.settings.phone_number}}">{{ section.settings.phone_number | default: "[CS PHONE]" }}</a>
+                                <div class="page-c-desc contact-support-note">{{ section.settings.phone_note | default: "Monday-Friday<br>9:00 AM - 5:00 PM CT" }}</div>
+                            </div>
+                            <div class="contact-support-content">
+                                <div class="contact-support-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" focusable="false">
+                                        <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path>
+                                        <path d="m22 7-10 7L2 7"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="page-c-heading">{{ section.settings.email_title | default: "BY EMAIL" }}</h3>
+                                <a class="page-c-desc contact-support-primary" href="mailto:{{section.settings.contactemail}}">{{ section.settings.contactemail}}</a>
+                                <div class="page-c-desc contact-support-note">{{ section.settings.email_note | default: "We reply within 1-2 business days" }}</div>
+                            </div>
                         </div>
-                        {% endif %}
                     </div>
                     
                     <div class="contact-locations-grid">
@@ -167,12 +190,99 @@
     display:block;
   }
 
-  .contact-support-content {
+  .contact-support-box > .contact-page-box-content {
     margin-bottom: 40px !important;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.07);
-    padding: 30px 10px;
-    border-radius: 10px;
+    padding: 54px 32px 48px;
     text-align: center;
+    background: linear-gradient(180deg, #fff1f8 0%, #fff 82%);
+  }
+
+  .contact-support-intro {
+    margin: 0 auto 30px;
+  }
+
+  .contact-support-eyebrow {
+    margin: 0 0 18px;
+    color: #d83d8d;
+    letter-spacing: 6px;
+    line-height: 1.2;
+    font-size: 13px !important;
+  }
+
+  .contact-support-title {
+    margin:20px 0 !important;
+    color: #1f1f23;
+    font-size: 28px !important;
+    letter-spacing: 1px;
+    line-height: 1.1;
+    font-weight: 400 !important;
+  }
+
+  .contact-support-text {
+    color: #747474;
+    line-height: 1.5;
+  }
+
+  .contact-support-text p {
+    margin: 0;
+  }
+
+  .contact-support-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    align-items: stretch;
+  }
+
+  .contact-support-content {
+    margin-bottom: 0 !important;
+    padding: 0 34px;
+    text-align: center;
+  }
+
+  .contact-support-content + .contact-support-content {
+    border-left: 1px solid #dedede;
+  }
+
+  .contact-support-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #eadfe5;
+    border-radius: 50%;
+    background: #fff;
+  }
+
+  .contact-support-icon svg {
+    width: 25px;
+    height: 25px;
+    fill: none;
+    stroke: #d83d8d;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .contact-support-content .page-c-heading {
+    margin-bottom: 18px;
+    color: #777;
+  }
+
+  .contact-support-primary {
+    display: block;
+    margin-bottom: 18px !important;
+    color: #202026 !important;
+    font-weight: 600 !important;
+    letter-spacing: 0 !important;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+
+  .contact-support-note {
+    color: #777;
+    line-height: 1.5;
   }
 
   .contact-support-content p a {
@@ -182,6 +292,10 @@
   .contact-page-box-content {
     padding-top: 0;
     margin-top: 0;
+  }
+
+  .contact-support-box > .contact-page-box-content {
+    padding-top: 54px;
   }
 
   .contact-page-content .contact-page-box-title {
@@ -242,7 +356,7 @@
 
   .contact-locations-grid span, b {
     line-height: 15px;
-  }.
+  }
 
   .contact-locations-grid b {
     margin: 10px 0;
@@ -260,6 +374,38 @@
     font-size: 20px;
     margin: 0 0 20px;
   }
+
+  .contact-support-box > .contact-page-box-content {
+    padding: 42px 20px 36px;
+    padding-top: 42px;
+  }
+
+  .contact-support-intro {
+    margin-bottom: 50px;
+  }
+
+  .contact-support-eyebrow {
+    letter-spacing: 4px;
+  }
+
+  .contact-support-title {
+    font-size: 30px;
+    margin-bottom: 22px;
+  }
+
+  .contact-support-content {
+    padding: 0 22px;
+  }
+
+  .contact-support-icon {
+    margin-bottom: 20px;
+  }
+
+
+  .contact-support-content .page-c-heading {
+    letter-spacing: 3px;
+  }
+
 }
 
 @media (max-width: 800px) {
@@ -304,6 +450,34 @@
   .contact-page-coustmer .contact-page-box-content .contact-menu-list ul li {
     margin-bottom: 6px;
   }
+
+  .contact-support-box > .contact-page-box-content {
+    padding: 36px 18px 32px;
+    padding-top: 36px;
+  }
+
+  .contact-support-intro {
+    margin-bottom: 40px;
+  }
+
+  .contact-support-title {
+    font-size: 28px;
+  }
+
+  .contact-support-methods {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .contact-support-content {
+    padding: 0;
+  }
+
+  .contact-support-content + .contact-support-content {
+    padding-top: 26px;
+    border-left: 0;
+    border-top: 1px solid #dedede;
+  }
 }
 
 </style>
@@ -316,13 +490,20 @@
 	 {
         "type": "text",
         "id": "title",
-        "label": "Support Heading"
+        "label": "Support Heading",
+        "default": "Reach Us"
+     },
+     {
+        "type": "text",
+        "id": "support_eyebrow",
+        "label": "Support Eyebrow",
+        "default": "WE'RE HERE TO HELP"
      },
 	 {
         "type": "richtext",
         "id": "text",
         "label": "Text",
-        "default": "<p>We love to hear from our customers! Stop by one of our two Chicago stores or send us an email .</p>"
+        "default": "<p>Questions about an order, sizing, or anything else? Our team would love to help.</p>"
      },
  	 {
         "type": "text",
@@ -349,22 +530,37 @@
 	 {
         "type": "text",
         "id": "phone_title",
-        "label": "Phone Heading"
+        "label": "Phone Heading",
+        "default": "BY PHONE"
      },
 	 {
         "type": "text",
         "id": "phone_number",
-        "label": "Phone Number"
+        "label": "Phone Number",
+        "default": "[CS PHONE]"
+     },
+     {
+        "type": "html",
+        "id": "phone_note",
+        "label": "Phone Note",
+        "default": "Monday-Friday<br>9:00 AM - 5:00 PM CT"
      },
 	 {
         "type": "text",
         "id": "email_title",
-        "label": "Email Heading"
+        "label": "Email Heading",
+        "default": "BY EMAIL"
      },
 	 {
         "type": "text",
         "id": "contactemail",
         "label": "Email"
+     },
+     {
+        "type": "html",
+        "id": "email_note",
+        "label": "Email Note",
+        "default": "We reply within 1-2 business days"
      },
 	 {
         "type": "text",
