@@ -583,7 +583,7 @@ $('.patch-customization-btn-outer-wrapper').hide();
           }
       };
 
-      // Create an observer instance linked to the callback function
+      
       var observer = new MutationObserver(callback);
 
       
@@ -592,7 +592,7 @@ $('.patch-customization-btn-outer-wrapper').hide();
      
       observer.observe(document.body, config);
 
-      // Add a click event listener to the button
+      
       customizeButton.click(function() {
           isCustomizationActive = true;
           console.log('customize button clicked');
@@ -611,7 +611,8 @@ $('.patch-customization-btn-outer-wrapper').hide();
           $('.yotpo-reviews-list').hide();
           $('#shopify-block-yotpo_product_reviews_ugc_reviews_MbrNNx').hide();
           $('#shopify-section-template--15691086168166__shop_with_us_4cNKDq').hide();
-
+          $('.cont-wrap').hide();
+          $('#shopify-section-footer-help-strip').hide();
           $('.footer').hide();
           $('.annoucment-bar-top').hide();
           $('#header').hide();
