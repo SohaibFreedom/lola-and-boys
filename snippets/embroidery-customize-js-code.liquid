@@ -1644,7 +1644,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function uploadBlobToS3(blob) {
     const fd = new FormData();
     fd.append('image', blob, 'embroidery.jpg');
-    const res = await fetch('https://6ch1pxqng1.execute-api.ap-south-1.amazonaws.com/check', {
+    const res = await fetch('https://image-upload-r2.onrender.com/upload', {
       method: 'POST',
       body: fd
     });
