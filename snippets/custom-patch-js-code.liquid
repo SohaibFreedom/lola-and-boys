@@ -592,7 +592,7 @@ $('.patch-customization-btn-outer-wrapper').hide();
      
       observer.observe(document.body, config);
 
-      // Add a click event listener to the button
+      
       customizeButton.click(function() {
           isCustomizationActive = true;
           console.log('customize button clicked');
@@ -621,6 +621,8 @@ $('.patch-customization-btn-outer-wrapper').hide();
           $('.cont-wrap').hide();
           $('.yotpo-widget-instance').hide();
           $('.product-customization').show();
+          $('.ltb-footer-connect-strip').hide();
+
           setCustomizerHeaderWidth();
         
           $('.announce-bar-slide-wrapper, .header-background--solid, .content').hide();
@@ -684,7 +686,7 @@ $('.patch-customization-btn-outer-wrapper').hide();
   $('.size_variants_section').css('visibility', 'visible');
   });
    $('.close-variant-selector-editor').click(function() {
-      // Remove the class from any element that has it
+      
       $('.all-sidebar-cross-alert').addClass('all-sidebar-cross-alert-visble');
 
       $('.patches-customization-container-overly').css('display', 'block');
