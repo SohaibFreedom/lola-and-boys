@@ -43,9 +43,9 @@
             "image": "shopify://shop_images/IMG_4862_1_1.png",
             "colorbg": "",
             "Class": "locationstore-text",
-            "title": "Lola + The Boys Aventura",
-            "text": "<p><strong>19505 Biscayne Boulevard unit 3170, Aventura Florida 33180</strong></p><p><strong>Email:</strong> <a href=\"mailto:Alexa@lolaandtheboys.com\" target=\"_blank\">Alexa@lolaandtheboys.com</a></p><p>Monday – Sunday: 10:00 AM – 6:00 PM</p>",
-            "button_label": "Get Directions",
+            "title": "Coming soon Lola + The Boys Aventura",
+            "text": "<p><strong>19505 Biscayne Boulevard unit 3170, Aventura Florida 33180</strong></p><p></p>",
+            "button_label": "",
             "link": ""
           }
         }
