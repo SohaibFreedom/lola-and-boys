@@ -583,7 +583,7 @@ $('.patch-customization-btn-outer-wrapper').hide();
           }
       };
 
-      
+      // Create an observer instance linked to the callback function
       var observer = new MutationObserver(callback);
 
       
@@ -592,7 +592,7 @@ $('.patch-customization-btn-outer-wrapper').hide();
      
       observer.observe(document.body, config);
 
-      
+      // Add a click event listener to the button
       customizeButton.click(function() {
           isCustomizationActive = true;
           console.log('customize button clicked');
@@ -611,8 +611,7 @@ $('.patch-customization-btn-outer-wrapper').hide();
           $('.yotpo-reviews-list').hide();
           $('#shopify-block-yotpo_product_reviews_ugc_reviews_MbrNNx').hide();
           $('#shopify-section-template--15691086168166__shop_with_us_4cNKDq').hide();
-          $('.cont-wrap').hide();
-          $('#shopify-section-footer-help-strip').hide();
+
           $('.footer').hide();
           $('.annoucment-bar-top').hide();
           $('#header').hide();
@@ -1018,22 +1017,21 @@ img.setAttribute('crossorigin', 'anonymous');
             let patchName = item.patchname;
             const product = {{ product | json }};
             const variantname = document.querySelector('input[name="selective_variant_name"]').value.trim();
-            console.log('this is variantname', variantname);
-
-            // Adjust imgHeight and imgWidth based on variantname and productTags
+          
             if (variantname === '1' || variantname === '2' || variantname === '2/3' || variantname === '3/4' || variantname === '4/5' || variantname === '5/6' || 
                 variantname === '4' || variantname === '5' || variantname === '6') {
-                if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit")&& !productTags.includes("Customizable-Patch-Soft-Hoodie")&& !productTags.includes("Embossed-Emoji-Terry-Poncho")&& !productTags.includes("Super-soft-short-set")&& !productTags.includes("Lavender-Haze-Gem") && !productTags.includes("Pastel-Velour-Short-Set")) {
-                    console.log('condition true');
+                if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit")&& !productTags.includes("Customizable-Patch-Soft-Hoodie")&& !productTags.includes("Embossed-Emoji-Terry-Poncho")&& !productTags.includes("Super-soft-short-set")&& !productTags.includes("Lavender-Haze-Gem") && !productTags.includes("Pastel-Velour-Short-Set") && !productTags.includes("Velour-Margot-Set")) {
                     imgHeight += 7;
                     imgWidth += 7;
                 } else if (productTags.includes("Customizable-Patch-Soft-Hoodie")) {
-                   console.log("Customizable-Patch-Soft-Hoodie condition");
                    imgHeight -= 5;
                    imgWidth -= 5;
                  }
+                 else if (productTags.includes("Velour-Margot-Set")) {
+                   imgHeight -= 12;
+                   imgWidth -= 12;
+                 }
                    else if (productTags.includes("Pastel-Velour-Short-Set")) {
-                   console.log("Pastel-Velour-Short-Set condition");
                    imgHeight -= 6;
                    imgWidth -= 6;
                  }
@@ -1042,7 +1040,6 @@ img.setAttribute('crossorigin', 'anonymous');
                    imgWidth -= 5;
                  }
                    else if (productTags.includes("Embossed-Emoji-Terry-Poncho")) {
-                   console.log("Embossed-Emoji-Terry-Poncho condition");
                    imgHeight -= 20;
                    imgWidth -= 20;
                  }
@@ -1062,28 +1059,32 @@ img.setAttribute('crossorigin', 'anonymous');
             } 
             else if (variantname === '6/7' || variantname === '8' || variantname === '7/8' || variantname === '8/9' ||  
                        variantname === '10' || variantname === '9/10' || variantname === '10/11' || variantname === '11/12' || variantname === '12' || 
-                       variantname === '14') {
-                if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit") && !productTags.includes("Customizable-Patch-Soft-Hoodie") && !productTags.includes("Embossed-Emoji-Terry-Poncho") && !productTags.includes("Super-soft-short-set")&& !productTags.includes("Lavender-Haze-Gem")) {
-                    console.log('condition true');
+                       variantname === '14'){
+                if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit") && !productTags.includes("Customizable-Patch-Soft-Hoodie") && !productTags.includes("Embossed-Emoji-Terry-Poncho") && !productTags.includes("Super-soft-short-set")&& !productTags.includes("Lavender-Haze-Gem")&& !productTags.includes("Velour-Margot-Set") ) {
+                    
                     imgHeight += 4;
                     imgWidth += 4;
                 }else if (productTags.includes("Customizable-Patch-Soft-Hoodie")) {
-                   console.log("Customizable-Patch-Soft-Hoodie condition");
+                   
                    imgHeight -= 5;
                    imgWidth -= 5;
-                 } else if (productTags.includes("Lavender-Haze-Gem")){
+                 } else if (productTags.includes("Velour-Margot-Set")) {
+                   
+                   imgHeight -= 14;
+                   imgWidth -= 14;
+                 }else if (productTags.includes("Lavender-Haze-Gem")){
                    imgHeight -= 5;
                    imgWidth -= 5;
                  }  else if (productTags.includes("Embossed-Emoji-Terry-Poncho")) {
-                   console.log("Embossed-Emoji-Terry-Poncho condition");
+                   
                    imgHeight -= 25;
                    imgWidth -= 25;
                  }  else if (productTags.includes("Super-soft-short-set")) {
-                   console.log("Super-soft-short-set condition");
+                   
                    imgHeight -= 30;
                    imgWidth -= 30;
                  }else {
-                    console.log('condition false');
+                    
                     imgHeight -= 15;
                     imgWidth -= 15;
                 }
@@ -1813,37 +1814,43 @@ img.setAttribute('crossorigin', 'anonymous');
             
             if (variantname === '1' || variantname === '2' || variantname === '2/3' || variantname === '3/4' || variantname === '4/5' || variantname === '5/6' || 
                 variantname === '4' || variantname === '5' || variantname === '6') {
-                if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit")&& !productTags.includes("Customizable-Patch-Soft-Hoodie")&& !productTags.includes("Embossed-Emoji-Terry-Poncho") && !productTags.includes("Super-soft-short-set") && !productTags.includes("Lavender-Haze-Gem")  && !productTags.includes("Pastel-Velour-Short-Set")) {
-                    console.log('condition true');
+                if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit")&& !productTags.includes("Customizable-Patch-Soft-Hoodie")&& !productTags.includes("Embossed-Emoji-Terry-Poncho") && !productTags.includes("Super-soft-short-set") && !productTags.includes("Lavender-Haze-Gem")  && !productTags.includes("Pastel-Velour-Short-Set")&& !productTags.includes("Velour-Margot-Set")) {
+                    
                     imgHeight += 8;
                     imgWidth += 8;
                 }
                 else if (productTags.includes("Lavender-Haze-Gem")) {
-                   console.log("Lavender-Haze-Gem condition");
+                   
                    imgHeight -= 10;
                    imgWidth -= 10;
                   
                  }
+                 else if (productTags.includes("Velour-Margot-Set")) {
+                   
+                   imgHeight -= 12;
+                   imgWidth -= 12;
+                  
+                 }
                 else if (productTags.includes("Pastel-Velour-Short-Set")) {
-                   console.log("Pastel-Velour-Short-Set condition");
+                   
                    imgHeight -= 10;
                    imgWidth -= 10;
                   
                  }
                 else if (productTags.includes("Customizable-Patch-Soft-Hoodie")) {
-                   console.log("Customizable-Patch-Soft-Hoodie condition");
+                   
                    imgHeight -= 5;
                    imgWidth -= 5;
                   
                  }
                   else if (productTags.includes("Embossed-Emoji-Terry-Poncho")) {
-                   console.log("Embossed-Emoji-Terry-Poncho condition");
+                   
                    imgHeight -= 20;
                    imgWidth -= 20;
                   
                  }
                     else if (productTags.includes("Super-soft-short-set")) {
-                   console.log("Super-soft-short-set");
+                   
                    imgHeight -= 30;
                    imgWidth -= 30;
                   
@@ -1861,8 +1868,8 @@ img.setAttribute('crossorigin', 'anonymous');
             else if (variantname === '6/7' || variantname === '8' || variantname === '7/8' || variantname === '8/9' ||  
                        variantname === '10' || variantname === '9/10' || variantname === '10/11' || variantname === '11/12' || variantname === '12' || 
                        variantname === '14') {
-                if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit")&& !productTags.includes("Customizable-Patch-Soft-Hoodie")&& !productTags.includes("Embossed-Emoji-Terry-Poncho")&& !productTags.includes("Super-soft-short-set")&& !productTags.includes("Lavender-Haze-Gem") && !productTags.includes("Pastel-Velour-Short-Set")) {
-                    console.log('condition true');
+                if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit")&& !productTags.includes("Customizable-Patch-Soft-Hoodie")&& !productTags.includes("Embossed-Emoji-Terry-Poncho")&& !productTags.includes("Super-soft-short-set")&& !productTags.includes("Lavender-Haze-Gem") && !productTags.includes("Pastel-Velour-Short-Set")&& !productTags.includes("Velour-Margot-Set")) {
+                    
                     imgHeight += 4;
                     imgWidth += 4;
                 } else if (productTags.includes("Customizable-Patch-Soft-Hoodie")) {
@@ -1876,13 +1883,19 @@ img.setAttribute('crossorigin', 'anonymous');
                    imgHeight -= 12;
                    imgWidth -= 12;
                   
-                 }else if (productTags.includes("Embossed-Emoji-Terry-Poncho")) {
-                   console.log("Embossed-Emoji-Terry-Poncho condition");
+                 }
+                 else if (productTags.includes("Velour-Margot-Set")) {
+                   imgHeight -= 14;
+                   imgWidth -= 14;
+                  
+                 }
+                 else if (productTags.includes("Embossed-Emoji-Terry-Poncho")) {
+                   
                    imgHeight -= 25;
                    imgWidth -= 25;
                   
                  }      else if (productTags.includes("Super-soft-short-set")) {
-                   console.log("Super-soft-short-set");
+                   
                    imgHeight -= 33;
                    imgWidth -= 33;
                   
@@ -2587,18 +2600,23 @@ img.setAttribute('crossorigin', 'anonymous');
             // Adjust imgHeight and imgWidth based on variantname and productTags
             if (variantname === '1' || variantname === '2' || variantname === '2/3' || variantname === '3/4' || variantname === '4/5' || variantname === '5/6' || 
                 variantname === '4' || variantname === '5' || variantname === '6') {
-                if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit") && !productTags.includes("Customizable-Patch-Soft-Hoodie") && !productTags.includes("Customizable-Patch-Soft-Hoodie") && !productTags.includes("Embossed-Emoji-Terry-Poncho") && !productTags.includes("Super-soft-short-set") && !productTags.includes("Lavender-Haze-Gem") && !productTags.includes("Pastel-Velour-Short-Set") ) {
+                if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit") && !productTags.includes("Customizable-Patch-Soft-Hoodie") && !productTags.includes("Customizable-Patch-Soft-Hoodie") && !productTags.includes("Embossed-Emoji-Terry-Poncho") && !productTags.includes("Super-soft-short-set") && !productTags.includes("Lavender-Haze-Gem") && !productTags.includes("Pastel-Velour-Short-Set")&& !productTags.includes("Velour-Margot-Set") ) {
                     console.log('condition true');
                     imgHeight += 7;
                     imgWidth += 7;
                 }
                   else if (productTags.includes("Customizable-Patch-Soft-Hoodie")) {
-                   console.log("Customizable-Patch-Soft-Hoodie condition");
+                   
                    imgHeight -= 5;
                    imgWidth -= 5;
                  }
+                  else if (productTags.includes("Velour-Margot-Set")) {
+                   
+                   imgHeight -= 12;
+                   imgWidth -= 12;
+                 }
                   else if (productTags.includes("Pastel-Velour-Short-Set")) {
-                   console.log("Pastel-Velour-Short-Set condition");
+                   
                    imgHeight -= 6;
                    imgWidth -= 6;
                  }
@@ -2607,12 +2625,12 @@ img.setAttribute('crossorigin', 'anonymous');
                    imgWidth -= 5;
                  }
                     else if (productTags.includes("Embossed-Emoji-Terry-Poncho")) {
-                   console.log("Embossed-Emoji-Terry-Poncho condition");
+                   
                    imgHeight -= 20;
                    imgWidth -= 20;
                  }
                   else if (productTags.includes("Super-soft-short-set")) {
-                   console.log("Super-soft-short-set condition");
+                   
                    imgHeight -= 25;
                    imgWidth -= 25;
                  }
@@ -2630,21 +2648,26 @@ img.setAttribute('crossorigin', 'anonymous');
             else if (variantname === '6/7' || variantname === '8' || variantname === '7/8' || variantname === '8/9' ||  
                        variantname === '10' || variantname === '9/10' || variantname === '10/11' || variantname === '11/12' || variantname === '12' || 
                        variantname === '14') {
-                if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit")&& !productTags.includes("Customizable-Patch-Soft-Hoodie") && !productTags.includes("Embossed-Emoji-Terry-Poncho") && !productTags.includes("Super-soft-short-set") && !productTags.includes("Lavender-Haze-Gem") && !productTags.includes("Pastel-Velour-Short-Set")) {
+                if (!productTags.includes("happ-velour-set") && !productTags.includes("Bella-Hologram-Swimsuit")&& !productTags.includes("Customizable-Patch-Soft-Hoodie") && !productTags.includes("Embossed-Emoji-Terry-Poncho") && !productTags.includes("Super-soft-short-set") && !productTags.includes("Lavender-Haze-Gem") && !productTags.includes("Pastel-Velour-Short-Set")&& !productTags.includes("Velour-Margot-Set")) {
                     // alert('condition true');
                     imgHeight += 4;
                     imgWidth += 4;
                 }
                 else if (productTags.includes("Customizable-Patch-Soft-Hoodie")) {
-                    console.log('Customizable-Patch-Soft-Hoodie');
+                    
                    console.log("Customizable-Patch-Soft-Hoodie condition");
                    imgHeight -= 5;
                    imgWidth -= 5;
                  }
                    else if (productTags.includes("Pastel-Velour-Short-Set")) {
-                   console.log("Pastel-Velour-Short-Set condition");
+                   
                    imgHeight -= 8;
                    imgWidth -= 8;
+                 }
+                 else if (productTags.includes("Velour-Margot-Set")) {
+                   
+                   imgHeight -= 14;
+                   imgWidth -= 14;
                  }
                      else if (productTags.includes("Lavender-Haze-Gem")){
                    imgHeight -= 10;
@@ -2652,12 +2675,12 @@ img.setAttribute('crossorigin', 'anonymous');
                  }
                    
                    else if (productTags.includes("Embossed-Emoji-Terry-Poncho")) {
-                   console.log("Embossed-Emoji-Terry-Poncho condition");
+                  
                    imgHeight -= 25;
                    imgWidth -= 25;
                  }
                      else if (productTags.includes("Super-soft-short-set")) {
-                   console.log("Super-soft-short-set condition");
+                   
                    imgHeight -= 30;
                    imgWidth -= 30;
                  }
