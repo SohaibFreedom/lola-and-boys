@@ -7,6 +7,10 @@
 html {
   scroll-behavior: smooth;
 }
+.ProductTabs__panels .w-full.flex {
+  display:block !important;
+}
+
 body.product div#newReviewFormModal {
     z-index: 9999999999999 !important;
 }
