@@ -63,7 +63,14 @@
           {% endif %}
 
           {% if block.settings.button_label != blank and block.settings.button_link != blank %}
-            <a href="{{ block.settings.button_link }}" class="action_button continue-button">
+            <a
+              href="{{ block.settings.button_link }}"
+              class="action_button continue-button"
+              {% if block.settings.open_link_new_tab %}
+                target="_blank"
+                rel="noopener noreferrer"
+              {% endif %}
+            >
               {{ block.settings.button_label | escape }}
             </a>
           {% endif %}
@@ -84,7 +91,7 @@
       "label": "Heading",
       "default": "Text columns with images"
     },
-      {
+    {
       "type": "text",
       "id": "cClass",
       "label": "Custom Classs"
@@ -169,6 +176,12 @@
           "type": "url",
           "id": "button_link",
           "label": "Button link"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_link_new_tab",
+          "label": "Open button in a new tab",
+          "default": false
         },
         {
           "type": "select",
