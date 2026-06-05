@@ -10,7 +10,15 @@ html {
 .ProductTabs__panels .w-full.flex {
   display:block !important;
 }
+.container.location-columns .continue-button {
+  border-bottom-color: #f790d1;
+  color: #f790d1;
+}
 
+.container.location-columns .continue-button:hover {
+  border-bottom-color: #f790d1;
+  color: #f790d1;
+}
 .ProductTabs__panels ul {
   margin-bottom:10px !important;
 }
