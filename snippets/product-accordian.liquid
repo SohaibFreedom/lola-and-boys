@@ -1,87 +1,93 @@
 {{ 'custom-product-accordian.css' | asset_url | stylesheet_tag }}
 
-<section class="AccordionWrap">
-  <div class="AccordionContainer">
-    <div class="AccordionBox">
-      <div class="Acc-Heading">
-        <h2>Description</h2>
-        <span class="toggle__icon"></span>
-      </div>
-      <div class="Acc-Content" style="display: none;">
-        {{ product.description }}
-      </div>
-    </div>
+{%- assign hide_size_chart = false -%}
+{%- if product.tags contains 'Shoes'
+    or product.tags contains 'sneakers'
+    or product.tags contains 'Slippers'
+    or product.tags contains 'slides'
+    or product.tags contains 'loafers' -%}
+  {%- assign hide_size_chart = true -%}
+{%- endif -%}
 
-    {% if product.metafields.custom.overallfit or product.metafields.custom.model_wear %}
-      <div class="AccordionBox">
-        <div class="Acc-Heading current">
-          <h2>Size &amp; Fit</h2>
-          <span class="toggle__icon"></span>
-        </div>
-        <div class="Acc-Content">
-          {% render 'product-overallfit' %}
-        </div>
+<section class="ProductTabs" id="ProductTabs-{{ product.id }}">
+  <div class="ProductTabs__nav" role="tablist">
+    {% if product.description != blank %}
+      <button type="button" class="ProductTabs__navItem active" data-tab="details-{{ product.id }}" role="tab">Details</button>
+    {% endif %}
+
+    <button type="button" class="ProductTabs__navItem" data-tab="shipping-{{ product.id }}" role="tab">Shipping &amp; Returns</button>
+
+    <button type="button" class="ProductTabs__navItem" data-tab="fitsize-{{ product.id }}" role="tab">Fit &amp; Size</button>
+  </div>
+
+  <div class="ProductTabs__panels">
+    {% if product.description != blank %}
+      <div class="ProductTabs__panel active" id="details-{{ product.id }}" role="tabpanel">
+        {{ product.description }}
       </div>
     {% endif %}
 
-    <div class="AccordionBox">
-      <div class="Acc-Heading">
-        <h2>Shipping &amp; Returns</h2>
-        <span class="toggle__icon"></span>
-      </div>
-      <div class="Acc-Content" style="display: none;">
-        {%- assign is_final_sale = false -%}
-        {%- if product.tags contains 'saleonsale'
-            or product.tags contains 'Sale'
-            or product.tags contains 'FINALSALE50' -%}
-          {%- assign is_final_sale = true -%}
-        {%- endif -%}
+    <div class="ProductTabs__panel" id="shipping-{{ product.id }}" role="tabpanel">
+      {%- assign is_final_sale = false -%}
+      {%- if product.tags contains 'saleonsale'
+          or product.tags contains 'Sale'
+          or product.tags contains 'FINALSALE50' -%}
+        {%- assign is_final_sale = true -%}
+      {%- endif -%}
 
-        <ul>
-          <li>Fast shipping from Chicago</li>
+      <ul>
+        <li>Fast shipping from Chicago</li>
 
-          {% if product.tags contains 'patch-app-category' %}
-            <li>Customized and personalized items are final sale and cannot be returned or exchanged.</li>
-          {% elsif is_final_sale %}
-            <li>Item is Final Sale &mdash; no returns or exchanges</li>
-          {% else %}
-            <li>21 - day return policy for a refund or exchange.</li>
-          {% endif %}
+        {% if product.tags contains 'patch-app-category' %}
+          <li>Customized and personalized items are final sale and cannot be returned or exchanged.</li>
+        {% elsif is_final_sale %}
+          <li>Item is Final Sale &mdash; no returns or exchanges</li>
+        {% else %}
+          <li>21 - day return policy for a refund or exchange.</li>
+        {% endif %}
 
-          <li>Free shipping on orders $250+.</li>
-        </ul>
-      </div>
+        <li>Free shipping on orders $250+.</li>
+      </ul>
+    </div>
+
+    <div class="ProductTabs__panel" id="fitsize-{{ product.id }}" role="tabpanel">
+      <ul class="ProductTabs__fitsizeIntro">
+        <li>Our kids&rsquo; sizes run from 2 to 14 (size 4 fits a 4-year-old, size 8 fits an 8-year-old).</li>
+        <li>Women&rsquo;s styles run Small &ndash; Extra Large.</li>
+      </ul>
+
+      {% unless hide_size_chart %}
+        <div class="ProductTabs__sizeChart">
+          {% render 'size-chart-popup' %}
+        </div>
+      {% endunless %}
+
+      {% if product.metafields.custom.overallfit or product.metafields.custom.model_wear %}
+        <div class="ProductTabs__truetosize">
+          {% render 'product-overallfit' %}
+        </div>
+      {% endif %}
     </div>
   </div>
 </section>
 
 
-{% unless product.tags contains 'Shoes'
-  or product.tags contains 'sneakers'
-  or product.tags contains 'Slippers'
-  or product.tags contains 'slides'
-  or product.tags contains 'loafers' %}
-
-  <section class="custom-sizechart-popup">
-    {% render 'size-chart-popup' %}
-  </section>
-
-{% endunless %}
-
-
 <script>
-  $('.AccordionWrap .Acc-Heading').click(function () {
-    const content = $(this).next('.Acc-Content');
+  (function () {
+    var container = document.getElementById('ProductTabs-{{ product.id }}');
+    if (!container) return;
+    var tabs = container.querySelectorAll('.ProductTabs__navItem');
+    var panels = container.querySelectorAll('.ProductTabs__panel');
 
-    if (content.is(':hidden')) {
-      $('.AccordionWrap .Acc-Heading').removeClass('current');
-      $('.AccordionWrap .Acc-Content').slideUp(350); // fast close
-
-      $(this).addClass('current');
-      content.slideDown(350); // fast open
-    } else {
-      $(this).removeClass('current');
-      content.slideUp(350); // fast close
-    }
-  });
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var target = tab.getAttribute('data-tab');
+        tabs.forEach(function (t) { t.classList.remove('active'); });
+        panels.forEach(function (p) { p.classList.remove('active'); });
+        tab.classList.add('active');
+        var panel = container.querySelector('#' + target);
+        if (panel) panel.classList.add('active');
+      });
+    });
+  })();
 </script>

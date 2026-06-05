@@ -183,6 +183,9 @@
 
             </div>
 
+    
+
+
           {% unless product.tags contains 'hellokitty' or product.tags contains 'Bethenny' %}
     <div id="lowProductButton" class="testing-c"></div>
 {% endunless %}
@@ -279,7 +282,18 @@
                 {% endif %}
               </div>
             {% endif %}
+
+
+            <div class="installment-msg-pdp">
+              <div id="afterpay-placement"></div>
+
+              {% form 'product', product %}
+              {{ form | payment_terms }}
+              {% endform %}
             
+            </div>
+
+      
          {% render 'product-accordian' %}
           </div>
         </div>
