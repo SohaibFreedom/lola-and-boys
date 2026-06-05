@@ -746,18 +746,11 @@ btn.on('click', function(e) {
 
 
 {% if template == 'product' %}
-  {%- assign load_rebuy = true -%}
-  {%- if product.tags contains 'patch-app-category' -%}
-    {%- assign load_rebuy = false -%}
-  {%- endif -%}
-  {%- if product.tags contains 'show-add-to-cart' -%}
-    {%- assign load_rebuy = true -%}
-  {%- endif -%}
-  {% if load_rebuy %}
+  {% unless product.tags contains 'patch-app-category' %}
     <!-- Rebuy START -->
     {% render 'rebuy-extensions' %}
     <!-- Rebuy END -->
-  {% endif %}
+  {% endunless %}
 {% else %}
   <!-- Rebuy START -->
   {% render 'rebuy-extensions' %}
