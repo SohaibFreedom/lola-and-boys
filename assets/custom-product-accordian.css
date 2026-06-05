@@ -99,6 +99,7 @@
 .ProductTabs__panel ul {
   padding-left: 18px;
   margin: 0;
+  display:block !important;
 }
 
 .ProductTabs__panel li {
