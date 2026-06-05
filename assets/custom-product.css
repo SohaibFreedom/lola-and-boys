@@ -49,6 +49,11 @@ p.modal_price {
 
   @media (max-width: 768px) {
 
+        .installment-msg-pdp {
+    text-align: center;
+
+}
+
     .dropdown_container.dropdown_open-custom[data-dropdown=menu] .dropdown {
         transform: translateZ(0);
         transition: transform .4s;
