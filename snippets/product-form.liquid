@@ -180,15 +180,7 @@
         {% endcase %}
       {% endfor %}
 
-      {%- assign show_atc_btn = true -%}
-      {%- if product.tags contains 'patch-app-category' -%}
-        {%- assign show_atc_btn = false -%}
-      {%- endif -%}
-      {%- if product.tags contains 'show-add-to-cart' -%}
-        {%- assign show_atc_btn = true -%}
-      {%- endif -%}
-
-      {% if show_atc_btn %}
+      {% unless product.tags contains 'patch-app-category' %}
         {% if product.tags contains 'name-field' %}
           <div class="workshop custom-variants">
             {% render 'workshop-variants' %}
@@ -226,7 +218,7 @@
             </svg>
           </button>
         </div>
-      {% endif %}
+      {% endunless %}
       {% comment %}
         <p class="action_button btn add-cart" onclick="addItem('product-form-{{ product.id }}'); return false;" data-cart-add="{{ product.id }}">Add to Cart</p>
       {% endcomment %}
