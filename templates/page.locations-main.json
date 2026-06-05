@@ -78,6 +78,7 @@
             "align_text": "left",
             "button_label": "STORE DETAILS",
             "button_link": "https://lolaandtheboys.com/pages/larrabee-store-page",
+            "open_link_new_tab": true,
             "border_style": "none"
           }
         },
@@ -93,6 +94,7 @@
             "align_text": "left",
             "button_label": "STORE DETAILS",
             "button_link": "https://lolaandtheboys.com/pages/watertower-mall-store-page",
+            "open_link_new_tab": true,
             "border_style": "none"
           }
         },
@@ -108,6 +110,7 @@
             "align_text": "left",
             "button_label": "STORE DETAILS",
             "button_link": "https://lolaandtheboys.com/pages/michigan-ave-store-page",
+            "open_link_new_tab": true,
             "border_style": "none"
           }
         },
@@ -123,6 +126,7 @@
             "align_text": "left",
             "button_label": "STORE DETAILS",
             "button_link": "shopify://pages/dadeland-mall-store-page",
+            "open_link_new_tab": true,
             "border_style": "none"
           }
         },
@@ -138,6 +142,7 @@
             "align_text": "left",
             "button_label": "STORE DETAILS",
             "button_link": "https://lolaandtheboys.com/pages/plaza-del-lago-page",
+            "open_link_new_tab": true,
             "border_style": "none"
           }
         },
@@ -153,6 +158,7 @@
             "align_text": "left",
             "button_label": "STORE DETAILS",
             "button_link": "shopify://pages/aventura-florida-page",
+            "open_link_new_tab": true,
             "border_style": "none"
           }
         }
