@@ -11,6 +11,10 @@ html {
   display:block !important;
 }
 
+.ProductTabs__panels ul {
+  margin-bottom:10px !important;
+}
+
 body.product div#newReviewFormModal {
     z-index: 9999999999999 !important;
 }
