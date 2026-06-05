@@ -9,7 +9,10 @@ p.modal_price {
     margin-bottom: 0;
     padding-top: 8px;
 }
+.installment-msg-pdp {
 
+    padding-top: 10px;
+}
 .modal_price * {
     font-weight:500 !important;
 }
