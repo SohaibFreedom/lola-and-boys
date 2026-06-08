@@ -5409,188 +5409,138 @@
       "mobile-menu": {
         "type": "mobile-menu",
         "blocks": {
-          "featured_tile_jNKjLM": {
-            "type": "featured_tile",
-            "settings": {
-              "tab": "collabs",
-              "image": "shopify://shop_images/SPRING.png",
-              "label": "Spring 2026 🌸",
-              "link": "https://lolaandtheboys.com/collections/spring-collection"
-            }
-          },
           "featured_tile_hmFmFp": {
             "type": "featured_tile",
             "settings": {
               "tab": "boys",
-              "image": "shopify://shop_images/SPRING.png",
-              "label": "Spring 2026 🌸",
-              "link": "https://lolaandtheboys.com/collections/spring-collection"
-            }
-          },
-          "featured_tile_kxHRac": {
-            "type": "featured_tile",
-            "settings": {
-              "tab": "girls",
-              "image": "shopify://shop_images/SPRING.png",
-              "label": "Spring 2026 🌸",
-              "link": "https://lolaandtheboys.com/collections/spring-collection"
-            }
-          },
-          "featured_tile_8hqXJR": {
-            "type": "featured_tile",
-            "settings": {
-              "tab": "girls",
-              "image": "shopify://shop_images/VCAY.png",
-              "label": "Vacay Shop",
-              "link": "https://lolaandtheboys.com/collections/best-of-spring-summer"
-            }
-          },
-          "featured_tile_HaxXDf": {
-            "type": "featured_tile",
-            "settings": {
-              "tab": "girls",
-              "image": "shopify://shop_images/ROMPER_2.png",
-              "label": "Rompers",
-              "link": "https://lolaandtheboys.com/collections/rompers"
-            }
-          },
-          "featured_tile_dtaDWV": {
-            "type": "featured_tile",
-            "settings": {
-              "tab": "girls",
-              "image": "shopify://shop_images/BOWS_EDIT.png",
-              "label": "The Bows Shop",
-              "link": "https://lolaandtheboys.com/collections/cherries-bows"
-            }
-          },
-          "featured_tile_FJnw4Y": {
-            "type": "featured_tile",
-            "settings": {
-              "tab": "girls",
-              "image": "shopify://shop_images/SUPER_SOFT_copy.png",
-              "label": "Super Soft Shop",
-              "link": "https://lolaandtheboys.com/collections/super-soft"
-            }
-          },
-          "featured_tile_wNWmhk": {
-            "type": "featured_tile",
-            "settings": {
-              "tab": "girls",
-              "image": "shopify://shop_images/HELLO_KITTY_copy.png",
-              "label": "Hello Kitty",
-              "link": "shopify://collections/hello-kitty"
+              "image": "shopify://shop_images/HW_2.png",
+              "label": "HOT WHEELS",
+              "link": "https://lolaandtheboys.com/collections/hot-wheels"
             }
           },
           "featured_tile_km64rN": {
             "type": "featured_tile",
             "settings": {
               "tab": "boys",
-              "image": "shopify://shop_images/VCAY.png",
-              "label": "Vacay Shop",
-              "link": "https://lolaandtheboys.com/collections/best-of-spring-summer"
+              "image": "shopify://shop_images/BOY_SETS_1.png",
+              "label": "SETS",
+              "link": "https://lolaandtheboys.com/collections/boyssets"
             }
           },
           "featured_tile_KY9qfw": {
             "type": "featured_tile",
             "settings": {
               "tab": "boys",
-              "image": "shopify://shop_images/ROMPER_2.png",
-              "label": "Rompers",
-              "link": "https://lolaandtheboys.com/collections/rompers"
+              "image": "shopify://shop_images/SUPER_SOFT_1.png",
+              "label": "SUPER SOFT",
+              "link": "shopify://collections/super-soft"
             }
           },
-          "featured_tile_AKFPjm": {
+          "featured_tile_kxHRac": {
             "type": "featured_tile",
             "settings": {
-              "tab": "boys",
-              "image": "shopify://shop_images/BOWS_EDIT.png",
-              "label": "The Bows Shop",
-              "link": "https://lolaandtheboys.com/collections/cherries-bows"
+              "tab": "collabs",
+              "image": "shopify://shop_images/COLLAB_BARBIE_2.png",
+              "label": "BARBIE",
+              "link": "shopify://collections/barbie"
             }
           },
-          "featured_tile_iGJ36i": {
+          "featured_tile_8hqXJR": {
             "type": "featured_tile",
             "settings": {
-              "tab": "boys",
-              "image": "shopify://shop_images/SUPER_SOFT_copy.png",
-              "label": "Super Soft Shop",
-              "link": "https://lolaandtheboys.com/collections/super-soft"
+              "tab": "collabs",
+              "image": "shopify://shop_images/COLLAB_HK_1.png",
+              "label": "HELLO KITTY",
+              "link": "shopify://collections/hot-wheels"
             }
           },
-          "featured_tile_gr67Q8": {
+          "featured_tile_HaxXDf": {
             "type": "featured_tile",
             "settings": {
-              "tab": "boys",
-              "image": "shopify://shop_images/HELLO_KITTY_copy.png",
-              "label": "Hello Kitty",
-              "link": "shopify://collections/hello-kitty"
+              "tab": "collabs",
+              "image": "shopify://shop_images/COLLAB_HW_1.png",
+              "label": "HOT WHEELS",
+              "link": "shopify://collections/hot-wheels"
+            }
+          },
+          "featured_tile_dtaDWV": {
+            "type": "featured_tile",
+            "settings": {
+              "tab": "girls",
+              "image": "shopify://shop_images/BARBIE_2.png",
+              "label": "BARBIE",
+              "link": "shopify://collections/barbie"
+            }
+          },
+          "featured_tile_FJnw4Y": {
+            "type": "featured_tile",
+            "settings": {
+              "tab": "girls",
+              "image": "shopify://shop_images/BDAY_2.png",
+              "label": "BIRTHDAY",
+              "link": "shopify://collections/birthday"
+            }
+          },
+          "featured_tile_wNWmhk": {
+            "type": "featured_tile",
+            "settings": {
+              "tab": "girls",
+              "image": "shopify://shop_images/BOWS_1.png",
+              "label": "BOWS",
+              "link": "shopify://collections/cherries-bows"
             }
           },
           "featured_tile_Dmdi6F": {
             "type": "featured_tile",
             "settings": {
-              "tab": "collabs",
-              "image": "shopify://shop_images/VCAY.png",
-              "label": "Vacay Shop",
-              "link": "https://lolaandtheboys.com/collections/best-of-spring-summer"
+              "tab": "girls",
+              "image": "shopify://shop_images/DENIM_2.png",
+              "label": "DENIM",
+              "link": "shopify://collections/denim"
             }
           },
-          "featured_tile_dUGrbN": {
+          "featured_tile_jNKjLM": {
             "type": "featured_tile",
             "settings": {
-              "tab": "collabs",
-              "image": "shopify://shop_images/ROMPER_2.png",
-              "label": "Rompers",
-              "link": "https://lolaandtheboys.com/collections/rompers"
+              "tab": "girls",
+              "image": "shopify://shop_images/ROMPERS_1.png",
+              "label": "ROMPERS",
+              "link": "shopify://collections/rompers"
             }
           },
           "featured_tile_UbdEqt": {
             "type": "featured_tile",
             "settings": {
-              "tab": "collabs",
-              "image": "shopify://shop_images/BOWS_EDIT.png",
-              "label": "The Bows Shop",
-              "link": "https://lolaandtheboys.com/collections/cherries-bows"
+              "tab": "girls",
+              "image": "shopify://shop_images/SUMMER_2_1.png",
+              "label": "SUMMER",
+              "link": "shopify://collections/summer"
             }
           },
           "featured_tile_kkJENq": {
             "type": "featured_tile",
             "settings": {
-              "tab": "collabs",
-              "image": "shopify://shop_images/SUPER_SOFT_copy.png",
-              "label": "Super Soft Shop",
-              "link": "https://lolaandtheboys.com/collections/super-soft"
-            }
-          },
-          "featured_tile_kjFmTc": {
-            "type": "featured_tile",
-            "settings": {
-              "tab": "collabs",
-              "image": "shopify://shop_images/HELLO_KITTY_copy.png",
-              "label": "Hello Kitty",
-              "link": "shopify://collections/hello-kitty"
+              "tab": "girls",
+              "image": "shopify://shop_images/SWIM_1.png",
+              "label": "SWIM",
+              "link": "shopify://collections/girls-swimwear-1"
             }
           }
         },
         "block_order": [
-          "featured_tile_jNKjLM",
           "featured_tile_hmFmFp",
+          "featured_tile_km64rN",
+          "featured_tile_KY9qfw",
           "featured_tile_kxHRac",
           "featured_tile_8hqXJR",
           "featured_tile_HaxXDf",
           "featured_tile_dtaDWV",
           "featured_tile_FJnw4Y",
           "featured_tile_wNWmhk",
-          "featured_tile_km64rN",
-          "featured_tile_KY9qfw",
-          "featured_tile_AKFPjm",
-          "featured_tile_iGJ36i",
-          "featured_tile_gr67Q8",
           "featured_tile_Dmdi6F",
-          "featured_tile_dUGrbN",
+          "featured_tile_jNKjLM",
           "featured_tile_UbdEqt",
-          "featured_tile_kkJENq",
-          "featured_tile_kjFmTc"
+          "featured_tile_kkJENq"
         ],
         "settings": {
           "girls_menu": "girls-menu-mobile",
