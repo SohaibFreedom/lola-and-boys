@@ -368,14 +368,14 @@
           "type": "image",
           "settings": {
             "custom_class": "new-text-wrap",
-            "image": "shopify://shop_images/Frame_8.png",
-            "link": "https://lolaandtheboys.com/collections/hello-kitty",
-            "title": "Hello Kitty",
+            "image": "shopify://shop_images/1_1.png",
+            "link": "https://lolaandtheboys.com/collections/barbie",
+            "title": "Barbie",
             "title_n": "",
             "title_1": "",
             "text": "",
             "button_label": "shop now",
-            "button_link": "https://lolaandtheboys.com/collections/new-wicked-drop"
+            "button_link": "https://lolaandtheboys.com/collections/barbie"
           }
         }
       },
