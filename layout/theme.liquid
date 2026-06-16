@@ -746,7 +746,14 @@ btn.on('click', function(e) {
 
 
 {% if template == 'product' %}
-  {% unless product.tags contains 'patch-app-category' %}
+  {% assign hide_rebuy = false %}
+  {% if product.tags contains 'patch-app-category' %}
+    {% assign hide_rebuy = true %}
+    {% if product.tags contains 'show-add-to-cart' %}
+      {% assign hide_rebuy = false %}
+    {% endif %}
+  {% endif %}
+  {% unless hide_rebuy %}
     <!-- Rebuy START -->
     {% render 'rebuy-extensions' %}
     <!-- Rebuy END -->
