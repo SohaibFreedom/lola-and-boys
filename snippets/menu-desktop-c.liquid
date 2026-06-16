@@ -5,14 +5,7 @@
     {% if section.settings.desktop_menu and section.settings.desktop_menu.links != blank %}
       <ul class="nav-list-desk desktop-only">
         {% for link in section.settings.desktop_menu.links %}
-          {%- assign has_grandchildren = false -%}
-          {%- for child in link.links -%}
-            {%- if child.links != blank -%}
-              {%- assign has_grandchildren = true -%}
-              {%- break -%}
-            {%- endif -%}
-          {%- endfor -%}
-          <li class="nav-item-desk {{ link.title | handleize }}{% if link.links != blank %}{% if has_grandchildren %} has-megamenu{% else %} has-submenu{% endif %}{% endif %}">
+          <li class="nav-item-desk {{ link.title | handleize }} {% if link.links != blank %}has-megamenu{% endif %}">
             <a
               href="{{ link.url }}"
               class="nav-link-desk"

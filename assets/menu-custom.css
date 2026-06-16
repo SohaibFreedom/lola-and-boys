@@ -540,51 +540,6 @@ div.hidden {
   padding: 0 40px;
 }
 
-/* Simple submenu: parent has children but NO grandchildren -> natural width */
-.desktop-menu-c .nav-item-desk.has-submenu {
-  position: relative;
-}
-
-.desktop-menu-c .nav-item-desk.has-submenu .dropdown-desk {
-  left: 0;
-  right: auto;
-  width: max-content;
-  min-width: 200px;
-  max-width: 340px;
-  padding: 16px 25px;
-  margin: 0;
-  top: calc(100% - -6px);
-}
-
-.desktop-menu-c .nav-item-desk.has-submenu .dropdown-grid-desk {
-  display: block;
-  grid-template-columns: none;
-  gap: 0;
-}
-
-.desktop-menu-c .nav-item-desk.has-submenu .dropdown-col + .dropdown-col {
-  margin-top: 12px;
-}
-
-/* Submenu children should look like subcol links, not headings */
-.desktop-menu-c .nav-item-desk.has-submenu .col-heading {
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: .6px;
-  color: #616161 !important;
-  transition: color .3s ease-in-out;
-  text-transform: uppercase;
-  font-family: Poppins, sans-serif !important;
-  margin: 0;
-  padding: 0;
-  border-bottom: none;
-  line-height: 1.4;
-}
-
-.desktop-menu-c .nav-item-desk.has-submenu .col-heading:hover {
-  text-decoration: underline;
-}
-
 .desktop-menu-c .mega-card img {
   width: 100%;
   max-height: 315px;
