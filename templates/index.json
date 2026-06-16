@@ -189,8 +189,9 @@
         "image_9rViCJ": {
           "type": "image",
           "settings": {
-            "image_mobile": "shopify://shop_images/Lola_Birthday_HP_banner_mob.jpg",
-            "mp4": "https://cdn.shopify.com/videos/c/o/v/886b895fcf41461cb676cd203de3e54a.mp4",
+            "image": "shopify://shop_images/HP_BANNER_2_9bcb11c9-5591-4b12-b031-d29a2ad25174.png",
+            "image_mobile": "shopify://shop_images/HP_MOBILE_BANNER_2_9d178be9-cf1b-49f4-8011-c594f95f6673.png",
+            "mp4": "",
             "mobilevideo": "",
             "pretext": "",
             "title": "",
