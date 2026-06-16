@@ -1,4 +1,12 @@
 {% assign variant = product.selected_or_first_available_variant %}
+{% comment %} Hide native cart UI for patch-app products, UNLESS they carry the show-add-to-cart tag {% endcomment %}
+{% assign hide_for_patch_app = false %}
+{% if product.tags contains 'patch-app-category' %}
+  {% assign hide_for_patch_app = true %}
+  {% if product.tags contains 'show-add-to-cart' %}
+    {% assign hide_for_patch_app = false %}
+  {% endif %}
+{% endif %}
 {% assign selected_variant_should_hide = false %}
 {% if variant.metafields.custom.hide_when_out_of_stock.value == true or variant.metafields.custom.hide_when_out_of_stock.value == 'true' or variant.metafields.custom.hide_when_out_of_stock.value == 'True' %}
   {% if variant.available == false %}
@@ -133,7 +141,7 @@
     {% if settings.display_product_quantity %}
       <div class="gPositionLimitMessage"></div>
 
-      {% unless product.tags contains 'patch-app-category' %}
+      {% unless hide_for_patch_app %}
         {% unless product.tags contains 'quanity-hide' %}
           <div class="left product-quantity-box">
             <label for="quantity">{{ 'products.product.quantity' | t }}</label>
@@ -180,7 +188,7 @@
         {% endcase %}
       {% endfor %}
 
-      {% unless product.tags contains 'patch-app-category' %}
+      {% unless hide_for_patch_app %}
         {% if product.tags contains 'name-field' %}
           <div class="workshop custom-variants">
             {% render 'workshop-variants' %}
