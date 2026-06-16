@@ -278,6 +278,7 @@
     var metaControlledVariants = [
       {% for v in product.variants %}
         {
+          id: {{ v.id | json }},
           option1: {{ v.option1 | json }},
           option2: {{ v.option2 | json }},
           option3: {{ v.option3 | json }},
@@ -383,6 +384,31 @@
         }, 0);
       });
     }
+
+    {% if product.tags contains 'patch-app-category' %}
+      // Patch-app products render the native add-to-cart via the show-add-to-cart tag,
+      // but Shopify.OptionSelectors does not reliably sync the chosen swatch into
+      // <select name="id"> here. Set the variant id directly from the selected options.
+      function syncSelectedVariantId($form) {
+        if (!$form || !$form.length) return;
+        var selectedValues = getSelectedOptionValues($form);
+        var match = metaControlledVariants.filter(function (variantData) {
+          return (variantData.option1 || '') === (selectedValues[0] || '')
+            && (variantData.option2 || '') === (selectedValues[1] || '')
+            && (variantData.option3 || '') === (selectedValues[2] || '');
+        })[0];
+        if (match && match.id) {
+          $form.find('select[name="id"]').prop('disabled', false).val(String(match.id));
+        }
+      }
+
+      if (productForm.length) {
+        setTimeout(function () { syncSelectedVariantId(productForm); }, 0);
+        productForm.on('change', '.swatch :radio, .single-option-selector', function () {
+          setTimeout(function () { syncSelectedVariantId(productForm); }, 0);
+        });
+      }
+    {% endif %}
 
     $('.swatch-element').on('click', function () {
       if ($(this).hasClass('soldout')) {
