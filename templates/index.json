@@ -12,6 +12,28 @@
     "slideshow_nB6m8V": {
       "type": "slideshow",
       "blocks": {
+        "image_UXmp86": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/HP_BANNER_2_97bad284-dc6f-4a32-b273-00b25e04ebc0.png",
+            "image_mobile": "shopify://shop_images/IMG_0132.png",
+            "mp4": "",
+            "mobilevideo": "",
+            "pretext": "",
+            "title": "",
+            "subtitle": "",
+            "text_position": "center",
+            "text_align": "center",
+            "caption_background": false,
+            "caption_background_transparency": false,
+            "button1": "",
+            "button1_link": "https://lolaandtheboys.com/collections/summer",
+            "button1_highlight": false,
+            "button2": "",
+            "button2_link": "",
+            "button2_highlight": false
+          }
+        },
         "image_qTG7w8": {
           "type": "image",
           "settings": {
@@ -48,28 +70,6 @@
             "caption_background_transparency": false,
             "button1": "",
             "button1_link": "https://lolaandtheboys.com/collections/denim",
-            "button1_highlight": false,
-            "button2": "",
-            "button2_link": "",
-            "button2_highlight": false
-          }
-        },
-        "image_UXmp86": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/HP_BANNER_2_97bad284-dc6f-4a32-b273-00b25e04ebc0.png",
-            "image_mobile": "shopify://shop_images/IMG_0132.png",
-            "mp4": "",
-            "mobilevideo": "",
-            "pretext": "",
-            "title": "",
-            "subtitle": "",
-            "text_position": "center",
-            "text_align": "center",
-            "caption_background": false,
-            "caption_background_transparency": false,
-            "button1": "",
-            "button1_link": "https://lolaandtheboys.com/collections/summer",
             "button1_highlight": false,
             "button2": "",
             "button2_link": "",
@@ -210,9 +210,9 @@
         }
       },
       "block_order": [
+        "image_UXmp86",
         "image_qTG7w8",
         "image_KD9mi6",
-        "image_UXmp86",
         "image_QccNLz",
         "image_zPL6aM",
         "image_MzwgLN",
