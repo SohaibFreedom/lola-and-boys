@@ -5,6 +5,9 @@
 .collection-template-section .product-details .title {
   text-align: left !important;
 }
+form#product-form-7692313755750 .swatch-element.color.light-blue-swatch label {
+    background: #b3d1e9 !important;
+}
 
 .desktop-menu-c .shoes-submenu {
   grid-template-columns: repeat(4, 1fr) !important;
