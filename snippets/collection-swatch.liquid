@@ -21,6 +21,7 @@
               {% assign values = values | join: ',' %}
               {% assign values = values | append: ',' | append: value %}
               {% assign values = values | split: ',' %}
+              {% assign swatch_color_override = variant.metafields.custom.swatch_color_override.value | default: variant.metafields.custom.swatch_color_override %}
 
               <a href="{{ variant.url | within: collection }}" class="swatch" data-swatch-name="meta-{{ downcased_option }}_{{ value | replace: ' ', '_' | downcase }}">
                 <span {% if section.settings.products_per_row == 2 %}
@@ -30,7 +31,7 @@
                       {% else %}
                         data-image="{{ variant.featured_image | product_img_url: '400x' }}"
                       {% endif %}
-                      style="background-image: url({{ value | handle | append: '.' | append: file_extension | asset_img_url: '50x' | prepend: 'https:' }}); background-color: {{ value | split: ' ' | last | handle }};">
+                      style="{% if swatch_color_override != blank %}background-image: none; background-color: {{ swatch_color_override | escape }};{% else %}background-image: url({{ value | handle | append: '.' | append: file_extension | asset_img_url: '50x' | prepend: 'https:' }}); background-color: {{ value | split: ' ' | last | handle }};{% endif %}">
                   </span>
               </a>
             {% endunless %}

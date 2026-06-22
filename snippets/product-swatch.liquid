@@ -30,6 +30,7 @@
       {% assign values = values | join: ',' %}
       {% assign values = values | append: ',' | append: value %}
       {% assign values = values | split: ',' %}
+      {% assign swatch_color_override = variant.metafields.custom.swatch_color_override.value | default: variant.metafields.custom.swatch_color_override %}
       {% assign check_this_swatch = false %}
       {% if swatch_checked == false %}
         {% assign check_this_swatch = true %}
@@ -42,7 +43,7 @@
           <div class="tooltip">{{ value }}</div>
         {% endif %}
         {% if is_color %}
-          <label for="swatch-{{ option_index }}-{{ value | handle }}-{{ product.id }}" style="background-image: url({{ value | handle | append: '.' | append: file_extension | asset_img_url: '50x' | prepend: 'https:' }}); background-color: {{ value | split: ' ' | last | handle }};">
+          <label for="swatch-{{ option_index }}-{{ value | handle }}-{{ product.id }}" style="{% if swatch_color_override != blank %}background-image: none; background-color: {{ swatch_color_override | escape }};{% else %}background-image: url({{ value | handle | append: '.' | append: file_extension | asset_img_url: '50x' | prepend: 'https:' }}); background-color: {{ value | split: ' ' | last | handle }};{% endif %}">
             <span class="crossed-out"></span>
           </label>
         {% else %}
