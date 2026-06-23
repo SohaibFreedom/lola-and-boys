@@ -2,6 +2,10 @@
   text-align: left !important;
   display: block;
 }
+div#usf_container span.title {
+    text-align: left;
+}
+
 .collection-template-section .product-details .title {
   text-align: left !important;
 }
