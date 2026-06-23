@@ -145,8 +145,8 @@
         "image_V87qeG": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Hello_Kitty_Lola_HP_2.jpg",
-            "image_mobile": "shopify://shop_images/hello_kitty_lola_hp_mob_1.jpg",
+            "image": "shopify://shop_images/HP_BANNER_d9ded583-0275-4408-ac09-8a604a9c4a82.png",
+            "image_mobile": "shopify://shop_images/HP_MOBILE_BANNER_5_18388238-60df-4a6e-83a9-a9e416b84703.png",
             "mp4": "",
             "mobilevideo": "",
             "pretext": "",
@@ -157,7 +157,7 @@
             "caption_background": false,
             "caption_background_transparency": false,
             "button1": "",
-            "button1_link": "https://lolaandtheboys.com/collections/hello-kitty",
+            "button1_link": "https://lolaandtheboys.com/collections/friends-family-sale",
             "button1_highlight": false,
             "button2": "",
             "button2_link": "",
