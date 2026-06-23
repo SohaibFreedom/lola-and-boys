@@ -12,6 +12,28 @@
     "slideshow_nB6m8V": {
       "type": "slideshow",
       "blocks": {
+        "image_V87qeG": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/HP_BANNER_d9ded583-0275-4408-ac09-8a604a9c4a82.png",
+            "image_mobile": "shopify://shop_images/HP_MOBILE_BANNER_5_18388238-60df-4a6e-83a9-a9e416b84703.png",
+            "mp4": "",
+            "mobilevideo": "",
+            "pretext": "",
+            "title": "",
+            "subtitle": "",
+            "text_position": "center",
+            "text_align": "center",
+            "caption_background": false,
+            "caption_background_transparency": false,
+            "button1": "",
+            "button1_link": "https://lolaandtheboys.com/collections/friends-family-sale",
+            "button1_highlight": false,
+            "button2": "",
+            "button2_link": "",
+            "button2_highlight": false
+          }
+        },
         "image_UXmp86": {
           "type": "image",
           "settings": {
@@ -142,28 +164,6 @@
             "button2_highlight": false
           }
         },
-        "image_V87qeG": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/HP_BANNER_d9ded583-0275-4408-ac09-8a604a9c4a82.png",
-            "image_mobile": "shopify://shop_images/HP_MOBILE_BANNER_5_18388238-60df-4a6e-83a9-a9e416b84703.png",
-            "mp4": "",
-            "mobilevideo": "",
-            "pretext": "",
-            "title": "",
-            "subtitle": "",
-            "text_position": "center",
-            "text_align": "center",
-            "caption_background": false,
-            "caption_background_transparency": false,
-            "button1": "",
-            "button1_link": "https://lolaandtheboys.com/collections/friends-family-sale",
-            "button1_highlight": false,
-            "button2": "",
-            "button2_link": "",
-            "button2_highlight": false
-          }
-        },
         "image_fjiMQC": {
           "type": "image",
           "settings": {
@@ -210,13 +210,13 @@
         }
       },
       "block_order": [
+        "image_V87qeG",
         "image_UXmp86",
         "image_qTG7w8",
         "image_KD9mi6",
         "image_QccNLz",
         "image_zPL6aM",
         "image_MzwgLN",
-        "image_V87qeG",
         "image_fjiMQC",
         "image_9rViCJ"
       ],
