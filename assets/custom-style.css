@@ -1,5 +1,5 @@
 .usf-sr-product .product-details .price {
-  text-align: left !important;
+  text-align: center !important;
   display: block;
 }
 .collection-template-section .product-details .title {
@@ -8,10 +8,7 @@
 #product-form-7692313755750 .swatch-element.color.light-blue-swatch label {
     background: #b3d1e9 !important;
 }
-.swatch-element.light-blue-swatch label[for="swatch-1-light-blue-7728484515942"] {
-  background-image: none !important;
-  background-color: #abc7e2 !important;
-}
+
 .desktop-menu-c .shoes-submenu {
   grid-template-columns: repeat(4, 1fr) !important;
 }
