@@ -42,6 +42,9 @@
       "block_order": [
         "swish_formerly_wishlist_king_wishlist_button_block_MCDCDd"
       ],
+      "custom_css": [
+        ".product_cart_btns {display: none !important;}"
+      ],
       "settings": {
         "gallery_arrows": true,
         "activate_zoom": false,
