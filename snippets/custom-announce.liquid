@@ -24,7 +24,13 @@ FINAL:
               {% endif %}
 
               <div class="shop-now-text">
-                {{ section.settings.text }}
+                {%- if section.settings.emoji_before != blank -%}
+                  <span class="announce-emoji announce-emoji--before">{{ section.settings.emoji_before }}</span>
+                {%- endif -%}
+                <span class="announce-text-content">{{ section.settings.text }}</span>
+                {%- if section.settings.emoji_after != blank -%}
+                  <span class="announce-emoji announce-emoji--after">{{ section.settings.emoji_after }}</span>
+                {%- endif -%}
                 <p style="display:none;" class="details">SHOP NOW</p>
               </div>
             </div>
@@ -104,7 +110,13 @@ FINAL:
             {% endif %}
 
             <div class="shop-now-text">
-              {{ section.settings.text }}
+              {%- if section.settings.emoji_before != blank -%}
+                <span class="announce-emoji announce-emoji--before">{{ section.settings.emoji_before }}</span>
+              {%- endif -%}
+              <span class="announce-text-content">{{ section.settings.text }}</span>
+              {%- if section.settings.emoji_after != blank -%}
+                <span class="announce-emoji announce-emoji--after">{{ section.settings.emoji_after }}</span>
+              {%- endif -%}
               <p style="display:none;" class="details">SHOP NOW</p>
             </div>
           </div>
@@ -121,7 +133,13 @@ FINAL:
               <span id="close_announcement_bar" style="display:none;">X</span>
 
               <div class="shop-now-text">
-                {{ section.settings.text }}
+                {%- if section.settings.emoji_before != blank -%}
+                  <span class="announce-emoji announce-emoji--before">{{ section.settings.emoji_before }}</span>
+                {%- endif -%}
+                <span class="announce-text-content">{{ section.settings.text }}</span>
+                {%- if section.settings.emoji_after != blank -%}
+                  <span class="announce-emoji announce-emoji--after">{{ section.settings.emoji_after }}</span>
+                {%- endif -%}
                 <p style="display:none;" class="details">SHOP NOW</p>
               </div>
             </div>
