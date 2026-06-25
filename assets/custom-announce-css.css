@@ -1,25 +1,4 @@
 /* =========================
-   EMOJI BEFORE / AFTER (announcement text)
-   ========================= */
-.shop-now-text {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  text-align: center;
-}
-.shop-now-text .announce-text-content {
-  display: inline-block;
-}
-.shop-now-text .announce-emoji {
-  display: inline-flex;
-  align-items: center;
-  flex-shrink: 0;
-  line-height: 1;
-}
-
-/* =========================
    OLD ANNOUNCEMENT BAR CSS
    ========================= */
 .announcement-bar-old .announcement-bar .announcement-bar-text {
