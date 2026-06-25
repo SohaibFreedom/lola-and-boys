@@ -6,7 +6,10 @@ div#usf_container span.title {
     text-align: left;
 }
 
-
+.annoucment-bar-top .shop-now-text strong {
+    transform: translateX(13px);
+    display: block;
+}
 
 .collection-template-section .product-details .title {
   text-align: left !important;
