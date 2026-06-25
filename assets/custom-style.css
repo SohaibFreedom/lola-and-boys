@@ -6,6 +6,17 @@ div#usf_container span.title {
     text-align: left;
 }
 
+.shop-now-text {
+  text-align: center !important;
+  width: 100% !important;
+}
+
+.shop-now-text b,
+.shop-now-text strong {
+  display: block !important;
+  text-align: center !important;
+}
+
 .collection-template-section .product-details .title {
   text-align: left !important;
 }
