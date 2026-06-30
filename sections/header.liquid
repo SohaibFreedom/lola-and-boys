@@ -69,21 +69,21 @@
       <!-- <a href="/search" class="icon-search dropdown_link" title="{{ 'general.search.title' | t | escape }}" data-dropdown-rel="search"></a> -->
       <ul class="list-style-none" role="list">
       <li class="search_link">
-                    <a href="javascript:void(0);" onclick="openFullWidthSearch()" class="icon-search dropdown_link" title="{{ 'general.search.title' | t | escape }}" data-dropdown-rel="search"></a>
+                    <a href="/search" onclick="openFullWidthSearch(); return false;" class="icon-search dropdown_link" title="{{ 'general.search.title' | t | escape }}" aria-label="{{ 'general.search.title' | t | escape }}" data-dropdown-rel="search"></a>
                   </li></ul>
       
     {% endif %}
     {% comment %}
     {% include 'iwish_v2' with 'iwishlink' %}
     {% endcomment %}
-      <div class="fa fa-heart-o wishlist-mobile-container wishlist-container" > <svg viewBox="0 0 64 64"> <path d="M32.012,59.616c-1.119-.521-2.365-1.141-3.707-1.859a79.264,79.264,0,0,1-11.694-7.614C6.316,42,.266,32.6.254,22.076,0.244,12.358,7.871,4.506,17.232,4.5a16.661,16.661,0,0,1,11.891,4.99l2.837,2.889,2.827-2.9a16.639,16.639,0,0,1,11.874-5.02h0c9.368-.01,17.008,7.815,17.021,17.539,0.015,10.533-6.022,19.96-16.312,28.128a79.314,79.314,0,0,1-11.661,7.63C34.369,58.472,33.127,59.094,32.012,59.616Z"></path></svg><div id="wishlist-count1"><span id="wishlist-count1-value"></span></div></div>
+      <div class="fa fa-heart-o wishlist-mobile-container wishlist-container" role="button" tabindex="0" aria-label="My Favorites"> <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"> <path d="M32.012,59.616c-1.119-.521-2.365-1.141-3.707-1.859a79.264,79.264,0,0,1-11.694-7.614C6.316,42,.266,32.6.254,22.076,0.244,12.358,7.871,4.506,17.232,4.5a16.661,16.661,0,0,1,11.891,4.99l2.837,2.889,2.827-2.9a16.639,16.639,0,0,1,11.874-5.02h0c9.368-.01,17.008,7.815,17.021,17.539,0.015,10.533-6.022,19.96-16.312,28.128a79.314,79.314,0,0,1-11.661,7.63C34.369,58.472,33.127,59.094,32.012,59.616Z"></path></svg><div id="wishlist-count1"><span id="wishlist-count1-value"></span></div></div>
     
         {% if section.settings.show_cart %}
       <div class="cart_container">
 {% if customer.tags.size > 0 %}
-        <a href="javascript:void();" class="{% if section.settings.cart_icon == "cart" %}icon-cart{% else %}icon-bag{% endif %} mini_cart" title="{{ 'layout.general.cart' | t | escape }}" data-no-instant> <span class="cart_count">{{ cartCount }}</span></a>
+        <a href="/cart" class="{% if section.settings.cart_icon == "cart" %}icon-cart{% else %}icon-bag{% endif %} mini_cart" title="{{ 'layout.general.cart' | t | escape }}" aria-label="{{ 'layout.general.cart' | t | escape }}" data-no-instant> <span class="cart_count">{{ cartCount }}</span></a>
 {% else %}
-        <a class="{% if section.settings.cart_icon == "cart" %}icon-cart{% else %}icon-bag{% endif %} mini_cart dropdown_link" title="{{ 'layout.general.cart' | t | escape }}" data-no-instant> <span class="cart_count" data-ajax-cart-bind-state="cart.item_count">{{ cartCount }}</span></a>
+        <a href="/cart" class="{% if section.settings.cart_icon == "cart" %}icon-cart{% else %}icon-bag{% endif %} mini_cart dropdown_link" title="{{ 'layout.general.cart' | t | escape }}" aria-label="{{ 'layout.general.cart' | t | escape }}" data-no-instant> <span class="cart_count" data-ajax-cart-bind-state="cart.item_count">{{ cartCount }}</span></a>
 {% endif %}
       </div>
     {% endif %}
@@ -195,7 +195,7 @@
             <div class="main-container align-items-center justify-content-between logo-inner-main">
                 <ul class="list-style-none" role="list">
                 <li class="search_link">
-                    <a href="javascript:void(0);" onclick="openFullWidthSearch()" class="icon-search dropdown_link" title="{{ 'general.search.title' | t | escape }}" data-dropdown-rel="search"></a>
+                    <a href="/search" onclick="openFullWidthSearch(); return false;" class="icon-search dropdown_link" title="{{ 'general.search.title' | t | escape }}" aria-label="{{ 'general.search.title' | t | escape }}" data-dropdown-rel="search"></a>
                   </li>
                      </ul>
 
@@ -246,8 +246,8 @@
 <ul class="icon-list-header-right">
               
               <li class="wish_link">
-  <div class="wishlist-container">
-   <svg viewBox="0 0 64 64">
+  <div class="wishlist-container" role="button" tabindex="0" aria-label="My Favorites">
+   <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
       <path d="M32.012,59.616c-1.119-.521-2.365-1.141-3.707-1.859a79.264,79.264,0,0,1-11.694-7.614C6.316,42,.266,32.6.254,22.076,0.244,12.358,7.871,4.506,17.232,4.5a16.661,16.661,0,0,1,11.891,4.99l2.837,2.889,2.827-2.9a16.639,16.639,0,0,1,11.874-5.02h0c9.368-.01,17.008,7.815,17.021,17.539,0.015,10.533-6.022,19.96-16.312,28.128a79.314,79.314,0,0,1-11.661,7.63C34.369,58.472,33.127,59.094,32.012,59.616Z"></path>
     </svg>
     <div id="wishlist-count2">
@@ -260,19 +260,21 @@
                 {% if section.settings.show_cart %}
         <div class="cart_container">
 {% if customer.tags.size > 0 %}
-          <a href="javascript:void();" class="{% if section.settings.cart_icon == "cart" %}icon-cart{% else %}icon-bag{% endif %} mini_cart" data-no-instant>
-{% else %}
-          <a  class="{% if section.settings.cart_icon == "cart" %}icon-cart{% else %}icon-bag{% endif %}  dropdown_link" data-no-instant>
-{% endif %}
+          <a href="/cart" class="{% if section.settings.cart_icon == "cart" %}icon-cart{% else %}icon-bag{% endif %} mini_cart" aria-label="{{ 'layout.general.cart' | t | escape }}" data-no-instant>
             <span class="cart_count"> <span data-ajax-cart-bind-state="cart.item_count">{{ cartCount }}</span></span>
           </a>
+{% else %}
+          <a href="/cart" class="{% if section.settings.cart_icon == "cart" %}icon-cart{% else %}icon-bag{% endif %}  dropdown_link" aria-label="{{ 'layout.general.cart' | t | escape }}" data-no-instant>
+            <span class="cart_count"> <span data-ajax-cart-bind-state="cart.item_count">{{ cartCount }}</span></span>
+          </a>
+{% endif %}
           {% unless wh_settings_cart_action == 'ajax'  and template contains 'cart' %}
             <div class="cart_content animated fadeIn">
               <div class="js-empty-cart__message {% if cartCount > 0 %}hidden{% endif %}">
                 <p class="empty_cart">{{ 'layout.general.empty_cart' | t }}</p>
               </div>
               <form action="/checkout" method="post" data-money-format="{{ shop.money_format }}" data-shop-currency="{{ shop.currency }}" data-shop-name="{{ shop.name | escape }}" class="js-cart_content__form {% if cartCount == 0 %}hidden{% endif %}">
-                <a class="cart_content__continue-shopping secondary_button">
+                <a href="/collections/all" class="cart_content__continue-shopping secondary_button">
                   {{ 'cart.general.continue_shopping_link_html' | t }}
                 </a>
                 <ul class="cart_items js-cart_items clearfix">
@@ -317,9 +319,10 @@
 
                           <span class="product-money">{{ wh_price | money }}</span>
                         </strong>
-                        <span class="ss-icon product-minus js-change-quantity" data-func="minus"><span class="icon-minus"></span></span>
-                        <input type="number" min="0" size="2" class="quantity" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" data-line-id="{{ forloop.index }}" />
-                        <span class="ss-icon product-plus js-change-quantity" data-func="plus"><span class="icon-plus"></span></span>
+                        <button type="button" class="ss-icon product-minus js-change-quantity" data-func="minus" aria-label="Decrease quantity for {{ item.product.title | escape }}"><span class="icon-minus" aria-hidden="true"></span></button>
+                        <label for="header_updates_{{ forloop.index }}" class="visually-hidden-c">Quantity for {{ item.product.title | escape }}</label>
+                        <input type="number" min="0" size="2" class="quantity" name="updates[]" id="header_updates_{{ forloop.index }}" value="{{ item.quantity }}" data-line-id="{{ forloop.index }}" />
+                        <button type="button" class="ss-icon product-plus js-change-quantity" data-func="plus" aria-label="Increase quantity for {{ item.product.title | escape }}"><span class="icon-plus" aria-hidden="true"></span></button>
                       </div>
                     </li>
                   {% endfor %}
@@ -344,13 +347,14 @@
                   {% endif %}
                   <li>
                     {% if settings.display_special_instructions and settings.go_to_checkout %}
-                      <textarea id="note" name="note" rows="2" placeholder="{{ 'layout.general.cart_note' | t }}" class="clearfix">{{ cart.note }}</textarea>
+                      <label for="header-cart-note" class="visually-hidden-c">{{ 'layout.general.cart_note' | t }}</label>
+                      <textarea id="header-cart-note" name="note" rows="2" placeholder="{{ 'layout.general.cart_note' | t }}" class="clearfix">{{ cart.note }}</textarea>
                     {% endif %}
 
                     {% if settings.display_tos_checkbox and settings.go_to_checkout %}
                       <p class="tos">
                         <input type="checkbox" class="tos_agree" id="sliding_agree" required />
-                          <label class="tos_label">
+                          <label class="tos_label" for="sliding_agree">
                             {{ 'cart.general.agree_to_terms_html' | t }}
                           </label>
                           {% if settings.tos_page != blank %}
@@ -415,7 +419,7 @@
       </div>
     </div>
   </div>
-<a href="back-to-top" id="back-to-top" class="back-to-top u-center u-padding-t--lg" onclick="return false" style="display: block;"> <span class="icon icon--arrow-up--lg icon--sm u-color--black"> <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/t/31/assets/top-arrow.png?v=1623066046"> <span class="u-screen-reader">Return to Top</span></span>
+<a href="#MainContent" id="back-to-top" class="back-to-top u-center u-padding-t--lg" onclick="return false" style="display: block;" aria-label="Return to top"> <span class="icon icon--arrow-up--lg icon--sm u-color--black"> <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/t/31/assets/top-arrow.png?v=1623066046" alt=""> <span class="u-screen-reader">Return to Top</span></span>
 </a>
 </header>
 </section>
@@ -1052,8 +1056,9 @@ function openFullWidthSearch() {
 
   // Recreate the input every time
   searchWrap.innerHTML = `
-    <span class="icon-search"></span>
-    <input type="text" id="instantSearchInput" placeholder="Search" />
+    <span class="icon-search" aria-hidden="true"></span>
+    <label for="instantSearchInput" class="visually-hidden-c">Search</label>
+    <input type="text" id="instantSearchInput" placeholder="Search" aria-label="Search" />
   `;
 
   const searchInput = document.getElementById('instantSearchInput');

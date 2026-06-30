@@ -61,7 +61,7 @@
         {% if block.settings.image != nil or block.settings.image_mobile != nil or block.settings.mobilevideo != nil %}
           {% if  block.settings.image != blank %}
           <img class="desktop-slider"  src="{{ block.settings.image | img_url: '100x' }}"
-                alt="{{ block.settings.image.alt | escape }}"
+                alt="{{ block.settings.image.alt | default: block.settings.title | default: shop.name | escape }}"
                 class="lazyload {{ settings.image_loading_style }}"
                 sizes="100vw"
                 data-src="{{ block.settings.image | img_url: default }}"
@@ -94,12 +94,12 @@
             
           {% endif %}
             {% if block.settings.mobilevideo  != blank %}
-             <a href="{{ block.settings.button1_link }}" > <video  autoplay="" loop="" muted="muted" playsinline=""  class="banner-video banner-video-homemobile">
+             <a href="{{ block.settings.button1_link }}" aria-label="Shop {{ block.settings.button1_link | escape }}"> <video  autoplay="" loop="" muted="muted" playsinline="" aria-hidden="true" tabindex="-1" class="banner-video banner-video-homemobile">
                 <source src="{{ block.settings.mobilevideo }}" type="video/mp4">
               </video></a>
                 {% elsif block.settings.mobilevideo == blank %}
           <img class="mobile-slider"  src="{{ block.settings.image_mobile | img_url: '100x' }}"
-                alt="{{ block.settings.image.alt | escape }}"
+                alt="{{ block.settings.image_mobile.alt | default: block.settings.image.alt | default: block.settings.title | default: shop.name | escape }}"
                 class="lazyload {{ settings.image_loading_style }}"
                 sizes="100vw"
                 data-src="{{ block.settings.image_mobile | img_url: default }}"
@@ -421,6 +421,5 @@
 }
 
 {% endschema %}
-
 
 

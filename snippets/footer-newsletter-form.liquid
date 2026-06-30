@@ -1,9 +1,13 @@
 {% assign newsletter_input_id = input_id | default: 'FooterNewsletterEmail' %}
+{% assign newsletter_form_id = form_id %}
+{% if newsletter_form_id == blank %}
+  {% assign newsletter_form_id = newsletter_input_id | append: 'ContactForm' %}
+{% endif %}
 {% assign newsletter_submit_value = submit_value | default: 'Join Now' %}
 {% assign newsletter_label_class = label_class | default: 'visually-hidden-c' %}
 {% assign newsletter_label_text = label_text | default: 'Email address' %}
 
-{% form 'customer' %}
+{% form 'customer', id: newsletter_form_id %}
   {% if form.posted_successfully? %}
     <p><em>{{ 'general.newsletter_form.success_text' | t }}</em></p>
   {% elsif form.errors %}
@@ -14,10 +18,12 @@
 
   <input type="hidden" name="contact[tags]" value="prospect,newsletter"/>
   {% if section.settings.display_first_name %}
-    <input type="text" class="firstName" name="contact[first_name]" placeholder="{{ 'general.newsletter_form.subscriber_first_name' | t }}" />
+    <label for="{{ newsletter_input_id }}FirstName" class="{{ newsletter_label_class }}">{{ 'general.newsletter_form.subscriber_first_name' | t }}</label>
+    <input id="{{ newsletter_input_id }}FirstName" type="text" class="firstName" name="contact[first_name]" autocomplete="given-name" placeholder="{{ 'general.newsletter_form.subscriber_first_name' | t }}" />
   {% endif %}
   {% if section.settings.display_last_name %}
-    <input type="text" name="contact[last_name]" placeholder="{{ 'general.newsletter_form.subscriber_last_name' | t }}" />
+    <label for="{{ newsletter_input_id }}LastName" class="{{ newsletter_label_class }}">{{ 'general.newsletter_form.subscriber_last_name' | t }}</label>
+    <input id="{{ newsletter_input_id }}LastName" type="text" name="contact[last_name]" autocomplete="family-name" placeholder="{{ 'general.newsletter_form.subscriber_last_name' | t }}" />
   {% endif %}
 
   <input type="hidden" name="challenge" value="false" />

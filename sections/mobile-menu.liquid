@@ -5,12 +5,12 @@
 
 <div class="mobile-menuWrap">
   <div class="mobile-menu-toggle">
-    <button id="menuToggleBtn" aria-label="Toggle Menu">
+    <button id="menuToggleBtn" type="button" aria-label="Toggle Menu" aria-controls="mobileMenu" aria-expanded="false">
       <span class="bar"></span><span class="bar"></span><span class="bar"></span>
     </button>
   </div>
 
-  <div class="lola-mobile-menu" id="mobileMenu">
+  <div class="lola-mobile-menu" id="mobileMenu" aria-hidden="true">
     <div class="lola-menu-overlay"></div>
 
     <div class="lola-menu-content" id="mainMenu">
@@ -39,15 +39,15 @@
       {% assign company_menu = linklists[company_menu_handle].links %}
 
       <div class="lola-tabs" role="tablist" aria-label="Mobile Menu Tabs">
-        <button class="lola-tab lola-tab-toggle is-active" type="button" data-tab="girls">{{ section.settings.tab_label_girls | default: 'GIRLS' }}</button>
-        <button class="lola-tab lola-tab-toggle" type="button" data-tab="boys">{{ section.settings.tab_label_boys | default: 'BOYS' }}</button>
-        <button class="lola-tab-c"><a href="https://lolaandtheboys.com/collections/teen">{{ section.settings.tab_label_teens | default: 'TEENS' }}</a></button>
-        <button class="lola-tab lola-tab-toggle" type="button" data-tab="collabs">{{ section.settings.tab_label_collabs | default: 'COLLABS' }}</button>
+        <button id="lola-tab-girls" class="lola-tab lola-tab-toggle is-active" type="button" role="tab" aria-selected="true" aria-controls="lola-panel-girls" data-tab="girls">{{ section.settings.tab_label_girls | default: 'GIRLS' }}</button>
+        <button id="lola-tab-boys" class="lola-tab lola-tab-toggle" type="button" role="tab" aria-selected="false" aria-controls="lola-panel-boys" data-tab="boys">{{ section.settings.tab_label_boys | default: 'BOYS' }}</button>
+        <a class="lola-tab-c" href="https://lolaandtheboys.com/collections/teen">{{ section.settings.tab_label_teens | default: 'TEENS' }}</a>
+        <button id="lola-tab-collabs" class="lola-tab lola-tab-toggle" type="button" role="tab" aria-selected="false" aria-controls="lola-panel-collabs" data-tab="collabs">{{ section.settings.tab_label_collabs | default: 'COLLABS' }}</button>
       </div>
 
       <div class="lola-tabpanels">
         <!-- GIRLS -->
-        <div class="lola-panel is-active" data-panel="girls">
+        <div id="lola-panel-girls" class="lola-panel is-active" data-panel="girls" role="tabpanel" aria-labelledby="lola-tab-girls">
           <div class="lola-list">
             {% for l in girls_menu %}
               <div class="lola-row c-menu-class-{{ l.title | handleize }}{% if l.links.size > 0 %} has-submenu{% endif %}">
@@ -100,7 +100,7 @@
         </div>
 
         <!-- BOYS -->
-        <div class="lola-panel" data-panel="boys">
+        <div id="lola-panel-boys" class="lola-panel" data-panel="boys" role="tabpanel" aria-labelledby="lola-tab-boys" hidden>
           <div class="lola-list">
             {% for l in boys_menu %}
               <div class="lola-row c-menu-class-{{ l.title | handleize }}{% if l.links.size > 0 %} has-submenu{% endif %}">
@@ -153,7 +153,7 @@
         </div>
 
         <!-- TEENS -->
-        <div class="lola-panel" data-panel="teens">
+        <div id="lola-panel-teens" class="lola-panel" data-panel="teens">
           <div class="lola-list">
             {% for l in teens_menu %}
               <div class="lola-row {% if l.links.size > 0 %}has-submenu{% endif %}">
@@ -206,7 +206,7 @@
         </div>
 
         <!-- COLLABS -->
-        <div class="lola-panel" data-panel="collabs">
+        <div id="lola-panel-collabs" class="lola-panel" data-panel="collabs" role="tabpanel" aria-labelledby="lola-tab-collabs" hidden>
           <div class="lola-list">
             {% for l in collabs_menu %}
               <div class="lola-row {% if l.links.size > 0 %}has-submenu{% endif %}">
@@ -263,7 +263,7 @@
         <div class="lola-fav-login-row">
           <a class="lola-bottom-link fav-link-mob" href="https://lolaandtheboys.com/apps/wishlist">
             <span class="lola-bottom-text">MY FAVORITES</span>
-          <div class="wishlist-menu-mob-c"> <svg viewBox="0 0 64 64"> <path d="M32.012,59.616c-1.119-.521-2.365-1.141-3.707-1.859a79.264,79.264,0,0,1-11.694-7.614C6.316,42,.266,32.6.254,22.076,0.244,12.358,7.871,4.506,17.232,4.5a16.661,16.661,0,0,1,11.891,4.99l2.837,2.889,2.827-2.9a16.639,16.639,0,0,1,11.874-5.02h0c9.368-.01,17.008,7.815,17.021,17.539,0.015,10.533-6.022,19.96-16.312,28.128a79.314,79.314,0,0,1-11.661,7.63C34.369,58.472,33.127,59.094,32.012,59.616Z"></path></svg><div id="wishlist-count1"><span id="wishlist-count-mob-menu">0</span></div></div>
+          <div class="wishlist-menu-mob-c"> <svg viewBox="0 0 64 64"> <path d="M32.012,59.616c-1.119-.521-2.365-1.141-3.707-1.859a79.264,79.264,0,0,1-11.694-7.614C6.316,42,.266,32.6.254,22.076,0.244,12.358,7.871,4.506,17.232,4.5a16.661,16.661,0,0,1,11.891,4.99l2.837,2.889,2.827-2.9a16.639,16.639,0,0,1,11.874-5.02h0c9.368-.01,17.008,7.815,17.021,17.539,0.015,10.533-6.022,19.96-16.312,28.128a79.314,79.314,0,0,1-11.661,7.63C34.369,58.472,33.127,59.094,32.012,59.616Z"></path></svg><div id="wishlist-count-mobile-menu"><span id="wishlist-count-mob-menu">0</span></div></div>
           </a>
           <a class="lola-bottom-link lola-login-mob" href="/account/login">
             <span class="lola-login-icon" aria-hidden="true">
@@ -277,10 +277,10 @@
         </div>
 
         <div class="lola-acc">
-          <a class="lola-bottom-link lola-acc-toggle" href="#">
+          <button class="lola-bottom-link lola-acc-toggle" type="button" aria-expanded="false">
             <span class="lola-bottom-text">CUSTOMER CARE</span>
             <span class="lola-bottom-plus" aria-hidden="true">+</span>
-          </a>
+          </button>
           <div class="lola-acc-panel" hidden>
             {% for l in cc_menu %}
               <a class="lola-acc-item" href="{{ l.url }}">{{ l.title }}</a>
@@ -289,10 +289,10 @@
         </div>
 
         <div class="lola-acc">
-          <a class="lola-bottom-link lola-acc-toggle" href="#">
+          <button class="lola-bottom-link lola-acc-toggle" type="button" aria-expanded="false">
             <span class="lola-bottom-text">COMPANY</span>
             <span class="lola-bottom-plus" aria-hidden="true">+</span>
-          </a>
+          </button>
           <div class="lola-acc-panel" hidden>
             {% for l in company_menu %}
               <a class="lola-acc-item" href="{{ l.url }}">{{ l.title }}</a>
@@ -365,6 +365,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const overlay = mobileMenu.querySelector('.lola-menu-overlay');
   const closeBtn = document.getElementById('closeMenu');
   const headerToggle = document.getElementById('headerMobileToggle');
+  const sectionToggle = document.getElementById('menuToggleBtn');
 
   const tabs = mobileMenu.querySelectorAll('.lola-tab-toggle');
   const allTabs = mobileMenu.querySelectorAll('.lola-tab');
@@ -465,6 +466,8 @@ document.addEventListener('DOMContentLoaded', function () {
       if (acc === currentAcc) return;
 
       acc.classList.remove('is-open');
+      const toggle = acc.querySelector('.lola-acc-toggle');
+      if (toggle) toggle.setAttribute('aria-expanded', 'false');
       const panel = acc.querySelector('.lola-acc-panel');
       if (panel && !panel.hidden) {
         toggleElement(panel, false);
@@ -477,10 +480,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     tabs.forEach((tab, index) => {
       tab.classList.toggle('is-active', index === 0);
+      tab.setAttribute('aria-selected', index === 0 ? 'true' : 'false');
     });
 
     panels.forEach((panel, index) => {
       panel.classList.toggle('is-active', index === 0);
+      if (panel.hasAttribute('role')) {
+        panel.hidden = index !== 0;
+      }
     });
 
     mobileMenu.querySelectorAll('.lola-row.has-submenu').forEach((row) => {
@@ -497,6 +504,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     mobileMenu.querySelectorAll('.lola-acc').forEach((acc) => {
       acc.classList.remove('is-open');
+      const toggle = acc.querySelector('.lola-acc-toggle');
+      if (toggle) toggle.setAttribute('aria-expanded', 'false');
       const panel = acc.querySelector('.lola-acc-panel');
       if (panel) {
         panel.hidden = true;
@@ -520,6 +529,9 @@ document.addEventListener('DOMContentLoaded', function () {
       if (finished) return;
       finished = true;
       mobileMenu.classList.remove('active', 'closing');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+      if (headerToggle) headerToggle.setAttribute('aria-expanded', 'false');
+      if (sectionToggle) sectionToggle.setAttribute('aria-expanded', 'false');
       resetUI();
     };
 
@@ -541,6 +553,9 @@ document.addEventListener('DOMContentLoaded', function () {
     resetUI();
     mobileMenu.classList.remove('closing');
     mobileMenu.classList.add('active');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+    if (headerToggle) headerToggle.setAttribute('aria-expanded', 'true');
+    if (sectionToggle) sectionToggle.setAttribute('aria-expanded', 'true');
     document.body.classList.add('menu-open');
 
     requestAnimationFrame(() => {
@@ -571,6 +586,14 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  if (sectionToggle) {
+    sectionToggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (mobileMenu.classList.contains('active')) closeMenu();
+      else openMenu();
+    });
+  }
+
   allTabs.forEach((btn) => {
     if (!btn.classList.contains('lola-tab-toggle')) return;
 
@@ -580,12 +603,19 @@ document.addEventListener('DOMContentLoaded', function () {
       const key = btn.getAttribute('data-tab');
       if (!key) return;
 
-      tabs.forEach((tab) => tab.classList.remove('is-active'));
+      tabs.forEach((tab) => {
+        tab.classList.remove('is-active');
+        tab.setAttribute('aria-selected', 'false');
+      });
       btn.classList.add('is-active');
+      btn.setAttribute('aria-selected', 'true');
 
       panels.forEach((panel) => {
         const isActive = panel.getAttribute('data-panel') === key;
         panel.classList.toggle('is-active', isActive);
+        if (panel.hasAttribute('role')) {
+          panel.hidden = !isActive;
+        }
 
         if (!isActive) {
           panel.querySelectorAll('.lola-row.has-submenu').forEach((row) => {
@@ -638,6 +668,7 @@ document.addEventListener('DOMContentLoaded', function () {
       closeOtherAccordions(acc);
 
       acc.classList.toggle('is-open', willOpen);
+      btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
       toggleElement(panel, willOpen);
 
       if (willOpen && mainMenu) {

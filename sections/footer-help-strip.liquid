@@ -17,7 +17,7 @@
 
       <label for="{{ newsletter_input_id }}" class="ltb-footer-connect__label">{{ section.settings.email_label }}</label>
       <div class="ltb-footer-connect__input-row">
-        {% include 'footer-newsletter-form', input_id: newsletter_input_id, submit_value: section.settings.newsletter_button_text, label_class: 'visually-hidden-c', label_text: section.settings.email_label %}
+        {% include 'footer-newsletter-form', input_id: newsletter_input_id, form_id: 'FooterHelpStripContactForm', submit_value: section.settings.newsletter_button_text, label_class: 'visually-hidden-c', label_text: section.settings.email_label %}
       </div>
     </div>
 

@@ -4109,3 +4109,36 @@ label[for="swatch-1-light-blue-7810193227878"] {
     height: 900px;
     object-fit: cover !important;
 }
+
+.product-quantity-box button.ss-icon,
+.quanitty-toggle-cart button.ss-icon {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+.wishlist-container {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+button.filter-done,
+button.filter-clear,
+button.cart_delete-custom-product-button {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+button.cart_delete-custom-product-button {
+  background: transparent;
+  border: 0;
+}

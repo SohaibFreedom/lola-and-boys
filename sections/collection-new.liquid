@@ -21,7 +21,7 @@
                 
                 {% if block.settings.image != nil %}
                     <img  src="{{ block.settings.image | img_url: '100x' }}"
-                          alt="{% if block.settings.image.alt != blank %}{{ block.settings.image.alt }}{% else %}{{ block.settings.title | escape }}{% endif %}"
+                          alt="{% if block.settings.image.alt != blank %}{{ block.settings.image.alt }}{% else %}{{ block.settings.title1 | escape }}{% endif %}"
                           class="lazyload full-width-image {{ settings.image_loading_style }}"
                           data-sizes="auto"
                           data-src="{{ block.settings.image | img_url: '1400x' }}"

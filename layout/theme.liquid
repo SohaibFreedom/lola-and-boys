@@ -13,6 +13,33 @@
  
 
   <style>
+    .skip-to-content-link,
+    .visually-hidden-c {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    .skip-to-content-link:focus {
+      top: 10px !important;
+      left: 10px !important;
+      width: auto !important;
+      height: auto !important;
+      padding: 10px 14px !important;
+      margin: 0 !important;
+      clip: auto !important;
+      z-index: 2147483647 !important;
+      background: #fff !important;
+      color: #000 !important;
+      border: 2px solid #000 !important;
+      text-decoration: none !important;
+    }
 
 @font-face {
   font-family: "Inter";
@@ -291,6 +318,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
     
  
+    <a class="skip-to-content-link" href="#MainContent">Skip to main content</a>
+
     {% section 'header' %}
     {% section 'mobile-menu' %}
   
@@ -298,10 +327,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
    
 
-   <div class="content-main">
+   <main id="MainContent" class="content-main" tabindex="-1">
       <div class="dropdown-overlay-globomenu"></div>
      {{ content_for_layout }}
-</div>
+</main>
 
 
 
@@ -431,7 +460,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     e.preventDefault();
     var image = $(this).attr('href');
     $('html').addClass('no-scroll');
-    $('body').append('<div class="lightbox-opened"><div class="lightbox-opened-inner"><img src="' + image + '"></div></div>');
+    $('body').append('<div class="lightbox-opened" role="dialog" aria-modal="true"><div class="lightbox-opened-inner"><img src="' + image + '" alt=""></div></div>');
   });
   
   // Close Lightbox
@@ -769,6 +798,39 @@ btn.on('click', function(e) {
 <!-- Widget : Free Tote Bag -->
 <div data-rebuy-id="264141"></div>
 <!-- End Widget : Free Tote Bag -->
+
+  <script>
+    (function() {
+      function dedupeAppWidgetIds() {
+        var seen = {};
+        document.querySelectorAll('[id]').forEach(function(element) {
+          var id = element.id;
+          if (!id) {
+            return;
+          }
+          if (!seen[id]) {
+            seen[id] = 1;
+            return;
+          }
+          seen[id] += 1;
+          if (element.closest('.fs, .fs-prepended-detail, .fs-timeline-detail')) {
+            element.id = id + '-fs-duplicate-' + seen[id];
+          }
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', dedupeAppWidgetIds);
+      } else {
+        dedupeAppWidgetIds();
+      }
+
+      window.addEventListener('load', function() {
+        setTimeout(dedupeAppWidgetIds, 500);
+        setTimeout(dedupeAppWidgetIds, 2000);
+      });
+    })();
+  </script>
 
   </body>
 

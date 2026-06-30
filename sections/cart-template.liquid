@@ -112,9 +112,9 @@
 
                       {% if item.product.title == 'Gift Wrapping' %}
                         <p class="cart-attribute__field">
-                          <label for="gift-message">Gift Message</label>
+                          <label for="gift-message-wrap">Gift Message</label>
                           <textarea
-                            id="gift-message"
+                            id="gift-message-wrap"
                             type="text"
                             name="attributes[Gift Message]"
                             value="{{ cart.attributes["Gift Message"] }}"
@@ -123,9 +123,9 @@
                       {% endif %}
                       {% if item.product.title == 'Gift Card' %}
                         <p class="cart-attribute__field">
-                          <label for="gift-message">Gift Message</label>
+                          <label for="gift-message-card">Gift Message</label>
                           <textarea
-                            id="gift-message"
+                            id="gift-message-card"
                             type="text"
                             name="attributes[Gift Message-2]"
                             value="{{ cart.attributes["Gift Message-2"] }}"
@@ -258,9 +258,10 @@
                       <div class="change-btn-cart-flex">
                         <div class="quanitty-toggle-cart">
                           <div class="product-quantity-box left">
-                            <span class="ss-icon product-minus js-change-quantity" data-func="minus">
-                              <span class="icon-minus"></span>
-                            </span>
+                            <button type="button" class="ss-icon product-minus js-change-quantity" data-func="minus" aria-label="Decrease quantity for {{ item.product.title | escape }}">
+                              <span class="icon-minus" aria-hidden="true"></span>
+                            </button>
+                            <label for="updates_{{ forloop.index }}" class="visually-hidden-c">Quantity for {{ item.product.title | escape }}</label>
                             <input
                               type="number"
                               min="0"
@@ -272,7 +273,7 @@
                               %}
                                 max="{{ item.variant.inventory_quantity }}"
                               {% endunless %}
-                              id="updates_{{ item.id }}"
+                              id="updates_{{ forloop.index }}"
                               value="{{ item.quantity }}"
                               data-line-id="{{ forloop.index }}"
                               data-item-key="{{ item.key }}"
@@ -284,13 +285,13 @@
                                 max="{{ item.variant.inventory_quantity }}"
                               {% endif %}
                             >
-                            <span class="ss-icon product-plus js-change-quantity" data-func="plus">
-                              <span class="icon-plus"></span>
-                            </span>
+                            <button type="button" class="ss-icon product-plus js-change-quantity" data-func="plus" aria-label="Increase quantity for {{ item.product.title | escape }}">
+                              <span class="icon-plus" aria-hidden="true"></span>
+                            </button>
                           </div>
                           <div class="cancel-quantity-toggle">
                             <span class="cancel-cart-btn">Cancel</span>
-                            <span type="button" class="update-cart-btn" fdprocessedid="8mpijr">Update</span>
+                            <button type="button" class="update-cart-btn" fdprocessedid="8mpijr">Update</button>
                           </div>
                         </div>
                       </div>
@@ -328,9 +329,9 @@
                         <span>{{ 'cart.general.subtotal' | t }} ({{ cart.item_count | t }}) </span>
                         <span class="sale-tax">sales tax calculated at checkout.</span>
                         <div class="payment-icons-custom">
-                          <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/afterpay-logo-cus.png?v=1732745014" height="auto" width="auto" />
-                          <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/paypal-custom_50349735-fce2-4c5c-b7b1-21da83415513.png?v=1732744318" height="auto" width="auto" />
-                          <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/shoppay-custom.png?v=1732821864" height="auto" width="auto" />
+                          <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/afterpay-logo-cus.png?v=1732745014" alt="Afterpay" height="auto" width="auto" />
+                          <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/paypal-custom_50349735-fce2-4c5c-b7b1-21da83415513.png?v=1732744318" alt="PayPal" height="auto" width="auto" />
+                          <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/shoppay-custom.png?v=1732821864" alt="Shop Pay" height="auto" width="auto" />
                         </div>
                       </p>
                     </div>
@@ -405,7 +406,7 @@
                       {%- if customer.tags contains 'whnet' %}
                         <div style="margin-top:30px;">
                           <p>{{ shop.metafields.wh_net.wh_net_text }}</p>
-                          <a id="wh-30-open" class="button">{{ shop.metafields.wh_net.wh_net_button_text }}</a>
+                          <button id="wh-30-open" type="button" class="button">{{ shop.metafields.wh_net.wh_net_button_text }}</button>
                         </div>
                       {% endif -%}
                     {%- endif %}
@@ -740,9 +741,9 @@ async function renderCustomPatchCart() {
           <div class="child-items"></div>
 
           <div class="header-right">
-            <a class="cart_delete-custom-product-button" data-key="${ key }" data-timestamp="${timestamp}">
+            <button type="button" class="cart_delete-custom-product-button" data-key="${ key }" data-timestamp="${timestamp}">
               Remove
-            </a>
+            </button>
             <a class="cart_create-another-btn" href="${productUrl}">
               Create Another
             </a>
@@ -764,7 +765,7 @@ async function renderCustomPatchCart() {
 
     parentRow.innerHTML = `
       <p class="parent-child-title">${parentItem.title} - ${parentLinePrice}</p>
-      <img src="${parentItem.image}" class="parent-child-image">
+      <img src="${parentItem.image}" class="parent-child-image" alt="${parentItem.title}">
     `;
 
     childBox.appendChild(parentRow);

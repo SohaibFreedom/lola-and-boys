@@ -21,18 +21,21 @@
     <div class="newsletter">
       <span class="message"></span>
       {% if settings.mailchimp_link != blank %}
-        <form action="{{ settings.mailchimp_link }}" method="post" name="mc-embedded-subscribe-form" id="contact_form" target="_blank">
+        <form action="{{ settings.mailchimp_link }}" method="post" name="mc-embedded-subscribe-form" id="NewsletterMailchimpContactForm" target="_blank">
           {% if section.settings.display_first_name %}
-            <input type="text" value="" class="firstName" name="FNAME" placeholder="{{ 'general.newsletter_form.subscriber_first_name' | t }}">
+            <label for="NewsletterMailchimpFirstName" class="visually-hidden-c">{{ 'general.newsletter_form.subscriber_first_name' | t }}</label>
+            <input id="NewsletterMailchimpFirstName" type="text" value="" class="firstName" name="FNAME" autocomplete="given-name" placeholder="{{ 'general.newsletter_form.subscriber_first_name' | t }}">
           {% endif %}
           {% if section.settings.display_last_name %}
-            <input type="text" value="" name="LNAME" placeholder="{{ 'general.newsletter_form.subscriber_last_name' | t }}">
+            <label for="NewsletterMailchimpLastName" class="visually-hidden-c">{{ 'general.newsletter_form.subscriber_last_name' | t }}</label>
+            <input id="NewsletterMailchimpLastName" type="text" value="" name="LNAME" autocomplete="family-name" placeholder="{{ 'general.newsletter_form.subscriber_last_name' | t }}">
           {% endif %}
-          <input type="email" value="" name="EMAIL" class="contact_email" autocomplete="email" placeholder="{{ 'general.newsletter_form.placeholder' | t }}">
+          <label for="NewsletterMailchimpEmail" class="visually-hidden-c">Email address</label>
+          <input id="NewsletterMailchimpEmail" type="email" value="" name="EMAIL" class="contact_email" autocomplete="email" placeholder="{{ 'general.newsletter_form.placeholder' | t }}">
           <input type="submit" value="{{ 'general.newsletter_form.submit' | t }}" class="action_button sign_up" name="subscribe" />
         </form>
       {% else %}
-        {% form 'customer' %}
+        {% form 'customer', id: 'NewsletterContactForm' %}
           {% if form.posted_successfully? %}
             <p><em>{{ 'general.newsletter_form.success_text' | t }}</em></p>
           {% elsif form.errors %}
@@ -43,14 +46,17 @@
 
           <input type="hidden" name="contact[tags]" value="prospect,newsletter"/>
           {% if section.settings.display_first_name %}
-            <input type="text" class="firstName" name="contact[first_name]" placeholder="{{ 'general.newsletter_form.subscriber_first_name' | t }}" />
+            <label for="NewsletterFirstName" class="visually-hidden-c">{{ 'general.newsletter_form.subscriber_first_name' | t }}</label>
+            <input id="NewsletterFirstName" type="text" class="firstName" name="contact[first_name]" autocomplete="given-name" placeholder="{{ 'general.newsletter_form.subscriber_first_name' | t }}" />
           {% endif %}
           {% if section.settings.display_last_name %}
-            <input type="text" name="contact[last_name]" placeholder="{{ 'general.newsletter_form.subscriber_last_name' | t }}" />
+            <label for="NewsletterLastName" class="visually-hidden-c">{{ 'general.newsletter_form.subscriber_last_name' | t }}</label>
+            <input id="NewsletterLastName" type="text" name="contact[last_name]" autocomplete="family-name" placeholder="{{ 'general.newsletter_form.subscriber_last_name' | t }}" />
           {% endif %}
 
           <input type="hidden" name="challenge" value="false" />
-          <input type="email" class="contact_email" name="contact[email]" autocomplete="email" required placeholder="{{ 'general.newsletter_form.placeholder' | t }}" />
+          <label for="NewsletterEmail" class="visually-hidden-c">Email address</label>
+          <input id="NewsletterEmail" type="email" class="contact_email" name="contact[email]" autocomplete="email" required placeholder="{{ 'general.newsletter_form.placeholder' | t }}" />
           <input type='submit' class="action_button sign_up" value="{{ 'general.newsletter_form.submit' | t }}" />
         {% endform %}
       {% endif %}

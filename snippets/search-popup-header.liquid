@@ -46,6 +46,13 @@
   gap:20px;
 }
 
+.full-width-overlay .close-overlay {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+}
+
 .full-width-overlay .search-result-item {
   width: calc(25% - 20px);
 }
@@ -67,12 +74,13 @@
             </style>    
             
 
-<div id="fullWidthSearchOverlay" class="full-width-overlay">
+<div id="fullWidthSearchOverlay" class="full-width-overlay" role="dialog" aria-modal="true" aria-label="Search">
   <div class="overlay-content">
     <div class="search-wrap">
       <div class="header_search_form">
-        <span class="icon-search"></span>
-        <input type="text" id="instantSearchInput" placeholder="Search">
+        <span class="icon-search" aria-hidden="true"></span>
+        <label for="instantSearchInput" class="visually-hidden-c">Search</label>
+        <input type="text" id="instantSearchInput" placeholder="Search" aria-label="Search">
       </div>
 
       <!--
@@ -84,11 +92,11 @@
           <input type="text" name="q" placeholder="{{ 'general.search.title' | t: shop_name: shop.name }}" value="{% if search and wh_price %}{{ search.terms }}{% endif %}" autocapitalize="off" autocomplete="off" autocorrect="off" />
         </form>
       -->
-      <span class="close-overlay" onclick="closeFullWidthSearch()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <button type="button" class="close-overlay" onclick="closeFullWidthSearch()" aria-label="Close search">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M9.00939 10L2.5 3.49061L3.49061 2.5L10 9.00939L16.5094 2.5L17.5 3.49061L10.9906 10L17.5 16.5094L16.5094 17.5L10 10.9906L3.49061 17.5L2.5 16.5094L9.00939 10Z" fill="currentColor"></path>
         </svg>
-      </span>
+      </button>
     </div>
 
     <div class="overlay-body-content">

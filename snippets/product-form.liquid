@@ -145,9 +145,9 @@
         {% unless product.tags contains 'quanity-hide' %}
           <div class="left product-quantity-box">
             <label for="quantity">{{ 'products.product.quantity' | t }}</label>
-            <span class="ss-icon product-minus js-change-quantity" data-func="minus"
-              ><span class="icon-minus"></span
-            ></span>
+            <button type="button" class="ss-icon product-minus js-change-quantity" data-func="minus" aria-label="Decrease quantity">
+              <span class="icon-minus" aria-hidden="true"></span>
+            </button>
             <input
               type="number"
               min="1"
@@ -164,9 +164,9 @@
                 max="{{ variant.inventory_quantity }}"
               {% endif %}
             >
-            <span class="ss-icon product-plus js-change-quantity" data-func="plus"
-              ><span class="icon-plus"></span
-            ></span>
+            <button type="button" class="ss-icon product-plus js-change-quantity" data-func="plus" aria-label="Increase quantity">
+              <span class="icon-plus" aria-hidden="true"></span>
+            </button>
           </div>
         {% endunless %}
       {% endunless %}

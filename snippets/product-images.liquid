@@ -94,7 +94,7 @@
 		
           <div class="gallery-cell" data-title="{{ media.alt | escape }}" data-media-type="{{ media.media_type }}">
             <div class="video-box">
-              <video id="my-video" loop="" playsinline="" autoplay="" defaultmuted="" muted="" class="video-js" preload="auto" poster="{{ media | img_url: '1500x' }}" data-setup='' loop>
+              <video id="product-video-{{ media.id }}" loop="" playsinline="" autoplay="" defaultmuted="" muted="" class="video-js" preload="auto" poster="{{ media | img_url: '1500x' }}" data-setup='' aria-label="{{ media.alt | default: product.title | escape }}">
                   <source src="{{ media.sources[1].url }}" type='video/mp4'>
               </video>
             </div>
@@ -141,7 +141,7 @@
             <div class="main-video">
               <img class="video_poster_img" srcset="{{ media | img_url: '300x'}}" data-lazy="{{ media | img_url: '300x'}}" alt="{{ media.alt }}">
               <div class="video-icon">
-              <img class="play-icon-badge"  srcset="https://cdn.shopify.com/s/files/1/0264/9391/1084/files/youtube.png?v=1621590767" data-lazy="https://cdn.shopify.com/s/files/1/0264/9391/1084/files/youtube.png?v=1621590767">
+              <img class="play-icon-badge" alt="" srcset="https://cdn.shopify.com/s/files/1/0264/9391/1084/files/youtube.png?v=1621590767" data-lazy="https://cdn.shopify.com/s/files/1/0264/9391/1084/files/youtube.png?v=1621590767">
               </div>
             </div>
           </div>   
@@ -151,7 +151,7 @@
             <div class="main-video">
               <img class="video_poster_img" srcset="{{ media | img_url: '300x'}}" data-lazy="{{ media | img_url: '300x'}}" alt="{{ media.alt }}">
               <div class="video-icon">
-              <img class="play-icon-badge"  srcset="https://cdn.shopify.com/s/files/1/0264/9391/1084/files/youtube.png?v=1621590767" data-lazy="https://cdn.shopify.com/s/files/1/0264/9391/1084/files/youtube.png?v=1621590767">
+              <img class="play-icon-badge" alt="" srcset="https://cdn.shopify.com/s/files/1/0264/9391/1084/files/youtube.png?v=1621590767" data-lazy="https://cdn.shopify.com/s/files/1/0264/9391/1084/files/youtube.png?v=1621590767">
               </div>
             </div>
           </div> 	

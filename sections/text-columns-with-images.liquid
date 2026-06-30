@@ -26,7 +26,7 @@
               <img
                 src="{{ block.settings.image.src | img_url: '300x' }}"
                 class="lazyload {{ settings.image_loading_style }}"
-                alt="{{ block.settings.image.alt }}"
+                alt="{{ block.settings.image.alt | default: block.settings.title | escape }}"
                 data-sizes="auto"
                 data-src="{{ block.settings.image | img_url }}"
                 data-srcset="

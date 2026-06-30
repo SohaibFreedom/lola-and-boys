@@ -13,7 +13,7 @@
       <a href="{{ section.settings.button_link }}" class="begin-btnn">{{ section.settings.button_text }}</a>
       
       </p>
-      {% form 'customer' %}
+      {% form 'customer', id: 'FooterTopContactForm' %}
             {% if form.posted_successfully? %}
               <p><em>{{ 'general.newsletter_form.success_text' | t }}</em></p>
             {% elsif form.errors %}
@@ -24,14 +24,17 @@
 
             <input type="hidden" name="contact[tags]" value="prospect,newsletter"/>
             {% if section.settings.display_first_name %}
-              <input type="text" class="firstName" name="contact[first_name]" placeholder="{{ 'general.newsletter_form.subscriber_first_name' | t }}" />
+              <label for="FooterTopFirstName" class="visually-hidden-c">{{ 'general.newsletter_form.subscriber_first_name' | t }}</label>
+              <input id="FooterTopFirstName" type="text" class="firstName" name="contact[first_name]" autocomplete="given-name" placeholder="{{ 'general.newsletter_form.subscriber_first_name' | t }}" />
             {% endif %}
             {% if section.settings.display_last_name %}
-              <input type="text" name="contact[last_name]" placeholder="{{ 'general.newsletter_form.subscriber_last_name' | t }}" />
+              <label for="FooterTopLastName" class="visually-hidden-c">{{ 'general.newsletter_form.subscriber_last_name' | t }}</label>
+              <input id="FooterTopLastName" type="text" name="contact[last_name]" autocomplete="family-name" placeholder="{{ 'general.newsletter_form.subscriber_last_name' | t }}" />
             {% endif %}
 
             <input type="hidden" name="challenge" value="false" />
-            <input type="email" class="contact_email" name="contact[email]" autocomplete="email" required placeholder="{{ 'general.newsletter_form.placeholder' | t }}" />
+            <label for="FooterTopEmail" class="visually-hidden-c">Email address</label>
+            <input id="FooterTopEmail" type="email" class="contact_email" name="contact[email]" autocomplete="email" required placeholder="{{ 'general.newsletter_form.placeholder' | t }}" />
             <input type='submit' class="action_button sign_up" value="Join Now" />
           {% endform %}
     </div>
@@ -47,14 +50,14 @@
       <div class="app-download">
         <a href="{{ section.settings.button_link11 }}" class="app-btn">
         
-        <img  src="{{ section.settings.image11 | img_url: '100x' }}"/>
+        <img src="{{ section.settings.image11 | img_url: '100x' }}" alt="Download app"/>
         
         </a>
         <a href="{{ section.settings.button_link22 }}" class="app-btn">
-        <img  src="{{ section.settings.image22 | img_url: '100x' }}"/>
+        <img src="{{ section.settings.image22 | img_url: '100x' }}" alt="Download app"/>
         </a>
         <a href="{{ section.settings.button_link33 }}" class="app-btn">
-        <img  src="{{ section.settings.image33 | img_url: '100x' }}"/>
+        <img src="{{ section.settings.image33 | img_url: '100x' }}" alt="Download app"/>
         </a>
       </div>
     </div>
@@ -146,7 +149,7 @@
                 {% endif %}
               </div>
              
-             {% form 'customer' %}
+             {% form 'customer', id: 'FooterNewsletterContactForm' %}
           {% if form.posted_successfully? %}
             <p><em>{{ 'general.newsletter_form.success_text' | t }}</em></p>
           {% elsif form.errors %}
@@ -157,10 +160,12 @@
 
           <input type="hidden" name="contact[tags]" value="prospect,newsletter"/>
           {% if section.settings.display_first_name %}
-            <input type="text" class="firstName" name="contact[first_name]" placeholder="{{ 'general.newsletter_form.subscriber_first_name' | t }}" />
+            <label for="FooterNewsletterFirstName" class="visually-hidden-c">{{ 'general.newsletter_form.subscriber_first_name' | t }}</label>
+            <input id="FooterNewsletterFirstName" type="text" class="firstName" name="contact[first_name]" autocomplete="given-name" placeholder="{{ 'general.newsletter_form.subscriber_first_name' | t }}" />
           {% endif %}
           {% if section.settings.display_last_name %}
-            <input type="text" name="contact[last_name]" placeholder="{{ 'general.newsletter_form.subscriber_last_name' | t }}" />
+            <label for="FooterNewsletterLastName" class="visually-hidden-c">{{ 'general.newsletter_form.subscriber_last_name' | t }}</label>
+            <input id="FooterNewsletterLastName" type="text" name="contact[last_name]" autocomplete="family-name" placeholder="{{ 'general.newsletter_form.subscriber_last_name' | t }}" />
           {% endif %}
 
           <input type="hidden" name="challenge" value="false" />
@@ -209,7 +214,7 @@
               <img src="{{ type | payment_type_img_url }}" alt="{{ type | replace: "_", " " | capitalize }}" />
             
             {% endfor %}
-              <a href="#"><img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/Afterpay_Logo_Colournew.png?4582775275767461532" style="height:24px;width:115px!important;" height="24px" width="115px" /></a>
+              <a href="/pages/payment" aria-label="Afterpay payment information"><img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/Afterpay_Logo_Colournew.png?4582775275767461532" alt="Afterpay" style="height:24px;width:115px!important;" height="24px" width="115px" /></a>
           </div>
         {% endif %}
       </div><!--end footer_credits-->

@@ -56,10 +56,10 @@
 {% if paginate.next.url %}
 <div id="load-more">
   <div class="load-more">
-    <a class="load-more__btn action_button continue-button" onclick="LoadMoreProduct()"> {{ 'collections.general.load_more' | t }} </a>
+    <a href="{{ paginate.next.url }}" class="load-more__btn action_button continue-button" onclick="LoadMoreProduct(); return false;"> {{ 'collections.general.load_more' | t }} </a>
   </div>
 </div>
 <div class="load-more-sppiner">
-  <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/giphy.gif?v=1634805083">
+  <img src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/giphy.gif?v=1634805083" alt="">
 </div>
 {% endif %}
