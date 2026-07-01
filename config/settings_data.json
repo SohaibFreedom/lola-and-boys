@@ -3914,7 +3914,7 @@
           "23ee518c-ddd9-496f-825e-6d407e57a3a9"
         ],
         "settings": {
-          "announcement_bar_version": "new",
+          "announcement_bar_version": "old",
           "left_banner_image": "shopify://shop_images/image_2.png",
           "ends_text": "FINAL HOURS",
           "collection": "popular-search-header",
