@@ -4,6 +4,7 @@
 - Uses blocks
 {% endcomment %}
 
+<footer class="site-footer-landmark" role="contentinfo">
 <div class="footer-top">
   <div class="container">
     <div class="form-top">
@@ -66,7 +67,7 @@
 
 
 
-<footer class="footer">
+<div class="footer">
   <div class="container footer-menu-wrap">
   <div class="top-footer-section">
       {% for block in section.blocks %}
@@ -96,7 +97,7 @@
             {% elsif block.type == 'text' %}
               <div class="footer_content">
                 {% if block.settings.title != blank %}
-                  <h6>{{ block.settings.title }}<span class="right icon-down-arrow"></span></h6>
+                  <h2 class="footer-accordion-heading">{{ block.settings.title }}<span class="right icon-down-arrow"></span></h2>
                   <div class="toggle_content">
                     {{ block.settings.content }}
                   </div>
@@ -105,12 +106,12 @@
             {% elsif block.type == 'page' %}
               <div class="footer_content">
                 {% if block.settings.page != blank %}
-                  <h6>{{ pages[block.settings.page].title }}<span class="right icon-down-arrow"></span></h6>
+                  <h2 class="footer-accordion-heading">{{ pages[block.settings.page].title }}<span class="right icon-down-arrow"></span></h2>
                   <div class="toggle_content">
                     {{ pages[block.settings.page].content }}
                   </div>
                 {% else %}
-                  <h6>Page title<span class="right icon-down-arrow"></span></h6>
+                  <h2 class="footer-accordion-heading">Page title<span class="right icon-down-arrow"></span></h2>
                   <div class="toggle_content">
                     <p>{{ 'homepage.onboarding.no_content' | t }}</p>
                   </div>
@@ -120,7 +121,7 @@
           {% elsif block.type == 'link_list' %}
             <div class="footer_menu">
               {% if block.settings.menu != blank %}
-                <h6  class="menu-list-header-acc {% if block.settings.accordian-active %}active{% endif %}">{{ linklists[block.settings.menu].title }}<span class="right icon-down-arrow"></span></h6>
+                <h2 class="footer-accordion-heading menu-list-header-acc {% if block.settings.accordian-active %}active{% endif %}">{{ linklists[block.settings.menu].title }}<span class="right icon-down-arrow"></span></h2>
                 <div class="toggle_content">
                   <ul>
                     {% for link in linklists[block.settings.menu].links %}
@@ -129,7 +130,7 @@
                   </ul>
                 </div>
               {% else %}
-                <h6>Menu title<span class="right icon-down-arrow"></span></h6>
+                <h2 class="footer-accordion-heading">Menu title<span class="right icon-down-arrow"></span></h2>
                 <div class="toggle_content">
                   <ul>
                     <li><p>{{ 'homepage.onboarding.no_content' | t }}</p></li>
@@ -142,7 +143,7 @@
             <div class="footer_newsletter">
                  <div class="footer_content">
                 {% if block.settings.newstitle != blank %}
-                  <h6>{{ block.settings.newstitle }}<span class="right icon-down-arrow"></span></h6>
+                  <h2 class="footer-accordion-heading">{{ block.settings.newstitle }}<span class="right icon-down-arrow"></span></h2>
                   <div class="toggle_content">
                     {{ block.settings.newscontent }}
                   </div>
@@ -220,6 +221,7 @@
       </div><!--end footer_credits-->
         </div>
   </div>
+</div>
 </footer>
 <script>
   const hiring = document.querySelectorAll('.account-accordion');
