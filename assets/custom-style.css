@@ -4142,39 +4142,3 @@ button.cart_delete-custom-product-button {
   background: transparent;
   border: 0;
 }
-
-.footer .footer-menu-wrap .footer-accordion-heading {
-  margin: 0;
-  padding: 0 0 5px;
-  color: #7f8c8d;
-  font-size: 18px;
-  line-height: inherit;
-}
-
-.footer .footer-menu-wrap .footer-accordion-heading > span {
-  display: none;
-}
-
-.footer .accordian-toggle .footer-accordion-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.footer .accordian-toggle .footer-accordion-heading:not(.active) span.right.icon-down-arrow:after {
-  content: none !important;
-}
-
-@media only screen and (max-width: 798px) {
-  .footer .footer-menu-wrap .footer-accordion-heading {
-    border-top: 1px solid #1b1f23;
-    margin-bottom: 5px;
-    padding: 10px 20px 5px;
-  }
-
-  .footer .footer-menu-wrap .footer-accordion-heading > span {
-    display: inline-block;
-    transition: transform 0.3s linear;
-    perspective: 1000;
-  }
-}

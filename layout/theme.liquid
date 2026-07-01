@@ -318,18 +318,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
     
  
-    <nav class="skip-links" aria-label="Skip links">
-      <a class="skip-to-content-link" href="#MainContent">Skip to main content</a>
-    </nav>
+    <a class="skip-to-content-link" href="#MainContent">Skip to main content</a>
 
     {% section 'header' %}
-    <nav class="mobile-menu-landmark" aria-label="Mobile menu">
-      {% section 'mobile-menu' %}
-    </nav>
+    {% section 'mobile-menu' %}
   
-    <aside class="wishlist-drawer-landmark" aria-label="Wishlist">
-      {% section 'wishlist-drawer' %}
-    </aside>
+    {% section 'wishlist-drawer' %}
 
    
 
@@ -341,14 +335,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
     {% unless template contains 'index' or settings.secondary_newsletter_banner == false %}
-      <aside class="newsletter-landmark" aria-label="Newsletter">
-        {% section 'newsletter' %}
-      </aside>
+      {% section 'newsletter' %}
     {% endunless %}
 
-    <aside class="footer-help-strip-landmark" aria-label="Footer help">
-      {% section 'footer-help-strip' %}
-    </aside>
+        {% section 'footer-help-strip' %}
     
     {% section 'footer' %}
 
@@ -839,46 +829,6 @@ btn.on('click', function(e) {
         setTimeout(dedupeAppWidgetIds, 500);
         setTimeout(dedupeAppWidgetIds, 2000);
       });
-
-      function wrapFloatingAccessibilityTriggers() {
-        var landmarkSelector = 'header, nav, main, footer, aside, [role="banner"], [role="navigation"], [role="main"], [role="contentinfo"], [role="complementary"], [role="search"]';
-        document.querySelectorAll('[data-acsb="trigger"], .acsb-trigger').forEach(function(trigger) {
-          if (trigger.closest(landmarkSelector)) {
-            return;
-          }
-          var wrapper = document.createElement('aside');
-          wrapper.className = 'accessibility-widget-landmark';
-          wrapper.setAttribute('aria-label', 'Accessibility tools');
-          trigger.parentNode.insertBefore(wrapper, trigger);
-          wrapper.appendChild(trigger);
-        });
-      }
-
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', wrapFloatingAccessibilityTriggers);
-      } else {
-        wrapFloatingAccessibilityTriggers();
-      }
-
-      window.addEventListener('load', function() {
-        setTimeout(wrapFloatingAccessibilityTriggers, 500);
-        setTimeout(wrapFloatingAccessibilityTriggers, 2000);
-      });
-
-      var accessibilityTriggerObserver = new MutationObserver(wrapFloatingAccessibilityTriggers);
-      if (document.body) {
-        accessibilityTriggerObserver.observe(document.body, {
-          childList: true,
-          subtree: true
-        });
-      } else {
-        document.addEventListener('DOMContentLoaded', function() {
-          accessibilityTriggerObserver.observe(document.body, {
-            childList: true,
-            subtree: true
-          });
-        });
-      }
     })();
   </script>
 
