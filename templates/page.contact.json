@@ -52,7 +52,7 @@
           "type": "location",
           "settings": {
             "ofc_title": "Lola + The Boys Plaza Del Lago",
-            "ofc_html": "<span>1515 Sheridan Road, Suite 18,<br> Wilmette Illinois 60091, <br> United States</span>\n\n<b>Store Hours:</b>\n<span>Monday – Sunday: <br> \n 10:00 AM – 6:00 PM</span>",
+            "ofc_html": "<span>\n  1515 Sheridan Road, Suite 18,<br>\n  Wilmette, Illinois 60091,<br>\n  United States\n</span>\n\n<b>Store Hours:</b>\n\n<span>\n  Monday - Saturday: 10 AM - 6 PM<br>\n  Sunday: 11 AM - 6 PM\n</span>",
             "button_label": "view store",
             "button_link": "https://lolaandtheboys.com/pages/plaza-del-lago-page"
           }
@@ -67,6 +67,7 @@
       ],
       "settings": {
         "title": "Reach Us",
+        "support_eyebrow": "WE'RE HERE TO HELP",
         "text": "<p>Questions about an order, sizing, or anything else? Our team would love to help.</p>",
         "hour_title": "MAIN OFFICE",
         "hour_html": "<p>919 N Larrabee st <br>Chicago IL 60610</p>\n<b>Store Hours:</b>\n<p>Monday-Friday: 10 AM to 5 PM<br>\nSaturday: 11 AM to 5 PM<br>\nSunday: Closed</p>",
@@ -74,8 +75,10 @@
         "main_ofc_html": "<p>Watertower Mall - 2nd Floor <br>835 Michigan Ave <br>Chicago, IL 60611</p>\n<b>Store Hours:</b>\n<p>Monday-Thursday: 11 AM to 7 PM<br>Friday-Saturday: 11 AM to 8 PM<br>Sunday: 12 PM to 6 PM\n\n</p>\n<br>\n\n\n<h3>Lola + The Boys at Northbridge</h3>\n<p>520 N Michigan Ave, <br>Chicago, IL, 60611\n</p>\n<b>Store Hours:</b>\n<p>Monday - Saturday: 10:00 AM - 8:00 PM<br>Sunday: 11:00 AM - 8:00 PM\n\n</p>",
         "phone_title": "BY PHONE",
         "phone_number": "312 285-6053",
+        "phone_note": "Monday-Friday<br>9:00 AM - 5:00 PM CT",
         "email_title": "BY EMAIL",
         "contactemail": "customerservice@lolaandtheboys.com",
+        "email_note": "We reply within 1-2 business days",
         "contact_heading": "NEED A FASTER RESPONSE?",
         "contact_subtitle": "<p>Fill out our form below.</p>",
         "contact_bug_heading": "WANT TO REPORT A BUG?",
