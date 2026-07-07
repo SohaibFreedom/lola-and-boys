@@ -3,11 +3,16 @@
 # Caution! Please read https://help.shopify.com/en/manual/promoting-marketing/seo/editing-robots-txt before proceeding to make changes to this file.
 {% endcomment %}
 {% for group in robots.default_groups %}
-  {{- group.user_agent -}}
+  {{- group.user_agent }}
 
-  {% for rule in group.rules %}
-    {{- rule -}}
-  {% endfor %}
+  {%- for rule in group.rules -%}
+    {{ rule }}
+  {%- endfor -%}
+
+  {%- if group.user_agent.value == '*' -%}
+    {{ 'Disallow: /*_rdiscovery-handle=' }}
+    {{ 'Disallow: /*_rdiscovery-widget=' }}
+  {%- endif -%}
 
   {%- if group.sitemap != blank -%}
     {{ group.sitemap }}
