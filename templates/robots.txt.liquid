@@ -10,8 +10,8 @@
   {%- endfor -%}
 
   {%- if group.user_agent.value == '*' -%}
-    {{ 'Disallow: /*_rdiscovery-handle=' }}
-    {{ 'Disallow: /*_rdiscovery-widget=' }}
+{{ 'Disallow: /*_rdiscovery-handle=' }}
+{{ 'Disallow: /*_rdiscovery-widget=' }}
   {%- endif -%}
 
   {%- if group.sitemap != blank -%}
