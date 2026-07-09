@@ -732,6 +732,7 @@ div.hidden {
     padding: 10px 8px 0;
     padding-top:0 !important;
     gap: 0;
+    line-height: normal !important;
   }
 
   .lola-tab {
