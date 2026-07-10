@@ -158,63 +158,74 @@
             slides.forEach(node => wrapper.appendChild(node));
         }
 
-        function filterSlidesByColor(colorValue) {
-            const lc = (colorValue || "").toLowerCase().trim();
-            const matched = allSlides.filter(slide => (slide.dataset.alt || "").toLowerCase().includes(lc));
+        function normalizeMediaToken(value) {
+            return String(value || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+        }
+
+        function mediaAltIncludesValue(altText, variantValue) {
+            const alt = normalizeMediaToken(altText);
+            const value = normalizeMediaToken(variantValue);
+            if (!alt || !value) return false;
+
+            return (` ${alt} `).includes(` ${value} `);
+        }
+
+        const variantOptionIndexes = productData.options
+            .map((optionName, index) => (/color|colour|style|zodiac/i.test(optionName) ? index : -1))
+            .filter(index => index > -1);
+
+        const optionValuesByIndex = variantOptionIndexes.reduce((groups, optionIndex) => {
+            groups[optionIndex] = Array.from(new Set(productData.variants.map(variant => variant.options[optionIndex]).filter(Boolean)));
+            return groups;
+        }, {});
+
+        function getSelectedFilterValues(fallbackVariant) {
+            const selected = {};
+            variantOptionIndexes.forEach(optionIndex => {
+                const input = document.querySelector(`.swatch[data-option-index="${optionIndex}"] input[type='radio']:checked`);
+                selected[optionIndex] = input ? input.value : fallbackVariant?.options?.[optionIndex];
+            });
+            return selected;
+        }
+
+        function slideMatchesSelectedOptions(slide, selectedValues) {
+            let hasFilterAlt = false;
+
+            return variantOptionIndexes.every(optionIndex => {
+                const groupValues = optionValuesByIndex[optionIndex] || [];
+                const slideMentionsGroup = groupValues.some(value => mediaAltIncludesValue(slide.dataset.alt, value));
+
+                if (!slideMentionsGroup) return true;
+
+                hasFilterAlt = true;
+                return mediaAltIncludesValue(slide.dataset.alt, selectedValues[optionIndex]);
+            }) && hasFilterAlt;
+        }
+
+        function filterSlidesBySelectedOptions(fallbackVariant) {
+            const selectedValues = getSelectedFilterValues(fallbackVariant);
+            const matched = allSlides.filter(slide => slideMatchesSelectedOptions(slide, selectedValues));
             const filtered = matched.length ? matched : allSlides.slice();
             rebuildSlides(filtered);
             initSwiper();
         }
 
-        const variantOptionIdx = productData.options.findIndex(o => /color|colour|style/i.test(o));
         const firstVariant = productData.variants.find(v => v.id === {{ product.selected_or_first_available_variant.id }});
 
-    if (firstVariant && variantOptionIdx > -1) {
-        filterSlidesByColor(firstVariant.options[variantOptionIdx]);
+    if (firstVariant && variantOptionIndexes.length) {
+        filterSlidesBySelectedOptions(firstVariant);
     } else {
         rebuildSlides(allSlides);
         initSwiper();
     }
 
-    document.querySelectorAll(".swatch-element.color input[type='radio']").forEach(inp => {
-        inp.addEventListener("change", () => filterSlidesByColor(inp.value || ""));
+    variantOptionIndexes.forEach(optionIndex => {
+        document.querySelectorAll(`.swatch[data-option-index="${optionIndex}"] input[type='radio']`).forEach(inp => {
+            inp.addEventListener("change", () => filterSlidesBySelectedOptions(firstVariant));
+        });
     });
 });
 </script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const swatches = document.querySelectorAll(".swatch input[type='radio'], .swatch label");
-
-        swatches.forEach((swatch) => {
-            ["click", "touchstart", "change"].forEach((eventType) => {
-                swatch.addEventListener(eventType, () => {
-                    let input = swatch.matches("input[type='radio']") ? swatch : null;
-
-                    if (!input && swatch.tagName === "LABEL") {
-                        const forId = swatch.getAttribute("for");
-                        if (forId) input = document.getElementById(forId);
-                    }
-
-                    if (!input) return;
-
-                    const wrapper = input.closest(".swatch");
-                    const titleEl = wrapper ? wrapper.querySelector(".option_title") : null;
-                    const title = titleEl ? titleEl.textContent.toLowerCase().trim() : "";
-
-                    const isStyleOrColor = title.includes("style") || title.includes("color") || title.includes("colour");
-                    if (!isStyleOrColor) return;
-
-                    if (!swatch.classList.contains("swatch-reloading")) {
-                        swatch.classList.add("swatch-reloading");
-                        setTimeout(() => { location.reload(); }, 1000);
-                    }
-                });
-            });
-        });
-    });
-</script>
-
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
