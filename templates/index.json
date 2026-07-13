@@ -37,6 +37,7 @@
         },
         "image_UXmp86": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/HP_BANNER_2_97bad284-dc6f-4a32-b273-00b25e04ebc0.png",
             "image_mobile": "shopify://shop_images/IMG_0132.png",
@@ -168,6 +169,7 @@
         },
         "image_fjiMQC": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/HP_BANNER_064ed3f0-4d69-4753-bcd1-3b32c8dcb675.png",
             "image_mobile": "shopify://shop_images/HP_MOBILE_BANNER_1_5765fa85-4785-46b4-ab21-c233f293c892.png",
