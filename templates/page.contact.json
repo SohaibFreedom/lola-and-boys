@@ -61,7 +61,7 @@
           "type": "location",
           "settings": {
             "ofc_title": "Lola + The Boys at the Abbey",
-            "ofc_html": "<span>\n  19505 Biscayne Boulevard, Unit 3170,<br>\n  Aventura, Florida 33180\n</span>\n\n<b>Store Hours:</b>\n\n<span>\n  Monday - Saturday: 10 AM - 9:30 PM<br>\n  Sunday: 11 AM - 8 PM\n</span>\n\n<span>\n  <b>Phone:</b> <a href=\"tel:+17862808844\">+1 786 280-8844</a>\n</span>",
+            "ofc_html": "<span>\n  19505 Biscayne Boulevard, Unit 3170,<br>\n  Aventura, Florida 33180\n</span>\n\n<b>Store Hours:</b>\n\n<span>\n  Monday - Saturday: 10 AM - 9:30 PM<br>\n  Sunday: 11 AM - 8 PM\n</span>\n\n<span style=\"white-space: nowrap;\">\n  <b style=\"display: inline;\">Phone:</b>\n  <a href=\"tel:+17862808844\" style=\"display: inline;\">+1 786 280-8844</a>\n</span>",
             "button_label": "view store",
             "button_link": "https://lolaandtheboys.com/pages/aventura-florida-page"
           }
