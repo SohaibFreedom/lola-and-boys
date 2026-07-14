@@ -45,8 +45,8 @@
             "Class": "locationstore-text",
             "title": "Lola + The Boys Aventura",
             "text": "<p><strong>19505 Biscayne Boulevard unit 3170, Aventura Florida 33180</strong></p><p><strong>Phone</strong>: +1 <a href=\"tel:7862808844\" target=\"_blank\">786 280-8844</a></p><p>Monday - Saturday: 10 AM - 9:30 PM<br/>Sunday: 11 AM - 8 PM</p>",
-            "button_label": "",
-            "link": ""
+            "button_label": "Get Directions",
+            "link": "https://maps.app.goo.gl/uev9bXsh4GQTfSEg9"
           }
         }
       },
