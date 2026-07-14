@@ -16,7 +16,7 @@
           "type": "location",
           "settings": {
             "ofc_title": "MAIN OFFICE",
-            "ofc_html": "<span>919 N Larrabee st <br>Chicago IL 60610</span>\n<b>Store Hours:</b>\n<span>Monday-Friday: 10 AM to 5 PM<br>\nSaturday: 11 AM to 5 PM<br>\nSunday: Closed</span>",
+            "ofc_html": "<span>919 N Larrabee st <br>Chicago IL 60610</span>\n<b>Store Hours:</b>\n<span>Monday-Friday: 10 AM to 6 PM<br>\nSaturday: 11 AM to 5 PM<br>\nSunday: Closed</span>",
             "button_label": "view store",
             "button_link": "https://lolaandtheboys.com/pages/larrabee-store-page"
           }
