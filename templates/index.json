@@ -147,6 +147,7 @@
         },
         "image_zPL6aM": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "mp4": "https://cdn.shopify.com/videos/c/o/v/aaeb38645b434520abd908f84d552bda.mp4",
             "mobilevideo": "",
