@@ -7,7 +7,7 @@ div#usf_container span.title {
 }
 
 .annoucment-bar-top .shop-now-text strong {
-    transform: translateX(13px);
+    /* transform: translateX(13px); */
     display: block;
 }
 
