@@ -9,6 +9,19 @@
  */
 {
   "sections": {
+    "custom_banner_location_c_gnhJCY": {
+      "type": "custom-banner-location-c",
+      "name": "Custom banner location C",
+      "settings": {
+        "desktop_image": "shopify://shop_images/WS_BANNER_1.png",
+        "mobile_image": "shopify://shop_images/WS_BANNER_2.png",
+        "banner_link": "",
+        "alt_text": "Store banner",
+        "width": "full",
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
     "banner_full_section_DCRara": {
       "type": "banner-full-section",
       "disabled": true,
@@ -107,6 +120,7 @@
     }
   },
   "order": [
+    "custom_banner_location_c_gnhJCY",
     "banner_full_section_DCRara",
     "shogun-helper",
     "main",
