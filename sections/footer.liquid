@@ -4,6 +4,7 @@
 - Uses blocks
 {% endcomment %}
 
+<footer class="site-footer" aria-label="Footer">
 <div class="footer-top">
   <div class="container">
     <div class="form-top">
@@ -66,7 +67,7 @@
 
 
 
-<footer class="footer">
+<div class="footer">
   <div class="container footer-menu-wrap">
   <div class="top-footer-section">
       {% for block in section.blocks %}
@@ -120,7 +121,7 @@
           {% elsif block.type == 'link_list' %}
             <div class="footer_menu">
               {% if block.settings.menu != blank %}
-                <h6  class="menu-list-header-acc {% if block.settings.accordian-active %}active{% endif %}">{{ linklists[block.settings.menu].title }}<span class="right icon-down-arrow"></span></h6>
+                <h6 role="heading" aria-level="2" class="menu-list-header-acc {% if block.settings.accordian-active %}active{% endif %}">{{ linklists[block.settings.menu].title }}<span class="right icon-down-arrow"></span></h6>
                 <div class="toggle_content">
                   <ul>
                     {% for link in linklists[block.settings.menu].links %}
@@ -220,6 +221,7 @@
       </div><!--end footer_credits-->
         </div>
   </div>
+</div>
 </footer>
 <script>
   const hiring = document.querySelectorAll('.account-accordion');

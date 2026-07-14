@@ -9,6 +9,7 @@
 {% include 'spurit_uac_meta_snippet' %}
 {% render 'spurit_uac_meta_snippet' %}
 <head>
+  
 <!-- BEGIN NOVEL SNIPPET -->{% if content_for_header contains "novel-storefront" %}{% render 'novel-head' %}{% endif %}<!-- END NOVEL SNIPPET -->
  
 
@@ -269,7 +270,22 @@ Delete
 <noscript><link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"></noscript>
 <script defer src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
+<!-- Accessibility SmartFix™ powered by ACE™ by AccessibilityChecker.org -->
+<script>
+ window.ac_ai_js_client_settings = {
+  domain_hash: "3e53151f2fff682042cccee215cd4ae1",
+ };
+ 
+ (function() {
+  var script = document.createElement("script");
+  script.src = "https://www.accessibilitychecker.org/ai-script/ac-fixes-client.min.js?v=" + Date.now();
+  script.async = true;
+  document.head.appendChild(script);
+ })();
+</script>
+
 </head>
+
   {% if template contains "index" %}
     {% assign feature_image = true %}
   {% elsif template contains "collection" %}
@@ -318,7 +334,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
     
  
-    <a class="skip-to-content-link" href="#MainContent">Skip to main content</a>
+    <nav class="skip-links" aria-label="Skip links">
+      <a class="skip-to-content-link" href="#MainContent">Skip to main content</a>
+    </nav>
 
     {% section 'header' %}
     {% section 'mobile-menu' %}
@@ -796,7 +814,6 @@ btn.on('click', function(e) {
   <script defer src="https://static.shopmy.us/Affiliates/sms_aff_clicktrack.js"></script>
     
 
-
   <script>
     (function() {
       function dedupeAppWidgetIds() {
@@ -827,6 +844,78 @@ btn.on('click', function(e) {
         setTimeout(dedupeAppWidgetIds, 500);
         setTimeout(dedupeAppWidgetIds, 2000);
       });
+
+      function wrapFloatingAccessibilityTriggers() {
+        var landmarkSelector = 'header, nav, main, footer, aside, [role="banner"], [role="navigation"], [role="main"], [role="contentinfo"], [role="complementary"], [role="search"]';
+        var wrapper = document.querySelector('.accessibility-widget-landmark');
+
+        document.querySelectorAll('.accessibility-widget-landmark').forEach(function(existingWrapper, index) {
+          existingWrapper.setAttribute('aria-label', 'Accessibility tools');
+          if (index === 0) {
+            wrapper = existingWrapper;
+            return;
+          }
+
+          while (existingWrapper.firstChild) {
+            wrapper.appendChild(existingWrapper.firstChild);
+          }
+          existingWrapper.parentNode.removeChild(existingWrapper);
+        });
+
+        document.querySelectorAll('[data-acsb="trigger"], [data-acsb="sr-trigger"], .acsb-trigger').forEach(function(trigger) {
+          if (!wrapper) {
+            wrapper = document.createElement('aside');
+            wrapper.className = 'accessibility-widget-landmark';
+            wrapper.setAttribute('aria-label', 'Accessibility tools');
+            document.body.appendChild(wrapper);
+          }
+
+          if (trigger.closest('.accessibility-widget-landmark')) {
+            return;
+          }
+
+          if (trigger.closest(landmarkSelector)) {
+            return;
+          }
+
+          if (!wrapper.parentNode) {
+            document.body.appendChild(wrapper);
+          }
+
+          if (!wrapper.className) {
+            wrapper.className = 'accessibility-widget-landmark';
+          }
+          wrapper.className = 'accessibility-widget-landmark';
+          wrapper.setAttribute('aria-label', 'Accessibility tools');
+          wrapper.appendChild(trigger);
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', wrapFloatingAccessibilityTriggers);
+      } else {
+        wrapFloatingAccessibilityTriggers();
+      }
+
+      window.addEventListener('load', function() {
+        setTimeout(wrapFloatingAccessibilityTriggers, 500);
+        setTimeout(wrapFloatingAccessibilityTriggers, 2000);
+      });
+
+      var accessibilityTriggerObserver = new MutationObserver(wrapFloatingAccessibilityTriggers);
+      if (document.body) {
+        accessibilityTriggerObserver.observe(document.body, {
+          childList: true,
+          subtree: true
+        });
+      } else {
+        document.addEventListener('DOMContentLoaded', function() {
+          accessibilityTriggerObserver.observe(document.body, {
+            childList: true,
+            subtree: true
+          });
+        });
+      }
     })();
   </script>
 
