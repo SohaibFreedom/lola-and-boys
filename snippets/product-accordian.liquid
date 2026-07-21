@@ -9,6 +9,17 @@
   {%- assign hide_size_chart = true -%}
 {%- endif -%}
 
+{%- assign show_shoe_fit_size = false -%}
+{%- if product.tags contains 'Shoes'
+    or product.tags contains 'sneaker'
+    or product.tags contains 'sneakers'
+    or product.tags contains 'Slippers'
+    or product.tags contains 'slides'
+    or product.tags contains 'loafers'
+    or product.tags contains 'boots' -%}
+  {%- assign show_shoe_fit_size = true -%}
+{%- endif -%}
+
 <section class="ProductTabs" id="ProductTabs-{{ product.id }}">
   <div class="ProductTabs__nav" role="tablist">
     {% if product.description != blank %}
@@ -54,8 +65,13 @@
 
     <div class="ProductTabs__panel" id="fitsize-{{ product.id }}" role="tabpanel">
       <ul class="ProductTabs__fitsizeIntro">
-        <li>Our kids&rsquo; sizes run from 2 to 14 (size 4 fits a 4-year-old, size 8 fits an 8-year-old).</li>
-        <li>Women&rsquo;s styles run Small &ndash; Extra Large.</li>
+        {% if show_shoe_fit_size %}
+          <li>Our shoes run from size 6C (toddler &amp; little kids) up to 6Y (big kids).</li>
+          <li>If your child is between sizes, we recommend sizing up.</li>
+        {% else %}
+          <li>Our kids&rsquo; sizes run from 2 to 14 (size 4 fits a 4-year-old, size 8 fits an 8-year-old).</li>
+          <li>Women&rsquo;s styles run Small &ndash; Extra Large.</li>
+        {% endif %}
       </ul>
 
       {% unless hide_size_chart %}
