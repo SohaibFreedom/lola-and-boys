@@ -6,7 +6,9 @@ div#usf_container span.title {
     text-align: left;
 }
 
-
+  .cart_content_img img  [data-preorder-handle="swipe"] img {
+    aspect-ratio: 1 / 1 !important;
+}
 .annoucment-bar-top .shop-now-text strong {
     /* transform: translateX(13px); */
     display: block;
@@ -3430,6 +3432,7 @@ div#mobile-custom-linklist {
     min-height: 0 !important;
     max-height: 100% !important;
   }
+
   .cart-section-row .cart_content_info p {
     margin: 5px 0 !important;
   }
