@@ -194,7 +194,7 @@
             {% render 'workshop-variants' %}
           </div>
         {% endif %}
-        <div class="product_cart_btns">
+          <div class="product_cart_btns">
           <button
             type="submit"
             name="add"
@@ -211,13 +211,18 @@
             name="add"
             class=" checkout_btn_product"
             data-label="Add to Bag"
-            onclick="checkoutdirect()"
+            onclick="return checkoutdirect(event, this)"
           >
             <script>
-              function checkoutdirect() {
+              function checkoutdirect(event, button) {
+                if (window.LATBValidateSizeSelection && !window.LATBValidateSizeSelection($(button).closest('form.product_form'), true)) {
+                  if (event) event.preventDefault();
+                  return false;
+                }
                 setTimeout(function () {
                   window.location.href = '/checkout';
                 }, 1500);
+                return true;
               }
             </script>
             <span>BUY NOW</span>
@@ -290,6 +295,7 @@
       {% endfor %}
     ];
     var isApplyingMetaHide = false;
+    var userSelectedSize = false;
 
     function metaValueIsTrue(value) {
       return value === true || value === 'true' || value === 'True';
@@ -299,6 +305,42 @@
       if (!metaValueIsTrue(variantData.hide_meta)) return false;
       if (variantData.available === false) return true;
       return false;
+    }
+
+    function isSizeSwatchGroup($swatchGroup) {
+      var optionName = String($swatchGroup.data('option-name') || $swatchGroup.find('.option_title').first().text() || '').toLowerCase();
+      return optionName.indexOf('size') !== -1;
+    }
+
+    function getSizeSwatchGroups($form) {
+      return $form.find('.product-size-swatch, .swatch').filter(function () {
+        return isSizeSwatchGroup($(this));
+      });
+    }
+
+    window.LATBValidateSizeSelection = function (form, showError) {
+      var $form = $(form);
+      var $sizeSwatches = getSizeSwatchGroups($form);
+      var $message = $form.find('.product-size-required-message');
+
+      if (!$sizeSwatches.length) return true;
+
+      var hasSelectedSize = $sizeSwatches.find('input[type="radio"]:checked').filter(function () {
+        return $(this).next('.swatch-element').is(':visible') && !$(this).prop('disabled');
+      }).length > 0;
+
+      $message.toggleClass('is-visible', !!showError && !hasSelectedSize);
+      $sizeSwatches.toggleClass('has-size-error', !!showError && !hasSelectedSize);
+      $sizeSwatches.closest('.swatch_options').toggleClass('has-size-error', !!showError && !hasSelectedSize);
+      return hasSelectedSize;
+    };
+
+    function clearDefaultSizeSelection() {
+      if (userSelectedSize) return;
+      getSizeSwatchGroups(productForm).find('input[type="radio"]:checked').prop('checked', false);
+      productForm.find('.product-size-required-message').removeClass('is-visible');
+      getSizeSwatchGroups(productForm).removeClass('has-size-error');
+      productForm.find('.swatch_options').removeClass('has-size-error');
     }
 
     function getSelectedOptionValues($form) {
@@ -361,7 +403,7 @@
           return $(this).next('.swatch-element').is(':visible');
         });
 
-        if (!$selectedVisible.length) {
+        if (!$selectedVisible.length && !isSizeSwatchGroup($swatchGroup)) {
           var $firstVisible = $swatchGroup.find('.swatch-element:visible').first().prev('input[type="radio"]');
 
           if ($firstVisible.length) {
@@ -379,10 +421,27 @@
       }, 0);
 
       productForm.on('change', '.swatch :radio, .single-option-selector', function () {
+        if ($(this).closest('.swatch').hasClass('product-size-swatch')) {
+          userSelectedSize = true;
+        }
+        productForm.find('.product-size-required-message').removeClass('is-visible');
+        getSizeSwatchGroups(productForm).removeClass('has-size-error');
+        productForm.find('.swatch_options').removeClass('has-size-error');
         setTimeout(function () {
           applyMetafieldVariantHiding(productForm);
         }, 0);
       });
+
+      productForm.on('submit.latbSizeRequired', function (event) {
+        if (!window.LATBValidateSizeSelection(productForm, true)) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+          return false;
+        }
+      });
+
+      setTimeout(clearDefaultSizeSelection, 0);
+      setTimeout(clearDefaultSizeSelection, 300);
     }
 
     {% if product.tags contains 'patch-app-category' %}

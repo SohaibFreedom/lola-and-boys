@@ -68,7 +68,7 @@
 
                   <div class="section clearfix cart_content_row" data-id="{{ item.product.id }}">
                     <div class="three columns alpha cart_content_img">
-                      <a href="{{ item.url }}" title="{{ item.title | escape }}" class="cart_page_image">
+                      <a href="{{ item.url }}" title="{{ item.title | escape }}" class="cart_page_image" target="_blank" rel="noopener">
                         {% if item.properties._customized_image_url_front %}
                           <img
                             src="{{ item.properties._customized_image_url_front}}"
@@ -103,7 +103,7 @@
 
                     <div class="seven columns omega cart_content_info">
                       <h3>
-                        <a href="{{ item.url }}" class="cart-product-title-c">
+                        <a href="{{ item.url }}" class="cart-product-title-c" target="_blank" rel="noopener">
                           {{- item.product.title }}
                           <span class="saso-cart-item-discount-notes" data-key="{{item.key}}"></span>
                           <span class="saso-cart-item-upsell-notes" data-key="{{item.key}}"></span>
@@ -916,20 +916,46 @@ document.addEventListener("click", async function (e) {
     subtree: true,
   });
 
-  document.addEventListener('click', function(event) {
-    if (event.target.classList.contains('heading-cart-change')) {
-      document.querySelectorAll('.cart-action-btn-flex-c, .change-btn-cart-flex')
-        .forEach(function(element) {
-          element.classList.add('active');
-        });
-    }
+	  document.addEventListener('click', function(event) {
+	    if (event.target.classList.contains('heading-cart-change')) {
+	      var editRow = event.target.closest('.cart_content_row');
+	      if (!editRow) return;
 
-    if (event.target.classList.contains('cancel-cart-btn')) {
-      document.querySelectorAll('.cart-action-btn-flex-c, .change-btn-cart-flex')
-        .forEach(function(element) {
-          element.classList.remove('active');
-        });
-    }
+	      document.querySelectorAll('.cart_content_row')
+	        .forEach(function(row) {
+	          row.querySelectorAll('.cart-action-btn-flex-c, .change-btn-cart-flex')
+	            .forEach(function(element) {
+	              element.classList.remove('active');
+	            });
+	        });
+
+	      var qtyInput = editRow.querySelector('input.quantity');
+	      var qtyDisplay = editRow.querySelector('.cart-line-qty-display');
+	      if (qtyInput && qtyDisplay) {
+	        qtyInput.value = qtyDisplay.textContent.trim();
+	      }
+
+	      editRow.querySelectorAll('.cart-action-btn-flex-c, .change-btn-cart-flex')
+	        .forEach(function(element) {
+	          element.classList.add('active');
+	        });
+	    }
+	
+	    if (event.target.classList.contains('cancel-cart-btn')) {
+	      var cancelRow = event.target.closest('.cart_content_row');
+	      if (!cancelRow) return;
+
+	      var cancelInput = cancelRow.querySelector('input.quantity');
+	      var cancelDisplay = cancelRow.querySelector('.cart-line-qty-display');
+	      if (cancelInput && cancelDisplay) {
+	        cancelInput.value = cancelDisplay.textContent.trim();
+	      }
+
+	      cancelRow.querySelectorAll('.cart-action-btn-flex-c, .change-btn-cart-flex')
+	        .forEach(function(element) {
+	          element.classList.remove('active');
+	        });
+	    }
 
     // UPDATE button → AJAX update with stock logic
     if (event.target.classList.contains('update-cart-btn')) {

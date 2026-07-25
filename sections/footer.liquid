@@ -73,24 +73,26 @@
       {% for block in section.blocks %}
         <div class="{% if block.type == 'newsletter' %}newsletter-col{% endif %}{{ block.settings.customClass }} {% if forloop.length >= 5 %}three columns{% elsif forloop.length == 4 %}four columns{% elsif forloop.length == 3 %}one-third column{% elsif forloop.length == 2 %}eight columns{% endif %}" {{ block.shopify_attributes }}>
           {% if block.type == 'logo' %}
-            <div class="text-align--{{block.settings.text_align}}">
-              {% if block.settings.image %}
-                <img  src="{{ block.settings.image | img_url: '100x' }}"
-                      alt="{{ block.settings.image.alt | escape }}"
-                      class="footer-logo lazyload {{ settings.image_loading_style }}"
-                      data-sizes="25vw"
-                      style="max-width: {{- block.settings.image.width -}}px"
-                      data-src="{{ block.settings.image | img_url: '2048x' }}"
-                      data-srcset=" {{ block.settings.image | img_url: '200x' }} 200w,
-                                    {{ block.settings.image | img_url: '300x' }} 300w,
-                                    {{ block.settings.image | img_url: '400x' }} 400w,
-                                    {{ block.settings.image | img_url: '500x' }} 500w,
-                                    {{ block.settings.image | img_url: '600x' }} 600w,
-                                    {{ block.settings.image | img_url: '1000x' }} 1000w"
-                   />
-              {% else %}
-                <div class="logo">{{ shop.name }}</div>
-              {% endif %}
+	            <div class="text-align--{{block.settings.text_align}}">
+	              {% if block.settings.image %}
+	                <a href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}">
+	                  <img  src="{{ block.settings.image | img_url: '100x' }}"
+	                        alt="{{ block.settings.image.alt | escape }}"
+	                        class="footer-logo lazyload {{ settings.image_loading_style }}"
+	                        data-sizes="25vw"
+	                        style="max-width: {{- block.settings.image.width -}}px"
+	                        data-src="{{ block.settings.image | img_url: '2048x' }}"
+	                        data-srcset=" {{ block.settings.image | img_url: '200x' }} 200w,
+	                                      {{ block.settings.image | img_url: '300x' }} 300w,
+	                                      {{ block.settings.image | img_url: '400x' }} 400w,
+	                                      {{ block.settings.image | img_url: '500x' }} 500w,
+	                                      {{ block.settings.image | img_url: '600x' }} 600w,
+	                                      {{ block.settings.image | img_url: '1000x' }} 1000w"
+	                     />
+	                </a>
+	              {% else %}
+	                <div class="logo">{{ shop.name }}</div>
+	              {% endif %}
               {{ block.settings.maincontent }}
             </div>
 

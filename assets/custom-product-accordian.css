@@ -27,9 +27,11 @@
   display: flex;
   gap: 40px;
   border-bottom: 1px solid #e5e5e5;
+  border-top: 1px solid #e5e5e55c;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
+  overflow: hidden;
 }
 .ProductTabs__nav::-webkit-scrollbar {
   display: none;
@@ -135,7 +137,7 @@
     padding-bottom: 15px !important;
   }
   .ProductTabs__nav {
-    justify-content: center;
+    justify-content: space-between;
   }
 }
 

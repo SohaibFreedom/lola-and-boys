@@ -20,8 +20,11 @@
   {% endif %}
 {% endfor %}
 
-<div class="swatch clearfix" data-option-index="{{ option_index }}">
+<div class="swatch clearfix{% if downcased_option contains 'size' %} product-size-swatch{% endif %}" data-option-index="{{ option_index }}" data-option-name="{{ swatch | escape }}">
   <div class="option_title">{{ swatch }}</div>
+  {% if downcased_option contains 'size' %}
+    <div class="product-size-error-box">
+  {% endif %}
   {% assign values = '' %}
   {% assign swatch_checked = false %}
   {% for variant in product.variants %}
@@ -37,7 +40,7 @@
         {% assign swatch_checked = true %}
       {% endif %}
 
-      <input id="swatch-{{ option_index }}-{{ value | handle }}-{{ product.id }}" type="radio" name="option-{{ option_index }}" value="{{ value | escape }}"{% if check_this_swatch %} checked{% endif %} />
+      <input id="swatch-{{ option_index }}-{{ value | handle }}-{{ product.id }}" type="radio" name="option-{{ option_index }}" value="{{ value | escape }}"{% unless downcased_option contains 'size' %}{% if check_this_swatch %} checked{% endif %}{% endunless %} />
       <div data-value="{{ value | escape }}" class="swatch-element {% if is_color %}color {% endif %}{{ value | handle }}-swatch {% if variant.available %}available{% else %}soldout{% endif %}">
         {% if is_color %}
           <div class="tooltip">{{ value }}</div>
@@ -55,4 +58,8 @@
       </div>
     {% endunless %}
   {% endfor %}
+  {% if downcased_option contains 'size' %}
+    </div>
+    <div class="product-size-required-message" aria-live="polite">Please select a size</div>
+  {% endif %}
 </div>

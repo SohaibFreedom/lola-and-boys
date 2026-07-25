@@ -326,7 +326,7 @@ Delete
 
 
 
-  <body class="{{ template | replace: '.', '-' | handle }} {% if template == '404' %}template-404{% endif %}"> 
+<body class="{{ template | replace: '.', '-' | handle }}{% if template contains 'collection' %} collection-template{% endif %}{% if template == '404' %} template-404{% endif %}">
  
     <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WCW883B2"
