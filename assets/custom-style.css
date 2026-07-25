@@ -3425,7 +3425,10 @@ div#mobile-custom-linklist {
     width: 60% !important;
   }
   .cart_content_img img {
-    height: 135px;
+   aspect-ratio: 1 / 1.4 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: 100% !important;
   }
   .cart-section-row .cart_content_info p {
     margin: 5px 0 !important;
