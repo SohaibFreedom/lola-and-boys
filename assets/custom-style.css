@@ -6,7 +6,7 @@ div#usf_container span.title {
     text-align: left;
 }
 
-  .cart_content_img img  [data-preorder-handle="swipe"] img {
+ .cart-section-row [data-preorder-handle="swipe"] img {
     aspect-ratio: 1 / 1 !important;
 }
 .annoucment-bar-top .shop-now-text strong {
