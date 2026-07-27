@@ -13,10 +13,6 @@ p.modal_price {
 
     padding-top: 10px;
 }
-
-.installment-msg-pdp shopify-payment-terms {
-    filter: brightness(0);
-}
 .modal_price * {
     font-weight:500 !important;
 }
