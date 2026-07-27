@@ -6,10 +6,10 @@ div#usf_container span.title {
     text-align: left;
 }
 
-a.button:hover, button:hover, input[type=submit]:hover, input[type=reset]:hover, input[type=button]:hover, .action_button:hover, input.action_button[type=submit]:hover, input.action_button[type=button]:hover {
+/* a.button:hover, button:hover, input[type=submit]:hover, input[type=reset]:hover, input[type=button]:hover, .action_button:hover, input.action_button[type=submit]:hover, input.action_button[type=button]:hover {
     background: transparent !important;
      border: 1px solid transparent !important; 
-}
+} */
 
  .cart-section-row [data-preorder-handle="swipe"] img {
     aspect-ratio: 1 / 1 !important;
