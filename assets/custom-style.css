@@ -11,6 +11,12 @@ div#usf_container span.title {
      border: 1px solid transparent !important; 
 } */
 
+#afterpay-placement img,
+#afterpay-placement svg,
+shopify-payment-terms {
+  filter: grayscale(100%) brightness(0) !important;
+}
+
  .cart-section-row [data-preorder-handle="swipe"] img {
     aspect-ratio: 1 / 1 !important;
 }
