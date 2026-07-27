@@ -11,10 +11,6 @@ div#usf_container span.title {
      border: 1px solid transparent !important; 
 } */
 
-shopify-payment-terms {
-  filter: grayscale(1) brightness(0);
-}
-
  .cart-section-row [data-preorder-handle="swipe"] img {
     aspect-ratio: 1 / 1 !important;
 }
