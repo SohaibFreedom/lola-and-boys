@@ -68,6 +68,19 @@ p.modal_price {
             margin-right:16px !important;
           }
 
+          .box-customizer-popup-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 12px 0;
+          }
+
+          .box-customizer-popup-wrap .customize-button,
+          .box-customizer-popup-wrap .embroider-button {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+          }
+
    body.product wishlist-button-block  .wk-button.wk-full-width {
     align-items: center !important;
 
