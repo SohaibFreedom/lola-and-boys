@@ -9,6 +9,7 @@ div#usf_container span.title {
 
 .mobile-menuWrap button:hover, .mobile-menuWrap button:active {
     background: transparent !important;
+    box-shadow:none !important;
     border: none !important;
 }
 
