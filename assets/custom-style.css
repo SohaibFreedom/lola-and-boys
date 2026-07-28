@@ -5,7 +5,10 @@
 div#usf_container span.title {
     text-align: left;
 }
-
+.product-list.usf-grid .usf-sr-product.thumbnail .image-element__wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+}
 
 .mobile-menuWrap button:hover, .mobile-menuWrap button:active {
     background: transparent !important;
