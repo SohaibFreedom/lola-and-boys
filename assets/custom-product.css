@@ -388,4 +388,12 @@ span.sale.savings {
   order:3;
 }
 
+@media (max-width: 768px) {
+    .box-customizer-popup-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
 
