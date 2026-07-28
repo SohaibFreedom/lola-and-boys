@@ -375,4 +375,14 @@ span.sale.savings {
   order:3;
 }
 
+.customize-button, .embroider-button {
+    margin: 0 !important;
+    margin-bottom: 10px !important;
+    margin-top: 10px !important;
+}
+
+.customize-button {
+    margin-top: 20px !important;
+}
+
 
