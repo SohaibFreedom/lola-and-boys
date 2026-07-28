@@ -396,4 +396,19 @@ span.sale.savings {
     }
 }
 
+/* Scale down Afterpay + Shop Pay installment widgets to 85% */
+.installment-msg-pdp {
+    zoom: 0.85;
+}
+.installment-msg-pdp square-placement,
+.installment-msg-pdp shopify-payment-terms {
+    transform-origin: left center;
+}
+@supports not (zoom: 1) {
+    .installment-msg-pdp {
+        transform: scale(0.85);
+        transform-origin: left top;
+    }
+}
+
 
