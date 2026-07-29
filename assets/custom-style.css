@@ -315,13 +315,8 @@ color: #fff !important;
     max-height: 500px;
     object-fit: cover;
 }
-.swipe-info-box .newprotecttext{
-display:none;
 
-}
-.swipe-info-box .oldprotect{
-  display:block !important;
-}
+
 .custom-patch-cart-data .parent-cart-group .parent-images .parent-preview {
     object-fit: contain;
 }
