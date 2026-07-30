@@ -20,6 +20,13 @@
   {%- assign show_shoe_fit_size = true -%}
 {%- endif -%}
 
+{%- assign show_shoe_size_chart = false -%}
+{%- if product.tags contains 'shoe-size-guide'
+    or product.tags contains 'kids-boots-size-chart'
+    or product.metafields.custom.show_shoe_size_chart.value == true -%}
+  {%- assign show_shoe_size_chart = true -%}
+{%- endif -%}
+
 <section class="ProductTabs" id="ProductTabs-{{ product.id }}">
   <div class="ProductTabs__nav" role="tablist">
     {% if product.description != blank %}
@@ -74,15 +81,21 @@
         {% endif %}
       </ul>
 
-      {% unless hide_size_chart %}
+      {% if show_shoe_size_chart == false and hide_size_chart == false %}
         <div class="ProductTabs__sizeChart">
           {% render 'size-chart-popup' %}
         </div>
-      {% endunless %}
+      {% endif %}
 
       {% if product.metafields.custom.overallfit or product.metafields.custom.model_wear %}
         <div class="ProductTabs__truetosize">
           {% render 'product-overallfit' %}
+        </div>
+      {% endif %}
+
+      {% if show_shoe_size_chart %}
+        <div class="ProductTabs__sizeChart ProductTabs__sizeChart--afterFit">
+          {% render 'size-chart-popup', cta_style: 'shoe' %}
         </div>
       {% endif %}
     </div>

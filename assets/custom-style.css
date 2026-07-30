@@ -4298,8 +4298,8 @@ button.cart_delete-custom-product-button {
     box-sizing: border-box;
     display: inline-block;
     
-    min-height: 40px !important;
-    min-width: 40px !important;
+    min-height: 44px !important;
+    min-width: 44px !important;
   }
 
   .product-size-swatch input + .swatch-element {
@@ -4309,10 +4309,10 @@ button.cart_delete-custom-product-button {
   .product-size-swatch label,
   .product-size-swatch input[type="radio"] + .swatch-element label {
     box-sizing: border-box;
-    font-size: 14px !important;
-    height: 40px !important;
-    line-height: 40px !important;
-    min-width: 40px !important;
-    padding: 0 9px !important;
+    font-size: 15px !important;
+    height: 44px !important;
+    line-height: 44px !important;
+    min-width: 44px !important;
+    padding: 0 10px !important;
   }
 }

@@ -1,23 +1,50 @@
+{%- assign size_chart_cta_style = cta_style | default: 'default' -%}
+{%- assign size_chart_popup_id = 'sizeChartPopup-' | append: product.id -%}
+{%- assign size_chart_trigger_id = 'openSizeChart-' | append: product.id -%}
 
-   <div class="size-chart-popup-c-btn-wrapper" style="margin-top:20px;">
-            <a href="" id="openSizeChart" class="size-chart-popup-c-btn">Size Chart</a>
-          </div>
+<div class="size-chart-popup-c-btn-wrapper{% if size_chart_cta_style == 'shoe' %} size-chart-popup-c-btn-wrapper--shoe{% endif %}">
+  <a
+    href=""
+    id="{{ size_chart_trigger_id }}"
+    class="size-chart-popup-c-btn{% if size_chart_cta_style == 'shoe' %} size-chart-popup-c-btn--shoe{% endif %}"
+    aria-controls="{{ size_chart_popup_id }}"
+    aria-haspopup="dialog"
+  >
+    {% if size_chart_cta_style == 'shoe' %}
+      <span class="size-chart-popup-c-btn-icon" aria-hidden="true">
+        <svg viewBox="0 0 64 32" focusable="false">
+          <path d="M4 7h56v18H4z" fill="none" stroke="currentColor" stroke-width="3" />
+          <path d="M10 7v10M16 7v6M22 7v10M28 7v6M34 7v10M40 7v6M46 7v10M52 7v6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+        </svg>
+      </span>
+      <span class="size-chart-popup-c-btn-copy">Need help with sizing?</span>
+      <span class="size-chart-popup-c-btn-link">
+        View Size Guide
+        <span class="size-chart-popup-c-btn-arrow" aria-hidden="true">&rarr;</span>
+      </span>
+    {% else %}
+      Size Chart
+    {% endif %}
+  </a>
+</div>
 
-
-<!-- ✅ Popup -->
-<div id="sizeChartPopup" class="size-chart-popup-c">
+<div id="{{ size_chart_popup_id }}" class="size-chart-popup-c" role="dialog" aria-modal="true" aria-label="Size chart" aria-hidden="true">
   <div class="size-chart-popup-c-overlay"></div>
 
   <div class="size-chart-popup-c-content">
-    <span class="size-chart-popup-c-close">&times;</span>
+    <span class="size-chart-popup-c-close" aria-label="Close size chart" role="button" tabindex="0">&times;</span>
 
     {%- assign mf_desktop = product.metafields.custom.size_chart_desktop.value -%}
     {%- assign mf_mobile  = product.metafields.custom.size_chart_mobile.value -%}
 
-    {%- assign fallback_desktop = 'https://cdn.shopify.com/s/files/1/0002/0647/1226/files/desktop-size-chart.png?v=1761954056' -%}
-    {%- assign fallback_mobile  = 'https://cdn.shopify.com/s/files/1/0002/0647/1226/files/Mobile-size-chart.png?v=1761954050' -%}
+    {%- if size_chart_cta_style == 'shoe' -%}
+      {%- assign fallback_desktop = 'https://cdn.shopify.com/s/files/1/0002/0647/1226/files/image_70abc111-01fa-4c33-9c84-fb7fe23eae44.png?v=1785351624' -%}
+      {%- assign fallback_mobile  = 'https://cdn.shopify.com/s/files/1/0002/0647/1226/files/3_0b497dc8-bd61-4a73-aab5-ab139c81ac09.png?v=1785420794' -%}
+    {%- else -%}
+      {%- assign fallback_desktop = 'https://cdn.shopify.com/s/files/1/0002/0647/1226/files/desktop-size-chart.png?v=1761954056' -%}
+      {%- assign fallback_mobile  = 'https://cdn.shopify.com/s/files/1/0002/0647/1226/files/Mobile-size-chart.png?v=1761954050' -%}
+    {%- endif -%}
 
-    <!-- Desktop Image (metafield overrides fallback) -->
     <img
       src="{% if mf_desktop %}{{ mf_desktop | image_url: width: 1600 }}{% else %}{{ fallback_desktop }}{% endif %}"
       alt="Size Chart"
@@ -25,7 +52,6 @@
       loading="lazy"
     >
 
-    <!-- Mobile Image (metafield overrides fallback) -->
     <img
       src="{% if mf_mobile %}{{ mf_mobile | image_url: width: 900 }}{% else %}{{ fallback_mobile }}{% endif %}"
       alt="Size Chart Mobile"
@@ -35,19 +61,131 @@
   </div>
 </div>
 
-
 <style>
+.size-chart-popup-c-btn-wrapper {
+  margin-top: 20px;
+}
+
+.size-chart-popup-c-btn-wrapper--shoe {
+  margin: 26px 0 8px;
+}
+
 .size-chart-popup-c-btn {
   color: #000;
   font-size: 14px;
   text-decoration: underline;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.size-chart-popup-c-btn--shoe {
+  width: auto;
+  max-width: 100%;
+  min-height: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 26px;
+  border: 0 !important;
+  padding: 10px 0;
+  background: transparent;
+  color: #111;
+  text-align: left;
+  text-decoration: none;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  transition: none;
+  transform: none !important;
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.size-chart-popup-c-btn--shoe:hover,
+.size-chart-popup-c-btn--shoe:focus,
+.size-chart-popup-c-btn--shoe:focus-visible,
+.size-chart-popup-c-btn--shoe:active,
+.size-chart-popup-c-btn--shoe:visited {
+  color: #111;
+  background: transparent;
+  border: 0 !important;
+  padding: 10px 0;
+  text-decoration: none;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.size-chart-popup-c-btn--shoe span {
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  line-height: 1.25 !important;
+}
+
+.size-chart-popup-c-btn-icon {
+  flex: 0 0 auto;
+  width: 54px;
+  color: #ff6fba;
+  line-height: 0;
+}
+
+.size-chart-popup-c-btn-icon svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.size-chart-popup-c-btn-copy {
+  flex: 0 1 auto;
+  font-size: 15px;
+  line-height: 1.25;
+  white-space: nowrap;
+  color: #111;
+  font-weight: 400 !important;
+}
+
+.size-chart-popup-c-btn-link {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ff4fa8;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.size-chart-popup-c-btn--shoe:hover .size-chart-popup-c-btn-copy,
+.size-chart-popup-c-btn--shoe:focus .size-chart-popup-c-btn-copy,
+.size-chart-popup-c-btn--shoe:active .size-chart-popup-c-btn-copy {
+  color: #111;
+  font-weight: 400 !important;
+}
+
+.size-chart-popup-c-btn--shoe:hover .size-chart-popup-c-btn-link,
+.size-chart-popup-c-btn--shoe:focus .size-chart-popup-c-btn-link,
+.size-chart-popup-c-btn--shoe:active .size-chart-popup-c-btn-link {
+  color: #ff4fa8;
+  font-weight: 700 !important;
+}
+
+.size-chart-popup-c-btn-arrow {
+  display: inline-block;
+  color: #ff4fa8;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+  margin-left: 6px;
+  transform: none !important;
 }
 
 .size-chart-popup-c {
   display: none;
   position: fixed;
   inset: 0;
-  z-index: 100000000000; /* 🔼 increased for full top visibility */
+  z-index: 100000000000;
   justify-content: center;
   align-items: center;
 }
@@ -82,8 +220,8 @@
   color: #fff;
   border: none;
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   font-size: 21px;
   line-height: 1;
   cursor: pointer;
@@ -95,48 +233,133 @@
   right: -16px;
   top: -11px;
   padding: 15px;
+  box-sizing: content-box;
+  text-decoration: none;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
 }
 
-.desktop-img { display: block; }
-.mobile-img { display: none; }
+.desktop-img {
+  display: block;
+}
+
+.mobile-img {
+  display: none;
+}
 
 @keyframes popupFade {
-  from {opacity: 0; transform: scale(0.95);}
-  to {opacity: 1; transform: scale(1);}
-}
-
-@media (max-width: 768px) {
-  .size-chart-popup-c-close {
-    width: 25px;
-    height: 25px;
-    font-size: 15px;
-    right: -17px;
-    top: -15px;
-    padding: 13px;
+  from {
+    opacity: 0;
+    transform: scale(0.95);
   }
-  .desktop-img { display: none; }
-  .mobile-img { display: block; }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-/* ✅ Hide sticky button when popup is open */
 body.popup-open #stickyWrapper {
   opacity: 0 !important;
   pointer-events: none !important;
+}
+
+@media (max-width: 768px) {
+  .size-chart-popup-c-btn--shoe {
+    width: auto;
+    min-height: 0;
+    gap: 14px;
+    padding: 8px 0;
+  }
+
+  .size-chart-popup-c-btn--shoe:hover,
+  .size-chart-popup-c-btn--shoe:focus,
+  .size-chart-popup-c-btn--shoe:focus-visible,
+  .size-chart-popup-c-btn--shoe:active,
+  .size-chart-popup-c-btn--shoe:visited {
+    padding: 8px 0;
+  }
+
+  .size-chart-popup-c-btn-icon {
+    width: 48px;
+  }
+
+  .size-chart-popup-c-btn-copy,
+  .size-chart-popup-c-btn-link {
+    font-size: 14px;
+    white-space: normal;
+  }
+
+  .size-chart-popup-c-btn-link {
+    gap: 8px;
+  }
+
+  .size-chart-popup-c-close {
+    width: 8px;
+    height: 8px;
+    font-size: 16px;
+    right: -13px;
+    top: -13px;
+  }
+
+  .desktop-img {
+    display: none;
+  }
+
+  .mobile-img {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .size-chart-popup-c-btn-wrapper--shoe {
+    margin: 22px 0 8px;
+  }
+
+  .size-chart-popup-c-btn--shoe {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+  }
+
+  .size-chart-popup-c-btn-icon {
+    width: 44px;
+  }
+
+  .size-chart-popup-c-btn-copy {
+    flex-basis: auto;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .size-chart-popup-c-btn-link {
+    flex-basis: auto;
+    font-size: 13px;
+    padding-left: 0;
+    white-space: nowrap;
+  }
+
+  .size-chart-popup-c-btn-arrow {
+    font-size: 19px;
+    margin-left: 2px;
+  }
 }
 </style>
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  const popup   = document.getElementById("sizeChartPopup");
-  const openBtn = document.getElementById("openSizeChart");
-  const closeBtn = document.querySelector(".size-chart-popup-c-close");
-  const overlay  = document.querySelector(".size-chart-popup-c-overlay");
+  const popup = document.getElementById({{ size_chart_popup_id | json }});
+  const openBtn = document.getElementById({{ size_chart_trigger_id | json }});
+
+  if (!popup || !openBtn) return;
+
+  const closeBtn = popup.querySelector(".size-chart-popup-c-close");
+  const overlay = popup.querySelector(".size-chart-popup-c-overlay");
 
   let savedScrollY = 0;
 
   function lockScroll() {
     savedScrollY = window.scrollY || window.pageYOffset || 0;
-
     document.body.style.position = "fixed";
     document.body.style.top = `-${savedScrollY}px`;
     document.body.style.left = "0";
@@ -146,41 +369,43 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function unlockScroll() {
     const y = savedScrollY;
-
     document.body.style.position = "";
     document.body.style.top = "";
     document.body.style.left = "";
     document.body.style.right = "";
     document.body.style.width = "";
-
     window.scrollTo(0, y);
   }
 
   function openPopup() {
     popup.style.display = "flex";
+    popup.setAttribute("aria-hidden", "false");
     document.body.classList.add("popup-open");
-
-    // ❌ Ye class scroll ko top par le jati hai (theme dependent)
-    // document.documentElement.classList.add("mobilesearch-overflowhidden");
-
     lockScroll();
   }
 
   function closePopup() {
+    if (popup.getAttribute("aria-hidden") === "true") return;
     popup.style.display = "none";
+    popup.setAttribute("aria-hidden", "true");
     document.body.classList.remove("popup-open");
-
-    // document.documentElement.classList.remove("mobilesearch-overflowhidden");
-
     unlockScroll();
   }
 
-  if (openBtn) openBtn.addEventListener("click", (e) => {
+  openBtn.addEventListener("click", function(e) {
     e.preventDefault();
     openPopup();
   });
 
   if (closeBtn) closeBtn.addEventListener("click", closePopup);
+  if (closeBtn) {
+    closeBtn.addEventListener("keydown", function(e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        closePopup();
+      }
+    });
+  }
   if (overlay) overlay.addEventListener("click", closePopup);
 
   document.addEventListener("keydown", function(e) {
@@ -188,4 +413,3 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 </script>
-
