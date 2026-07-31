@@ -527,13 +527,6 @@
             "logo_alt_text": ""
           }
         },
-        "logo_block_PQwjRf": {
-          "type": "logo_block",
-          "settings": {
-            "logo_image": "shopify://shop_images/us-weekly_90424067-95c0-418e-9dc1-fa342c8867c7.png",
-            "logo_alt_text": ""
-          }
-        },
         "logo_block_zKdieH": {
           "type": "logo_block",
           "settings": {
@@ -584,7 +577,6 @@
         "logo_block_7UqkNm",
         "logo_block_Uy8KE6",
         "logo_block_w3zqpN",
-        "logo_block_PQwjRf",
         "logo_block_zKdieH",
         "logo_block_amqa9Y",
         "logo_block_VBcbnw",
