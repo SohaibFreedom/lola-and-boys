@@ -5756,11 +5756,6 @@
         "disabled": false,
         "settings": {}
       },
-      "14236898902689827741": {
-        "type": "shopify://apps/stack-discounts-ninja/blocks/app-embed/42061352-3816-430f-b7f9-d8d92f58c694",
-        "disabled": false,
-        "settings": {}
-      },
       "17676059084223943535": {
         "type": "shopify://apps/triplewhale/blocks/triple_pixel_snippet/483d496b-3f1a-4609-aea7-8eee3b6b7a2a",
         "disabled": false,
@@ -5798,8 +5793,8 @@
         "disabled": false,
         "settings": {}
       },
-      "13650390699542216616": {
-        "type": "shopify://apps/accessibility-spark-ada-wcag/blocks/widget/36895fac-ec38-47a0-807c-7397daa6ec4e",
+      "1309651709796516356": {
+        "type": "shopify://apps/ordersify-restocked-alerts/blocks/app-embed/903b5cdc-6e3f-4b2d-a8ea-d1ade7f41610",
         "disabled": false,
         "settings": {}
       }
