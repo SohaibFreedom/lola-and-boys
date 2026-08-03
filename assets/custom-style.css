@@ -2,6 +2,15 @@
   text-align: left !important;
   display: block;
 }
+.rebuy-cart__flyout-subtotal-label:after {
+    content: "Subtotal";
+    font-size: 18px;
+    position: relative;
+    top: 5px;
+}
+.rebuy-cart__flyout-subtotal-label {
+    font-size: 0;
+}
 div#usf_container span.title {
     text-align: left;
 }
