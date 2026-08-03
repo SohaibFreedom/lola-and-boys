@@ -11,6 +11,9 @@
 .rebuy-cart__flyout-subtotal-label {
     font-size: 0;
 }
+.swipe-link-no-protection {
+    text-decoration: none !important;
+}
 div#usf_container span.title {
     text-align: left;
 }
