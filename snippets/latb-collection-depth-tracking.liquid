@@ -8,6 +8,17 @@
 (function () {
   'use strict';
 
+  // TEMPORARY: self-diagnostic logging — remove after verification
+  var DEBUG = true;
+  function log() {
+    if (!DEBUG) return;
+    try {
+      var args = ['[LATB-DEPTH]'].concat([].slice.call(arguments));
+      console.log.apply(console, args);
+    } catch (e) {}
+  }
+  log('script loaded', new Date().toISOString());
+
   // Verified on live DOM 2026-08-05: USF renders products inside .usf-results.usf-grid
   // as .usf-grid__item children. Initial page has 4 empty skeleton divs — :not(:empty) skips them.
   var ITEM_SELECTOR = '.usf-results.usf-grid > .usf-grid__item:not(:empty)';
@@ -45,6 +56,7 @@
   function check() {
     if (!isTrackablePage()) return;
     var count = document.querySelectorAll(ITEM_SELECTOR).length;
+    log('check() count=', count, 'maxSeen=', maxSeen);
     // NOTE: no space before `<` operators — theme minifier splits on ' <' and breaks JS
     if (count<=maxSeen) return;
     maxSeen = count;
@@ -52,6 +64,7 @@
       var m = MILESTONES[i];
       if (count >= m && !reported[m]) {
         reported[m] = true;
+        log('MILESTONE FIRED:', m, 'collection=', collectionHandle());
         send('collection_depth', {
           products_loaded: m,
           collection_handle: collectionHandle()
@@ -67,8 +80,10 @@
   function wire() {
     if (wired) return;
     wired = true;
+    log('wire() called — attaching sr_updated listener');
     try {
       window.usf.event.add('sr_updated', function () {
+        log('sr_updated FIRED — items now:', document.querySelectorAll('.usf-grid__item').length);
         if (window.location.search !== lastQuery) {
           lastQuery = window.location.search;
           reset();
@@ -76,17 +91,18 @@
         setTimeout(check, 300);
       });
       setTimeout(check, 800);
-    } catch (e) { /* silent — USF API changed */ }
+    } catch (e) { log('wire error:', e.message); }
   }
 
   // Wait for USF global (usf-boot.js loads async — may finish after this snippet)
   function waitForUsf(attempts) {
     attempts = attempts || 0;
     if (typeof window.usf !== 'undefined' && window.usf.event && typeof window.usf.event.add === 'function') {
-      try { window.usf.event.add('init', wire); } catch (e) {}
+      log('USF ready after', attempts * 250, 'ms — hooking init');
+      try { window.usf.event.add('init', wire); } catch (e) { log('init hook error:', e.message); }
       return;
     }
-    if (attempts >= 40) return; // ~10s max, then give up
+    if (attempts >= 40) { log('USF NOT found after 10s — giving up'); return; }
     setTimeout(function () { waitForUsf(attempts + 1); }, 250);
   }
 
