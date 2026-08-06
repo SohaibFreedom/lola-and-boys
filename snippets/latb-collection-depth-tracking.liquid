@@ -45,9 +45,10 @@
   function check() {
     if (!isTrackablePage()) return;
     var count = document.querySelectorAll(ITEM_SELECTOR).length;
-    if (count <= maxSeen) return;
+    // NOTE: no space before `<` operators — theme minifier splits on ' <' and breaks JS
+    if (count<=maxSeen) return;
     maxSeen = count;
-    for (var i = 0; i < MILESTONES.length; i++) {
+    for (var i=0; i<MILESTONES.length; i++) {
       var m = MILESTONES[i];
       if (count >= m && !reported[m]) {
         reported[m] = true;
