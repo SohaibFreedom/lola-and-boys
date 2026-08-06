@@ -1,0 +1,98 @@
+{%- comment -%}
+  Collection browse-depth tracking (USF/Sobooster infinite scroll → GA4)
+  Fires `collection_depth` event at milestones (12, 24, 48, 72, 100, 150, 200, 300)
+  so merchandising can measure how far shoppers actually scroll.
+  Safe if USF/GTM absent — silently no-ops. Zero side effects on other apps.
+{%- endcomment -%}
+<script>
+(function () {
+  'use strict';
+
+  // Verified on live DOM 2026-08-05: USF renders products inside .usf-results.usf-grid
+  // as .usf-grid__item children. Initial page has 4 empty skeleton divs — :not(:empty) skips them.
+  var ITEM_SELECTOR = '.usf-results.usf-grid > .usf-grid__item:not(:empty)';
+
+  var MILESTONES = [12, 24, 48, 72, 100, 150, 200, 300];
+  var COLLECTIONS_ONLY = true;
+
+  var reported = {};
+  var maxSeen = 0;
+  var wired = false;
+
+  function isTrackablePage() {
+    if (!COLLECTIONS_ONLY) return true;
+    return /\/collections\//.test(window.location.pathname);
+  }
+
+  function collectionHandle() {
+    var m = window.location.pathname.match(/\/collections\/([^/?#]+)/);
+    return m ? m[1] : 'unknown';
+  }
+
+  // Prefer GTM dataLayer (which forwards to GA4). Fallback to gtag only if no GTM.
+  function send(eventName, params) {
+    try {
+      if (window.dataLayer && typeof window.dataLayer.push === 'function') {
+        window.dataLayer.push(Object.assign({ event: eventName }, params));
+        return;
+      }
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', eventName, params);
+      }
+    } catch (e) { /* silent */ }
+  }
+
+  function check() {
+    if (!isTrackablePage()) return;
+    var count = document.querySelectorAll(ITEM_SELECTOR).length;
+    if (count <= maxSeen) return;
+    maxSeen = count;
+    for (var i = 0; i < MILESTONES.length; i++) {
+      var m = MILESTONES[i];
+      if (count >= m && !reported[m]) {
+        reported[m] = true;
+        send('collection_depth', {
+          products_loaded: m,
+          collection_handle: collectionHandle()
+        });
+      }
+    }
+  }
+
+  function reset() { reported = {}; maxSeen = 0; }
+
+  var lastQuery = window.location.search;
+
+  function wire() {
+    if (wired) return;
+    wired = true;
+    try {
+      window.usf.event.add('sr_updated', function () {
+        if (window.location.search !== lastQuery) {
+          lastQuery = window.location.search;
+          reset();
+        }
+        setTimeout(check, 300);
+      });
+      setTimeout(check, 800);
+    } catch (e) { /* silent — USF API changed */ }
+  }
+
+  // Wait for USF global (usf-boot.js loads async — may finish after this snippet)
+  function waitForUsf(attempts) {
+    attempts = attempts || 0;
+    if (typeof window.usf !== 'undefined' && window.usf.event && typeof window.usf.event.add === 'function') {
+      try { window.usf.event.add('init', wire); } catch (e) {}
+      return;
+    }
+    if (attempts >= 40) return; // ~10s max, then give up
+    setTimeout(function () { waitForUsf(attempts + 1); }, 250);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () { waitForUsf(); });
+  } else {
+    waitForUsf();
+  }
+})();
+</script>
