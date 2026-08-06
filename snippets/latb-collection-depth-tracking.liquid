@@ -1,9 +1,7 @@
 {%- comment -%}
   Collection browse-depth tracking (USF/Sobooster infinite scroll → GA4)
-  Fires `collection_depth` event at milestones (12, 24, 48, 72, 100, 150, 200, 300)
-  so merchandising can measure how far shoppers actually scroll.
-  Safe if USF/GTM absent — silently no-ops. Zero side effects on other apps.
 {%- endcomment -%}
+<!--LATB-DEPTH-MARKER-->
 <script>
 (function () {
   'use strict';
