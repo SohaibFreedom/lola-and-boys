@@ -595,7 +595,7 @@
       "settings": {
         "heading": "Best Sellers",
         "collection": "best-sellers",
-        "show_vendor": true,
+        "show_vendor": false,
         "products_to_show": 24,
         "products_per_slide": 5
       }
