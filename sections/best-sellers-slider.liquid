@@ -1,0 +1,583 @@
+{% liquid
+  assign best_seller_collection = section.settings.collection
+
+  if best_seller_collection == blank and collections['best-sellers'] != blank
+    assign best_seller_collection = collections['best-sellers']
+  endif
+
+  assign products_limit = section.settings.products_to_show | default: 10
+  assign products_per_slide = section.settings.products_per_slide | default: 5
+  assign desktop_gap_total = products_per_slide | minus: 1 | times: 15
+  assign cta_url = '/collections/best-sellers'
+
+  if best_seller_collection != blank
+    assign cta_url = best_seller_collection.url
+  endif
+%}
+
+<section
+  class="lola-best-sellers"
+  style="
+    --lbs-bg: #ffffff;
+    --lbs-text: #111111;
+    --lbs-max-width: 1400px;
+    --lbs-image-height: 580px;
+    --lbs-padding-top: 40px;
+    --lbs-padding-bottom: 24px;
+    --lbs-mobile-padding-top: 28px;
+    --lbs-mobile-padding-bottom: 20px;
+    --lbs-desktop-gap-total: {{ desktop_gap_total }}px;
+  "
+>
+  <div class="lola-best-sellers__inner page-width">
+    {% if section.settings.heading != blank %}
+      <h2 class="lola-best-sellers__heading">{{ section.settings.heading | escape }}</h2>
+    {% endif %}
+
+    <div class="lola-best-sellers__carousel">
+      <button class="lola-best-sellers__arrow lola-best-sellers__arrow--prev" type="button" aria-label="Previous products">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M15.5 19 8.5 12l7-7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <div class="lola-best-sellers__track" role="list" tabindex="0">
+        {% if best_seller_collection != blank and best_seller_collection.products_count > 0 %}
+          {% for product in best_seller_collection.products limit: products_limit %}
+            <a class="lola-best-sellers__item" href="{{ product.url }}" role="listitem">
+              <div class="lola-best-sellers__media">
+                {% if product.featured_image != blank %}
+                  {{
+                    product.featured_image
+                    | image_url: width: 900
+                    | image_tag:
+                      loading: 'lazy',
+                      widths: '240, 320, 420, 520, 640, 760, 900',
+                      sizes: '(min-width: 990px) 18vw, (min-width: 750px) 30vw, 58vw',
+                      class: 'lola-best-sellers__image'
+                  }}
+                {% else %}
+                  {{ 'product-1' | placeholder_svg_tag: 'lola-best-sellers__placeholder' }}
+                {% endif %}
+              </div>
+
+              <div class="lola-best-sellers__content">
+                <h3 class="lola-best-sellers__title">{{ product.title | escape }}</h3>
+                {% if section.settings.show_vendor and product.vendor != blank %}
+                  <p class="lola-best-sellers__vendor">{{ product.vendor | escape }}</p>
+                {% endif %}
+                <p class="lola-best-sellers__price">
+                  {% if product.price_varies %}
+                    From {{ product.price_min | money_without_trailing_zeros }}
+                  {% else %}
+                    {{ product.price | money_without_trailing_zeros }}
+                  {% endif %}
+                </p>
+              </div>
+            </a>
+          {% endfor %}
+        {% else %}
+          {% for i in (1..5) %}
+            <div class="lola-best-sellers__item lola-best-sellers__item--empty" role="listitem">
+              <div class="lola-best-sellers__media">
+                {{ 'product-' | append: i | placeholder_svg_tag: 'lola-best-sellers__placeholder' }}
+              </div>
+              <div class="lola-best-sellers__content">
+                <h3 class="lola-best-sellers__title">Product title</h3>
+                <p class="lola-best-sellers__vendor">Vendor</p>
+                <p class="lola-best-sellers__price">$100</p>
+              </div>
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+
+      <button class="lola-best-sellers__arrow lola-best-sellers__arrow--next" type="button" aria-label="Next products">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="m8.5 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="lola-best-sellers__cta-wrap">
+      <a class="lola-best-sellers__cta" href="{{ cta_url }}">Shop All Best Sellers</a>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const script = document.currentScript;
+      const section = script && script.closest('.lola-best-sellers');
+      if (!section) return;
+
+      const track = section.querySelector('.lola-best-sellers__track');
+      const prev = section.querySelector('.lola-best-sellers__arrow--prev');
+      const next = section.querySelector('.lola-best-sellers__arrow--next');
+      if (!track || !prev || !next) return;
+
+      let isDragging = false;
+      let wasDragged = false;
+      let startX = 0;
+      let startScrollLeft = 0;
+      let lastX = 0;
+      let lastTime = 0;
+      let velocity = 0;
+      let momentumFrame = null;
+
+      const getScrollAmount = () => {
+        const item = track.querySelector('.lola-best-sellers__item');
+        if (!item) return track.clientWidth;
+
+        const styles = window.getComputedStyle(track);
+        const gap = parseFloat(styles.columnGap || styles.gap) || 0;
+        return item.getBoundingClientRect().width + gap;
+      };
+
+      const updateButtons = () => {
+        prev.disabled = false;
+        next.disabled = false;
+      };
+
+      const scrollProduct = (direction) => {
+        const amount = getScrollAmount();
+
+        if (window.matchMedia('(max-width: 749px)').matches) {
+          const currentIndex = Math.round(track.scrollLeft / amount);
+          const nextIndex = Math.max(0, currentIndex + direction);
+          track.scrollTo({ left: nextIndex * amount, behavior: 'smooth' });
+          return;
+        }
+
+        track.scrollBy({ left: amount * direction, behavior: 'smooth' });
+      };
+
+      prev.addEventListener('click', () => {
+        scrollProduct(-1);
+      });
+
+      next.addEventListener('click', () => {
+        scrollProduct(1);
+      });
+
+      const stopMomentum = () => {
+        if (!momentumFrame) return;
+        window.cancelAnimationFrame(momentumFrame);
+        momentumFrame = null;
+      };
+
+      const glide = () => {
+        if (Math.abs(velocity) < .12) {
+          momentumFrame = null;
+          return;
+        }
+
+        track.scrollLeft -= velocity;
+        velocity *= .92;
+        updateButtons();
+        momentumFrame = window.requestAnimationFrame(glide);
+      };
+
+      track.addEventListener('pointerdown', (event) => {
+        if (event.pointerType && event.pointerType !== 'mouse') return;
+        if (event.button !== undefined && event.button !== 0) return;
+
+        stopMomentum();
+        isDragging = true;
+        wasDragged = false;
+        startX = event.clientX;
+        lastX = event.clientX;
+        lastTime = performance.now();
+        velocity = 0;
+        startScrollLeft = track.scrollLeft;
+        track.classList.add('is-dragging');
+        track.setPointerCapture(event.pointerId);
+      });
+
+      track.addEventListener('pointermove', (event) => {
+        if (!isDragging) return;
+        if (event.pointerType && event.pointerType !== 'mouse') return;
+
+        const now = performance.now();
+        const distance = event.clientX - startX;
+        const delta = event.clientX - lastX;
+        const elapsed = now - lastTime || 16;
+
+        velocity = delta / elapsed * 16;
+        lastX = event.clientX;
+        lastTime = now;
+
+        if (Math.abs(distance) > 4) {
+          wasDragged = true;
+          event.preventDefault();
+        }
+
+        track.scrollLeft = startScrollLeft - distance;
+      });
+
+      const stopDragging = (event) => {
+        if (!isDragging) return;
+
+        isDragging = false;
+        track.classList.remove('is-dragging');
+
+        if (track.hasPointerCapture && track.hasPointerCapture(event.pointerId)) {
+          track.releasePointerCapture(event.pointerId);
+        }
+
+        updateButtons();
+        stopMomentum();
+        momentumFrame = window.requestAnimationFrame(glide);
+      };
+
+      track.addEventListener('pointerup', stopDragging);
+      track.addEventListener('pointercancel', stopDragging);
+      track.addEventListener('mouseleave', () => {
+        if (!isDragging) return;
+
+        isDragging = false;
+        track.classList.remove('is-dragging');
+        stopMomentum();
+        momentumFrame = window.requestAnimationFrame(glide);
+      });
+
+      track.addEventListener('click', (event) => {
+        if (!wasDragged) return;
+
+        event.preventDefault();
+        event.stopPropagation();
+        wasDragged = false;
+      }, true);
+
+      track.addEventListener('scroll', updateButtons, { passive: true });
+      window.addEventListener('resize', updateButtons);
+      updateButtons();
+    })();
+  </script>
+</section>
+
+<style>
+  .lola-best-sellers {
+    background: var(--lbs-bg);
+    color: var(--lbs-text);
+    padding-top: var(--lbs-padding-top);
+    padding-bottom: var(--lbs-padding-bottom);
+    overflow: hidden;
+  }
+
+  .lola-best-sellers__inner {
+    max-width: var(--lbs-max-width);
+    margin: 0 auto;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .lola-best-sellers__heading {
+    margin: 0 0 8px;
+    font-size: clamp(18px, 1.45vw, 26px);
+    line-height: 1.2;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  .lola-best-sellers__carousel {
+    position: relative;
+  }
+
+  .lola-best-sellers__track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - var(--lbs-desktop-gap-total)) / {{ products_per_slide }});
+    gap: 15px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scroll-behavior: smooth;
+    scroll-snap-type: none;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    cursor: grab;
+    touch-action: pan-x pan-y;
+    user-select: none;
+    padding: 0 0 12px;
+  }
+
+  .lola-best-sellers__track.is-dragging {
+    cursor: grabbing;
+    scroll-behavior: auto;
+  }
+
+  .lola-best-sellers__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .lola-best-sellers__item {
+    min-width: 0;
+    color: inherit;
+    text-align: center;
+    text-decoration: none;
+    scroll-snap-align: start;
+  }
+
+  .lola-best-sellers__media {
+    height: 400px;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    background: transparent;
+  }
+
+  .lola-best-sellers__image,
+  .lola-best-sellers__placeholder {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    pointer-events: none;
+  }
+
+  .lola-best-sellers__placeholder {
+    background: #f6f6f6;
+  }
+
+  .lola-best-sellers__content {
+    margin-top: 10px;
+    padding: 0 4px;
+  }
+
+  .lola-best-sellers__title,
+  .lola-best-sellers__vendor,
+  .lola-best-sellers__price {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.18;
+    letter-spacing: 0 !important;
+  }
+
+  .lola-best-sellers__title {
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .lola-best-sellers__vendor {
+    margin-top: 3px;
+    font-weight: 400;
+  }
+
+  .lola-best-sellers__price {
+    margin-top: 5px;
+  }
+
+  .lola-best-sellers__arrow {
+    position: absolute;
+    top: 42%;
+    z-index: 2;
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
+    padding: 0 !important;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 50% !important;
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: opacity .2s ease, transform .2s ease;
+    line-height: 0;
+    overflow: visible;
+  }
+
+  .lola-best-sellers__arrow:hover {
+    transform: translateY(-50%);
+  }
+
+  .lola-best-sellers__arrow[disabled] {
+    opacity: 1;
+    cursor: pointer;
+  }
+
+  .lola-best-sellers__arrow[disabled]:hover {
+    transform: translateY(-50%);
+  }
+
+  .lola-best-sellers__arrow svg {
+    width: 18px;
+    height: 18px;
+    display: block;
+    color: #fff;
+    overflow: visible;
+    pointer-events: none;
+  }
+
+  .lola-best-sellers__arrow svg path {
+    fill: none !important;
+    stroke: #fff !important;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .lola-best-sellers__arrow--prev {
+    left: -48px;
+  }
+
+  .lola-best-sellers__arrow--next {
+    right: -48px;
+  }
+
+  .lola-best-sellers__cta-wrap {
+    display: none;
+  }
+
+  .lola-best-sellers__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 42px;
+    padding: 12px 18px;
+    background: #000;
+    color: #fff !important;
+    font-size: 13px;
+    line-height: 1;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  @media screen and (max-width: 1199px) {
+    .lola-best-sellers__track {
+      grid-auto-columns: calc((100% - 30px) / 3);
+    }
+
+    .lola-best-sellers__media {
+      aspect-ratio: 3 / 4;
+      height: auto;
+      overflow: hidden;
+    }
+
+    .lola-best-sellers__image,
+    .lola-best-sellers__placeholder {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+
+    .lola-best-sellers {
+      padding-top: 20px;
+      padding-bottom: var(--lbs-mobile-padding-bottom);
+    }
+
+    .lola-best-sellers__inner {
+      padding-left: 14px;
+      padding-right: 14px;
+    }
+
+    .lola-best-sellers__heading {
+      margin-bottom: 10px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .lola-best-sellers__track {
+      grid-auto-columns: calc((100% - 12px) / 2.4) !important;
+      gap: 12px;
+      padding-right: 0;
+      scroll-snap-type: x mandatory;
+      cursor: auto;
+      touch-action: pan-x pan-y;
+    }
+
+    .lola-best-sellers__media {
+      aspect-ratio: 3 / 4;
+      width: 100%;
+      height: auto !important;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .lola-best-sellers__image,
+    .lola-best-sellers__placeholder {
+      width: 100% !important;
+      height: 100% !important;
+      max-width: none !important;
+      object-fit: cover !important;
+      object-position: center top !important;
+    }
+
+    .lola-best-sellers__title,
+    .lola-best-sellers__vendor,
+    .lola-best-sellers__price {
+      font-size: 9px;
+      line-height: 1.15;
+    }
+
+    .lola-best-sellers__arrow {
+      display: none !important;
+    }
+
+    .lola-best-sellers__cta-wrap {
+      display: block;
+      margin-top: 0;
+      padding-right: 0;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Best sellers scroll",
+  "tag": "section",
+  "class": "section-best-sellers-scroll",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Best Sellers"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Show vendor",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 5,
+      "max": 24,
+      "step": 1,
+      "label": "Products to show",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "products_per_slide",
+      "min": 3,
+      "max": 6,
+      "step": 1,
+      "label": "Products per slide",
+      "default": 5
+    }
+  ],
+  "presets": [
+    {
+      "name": "Best sellers scroll"
+    }
+  ]
+}
+{% endschema %}
