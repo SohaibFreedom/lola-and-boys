@@ -589,6 +589,17 @@
         "text": ""
       }
     },
+    "best_sellers_slider_brVdmq": {
+      "type": "best-sellers-slider",
+      "name": "Best sellers scroll",
+      "settings": {
+        "heading": "Best Sellers",
+        "collection": "best-sellers",
+        "show_vendor": true,
+        "products_to_show": 24,
+        "products_per_slide": 5
+      }
+    },
     "custom_liquid_h7RxMK": {
       "type": "custom-liquid",
       "settings": {
@@ -835,6 +846,7 @@
     "featured_promotions_new_arrivals_wkUrRN",
     "grid_featured_collections_RWChAF",
     "announce_marquee_XqhL6w",
+    "best_sellers_slider_brVdmq",
     "custom_liquid_h7RxMK",
     "featured_promotions_zDnTpN",
     "shell_of_percentage_YbqUwK",
