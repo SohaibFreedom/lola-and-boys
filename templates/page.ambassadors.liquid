@@ -110,140 +110,193 @@
   }
 
   .lola-ambassador__hero {
-    background: linear-gradient(180deg, var(--amb-pink-soft) 0%, #fff 92%);
+    background:
+      linear-gradient(135deg, #eadfff 0%, var(--amb-pink-soft) 42%, #fff 100%);
     min-height: 42rem;
     padding: clamp(4.75rem, 9vw, 7rem) 1.25rem clamp(5rem, 8vw, 7.2rem);
     position: relative;
     text-align: center;
   }
 
-  .lola-ambassador__doodle {
-    color: var(--amb-ink);
+  .lola-ambassador__star {
+    aspect-ratio: 1;
+    background: var(--star-fill, #fff);
+    clip-path: polygon(50% 0%, 62% 33%, 98% 35%, 69% 56%, 79% 91%, 50% 70%, 21% 91%, 31% 56%, 2% 35%, 38% 33%);
+    filter: drop-shadow(0 0.08rem 0 rgba(15, 15, 19, 0.18));
+    left: var(--star-left);
+    opacity: var(--star-opacity, 1);
     pointer-events: none;
     position: absolute;
+    top: var(--star-top);
+    transform: rotate(var(--star-rotate, 0deg));
+    width: var(--star-size, 1.2rem);
     z-index: 0;
   }
 
-  .lola-ambassador__doodle--rect {
-    border: 2px solid currentColor;
-    height: 1.4rem;
-    left: 3.5%;
-    top: 10%;
-    transform: rotate(-12deg);
-    width: 0.62rem;
+  .lola-ambassador__star--outline {
+    background: var(--amb-ink);
   }
 
-  .lola-ambassador__doodle--rect-small {
-    border: 2px solid currentColor;
-    bottom: 10%;
-    height: 1.15rem;
-    left: 8.5%;
-    transform: rotate(1deg);
-    width: 0.55rem;
-  }
-
-  .lola-ambassador__doodle--spark {
-    height: 1.55rem;
-    width: 1.55rem;
-  }
-
-  .lola-ambassador__doodle--spark::before,
-  .lola-ambassador__doodle--spark::after {
-    background: currentColor;
-    content: "";
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .lola-ambassador__doodle--spark::before {
-    height: 1.35rem;
-    width: 0.18rem;
-  }
-
-  .lola-ambassador__doodle--spark::after {
-    height: 0.18rem;
-    width: 1.35rem;
-  }
-
-  .lola-ambassador__doodle--spark-one {
-    left: 34%;
-    top: 56%;
-    transform: rotate(45deg);
-  }
-
-  .lola-ambassador__doodle--spark-two {
-    right: 25%;
-    top: 33%;
-    transform: rotate(45deg) scale(0.8);
-  }
-
-  .lola-ambassador__doodle--star {
-    background: currentColor;
-    clip-path: polygon(50% 0%, 61% 34%, 98% 35%, 68% 56%, 79% 91%, 50% 69%, 21% 91%, 32% 56%, 2% 35%, 39% 34%);
-    height: 1.05rem;
-    right: 5.5%;
-    top: 12%;
-    width: 1.05rem;
-  }
-
-  .lola-ambassador__doodle--star::after {
-    background: var(--amb-pink-soft);
+  .lola-ambassador__star--outline::after {
+    background: var(--star-fill, #fff);
     clip-path: inherit;
     content: "";
-    inset: 0.18rem;
+    inset: 0.12rem;
     position: absolute;
   }
 
-  .lola-ambassador__doodle--sun {
-    background: currentColor;
+  .lola-ambassador__star--white {
+    filter: none;
+  }
+
+  .lola-ambassador__star--tiny {
     border-radius: 50%;
-    bottom: 12%;
-    height: 1rem;
-    right: 5%;
-    width: 1rem;
+    clip-path: none;
+    filter: none;
   }
 
-  .lola-ambassador__doodle--sun::before,
-  .lola-ambassador__doodle--sun::after {
-    background: currentColor;
-    content: "";
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
+  .lola-ambassador__star--1 {
+    --star-fill: #ff6fbd;
+    --star-left: 7%;
+    --star-rotate: -16deg;
+    --star-size: 1.9rem;
+    --star-top: 10%;
   }
 
-  .lola-ambassador__doodle--sun::before {
-    height: 2rem;
-    width: 0.12rem;
+  .lola-ambassador__star--2 {
+    --star-fill: #ff8bc9;
+    --star-left: 72%;
+    --star-rotate: 12deg;
+    --star-size: 2rem;
+    --star-top: 10%;
   }
 
-  .lola-ambassador__doodle--sun::after {
-    height: 0.12rem;
-    width: 2rem;
+  .lola-ambassador__star--3 {
+    --star-fill: #5ce2d6;
+    --star-left: 5%;
+    --star-rotate: -12deg;
+    --star-size: 2.35rem;
+    --star-top: 44%;
   }
 
-  .lola-ambassador__doodle--sun span {
-    background: currentColor;
-    height: 0.12rem;
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%) rotate(45deg);
-    width: 2rem;
+  .lola-ambassador__star--4 {
+    --star-fill: #5ce2d6;
+    --star-left: 83%;
+    --star-rotate: 12deg;
+    --star-size: 2.2rem;
+    --star-top: 44%;
   }
 
-  .lola-ambassador__doodle--sun span::after {
-    background: currentColor;
-    content: "";
-    height: 0.12rem;
-    left: 0;
-    position: absolute;
-    top: 0;
-    transform: rotate(90deg);
-    width: 2rem;
+  .lola-ambassador__star--5 {
+    --star-fill: #fff96b;
+    --star-left: 12%;
+    --star-rotate: 8deg;
+    --star-size: 2rem;
+    --star-top: 73%;
+  }
+
+  .lola-ambassador__star--6 {
+    --star-fill: #fff96b;
+    --star-left: 82%;
+    --star-rotate: -10deg;
+    --star-size: 2rem;
+    --star-top: 73%;
+  }
+
+  .lola-ambassador__star--7 {
+    --star-left: 18%;
+    --star-opacity: 0.92;
+    --star-rotate: 16deg;
+    --star-size: 1.6rem;
+    --star-top: 8%;
+  }
+
+  .lola-ambassador__star--8 {
+    --star-left: 27%;
+    --star-opacity: 0.8;
+    --star-rotate: -8deg;
+    --star-size: 1rem;
+    --star-top: 16%;
+  }
+
+  .lola-ambassador__star--9 {
+    --star-left: 64%;
+    --star-opacity: 0.82;
+    --star-rotate: 10deg;
+    --star-size: 1.55rem;
+    --star-top: 15%;
+  }
+
+  .lola-ambassador__star--10 {
+    --star-left: 88%;
+    --star-opacity: 0.8;
+    --star-rotate: -12deg;
+    --star-size: 1.75rem;
+    --star-top: 6%;
+  }
+
+  .lola-ambassador__star--11 {
+    --star-left: 19%;
+    --star-opacity: 0.85;
+    --star-rotate: 20deg;
+    --star-size: 1.25rem;
+    --star-top: 72%;
+  }
+
+  .lola-ambassador__star--12 {
+    --star-left: 70%;
+    --star-opacity: 0.85;
+    --star-rotate: -16deg;
+    --star-size: 1.5rem;
+    --star-top: 69%;
+  }
+
+  .lola-ambassador__star--13 {
+    --star-fill: #fff;
+    --star-left: 16%;
+    --star-opacity: 0.72;
+    --star-size: 0.42rem;
+    --star-top: 14%;
+  }
+
+  .lola-ambassador__star--14 {
+    --star-fill: #fff;
+    --star-left: 24%;
+    --star-opacity: 0.78;
+    --star-size: 0.34rem;
+    --star-top: 23%;
+  }
+
+  .lola-ambassador__star--15 {
+    --star-fill: #fff;
+    --star-left: 58%;
+    --star-opacity: 0.82;
+    --star-size: 0.35rem;
+    --star-top: 20%;
+  }
+
+  .lola-ambassador__star--16 {
+    --star-fill: #fff;
+    --star-left: 75%;
+    --star-opacity: 0.7;
+    --star-size: 0.38rem;
+    --star-top: 20%;
+  }
+
+  .lola-ambassador__star--17 {
+    --star-fill: #fff;
+    --star-left: 52%;
+    --star-opacity: 0.75;
+    --star-size: 0.4rem;
+    --star-top: 77%;
+  }
+
+  .lola-ambassador__star--18 {
+    --star-fill: #fff;
+    --star-left: 37%;
+    --star-opacity: 0.7;
+    --star-size: 0.32rem;
+    --star-top: 81%;
   }
 
   .lola-ambassador__hero-inner {
@@ -552,30 +605,46 @@
       padding-top: 4.1rem;
     }
 
-    .lola-ambassador__doodle--spark-two,
-    .lola-ambassador__doodle--star {
+    .lola-ambassador__star--8,
+    .lola-ambassador__star--9,
+    .lola-ambassador__star--10,
+    .lola-ambassador__star--12,
+    .lola-ambassador__star--14,
+    .lola-ambassador__star--15,
+    .lola-ambassador__star--16,
+    .lola-ambassador__star--17,
+    .lola-ambassador__star--18 {
       display: none;
     }
 
-    .lola-ambassador__doodle--rect {
-      left: 2.5rem;
-      top: 2.5rem;
+    .lola-ambassador__star--1 {
+      --star-left: 10%;
+      --star-top: 9%;
     }
 
-    .lola-ambassador__doodle--rect-small {
-      bottom: 2rem;
-      left: 4rem;
+    .lola-ambassador__star--2 {
+      --star-left: 82%;
+      --star-top: 9%;
     }
 
-    .lola-ambassador__doodle--spark-one {
-      left: 34%;
-      top: 51%;
-      transform: rotate(45deg) scale(0.75);
+    .lola-ambassador__star--3 {
+      --star-left: 6%;
+      --star-top: 47%;
     }
 
-    .lola-ambassador__doodle--sun {
-      bottom: 2rem;
-      right: 2.5rem;
+    .lola-ambassador__star--4 {
+      --star-left: 84%;
+      --star-top: 47%;
+    }
+
+    .lola-ambassador__star--5 {
+      --star-left: 10%;
+      --star-top: 78%;
+    }
+
+    .lola-ambassador__star--6 {
+      --star-left: 82%;
+      --star-top: 78%;
     }
 
     .lola-ambassador__hero h1 {
@@ -611,12 +680,24 @@
   </header>
 
   <section class="lola-ambassador__hero">
-    <span class="lola-ambassador__doodle lola-ambassador__doodle--rect" aria-hidden="true"></span>
-    <span class="lola-ambassador__doodle lola-ambassador__doodle--rect-small" aria-hidden="true"></span>
-    <span class="lola-ambassador__doodle lola-ambassador__doodle--star" aria-hidden="true"></span>
-    <span class="lola-ambassador__doodle lola-ambassador__doodle--spark lola-ambassador__doodle--spark-one" aria-hidden="true"></span>
-    <span class="lola-ambassador__doodle lola-ambassador__doodle--spark lola-ambassador__doodle--spark-two" aria-hidden="true"></span>
-    <span class="lola-ambassador__doodle lola-ambassador__doodle--sun" aria-hidden="true"><span></span></span>
+    <span class="lola-ambassador__star lola-ambassador__star--outline lola-ambassador__star--1" aria-hidden="true"></span>
+    <span class="lola-ambassador__star lola-ambassador__star--outline lola-ambassador__star--2" aria-hidden="true"></span>
+    <span class="lola-ambassador__star lola-ambassador__star--outline lola-ambassador__star--3" aria-hidden="true"></span>
+    <span class="lola-ambassador__star lola-ambassador__star--outline lola-ambassador__star--4" aria-hidden="true"></span>
+    <span class="lola-ambassador__star lola-ambassador__star--outline lola-ambassador__star--5" aria-hidden="true"></span>
+    <span class="lola-ambassador__star lola-ambassador__star--outline lola-ambassador__star--6" aria-hidden="true"></span>
+    <span class="lola-ambassador__star lola-ambassador__star--white lola-ambassador__star--7" aria-hidden="true"></span>
+    <span class="lola-ambassador__star lola-ambassador__star--white lola-ambassador__star--8" aria-hidden="true"></span>
+    <span class="lola-ambassador__star lola-ambassador__star--white lola-ambassador__star--9" aria-hidden="true"></span>
+    <span class="lola-ambassador__star lola-ambassador__star--white lola-ambassador__star--10" aria-hidden="true"></span>
+    <span class="lola-ambassador__star lola-ambassador__star--white lola-ambassador__star--11" aria-hidden="true"></span>
+    <span class="lola-ambassador__star lola-ambassador__star--white lola-ambassador__star--12" aria-hidden="true"></span>
+    <span class="lola-ambassador__star lola-ambassador__star--tiny lola-ambassador__star--13" aria-hidden="true"></span>
+    <span class="lola-ambassador__star lola-ambassador__star--tiny lola-ambassador__star--14" aria-hidden="true"></span>
+    <span class="lola-ambassador__star lola-ambassador__star--tiny lola-ambassador__star--15" aria-hidden="true"></span>
+    <span class="lola-ambassador__star lola-ambassador__star--tiny lola-ambassador__star--16" aria-hidden="true"></span>
+    <span class="lola-ambassador__star lola-ambassador__star--tiny lola-ambassador__star--17" aria-hidden="true"></span>
+    <span class="lola-ambassador__star lola-ambassador__star--tiny lola-ambassador__star--18" aria-hidden="true"></span>
     <div class="lola-ambassador__hero-inner">
       <span class="lola-ambassador__script">calling all sparkle-makers</span>
       <h1 class="lola-ambassador__display">
