@@ -1,1 +1,158 @@
-{"sections":{"main":{"type":"wholesale-sec","settings":{"contact_heading":"Whole Sale","contact_subheading":"","contact_content":"","contact_text_position":"left","contact_text_alignment":"left"}}},"order":["main"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "shogun-helper": {
+      "type": "shogun-helper",
+      "settings": {}
+    },
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
+    },
+    "shogun-optimizer": {
+      "type": "shogun-optimizer",
+      "settings": {}
+    },
+    "lola_wholesale_hero_FkfDHJ": {
+      "type": "lola-wholesale-hero",
+      "name": "Lola wholesale hero",
+      "settings": {
+        "desktop_background": "shopify://shop_images/Div1.png",
+        "mobile_background": "shopify://shop_images/Mobile_BG_Image_1.png",
+        "heading_line_1": "Become a",
+        "heading_line_2": "Lola + The Boys",
+        "heading_accent": "Retail Partner",
+        "subheading": "One of the fastest-growing premium children’s fashion brands.",
+        "button_text": "Apply for an account",
+        "button_link": ""
+      }
+    },
+    "lola_wholesale_collections_hRtFXD": {
+      "type": "lola-wholesale-collections",
+      "blocks": {
+        "collection_xtkNgN": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/Mask_group_ba187653-6e20-4527-a5e8-cd7cd83b7912.png",
+            "title": "Dresses",
+            "link": ""
+          }
+        },
+        "collection_GR8QTz": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/Mask_group_1_d9a08da0-d19c-4c93-9d5e-3f0a124f1f1f.png",
+            "title": "Sets",
+            "link": ""
+          }
+        },
+        "collection_87V4xE": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/Mask_group_2.png",
+            "title": "Denim",
+            "link": ""
+          }
+        },
+        "collection_jkbkTD": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/Mask_group_3.png",
+            "title": "Basics",
+            "link": ""
+          }
+        },
+        "collection_KcTbyb": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_2861.png",
+            "title": "Swimwear",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_xtkNgN",
+        "collection_GR8QTz",
+        "collection_87V4xE",
+        "collection_jkbkTD",
+        "collection_KcTbyb"
+      ],
+      "name": "Lola collections",
+      "settings": {
+        "heading_accent": "Collections & Styles",
+        "heading_line_2": "That your customers will love",
+        "button_text": "Apply to be a Wholesale Partner",
+        "button_link": ""
+      }
+    },
+    "lola_wholesale_inspiration_LtqNpg": {
+      "type": "lola-wholesale-inspiration",
+      "blocks": {
+        "image_CtjTfP": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Mask_group_16c1c5ab-ca8a-4b61-951f-4e2bc702790b.png",
+            "alt": "Lola and The Boys store"
+          }
+        },
+        "image_iRHt4f": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_2864.png",
+            "alt": "Lola and The Boys store"
+          }
+        },
+        "image_tWADXA": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Mask_group_1_187e67ac-9742-44e8-901f-b0468dbf78e7.png",
+            "alt": "Lola and The Boys store"
+          }
+        }
+      },
+      "block_order": [
+        "image_CtjTfP",
+        "image_iRHt4f",
+        "image_tWADXA"
+      ],
+      "name": "Lola in-store inspiration",
+      "settings": {
+        "heading": "In-store inspiration"
+      }
+    },
+    "lola_wholesale_application_DKbwLB": {
+      "type": "lola-wholesale-application",
+      "name": "Lola wholesale form",
+      "settings": {
+        "eyebrow": "Let’s work together",
+        "heading_line_1": "Apply to become a",
+        "heading_line_2": "Wholesale /",
+        "heading_accent": "Retail Partner",
+        "button_text": "Submit application",
+        "terms_link": "",
+        "privacy_link": "",
+        "success_heading": "Thank you!",
+        "success_message": "Thank you. Your application has been submitted."
+      }
+    }
+  },
+  "order": [
+    "shogun-helper",
+    "main",
+    "shogun-optimizer",
+    "lola_wholesale_hero_FkfDHJ",
+    "lola_wholesale_collections_hRtFXD",
+    "lola_wholesale_inspiration_LtqNpg",
+    "lola_wholesale_application_DKbwLB"
+  ]
+}
