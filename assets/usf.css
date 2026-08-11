@@ -66,7 +66,15 @@ body:not(.usf-mobile) .usf-grid-el-1-6 {
     width: 100% !important
 }
 
-
+.usf-grid img.secondary {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+.usf-grid .image__container:hover { 
+    opacity: 1s;
+}
 
 body:not(.usf-collections-page) .usf-sr-inputbox {
     display: none;
@@ -103,7 +111,9 @@ body:not(.usf-collections-page) .usf-filters-horz .usf-sr-config {
 .usf-sr-empty{
     width: 100%;
 }
+
 /* End custom theme code */
+
 /* Begin common theme code */
 
 
