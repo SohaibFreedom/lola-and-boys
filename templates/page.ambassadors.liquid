@@ -110,50 +110,45 @@
   }
 
   .lola-ambassador__hero {
-    background:
-      radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.8) 0 0.35rem, transparent 0.4rem),
-      radial-gradient(circle at 92% 74%, rgba(255, 63, 159, 0.14) 0 7rem, transparent 7.1rem),
-      linear-gradient(180deg, var(--amb-pink-soft) 0%, #fff 92%);
+    background: linear-gradient(180deg, var(--amb-pink-soft) 0%, #fff 92%);
     min-height: 42rem;
     padding: clamp(4.75rem, 9vw, 7rem) 1.25rem clamp(5rem, 8vw, 7.2rem);
     position: relative;
     text-align: center;
   }
 
-  .lola-ambassador__hero::before,
-  .lola-ambassador__hero::after {
+  .lola-ambassador__doodle {
     color: var(--amb-ink);
-    content: "+";
-    font-family: "Archivo Black", "Inter", sans-serif;
-    font-size: clamp(1.4rem, 3vw, 2.2rem);
-    opacity: 0.75;
+    pointer-events: none;
     position: absolute;
+    z-index: 0;
   }
 
-  .lola-ambassador__hero::before {
-    left: 8%;
-    top: 14%;
-    transform: rotate(-14deg);
+  .lola-ambassador__doodle--rect {
+    border: 2px solid currentColor;
+    height: 1.4rem;
+    left: 3.5%;
+    top: 10%;
+    transform: rotate(-12deg);
+    width: 0.62rem;
   }
 
-  .lola-ambassador__hero::after {
-    bottom: 17%;
-    right: 7%;
-    transform: rotate(18deg);
+  .lola-ambassador__doodle--rect-small {
+    border: 2px solid currentColor;
+    bottom: 10%;
+    height: 1.15rem;
+    left: 8.5%;
+    transform: rotate(1deg);
+    width: 0.55rem;
   }
 
-  .lola-ambassador__spark {
-    background: currentColor;
-    color: var(--amb-ink);
-    height: 0.35rem;
-    opacity: 0.72;
-    position: absolute;
-    transform: rotate(45deg);
-    width: 0.35rem;
+  .lola-ambassador__doodle--spark {
+    height: 1.55rem;
+    width: 1.55rem;
   }
 
-  .lola-ambassador__spark::before,
-  .lola-ambassador__spark::after {
+  .lola-ambassador__doodle--spark::before,
+  .lola-ambassador__doodle--spark::after {
     background: currentColor;
     content: "";
     left: 50%;
@@ -162,24 +157,93 @@
     transform: translate(-50%, -50%);
   }
 
-  .lola-ambassador__spark::before {
+  .lola-ambassador__doodle--spark::before {
     height: 1.35rem;
     width: 0.18rem;
   }
 
-  .lola-ambassador__spark::after {
+  .lola-ambassador__doodle--spark::after {
     height: 0.18rem;
     width: 1.35rem;
   }
 
-  .lola-ambassador__spark--one {
+  .lola-ambassador__doodle--spark-one {
     left: 34%;
     top: 56%;
+    transform: rotate(45deg);
   }
 
-  .lola-ambassador__spark--two {
-    right: 26%;
-    top: 39%;
+  .lola-ambassador__doodle--spark-two {
+    right: 25%;
+    top: 33%;
+    transform: rotate(45deg) scale(0.8);
+  }
+
+  .lola-ambassador__doodle--star {
+    background: currentColor;
+    clip-path: polygon(50% 0%, 61% 34%, 98% 35%, 68% 56%, 79% 91%, 50% 69%, 21% 91%, 32% 56%, 2% 35%, 39% 34%);
+    height: 1.05rem;
+    right: 5.5%;
+    top: 12%;
+    width: 1.05rem;
+  }
+
+  .lola-ambassador__doodle--star::after {
+    background: var(--amb-pink-soft);
+    clip-path: inherit;
+    content: "";
+    inset: 0.18rem;
+    position: absolute;
+  }
+
+  .lola-ambassador__doodle--sun {
+    background: currentColor;
+    border-radius: 50%;
+    bottom: 12%;
+    height: 1rem;
+    right: 5%;
+    width: 1rem;
+  }
+
+  .lola-ambassador__doodle--sun::before,
+  .lola-ambassador__doodle--sun::after {
+    background: currentColor;
+    content: "";
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .lola-ambassador__doodle--sun::before {
+    height: 2rem;
+    width: 0.12rem;
+  }
+
+  .lola-ambassador__doodle--sun::after {
+    height: 0.12rem;
+    width: 2rem;
+  }
+
+  .lola-ambassador__doodle--sun span {
+    background: currentColor;
+    height: 0.12rem;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 2rem;
+  }
+
+  .lola-ambassador__doodle--sun span::after {
+    background: currentColor;
+    content: "";
+    height: 0.12rem;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: rotate(90deg);
+    width: 2rem;
   }
 
   .lola-ambassador__hero-inner {
@@ -212,50 +276,54 @@
 
   .lola-ambassador a.lola-ambassador__button {
     align-items: center;
-    background: var(--amb-ink);
-    border: 2px solid var(--amb-ink);
-    border-radius: 999px;
-    box-shadow: 0.38rem 0.38rem 0 #dedede;
-    color: #fff;
-    display: inline-flex;
-    font-size: 0.78rem;
-    font-weight: 800;
+    background: var(--amb-ink) !important;
+    border: 2px solid var(--amb-ink) !important;
+    border-radius: 999px !important;
+    box-shadow: 0.38rem 0.38rem 0 #dedede !important;
+    color: #fff !important;
+    display: inline-flex !important;
+    font-size: 0.78rem !important;
+    font-weight: 800 !important;
     justify-content: center;
-    letter-spacing: 0.1em;
-    margin-top: 2rem;
-    min-height: 3.1rem;
-    min-width: 12.25rem;
-    padding: 0.9rem 1.65rem;
-    position: relative;
-    text-decoration: none;
-    text-transform: uppercase;
+    letter-spacing: 0.1em !important;
+    margin-top: 2rem !important;
+    min-height: 3.1rem !important;
+    min-width: 12.25rem !important;
+    opacity: 1 !important;
+    padding: 0.9rem 1.65rem !important;
+    position: relative !important;
+    text-decoration: none !important;
+    text-indent: 0 !important;
+    text-transform: uppercase !important;
     transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
-    white-space: nowrap;
+    white-space: nowrap !important;
   }
 
   .lola-ambassador a.lola-ambassador__button,
   .lola-ambassador a.lola-ambassador__button:visited,
   .lola-ambassador a.lola-ambassador__button:hover,
   .lola-ambassador a.lola-ambassador__button:focus {
-    color: #fff;
+    color: #fff !important;
   }
 
   .lola-ambassador__button-label {
-    color: #fff;
-    display: inline-block;
-    font: inherit;
-    letter-spacing: inherit;
-    line-height: 1;
-    position: relative;
-    text-indent: 0;
-    text-transform: inherit;
-    z-index: 1;
+    color: #fff !important;
+    display: inline-block !important;
+    font: inherit !important;
+    letter-spacing: inherit !important;
+    line-height: 1 !important;
+    opacity: 1 !important;
+    position: relative !important;
+    text-indent: 0 !important;
+    text-transform: inherit !important;
+    visibility: visible !important;
+    z-index: 1 !important;
   }
 
   .lola-ambassador a.lola-ambassador__button:hover,
   .lola-ambassador a.lola-ambassador__button:focus-visible {
-    background: var(--amb-pink);
-    color: #fff;
+    background: var(--amb-pink) !important;
+    color: #fff !important;
     transform: translate(-0.12rem, -0.12rem);
   }
 
@@ -484,10 +552,30 @@
       padding-top: 4.1rem;
     }
 
-    .lola-ambassador__hero::before,
-    .lola-ambassador__hero::after,
-    .lola-ambassador__spark {
+    .lola-ambassador__doodle--spark-two,
+    .lola-ambassador__doodle--star {
       display: none;
+    }
+
+    .lola-ambassador__doodle--rect {
+      left: 2.5rem;
+      top: 2.5rem;
+    }
+
+    .lola-ambassador__doodle--rect-small {
+      bottom: 2rem;
+      left: 4rem;
+    }
+
+    .lola-ambassador__doodle--spark-one {
+      left: 34%;
+      top: 51%;
+      transform: rotate(45deg) scale(0.75);
+    }
+
+    .lola-ambassador__doodle--sun {
+      bottom: 2rem;
+      right: 2.5rem;
     }
 
     .lola-ambassador__hero h1 {
@@ -523,8 +611,12 @@
   </header>
 
   <section class="lola-ambassador__hero">
-    <span class="lola-ambassador__spark lola-ambassador__spark--one" aria-hidden="true"></span>
-    <span class="lola-ambassador__spark lola-ambassador__spark--two" aria-hidden="true"></span>
+    <span class="lola-ambassador__doodle lola-ambassador__doodle--rect" aria-hidden="true"></span>
+    <span class="lola-ambassador__doodle lola-ambassador__doodle--rect-small" aria-hidden="true"></span>
+    <span class="lola-ambassador__doodle lola-ambassador__doodle--star" aria-hidden="true"></span>
+    <span class="lola-ambassador__doodle lola-ambassador__doodle--spark lola-ambassador__doodle--spark-one" aria-hidden="true"></span>
+    <span class="lola-ambassador__doodle lola-ambassador__doodle--spark lola-ambassador__doodle--spark-two" aria-hidden="true"></span>
+    <span class="lola-ambassador__doodle lola-ambassador__doodle--sun" aria-hidden="true"><span></span></span>
     <div class="lola-ambassador__hero-inner">
       <span class="lola-ambassador__script">calling all sparkle-makers</span>
       <h1 class="lola-ambassador__display">
