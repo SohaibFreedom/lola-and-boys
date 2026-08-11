@@ -19,11 +19,7 @@
     --ty-lavender: #d6c7fe;
     --ty-ink: #000;
     --ty-card-shadow: 3px 4px 10.6px rgba(0, 0, 0, 0.11);
-    background:
-      radial-gradient(circle at 4% 52%, rgba(255, 255, 255, 0.88) 0 0.42rem, transparent 0.45rem),
-      radial-gradient(circle at 12% 72%, rgba(255, 255, 255, 0.82) 0 0.32rem, transparent 0.35rem),
-      radial-gradient(circle at 76% 14%, rgba(255, 255, 255, 0.78) 0 0.28rem, transparent 0.31rem),
-      linear-gradient(135deg, var(--ty-lavender) 0%, #fef0f4 38%, var(--ty-pink-soft) 74%, #fff 100%);
+    background: var(--ty-pink-soft) url("https://cdn.shopify.com/s/files/1/0002/0647/1226/files/BG_1.png?v=1786473248") center top / cover no-repeat;
     color: var(--ty-ink) !important;
     font-family: "Sofia Pro", "Sofia Sans", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
     font-size: 16px !important;
@@ -47,88 +43,18 @@
     letter-spacing: 0 !important;
   }
 
-  .lola-ty__stars {
-    inset: 0;
-    pointer-events: none;
-    position: absolute;
-    z-index: 0;
-  }
-
-  .lola-ty__star {
-    aspect-ratio: 1;
-    background: var(--star-fill, #fff);
-    clip-path: polygon(50% 0%, 62% 33%, 98% 35%, 69% 56%, 79% 91%, 50% 70%, 21% 91%, 31% 56%, 2% 35%, 38% 33%);
-    filter: drop-shadow(0 0.08rem 0 rgba(0, 0, 0, 0.28));
-    left: var(--star-left);
-    opacity: var(--star-opacity, 1);
-    position: absolute;
-    top: var(--star-top);
-    transform: rotate(var(--star-rotate, 0deg));
-    width: var(--star-size, 2rem);
-  }
-
-  .lola-ty__star--outline {
-    background: #000;
-  }
-
-  .lola-ty__star--outline::after {
-    background: var(--star-fill, #fff);
-    clip-path: inherit;
-    content: "";
-    inset: max(2px, calc(var(--star-size, 2rem) * 0.07));
-    position: absolute;
-  }
-
-  .lola-ty__star--white {
-    filter: none;
-  }
-
-  .lola-ty__star--tiny {
-    border-radius: 50%;
-    clip-path: none;
-    filter: none;
-  }
-
-  .lola-ty__star--1 { --star-fill: #ff9ada; --star-left: 10%; --star-rotate: -15deg; --star-size: clamp(0.75rem, 1.2vw, 1.45rem); --star-top: 8%; }
-  .lola-ty__star--2 { --star-fill: #ff9ada; --star-left: 79%; --star-rotate: 14deg; --star-size: clamp(0.75rem, 1.2vw, 1.45rem); --star-top: 8%; }
-  .lola-ty__star--3 { --star-fill: #61dfdd; --star-left: 8%; --star-rotate: -12deg; --star-size: clamp(0.8rem, 1.35vw, 1.55rem); --star-top: 27%; }
-  .lola-ty__star--4 { --star-fill: #61dfdd; --star-left: 86%; --star-rotate: 12deg; --star-size: clamp(0.8rem, 1.35vw, 1.55rem); --star-top: 27%; }
-  .lola-ty__star--5 { --star-fill: #fff96d; --star-left: 16%; --star-rotate: 9deg; --star-size: clamp(0.75rem, 1.2vw, 1.4rem); --star-top: 50%; }
-  .lola-ty__star--6 { --star-fill: #fff96d; --star-left: 86%; --star-rotate: -10deg; --star-size: clamp(0.75rem, 1.2vw, 1.4rem); --star-top: 50%; }
-  .lola-ty__star--7 { --star-fill: #61dfdd; --star-left: 27%; --star-rotate: -12deg; --star-size: clamp(0.65rem, 1.1vw, 1.25rem); --star-top: 87%; }
-  .lola-ty__star--8 { --star-fill: #fff96d; --star-left: 73%; --star-rotate: -10deg; --star-size: clamp(0.65rem, 1.1vw, 1.25rem); --star-top: 87%; }
-  .lola-ty__star--9 { --star-left: 8%; --star-opacity: 0.85; --star-rotate: 7deg; --star-size: clamp(1rem, 1.8vw, 1.95rem); --star-top: 1%; }
-  .lola-ty__star--10 { --star-left: 48%; --star-opacity: 0.9; --star-rotate: -4deg; --star-size: clamp(1.1rem, 2.1vw, 2.4rem); --star-top: 1%; }
-  .lola-ty__star--11 { --star-left: 89%; --star-opacity: 0.82; --star-rotate: 13deg; --star-size: clamp(1rem, 1.8vw, 2.05rem); --star-top: 2%; }
-  .lola-ty__star--12 { --star-left: 18%; --star-opacity: 0.82; --star-rotate: 10deg; --star-size: clamp(0.8rem, 1.5vw, 1.55rem); --star-top: 14%; }
-  .lola-ty__star--13 { --star-left: 31%; --star-opacity: 0.88; --star-rotate: -8deg; --star-size: clamp(0.9rem, 1.7vw, 1.85rem); --star-top: 14%; }
-  .lola-ty__star--14 { --star-left: 64%; --star-opacity: 0.88; --star-rotate: 8deg; --star-size: clamp(0.9rem, 1.7vw, 1.85rem); --star-top: 13%; }
-  .lola-ty__star--15 { --star-left: 72%; --star-opacity: 0.9; --star-rotate: -12deg; --star-size: clamp(0.95rem, 1.8vw, 2rem); --star-top: 18%; }
-  .lola-ty__star--16 { --star-left: 3%; --star-opacity: 0.8; --star-rotate: 14deg; --star-size: clamp(0.75rem, 1.5vw, 1.55rem); --star-top: 45%; }
-  .lola-ty__star--17 { --star-left: 17%; --star-opacity: 0.85; --star-rotate: -9deg; --star-size: clamp(0.95rem, 1.8vw, 2.05rem); --star-top: 61%; }
-  .lola-ty__star--18 { --star-left: 42%; --star-opacity: 0.9; --star-rotate: 6deg; --star-size: clamp(0.9rem, 1.7vw, 2rem); --star-top: 62%; }
-  .lola-ty__star--19 { --star-left: 79%; --star-opacity: 0.88; --star-rotate: -8deg; --star-size: clamp(0.85rem, 1.7vw, 1.85rem); --star-top: 62%; }
-  .lola-ty__star--20 { --star-left: 91%; --star-opacity: 0.76; --star-rotate: 13deg; --star-size: clamp(0.75rem, 1.5vw, 1.55rem); --star-top: 69%; }
-  .lola-ty__star--21 { --star-left: 6%; --star-opacity: 0.78; --star-size: 0.45rem; --star-top: 19%; }
-  .lola-ty__star--22 { --star-left: 22%; --star-opacity: 0.74; --star-size: 0.38rem; --star-top: 21%; }
-  .lola-ty__star--23 { --star-left: 54%; --star-opacity: 0.75; --star-size: 0.42rem; --star-top: 19%; }
-  .lola-ty__star--24 { --star-left: 84%; --star-opacity: 0.72; --star-size: 0.45rem; --star-top: 18%; }
-  .lola-ty__star--25 { --star-left: 13%; --star-opacity: 0.74; --star-size: 0.36rem; --star-top: 77%; }
-  .lola-ty__star--26 { --star-left: 66%; --star-opacity: 0.72; --star-size: 0.38rem; --star-top: 79%; }
-  .lola-ty__star--27 { --star-left: 95%; --star-opacity: 0.68; --star-size: 0.4rem; --star-top: 76%; }
-
   .lola-ty__inner {
     margin: 0 auto;
     max-width: 1920px;
-    min-height: clamp(32rem, 48vw, 57.5rem);
-    padding: clamp(3.3rem, 7.2vw, 8.65rem) clamp(1.25rem, 4vw, 8.4rem) clamp(2.2rem, 4vw, 3.6rem);
+    min-height: clamp(58rem, 103.54vw, 124.25rem);
+    padding: clamp(7.5rem, 18.39vw, 22.0625rem) clamp(1.25rem, 4vw, 8.4rem) clamp(4rem, 10vw, 7.75rem);
     position: relative;
     z-index: 1;
   }
 
   .lola-ty__title {
     font-family: "Noto Serif Display", Georgia, "Times New Roman", serif !important;
-    font-size: clamp(2.5rem, 4.6vw, 5.5rem) !important;
+    font-size: 216px !important;
     font-style: normal !important;
     font-weight: 400 !important;
     letter-spacing: 0 !important;
@@ -136,84 +62,88 @@
     margin: 0 !important;
     text-transform: none !important;
     white-space: nowrap;
-    color: #000;
+    color: #000 !important;
   }
 
   .lola-ty__received {
     color: var(--ty-pink) !important;
     font-family: "Sofia Pro", "Sofia Sans", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
-    font-size: clamp(0.85rem, 1.12vw, 1.35rem) !important;
+    font-size: 53px !important;
     font-style: normal !important;
     font-weight: 500 !important;
     letter-spacing: 0.015em !important;
     line-height: 0.82 !important;
-    margin: clamp(1.4rem, 2.7vw, 3.25rem) 0 0 !important;
+    margin: clamp(3.1rem, 7.65vw, 9.2rem) 0 0 !important;
     text-transform: uppercase !important;
   }
 
   .lola-ty__rule {
     background: var(--ty-pink);
-    height: 0.14rem;
-    margin: clamp(0.9rem, 1.55vw, 1.85rem) auto 0;
-    width: clamp(5.6rem, 9vw, 10.8rem);
+    height: 0.3125rem;
+    margin: clamp(2.25rem, 4.48vw, 5.375rem) auto 0;
+    width: clamp(12rem, 25.1vw, 30.125rem);
   }
 
   .lola-ty__message {
     font-family: "Sofia Pro", "Sofia Sans", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
-    font-size: clamp(0.86rem, 1vw, 1.2rem) !important;
+    font-size: 48px !important;
     font-style: normal !important;
     font-weight: 400 !important;
     line-height: 1.4 !important;
-    margin: clamp(1rem, 1.65vw, 2rem) auto 0 !important;
-    max-width: 24rem;
+    margin: clamp(2.6rem, 4.53vw, 5.4375rem) auto 0 !important;
+    max-width: 60.25rem;
     text-transform: none !important;
   }
 
   .lola-ty__card {
     align-items: center;
     background: #fff;
-    border-radius: 0.8rem;
+    border-radius: 1.8125rem;
     box-shadow: var(--ty-card-shadow);
     display: grid;
-    gap: clamp(0.75rem, 1.4vw, 1.7rem);
-    grid-template-columns: 5.6rem minmax(8rem, 1fr) 0.14rem 5.2rem minmax(9rem, 1fr);
-    margin: clamp(1.8rem, 2.6vw, 3.1rem) auto 0;
-    max-width: 40rem;
-    min-height: clamp(6rem, 7.9vw, 9.5rem);
-    padding: clamp(1rem, 1.55vw, 1.85rem) clamp(1.2rem, 2vw, 2.4rem);
+    gap: clamp(1.5rem, 3.5vw, 4.25rem);
+    grid-template-columns: 15.5rem minmax(18rem, 1fr) 0.3125rem 14rem minmax(18rem, 1fr);
+    margin: clamp(4.3rem, 7.03vw, 8.4375rem) auto 0;
+    max-width: 103.3125rem;
+    min-height: clamp(13rem, 20.52vw, 24.625rem);
+    padding: clamp(2rem, 4.2vw, 4.5rem) clamp(2rem, 4.5vw, 6.5rem);
     text-align: left;
+  }
+
+  .lola-ty__card > div {
+    min-width: 0;
   }
 
   .lola-ty__icon {
     display: block;
     height: auto;
     justify-self: center;
-    max-width: 5rem;
+    max-width: 13.125rem;
     width: 100%;
   }
 
   .lola-ty__divider {
     background: rgba(255, 115, 203, 0.3);
-    height: clamp(4rem, 5.3vw, 6.4rem);
-    width: 0.14rem;
+    height: clamp(9rem, 13.9vw, 16.6875rem);
+    width: 0.3125rem;
   }
 
   .lola-ty__card h2 {
     color: var(--ty-ink) !important;
     font-family: "Sofia Pro", "Sofia Sans", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
-    font-size: clamp(0.9rem, 1.04vw, 1.25rem) !important;
+    font-size: 44px !important;
     font-style: normal !important;
     font-weight: 700 !important;
     letter-spacing: 0 !important;
     line-height: 0.98 !important;
-    margin: 0 0 0.4rem !important;
+    margin: 0 0 0.7rem !important;
     text-transform: none !important;
   }
 
   .lola-ty__card p {
     color: var(--ty-ink) !important;
     font-family: "Sofia Pro", "Sofia Sans", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
-    font-size: clamp(0.68rem, 0.68vw, 0.82rem) !important;
+    font-size: 26px !important;
     font-style: normal !important;
     font-weight: 400 !important;
     line-height: 1.633 !important;
@@ -224,60 +154,102 @@
   .lola-ty__card a {
     color: var(--ty-pink) !important;
     font-family: "Sofia Pro", "Sofia Sans", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
-    font-size: inherit !important;
+    font-size: 22px !important;
     font-weight: inherit !important;
     line-height: inherit !important;
+    overflow-wrap: normal !important;
     text-decoration: underline !important;
     text-underline-offset: 0.08em !important;
+    white-space: nowrap !important;
+    word-break: normal !important;
   }
 
   .lola-ty__brand {
     color: var(--ty-pink) !important;
     font-family: "Noto Serif Display", Georgia, "Times New Roman", serif !important;
-    font-size: clamp(1.25rem, 1.65vw, 2rem) !important;
+    font-size: 70px !important;
     font-style: normal !important;
     font-weight: 400 !important;
     letter-spacing: 0 !important;
     line-height: 1.375 !important;
-    margin: clamp(1.35rem, 2vw, 2.4rem) 0 0 !important;
+    margin: clamp(3.6rem, 6.2vw, 7.4375rem) 0 0 !important;
     text-transform: none !important;
+    white-space: nowrap !important;
+  }
+
+  .lola-ty__brand-row {
+    align-items: center;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 2.25rem;
+    justify-content: center;
+  }
+
+  .lola-ty__brand-star {
+    aspect-ratio: 1;
+    background: #000;
+    clip-path: polygon(50% 0%, 62% 33%, 98% 35%, 69% 56%, 79% 91%, 50% 70%, 21% 91%, 31% 56%, 2% 35%, 38% 33%);
+    display: inline-block;
+    flex: 0 0 auto;
+    position: relative;
+    transform: rotate(-12deg);
+    width: 3rem;
+  }
+
+  .lola-ty__brand-star::after {
+    background: var(--star-fill);
+    clip-path: inherit;
+    content: "";
+    inset: 0.16rem;
+    position: absolute;
+  }
+
+  .lola-ty__brand-star--left {
+    --star-fill: #61dfdd;
+  }
+
+  .lola-ty__brand-star--right {
+    --star-fill: #fff96d;
+    transform: rotate(12deg);
   }
 
   .lola-ty__closing {
     color: var(--ty-ink) !important;
     font-family: "Sofia Pro", "Sofia Sans", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
-    font-size: clamp(0.72rem, 0.78vw, 0.94rem) !important;
+    font-size: 31px !important;
     font-style: normal !important;
     font-weight: 400 !important;
     line-height: 1.46 !important;
     margin: 0.35rem auto 0 !important;
-    max-width: 17rem;
+    max-width: 39.0625rem;
     text-transform: none !important;
   }
 
   @media (max-width: 900px) {
     .lola-ty__inner {
-      min-height: 34rem;
-      padding-top: 3.7rem;
+      min-height: 56rem;
+      padding-top: 7.5rem;
     }
 
     .lola-ty__title {
-      font-size: clamp(2.25rem, 10vw, 4rem) !important;
+      font-size: 76px !important;
     }
 
     .lola-ty__received {
+      font-size: 28px !important;
       line-height: 1.08 !important;
-      margin-top: 1.6rem !important;
+      margin-top: 3.4rem !important;
     }
 
     .lola-ty__message {
-      max-width: 20rem;
+      font-size: 30px !important;
+      max-width: 35rem;
     }
 
     .lola-ty__card {
       grid-template-columns: 1fr;
-      max-width: 21rem;
-      padding: 1.25rem 1rem;
+      max-width: 37rem;
+      padding: 2.5rem 2rem;
       text-align: center;
     }
 
@@ -287,87 +259,91 @@
     }
 
     .lola-ty__icon {
-      max-width: 4rem;
+      max-width: 8.5rem;
     }
 
-    .lola-ty__star--7,
-    .lola-ty__star--8,
-    .lola-ty__star--11,
-    .lola-ty__star--12,
-    .lola-ty__star--14,
-    .lola-ty__star--15,
-    .lola-ty__star--16,
-    .lola-ty__star--17,
-    .lola-ty__star--18,
-    .lola-ty__star--19,
-    .lola-ty__star--20,
-    .lola-ty__star--23,
-    .lola-ty__star--24,
-    .lola-ty__star--26,
-    .lola-ty__star--27 {
-      display: none;
+    .lola-ty__card h2 {
+      font-size: 32px !important;
     }
 
-    .lola-ty__star--1 { --star-left: 9%; --star-top: 7%; }
-    .lola-ty__star--2 { --star-left: 82%; --star-top: 7%; }
-    .lola-ty__star--3 { --star-left: 6%; --star-top: 25%; }
-    .lola-ty__star--4 { --star-left: 84%; --star-top: 25%; }
-    .lola-ty__star--5 { --star-left: 12%; --star-top: 47%; }
-    .lola-ty__star--6 { --star-left: 82%; --star-top: 47%; }
+    .lola-ty__card p {
+      font-size: 22px !important;
+    }
+
+    .lola-ty__card a {
+      font-size: 20px !important;
+      white-space: normal !important;
+    }
+
+    .lola-ty__brand {
+      font-size: 48px !important;
+    }
+
+    .lola-ty__brand-row {
+      gap: 1.3rem;
+    }
+
+    .lola-ty__brand-star {
+      width: 2.1rem;
+    }
+
+    .lola-ty__closing {
+      font-size: 24px !important;
+    }
+
   }
 
   @media (max-width: 560px) {
     .lola-ty__inner {
-      min-height: 32rem;
+      min-height: 52rem;
       padding-left: 1rem;
       padding-right: 1rem;
     }
 
     .lola-ty__title {
-      font-size: clamp(2rem, 10vw, 2.8rem) !important;
+      font-size: 64px !important;
     }
 
     .lola-ty__received {
-      font-size: 0.78rem !important;
+      font-size: 20px !important;
     }
 
     .lola-ty__message {
-      font-size: 0.82rem !important;
+      font-size: 22px !important;
+    }
+
+    .lola-ty__card h2 {
+      font-size: 28px !important;
+    }
+
+    .lola-ty__card p {
+      font-size: 18px !important;
+    }
+
+    .lola-ty__card a {
+      font-size: 16px !important;
+      white-space: normal !important;
+    }
+
+    .lola-ty__brand {
+      font-size: 32px !important;
+    }
+
+    .lola-ty__brand-row {
+      gap: 0.55rem;
+    }
+
+    .lola-ty__brand-star {
+      width: 1.2rem;
+    }
+
+    .lola-ty__closing {
+      font-size: 18px !important;
     }
   }
 </style>
 
 <section class="lola-ty">
-  <div class="lola-ty__stars" aria-hidden="true">
-    <span class="lola-ty__star lola-ty__star--outline lola-ty__star--1"></span>
-    <span class="lola-ty__star lola-ty__star--outline lola-ty__star--2"></span>
-    <span class="lola-ty__star lola-ty__star--outline lola-ty__star--3"></span>
-    <span class="lola-ty__star lola-ty__star--outline lola-ty__star--4"></span>
-    <span class="lola-ty__star lola-ty__star--outline lola-ty__star--5"></span>
-    <span class="lola-ty__star lola-ty__star--outline lola-ty__star--6"></span>
-    <span class="lola-ty__star lola-ty__star--outline lola-ty__star--7"></span>
-    <span class="lola-ty__star lola-ty__star--outline lola-ty__star--8"></span>
-    <span class="lola-ty__star lola-ty__star--white lola-ty__star--9"></span>
-    <span class="lola-ty__star lola-ty__star--white lola-ty__star--10"></span>
-    <span class="lola-ty__star lola-ty__star--white lola-ty__star--11"></span>
-    <span class="lola-ty__star lola-ty__star--white lola-ty__star--12"></span>
-    <span class="lola-ty__star lola-ty__star--white lola-ty__star--13"></span>
-    <span class="lola-ty__star lola-ty__star--white lola-ty__star--14"></span>
-    <span class="lola-ty__star lola-ty__star--white lola-ty__star--15"></span>
-    <span class="lola-ty__star lola-ty__star--white lola-ty__star--16"></span>
-    <span class="lola-ty__star lola-ty__star--white lola-ty__star--17"></span>
-    <span class="lola-ty__star lola-ty__star--white lola-ty__star--18"></span>
-    <span class="lola-ty__star lola-ty__star--white lola-ty__star--19"></span>
-    <span class="lola-ty__star lola-ty__star--white lola-ty__star--20"></span>
-    <span class="lola-ty__star lola-ty__star--tiny lola-ty__star--21"></span>
-    <span class="lola-ty__star lola-ty__star--tiny lola-ty__star--22"></span>
-    <span class="lola-ty__star lola-ty__star--tiny lola-ty__star--23"></span>
-    <span class="lola-ty__star lola-ty__star--tiny lola-ty__star--24"></span>
-    <span class="lola-ty__star lola-ty__star--tiny lola-ty__star--25"></span>
-    <span class="lola-ty__star lola-ty__star--tiny lola-ty__star--26"></span>
-    <span class="lola-ty__star lola-ty__star--tiny lola-ty__star--27"></span>
-  </div>
-
   <div class="lola-ty__inner">
     <h1 class="lola-ty__title">Thank You!</h1>
     <p class="lola-ty__received">Your application has been received.</p>
@@ -400,7 +376,11 @@
       </div>
     </div>
 
-    <div class="lola-ty__brand">Lola + The Boys</div>
+    <div class="lola-ty__brand-row">
+      <span class="lola-ty__brand-star lola-ty__brand-star--left" aria-hidden="true"></span>
+      <div class="lola-ty__brand">Lola + The Boys</div>
+      <span class="lola-ty__brand-star lola-ty__brand-star--right" aria-hidden="true"></span>
+    </div>
     <p class="lola-ty__closing">
       Premium styles for the next generation.<br>
       We can&rsquo;t wait to grow together!
