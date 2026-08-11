@@ -362,7 +362,7 @@ usf.templates = {
                     >
                 </div>
             </div>
-            <div class="image__container" v-if="_usf_collection_secondary_image && usf.settings.search.showAltImage  ">
+            <div class="image__container" v-if=" usf.settings.search.showAltImage  ">
                 <img :alt="selectedImage.alt || product.title"
                     :src="hoverImageUrl || selectedImageUrl"
                     class="secondary lazyload"
