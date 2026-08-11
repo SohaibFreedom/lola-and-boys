@@ -210,12 +210,12 @@
     max-width: 42rem;
   }
 
-  .lola-ambassador__button {
+  .lola-ambassador a.lola-ambassador__button {
     align-items: center;
     background: var(--amb-ink);
     border: 2px solid var(--amb-ink);
     border-radius: 999px;
-    box-shadow: 0.42rem 0.42rem 0 rgba(15, 15, 19, 0.12);
+    box-shadow: 0.38rem 0.38rem 0 #dedede;
     color: #fff;
     display: inline-flex;
     font-size: 0.78rem;
@@ -224,14 +224,36 @@
     letter-spacing: 0.1em;
     margin-top: 2rem;
     min-height: 3.1rem;
+    min-width: 12.25rem;
     padding: 0.9rem 1.65rem;
+    position: relative;
     text-decoration: none;
     text-transform: uppercase;
     transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+    white-space: nowrap;
   }
 
-  .lola-ambassador__button:hover,
-  .lola-ambassador__button:focus-visible {
+  .lola-ambassador a.lola-ambassador__button,
+  .lola-ambassador a.lola-ambassador__button:visited,
+  .lola-ambassador a.lola-ambassador__button:hover,
+  .lola-ambassador a.lola-ambassador__button:focus {
+    color: #fff;
+  }
+
+  .lola-ambassador__button-label {
+    color: #fff;
+    display: inline-block;
+    font: inherit;
+    letter-spacing: inherit;
+    line-height: 1;
+    position: relative;
+    text-indent: 0;
+    text-transform: inherit;
+    z-index: 1;
+  }
+
+  .lola-ambassador a.lola-ambassador__button:hover,
+  .lola-ambassador a.lola-ambassador__button:focus-visible {
     background: var(--amb-pink);
     color: #fff;
     transform: translate(-0.12rem, -0.12rem);
@@ -472,7 +494,7 @@
       font-size: clamp(2.85rem, 16vw, 4.4rem);
     }
 
-    .lola-ambassador__button {
+    .lola-ambassador a.lola-ambassador__button {
       width: min(100%, 20rem);
     }
 
@@ -514,7 +536,7 @@
         Join the Lola + The Boys crew. Get gifted our latest drops, share the sparkle with your community, and earn commission on every sale - powered by ShopMY.
       </p>
       <a class="lola-ambassador__button" href="https://shopmy.us/signup?smscode=LOLAANDTHEBOYS-2026&autoSubmitCode=true" target="_blank" rel="noopener">
-        Sign up on ShopMY
+        <span class="lola-ambassador__button-label">Sign up on ShopMY</span>
       </a>
     </div>
   </section>
@@ -588,7 +610,7 @@
         We manage gifting, commission tracking, affiliate links, and creator payouts through ShopMY. It is free to join, simple to use, and built for creators who want clear tracking on every sale.
       </p>
       <a class="lola-ambassador__button" href="https://shopmy.us/signup?smscode=LOLAANDTHEBOYS-2026&autoSubmitCode=true" target="_blank" rel="noopener">
-        Apply now
+        <span class="lola-ambassador__button-label">Apply now</span>
       </a>
     </div>
   </section>
