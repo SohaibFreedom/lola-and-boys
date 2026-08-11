@@ -1,4 +1,4 @@
-/* USF file - DO NOT MODIFY THIS FILE. THIS FILE IS REGULARLY CHANGED BY USF APP AND **ANY DIRECT CHANGES WILL BE LOST**. Use our in-app customization if you need to update CSS and JS code. Auto modified at: 8/11/2026 2:40:16 PM*/
+/* USF file - DO NOT MODIFY THIS FILE. THIS FILE IS REGULARLY CHANGED BY USF APP AND **ANY DIRECT CHANGES WILL BE LOST**. Use our in-app customization if you need to update CSS and JS code. Auto modified at: 8/11/2026 2:44:22 PM*/
 /* Begin custom theme code */
 // define templates for the Turbo theme - 5.0
 window.USF_FILTER_AVOID_STICKY_HEADER_HORZ_DESKTOP = window.USF_FILTER_AVOID_STICKY_HEADER_VERT_DESKTOP  = ['.main_nav_wrapper.sticky_nav'];
@@ -362,14 +362,12 @@ usf.templates = {
                         :width="selectedImage.width"
                         :class="'main---img lazyload transition--'+_usf_image_loading_style "
                     >
+                    <img :alt="selectedImage.alt || product.title" v-if=" usf.settings.search.showAltImage  "
+                        :src="hoverImageUrl || selectedImageUrl"
+                        class="secondary lazyload"
+                    >
                 </div>
-            </div>
-            <div class="image__container" v-if=" usf.settings.search.showAltImage  ">
-                <img :alt="selectedImage.alt || product.title"
-                    :src="hoverImageUrl || selectedImageUrl"
-                    class="secondary lazyload"
-                >
-            </div>
+            </div> 
 
 
 

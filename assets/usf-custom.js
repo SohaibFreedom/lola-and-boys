@@ -360,14 +360,12 @@ usf.templates = {
                         :width="selectedImage.width"
                         :class="'main---img lazyload transition--'+_usf_image_loading_style "
                     >
+                    <img :alt="selectedImage.alt || product.title" v-if=" usf.settings.search.showAltImage  "
+                        :src="hoverImageUrl || selectedImageUrl"
+                        class="secondary lazyload"
+                    >
                 </div>
-            </div>
-            <div class="image__container" v-if=" usf.settings.search.showAltImage  ">
-                <img :alt="selectedImage.alt || product.title"
-                    :src="hoverImageUrl || selectedImageUrl"
-                    class="secondary lazyload"
-                >
-            </div>
+            </div> 
 
 
 
