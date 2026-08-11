@@ -1,0 +1,635 @@
+{% comment %}
+  Lola + The Boys - Ambassador landing page
+
+  Shopify install:
+  1. Online Store > Themes > Edit code
+  2. Add a new page template named "ambassadors"
+  3. Paste this file into templates/page.ambassadors.liquid
+  4. Assign the template to the Ambassadors page
+{% endcomment %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Caveat:wght@500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  .lola-ambassador {
+    --amb-pink: #ff3f9f;
+    --amb-pink-soft: #ffe3f1;
+    --amb-lilac: #efe1ff;
+    --amb-sky: #dff1ff;
+    --amb-cream: #fff9df;
+    --amb-mint: #ddffe7;
+    --amb-ink: #0f0f13;
+    --amb-muted: #5d5660;
+    --amb-border: #111116;
+    --amb-shadow: 8px 8px 0 rgba(15, 15, 19, 0.1);
+    color: var(--amb-ink);
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.5;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .lola-ambassador *,
+  .lola-ambassador *::before,
+  .lola-ambassador *::after {
+    box-sizing: border-box;
+  }
+
+  .lola-ambassador a {
+    color: inherit;
+  }
+
+  .lola-ambassador__script {
+    color: var(--amb-pink);
+    display: block;
+    font-family: "Caveat", cursive;
+    font-size: clamp(1.65rem, 4vw, 2.25rem);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0.35rem;
+  }
+
+  .lola-ambassador__display {
+    font-family: "Archivo Black", "Inter", sans-serif;
+    letter-spacing: 0;
+    line-height: 0.95;
+    text-transform: uppercase;
+  }
+
+  .lola-ambassador__bar {
+    background: var(--amb-pink);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    padding: 0.65rem 1rem;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .lola-ambassador__brand {
+    align-items: center;
+    background: #fff;
+    border-bottom: 1px solid rgba(15, 15, 19, 0.08);
+    display: flex;
+    justify-content: center;
+    min-height: 5rem;
+    padding: 1.15rem;
+    text-align: center;
+  }
+
+  .lola-ambassador__wordmark {
+    font-family: "Caveat", cursive;
+    font-size: clamp(2.35rem, 6vw, 3.2rem);
+    font-weight: 700;
+    line-height: 0.8;
+    position: relative;
+  }
+
+  .lola-ambassador__wordmark::after {
+    color: var(--amb-pink);
+    content: "+";
+    font-family: "Archivo Black", "Inter", sans-serif;
+    font-size: 1rem;
+    line-height: 1;
+    position: absolute;
+    right: -1.2rem;
+    top: -0.1rem;
+    transform: rotate(18deg);
+  }
+
+  .lola-ambassador__tag {
+    display: block;
+    font-size: 0.66rem;
+    font-weight: 800;
+    letter-spacing: 0.34em;
+    margin-top: 0.35rem;
+    text-transform: uppercase;
+  }
+
+  .lola-ambassador__hero {
+    background:
+      radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.8) 0 0.35rem, transparent 0.4rem),
+      radial-gradient(circle at 92% 74%, rgba(255, 63, 159, 0.14) 0 7rem, transparent 7.1rem),
+      linear-gradient(180deg, var(--amb-pink-soft) 0%, #fff 92%);
+    min-height: 42rem;
+    padding: clamp(4.75rem, 9vw, 7rem) 1.25rem clamp(5rem, 8vw, 7.2rem);
+    position: relative;
+    text-align: center;
+  }
+
+  .lola-ambassador__hero::before,
+  .lola-ambassador__hero::after {
+    color: var(--amb-ink);
+    content: "+";
+    font-family: "Archivo Black", "Inter", sans-serif;
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    opacity: 0.75;
+    position: absolute;
+  }
+
+  .lola-ambassador__hero::before {
+    left: 8%;
+    top: 14%;
+    transform: rotate(-14deg);
+  }
+
+  .lola-ambassador__hero::after {
+    bottom: 17%;
+    right: 7%;
+    transform: rotate(18deg);
+  }
+
+  .lola-ambassador__spark {
+    background: currentColor;
+    color: var(--amb-ink);
+    height: 0.35rem;
+    opacity: 0.72;
+    position: absolute;
+    transform: rotate(45deg);
+    width: 0.35rem;
+  }
+
+  .lola-ambassador__spark::before,
+  .lola-ambassador__spark::after {
+    background: currentColor;
+    content: "";
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .lola-ambassador__spark::before {
+    height: 1.35rem;
+    width: 0.18rem;
+  }
+
+  .lola-ambassador__spark::after {
+    height: 0.18rem;
+    width: 1.35rem;
+  }
+
+  .lola-ambassador__spark--one {
+    left: 34%;
+    top: 56%;
+  }
+
+  .lola-ambassador__spark--two {
+    right: 26%;
+    top: 39%;
+  }
+
+  .lola-ambassador__hero-inner {
+    margin: 0 auto;
+    max-width: 59rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .lola-ambassador__hero h1 {
+    font-size: clamp(3rem, 9vw, 6.9rem);
+    margin: 0;
+  }
+
+  .lola-ambassador__hero-pill {
+    background: var(--amb-pink);
+    color: #fff;
+    display: inline-block;
+    margin: 0.14em 0 0.08em;
+    padding: 0.03em 0.18em 0.08em;
+    transform: rotate(-2deg);
+  }
+
+  .lola-ambassador__intro {
+    color: var(--amb-muted);
+    font-size: clamp(1rem, 2vw, 1.12rem);
+    margin: 1.55rem auto 0;
+    max-width: 42rem;
+  }
+
+  .lola-ambassador__button {
+    align-items: center;
+    background: var(--amb-ink);
+    border: 2px solid var(--amb-ink);
+    border-radius: 999px;
+    box-shadow: 0.42rem 0.42rem 0 rgba(15, 15, 19, 0.12);
+    color: #fff;
+    display: inline-flex;
+    font-size: 0.78rem;
+    font-weight: 800;
+    justify-content: center;
+    letter-spacing: 0.1em;
+    margin-top: 2rem;
+    min-height: 3.1rem;
+    padding: 0.9rem 1.65rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+  }
+
+  .lola-ambassador__button:hover,
+  .lola-ambassador__button:focus-visible {
+    background: var(--amb-pink);
+    color: #fff;
+    transform: translate(-0.12rem, -0.12rem);
+  }
+
+  .lola-ambassador__section {
+    padding: clamp(4.5rem, 8vw, 6.25rem) 1.25rem;
+  }
+
+  .lola-ambassador__section--soft {
+    background: var(--amb-pink-soft);
+  }
+
+  .lola-ambassador__section--cream {
+    background: linear-gradient(180deg, #fff 0%, var(--amb-cream) 100%);
+  }
+
+  .lola-ambassador__section-head {
+    margin: 0 auto clamp(2.4rem, 5vw, 3.25rem);
+    max-width: 44rem;
+    text-align: center;
+  }
+
+  .lola-ambassador__section-head h2 {
+    font-size: clamp(2.1rem, 5.4vw, 4rem);
+    margin: 0;
+  }
+
+  .lola-ambassador__section-head p {
+    color: var(--amb-muted);
+    margin: 0.9rem auto 0;
+    max-width: 38rem;
+  }
+
+  .lola-ambassador__grid {
+    display: grid;
+    gap: 1.15rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin: 0 auto;
+    max-width: 72rem;
+  }
+
+  .lola-ambassador__perk,
+  .lola-ambassador__step,
+  .lola-ambassador__shopmy,
+  .lola-ambassador__faq details {
+    border: 2px solid var(--amb-border);
+    box-shadow: var(--amb-shadow);
+  }
+
+  .lola-ambassador__perk {
+    border-radius: 1.25rem;
+    min-height: 15rem;
+    padding: 1.45rem;
+  }
+
+  .lola-ambassador__perk:nth-child(1) {
+    background: var(--amb-pink-soft);
+  }
+
+  .lola-ambassador__perk:nth-child(2) {
+    background: var(--amb-lilac);
+  }
+
+  .lola-ambassador__perk:nth-child(3) {
+    background: var(--amb-sky);
+  }
+
+  .lola-ambassador__perk:nth-child(4) {
+    background: var(--amb-cream);
+  }
+
+  .lola-ambassador__perk-icon {
+    align-items: center;
+    background: #fff;
+    border: 2px solid var(--amb-border);
+    border-radius: 50%;
+    display: inline-flex;
+    font-family: "Archivo Black", "Inter", sans-serif;
+    font-size: 1rem;
+    height: 3rem;
+    justify-content: center;
+    margin-bottom: 1.05rem;
+    width: 3rem;
+  }
+
+  .lola-ambassador__perk h3,
+  .lola-ambassador__step h3 {
+    font-family: "Archivo Black", "Inter", sans-serif;
+    font-size: 1.05rem;
+    letter-spacing: 0;
+    line-height: 1.05;
+    margin: 0 0 0.65rem;
+    text-transform: uppercase;
+  }
+
+  .lola-ambassador__perk p,
+  .lola-ambassador__step p,
+  .lola-ambassador__faq p {
+    color: var(--amb-muted);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  .lola-ambassador__steps {
+    display: grid;
+    gap: 1.35rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin: 0 auto;
+    max-width: 72rem;
+  }
+
+  .lola-ambassador__step {
+    background: #fff;
+    border-radius: 1.35rem;
+    min-height: 13rem;
+    padding: 2.5rem 1.65rem 1.65rem;
+    position: relative;
+  }
+
+  .lola-ambassador__step-number {
+    align-items: center;
+    background: var(--amb-pink);
+    border: 2px solid var(--amb-border);
+    border-radius: 50%;
+    color: #fff;
+    display: inline-flex;
+    font-family: "Archivo Black", "Inter", sans-serif;
+    height: 3.35rem;
+    justify-content: center;
+    left: 1.15rem;
+    position: absolute;
+    top: -1.3rem;
+    width: 3.35rem;
+  }
+
+  .lola-ambassador__shopmy {
+    background: #fff;
+    border-radius: 1.6rem;
+    margin: 0 auto;
+    max-width: 54rem;
+    padding: clamp(2rem, 5vw, 3.4rem);
+    text-align: center;
+  }
+
+  .lola-ambassador__shopmy h2 {
+    font-size: clamp(2.6rem, 7vw, 5.2rem);
+    margin: 0;
+  }
+
+  .lola-ambassador__shopmy p {
+    color: var(--amb-muted);
+    margin: 1rem auto 0;
+    max-width: 42rem;
+  }
+
+  .lola-ambassador__faq {
+    margin: 0 auto;
+    max-width: 48rem;
+  }
+
+  .lola-ambassador__faq details {
+    background: #fff;
+    border-radius: 1rem;
+    margin-bottom: 0.85rem;
+    padding: 1rem 1.25rem;
+  }
+
+  .lola-ambassador__faq summary {
+    cursor: pointer;
+    font-family: "Archivo Black", "Inter", sans-serif;
+    font-size: 0.94rem;
+    letter-spacing: 0;
+    list-style: none;
+    text-transform: uppercase;
+  }
+
+  .lola-ambassador__faq summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .lola-ambassador__faq summary::after {
+    content: "+";
+    float: right;
+    font-family: "Archivo Black", "Inter", sans-serif;
+  }
+
+  .lola-ambassador__faq details[open] summary {
+    margin-bottom: 0.75rem;
+  }
+
+  .lola-ambassador__faq details[open] summary::after {
+    content: "-";
+  }
+
+  .lola-ambassador__footer {
+    background: var(--amb-pink);
+    color: #fff;
+    padding: 3.4rem 1.25rem;
+    text-align: center;
+  }
+
+  .lola-ambassador__footer .lola-ambassador__wordmark::after {
+    color: #fff;
+  }
+
+  .lola-ambassador__footer p {
+    font-size: 0.8rem;
+    margin: 1.25rem 0 0;
+    opacity: 0.88;
+  }
+
+  @media (max-width: 900px) {
+    .lola-ambassador__grid,
+    .lola-ambassador__steps {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 620px) {
+    .lola-ambassador__bar {
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+    }
+
+    .lola-ambassador__hero {
+      min-height: 37rem;
+      padding-top: 4.1rem;
+    }
+
+    .lola-ambassador__hero::before,
+    .lola-ambassador__hero::after,
+    .lola-ambassador__spark {
+      display: none;
+    }
+
+    .lola-ambassador__hero h1 {
+      font-size: clamp(2.85rem, 16vw, 4.4rem);
+    }
+
+    .lola-ambassador__button {
+      width: min(100%, 20rem);
+    }
+
+    .lola-ambassador__grid,
+    .lola-ambassador__steps {
+      grid-template-columns: 1fr;
+    }
+
+    .lola-ambassador__perk,
+    .lola-ambassador__step,
+    .lola-ambassador__shopmy,
+    .lola-ambassador__faq details {
+      box-shadow: 5px 5px 0 rgba(15, 15, 19, 0.1);
+    }
+  }
+</style>
+
+<div class="lola-ambassador">
+  <div class="lola-ambassador__bar">Now accepting new ambassadors - apply below</div>
+
+  <header class="lola-ambassador__brand" aria-label="Lola + The Boys">
+    <div>
+      <div class="lola-ambassador__wordmark">Lola</div>
+      <span class="lola-ambassador__tag">+ The Boys</span>
+    </div>
+  </header>
+
+  <section class="lola-ambassador__hero">
+    <span class="lola-ambassador__spark lola-ambassador__spark--one" aria-hidden="true"></span>
+    <span class="lola-ambassador__spark lola-ambassador__spark--two" aria-hidden="true"></span>
+    <div class="lola-ambassador__hero-inner">
+      <span class="lola-ambassador__script">calling all sparkle-makers</span>
+      <h1 class="lola-ambassador__display">
+        Become a<br>
+        <span class="lola-ambassador__hero-pill">Lola</span><br>
+        Ambassador
+      </h1>
+      <p class="lola-ambassador__intro">
+        Join the Lola + The Boys crew. Get gifted our latest drops, share the sparkle with your community, and earn commission on every sale - powered by ShopMY.
+      </p>
+      <a class="lola-ambassador__button" href="https://shopmy.us/signup?smscode=LOLAANDTHEBOYS-2026&autoSubmitCode=true" target="_blank" rel="noopener">
+        Sign up on ShopMY
+      </a>
+    </div>
+  </section>
+
+  <section class="lola-ambassador__section">
+    <div class="lola-ambassador__section-head">
+      <span class="lola-ambassador__script">what you get</span>
+      <h2 class="lola-ambassador__display">Ambassador Perks</h2>
+    </div>
+
+    <div class="lola-ambassador__grid">
+      <article class="lola-ambassador__perk">
+        <span class="lola-ambassador__perk-icon" aria-hidden="true">01</span>
+        <h3>Free Gifting</h3>
+        <p>Receive seasonal drops of our most-loved styles to wear, style, and share.</p>
+      </article>
+
+      <article class="lola-ambassador__perk">
+        <span class="lola-ambassador__perk-icon" aria-hidden="true">02</span>
+        <h3>Commission on Sales</h3>
+        <p>Earn on every order through your ShopMY link, with tracking handled in your creator account.</p>
+      </article>
+
+      <article class="lola-ambassador__perk">
+        <span class="lola-ambassador__perk-icon" aria-hidden="true">03</span>
+        <h3>Featured by Lola</h3>
+        <p>Get reposted on our social channels and considered for Lola + The Boys campaigns.</p>
+      </article>
+
+      <article class="lola-ambassador__perk">
+        <span class="lola-ambassador__perk-icon" aria-hidden="true">04</span>
+        <h3>Early Access</h3>
+        <p>Preview new arrivals, exclusive drops, and seasonal edits before everyone else.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="lola-ambassador__section lola-ambassador__section--soft">
+    <div class="lola-ambassador__section-head">
+      <span class="lola-ambassador__script">it's easy</span>
+      <h2 class="lola-ambassador__display">How It Works</h2>
+      <p>Apply through ShopMY, get connected to the Lola collaborator program, then start sharing your favorite looks.</p>
+    </div>
+
+    <div class="lola-ambassador__steps">
+      <article class="lola-ambassador__step">
+        <span class="lola-ambassador__step-number">01</span>
+        <h3>Apply</h3>
+        <p>Sign up on ShopMY using the Lola referral link. The form only takes a few minutes.</p>
+      </article>
+
+      <article class="lola-ambassador__step">
+        <span class="lola-ambassador__step-number">02</span>
+        <h3>Get Approved</h3>
+        <p>Once accepted, we will invite you into our ShopMY collaborator program and set up your affiliate link.</p>
+      </article>
+
+      <article class="lola-ambassador__step">
+        <span class="lola-ambassador__step-number">03</span>
+        <h3>Share and Earn</h3>
+        <p>Post your Lola looks, share your link, and earn commission when your community shops.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="lola-ambassador__section lola-ambassador__section--cream">
+    <div class="lola-ambassador__shopmy">
+      <span class="lola-ambassador__script">powered by</span>
+      <h2 class="lola-ambassador__display">ShopMY</h2>
+      <p>
+        We manage gifting, commission tracking, affiliate links, and creator payouts through ShopMY. It is free to join, simple to use, and built for creators who want clear tracking on every sale.
+      </p>
+      <a class="lola-ambassador__button" href="https://shopmy.us/signup?smscode=LOLAANDTHEBOYS-2026&autoSubmitCode=true" target="_blank" rel="noopener">
+        Apply now
+      </a>
+    </div>
+  </section>
+
+  <section class="lola-ambassador__section">
+    <div class="lola-ambassador__section-head">
+      <span class="lola-ambassador__script">got questions?</span>
+      <h2 class="lola-ambassador__display">FAQ</h2>
+    </div>
+
+    <div class="lola-ambassador__faq">
+      <details>
+        <summary>Who can apply?</summary>
+        <p>Parents, kids' style creators, and anyone with an engaged community that loves fashion, family, and fun. There is no strict follower minimum - engagement and brand fit matter most.</p>
+      </details>
+
+      <details>
+        <summary>Do I need a ShopMY account?</summary>
+        <p>Yes. All gifting, affiliate links, tracking, and payouts run through ShopMY. It is free to sign up.</p>
+      </details>
+
+      <details>
+        <summary>How much commission can I earn?</summary>
+        <p>Commission details are shared after acceptance and may vary by tier. Top-performing ambassadors may also unlock bonus opportunities and exclusive gifting.</p>
+      </details>
+
+      <details>
+        <summary>Do I have to buy products to apply?</summary>
+        <p>No. Approved ambassadors are eligible to receive gifted products from seasonal drops.</p>
+      </details>
+
+      <details>
+        <summary>How do payouts work?</summary>
+        <p>ShopMY handles sale tracking and payouts directly through your creator account, typically on a monthly schedule once minimum payout requirements are met.</p>
+      </details>
+    </div>
+  </section>
+
+  <footer class="lola-ambassador__footer">
+    <div class="lola-ambassador__wordmark">Lola</div>
+    <span class="lola-ambassador__tag">+ The Boys</span>
+    <p>&copy; {{ 'now' | date: '%Y' }} Lola + The Boys. All rights reserved.</p>
+  </footer>
+</div>
