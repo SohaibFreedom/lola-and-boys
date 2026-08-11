@@ -10,7 +10,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:wght@400&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:wght@400&family=Nunito:wght@400;500;600;700;800&family=Sofia+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
   .lola-ty {
@@ -24,8 +24,13 @@
       radial-gradient(circle at 12% 72%, rgba(255, 255, 255, 0.82) 0 0.32rem, transparent 0.35rem),
       radial-gradient(circle at 76% 14%, rgba(255, 255, 255, 0.78) 0 0.28rem, transparent 0.31rem),
       linear-gradient(135deg, var(--ty-lavender) 0%, #fef0f4 38%, var(--ty-pink-soft) 74%, #fff 100%);
-    color: var(--ty-ink);
-    font-family: "Nunito", "Sofia Pro", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--ty-ink) !important;
+    font-family: "Sofia Pro", "Sofia Sans", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+    font-size: 16px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    letter-spacing: 0 !important;
+    line-height: 1.5 !important;
     min-height: 100vh;
     overflow: hidden;
     position: relative;
@@ -36,6 +41,11 @@
   .lola-ty *::before,
   .lola-ty *::after {
     box-sizing: border-box;
+  }
+
+  .lola-ty :is(h1, h2, h3, p, a, div, span) {
+    font-family: "Sofia Pro", "Sofia Sans", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+    letter-spacing: 0 !important;
   }
 
   .lola-ty__stars {
@@ -118,23 +128,27 @@
   }
 
   .lola-ty__title {
-    font-family: "Noto Serif Display", Georgia, "Times New Roman", serif;
-    font-size: clamp(5.4rem, 13.02vw, 15.625rem);
-    font-weight: 400;
-    letter-spacing: 0;
-    line-height: 0.44;
-    margin: 0;
+    font-family: "Noto Serif Display", Georgia, "Times New Roman", serif !important;
+    font-size: clamp(5.4rem, 13.02vw, 15.625rem) !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    letter-spacing: 0 !important;
+    line-height: 0.44 !important;
+    margin: 0 !important;
+    text-transform: none !important;
     white-space: nowrap;
   }
 
   .lola-ty__received {
-    color: var(--ty-pink);
-    font-size: clamp(1.55rem, 3.125vw, 3.75rem);
-    font-weight: 700;
-    letter-spacing: 0.015em;
-    line-height: 0.82;
-    margin: clamp(3.1rem, 7.65vw, 9.2rem) 0 0;
-    text-transform: uppercase;
+    color: var(--ty-pink) !important;
+    font-family: "Sofia Pro", "Sofia Sans", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+    font-size: clamp(1.55rem, 3.125vw, 3.75rem) !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.015em !important;
+    line-height: 0.82 !important;
+    margin: clamp(3.1rem, 7.65vw, 9.2rem) 0 0 !important;
+    text-transform: uppercase !important;
   }
 
   .lola-ty__rule {
@@ -145,11 +159,14 @@
   }
 
   .lola-ty__message {
-    font-size: clamp(1.55rem, 2.86vw, 3.4375rem);
-    font-weight: 600;
-    line-height: 1.4;
-    margin: clamp(2.6rem, 5.1vw, 6.1rem) auto 0;
+    font-family: "Sofia Pro", "Sofia Sans", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+    font-size: clamp(1.55rem, 2.86vw, 3.4375rem) !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin: clamp(2.6rem, 5.1vw, 6.1rem) auto 0 !important;
     max-width: 60.25rem;
+    text-transform: none !important;
   }
 
   .lola-ty__card {
@@ -182,40 +199,60 @@
   }
 
   .lola-ty__card h2 {
-    font-size: clamp(1.8rem, 2.6vw, 3.125rem);
-    font-weight: 800;
-    line-height: 0.98;
-    margin: 0 0 0.7rem;
+    color: var(--ty-ink) !important;
+    font-family: "Sofia Pro", "Sofia Sans", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+    font-size: clamp(1.8rem, 2.6vw, 3.125rem) !important;
+    font-style: normal !important;
+    font-weight: 800 !important;
+    letter-spacing: 0 !important;
+    line-height: 0.98 !important;
+    margin: 0 0 0.7rem !important;
+    text-transform: none !important;
   }
 
   .lola-ty__card p {
-    font-size: clamp(1.05rem, 1.56vw, 1.875rem);
-    font-weight: 500;
-    line-height: 1.633;
-    margin: 0;
+    color: var(--ty-ink) !important;
+    font-family: "Sofia Pro", "Sofia Sans", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+    font-size: clamp(1.05rem, 1.56vw, 1.875rem) !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    line-height: 1.633 !important;
+    margin: 0 !important;
+    text-transform: none !important;
   }
 
   .lola-ty__card a {
-    color: var(--ty-pink);
-    text-decoration: underline;
-    text-underline-offset: 0.08em;
+    color: var(--ty-pink) !important;
+    font-family: "Sofia Pro", "Sofia Sans", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    line-height: inherit !important;
+    text-decoration: underline !important;
+    text-underline-offset: 0.08em !important;
   }
 
   .lola-ty__brand {
-    color: var(--ty-pink);
-    font-family: "Noto Serif Display", Georgia, "Times New Roman", serif;
-    font-size: clamp(2.6rem, 4.17vw, 5rem);
-    font-weight: 400;
-    line-height: 1.375;
-    margin: clamp(3.6rem, 7.4vw, 8.9rem) 0 0;
+    color: var(--ty-pink) !important;
+    font-family: "Noto Serif Display", Georgia, "Times New Roman", serif !important;
+    font-size: clamp(2.6rem, 4.17vw, 5rem) !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    letter-spacing: 0 !important;
+    line-height: 1.375 !important;
+    margin: clamp(3.6rem, 7.4vw, 8.9rem) 0 0 !important;
+    text-transform: none !important;
   }
 
   .lola-ty__closing {
-    font-size: clamp(1.2rem, 1.82vw, 2.1875rem);
-    font-weight: 500;
-    line-height: 1.46;
-    margin: 0.35rem auto 0;
+    color: var(--ty-ink) !important;
+    font-family: "Sofia Pro", "Sofia Sans", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+    font-size: clamp(1.2rem, 1.82vw, 2.1875rem) !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    line-height: 1.46 !important;
+    margin: 0.35rem auto 0 !important;
     max-width: 39.0625rem;
+    text-transform: none !important;
   }
 
   @media (max-width: 900px) {
@@ -225,12 +262,12 @@
     }
 
     .lola-ty__title {
-      font-size: clamp(4.1rem, 20vw, 7.4rem);
+      font-size: clamp(4.1rem, 20vw, 7.4rem) !important;
     }
 
     .lola-ty__received {
-      line-height: 1.08;
-      margin-top: 3.4rem;
+      line-height: 1.08 !important;
+      margin-top: 3.4rem !important;
     }
 
     .lola-ty__message {
@@ -287,15 +324,15 @@
     }
 
     .lola-ty__title {
-      font-size: clamp(3.45rem, 17vw, 4.8rem);
+      font-size: clamp(3.45rem, 17vw, 4.8rem) !important;
     }
 
     .lola-ty__received {
-      font-size: 1.25rem;
+      font-size: 1.25rem !important;
     }
 
     .lola-ty__message {
-      font-size: 1.35rem;
+      font-size: 1.35rem !important;
     }
   }
 </style>
