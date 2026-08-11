@@ -72,8 +72,8 @@ body:not(.usf-mobile) .usf-grid-el-1-6 {
     left: 0;
     opacity: 0;
 }
-.usf-grid .image__container:hover { 
-    opacity: 1s;
+.usf-grid .image__container:hover img.secondary{ 
+    opacity: 1;
 }
 
 body:not(.usf-collections-page) .usf-sr-inputbox {
@@ -113,6 +113,7 @@ body:not(.usf-collections-page) .usf-filters-horz .usf-sr-config {
 }
 
 /* End custom theme code */
+
 
 
 /* Begin common theme code */
