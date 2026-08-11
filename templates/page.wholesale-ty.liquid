@@ -2,10 +2,10 @@
   Lola + The Boys - Wholesale thank-you page
 
   Shopify install:
-  1. Upload assets/lola-ty-envelope.png and assets/lola-ty-heart.png to the theme Assets folder.
+  1. This template uses the provided Shopify CDN icon URLs directly.
   2. Add a new page template named "wholesale-ty".
   3. Paste this file into templates/page.wholesale-ty.liquid.
-  4. Assign the template to the thank-you page shown after ambassador applications.
+  4. Assign the template to the wholesale thank-you page.
 {% endcomment %}
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -121,8 +121,8 @@
   .lola-ty__inner {
     margin: 0 auto;
     max-width: 1920px;
-    min-height: clamp(58rem, 118.55vw, 142.25rem);
-    padding: clamp(7.5rem, 18vw, 22rem) clamp(1.25rem, 4vw, 8.4rem) clamp(4rem, 10vw, 7.75rem);
+    min-height: clamp(58rem, 103.54vw, 124.25rem);
+    padding: clamp(7.5rem, 18.39vw, 22.0625rem) clamp(1.25rem, 4vw, 8.4rem) clamp(4rem, 10vw, 7.75rem);
     position: relative;
     z-index: 1;
   }
@@ -144,7 +144,7 @@
     font-family: "Sofia Pro", "Sofia Sans", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
     font-size: clamp(1.55rem, 3.125vw, 3.75rem) !important;
     font-style: normal !important;
-    font-weight: 700 !important;
+    font-weight: 500 !important;
     letter-spacing: 0.015em !important;
     line-height: 0.82 !important;
     margin: clamp(3.1rem, 7.65vw, 9.2rem) 0 0 !important;
@@ -162,9 +162,9 @@
     font-family: "Sofia Pro", "Sofia Sans", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
     font-size: clamp(1.55rem, 2.86vw, 3.4375rem) !important;
     font-style: normal !important;
-    font-weight: 600 !important;
+    font-weight: 400 !important;
     line-height: 1.4 !important;
-    margin: clamp(2.6rem, 5.1vw, 6.1rem) auto 0 !important;
+    margin: clamp(2.6rem, 4.53vw, 5.4375rem) auto 0 !important;
     max-width: 60.25rem;
     text-transform: none !important;
   }
@@ -177,7 +177,7 @@
     display: grid;
     gap: clamp(1.5rem, 3.5vw, 4.25rem);
     grid-template-columns: 15.5rem minmax(18rem, 1fr) 0.3125rem 14rem minmax(18rem, 1fr);
-    margin: clamp(4.3rem, 8.6vw, 10.3rem) auto 0;
+    margin: clamp(4.3rem, 7.03vw, 8.4375rem) auto 0;
     max-width: 103.3125rem;
     min-height: clamp(13rem, 20.52vw, 24.625rem);
     padding: clamp(2rem, 4.2vw, 4.5rem) clamp(2rem, 4.5vw, 6.5rem);
@@ -203,7 +203,7 @@
     font-family: "Sofia Pro", "Sofia Sans", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
     font-size: clamp(1.8rem, 2.6vw, 3.125rem) !important;
     font-style: normal !important;
-    font-weight: 800 !important;
+    font-weight: 700 !important;
     letter-spacing: 0 !important;
     line-height: 0.98 !important;
     margin: 0 0 0.7rem !important;
@@ -215,7 +215,7 @@
     font-family: "Sofia Pro", "Sofia Sans", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
     font-size: clamp(1.05rem, 1.56vw, 1.875rem) !important;
     font-style: normal !important;
-    font-weight: 500 !important;
+    font-weight: 400 !important;
     line-height: 1.633 !important;
     margin: 0 !important;
     text-transform: none !important;
@@ -239,7 +239,7 @@
     font-weight: 400 !important;
     letter-spacing: 0 !important;
     line-height: 1.375 !important;
-    margin: clamp(3.6rem, 7.4vw, 8.9rem) 0 0 !important;
+    margin: clamp(3.6rem, 6.2vw, 7.4375rem) 0 0 !important;
     text-transform: none !important;
   }
 
@@ -248,7 +248,7 @@
     font-family: "Sofia Pro", "Sofia Sans", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
     font-size: clamp(1.2rem, 1.82vw, 2.1875rem) !important;
     font-style: normal !important;
-    font-weight: 500 !important;
+    font-weight: 400 !important;
     line-height: 1.46 !important;
     margin: 0.35rem auto 0 !important;
     max-width: 39.0625rem;
@@ -379,7 +379,7 @@
     </p>
 
     <div class="lola-ty__card">
-      <img class="lola-ty__icon" src="{{ 'lola-ty-envelope.png' | asset_url }}" alt="">
+      <img class="lola-ty__icon" src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/image_136.png?v=1786471832" alt="">
 
       <div>
         <h2>We&rsquo;ll be in touch</h2>
@@ -388,7 +388,7 @@
 
       <div class="lola-ty__divider" aria-hidden="true"></div>
 
-      <img class="lola-ty__icon" src="{{ 'lola-ty-heart.png' | asset_url }}" alt="">
+      <img class="lola-ty__icon" src="https://cdn.shopify.com/s/files/1/0002/0647/1226/files/image_138.png?v=1786471832" alt="">
 
       <div>
         <h2>Questions?</h2>
