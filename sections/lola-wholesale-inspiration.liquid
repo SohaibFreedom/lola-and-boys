@@ -1,0 +1,188 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Noto+Serif+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/sofia-pro" rel="stylesheet">
+
+<section class="lola-wholesale-inspiration">
+  <style>
+    .lola-wholesale-inspiration {
+      overflow: hidden;
+      width: 100%;
+      padding: 42px 0 76px;
+      background-color: #ffe5ef;
+      color: #000;
+    }
+
+    .lola-wholesale-inspiration > div {
+      width: calc(100% - 164px);
+      max-width: 1755px;
+      margin: 0 auto;
+    }
+
+    .lola-wholesale-inspiration header {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 47px;
+    }
+
+    .lola-wholesale-inspiration h2 {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 577px;
+      min-height: 86px;
+      margin: 0;
+      padding: 0 48px;
+      border: 1px solid #ff73cb;
+      border-radius: 81px;
+      color: #ff73cb;
+      font-family: "Sofia Pro" !important;
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 1.09;
+      letter-spacing: 0;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .lola-wholesale-inspiration ul {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 60px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .lola-wholesale-inspiration article {
+      overflow: hidden;
+      border-radius: 39px;
+    }
+
+    .lola-wholesale-inspiration img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 545 / 337;
+      object-fit: cover;
+    }
+
+    @media screen and (max-width: 1204px) {
+      .lola-wholesale-inspiration {
+        padding: 34px 0 60px;
+      }
+
+      .lola-wholesale-inspiration > div {
+        width: calc(100% - 64px);
+      }
+
+      .lola-wholesale-inspiration h2 {
+        min-width: 430px;
+        min-height: 68px;
+        font-size: 23px;
+      }
+
+      .lola-wholesale-inspiration ul {
+        gap: 34px;
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      .lola-wholesale-inspiration {
+        padding: 32px 0 48px;
+      }
+
+      .lola-wholesale-inspiration > div {
+        width: calc(100% - 32px);
+      }
+
+      .lola-wholesale-inspiration header {
+        margin-bottom: 28px;
+      }
+
+      .lola-wholesale-inspiration h2 {
+        width: 100%;
+        min-width: 0;
+        min-height: 56px;
+        padding: 0 22px;
+        font-size: 14px;
+      }
+
+      .lola-wholesale-inspiration ul {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .lola-wholesale-inspiration article {
+        border-radius: 24px;
+      }
+    }
+  </style>
+
+  <div>
+    <header>
+      <h2>{{ section.settings.heading | escape }}</h2>
+    </header>
+
+    <ul>
+      {% for block in section.blocks %}
+        <li {{ block.shopify_attributes }}>
+          <article>
+            {% if block.settings.image != blank %}
+              <img src="{{ block.settings.image | image_url: width: 1100 }}" alt="{{ block.settings.alt | escape }}" loading="lazy">
+            {% endif %}
+          </article>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Lola in-store inspiration",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "In-store inspiration"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Alt text",
+          "default": "Lola and The Boys store"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lola in-store inspiration",
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,326 @@
+{% liquid
+  assign desktop_background = section.settings.desktop_background
+  assign mobile_background = section.settings.mobile_background
+%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Noto+Serif+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/sofia-pro" rel="stylesheet">
+
+<section class="lola-wholesale-hero">
+  <style>
+    .lola-wholesale-hero {
+      position: relative;
+      isolation: isolate;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      width: 100%;
+      height: 100vh;
+      {% if desktop_background != blank %}
+        background-image: url('{{ desktop_background | image_url: width: 2400 }}');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      {% endif %}
+    }
+
+    .lola-wholesale-hero::before,
+    .lola-wholesale-hero::after,
+    .lola-wholesale-hero > div::before {
+      content: "";
+      display: none;
+      position: absolute;
+      z-index: 1;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      pointer-events: none;
+    }
+
+    .lola-wholesale-hero > div {
+      position: relative;
+      z-index: 2;
+      width: 805px;
+      max-width: 805px;
+      margin-left: 106px;
+    }
+
+    .lola-wholesale-hero h1 {
+      margin: 0;
+      color: #000;
+      font-family: "Noto Serif Display" !important;
+      font-size: 82px;
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: 0;
+    text-transform: math-auto;
+    }
+
+    .lola-wholesale-hero h1 em {
+      display: block;
+      color: #ff73cb;
+      font-style: italic;
+    }
+
+    .lola-wholesale-hero h1::after {
+      content: "";
+      display: block;
+      width: 16.7%;
+      min-width: 90px;
+      height: 3px;
+      margin: 20px 0 0 9px;
+      background: #ff73cb;
+    }
+
+    .lola-wholesale-hero p {
+      max-width: 643px;
+      margin: 27px 0 0;
+      color: #000;
+      font-family: "Sofia Pro" !important;
+      font-size: 29px;
+      font-weight: 400;
+      line-height: 1.225;
+      letter-spacing: 0;
+    }
+
+    .lola-wholesale-hero a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 551px;
+      min-height: 96px;
+      margin-top: 67px;
+      padding: 0 36px;
+      background: #f790d1;
+      color: #fff;
+      font-family: Montserrat !important;
+      font-size: 23px;
+      font-weight: 600;
+      line-height: 1.36;
+      letter-spacing: 0;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    @media screen and (max-width: 1204px) {
+      .lola-wholesale-hero {
+        height: 620px;
+      }
+
+      .lola-wholesale-hero > div {
+        width: 520px;
+        margin-left: 54px;
+      }
+
+      .lola-wholesale-hero h1 {
+        font-size: 54px;
+      }
+
+      .lola-wholesale-hero p {
+        font-size: 20px;
+      }
+
+      .lola-wholesale-hero a {
+        min-width: 360px;
+        min-height: 68px;
+        margin-top: 42px;
+        font-size: 16px;
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      .lola-wholesale-hero {
+        align-items: flex-start;
+        height: auto;
+        aspect-ratio: 830 / 1184;
+        {% if mobile_background != blank %}
+          background-image: url('{{ mobile_background | image_url: width: 900 }}');
+          background-position: center top;
+          background-size: cover;
+          background-repeat: no-repeat;
+        {% elsif desktop_background != blank %}
+          background-image: url('{{ desktop_background | image_url: width: 1200 }}');
+          background-position: center top;
+          background-size: cover;
+          background-repeat: no-repeat;
+        {% endif %}
+      }
+
+      .lola-wholesale-hero::before {
+        display: block;
+        top: 68px;
+        left: 16px;
+        width: 34px;
+        height: 38px;
+        background-image: url('https://cdn.shopify.com/s/files/1/0002/0647/1226/files/models_1_40.png?v=1786128441');
+      }
+
+      .lola-wholesale-hero::after {
+        display: block;
+        top: 48px;
+        right: 112px;
+        width: 38px;
+        height: 42px;
+        background-image: url('https://cdn.shopify.com/s/files/1/0002/0647/1226/files/models_1_38.png?v=1786128441');
+      }
+
+      .lola-wholesale-hero > div {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        max-width: none;
+        height: 100%;
+        margin-left: 0;
+      }
+
+      .lola-wholesale-hero > div::before {
+        display: block;
+        top: 158px;
+        right: 96px;
+        width: 26px;
+        height: 30px;
+        background-image: url('https://cdn.shopify.com/s/files/1/0002/0647/1226/files/models_1_41.png?v=1786128199');
+      }
+
+      .lola-wholesale-hero h1 {
+        max-width: 88%;
+        margin: 5.4% 0 0 5.8%;
+        font-size: clamp(32px, 8.55vw, 68px);
+        line-height: 1.05;
+      }
+
+      .lola-wholesale-hero h1::after {
+        width: 24vw;
+        min-width: 96px;
+        max-width: 168px;
+        margin: 16px 0 0 3px;
+      }
+
+      .lola-wholesale-hero p {
+        max-width: 67%;
+        margin: 22px 0 0 5.8%;
+        font-size: clamp(15px, 3.85vw, 30px);
+        line-height: 1.17;
+      }
+
+      .lola-wholesale-hero a {
+        position: absolute;
+        top: 86.7%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 61%;
+        min-width: 0;
+        min-height: 0;
+        height: 5.49%;
+        margin-top: 0;
+        padding: 0 18px;
+        font-size: clamp(12px, 3.01vw, 23px);
+      }
+
+      .lola-wholesale-hero::before,
+      .lola-wholesale-hero::after,
+      .lola-wholesale-hero > div::before {
+        display: none;
+      }
+    }
+  </style>
+
+  <div>
+    <h1>
+      {{ section.settings.heading_line_1 | escape }}<br>
+      {{ section.settings.heading_line_2 | escape }}
+      <em>{{ section.settings.heading_accent | escape }}</em>
+    </h1>
+
+    {% if section.settings.subheading != blank %}
+      <p>{{ section.settings.subheading | escape }}</p>
+    {% endif %}
+
+    {% if section.settings.button_text != blank %}
+      <a href="{% if section.settings.button_link != blank %}{{ section.settings.button_link }}{% else %}#lola-wholesale-application{% endif %}" data-lola-scroll-to-application>{{ section.settings.button_text | escape }}</a>
+    {% endif %}
+  </div>
+</section>
+
+<script>
+  (function () {
+    if (window.lolaWholesaleApplicationScroll) return;
+    window.lolaWholesaleApplicationScroll = true;
+
+    document.addEventListener("click", function (event) {
+      var trigger = event.target.closest("[data-lola-scroll-to-application]");
+      if (!trigger) return;
+
+      var section = document.querySelector(".lola-wholesale-application");
+      if (!section) return;
+
+      event.preventDefault();
+      var isMobile = window.innerWidth <= 767;
+      var target = section;
+      var offset = isMobile ? 130 : 160;
+      var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top: top, behavior: "smooth" });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Lola wholesale hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "desktop_background",
+      "label": "Desktop background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_background",
+      "label": "Mobile background image"
+    },
+    {
+      "type": "text",
+      "id": "heading_line_1",
+      "label": "Heading line 1",
+      "default": "Become a"
+    },
+    {
+      "type": "text",
+      "id": "heading_line_2",
+      "label": "Heading line 2",
+      "default": "Lola + The Boys"
+    },
+    {
+      "type": "text",
+      "id": "heading_accent",
+      "label": "Heading accent",
+      "default": "Retail Partner"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "One of the fastest-growing premium children’s fashion brands."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Apply for an account"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lola wholesale hero"
+    }
+  ]
+}
+{% endschema %}

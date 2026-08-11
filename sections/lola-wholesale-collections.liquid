@@ -1,0 +1,361 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Noto+Serif+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/sofia-pro" rel="stylesheet">
+
+<section class="lola-wholesale-collections">
+  <style>
+    .lola-wholesale-collections {
+      overflow: hidden;
+      width: 100%;
+      padding: 100px 0 130px;
+      background: #fff;
+      color: #000;
+    }
+
+    .lola-wholesale-collections > div {
+      width: calc(100% - 162px);
+      max-width: 1743px;
+      margin: 0 auto;
+    }
+
+    .lola-wholesale-collections header {
+      position: relative;
+      width: 982px;
+      max-width: 100%;
+      margin: 0 auto 75px;
+      text-align: center;
+    }
+
+    .lola-wholesale-collections header::before,
+    .lola-wholesale-collections header::after {
+      content: "";
+      position: absolute;
+      top: 15px;
+      width: 46px;
+      height: 50px;
+      background-image: url('https://cdn.shopify.com/s/files/1/0002/0647/1226/files/models_1_40.png?v=1786128441');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      pointer-events: none;
+    }
+
+    .lola-wholesale-collections header::before {
+      left: -82px;
+      background-image: url('https://cdn.shopify.com/s/files/1/0002/0647/1226/files/models_1_40.png?v=1786128441');
+    }
+
+    .lola-wholesale-collections header::after {
+      right: -74px;
+      background-image: url('https://cdn.shopify.com/s/files/1/0002/0647/1226/files/models_1_38.png?v=1786128441');
+    }
+
+    .lola-wholesale-collections h2 {
+      margin: 0;
+      font-family: "Noto Serif Display" !important;
+      font-size: 52px;
+      font-weight: 400;
+      line-height: 1.314;
+      letter-spacing: 0;
+    }
+
+    .lola-wholesale-collections h2 em {
+      font-style: italic;
+    }
+
+    .lola-wholesale-collections ul {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .lola-wholesale-collections li {
+      min-width: 0;
+    }
+
+    .lola-wholesale-collections article {
+      text-align: center;
+    }
+
+    .lola-wholesale-collections a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .lola-wholesale-collections figure {
+      margin: 0;
+    }
+
+    .lola-wholesale-collections img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 339 / 532;
+      object-fit: cover;
+    }
+
+    .lola-wholesale-collections figcaption {
+      margin-top: 18px;
+      font-family: "Sofia Pro" !important;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.04;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .lola-wholesale-collections > div > div {
+      display: flex;
+      justify-content: center;
+      margin-top: 57px;
+    }
+
+    .lola-wholesale-collections > div > div a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 804px;
+      min-height: 96px;
+      padding: 0 42px;
+      background: #f790d1;
+      color: #fff;
+      font-family: Montserrat !important;
+      font-size: 23px;
+      font-weight: 600;
+      line-height: 1.36;
+      letter-spacing: 0;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    @media screen and (max-width: 1204px) {
+      .lola-wholesale-collections {
+        padding: 70px 0 90px;
+      }
+
+      .lola-wholesale-collections > div {
+        width: calc(100% - 64px);
+      }
+
+      .lola-wholesale-collections h2 {
+        font-size: 38px;
+      }
+
+      .lola-wholesale-collections ul {
+        gap: 8px;
+      }
+
+      .lola-wholesale-collections figcaption {
+        font-size: 13px;
+      }
+
+      .lola-wholesale-collections header::before {
+        left: -42px;
+      }
+
+      .lola-wholesale-collections header::after {
+        right: -38px;
+      }
+
+      .lola-wholesale-collections > div > div a {
+        width: 560px;
+        min-height: 74px;
+        font-size: 16px;
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      .lola-wholesale-collections {
+        padding: 48px 0 64px;
+      }
+
+      .lola-wholesale-collections > div {
+        width: calc(100% - 32px);
+      }
+
+      .lola-wholesale-collections header {
+        margin-bottom: 36px;
+      }
+
+      .lola-wholesale-collections header::before,
+      .lola-wholesale-collections header::after {
+        display: none;
+      }
+
+      .lola-wholesale-collections h2 {
+        font-size: 22px;
+        line-height: 1.16;
+      }
+
+      .lola-wholesale-collections ul {
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-bottom: 4px;
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .lola-wholesale-collections ul::-webkit-scrollbar {
+        display: none;
+      }
+
+      .lola-wholesale-collections li {
+        flex: 0 0 calc((100% - 10px) / 1.4);
+        scroll-snap-align: start;
+      }
+
+      .lola-wholesale-collections li:last-child:nth-child(odd) {
+        width: auto;
+        margin: 0;
+      }
+
+      .lola-wholesale-collections figcaption {
+        margin-top: 10px;
+        font-size: 11px;
+      }
+
+      .lola-wholesale-collections > div > div {
+        margin-top: 34px;
+      }
+
+      .lola-wholesale-collections > div > div a {
+        width: 100%;
+        min-height: 56px;
+        padding: 0 20px;
+        font-size: 11px;
+      }
+    }
+  </style>
+
+  <div>
+    <header>
+      <h2>
+        <em>{{ section.settings.heading_accent | escape }}</em><br>
+        {{ section.settings.heading_line_2 | escape }}
+      </h2>
+    </header>
+
+    <ul>
+      {% for block in section.blocks %}
+        <li {{ block.shopify_attributes }}>
+          <article>
+            {% if block.settings.link != blank %}<a href="{{ block.settings.link }}">{% endif %}
+              <figure>
+                {% if block.settings.image != blank %}
+                  <img src="{{ block.settings.image | image_url: width: 900 }}" alt="{{ block.settings.title | escape }}" loading="lazy">
+                {% endif %}
+                <figcaption>{{ block.settings.title | escape }}</figcaption>
+              </figure>
+            {% if block.settings.link != blank %}</a>{% endif %}
+          </article>
+        </li>
+      {% endfor %}
+    </ul>
+
+    {% if section.settings.button_text != blank %}
+      <div>
+        <a href="{% if section.settings.button_link != blank %}{{ section.settings.button_link }}{% else %}#lola-wholesale-application{% endif %}" data-lola-scroll-to-application>{{ section.settings.button_text | escape }}</a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Lola collections",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_accent",
+      "label": "Heading accent",
+      "default": "Collections & Styles"
+    },
+    {
+      "type": "text",
+      "id": "heading_line_2",
+      "label": "Heading line 2",
+      "default": "That your customers will love"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Apply to be a Wholesale Partner"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection card",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Dresses"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lola collections",
+      "blocks": [
+        {
+          "type": "collection",
+          "settings": {
+            "title": "Dresses"
+          }
+        },
+        {
+          "type": "collection",
+          "settings": {
+            "title": "Sets"
+          }
+        },
+        {
+          "type": "collection",
+          "settings": {
+            "title": "Denim"
+          }
+        },
+        {
+          "type": "collection",
+          "settings": {
+            "title": "Basics"
+          }
+        },
+        {
+          "type": "collection",
+          "settings": {
+            "title": "Swimwear"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

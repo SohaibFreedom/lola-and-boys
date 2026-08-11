@@ -1,0 +1,578 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Noto+Serif+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/sofia-pro" rel="stylesheet">
+
+<section id="lola-wholesale-application" class="lola-wholesale-application">
+  <style>
+    .lola-wholesale-application {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      padding: 104px 0 50px;
+      background: #fff;
+      color: #000;
+    }
+
+    .lola-wholesale-application::before,
+    .lola-wholesale-application::after {
+      content: "";
+      position: absolute;
+      width: 65px;
+      height: 64px;
+      background-image: url('https://cdn.shopify.com/s/files/1/0002/0647/1226/files/models_1_41.png?v=1786128199');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      pointer-events: none;
+    }
+
+    .lola-wholesale-application::before {
+      top: 382px;
+      left: 273px;
+    }
+
+    .lola-wholesale-application::after {
+      right: 205px;
+      bottom: 198px;
+    }
+
+    .lola-wholesale-application > div {
+      width: calc(100% - 680px);
+      max-width: 1340px;
+      margin: 0 auto;
+    }
+
+    .lola-wholesale-application header {
+      text-align: center;
+    }
+
+    .lola-wholesale-application header p {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 590px;
+      min-height: 86px;
+      margin: 0 0 37px;
+      padding: 0 48px;
+      border: 1px solid #ff73cb;
+      border-radius: 81px;
+      color: #ff73cb;
+      font-family: "Sofia Pro" !important;
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 1.09;
+      letter-spacing: 0;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .lola-wholesale-application h2 {
+      margin: 0;
+      font-family: "Noto Serif Display" !important;
+      font-size: 52px;
+      font-weight: 400;
+      line-height: 1.571;
+      letter-spacing: 0;
+      text-align: center;
+    }
+
+    .lola-wholesale-application h2 em {
+      color: #ff73cb;
+      font-style: italic;
+    }
+
+    .lola-wholesale-application form [data-lola-form-fields] {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 136px;
+      row-gap: 24px;
+      margin-top: 53px;
+    }
+
+    .lola-wholesale-application label {
+      display: block;
+      margin-bottom: 4px;
+      color: #000;
+      font-family: "Sofia Pro" !important;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: normal;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .lola-wholesale-application input,
+    .lola-wholesale-application textarea {
+      display: block;
+      width: 100%;
+      height: 56px;
+      margin: 0;
+      padding: 12px 16px;
+      border: 1px solid rgba(102, 102, 102, .35);
+      border-radius: 12px;
+      background: #fff;
+      color: #000;
+      font-family: "Sofia Pro" !important;
+      font-size: 12px;
+      line-height: normal;
+      letter-spacing: 0;
+      box-shadow: none;
+    }
+
+    .lola-wholesale-application input[type="hidden"],
+    .lola-wholesale-application form > input[name="website"],
+    .lola-wholesale-application iframe[hidden] {
+      display: none !important;
+    }
+
+    .lola-wholesale-application textarea {
+      resize: vertical;
+      min-height: 56px;
+    }
+
+    .lola-wholesale-application form [data-lola-form-fields] > p,
+    .lola-wholesale-application form [data-lola-form-fields] > button,
+    .lola-wholesale-application form [data-lola-form-message] {
+      grid-column: 1 / -1;
+    }
+
+    .lola-wholesale-application form [data-lola-form-fields] > p {
+      position: relative;
+      display: grid;
+      grid-template-columns: 20px minmax(0, 1fr);
+      column-gap: 12px;
+      align-items: start;
+      margin: 14px 0 0;
+      color: #000;
+      font-family: "Sofia Pro" !important;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 20px;
+      letter-spacing: 0;
+    }
+
+    .lola-wholesale-application form [data-lola-form-fields] > p input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      min-height: 20px;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      outline: 0;
+      opacity: 0;
+      appearance: none;
+      -webkit-appearance: none;
+      accent-color: #ff73cb;
+      cursor: pointer;
+    }
+
+    .lola-wholesale-application form [data-lola-form-fields] > p span {
+      display: block;
+      grid-column: 1;
+      grid-row: 1;
+      width: 20px;
+      height: 20px;
+      border: 1px solid #777;
+      background: #fff;
+      box-sizing: border-box;
+      pointer-events: none;
+    }
+
+    .lola-wholesale-application form [data-lola-form-fields] > p input:focus {
+      outline: 0;
+      box-shadow: none;
+    }
+
+    .lola-wholesale-application form [data-lola-form-fields] > p label {
+      display: block;
+      grid-column: 2;
+      grid-row: 1;
+      position: relative;
+      margin: 0;
+      padding-left: 0;
+      color: #000 !important;
+      font-size: 12px !important;
+      line-height: 20px;
+      text-transform: uppercase;
+      opacity: 1 !important;
+      visibility: visible !important;
+      white-space: normal;
+    }
+
+    .lola-wholesale-application form [data-lola-form-fields] > p input:checked + span {
+      background: #ff73cb;
+      box-shadow: inset 0 0 0 4px #fff;
+    }
+
+    .lola-wholesale-application form [data-lola-form-fields] > p a {
+      color: #111;
+      text-decoration: underline;
+      text-underline-position: from-font;
+    }
+
+    .lola-wholesale-application [data-lola-thank-you] {
+      margin: 53px auto 0;
+      max-width: 900px;
+      padding: 58px 64px 62px;
+      border: 1px solid #ff73cb;
+      background: #fff;
+      box-shadow: 0 18px 50px rgba(255, 115, 203, .14);
+      text-align: center;
+    }
+
+    .lola-wholesale-application [data-lola-thank-you][hidden],
+    .lola-wholesale-application [data-lola-form-fields][hidden] {
+      display: none !important;
+    }
+
+    .lola-wholesale-application [data-lola-thank-you] strong {
+      display: block;
+      color: #000;
+      font-family: "Noto Serif Display" !important;
+      font-size: 52px;
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .lola-wholesale-application [data-lola-thank-you] strong::after {
+      content: "";
+      display: block;
+      width: 86px;
+      height: 2px;
+      margin: 18px auto 0;
+      background: #ff73cb;
+    }
+
+    .lola-wholesale-application [data-lola-thank-you] span {
+      display: block;
+      max-width: 760px;
+      margin: 18px auto 0;
+      color: #000;
+      font-family: "Sofia Pro" !important;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.5;
+      letter-spacing: 0;
+    }
+
+    .lola-wholesale-application button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 64px;
+      margin: 14px 0 0;
+      padding: 0 32px;
+      border: 0;
+      border-radius: 0;
+      background: #f790d1;
+      color: #fff;
+      cursor: pointer;
+      font-family: Montserrat !important;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: normal;
+      letter-spacing: 0;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    @media screen and (max-width: 1204px) {
+      .lola-wholesale-application {
+        padding: 78px 0 110px;
+      }
+
+      .lola-wholesale-application > div {
+        width: calc(100% - 128px);
+        max-width: 1040px;
+      }
+
+      .lola-wholesale-application header p {
+        min-width: 430px;
+        min-height: 68px;
+        font-size: 23px;
+      }
+
+      .lola-wholesale-application h2 {
+        font-size: 38px;
+      }
+
+      .lola-wholesale-application::before {
+        top: 330px;
+        left: 24px;
+      }
+
+      .lola-wholesale-application::after {
+        right: 30px;
+        bottom: 150px;
+      }
+
+      .lola-wholesale-application form [data-lola-form-fields] {
+        column-gap: 70px;
+      }
+
+      .lola-wholesale-application [data-lola-thank-you] strong {
+        font-size: 38px;
+      }
+
+      .lola-wholesale-application [data-lola-thank-you] span {
+        font-size: 15px;
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      .lola-wholesale-application {
+        padding: 56px 0 72px;
+      }
+
+      .lola-wholesale-application > div {
+        width: calc(100% - 32px);
+      }
+
+      .lola-wholesale-application header p {
+        width: 100%;
+        min-width: 0;
+        min-height: 56px;
+        margin-bottom: 26px;
+        padding: 0 22px;
+        font-size: 14px;
+      }
+
+      .lola-wholesale-application h2 {
+        font-size: 24px;
+        line-height: 1.22;
+      }
+
+      .lola-wholesale-application::before,
+      .lola-wholesale-application::after {
+        display: none;
+      }
+
+      .lola-wholesale-application form [data-lola-form-fields] {
+        grid-template-columns: 1fr;
+        row-gap: 18px;
+        margin-top: 34px;
+      }
+
+      .lola-wholesale-application label,
+      .lola-wholesale-application input,
+      .lola-wholesale-application textarea,
+      .lola-wholesale-application form [data-lola-form-fields] > p {
+        font-size: 11px;
+      }
+
+      .lola-wholesale-application [data-lola-thank-you] {
+        margin-top: 34px;
+        padding: 34px 24px;
+      }
+
+      .lola-wholesale-application [data-lola-thank-you] strong {
+        font-size: 30px;
+      }
+
+      .lola-wholesale-application [data-lola-thank-you] span {
+        font-size: 13px;
+      }
+
+      .lola-wholesale-application button {
+        min-height: 56px;
+        font-size: 11px;
+      }
+    }
+  </style>
+
+  <div>
+    <header>
+      {% if section.settings.eyebrow != blank %}
+        <p>{{ section.settings.eyebrow | escape }}</p>
+      {% endif %}
+
+      <h2>
+        {{ section.settings.heading_line_1 | escape }}<br>
+        {{ section.settings.heading_line_2 | escape }} <em>{{ section.settings.heading_accent | escape }}</em>
+      </h2>
+    </header>
+
+    <iframe name="LolaWholesaleJotformTarget" title="Wholesale application submission" hidden></iframe>
+
+    <form action="https://submit.jotform.com/submit/262186324555056" method="post" target="LolaWholesaleJotformTarget" accept-charset="utf-8">
+      <input type="hidden" name="formID" value="262186324555056">
+      <input type="hidden" name="simple_spc" value="262186324555056-262186324555056">
+      <input type="hidden" name="q22_emailSender" value="Lola + The Boys">
+      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <div data-lola-form-fields>
+        <div>
+          <label for="LolaBusinessName">Business Name</label>
+          <input id="LolaBusinessName" type="text" name="q9_businessName" autocomplete="organization" required>
+        </div>
+
+        <div>
+          <label for="LolaBuyerName">Buyer’s Name</label>
+          <input id="LolaBuyerName" type="text" name="q19_buyersName" autocomplete="name" required>
+        </div>
+
+        <div>
+          <label for="LolaWebsite">Website</label>
+          <input id="LolaWebsite" type="text" name="q10_website" autocomplete="off" required>
+        </div>
+
+        <div>
+          <label for="LolaEmail">Email Address</label>
+          <input id="LolaEmail" type="email" name="q14_emailAddress" autocomplete="email" required>
+        </div>
+
+        <div>
+          <label for="LolaInstagram">Instagram Handle</label>
+          <input id="LolaInstagram" type="text" name="q20_instagramHandle20" required>
+        </div>
+
+        <div>
+          <label for="LolaPhone">Phone Number</label>
+          <input id="LolaPhone" type="tel" name="q15_phoneNumber[full]" autocomplete="tel" required>
+        </div>
+
+        <div>
+          <label for="LolaLocation">Store Location</label>
+          <input id="LolaLocation" type="text" name="q18_storeLocation" autocomplete="address-level2" required>
+        </div>
+
+        <div>
+          <label for="LolaStoreAbout">Tell us about your store</label>
+          <textarea id="LolaStoreAbout" name="q16_tellUs" required></textarea>
+        </div>
+
+        <p>
+          <input id="LolaTerms" type="checkbox" name="q21_agreement[]" value="BY CREATING AN ACCOUNT, I AGREE TO OUR TERMS OF USE AND PRIVACY POLICY" required>
+          <span aria-hidden="true">&nbsp;</span>
+          <label for="LolaTerms">
+            By creating an account, I agree to our
+            <a href="{{ section.settings.terms_link | default: '#' }}">Terms of use</a>
+            and
+            <a href="{{ section.settings.privacy_link | default: '#' }}">Privacy Policy</a>
+          </label>
+        </p>
+
+        <button type="submit">{{ section.settings.button_text | escape }}</button>
+      </div>
+
+      <div data-lola-thank-you hidden>
+        <strong>{{ section.settings.success_heading | escape }}</strong>
+        <span>{{ section.settings.success_message | escape }}</span>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    (function () {
+      var section = document.currentScript.closest('.lola-wholesale-application');
+      if (!section) return;
+
+      var storageKey = 'lolaWholesaleApplicationSubmitted';
+      var fields = section.querySelector('[data-lola-form-fields]');
+      var thankYou = section.querySelector('[data-lola-thank-you]');
+      var form = section.querySelector('form');
+      var button = section.querySelector('button[type="submit"]');
+
+      function showThankYou() {
+        if (fields) fields.hidden = true;
+        if (thankYou) thankYou.hidden = false;
+      }
+
+      try {
+        if (window.localStorage.getItem(storageKey) === 'true') showThankYou();
+      } catch (error) {}
+
+      if (!form) return;
+
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) return;
+
+        if (button) {
+          button.disabled = true;
+          button.textContent = 'SUBMITTING...';
+        }
+
+        window.setTimeout(function () {
+          try { window.localStorage.setItem(storageKey, 'true'); } catch (error) {}
+          window.location.href = 'https://lolaandtheboys.com/pages/wholesale-thankyou';
+        }, 700);
+      });
+    })();
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "Lola wholesale form",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Let’s work together"
+    },
+    {
+      "type": "text",
+      "id": "heading_line_1",
+      "label": "Heading line 1",
+      "default": "Apply to become a"
+    },
+    {
+      "type": "text",
+      "id": "heading_line_2",
+      "label": "Heading line 2",
+      "default": "Wholesale /"
+    },
+    {
+      "type": "text",
+      "id": "heading_accent",
+      "label": "Heading accent",
+      "default": "Retail Partner"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Submit application"
+    },
+    {
+      "type": "url",
+      "id": "terms_link",
+      "label": "Terms link"
+    },
+    {
+      "type": "url",
+      "id": "privacy_link",
+      "label": "Privacy link"
+    },
+    {
+      "type": "text",
+      "id": "success_heading",
+      "label": "Success heading",
+      "default": "Thank you!"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "Your wholesale application has been submitted. Our team will review your details and get back to you soon."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lola wholesale form"
+    }
+  ]
+}
+{% endschema %}
