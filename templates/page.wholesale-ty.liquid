@@ -27,8 +27,8 @@
     font-weight: 400 !important;
     letter-spacing: 0 !important;
     line-height: 1.5 !important;
-    min-height: 100vh;
-    overflow: hidden;
+    min-height: 0;
+    overflow: visible;
     position: relative;
     text-align: center;
   }
@@ -45,16 +45,16 @@
 
   .lola-ty__inner {
     margin: 0 auto;
-    max-width: 1920px;
-    min-height: clamp(58rem, 103.54vw, 124.25rem);
-    padding: clamp(7.5rem, 18.39vw, 22.0625rem) clamp(1.25rem, 4vw, 8.4rem) clamp(4rem, 10vw, 7.75rem);
+    max-width: 1040px;
+    min-height: 0;
+    padding: 78px 28px 62px;
     position: relative;
     z-index: 1;
   }
 
   .lola-ty__title {
     font-family: "Noto Serif Display", Georgia, "Times New Roman", serif !important;
-    font-size: 216px !important;
+    font-size: 112px !important;
     font-style: normal !important;
     font-weight: 400 !important;
     letter-spacing: 0 !important;
@@ -68,45 +68,45 @@
   .lola-ty__received {
     color: var(--ty-pink) !important;
     font-family: "Sofia Pro", "Sofia Sans", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
-    font-size: 53px !important;
+    font-size: 24px !important;
     font-style: normal !important;
     font-weight: 500 !important;
     letter-spacing: 0.015em !important;
     line-height: 0.82 !important;
-    margin: clamp(3.1rem, 7.65vw, 9.2rem) 0 0 !important;
+    margin: 42px 0 0 !important;
     text-transform: uppercase !important;
   }
 
   .lola-ty__rule {
     background: var(--ty-pink);
-    height: 0.3125rem;
-    margin: clamp(2.25rem, 4.48vw, 5.375rem) auto 0;
-    width: clamp(12rem, 25.1vw, 30.125rem);
+    height: 4px;
+    margin: 30px auto 0;
+    width: 190px;
   }
 
   .lola-ty__message {
     font-family: "Sofia Pro", "Sofia Sans", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
-    font-size: 48px !important;
+    font-size: 24px !important;
     font-style: normal !important;
     font-weight: 400 !important;
     line-height: 1.4 !important;
-    margin: clamp(2.6rem, 4.53vw, 5.4375rem) auto 0 !important;
-    max-width: 60.25rem;
+    margin: 32px auto 0 !important;
+    max-width: 520px;
     text-transform: none !important;
   }
 
   .lola-ty__card {
     align-items: center;
     background: #fff;
-    border-radius: 1.8125rem;
+    border-radius: 18px;
     box-shadow: var(--ty-card-shadow);
     display: grid;
-    gap: clamp(1.5rem, 3.5vw, 4.25rem);
-    grid-template-columns: 15.5rem minmax(18rem, 1fr) 0.3125rem 14rem minmax(18rem, 1fr);
-    margin: clamp(4.3rem, 7.03vw, 8.4375rem) auto 0;
-    max-width: 103.3125rem;
-    min-height: clamp(13rem, 20.52vw, 24.625rem);
-    padding: clamp(2rem, 4.2vw, 4.5rem) clamp(2rem, 4.5vw, 6.5rem);
+    gap: 24px;
+    grid-template-columns: 96px minmax(160px, 1fr) 2px 88px minmax(160px, 1fr);
+    margin: 48px auto 0;
+    max-width: 860px;
+    min-height: 150px;
+    padding: 30px 36px;
     text-align: left;
   }
 
@@ -118,32 +118,32 @@
     display: block;
     height: auto;
     justify-self: center;
-    max-width: 13.125rem;
+    max-width: 82px;
     width: 100%;
   }
 
   .lola-ty__divider {
     background: rgba(255, 115, 203, 0.3);
-    height: clamp(9rem, 13.9vw, 16.6875rem);
-    width: 0.3125rem;
+    height: 104px;
+    width: 2px;
   }
 
   .lola-ty__card h2 {
     color: var(--ty-ink) !important;
     font-family: "Sofia Pro", "Sofia Sans", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
-    font-size: 44px !important;
+    font-size: 24px !important;
     font-style: normal !important;
     font-weight: 700 !important;
     letter-spacing: 0 !important;
     line-height: 0.98 !important;
-    margin: 0 0 0.7rem !important;
+    margin: 0 0 8px !important;
     text-transform: none !important;
   }
 
   .lola-ty__card p {
     color: var(--ty-ink) !important;
     font-family: "Sofia Pro", "Sofia Sans", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
-    font-size: 26px !important;
+    font-size: 16px !important;
     font-style: normal !important;
     font-weight: 400 !important;
     line-height: 1.633 !important;
@@ -154,7 +154,7 @@
   .lola-ty__card a {
     color: var(--ty-pink) !important;
     font-family: "Sofia Pro", "Sofia Sans", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
-    font-size: 22px !important;
+    font-size: 15px !important;
     font-weight: inherit !important;
     line-height: inherit !important;
     overflow-wrap: normal !important;
@@ -167,12 +167,12 @@
   .lola-ty__brand {
     color: var(--ty-pink) !important;
     font-family: "Noto Serif Display", Georgia, "Times New Roman", serif !important;
-    font-size: 70px !important;
+    font-size: 36px !important;
     font-style: normal !important;
     font-weight: 400 !important;
     letter-spacing: 0 !important;
     line-height: 1.375 !important;
-    margin: clamp(3.6rem, 6.2vw, 7.4375rem) 0 0 !important;
+    margin: 44px 0 0 !important;
     text-transform: none !important;
     white-space: nowrap !important;
   }
@@ -181,7 +181,7 @@
     align-items: center;
     display: flex;
     flex-wrap: nowrap;
-    gap: 2.25rem;
+    gap: 18px;
     justify-content: center;
   }
 
@@ -193,7 +193,7 @@
     flex: 0 0 auto;
     position: relative;
     transform: rotate(-12deg);
-    width: 3rem;
+    width: 28px;
   }
 
   .lola-ty__brand-star::after {
@@ -216,19 +216,19 @@
   .lola-ty__closing {
     color: var(--ty-ink) !important;
     font-family: "Sofia Pro", "Sofia Sans", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
-    font-size: 31px !important;
+    font-size: 17px !important;
     font-style: normal !important;
     font-weight: 400 !important;
     line-height: 1.46 !important;
-    margin: 0.35rem auto 0 !important;
-    max-width: 39.0625rem;
+    margin: 6px auto 0 !important;
+    max-width: 420px;
     text-transform: none !important;
   }
 
   @media (max-width: 900px) {
     .lola-ty__inner {
-      min-height: 56rem;
-      padding-top: 7.5rem;
+      min-height: 0;
+      padding: 64px 20px 48px;
     }
 
     .lola-ty__title {
@@ -236,20 +236,21 @@
     }
 
     .lola-ty__received {
-      font-size: 28px !important;
+      font-size: 20px !important;
       line-height: 1.08 !important;
-      margin-top: 3.4rem !important;
+      margin-top: 30px !important;
     }
 
     .lola-ty__message {
-      font-size: 30px !important;
-      max-width: 35rem;
+      font-size: 20px !important;
+      max-width: 32rem;
     }
 
     .lola-ty__card {
       grid-template-columns: 1fr;
-      max-width: 37rem;
-      padding: 2.5rem 2rem;
+      margin-top: 36px;
+      max-width: 520px;
+      padding: 26px 24px;
       text-align: center;
     }
 
@@ -259,24 +260,24 @@
     }
 
     .lola-ty__icon {
-      max-width: 8.5rem;
+      max-width: 72px;
     }
 
     .lola-ty__card h2 {
-      font-size: 32px !important;
+      font-size: 23px !important;
     }
 
     .lola-ty__card p {
-      font-size: 22px !important;
+      font-size: 16px !important;
     }
 
     .lola-ty__card a {
-      font-size: 20px !important;
+      font-size: 15px !important;
       white-space: normal !important;
     }
 
     .lola-ty__brand {
-      font-size: 48px !important;
+      font-size: 34px !important;
     }
 
     .lola-ty__brand-row {
@@ -284,40 +285,41 @@
     }
 
     .lola-ty__brand-star {
-      width: 2.1rem;
+      width: 24px;
     }
 
     .lola-ty__closing {
-      font-size: 24px !important;
+      font-size: 17px !important;
     }
 
   }
 
   @media (max-width: 560px) {
     .lola-ty__inner {
-      min-height: 52rem;
-      padding-left: 1rem;
-      padding-right: 1rem;
+      min-height: 0;
+      padding: 54px 16px 38px;
     }
 
     .lola-ty__title {
-      font-size: 64px !important;
+      font-size: 52px !important;
     }
 
     .lola-ty__received {
-      font-size: 20px !important;
+      font-size: 15px !important;
+      margin-top: 22px !important;
     }
 
     .lola-ty__message {
-      font-size: 22px !important;
+      font-size: 17px !important;
+      margin-top: 24px !important;
     }
 
     .lola-ty__card h2 {
-      font-size: 28px !important;
+      font-size: 21px !important;
     }
 
     .lola-ty__card p {
-      font-size: 18px !important;
+      font-size: 15px !important;
     }
 
     .lola-ty__card a {
@@ -326,7 +328,7 @@
     }
 
     .lola-ty__brand {
-      font-size: 32px !important;
+      font-size: 28px !important;
     }
 
     .lola-ty__brand-row {
@@ -338,7 +340,7 @@
     }
 
     .lola-ty__closing {
-      font-size: 18px !important;
+      font-size: 15px !important;
     }
   }
 </style>
