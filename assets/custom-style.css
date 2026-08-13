@@ -313,8 +313,13 @@ color: #fff !important;
 
 
 /* CSS for Header Wishlist Count and Cart Bag Count  */
+.cartfee{
+  display:none !important;
+}
+.cartsimplebutton{
+display:block !important;
 
-
+}
 
 .location-columns .four.columns {
   width:100% !important;
