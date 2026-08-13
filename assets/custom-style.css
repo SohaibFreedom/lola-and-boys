@@ -313,7 +313,7 @@ color: #fff !important;
 
 
 /* CSS for Header Wishlist Count and Cart Bag Count  */
-.swipe-btn-protection .cartfee{
+.swipe-info-box .swipe-btn-protection .cartfee{
   display:none !important;
 }
 .cartsimplebutton{
