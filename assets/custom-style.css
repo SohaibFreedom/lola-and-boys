@@ -8,6 +8,13 @@
     position: relative;
     top: 5px;
 }
+.swipe-btn-protection span.cartfee{
+  display:none !important;
+}
+.swipe-btn-protection .cartsimplebutton{
+display:block !important;
+
+}
 .rebuy-cart__flyout-subtotal-label {
     font-size: 0;
 }
@@ -313,13 +320,7 @@ color: #fff !important;
 
 
 /* CSS for Header Wishlist Count and Cart Bag Count  */
-.swipe-info-box .swipe-btn-protection .cartfee{
-  display:none !important;
-}
-.cartsimplebutton{
-display:block !important;
 
-}
 
 .location-columns .four.columns {
   width:100% !important;
