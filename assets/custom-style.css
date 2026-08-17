@@ -398,7 +398,18 @@ body.product .yotpo-bold-layout .yotpo-head {
    width: 100% !important;
     border: 1px solid var(--usf-border-color) !important;
 }
+.usf-sr-config .usf-c-select .usf-popover .usf-body {
+    z-index: 99;
+}
+.usf-sr-config .usf-c-select .usf-c-select__list .usf-c-select__btn {
+    display: none !important;
+}
 
+.usf-sr-config .usf-c-select .usf-c-select__list .usf-c-select__btn[data-value="price"],
+.usf-sr-config .usf-c-select .usf-c-select__list .usf-c-select__btn[data-value="-price"],
+.usf-sr-config .usf-c-select .usf-c-select__list .usf-c-select__btn[data-value="-date"] {
+    display: block !important;
+}
 .collection-specific-tags.holiday-staple-badge {
     background-color: #C93B61 !important;
     color: #ffff;
