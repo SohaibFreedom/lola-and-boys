@@ -403,6 +403,11 @@ body.product .yotpo-bold-layout .yotpo-head {
 }
 .usf-sr-config .usf-c-select .usf-c-select__list .usf-c-select__btn {
     display: none !important;
+    border:0 !important;
+}
+.usf-sr-config .usf-c-select .usf-c-select__list .usf-c-select__btn:hover {
+
+    border:0 !important;
 }
 
 .usf-sr-config .usf-c-select .usf-c-select__list .usf-c-select__btn[data-value="price"],
