@@ -398,9 +398,7 @@ body.product .yotpo-bold-layout .yotpo-head {
    width: 100% !important;
     border: 1px solid var(--usf-border-color) !important;
 }
-.usf-sr-config .usf-c-select {
-    display: none;
-}
+
 .collection-specific-tags.holiday-staple-badge {
     background-color: #C93B61 !important;
     color: #ffff;
