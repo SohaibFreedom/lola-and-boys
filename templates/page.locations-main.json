@@ -125,7 +125,7 @@
             "text": "",
             "align_text": "left",
             "button_label": "STORE DETAILS",
-            "button_link": "shopify://pages/dadeland-mall-store-page",
+            "button_link": "shopify://pages/miami-dadeland-mall",
             "open_link_new_tab": true,
             "border_style": "none"
           }
@@ -157,7 +157,7 @@
             "text": "",
             "align_text": "left",
             "button_label": "STORE DETAILS",
-            "button_link": "shopify://pages/aventura-florida-page",
+            "button_link": "shopify://pages/aventura-the-abbey",
             "open_link_new_tab": true,
             "border_style": "none"
           }
